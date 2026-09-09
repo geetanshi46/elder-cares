@@ -1,0 +1,13 @@
+{
+  "name": "Nightingales Medical Trust",
+  "short_name": "NMT",
+  "description": "Compassionate and innovative age care solutions — helping older persons live with dignity, purpose and hope since 1998.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfcfa",
+  "theme_color": "#fdfcfa",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
