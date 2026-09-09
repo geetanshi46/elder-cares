@@ -1,10 +1,44 @@
-export const pressArticles = [
+import clippingDeccanHerald2018 from "@/assets/new&events/deccan-herald-600x856.jpg.jpeg";
+import clippingHinduHomeless from "@/assets/new&events/25000-homeless.jpg.jpeg";
+import clippingTimesOfIndia2025 from "@/assets/new&events/IMG-20250801-WA0012.jpg.jpeg";
+import clippingDeccanHerald2024 from "@/assets/new&events/IMG-20250829-WA0005.jpg.jpeg";
+import clippingHinduJobs60 from "@/assets/new&events/all-work-no-rest-800x1058.jpg.jpeg";
+import clippingEconomicTimesCSR from "@/assets/new&events/how-to-make-sure-city-is-elder-friendly.jpg.jpeg";
+import clippingTimesOfIndia247 from "@/assets/new&events/preview-67.1-330x1170-330x1170.png";
+import clippingIndianExpressWEAAD from "@/assets/new&events/weaad-2022-the-new-indian-express-1264x1752.jpg.jpeg";
+
+export interface PressArticle {
+  slug: string;
+  title: string;
+  publication: string;
+  byline?: string;
+  date: string;
+  summary: string;
+  content: string;
+  image?: string;
+  category?: string;
+}
+
+export interface PressClipping {
+  id: string;
+  image: string;
+  title: string;
+  publication: string;
+  date: string;
+  category: "Helplines & Abuse" | "Dementia Care" | "Senior Livelihood" | "Destitute Care" | "Advocacy & CSR";
+  summary: string;
+  relatedSlug?: string;
+}
+
+export const pressArticles: PressArticle[] = [
   {
     slug: "bengaluru-more-aware-of-elders-helpline",
     title: "Bengaluru more aware of elders’ helpline",
     publication: "Deccan Herald",
     byline: "DHNS",
     date: "15 June 2018",
+    image: clippingDeccanHerald2018,
+    category: "Helplines & Abuse",
     summary:
       "Senior citizens and members of the Nightingales Medical Trust took part in a roadshow at Shivajinagar bus stand to mark World Elder Abuse Awareness Day.",
     content: `
@@ -193,6 +227,8 @@ Making our elderly smartphone-friendly
     publication: "The New Indian Express",
     byline: "Express News Service",
     date: "21 November 2018",
+    image: clippingHinduHomeless,
+    category: "Destitute Care",
     summary:
       "Nightingales Medical Trust joined a project to establish Sandhya Suraksha, a destitute home for elderly women.",
     content: `
@@ -214,6 +250,8 @@ Sandhya Suraksha, equipped with 70 beds will comprise three sections - elderly w
     publication: "Deccan Herald",
     byline: "Nina C. George",
     date: "15 March 2020",
+    image: clippingTimesOfIndia2025,
+    category: "Helplines & Abuse",
     summary:
       "Cases of senior citizens being abused by their children and relatives have increased, with property-related disputes among the major concerns.",
     content: `
@@ -226,78 +264,207 @@ Cases of senior citizens being abused by their children and relatives have spike
 The abuse could be physical or emotional in nature, says S Premkumar Raja, co-founder, Nightingales Medical Trust, which has launched the Elders’ Helpline (1090) in collaboration with the Bengaluru police.
 
 “Property-related abuses top the list. The rise in numbers could be because real estate prices are high, and children want their parents to make a gift deed of their property to them. They promise to take care of their parents. But once the formalities are completed, they start ill-treating their parents,” Premkumar says.
-
-As the population increases, more cases related to disputes within families are expected, but a 25 per cent rise is alarming.
-
-“There have been cases where parents are denied food and medicines and access to television. Children sometimes isolate their parents and stop talking to them,” he says.
-
-Senior citizens slip into depression and are forced to complain against their children, he says.
-
-Swathi Bhandary, who works with the Elder’s Helpline, says an increasing number of senior citizens are now aware of the provisions of The Maintenance and Welfare of Parents and Senior Citizens (Amendment) Bill, 2019.
-
-“They are coming out about their abusive children and registering complaints,” explains Swathi.
-
-Parents can cancel the gift deed under the new law if they feel they are not being properly looked after. But cancellation comes with its own complications, Swathi explains.
-
-“The tribunal finds it difficult to cancel the gift deed if children have taken a loan on the property. Loan brings in third party complications and eviction becomes a problem,” she says.
-
-Sandhya G, project in-charge with Elders’ Helpline, says most of those abused are between 60 and 70 years.
-
-“By this time their children are well settled and are looking for financial growth. This is when they seek their parent’s property,” she says.
-
-Parents don’t complain immediately after a violent attack.
-
-“We don’t have proof in terms of abusive marks on the body or scars. By the time they come and report the physical torture, the scars have healed and tension and fear has given way to anxiety,” says Sandhya.
-
-What the law says
-
-According to the Maintenance and Welfare of Parents and Senior Citizens (Amendment) Bill, 2019, people intentionally abusing their parents or senior citizens under their care and protection or abandoning them may be sentenced to six months’ imprisonment or slapped with a fine of Rs 10,000 or both.
-
-The law provides for the establishment of a tribunal for senior citizens to file for maintenance and assistance. Applications from those above 80 have to be disposed of within 60 days.
-
-Seek help
-
-The Elders’ Helpline is 080 22943226 and the toll-free number is 1090.
-
-Most recent cases
-
-Sister harassed
-
-Sudha (name changed), 65, is one of four sisters. The elder sister died leaving a three bedroom house to Sudha.
-
-Since Sudha was financially sound she made a gift deed to give it away to her two surviving sisters. She also gave money and gold to them.
-
-However, after retirement, when she went to stay in one of the rooms in the house, the two sisters subjected her to verbal harassment and physical assaults.
-
-Sudha complained to Elders’ Helpline and filed a case in a tribunal.
-
-The sisters did not attend the case initially. They appeared for the final hearing.
-
-The tribunal passed an order cancelling the gift deed. Sudha managed to get back a part of her property.
-
-Friend cheats woman of Rs 2 lakh
-
-Sixty-seven-year-old Rekha was cheated of Rs 2 lakh by a friend.
-
-She was hit and verbally abused by the friend, who had borrowed money from three people.
-
-After Rekha approached the helpline, the friend was called. The friend’s son was summoned.
-
-He understood that his mother was in trouble and offered to clear debts amounting to Rs 6 lakh.
-
-All this was done only after police intervention.
-
-Daughters reject parents
-
-Ramachandrappa, 87, distributed his property equally among his three daughters.
-
-While the second daughter took care of him and his crippled wife for 20 years, the first and the third daughters didn’t bother.
-
-The father gave the most money to the third daughter, hoping he could move in with her. The daughter turned him away.
-
-The police had to intervene and ensure Ramachandrappa was sheltered in his daughters’ places.
-
-They also got him an annual maintenance of Rs 7,000.
 `,
+  },
+
+  {
+    slug: "needed-in-karnataka-an-action-plan-to-tackle-dementia",
+    title: "Needed in Karnataka: An action plan to tackle dementia",
+    publication: "Deccan Herald",
+    byline: "Udbhavi Balakrishna",
+    date: "22 September 2024",
+    image: clippingDeccanHerald2024,
+    category: "Dementia Care",
+    summary:
+      "Task force formed to look into draft action plan for dementia care, risk reduction, and caregiver support across Karnataka.",
+    content: `
+Needed in Karnataka: An action plan to tackle dementia
+
+Task force formed to look into draft action plan
+
+The number of people with dementia, a neurological condition that affects thinking and remembering, is projected to double in Karnataka by 2036, but the lack of a dedicated state action plan could complicate efforts to tackle it.
+
+According to large-scale estimates of dementia in India published last year, the population in India living with dementia is expected to double to 1.69 crore. In Karnataka, the figure is estimated to rise to 9.41 lakh by 2036 from over 5 lakh people in 2016.
+
+Last September, Health Minister Dinesh Gundu Rao announced the formation of a state action plan to tackle dementia prevalence in Karnataka. A month later, Bengaluru's NIMHANS and Dementia India Alliance (DIA), in collaboration with the state health department, submitted a draft action plan to the government.
+
+The draft focused on how to increase state-wide awareness, screen at-risk populations to prevent or delay onset of dementia, and create dementia-friendly environments.
+`,
+  },
+
+  {
+    slug: "it-is-all-work-and-no-rest-for-these-senior-citizens",
+    title: "It's all work and no rest for these senior citizens",
+    publication: "The Hindu",
+    byline: "Tanu Kulkarni",
+    date: "03 January 2019",
+    image: clippingHinduJobs60,
+    category: "Senior Livelihood",
+    summary:
+      "A majority of senior citizens seek jobs as administrators and supervisors through Nightingales Jobs 60+, which placed over 2,620 elders.",
+    content: `
+It's all work and no rest for these senior citizens
+
+A majority of them are seeking jobs as administrators and supervisors
+
+Life after 60 years may be about retirement for some, but not for all. The number of senior citizens seeking jobs to ensure that they are financially independent is on the rise.
+
+Out of 2,622 senior citizens who were placed between 2011 and September 2018 by the Nightingales Medical Trust, a majority were employed in admin departments and as supervisors. Other job roles popular among senior citizens include cashiers and accountants.
+
+The trust, since 2011, runs a programme called the Nightingales Job 60 plus which aims to provide employment to senior citizens so that they have job security.
+`,
+  },
+
+  {
+    slug: "how-to-make-sure-city-is-elder-friendly",
+    title: "How to Make Sure City is Elder-friendly: 'Have CSR Initiatives for Elderly'",
+    publication: "The Economic Times",
+    date: "05 December 2017",
+    image: clippingEconomicTimesCSR,
+    category: "Advocacy & CSR",
+    summary:
+      "NMT co-founder S Premkumar Raja discusses key steps to make urban environments inclusive, accessible, and supportive for elderly citizens.",
+    content: `
+How to Make Sure City is Elder-friendly: 'Have CSR Initiatives for Elderly'
+
+S Premkumar Raja, co-founder, Nightingales Medical Trust, whose trust runs the Elders Helpline along with city police, says: "CSR initiatives for the elderly can play a major role in empowering the elderly to keep pace with the changing environment."
+
+STEPS:
+1. Awareness about elder abuse is essential. People should contact the Elders Helpline (toll-free 1090) to report any case of abuse, abandonment, distress or harassment.
+2. Publicise Maintenance and Welfare of Parents and Senior Citizens Act, 2007.
+3. Help desks for the elderly, specially trained staff, wheelchair accessibility and well-ventilated rooms can make hospitals and public spaces senior-friendly.
+`,
+  },
+
+  {
+    slug: "now-elders-helpline-to-run-24-7",
+    title: "Now, Elders' Helpline to run 24/7",
+    publication: "The Times of India",
+    date: "27 April 2017",
+    image: clippingTimesOfIndia247,
+    category: "Helplines & Abuse",
+    summary:
+      "Bengaluru City Police and Nightingales Medical Trust expand the city's 1090 Elders Helpline to operate round the clock.",
+    content: `
+Now, Elders' Helpline to run 24/7
+
+Bengaluru: Beginning Wednesday, the city's Elders' Helpline (1090) will be operational round the clock.
+
+The decision was prompted by the increasing number of calls and requests from senior citizens to keep the helpline operational 24/7. Sixty-two percent of complaints registered on the helpline between April 2016 and March 2017 were related to family members abusing or cheating the victims.
+
+The helpline, which is into its 15th year of operation, is a joint project of city police and Nightingales Medical Trust. Functional since 2002, it would till now operate between 8am and 8pm.
+`,
+  },
+
+  {
+    slug: "elders-helpline-80-percent-of-calls-are-of-abuse",
+    title: "Elders' Helpline: 80% of calls are of abuse",
+    publication: "The New Indian Express",
+    byline: "Express News Service",
+    date: "16 June 2022",
+    image: clippingIndianExpressWEAAD,
+    category: "Helplines & Abuse",
+    summary:
+      "Statistics released by NMT and Bengaluru City Police on World Elder Abuse Awareness Day reveal stark numbers on elderly neglect and abuse.",
+    content: `
+Elders' Helpline: 80% of calls are of abuse
+
+Statistics released by Nightingales Medical Trust, an NGO working for the well-being of the elderly, and Bengaluru City Police show one in five elders has been through some type of abuse.
+
+The Covid-19 lockdowns drastically increased abuse against elders. Releasing statistics for World Elders' Abuse Awareness Day, Dr Radha S Murthy, co-founder and managing trustee of Nightingales Medical Trust, said: "Eighty per cent of the complaints received from senior citizens on the Elders' Helpline are related to abuse."
+
+The day also marked 20 years of Elders' Helpline (1090), set up for elders in distress as a joint project of NMT and Bengaluru City Police. In 20 years, they received over 2,35,541 calls in Bengaluru.
+`,
+  },
+];
+
+export const pressClippings: PressClipping[] = [
+  {
+    id: "dh-helpline-2018",
+    image: clippingDeccanHerald2018,
+    title: "City more aware of elders’ helpline",
+    publication: "Deccan Herald",
+    date: "16 June 2018",
+    category: "Helplines & Abuse",
+    summary:
+      "Senior citizens and NMT volunteers break out into dance during a roadshow at Shivajinagar bus stand to mark World Elder Abuse Awareness Day.",
+    relatedSlug: "bengaluru-more-aware-of-elders-helpline",
+  },
+  {
+    id: "hindu-homeless-women-2019",
+    image: clippingHinduHomeless,
+    title: "Of the 25,000 homeless people in city, around 7,500 are elderly women",
+    publication: "The Hindu",
+    date: "22 July 2019",
+    category: "Destitute Care",
+    summary:
+      "HelpAge India report highlights destitute elderly; spotlights Sandhya Suraksha, NMT's shelter providing care for homeless older women.",
+    relatedSlug: "destitute-home-for-elderly-women-opened",
+  },
+  {
+    id: "toi-abuse-helpline-2025",
+    image: clippingTimesOfIndia2025,
+    title: "Neglect & abuse: In 3 years, elders' helpline gets 41k calls",
+    publication: "The Times of India",
+    date: "22 June 2025",
+    category: "Helplines & Abuse",
+    summary:
+      "Helpline 1090 receives over 41,000 distress calls. Includes NMT's essential guidance on how families should treat elderly parents at home.",
+    relatedSlug: "abuse-of-elders-on-the-rise",
+  },
+  {
+    id: "dh-dementia-action-plan-2024",
+    image: clippingDeccanHerald2024,
+    title: "Needed in Karnataka: An action plan to tackle dementia",
+    publication: "Deccan Herald",
+    date: "22 September 2024",
+    category: "Dementia Care",
+    summary:
+      "State task force formed to formulate Karnataka's draft action plan to tackle dementia, promote risk reduction and community awareness.",
+    relatedSlug: "needed-in-karnataka-an-action-plan-to-tackle-dementia",
+  },
+  {
+    id: "hindu-jobs-60-plus-2019",
+    image: clippingHinduJobs60,
+    title: "It's all work and no rest for these senior citizens",
+    publication: "The Hindu",
+    date: "03 January 2019",
+    category: "Senior Livelihood",
+    summary:
+      "Special feature on Nightingales Jobs 60+, which placed over 2,620 senior citizens in dignified administrative and supervisory jobs.",
+    relatedSlug: "it-is-all-work-and-no-rest-for-these-senior-citizens",
+  },
+  {
+    id: "et-city-elder-friendly-2017",
+    image: clippingEconomicTimesCSR,
+    title: "How to Make Sure City is Elder-friendly: 'Have CSR Initiatives for Elderly'",
+    publication: "The Economic Times",
+    date: "05 December 2017",
+    category: "Advocacy & CSR",
+    summary:
+      "NMT co-founder S Premkumar Raja speaks on the critical need for corporate CSR focus on ageing and accessible urban infrastructure for senior citizens.",
+    relatedSlug: "how-to-make-sure-city-is-elder-friendly",
+  },
+  {
+    id: "toi-helpline-24-7-2017",
+    image: clippingTimesOfIndia247,
+    title: "Now, Elders' Helpline to run 24/7",
+    publication: "The Times of India",
+    date: "27 April 2017",
+    category: "Helplines & Abuse",
+    summary:
+      "Joint initiative of Bengaluru City Police and Nightingales Medical Trust expands the 1090 Elders Helpline to operational round-the-clock service.",
+    relatedSlug: "now-elders-helpline-to-run-24-7",
+  },
+  {
+    id: "nie-weaad-abuse-calls-2022",
+    image: clippingIndianExpressWEAAD,
+    title: "Elders' Helpline: 80% of calls are of abuse",
+    publication: "The New Indian Express",
+    date: "16 June 2022",
+    category: "Helplines & Abuse",
+    summary:
+      "Commemorating 20 years of Elders Helpline 1090, Dr Radha S Murthy and Bengaluru police officials release post-pandemic elder abuse statistics.",
+    relatedSlug: "elders-helpline-80-percent-of-calls-are-of-abuse",
   },
 ];
