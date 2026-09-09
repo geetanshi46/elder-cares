@@ -2,6 +2,7 @@ import heroImage1 from "@/assets/heroImage1.webp";
 import heroImage2 from "@/assets/heroImage2.webp";
 import heroImage3 from "@/assets/heroImage3.webp";
 import heroImage4 from "@/assets/heroImage4.webp";
+import heroImage5 from "@/assets/heroImage5.jpg";
 
 import aboutImage from "@/assets/aboutImage.webp";
 
@@ -9,6 +10,10 @@ import { ArrowUpRight, HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const heroSlides = [
+  {
+    src: heroImage5,
+    alt: "Nightingales Medical Trust — compassionate elder care",
+  },
   {
     src: heroImage1,
     alt: "Nightingales Medical Trust — elder care",

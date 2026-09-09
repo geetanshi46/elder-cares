@@ -794,17 +794,13 @@ function AboutPage() {
 
   <div
     className="
-      mx-auto
       grid
       w-full
-      max-w-[1600px]
       grid-cols-1
       items-stretch
-
-      lg:grid-cols-[0.78fr_1.22fr]
-      lg:min-h-[430px]
-
-      xl:min-h-[460px]
+      lg:grid-cols-[0.85fr_1.15fr]
+      lg:min-h-[460px]
+      xl:min-h-[480px]
     "
   >
 
@@ -820,19 +816,14 @@ function AboutPage() {
         bg-[#FFF8EF]
         px-6
         py-10
-
         sm:px-10
         sm:py-12
-
         md:px-14
         md:py-14
-
         lg:order-1
-        lg:px-10
-        lg:py-10
-
-        xl:px-14
-        xl:py-12
+        lg:px-12
+        lg:py-12
+        xl:px-16
       "
     >
       <Reveal>
@@ -858,7 +849,6 @@ function AboutPage() {
                 uppercase
                 tracking-[0.18em]
                 text-[#ED6439]
-
                 sm:text-xs
               "
             >
@@ -878,13 +868,9 @@ function AboutPage() {
               leading-[1.05]
               tracking-[-0.035em]
               text-[#263746]
-
               sm:text-[2.35rem]
-
               md:text-[2.65rem]
-
               lg:text-[2.8rem]
-
               xl:text-[3.15rem]
             "
           >
@@ -895,118 +881,6 @@ function AboutPage() {
             Solutions
           </h1>
 
-
-          {/* DIVIDER */}
-          <div
-            className="
-              my-5
-              h-px
-              w-16
-              bg-[#ED6439]/25
-
-              sm:my-6
-              sm:w-20
-            "
-          />
-
-
-          {/* DESCRIPTION */}
-          <p
-            className="
-              max-w-[500px]
-              text-[13.5px]
-              font-medium
-              leading-6
-              text-[#526574]
-
-              sm:text-sm
-              sm:leading-6
-
-              lg:text-[14px]
-              lg:leading-6
-            "
-          >
-            A professionally managed not-for-profit organisation building
-            practical, holistic and family-centred solutions across ageing
-            and dementia care.
-          </p>
-
-
-          {/* 24 HOUR HELPLINE */}
-          <a
-            href="tel:08042426565"
-            aria-label="24 Hour Helpline 080 42426565"
-            className="
-              mt-5
-              inline-flex
-              items-center
-              gap-2
-              text-[#263746]
-              transition-colors
-              duration-200
-              hover:text-[#ED6439]
-
-              sm:mt-6
-            "
-          >
-
-            <span
-              className="
-                flex
-                h-8
-                w-8
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                bg-[#ED6439]/10
-                text-[#ED6439]
-              "
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 0 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-            </span>
-
-            <span className="flex flex-col leading-tight">
-
-              <span
-                className="
-                  text-[9px]
-                  font-extrabold
-                  uppercase
-                  tracking-[0.14em]
-                  text-[#ED6439]
-                "
-              >
-                24 Hour Helpline
-              </span>
-
-              <span
-                className="
-                  font-display
-                  text-[15px]
-                  font-extrabold
-                  tracking-tight
-                  text-[#263746]
-                "
-              >
-                080 42426565
-              </span>
-
-            </span>
-
-          </a>
-
         </div>
 
       </Reveal>
@@ -1014,7 +888,7 @@ function AboutPage() {
 
 
     {/* ==================================================
-        RIGHT — IMAGE
+        RIGHT — BANNER PHOTO (END TO END)
     ================================================== */}
 
     <div
@@ -1023,31 +897,26 @@ function AboutPage() {
         relative
         w-full
         overflow-hidden
-
         lg:order-2
-        lg:min-h-[430px]
-
-        xl:min-h-[460px]
+        lg:min-h-[460px]
+        xl:min-h-[480px]
       "
     >
 
-     <img
-  src={aboutHeroImage}
-  alt="Nightingales Medical Trust community"
-  width={1600}
-  height={1200}
-  className="
-    block
-    h-auto
-    w-full
-    object-contain
-    object-center
-
-    lg:h-full
-    lg:min-h-[430px]
-    lg:object-cover
-  "
-/>
+      <img
+        src={aboutHeroImage}
+        alt="Nightingales Medical Trust community"
+        width={1600}
+        height={1200}
+        className="
+          block
+          h-full
+          min-h-[260px]
+          w-full
+          object-cover
+          object-center
+        "
+      />
 
     </div>
 

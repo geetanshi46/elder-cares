@@ -1,0 +1,308 @@
+================================================================================
+TAB: Homepage
+================================================================================
+Row 001: [(2, 'Add this 24 Hour Helpline')]
+Row 005: [(4, 'From empowerment &amp; livelihood to CSR Partnership not linking to respect projects (page)')]
+Row 025: [(4, 'Please stick to the content end to end')]
+Row 033: [(4, 'Please highlight/bold UPS - 3 Memory clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction  Programme')]
+Row 050: [(4, 'While clicking, not linking to old age home')]
+Row 064: [(3, 'Delete this and create a thumb nail for video')]
+Row 076: [(5, 'Key focus areas include rural elder care programmes, additional homes for homeless elders, expansion of dementia care services, strengthened support for marginalized elders,Ses for older persons in need.')]
+Row 083: [(5, 'it should be Research and Innovation hub')]
+Row 091: [(0, '09/09/2026')]
+Row 093: [(0, 'Put arrow on Donate')]
+Row 097: [(4, '1. Remove &quot;The&quot; from The Road Ahead')]
+Row 098: [(4, '2. Put drop-down features for all tool bars on top strip')]
+Row 099: [(4, '3. Replace'), (5, 'To')]
+Row 100: [(4, 'Seek Dementia Care'), (5, 'Dementia &amp; Medical Care')]
+Row 101: [(4, 'Elder Care'), (5, 'Prevention of Elder Abuse'), (7, '(also for')]
+Row 102: [(4, 'Supporting Old Age Home')]
+Row 103: [(4, 'Training and Capacity Building')]
+Row 104: [(4, 'Add'), (5, 'Awareness and advocacy')]
+Row 105: [(0, 'Remove duplicate heading such as -'), (4, 'Care for Marginalise'), (5, 'Care for marginalised Elders')]
+Row 106: [(0, 'Our Impact'), (2, 'remove Since 1998 (written twice)')]
+Row 116: [(0, 'Nightingales Smriti grams')]
+Row 124: [(0, 'Remove S from Benefit')]
+Row 133: [(0, 'Nightingales Smriti Gram video'), (2, 'Provide thumbnail video')]
+Row 135: [(0, 'Banner photos'), (1, 'add this'), (2, 'https://drive.google.com/file/d/1D-8GL7ftY9Qqq4HAq2PVTgx4Jg9nOSX8/view?usp=drive_link')]
+Row 137: [(0, 'Linking the programs fromiccons on Homepage')]
+Row 138: [(0, '1 Empowerment and livelihood'), (2, 'not linking to its page')]
+Row 139: [(0, '2. Support old age home'), (2, 'not linking to its page')]
+Row 142: [(0, 'Our Services and Work (Non linking to respective page)')]
+Row 143: [(0, '1. Healthy ageing in old age homes')]
+Row 144: [(0, '2. Elder Abuse')]
+Row 145: [(0, '3. Capacity building')]
+Row 146: [(0, '4. Awareness and advocacy')]
+Row 148: [(0, 'Recognation and Awards'), (2, 'Scrolling in continuation')]
+
+Embedded objects in Homepage (12):
+  Object embed_1219739622 at Row 0, Col 0 -> Style: width: 178px; height: 58px; display: block;
+  Object embed_1255437540 at Row 2, Col 0 -> Style: width: 463px; height: 159px; display: block;
+  Object embed_1862129888 at Row 12, Col 4 -> Style: width: 818px; height: 225px; display: block;
+  Object embed_172526469 at Row 29, Col 0 -> Style: width: 469px; height: 295px; display: block;
+  Object embed_949735287 at Row 61, Col 0 -> Style: width: 347px; height: 209px; display: block;
+  Object embed_246365793 at Row 73, Col 0 -> Style: width: 512px; height: 341px; display: block;
+  Object embed_549845100 at Row 93, Col 0 -> Style: width: 469px; height: 91px; display: block;
+  Object embed_303213693 at Row 99, Col 7 -> Style: width: 376px; height: 225px; display: block;
+  Object embed_906778833 at Row 91, Col 1 -> Style: width: 145px; height: 56px; display: block;
+  Object embed_1818328910 at Row 105, Col 0 -> Style: width: 387px; height: 125px; display: block;
+  Object embed_1371099776 at Row 115, Col 0 -> Style: width: 411px; height: 91px; display: block;
+  Object embed_1155135586 at Row 123, Col 1 -> Style: width: 679px; height: 159px; display: block;
+================================================================================
+TAB: About_Us
+================================================================================
+Row 002: [(6, 'Banner photo to be widen end to end')]
+Row 003: [(6, 'remove - A professionally managed not-for-profitt ........')]
+Row 004: [(6, 'remove Helpline number freom Banner photo space')]
+Row 006: [(6, 'Follow provided content strictly word to word avoid adding/deleting/fragmentation')]
+Row 015: [(0, 'Add on Executive committee')]
+Row 017: [(3, 'Manager, Accounts and Finance with over 30 years of experience in senior roles at international manufacturing, services and audit organizations.  Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.')]
+Row 024: [(3, 'Senior consultant psychiatrist graduated from Nimhans. Has vast  experience in medical practices and holistic approach towards patient care . Was trainer of trainer( TOT) to  medical doctors and paramedical staff in mental health and awareness  in DMHP. Now into dementia care and residential practices.Good administrator, dedicated ,assertive  and with  leadership qualities.')]
+
+Embedded objects in About_Us (3):
+  Object embed_1988012936 at Row 0, Col 0 -> Style: width: 597px; height: 267px; display: block;
+  Object embed_203025662 at Row 22, Col 0 -> Style: width: 195px; height: 206px; display: block;
+  Object embed_1714711430 at Row 15, Col 0 -> Style: width: 182px; height: 156px; display: block;
+================================================================================
+TAB: Smriti_Gram
+================================================================================
+Row 003: [(7, 'Born from a need families have faced for years.')]
+Row 004: [(7, 'Not present in the NMT content document.')]
+Row 006: [(7, 'CHANGE - &quot;Why Nightingales Smriti Gram?')]
+Row 007: [(7, 'Nightingales Smriti Gram was born from this need.&quot;')]
+Row 022: [(6, 'REMOVE - A New Model of Dementia Care in India. &amp;  A Caring Community')]
+Row 023: [(6, 'CHANGE - IndiaÆs First Integrated Dementia Care Village (make it the sun heading)')]
+Row 029: [(6, 'REMOVE - A place for care, learning, innovation and research.')]
+Row 042: [(6, 'REMOVE - Care that respects its environment.Compassionate, inclusive, innovative and environmentally responsible.')]
+Row 053: [(6, 'REMOVE - Building a more dementia-friendly society.')]
+Row 059: [(6, 'REMOVE - Together, we can reshape dementia care in India.')]
+Row 066: [(6, 'REMOVE - Free residential dementia care for elders who need it most.')]
+Row 076: [(6, 'REMOVE - Fairness, compassion, transparency and dignity.')]
+Row 085: [(0, '09/09/2026')]
+Row 087: [(0, 'Photos - remove white borders from all photos')]
+Row 090: [(4, 'Thumbnail video to be')]
+Row 093: [(0, 'Sub-headings - not on the given content')]
+
+Embedded objects in Smriti_Gram (8):
+  Object embed_1602652105 at Row 0, Col 0 -> Style: width: 682px; height: 320px; display: block;
+  Object embed_1311245100 at Row 17, Col 0 -> Style: width: 512px; height: 149px; display: block;
+  Object embed_710713764 at Row 27, Col 0 -> Style: width: 512px; height: 183px; display: block;
+  Object embed_1326543091 at Row 37, Col 0 -> Style: width: 512px; height: 222px; display: block;
+  Object embed_1283131914 at Row 49, Col 0 -> Style: width: 512px; height: 242px; display: block;
+  Object embed_736429553 at Row 62, Col 0 -> Style: width: 511px; height: 177px; display: block;
+  Object embed_1079414975 at Row 72, Col 0 -> Style: width: 512px; height: 231px; display: block;
+  Object embed_1459575282 at Row 87, Col 0 -> Style: width: 327px; height: 69px; display: block;
+================================================================================
+TAB: Get_Involved
+================================================================================
+Row 001: [(0, 'Get Involved Corporate Partnerships  Partner with Us to Create Lasting Impact for Elders and Those with Dementia At Nightingales Medical Trust (NMT), we believe meaningful social change happens when individuals, corporates, and communities come together. We actively collaborate with corporates, government bodies, NGOs, and academic institutions to improve the quality of life of elders, especially those living with dementia and those from marginalized communities.Corporate partnerships play a vital role in strengthening elder care and dementia services in India. Through CSR support, employee volunteering, and collaborative initiatives, corporates help us deliver need-based interventions while fulfilling their social responsibility goals.We invite corporates to engage with us through CSR partnerships, employee engagement, and long-term collaborations that create measurable social impact. Why Partner with NMT? - Over two decades of experience in elder and dementia care- Proven, scalable programs with measurable outcomes- Opportunities for employee sensitization on ageing, dementia, and caregiving- Strong governance and transparent impact reporting- NMT is eligible for CSR funding under the Companies Act, 2013. Causes You Can Support Your organization can choose to support one or more of the following focus areas:- Dementia Care- Health &amp; Wellness- Nutritional Support- Education &amp; Awareness- Livelihood &amp; Skill Development- Addressing Social Isolation- Safety &amp; Protection of Elders Partnership Options 1. Adopt a Project: Support one or more of  our need-based flagship programs:- Promoting Well-Being of Elders in Old Age Homes (Active Ageing Program) Bengaluru has over 150 old age homes, many offering only basic facilities. Elders need continuous physical, cognitive, emotional, and social engagement to age with dignity.Since 2018, our Mobile Active Ageing Program delivers free, holistic well-being services directly to old age homes.Current Reach28 old age homes650+ elders annually2-hour sessions, three times a weekServices IncludeCognitive stimulation &amp; group activitiesPhysical exercises &amp; physiotherapySocial engagementMedical consultations (psychiatry, physician support)Capacity building of old age home staffYour support brings movement, purpose, and joy to elders who need it the most.( Rupa please add destitute homes for abandoned elderly, Day care &amp; Activity Centers for elderly in urban poor communities, Elders Helpline - Helpline for Elders in distress, Jobs 60+ - Employment for needy elders  based on the note on projects requiring support and partnership. We can also add training of auto drivers in lifesaving skills ( proposal available with Urmila), research department ( proposal available with Aakanksha) and mobile outreach project ( proposal available with Pradeep) - Digital Literacy &amp; Cyber Safety for Elders Digital inclusion enables seniors to access healthcare, manage finances, stay connected, and remain independent. At the same time, cyber fraud poses a growing threat.Through structured training programs, we equip elders with basic digital skills, online safety awareness and fraud prevention strategiesAnnual Impact: 1,200 elders empowered to live safer, more independent digital lives.- Lifesavers Clubs in Schools (CPR Awareness) To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified professionals.Impact:Trained high-school students capable of responding to emergenciesIncreased survival chances during cardiac arrestCulture of preparedness and social responsibilityThis initiative aligns with our vision of making Bengaluru the CPR Capital of India.-Destitute Homes for Homeless Elderly (from existing Website ôget Involve - Donate - Corporate)-Hiriyaravadis (Day care &amp; Activity centres for maginalised elders living in urban slums)-Elders Helpline for Elders in Distress  - Job 60+ : Employment and skilling for Needy Elderly - Nightingales Smriti Gram - IndiaÆs Largest Dementia Care Village  Corporate DonationsCorporates may choose to contribute to a specific cause or infrastructure requirement aligned with their CSR priorities.- Smriti Gram û A National Model for Dementia Care NMT is establishing Smriti Gram, a 300-bed comprehensive dementia care ecosystem, including 100 beds exclusively for marginalized elders.Project Status:Land acquired near Doddaballapur (1 hour from Bengaluru)Phase 1 (100 beds + Training Academy): Operational by September 2026Phase 2 (additional 200 beds): Completion by December 2028Donation Opportunities at Smriti Gram:- Tele-medicine Unit- Activity &amp; Therapy Areas- Rehabilitation Unit- Alternate Therapy Unit (Art, Music, Ayurveda, etc.)- Solar Power System- Effluent Treatment Plant- Mechanised Stainless Steel Kitchen &amp; Dining- Laundry Unit- Therapeutic Landscape- Audio-Visual Equipment- Medical Equipments - Safety and Surveillance Equipment - Ambulance- Office furniture- Hospital cots- Elder-friendly patient chairs with safety belts - Storage cupboards- IT &amp; Audio visual equipments- Electrical Equipments - Landscaping &amp; Sensory Garden Each contribution directly enhances quality of care, safety, sustainability, and dignity.Event Sponsorship &amp; Participation Partner with us for national and international observances such as:International Day of Older Persons,World Elder Abuse Awareness Day, World AlzheimerÆs Day,Senior Citizen Job Fairsand Digital Literacy &amp; Cyber Safety ProgramsOpportunities include event sponsorship, employee volunteering, and brand visibility. Payroll Giving Enable your employees to support elder care and dementia care through monthly salary contributions toward NMT programsùan easy, consistent way to create long-term impact.Corporate Volunteering &amp; Employee Engagement We offer structured volunteering opportunities where employees can contribute their time, skills, and expertise, including:- Recreational activities &amp; outings with elders- Awareness &amp; communication campaigns- Governance &amp; strategy support- Livelihood and income-generation initiatives- Skill building &amp; training- Technology and digital tool development- Fundraising support- Beautification &amp; facility enhancement- Digital literacy training- Documentation &amp; impact reporting- In-kind donationsLetÆs Build a Compassionate Future for Elders.Partner with NMT to create meaningful, measurable, and lasting impact.For more details, please contact us ( rm@nightingaleseldercare.com )')]
+Row 006: [(6, 'MAKE CONTENT CHANGES FROM THIS PART')]
+
+Embedded objects in Get_Involved (1):
+  Object embed_67763592 at Row 2, Col 0 -> Style: width: 477px; height: 230px; display: block;
+================================================================================
+TAB: Our_Services
+================================================================================
+Row 002: [(7, 'Under Dementia Domain- Add from other non- pharmacological approaches')]
+Row 009: [(7, 'Dementia Domain-Nearly three decades of experience')]
+Row 016: [(7, 'Dementia Domain- Add every person with dementia is unique')]
+Row 022: [(7, 'Dementia Domain- Add to provide holistic care')]
+Row 030: [(7, 'Dementia Domain- Add Dementia affects the entire family. Also add and provide better care')]
+Row 037: [(7, 'In Online Demnetia Risk Reduction program- Add Who can Benefit? and add Bullets and also add Start caring for your brain health today')]
+Row 044: [(7, 'In dementia day care - add Daycare can also help.........till as long as possible')]
+Row 056: [(7, 'Kindly change images- make it 1 facility + 1 elder')]
+Row 071: [(7, 'At Residential Care: Add at NMT, we strive to create an environment where residents are:')]
+Row 079: [(7, 'In Smriti Gram section - ADD after 300 beds, creating a new benchmark for dementia care in India')]
+Row 085: [(7, 'In Smriti Gram section- Add Smriti Gram represents NMT&#39;s committment to:')]
+Row 090: [(7, 'Add consider seeking professional advice if your loved one is expecting')]
+Row 099: [(7, 'Rupa C Please provide apt photo. NHSC is 14567 while photo shows 1090')]
+Row 114: [(7, 'Rupa C Please search for appropriate photo')]
+Row 131: [(7, 'This has to be resolved')]
+Row 136: [(0, '08/09/2026')]
+Row 138: [(7, 'Why our services are repetitive. Please provide drop downs of our programs')]
+Row 152: [(7, 'Change 96 bed to 97 bed')]
+Row 162: [(0, '09/09/2026')]
+Row 163: [(0, 'Our Service')]
+Row 178: [(0, 'Duplicacy &quot;Our Services&quot;')]
+Row 179: [(0, 'Delete -  the seven programme areas that together .........')]
+Row 182: [(0, 'Dementia Care - &quot;Why Choose NMT&quot; will come down to after &quot;our approach to Dementia Care&quot;')]
+Row 184: [(0, 'Additional write up'), (2, 'Please delete &quot;Care with dignity&quot;, arrow, person-centred, dignity  family&quot;')]
+Row 190: [(0, 'Online Dementia Risk Reduction Programm'), (3, 'cahnge the color')]
+Row 191: [(0, '- correct programm spelling')]
+Row 192: [(0, '- Take Action Today for a Healthier Brain Tomorrow'), (3, 'bigger fornt size')]
+Row 193: [(0, '- conveniently from home.'), (2, 'Bold it')]
+Row 194: [(0, 'Who can benefit?'), (2, 'bigger font size')]
+Row 195: [(0, 'Join the program'), (2, 'Should lead to phone number/email/whatsapp')]
+Row 196: [(0, 'Start caring for your brain health today.'), (2, 'bigger font size')]
+Row 199: [(0, 'MEMORY CLINICS'), (2, 'Make it orange font')]
+Row 200: [(0, '1. NMT operates Memory Clinics at Bengaluru and Kolar:  remove RT Nagar &amp; Kothanur')]
+Row 201: [(0, '2. Early Assessment. Early Understanding. Better Planning. - make it black and bigger font size')]
+Row 202: [(0, '3. Photo make it wider (proportion to white)')]
+Row 203: [(0, 'Our goal is not simply to provide a diagnosis. We help families understand what is happening and what they can do next.'), (4, 'Bold it')]
+Row 205: [(0, 'Dementia Day Care'), (2, 'Make it orange font')]
+Row 206: [(0, '1. Professional Care During the Day. Peace of Mind and Respite for the Family.'), (3, 'Make it bigger font size and black color')]
+Row 207: [(0, '2. safe, stimulating and supportive environment during the day, while enabling the person to continue living with their family.'), (3, 'Highlight/ make it bold')]
+Row 208: [(0, '3. Professional care for your loved one ù and much-needed respite for you.'), (3, 'Highlight/ make it bold')]
+Row 210: [(0, 'Specialised Residential Dementia Care'), (4, 'Make it orange font')]
+Row 211: [(0, '1. When Your Loved One Needs Care Around the Clock, We Are There.'), (3, 'make it black &amp; font size bigger')]
+Row 212: [(0, '24-hour supervision, professional care, medical support and a secure, nurturing environment.'), (3, 'Highlight/ make it bold')]
+Row 215: [(3, 'Highlight USP')]
+Row 216: [(3, '- Multi-displinary team')]
+Row 217: [(3, '- within city limits')]
+Row 218: [(3, '- Mental Health care Act')]
+Row 221: [(6, 'Add location while clicking photos')]
+Row 228: [(3, 'Highlight USP')]
+Row 229: [(3, '- Affordable residential care option')]
+Row 230: [(3, '- Mental health care Act')]
+Row 231: [(3, '- an hour from KR Puram, Bengaluru,')]
+Row 233: [(3, 'S')]
+Row 240: [(3, 'Highlight USP')]
+Row 241: [(3, '- Exclusive for women')]
+Row 242: [(3, '- Mental health care Act')]
+Row 243: [(3, '- Homely environment')]
+Row 252: [(0, 'Residential care should never mean simply providing accommodation.'), (3, 'Bold and black')]
+Row 253: [(0, 'Our residential-care philosophy'), (3, 'Orange it')]
+Row 255: [(0, 'Numbering under Dementia Care - follow this theme cosistently')]
+Row 263: [(0, 'Family Caregiver Training - orange it')]
+Row 265: [(3, 'remove &quot;Because&quot; word')]
+Row 266: [(3, 'Highlight USP')]
+Row 267: [(3, '- training covers  ........')]
+Row 271: [(3, 'Make it bullet')]
+Row 284: [(0, 'Dementia Family Support Groups'), (2, 'Orange it')]
+Row 285: [(0, 'NMT&#39;s support groups provide families with an opportunity to:'), (2, 'Bold it')]
+Row 287: [(0, 'Nightingales Smriti Gram'), (2, 'Orange it')]
+Row 288: [(0, 'A New Vision for Dementia Care in India'), (2, 'Black it &amp; bold')]
+Row 289: [(0, 'Nightingales Smriti Gram ù Dementia Care, Learning &amp; Research, near Doddaballapur, Bengaluru Rural District.'), (1, 'Bold it')]
+Row 290: [(0, 'Envisioned as a landmark integrated dementia-care village, Smriti Gram will bring together'), (1, 'bold it')]
+Row 291: [(0, 'make it bullet format below')]
+Row 292: [(0, 'Person-centred dementia care')]
+Row 293: [(0, 'Nature-enriched living')]
+Row 294: [(0, 'Therapeutic outdoor spaces')]
+Row 295: [(0, 'Meaningful activities')]
+Row 296: [(0, 'Alternative and complementary therapies alongside modern medical care')]
+Row 297: [(0, 'Training and capacity building')]
+Row 298: [(0, 'Research and innovation')]
+Row 301: [(5, 'Consider seeking professional advice if your loved one is experiencing:')]
+Row 313: [(6, 'remove &quot;elder protection&quot;')]
+Row 314: [(6, 'instead put &quot;Prevention of Elder abuse&quot; - ORANGE TEXT')]
+Row 315: [(6, 'remove &quot;elder protection&quot; from the image as caption')]
+Row 320: [(0, 'Sandhya Suraksha'), (2, 'Make it orange')]
+Row 321: [(6, 'Highlight USP')]
+Row 322: [(6, '- Residential care and support .......... creed or religion')]
+Row 323: [(6, '- homeless elderly women')]
+Row 324: [(6, '- Equipped wih 95 bed')]
+Row 325: [(6, '- bullet it from - Accomodation and nutritious food to Assistance in accessing government entitlements and other services')]
+Row 349: [(6, 'read more not leading to respective pages')]
+Row 364: [(0, 'Sandhya Kirana')]
+Row 365: [(0, 'Highlight USP')]
+Row 366: [(0, '- collaboration with the Bruhat Bengaluru Mahanagara Palika (City Corporation).')]
+Row 370: [(6, 'Read more/read less in inappropriate place')]
+Row 374: [(6, 'Sandhya Kirana Home provides safe shelter and take care of Homeless Elderly Men irrespective of caste, creed or religion.')]
+Row 381: [(0, 'Hiriyaravadi')]
+Row 385: [(3, 'make it bullet points')]
+Row 397: [(2, 'Highlight - NMT runs five Hiriyaravadi centres at')]
+Row 398: [(2, 'make bullet points')]
+Row 400: [(2, 'Put location to respected centres')]
+Row 405: [(0, 'Free Geriatric Clinic'), (1, 'Orange it')]
+Row 406: [(0, 'This geriatric clinic functions from the premises of Sandhya Kirana.'), (5, 'bold it &amp; orange it')]
+Row 408: [(0, 'ELDER PROTECTION'), (2, 'orange it')]
+Row 409: [(0, 'Change it to &quot;Prevention of Elder Abuse&quot;')]
+Row 411: [(3, 'remove &quot;Elder protection&quot; from photo')]
+Row 422: [(4, '- remove Elders Helpline - 1090 from photo')]
+Row 423: [(4, '- Orange Elder Helpline - 1090')]
+Row 424: [(4, '- make &quot;The Helpline can help with&quot; points as bullet points')]
+Row 425: [(4, '- Elders can avail free legal advice with prior appointments. - bold it')]
+Row 426: [(4, '- the first project in the country where an NGO and the law enforcing authorities joined together to address elder abuse.')]
+Row 427: [(4, '- bold/highlight')]
+Row 428: [(4, '- Located at the premises of Bengaluru City Police'), (7, '- bold/highlight')]
+Row 429: [(4, '- Elders can avail free legal advice with prior appointments  - Bold it')]
+Row 434: [(4, '- remover &quot;National Helpline for Senior Citizen -14567&quot;  from photo')]
+Row 435: [(4, '- National Helpline for Senior Citizen -14567 - Orange it')]
+Row 436: [(4, '- The Helpline provides support on issues including: - make it bullet points')]
+Row 437: [(4, '- Dial 14567 - put it on black box with orange text')]
+Row 438: [(4, '- an initiative of Ministry of Social Justice and Empowerment, Government of India - bold it')]
+Row 449: [(0, 'EMPOWERMENT &amp; LIVELIHOOD - Orange it')]
+Row 460: [(0, '- Remove the text from photos')]
+Row 461: [(0, '- sub-headings to be orange it')]
+Row 462: [(3, 'All three carts - two different font styles- please correct it')]
+Row 463: [(3, 'Highlight USP -')]
+Row 464: [(3, '- the programme challenges the traditional perception')]
+Row 465: [(3, '- connects experienced older persons with employment and livelihood opportunities.')]
+Row 466: [(3, '- only 11% of the retired employees get pension from the government')]
+Row 468: [(3, 'Bullet points to be done -')]
+Row 469: [(3, 'Therefore, this programme supports older job seekers through:')]
+Row 477: [(4, '- Carts are oddly lengthens while read more of one cart')]
+Row 485: [(0, 'Digital Literacy for Senior Citizens'), (2, 'orange it')]
+Row 486: [(0, 'Bullet points to be done -'), (2, 'Training may include:')]
+Row 488: [(0, 'put job60+ link below the  cart - https://www.nightingalesjobs60plus.com/')]
+Row 489: [(6, 'Remove this')]
+Row 492: [(5, 'Supporting Old Age Homes- Make it orange')]
+Row 501: [(2, 'Change photos')]
+Row 511: [(6, '- headings to be orange')]
+Row 512: [(6, 'Highlight USP')]
+Row 513: [(6, '- improving elder care requires strengthening the entire care ecosystem')]
+Row 514: [(6, '-MAA currently reaches 28 old age homes.')]
+Row 515: [(6, '- the Ministry of Social Justice &amp; Empowerment for Karnataka, Kerala &amp; Lakshwdeep. - RRTC')]
+Row 517: [(6, 'bullet points')]
+Row 518: [(6, '-The programme includes in MAA programme')]
+Row 520: [(6, 'Remove line from Vayo alambana - With support from Vayo Alambana Trust,')]
+Row 522: [(6, 'Read more - clicking here cuts off the initial para')]
+Row 524: [(6, 'Vayo Alambana - add &quot;free accessible Medical care')]
+Row 528: [(0, 'TRAINING &amp; CAPACITY BUILDING - Orange it')]
+Row 530: [(4, 'Headings orange it')]
+Row 532: [(4, 'Highlight USP -')]
+Row 533: [(4, '- The programme combines classroom learning with practical, hands-on training.')]
+Row 534: [(4, '- Training focuses on practical knowledge, communication, person-centred care and caregiver well-being.')]
+Row 535: [(4, '- NMT&#39;s family caregiver training helps families provide safer and more meaningful care')]
+Row 538: [(4, 'Bullet points feature -')]
+Row 539: [(4, 'The training covers areas such as:')]
+Row 540: [(4, 'Training focuses on:')]
+Row 541: [(4, 'NMT&#39;s family caregiver training helps families:')]
+Row 542: [(4, 'Training includes:')]
+Row 543: [(4, 'Interns gain experience through:')]
+Row 546: [(3, 'Read more - white portions on carts are to be removed')]
+Row 547: [(3, 'remove the extra &quot;)&quot;')]
+Row 552: [(0, 'Awareness &amp; advocacy'), (2, 'remove the box and bigger font')]
+Row 557: [(6, 'Change the icon')]
+
+Embedded objects in Our_Services (40):
+  Object embed_822116837 at Row 0, Col 0 -> Style: width: 702px; height: 125px; display: block;
+  Object embed_1535270411 at Row 7, Col 2 -> Style: width: 464px; height: 141px; display: block;
+  Object embed_279687288 at Row 14, Col 0 -> Style: width: 694px; height: 119px; display: block;
+  Object embed_1771753353 at Row 21, Col 0 -> Style: width: 694px; height: 125px; display: block;
+  Object embed_942363735 at Row 28, Col 0 -> Style: width: 694px; height: 119px; display: block;
+  Object embed_1997220366 at Row 35, Col 0 -> Style: width: 694px; height: 150px; display: block;
+  Object embed_1290601173 at Row 43, Col 0 -> Style: width: 689px; height: 221px; display: block;
+  Object embed_341606236 at Row 54, Col 0 -> Style: width: 694px; height: 283px; display: block;
+  Object embed_1695114593 at Row 69, Col 0 -> Style: width: 694px; height: 141px; display: block;
+  Object embed_678676681 at Row 77, Col 0 -> Style: width: 686px; height: 125px; display: block;
+  Object embed_35548138 at Row 83, Col 0 -> Style: width: 694px; height: 86px; display: block;
+  Object embed_1101301479 at Row 88, Col 0 -> Style: width: 686px; height: 189px; display: block;
+  Object embed_2064747211 at Row 113, Col 0 -> Style: width: 260px; height: 327px; display: block;
+  Object embed_1174674809 at Row 130, Col 0 -> Style: width: 694px; height: 93px; display: block;
+  Object embed_275452087 at Row 136, Col 0 -> Style: width: 686px; height: 240px; display: block;
+  Object embed_979007850 at Row 148, Col 0 -> Style: width: 694px; height: 230px; display: block;
+  Object embed_190090427 at Row 183, Col 0 -> Style: width: 747px; height: 86px; display: block;
+  Object embed_527321724 at Row 212, Col 0 -> Style: width: 225px; height: 119px; display: block;
+  Object embed_1736162983 at Row 227, Col 0 -> Style: width: 295px; height: 231px; display: block;
+  Object embed_28016658 at Row 239, Col 0 -> Style: width: 290px; height: 241px; display: block;
+  Object embed_1399310759 at Row 255, Col 0 -> Style: width: 519px; height: 114px; display: block;
+  Object embed_380744471 at Row 263, Col 0 -> Style: width: 223px; height: 142px; display: block;
+  Object embed_30589145 at Row 298, Col 0 -> Style: width: 407px; height: 181px; display: block;
+  Object embed_510547947 at Row 309, Col 0 -> Style: width: 512px; height: 167px; display: block;
+  Object embed_421710516 at Row 320, Col 0 -> Style: width: 512px; height: 504px; display: block;
+  Object embed_1630372174 at Row 345, Col 0 -> Style: width: 512px; height: 350px; display: block;
+  Object embed_535348582 at Row 366, Col 0 -> Style: width: 512px; height: 221px; display: block;
+  Object embed_1592494083 at Row 381, Col 0 -> Style: width: 295px; height: 265px; display: block;
+  Object embed_843851968 at Row 395, Col 0 -> Style: width: 188px; height: 150px; display: block;
+  Object embed_1577763059 at Row 408, Col 0 -> Style: width: 277px; height: 155px; display: block;
+  Object embed_644227064 at Row 418, Col 0 -> Style: width: 383px; height: 276px; display: block;
+  Object embed_660907276 at Row 431, Col 0 -> Style: width: 400px; height: 307px; display: block;
+  Object embed_1577725978 at Row 449, Col 0 -> Style: width: 512px; height: 194px; display: block;
+  Object embed_1303233694 at Row 475, Col 0 -> Style: width: 383px; height: 141px; display: block;
+  Object embed_59970199 at Row 490, Col 0 -> Style: width: 492px; height: 167px; display: block;
+  Object embed_90016067 at Row 486, Col 0 -> Style: width: 583px; height: 62px; display: block;
+  Object embed_941060907 at Row 499, Col 0 -> Style: width: 184px; height: 194px; display: block;
+  Object embed_1050824135 at Row 0, Col 0 -> Style: width: 574px; height: 327px; display: block;
+  Object embed_746105191 at Row 543, Col 0 -> Style: width: 290px; height: 125px; display: block;
+  Object embed_1135095860 at Row 553, Col 0 -> Style: width: 512px; height: 241px; display: block;

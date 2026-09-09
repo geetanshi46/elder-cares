@@ -234,23 +234,22 @@ useEffect(() => {
 
         {/* SLIDER */}
         <div
-  ref={sliderRef}
-  className="
-    flex
-    gap-5
-    overflow-x-auto
-    px-[calc((100vw-285px)/2)]
-    pb-3
-    scroll-smooth
-    [scrollbar-width:none]
-    [&::-webkit-scrollbar]:hidden
+          ref={sliderRef}
+          className="
+            flex
+            gap-5
+            overflow-x-auto
+            px-[calc((100vw-285px)/2)]
+            pb-3
+            [scrollbar-width:none]
+            [&::-webkit-scrollbar]:hidden
 
-    sm:gap-6
-    sm:px-[calc((100vw-310px)/2)]
+            sm:gap-6
+            sm:px-[calc((100vw-310px)/2)]
 
-    lg:px-[max(5rem,calc((100vw-1280px)/2))]
-  "
->
+            lg:px-[max(5rem,calc((100vw-1280px)/2))]
+          "
+        >
           {[...RECOGNITIONS, ...RECOGNITIONS].map((recognition, index) => (
             <article
               key={`${recognition.title}-${index}`}

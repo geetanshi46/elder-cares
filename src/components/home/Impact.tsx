@@ -114,7 +114,7 @@ lg:pb-12
                   <span className="h-[3px] w-10 rounded-full bg-gradient-to-r from-[#E85A3F] to-[#F5A623]" />
 
                   <h3 className="font-display text-xl font-extrabold text-white sm:text-2xl">
-                    Since 1998
+                    Lifetime Impact
                   </h3>
                 </div>
 
@@ -274,7 +274,7 @@ lg:pb-12
         "
       >
         EVERY DAY 800+ OLDER PERSONS FROM ALL SOCIAL AND ECONOMIC
-        BACKGROUNDS BENEFITS
+        BACKGROUNDS BENEFIT
       </p>
     </div>
   </div>

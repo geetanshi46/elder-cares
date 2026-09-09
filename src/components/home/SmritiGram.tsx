@@ -324,81 +324,62 @@ export function SmritiGram() {
 
 
               {/* =====================================================
-                  VIDEO BUTTON
+                  VIDEO THUMBNAIL CARD
                   ===================================================== */}
               <button
                 type="button"
                 onClick={() => setIsVideoOpen(true)}
                 aria-label="Watch Smriti Gram short video"
                 className="
-                  group/video
-                  inline-flex
-                  w-fit
+                  group/thumb
+                  relative
+                  h-[160px]
+                  w-full
                   shrink-0
-                  items-center
-                  gap-3
-                  rounded-xl
+                  cursor-pointer
+                  overflow-hidden
+                  rounded-2xl
                   border
-                  border-[#ED6439]/20
-                  bg-[#FFF3E8]
-                  px-5
-                  py-3
-                  text-sm
-                  font-bold
-                  text-[#C2410C]
+                  border-[#ED6439]/25
+                  bg-black
+                  text-left
+                  shadow-md
                   transition-all
                   duration-300
                   hover:-translate-y-1
-                  hover:border-[#ED6439]/40
-                  hover:bg-[#FFE9D5]
-                  hover:shadow-[0_12px_30px_rgba(232,90,63,0.15)]
+                  hover:border-[#ED6439]/50
+                  hover:shadow-[0_15px_35px_rgba(237,100,57,0.25)]
                   focus:outline-none
                   focus:ring-2
-                  focus:ring-[#ED6439]/40
-                  focus:ring-offset-2
-                  sm:px-6
-                  sm:py-3.5
+                  focus:ring-[#ED6439]/50
+                  sm:h-[180px]
+                  sm:w-[320px]
                 "
               >
-
-                <span
+                <img
+                  src={smritiImage}
+                  alt="Watch Nightingales Smriti Gram Video"
                   className="
-                    grid
-                    h-10
-                    w-10
-                    shrink-0
-                    place-items-center
-                    rounded-full
-                    bg-[#ED6439]
-                    text-white
-                    shadow-[0_5px_15px_rgba(237,100,57,0.22)]
+                    h-full
+                    w-full
+                    object-cover
+                    opacity-75
                     transition-transform
-                    duration-300
-                    group-hover/video:scale-110
+                    duration-500
+                    ease-out
+                    group-hover/thumb:scale-105
+                    group-hover/thumb:opacity-90
                   "
-                >
-                  <PlayCircle
-                    className="h-5 w-5"
-                    strokeWidth={2}
-                  />
-                </span>
-
-                <span>
-                  Watch Short Video
-                </span>
-
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    transition-transform
-                    duration-300
-                    group-hover/video:translate-x-0.5
-                    group-hover/video:-translate-y-0.5
-                  "
-                  strokeWidth={2.2}
                 />
-
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 transition-colors group-hover/thumb:from-black/70" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 p-4 text-center">
+                  <div className="flex h-13 w-13 items-center justify-center rounded-full bg-[#ED6439] text-white shadow-[0_4px_20px_rgba(237,100,57,0.6)] transition-transform duration-300 group-hover/thumb:scale-110">
+                    <PlayCircle className="h-7 w-7" strokeWidth={2.2} />
+                  </div>
+                  <span className="rounded-full bg-black/60 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    Watch Short Video
+                  </span>
+                </div>
               </button>
 
             </div>

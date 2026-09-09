@@ -7,7 +7,7 @@ const FOCUS_AREAS = [
   "Expansion of dementia care services",
   "Strengthening support for marginalized elders",
   "Enhanced skill development and job placement initiatives for elders",
-  "Research and Innovation",
+  "Research and Innovation hub",
 ];
 
 export function RoadAhead() {
@@ -157,10 +157,9 @@ export function RoadAhead() {
               lg:text-[3.2rem]
             "
           >
-            The{" "}
             <span className="text-[#ED6439]">
-  Road Ahead
-</span>
+              Road Ahead
+            </span>
           </h2>
 
 

@@ -13,6 +13,8 @@ import UrmilaImage from "@/assets/executives/Urmila.jpg";
 import KhizraImage from "@/assets/executives/khizra.png";
 import EdwardImage from "@/assets/executives/Edward.jpg";
 import SatishImage from "@/assets/executives/satish.jpg";
+import accountsManagerImage from "@/assets/executives/accounts-manager.png";
+import seniorPsychiatristImage from "@/assets/executives/senior-psychiatrist.png";
 
 
 function UrmilaBio({ bio }: { bio: React.ReactNode }) {
@@ -232,6 +234,31 @@ const committeeMembers = [
       </>
     ),
   },
+
+
+  {
+    name: "Manager, Accounts and Finance",
+    role: "Manager, Accounts and Finance",
+    image: accountsManagerImage,
+    bio: (
+      <>
+        <strong>Manager, Accounts and Finance</strong> with over 30 years of experience in senior roles at international manufacturing, services and audit organizations. Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.
+      </>
+    ),
+  },
+
+  {
+    name: "Senior Consultant Psychiatrist",
+    role: "Senior Consultant Psychiatrist",
+    image: seniorPsychiatristImage,
+    bio: (
+      <>
+        <strong>Senior consultant psychiatrist</strong> graduated from Nimhans. Has vast experience in medical practices and holistic approach towards patient care. Was trainer of trainer (TOT) to medical doctors and paramedical staff in mental health and awareness in DMHP. Now into dementia care and residential practices. Good administrator, dedicated, assertive and with leadership qualities.
+      </>
+    ),
+  },
+
+
 ];
 
 
@@ -415,13 +442,20 @@ function ExecutiveCommittee() {
                     <div className="w-full lg:w-[54%]">
                       <div className="w-full max-w-2xl">
 
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439] sm:text-xs sm:tracking-[0.15em]">
-                          {member.role}
-                        </p>
-
-                        <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#263746] sm:text-4xl lg:text-[42px]">
-                          {member.name}
-                        </h2>
+                        {member.name !== member.role ? (
+                          <>
+                            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439] sm:text-xs sm:tracking-[0.15em]">
+                              {member.role}
+                            </p>
+                            <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#263746] sm:text-4xl lg:text-[42px]">
+                              {member.name}
+                            </h2>
+                          </>
+                        ) : (
+                          <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#263746] sm:text-4xl lg:text-[42px]">
+                            {member.role}
+                          </h2>
+                        )}
 
                         <div className="my-5 h-px w-14 bg-[#ED6439]/40 sm:my-6" />
 

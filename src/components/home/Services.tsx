@@ -17,7 +17,8 @@ const SERVICES = [
     icon: Brain,
     title: "DEMENTIA CARE",
     hash: "dementia-care",
-    body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.\n\nCurrently we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction Programme.",
+    body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
+    highlight: "Currently we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction Programme.",
   },
   {
     icon: HeartHandshake,
@@ -26,29 +27,29 @@ const SERVICES = [
     body: "5 Day Care Centres & Hiriyarawadies, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
   },
   {
-  icon: Activity,
-  title: "HEALTHY AGEING IN OLD AGE HOMES",
-  hash: "research-innovation",
-  body: "Active ageing programmes implemented across 28 old age homes, promoting physical health, cognitive engagement, emotional well-being, and social inclusion.",
-},
+    icon: Activity,
+    title: "HEALTHY AGEING IN OLD AGE HOMES",
+    hash: "old-age-homes",
+    body: "Active ageing programmes implemented across 28 old age homes, promoting physical health, cognitive engagement, emotional well-being, and social inclusion.",
+  },
   {
     icon: Briefcase,
     title: "EMPOWERMENT & LIVELIHOOD",
-    hash: "empowerment",
+    hash: "empowerment-livelihood",
     body: "Creating opportunities for meaningful engagement and income generation for older persons through second careers, skill development, digital literacy, and cyber safety programmes that foster independence and confidence.",
   },
   {
     icon: ShieldCheck,
     title: "HELPLINES AGAINST ELDER ABUSE",
-    hash: "helplines-elder-abuse",
+    hash: "elder-protection",
     body: "Providing timely assistance and protection for elders in distress, addressing issues of abuse, neglect, harassment, exploitation, and ill-treatment with sensitivity and urgency.",
   },
- {
-  icon: GraduationCap,
-  title: "CAPACITY BUILDING",
-  hash: "capacity-building",
-  body: "Designated as a Regional Resource and Training Centre by the Government of India, we build the capacity of NGOs engaged in elder care. We offer training for bedside assistants, family caregivers, dementia care professionals, and life-saving skills to strengthen the care ecosystem.",
-},
+  {
+    icon: GraduationCap,
+    title: "CAPACITY BUILDING",
+    hash: "capacity-building",
+    body: "Designated as a Regional Resource and Training Centre by the Government of India, we build the capacity of NGOs engaged in elder care. We offer training for bedside assistants, family caregivers, dementia care professionals, and life-saving skills to strengthen the care ecosystem.",
+  },
   {
     icon: Megaphone,
     title: "AWARENESS & ADVOCACY",
@@ -272,7 +273,6 @@ export function Services() {
                 className="
                   mt-4
                   max-w-2xl
-                  whitespace-pre-line
                   text-[14px]
                   leading-relaxed
                   text-muted-foreground
@@ -282,6 +282,22 @@ export function Services() {
               >
                 {FEATURED.body}
               </p>
+
+              {FEATURED.highlight && (
+                <p
+                  className="
+                    mt-3
+                    max-w-2xl
+                    text-[14px]
+                    font-bold
+                    leading-relaxed
+                    text-[#1A1A1A]
+                    sm:text-[15px]
+                  "
+                >
+                  {FEATURED.highlight}
+                </p>
+              )}
 
               <span
                 className="

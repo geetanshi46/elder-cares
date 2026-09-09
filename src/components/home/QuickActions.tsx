@@ -15,21 +15,21 @@ import {
 const ACTIONS = [
   {
     icon: Brain,
-    label: "Seek Dementia Care",
+    label: "Dementia & Medical Care",
     href: "/services#dementia-care",
     color:
       "bg-[#FFF0E8] text-[#D94D2B] hover:bg-[#D94D2B] hover:text-white",
   },
   {
     icon: HeartHandshake,
-    label: "Care for Marginalized",
+    label: "Care for Marginalised Elders",
     href: "/services#marginalized",
     color:
       "bg-[#F4EAF8] text-[#7A3F8C] hover:bg-[#7A3F8C] hover:text-white",
   },
  {
   icon: HandHeart,
-  label: "Elder Care",
+  label: "Prevention of Elder Abuse",
   href: "/services#elder-protection",
   color:
     "bg-[#FFF5D9] text-[#C88616] hover:bg-[#C88616] hover:text-white",
@@ -65,7 +65,7 @@ const ACTIONS = [
   {
   icon: HandCoins,
   label: "Donate",
-  href: "#donate",
+  href: "/get-involved#donate",
   color:
     "bg-[#FDE8D8] text-[#D35428] hover:bg-[#D35428] hover:text-white",
 },
@@ -79,7 +79,7 @@ const ACTIONS = [
   {
     icon: Handshake,
     label: "CSR Partnerships",
-    href: "/get-involved#csr",
+    href: "/get-involved#corporate",
     color:
       "bg-[#F3EAF5] text-[#80518B] hover:bg-[#80518B] hover:text-white",
   },

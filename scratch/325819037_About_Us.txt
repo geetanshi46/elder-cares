@@ -1,0 +1,7 @@
+Row 003 | "Banner photo to be widen end to end"
+Row 005 | "remove - A professionally managed not-for-profitt ........"
+Row 007 | "remove Helpline number freom Banner photo space"
+Row 011 | "Follow provided content strictly word to word avoid adding/deleting/fragmentation"
+Row 029 | "Add on Executive committee"
+Row 033 | "Manager, Accounts and Finance with over 30 years of experience in senior roles at international manufacturing, services and audit organizations.  Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development."
+Row 047 | "Senior consultant psychiatrist graduated from Nimhans. Has vast  experience in medical practices and holistic approach towards patient care . Was trainer of trainer( TOT) to  medical doctors and paramedical staff in mental health and awareness  in DMHP. Now into dementia care and residential practices.Good administrator, dedicated ,assertive  and with  leadership qualities."

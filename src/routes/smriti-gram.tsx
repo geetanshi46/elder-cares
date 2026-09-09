@@ -259,19 +259,17 @@ function SmritiGramPage() {
 
           <Reveal delay={100}>
             <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white p-3 shadow-[0_25px_70px_-35px_rgba(38,55,70,0.35)]">
-                <div className="overflow-hidden rounded-[1.5rem]">
-                  <img
-                    src={smritiImage}
-                    alt="Nightingales Smriti Gram"
-                    width={1600}
-                    height={1200}
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
+              <div className="overflow-hidden rounded-[2rem] border border-[#ED6439]/15 shadow-[0_25px_70px_-35px_rgba(38,55,70,0.35)]">
+                <img
+                  src={smritiImage}
+                  alt="Nightingales Smriti Gram"
+                  width={1600}
+                  height={1200}
+                  className="h-auto w-full object-cover"
+                />
               </div>
 
-              <div className="absolute -bottom-5 left-3 rounded-2xl sm:left-8 border border-[#ED6439]/15 bg-white px-4 py-3 shadow-[0_15px_40px_-25px_rgba(38,55,70,0.4)] sm:px-5 sm:py-4 sm:left-8">
+              <div className="absolute -bottom-5 left-3 rounded-2xl border border-[#ED6439]/15 bg-white px-4 py-3 shadow-[0_15px_40px_-25px_rgba(38,55,70,0.4)] sm:left-8 sm:px-5 sm:py-4">
                 <p className="text-xl font-bold text-[#ED6439] sm:text-2xl">5 acres</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#526574]">
                   Green campus
@@ -353,73 +351,61 @@ function SmritiGramPage() {
             </p>
           </div>
 
-          {/* VIDEO BUTTON */}
+          {/* VIDEO THUMBNAIL CARD */}
           <button
             type="button"
             onClick={() => setIsVideoOpen(true)}
             aria-label="Watch Smriti Gram short video"
             className="
-              group/video
-              inline-flex
-              w-fit
+              group/thumb
+              relative
+              h-[160px]
+              w-full
               shrink-0
-              items-center
-              gap-3
-              rounded-xl
+              cursor-pointer
+              overflow-hidden
+              rounded-2xl
               border
-              border-[#ED6439]/20
-              bg-[#FFF3E8]
-              px-5
-              py-3
-              text-sm
-              font-bold
-              text-[#C2410C]
+              border-[#ED6439]/25
+              bg-black
+              text-left
+              shadow-md
               transition-all
               duration-300
               hover:-translate-y-1
-              hover:border-[#ED6439]/40
-              hover:bg-[#FFE9D5]
-              hover:shadow-[0_12px_30px_rgba(232,90,63,0.15)]
+              hover:border-[#ED6439]/50
+              hover:shadow-[0_15px_35px_rgba(237,100,57,0.25)]
               focus:outline-none
               focus:ring-2
-              focus:ring-[#ED6439]/40
-              focus:ring-offset-2
-              sm:px-6
-              sm:py-3.5
+              focus:ring-[#ED6439]/50
+              sm:h-[180px]
+              sm:w-[320px]
             "
           >
-            <span
+            <img
+              src={smritiImage}
+              alt="Watch Nightingales Smriti Gram Video"
               className="
-                grid
-                h-10
-                w-10
-                shrink-0
-                place-items-center
-                rounded-full
-                bg-[#ED6439]
-                text-white
-                shadow-[0_5px_15px_rgba(237,100,57,0.22)]
+                h-full
+                w-full
+                object-cover
+                opacity-75
                 transition-transform
-                duration-300
-                group-hover/video:scale-110
+                duration-500
+                ease-out
+                group-hover/thumb:scale-105
+                group-hover/thumb:opacity-90
               "
-            >
-              <PlayCircle className="h-5 w-5" strokeWidth={2} />
-            </span>
-
-            <span>Watch Short Video</span>
-
-            <ArrowUpRight
-              className="
-                h-4
-                w-4
-                transition-transform
-                duration-300
-                group-hover/video:translate-x-0.5
-                group-hover/video:-translate-y-0.5
-              "
-              strokeWidth={2.2}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 transition-colors group-hover/thumb:from-black/70" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 p-4 text-center">
+              <div className="flex h-13 w-13 items-center justify-center rounded-full bg-[#ED6439] text-white shadow-[0_4px_20px_rgba(237,100,57,0.6)] transition-transform duration-300 group-hover/thumb:scale-110">
+                <PlayCircle className="h-7 w-7" strokeWidth={2.2} />
+              </div>
+              <span className="rounded-full bg-black/60 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                Watch Short Video
+              </span>
+            </div>
           </button>
         </div>
       </div>
@@ -432,10 +418,11 @@ function SmritiGramPage() {
           WHY SMRITI GRAM
       ============================================================ */}
       <Section
-  eyebrow="Why Nightingales Smriti Gram"
-  title="Why Nightingales Smriti Gram? Nightingales Smriti Gram was born from this need."
-  tone="sand"
->
+        eyebrow="Why Nightingales Smriti Gram"
+        title="Why Nightingales Smriti Gram?"
+        intro="Nightingales Smriti Gram was born from this need."
+        tone="sand"
+      >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <Reveal>
             <div className="rounded-[2rem] border border-[#ED6439]/15 bg-white p-7 sm:p-9">
@@ -509,7 +496,7 @@ function SmritiGramPage() {
 
 <Section
   eyebrow="About Nightingales Smriti Gram"
-  title="A New Model of Dementia Care in India."
+  title="India’s First Integrated Dementia Care Village"
 >
   <Reveal>
     <div className="mt-8 grid items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
@@ -539,40 +526,9 @@ function SmritiGramPage() {
         />
 
         <div className="relative">
-
-          {/* Small section label */}
-          <div className="mb-5 flex items-center gap-3">
-            <span className="h-[2px] w-8 bg-[#f15b38]" />
-            <span
-              className="
-                text-[11px] font-bold uppercase
-                tracking-[0.18em]
-                text-[#f15b38]
-              "
-            >
-              A Caring Community
-            </span>
-          </div>
-
-          {/* Sub heading */}
-          <p
-            className="
-              font-display
-              text-[24px]
-              font-bold
-              leading-[1.2]
-              text-[#263746]
-              sm:text-[28px]
-              lg:text-[30px]
-            "
-          >
-            India’s First Integrated Dementia Care Village.
-          </p>
-
           {/* Content */}
           <div
             className="
-              mt-6
               space-y-5
               text-[15.5px]
               leading-7
@@ -627,27 +583,24 @@ function SmritiGramPage() {
     overflow-hidden
     rounded-2xl
     border border-[#eadfd2]
-    bg-white
     shadow-[0_18px_45px_rgba(38,55,70,0.12)]
     sm:min-h-[430px]
     lg:min-h-full
   "
 >
-  <div className="absolute inset-3 overflow-hidden rounded-xl">
-    <img
-      src={smritiGramImage}
-      alt="Nightingales Smriti Gram"
-      className="
-        h-full
-        w-full
-        object-cover
-        object-center
-        transition-transform
-        duration-700
-        hover:scale-[1.02]
-      "
-    />
-  </div>
+  <img
+    src={smritiGramImage}
+    alt="Nightingales Smriti Gram"
+    className="
+      h-full
+      w-full
+      object-cover
+      object-center
+      transition-transform
+      duration-700
+      hover:scale-[1.02]
+    "
+  />
 
   {/* Decorative corner */}
   <div
@@ -797,8 +750,7 @@ function SmritiGramPage() {
           SERVICES AND FACILITIES
       ============================================================ */}
       <Section
-        eyebrow="Services and Facilities"
-        title="A place for care, learning, innovation and research."
+        title="Services and Facilities"
         tone="sand"
       >
         {/* ========================================================
@@ -1235,7 +1187,7 @@ function SmritiGramPage() {
       {/* ============================================================
           SUSTAINABLE CAMPUS
       ============================================================ */}
-      <Section eyebrow="A Sustainable Campus" title="Care that respects its environment.">
+      <Section title="A Sustainable Campus">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <Reveal>
             <div className="rounded-[2rem] bg-[#FFF1E4] p-8 sm:p-10">
@@ -1244,8 +1196,7 @@ function SmritiGramPage() {
               </div>
 
               <h3 className="mt-7 font-display text-3xl font-bold text-[#263746]">
-                Compassionate, inclusive, innovative and environmentally
-                responsible.
+                Environmental Sustainability
               </h3>
             </div>
           </Reveal>
@@ -1277,8 +1228,7 @@ function SmritiGramPage() {
           COMMUNITY
       ============================================================ */}
       <Section
-        eyebrow="Connecting with the Community"
-        title="Dementia care should not be isolated from society."
+        title="Connecting with the Community"
         tone="sand"
       >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[0.9fr_1.1fr]">
@@ -1289,7 +1239,7 @@ function SmritiGramPage() {
               </div>
 
               <p className="mt-6 font-display text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
-                Building a more dementia-friendly society.
+                Community Engagement
               </p>
             </div>
           </Reveal>
@@ -1318,8 +1268,7 @@ function SmritiGramPage() {
       ============================================================ */}
       <Section
         id="partner"
-        eyebrow="Partner With Us"
-        title="Together, we can reshape dementia care in India."
+        title="Partner With Us"
       >
         <Reveal>
           <p className="max-w-4xl text-[15.5px] leading-7 text-[#526574]">
@@ -1383,12 +1332,8 @@ function SmritiGramPage() {
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
           <Reveal>
             <div className="max-w-4xl">
-              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439] sm:text-xs sm:tracking-[0.16em]">
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-[-0.03em] text-[#263746] sm:text-5xl">
                 Admission For Residential Care
-              </p>
-
-              <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-[-0.03em] text-[#263746] sm:mt-5 sm:text-5xl">
-                Free residential dementia care for elders who need it most.
               </h2>
 
               <p className="mt-6 text-[15.5px] leading-7 text-[#526574]">
@@ -1520,8 +1465,7 @@ function SmritiGramPage() {
           GUIDING PRINCIPLE
       ============================================================ */}
       <Section
-        eyebrow="Our Guiding Principle"
-        title="Fairness, compassion, transparency and dignity."
+        title="Our Guiding Principle"
       >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[1fr_0.9fr]">
           <Reveal>
