@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -27,10 +27,17 @@ import {
   SunMedium,
   UtensilsCrossed,
   Bed,
-  // FileText,
   CalendarDays,
   Target,
-  // Clock,
+  Car,
+  Microscope,
+  HeartPulse,
+  Award,
+  Paintbrush,
+  FileCheck2,
+  PackageCheck,
+  Boxes,
+  Layers,
 } from "lucide-react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -45,10 +52,11 @@ import hiriyaravadiImage from "../assets/get-involved/hiriyaravadi.jpg";
 import eldersHelplineImage from "../assets/our-services/elders-helpline.png";
 import job60Image1 from "../assets/our-services/Job 60+.png";
 import smritiGramImage from "../assets/get-involved/smriti-gram.jpg";
-import dementiaTrainingImage from "../assets/our-services/free-geriatric-clinic.png";
-import lifesavingServicesImage from "../assets/our-services/lifesaving-skills.webp";
+import autoDriversImage from "../assets/our-services/lifesaving-skills.jpeg";
+import researchImage from "../assets/our-services/researchInnovation.png";
+import mobileOutreachImage from "../assets/our-services/free-geriatric-clinic.png";
 
-const title = "Get Involved — CSR & Corporate Partnerships | NMT";
+const title = "Get Involved — Corporate Partnerships | NMT";
 const description =
   "Partner with Nightingales Medical Trust to create lasting impact for elders and those with dementia through CSR partnerships, employee engagement and long-term collaborations.";
 
@@ -66,85 +74,91 @@ export const Route = createFileRoute("/get-involved")({
   component: GetInvolvedPage,
 });
 
-const causes = [
-  { title: "Dementia Care & Rehabilitation", desc: "Day care, residential facilities, and community memory screening." },
-  { title: "Prevention of Elder Abuse", desc: "Toll-free helplines, legal aid, mediation, and safety protection." },
-  { title: "Destitute & Homeless Elder Care", desc: "Shelter, food, healthcare, and dignified end-of-life care." },
-  { title: "Livelihood & Economic Independence", desc: "Jobs 60+ facilitation, computer skilling, and micro-enterprises." },
-  { title: "Digital Literacy & Cyber Safety", desc: "Empowering seniors to bank safely, avoid fraud, and stay connected." },
-  { title: "Supporting Old Age Homes", desc: "Bringing active ageing, clinical care, and mental health directly to homes." },
-  { title: "Lifesaving & CPR Training", desc: "Building a culture of first aid in schools, workplaces, and communities." },
-];
-
-const donationCategories = [
+// ==========================================
+// 1. WHY PARTNER WITH NMT DATA
+// ==========================================
+const whyPartnerPillars = [
   {
-    category: "Clinical & Therapeutic Units",
-    icon: Stethoscope,
-    items: [
-      "Tele-medicine Consultation Unit",
-      "Rehabilitation & Physiotherapy Centre",
-      "Alternate Therapy Wing (Art, Music & Yoga)",
-      "Sensory & Memory Stimulation Garden",
-      "Emergency Medical Equipment",
-    ],
+    title: "Over Two Decades of Experience",
+    desc: "Over two decades of pioneer grassroots experience in elder care, dementia management, and age-care advocacy across India since 1998.",
+    icon: Award,
+    stat: "26+ Yrs",
+    sublabel: "Specialized Track Record",
   },
   {
-    category: "Green Campus & Sustainable Energy",
-    icon: SunMedium,
-    items: [
-      "Solar Power & Renewable Energy System",
-      "Zero-Discharge Effluent Treatment Plant (ETP)",
-      "Therapeutic Landscaping & Green Walkways",
-      "Rainwater Harvesting System",
-    ],
+    title: "Proven, Scalable Programs",
+    desc: "Demonstrated, high-impact intervention models with transparent, measurable social outcomes across urban and marginalized communities.",
+    icon: Target,
+    stat: "100%",
+    sublabel: "Measurable Outcomes",
   },
   {
-    category: "Operational & Facility Units",
-    icon: UtensilsCrossed,
-    items: [
-      "Mechanised Stainless Steel Commercial Kitchen",
-      "Central Hygienic Dining Hall",
-      "Industrial Laundry & Sanitation Unit",
-      "Fully Equipped Basic Life Support Ambulance",
-      "Campus Surveillance & Safety Systems",
-    ],
+    title: "Employee Sensitization",
+    desc: "Opportunities for employee sensitization on ageing, dementia, and caregiving through immersive volunteering and interactive workshops.",
+    icon: Users,
+    stat: "Hands-on",
+    sublabel: "Workplace Engagement",
   },
   {
-    category: "Elder-Friendly Living & Interior Fitments",
-    icon: Bed,
-    items: [
-      "Specialised Hospital Cots with Safety Rails",
-      "Elder-Friendly Patient Chairs with Harness Belts",
-      "Bedside Storage & Lockable Cupboards",
-      "Smart Interactive Audio-Visual Systems",
-      "Nursing Station & Caregiver Infrastructure",
-    ],
-  },
-];
-
-const volunteerModules = [
-  {
-    title: "Day of Joy & Recreation",
-    icon: HeartHandshake,
-    desc: "Engage directly with elderly residents in art, music, storytelling, festivals, and games at our day care centres.",
-  },
-  {
-    title: "Digital Mentorship for Seniors",
-    icon: Laptop,
-    desc: "Teach seniors how to use smartphones, UPI apps, and digital healthcare while warning them of cyber scams.",
-  },
-  {
-    title: "Pro-Bono Professional Skills",
-    icon: Briefcase,
-    desc: "Contribute organizational expertise in technology, governance, legal advisory, communications, and strategy.",
-  },
-  {
-    title: "Employee CPR & First-Aid Drives",
+    title: "Strong Governance & Reporting",
+    desc: "Uncompromising financial governance, rigorous external audits, regular monitoring, and transparent impact documentation for your CSR board.",
     icon: ShieldCheck,
-    desc: "Host certified lifesaving workshops for your teams while sponsoring training for underprivileged students.",
+    stat: "Audit-Ready",
+    sublabel: "Quarterly Utilization",
+  },
+  {
+    title: "CSR & Tax Exemption Compliant",
+    desc: "NMT is eligible for CSR funding under the Companies Act, 2013, with 80G (50% tax exemption), 12A, CSR-1, and FCRA certifications.",
+    icon: Building2,
+    stat: "Section 135",
+    sublabel: "Companies Act Compliant",
   },
 ];
 
+// ==========================================
+// 2. CAUSES YOU CAN SUPPORT DATA
+// ==========================================
+const causes = [
+  {
+    title: "Dementia Care",
+    desc: "Comprehensive day care, residential facilities, memory screening, and specialized palliative rehabilitation for seniors with dementia.",
+    icon: Activity,
+  },
+  {
+    title: "Health & Wellness",
+    desc: "Holistic geriatric clinical care, mobile health vans, active physiotherapy, and mental health consultations for vulnerable seniors.",
+    icon: Stethoscope,
+  },
+  {
+    title: "Nutritional Support",
+    desc: "Daily balanced meals, micronutrient support, and dry ration kits for impoverished, destitute, and bedridden elders.",
+    icon: UtensilsCrossed,
+  },
+  {
+    title: "Education & Awareness",
+    desc: "Community dementia awareness drives, family caregiver education, and certified CPR life-saving training in schools and colleges.",
+    icon: GraduationCap,
+  },
+  {
+    title: "Livelihood & Skill Development",
+    desc: "Jobs 60+ post-retirement employment facilitation, workplace computer skilling, and micro-enterprise opportunities for elders.",
+    icon: Briefcase,
+  },
+  {
+    title: "Addressing Social Isolation",
+    desc: "Active ageing programs in old age homes, Hiriyaravadi community day centres, and intergenerational companion programs.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Safety & Protection of Elders",
+    desc: "24/7 Elders Helpline (1090 & 14567), crisis rescue, family dispute mediation, and police-backed legal protection.",
+    icon: ShieldCheck,
+  },
+];
+
+// ==========================================
+// 3. ADOPT A PROJECT DATA
+// ==========================================
 type Project = {
   title: string;
   shortTitle: string;
@@ -156,6 +170,8 @@ type Project = {
   metric?: string;
   metricLabel?: string;
   paragraphs?: string[];
+  reachTitle?: string;
+  reach?: string[];
   impactTitle?: string;
   impact?: string[];
   servicesTitle?: string;
@@ -164,7 +180,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Promoting Well-Being of Elders in Old Age Homes — Active Ageing Program",
+    title: "Promoting Well-Being of Elders in Old Age Homes (Active Ageing Program)",
     shortTitle: "Mobile Active Ageing Program",
     icon: Activity,
     category: "Active Ageing",
@@ -177,18 +193,18 @@ const projects: Project[] = [
       "Since 2018, our Mobile Active Ageing Program delivers free, holistic well-being services directly to old age homes.",
       "Your support brings movement, purpose, and joy to elders who need it the most.",
     ],
-    impactTitle: "Current Reach & Results",
-    impact: [
+    reachTitle: "Current Reach",
+    reach: [
       "28 old age homes reached continuously",
       "650+ elders engaged annually",
       "2-hour sessions, three times a week",
     ],
-    servicesTitle: "Services Provided",
+    servicesTitle: "Services Include",
     services: [
-      "Cognitive stimulation & memory games",
-      "Physical exercises & geriatric physiotherapy",
-      "Social interaction & emotional counselling",
-      "Medical consultations (psychiatry & physician)",
+      "Cognitive stimulation & group activities",
+      "Physical exercises & physiotherapy",
+      "Social engagement",
+      "Medical consultations (psychiatry, physician support)",
       "Capacity building of old age home staff",
     ],
   },
@@ -198,122 +214,146 @@ const projects: Project[] = [
     icon: Laptop,
     category: "Livelihood & Skilling",
     image: digitalLiteracyImage,
-    metric: "1,200+",
-    metricLabel: "Seniors empowered annually",
+    metric: "1,200 Elders",
+    metricLabel: "Empowered annually",
     intro:
       "Digital inclusion enables seniors to access healthcare, manage finances, stay connected, and remain independent. At the same time, cyber fraud poses a growing threat.",
     paragraphs: [
-      "Through structured hands-on workshops, we equip elders with fundamental smartphone skills, safe online banking, and cyber fraud prevention strategies.",
+      "Through structured training programs, we equip elders with basic digital skills, online safety awareness and fraud prevention strategies.",
     ],
     impactTitle: "Annual Impact",
     impact: [
-      "1,200+ elders empowered to live safer, more independent digital lives.",
-      "Over 45 workshops conducted across urban community centres.",
+      "1,200 elders empowered to live safer, more independent digital lives.",
+      "Over 45 structured workshops conducted across community centres and senior forums.",
+      "Measurable decrease in elder financial fraud vulnerability.",
     ],
     servicesTitle: "Curriculum Covers",
     services: [
-      "Smartphone fundamentals & navigation",
-      "Safe digital payments & UPI awareness",
-      "Recognizing phishing & scam calls",
-      "Connecting with family via video calls",
-      "Online medicine & grocery ordering",
+      "Smartphone & tablet navigation fundamentals",
+      "Safe digital banking & UPI payment confidence",
+      "Recognizing phishing, scam calls, and cyber fraud",
+      "Accessing online healthcare & medicine ordering",
+      "Connecting with children and peers via video calls",
     ],
   },
   {
-    title: "Lifesavers Clubs in Schools — CPR Awareness",
+    title: "Lifesavers Clubs in Schools (CPR Awareness)",
     shortTitle: "Lifesavers Clubs in Schools",
-    icon: ShieldCheck,
-    category: "Training & Capacity",
+    icon: HeartPulse,
+    category: "Life-Saving Skills",
     image: lifesaversClubsImage,
-    metric: "10,000+",
-    metricLabel: "Students trained in CPR",
+    metric: "10,000+ Students",
+    metricLabel: "Trained in life-saving CPR",
     intro:
-      "To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified healthcare professionals.",
+      "To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified professionals.",
     paragraphs: [
-      "Sudden cardiac arrest is a leading cause of preventable death. By equipping young students with compression-only CPR skills, we create resilient, life-saving communities.",
+      "Sudden cardiac arrest is a critical emergency where every second counts. Bystander CPR performed during the first few minutes can double or triple chances of survival.",
       "This initiative directly aligns with our vision of making Bengaluru the CPR Capital of India.",
     ],
     impactTitle: "Impact & Outcomes",
     impact: [
-      "Trained high-school students capable of responding to sudden emergencies",
-      "Dramatically increased survival chances during out-of-hospital cardiac arrests",
-      "Instilling a lifelong culture of emergency preparedness and social duty",
+      "Trained high-school students capable of responding to emergencies",
+      "Increased survival chances during cardiac arrest",
+      "Culture of preparedness and social responsibility",
+      "Creating life-saving ambassadors in every neighborhood",
     ],
     servicesTitle: "Program Deliverables",
     services: [
-      "Hands-on mannequin simulation sessions",
-      "Certification for participating students",
-      "Emergency response protocols & first aid kits",
-      "Annual refresher drills",
+      "Hands-on mannequin chest compression simulation sessions",
+      "Certified trainers conducting age-appropriate workshops",
+      "Formation of active school-level Lifesavers Clubs",
+      "School first-aid readiness and emergency protocols",
     ],
   },
   {
     title: "Destitute Homes for Homeless Elderly",
-    shortTitle: "Destitute Elder Care Shelters",
+    shortTitle: "Destitute Homes for Homeless Elderly",
     icon: Home,
     category: "Marginalized Elders",
     image: destituteHomesImage,
     metric: "70+ Beds",
-    metricLabel: "Full shelter & medical care",
+    metricLabel: "100% Free shelter & care",
     intro:
       "NMT supports 24/7 residential care for abandoned, destitute, and homeless senior citizens through dedicated shelters providing complete shelter, nutrition, and healthcare.",
     paragraphs: [
       "Our homes include Sandhya Suraksha (dedicated for homeless elderly women) and Sandhya Kirana / SK Home (for destitute elderly men).",
       "These shelters offer clean bedding, balanced nutrition, round-the-clock medical care, psychiatric support, and dignified end-of-life care.",
     ],
-    impactTitle: "Shelter Highlights",
+    impactTitle: "Impact Highlights",
     impact: [
-      "Over 180 destitute elders rehabilitated and reconnected with families",
-      "Zero cost to residents — 100% funded through philanthropy and CSR",
-      "Integrated palliative, nursing, and dementia-specialized support",
+      "Over 180 destitute elders rehabilitated and given dignified shelter",
+      "Zero cost to residents — 100% funded through CSR and philanthropy",
+      "Round-the-clock medical, psychiatric, and palliative nursing care",
+      "Dignified last rites provided in accordance with personal beliefs",
+    ],
+    servicesTitle: "Core Facilities",
+    services: [
+      "24/7 sheltered living with clean beds and linen",
+      "Three nutritious hot meals and refreshments daily",
+      "Regular geriatrician and psychiatric consultations",
+      "Specialized palliative care for bedridden residents",
+      "Recreational activities, music, and prayer sessions",
     ],
   },
   {
-    title: "Hiriyaravadi — Community Day Care & Activity Centres",
+    title: "Hiriyaravadis (Day Care & Activity Centres for Marginalised Elders Living in Urban Slums)",
     shortTitle: "Hiriyaravadi Day Care Centres",
     icon: Users,
-    category: "Marginalized Elders",
+    category: "Marginalized Communities",
     image: hiriyaravadiImage,
     metric: "5 Centres",
-    metricLabel: "Active across Bengaluru",
+    metricLabel: "Active across Bengaluru slums",
     intro:
-      "Hiriyaravadi centres provide accessible, neighborhood-level daytime care and recreation for economically vulnerable elders living in urban slums and settlements.",
+      "Hiriyaravadis provide accessible, neighborhood-level daytime care and recreation for economically vulnerable elders living in urban poor communities and slums.",
     paragraphs: [
       "Many seniors in marginalized families spend their days isolated or unsupervised while family members work. Hiriyaravadi provides a cheerful, safe sanctuary with hot meals, health checks, and joyful activities.",
     ],
-    servicesTitle: "Core Offerings",
+    servicesTitle: "Services Include",
     services: [
-      "Safe daytime shelter & peer interaction",
-      "Nutritious midday meals & snacks",
+      "Safe daytime shelter & warm peer interaction",
+      "Nutritious midday meals and wholesome snacks",
       "Free health screening & geriatric clinics",
       "Income-generating handicrafts & training",
       "Outreach support & family counselling",
+    ],
+    impactTitle: "Key Impact",
+    impact: [
+      "Hundreds of elders relieved from day-long isolation and neglect",
+      "Improved nutritional status and chronic disease monitoring",
+      "Small supplemental income through paper bag and handicraft making",
     ],
   },
   {
     title: "Elders Helpline for Elders in Distress",
     shortTitle: "Elders Helpline 1090 & 14567",
     icon: PhoneCall,
-    category: "Protection & Legal Aid",
+    category: "Safety & Protection",
     image: eldersHelplineImage,
     metric: "2.7L+ Calls",
-    metricLabel: "Handled since inception",
+    metricLabel: "Calls answered since inception",
     intro:
       "Elders Helpline 1090 is a landmark joint initiative of Nightingales Medical Trust and Bengaluru City Police, providing immediate crisis rescue, dispute resolution, and legal protection.",
     paragraphs: [
       "Operating round-the-clock, the helpline handles cases of physical abuse, property grabbing, abandonment, financial cheating, and familial harassment.",
-      "The network also operates the National Helpline for Senior Citizens (Elder Line 14567).",
+      "NMT also operates the National Helpline for Senior Citizens (Elder Line 14567) across Karnataka.",
     ],
     impactTitle: "Helpline Milestones",
     impact: [
-      "Over 2,70,000 distress calls answered",
-      "9,000+ written complaints investigated and resolved",
-      "Free legal advocacy, police mediation, and emergency rescue",
+      "Over 2,70,000 distress calls answered and guided",
+      "9,000+ written complaints formally investigated and resolved",
+      "Free legal advocacy, police mediation, and on-ground rescue",
+    ],
+    servicesTitle: "Support Interventions",
+    services: [
+      "Trained telephone counsellors & police liaison officers",
+      "Field visits for domestic abuse dispute resolution",
+      "Emergency rescue of abandoned seniors in crisis",
+      "Free legal counseling and maintenance tribunal guidance",
     ],
   },
   {
-    title: "Jobs 60+ — Employment & Skilling for Needy Elders",
-    shortTitle: "Jobs 60+ Employment Portal",
+    title: "Job 60+ : Employment and Skilling for Needy Elderly",
+    shortTitle: "Job 60+ Senior Employment",
     icon: Briefcase,
     category: "Livelihood & Skilling",
     image: job60Image1,
@@ -325,76 +365,306 @@ const projects: Project[] = [
       "The program pairs verified elderly job seekers with corporate and SME employers offering respectful roles in administration, accounting, supervision, front desk, and advisory.",
       "Pre-placement computer skilling and interview preparation are provided free of charge.",
     ],
+    impactTitle: "Program Milestones",
+    impact: [
+      "2,620+ seniors placed in meaningful employment",
+      "Pioneered Senior Citizen Job Fairs across Karnataka",
+      "Restored self-reliance, purpose, and self-esteem for needy elders",
+    ],
     servicesTitle: "Services Offered",
     services: [
-      "Free job portal (nightingalesjobs60plus.com)",
+      "Dedicated job portal (nightingalesjobs60plus.com)",
       "Senior Citizen Job Fairs across Bengaluru",
-      "Computer & digital office skilling",
-      "Employer sensitization on hiring elders",
+      "Basic computer, digital tools, and office skilling",
+      "Corporate employer sensitization on hiring elders",
       "Financial planning & post-retirement advisory",
     ],
   },
   {
-    title: "Nightingales Smriti Gram — India's Integrated Dementia Village",
+    title: "Nightingales Smriti Gram - India’s Largest Dementia Care Village",
     shortTitle: "Nightingales Smriti Gram",
     icon: Building2,
-    category: "Dementia Care",
+    category: "Dementia Village",
     image: smritiGramImage,
     metric: "300 Beds",
-    metricLabel: "Planned landmark campus",
+    metricLabel: "National Dementia Campus",
     intro:
-      "Smriti Gram is Nightingales Medical Trust's flagship initiative near Doddaballapur, Bengaluru Rural — envisioned as a national model for person-centered dementia care, learning, and research.",
+      "NMT is establishing Smriti Gram, a 300-bed comprehensive dementia care ecosystem, including 100 beds exclusively for marginalized elders, located near Doddaballapur.",
     paragraphs: [
-      "The campus integrates therapeutic nature-based living, medical clinics, sensory gardens, training academies, and advanced research facilities.",
-      "The first phase includes a 100-bed facility exclusively for elders from economically disadvantaged communities, alongside a state-of-the-art Dementia Training Academy.",
+      "Envisioned as a national model for person-centered dementia care, learning, and research, Smriti Gram combines residential cottages, sensory gardens, clinical wards, and an advanced training academy.",
+      "Land has been acquired near Doddaballapur (1 hour from Bengaluru). Phase 1 (100 beds + Training Academy) is scheduled to be operational by September 2026.",
     ],
-    servicesTitle: "Capital Sponsorship Avenues",
+    impactTitle: "Project Timeline",
+    impact: [
+      "Land acquired near Doddaballapur (1 hour from Bengaluru)",
+      "Phase 1 (100 beds + Training Academy): Operational by September 2026",
+      "Phase 2 (additional 200 beds): Completion by December 2028",
+      "100 beds dedicated to economically disadvantaged seniors at zero cost",
+    ],
+    servicesTitle: "Key Facilities",
     services: [
-      "Residential cottages & nursing wings",
-      "Tele-medicine consultation unit",
-      "Alternate therapy centre (art, music, yoga)",
-      "Solar power & renewable energy infrastructure",
-      "Sensory memory garden & walking circuits",
+      "Person-centered dementia living cottages",
+      "Sensory memory garden and therapeutic landscape",
+      "Tele-medicine and specialized dementia rehabilitation",
+      "National Dementia Training & Research Academy",
     ],
   },
   {
-    title: "Dementia & Geriatric Care Training Academy",
-    shortTitle: "Dementia Training Academy",
-    icon: GraduationCap,
-    category: "Training & Capacity",
-    image: dementiaTrainingImage,
-    metric: "5,000+",
-    metricLabel: "Caregivers & nurses trained",
+    title: "Training of Auto Drivers in Lifesaving Skills",
+    shortTitle: "Auto Drivers Lifesaver Network",
+    icon: Car,
+    category: "Emergency First Responders",
+    image: autoDriversImage,
+    metric: "First Responders",
+    metricLabel: "On-road emergency readiness",
     intro:
-      "Building a skilled healthcare workforce equipped with specialized knowledge in geriatric care, dementia management, and compassionate bedside assistance.",
+      "Equipping Bengaluru auto-rickshaw drivers with certified CPR and trauma first-aid skills, turning thousands of daily city drivers into immediate emergency first responders.",
     paragraphs: [
-      "Recognized by the Ministry of Social Justice and Empowerment as a Regional Resource and Training Centre (RRTC) for Age Care.",
-      "Courses range from vocational certificates for youth seeking healthcare employment to hands-on workshops for family caregivers.",
+      "Auto drivers navigate the city continuously and are often the very first people to witness road accidents, sudden collapses, and medical emergencies.",
+      "By equipping them with compression-only CPR, bleeding control, and patient stabilizing skills, we bridge critical golden hour minutes before an ambulance arrives.",
+    ],
+    impactTitle: "Anticipated Impact",
+    impact: [
+      "Immediate on-road medical stabilization during traffic emergencies",
+      "Empowered driver workforce serving as community lifesavers",
+      "Aligned with Bengaluru's mission as the CPR Capital of India",
+    ],
+    servicesTitle: "Curriculum & Kits",
+    services: [
+      "Hands-on CPR simulation and wound management training",
+      "Distribution of basic first-responder medical kits",
+      "Driver identification badges and emergency police helpline liaison",
     ],
   },
   {
-    title: "Nightingales Lifesaving Services",
-    shortTitle: "Lifesaving & Emergency Services",
+    title: "Geriatric & Dementia Research Department",
+    shortTitle: "Dementia & Geriatric Research",
+    icon: Microscope,
+    category: "Research & Policy",
+    image: researchImage,
+    metric: "Evidence-Based",
+    metricLabel: "Academic & clinical studies",
+    intro:
+      "Advancing applied clinical, epidemiological, and operational research on dementia, cognitive decline, and scalable eldercare models in India.",
+    paragraphs: [
+      "Working in collaboration with academic institutes and healthcare experts, our research department conducts population surveys, tests non-pharmacological therapies, and publishes evidence-based recommendations.",
+      "The findings directly shape public health guidelines and policy advocacy for India's rapidly growing senior population.",
+    ],
+    impactTitle: "Key Contributions",
+    impact: [
+      "Validated cognitive assessment screening tools in regional languages",
+      "Epidemiological prevalence studies on urban and rural dementia",
+      "Whitepapers on caregiver burnout and long-term care financing",
+    ],
+    servicesTitle: "Focus Areas",
+    services: [
+      "Cognitive screening methodology trials",
+      "Nutritional and music therapy intervention assessments",
+      "Family caregiver burden monitoring and support models",
+    ],
+  },
+  {
+    title: "Mobile Outreach & Screening Project",
+    shortTitle: "Mobile Health Outreach",
     icon: Stethoscope,
-    category: "Training & Capacity",
-    image: lifesavingServicesImage,
-    metric: "100%",
-    metricLabel: "Hands-on certified training",
+    category: "Doorstep Healthcare",
+    image: mobileOutreachImage,
+    metric: "Doorstep Care",
+    metricLabel: "Semi-urban & rural outreach",
     intro:
-      "Empowering citizens, workplaces, and caregivers with CPR, basic life support, and first-aid skills to act swiftly during medical emergencies.",
+      "Delivering mobile geriatric medical vans, memory screening, and doorstep health consultations directly to vulnerable seniors in rural and peri-urban communities.",
     paragraphs: [
-      "Every year, thousands of cardiac arrest victims die before reaching hospital. Our certified trainers conduct life-saving simulations in corporate offices, schools, and apartment complexes.",
+      "Mobility constraints and economic barriers prevent thousands of elderly from accessing hospital diagnostics. Our mobile outreach vans bring physicians, diagnostic tools, and essential medicines directly to their doorstep.",
+    ],
+    impactTitle: "Project Reach",
+    impact: [
+      "Doorstep health and memory screenings for rural elders",
+      "Early diagnosis of cognitive decline, hypertension, and diabetes",
+      "Zero cost primary healthcare and free monthly medication refills",
+    ],
+    servicesTitle: "Van Services",
+    services: [
+      "Point-of-care vital checks, ECG, and blood sugar tests",
+      "Physician and geriatric nurse consultations",
+      "Memory screening and family caregiver advisory",
+      "Direct referral pathways to tertiary medical centers",
     ],
   },
 ];
 
+// ==========================================
+// 4. CORPORATE DONATIONS: SMRITI GRAM ITEMS
+// ==========================================
+const SMRITI_GRAM_DONATION_ITEMS = [
+  { item: "Tele-medicine Unit", category: "Clinical & Therapeutic Units" },
+  { item: "Activity & Therapy Areas", category: "Clinical & Therapeutic Units" },
+  { item: "Rehabilitation Unit", category: "Clinical & Therapeutic Units" },
+  { item: "Alternate Therapy Unit (Art, Music, Ayurveda, etc.)", category: "Clinical & Therapeutic Units" },
+  { item: "Solar Power System", category: "Green Campus & Sustainable Energy" },
+  { item: "Effluent Treatment Plant", category: "Green Campus & Sustainable Energy" },
+  { item: "Mechanised Stainless Steel Kitchen & Dining", category: "Operational & Facility Units" },
+  { item: "Laundry Unit", category: "Operational & Facility Units" },
+  { item: "Therapeutic Landscape", category: "Green Campus & Sustainable Energy" },
+  { item: "Audio-Visual Equipment", category: "Operational & Facility Units" },
+  { item: "Medical Equipments", category: "Clinical & Therapeutic Units" },
+  { item: "Safety and Surveillance Equipment", category: "Operational & Facility Units" },
+  { item: "Ambulance", category: "Clinical & Therapeutic Units" },
+  { item: "Office furniture", category: "Elder-Friendly Living & Fitments" },
+  { item: "Hospital cots", category: "Elder-Friendly Living & Fitments" },
+  { item: "Elder-friendly patient chairs with safety belts", category: "Elder-Friendly Living & Fitments" },
+  { item: "Storage cupboards", category: "Elder-Friendly Living & Fitments" },
+  { item: "IT & Audio visual equipments", category: "Operational & Facility Units" },
+  { item: "Electrical Equipments", category: "Operational & Facility Units" },
+  { item: "Landscaping & Sensory Garden", category: "Green Campus & Sustainable Energy" },
+];
+
+const DONATION_CATEGORIES_GROUPED = [
+  {
+    category: "Clinical & Therapeutic Units",
+    icon: Stethoscope,
+    items: [
+      "Tele-medicine Unit",
+      "Activity & Therapy Areas",
+      "Rehabilitation Unit",
+      "Alternate Therapy Unit (Art, Music, Ayurveda, etc.)",
+      "Medical Equipments",
+      "Ambulance",
+    ],
+  },
+  {
+    category: "Green Campus & Sustainability",
+    icon: SunMedium,
+    items: [
+      "Solar Power System",
+      "Effluent Treatment Plant (Zero-Discharge ETP)",
+      "Therapeutic Landscape",
+      "Landscaping & Sensory Garden",
+    ],
+  },
+  {
+    category: "Operational & Facility Infrastructure",
+    icon: UtensilsCrossed,
+    items: [
+      "Mechanised Stainless Steel Kitchen & Dining",
+      "Industrial Laundry Unit",
+      "Safety and Surveillance Equipment",
+      "Audio-Visual Equipment",
+      "IT & Audio Visual Equipments",
+      "Electrical Equipments & Backup",
+    ],
+  },
+  {
+    category: "Elder-Friendly Living & Fitments",
+    icon: Bed,
+    items: [
+      "Hospital cots with safety side rails",
+      "Elder-friendly patient chairs with safety belts",
+      "Bedside Storage cupboards",
+      "Office furniture & caregiver stations",
+    ],
+  },
+];
+
+// ==========================================
+// 5. CORPORATE VOLUNTEERING MODULES
+// ==========================================
+const corporateVolunteeringItems = [
+  {
+    title: "Recreational Activities & Outings with Elders",
+    icon: HeartHandshake,
+    desc: "Organize picnics, festival celebrations, music, board games, and cheerful outings for seniors in our care homes.",
+  },
+  {
+    title: "Awareness & Communication Campaigns",
+    icon: Megaphone,
+    desc: "Amplify voices on elder rights, dementia stigma reduction, and community eldercare through joint digital campaigns.",
+  },
+  {
+    title: "Governance & Strategy Support",
+    icon: ShieldCheck,
+    desc: "Share senior leadership expertise in strategic planning, process excellence, legal compliance, and organizational advisory.",
+  },
+  {
+    title: "Livelihood & Income-Generation Initiatives",
+    icon: Briefcase,
+    desc: "Mentor seniors in micro-enterprise skills, market access for handcrafted goods, and inclusive employment opportunities.",
+  },
+  {
+    title: "Skill Building & Training",
+    icon: GraduationCap,
+    desc: "Conduct capability-building workshops for old age home staff, grassroots bedside caregivers, and administrative teams.",
+  },
+  {
+    title: "Technology & Digital Tool Development",
+    icon: Laptop,
+    desc: "Collaborate with our tech teams to build elder-friendly portals, digital health monitors, and helpline software tools.",
+  },
+  {
+    title: "Fundraising Support & Matching Grants",
+    icon: Gift,
+    desc: "Host internal corporate fundraising marathons, charity galas, and CSR matching gift challenges among employees.",
+  },
+  {
+    title: "Beautification & Facility Enhancement",
+    icon: Paintbrush,
+    desc: "Spend a team day painting, landscaping sensory gardens, and refurbishing old age home living spaces for residents.",
+  },
+  {
+    title: "Digital Literacy Training",
+    icon: Laptop,
+    desc: "One-on-one employee mentorship teaching seniors how to safely use smartphones, UPI banking, and digital health apps.",
+  },
+  {
+    title: "Documentation & Impact Reporting",
+    icon: FileCheck2,
+    desc: "Help craft beneficiary impact stories, survey analyses, documentary videos, and annual CSR accomplishment briefs.",
+  },
+  {
+    title: "In-Kind Donations",
+    icon: PackageCheck,
+    desc: "Sponsor essential nutrition, adult hygiene supplies, medical disposables, assistive wheelchairs, and hospital equipment.",
+  },
+];
+
+// ==========================================
+// 6. EVENT SPONSORSHIP OBSERVANCES
+// ==========================================
+const observanceEvents = [
+  {
+    title: "International Day of Older Persons",
+    date: "October 1",
+    desc: "City-wide celebration of senior citizens featuring intergenerational cultural meets, awards for resilient seniors, and public rallies.",
+  },
+  {
+    title: "World Elder Abuse Awareness Day",
+    date: "June 15",
+    desc: "Joint public sensitization campaign with Bengaluru City Police and legal aid clinics to protect senior rights and prevent abuse.",
+  },
+  {
+    title: "World Alzheimer’s Day & Month",
+    date: "September (All Month)",
+    desc: "High-impact memory walks, dementia screening camps, caregiver symposiums, and public memory awareness roadshows.",
+  },
+  {
+    title: "Senior Citizen Job Fairs",
+    date: "Bi-Annual",
+    desc: "Jobs 60+ recruitment fairs pairing 500+ elderly candidates with forward-thinking corporate employers and SMEs.",
+  },
+  {
+    title: "Digital Literacy & Cyber Safety Programs",
+    date: "Year-Round",
+    desc: "Grassroots workshops across community centers protecting senior citizens against cyber scams, phishing, and financial frauds.",
+  },
+];
+
 const CSR_NAV = [
-  { id: "csr-partnerships", label: "Why Partner?", icon: Building2 },
-  { id: "partnership-options", label: "Adopt a Project", icon: HeartHandshake },
-  { id: "corporate-donations", label: "Capex & Smriti Gram", icon: HandCoins },
-  { id: "event-sponsorship", label: "Event Sponsorship", icon: Megaphone },
-  { id: "payroll-giving", label: "Payroll Giving", icon: Gift },
-  { id: "corporate-volunteering", label: "Employee Volunteering", icon: Users },
+  { id: "why-partner", label: "Why Partner?", icon: Award },
+  { id: "causes", label: "Causes You Can Support", icon: Target },
+  { id: "partnership-options", label: "1. Adopt a Project", icon: HeartHandshake },
+  { id: "corporate-donations", label: "2. Corporate Donations", icon: HandCoins },
+  { id: "event-sponsorship", label: "3. Event Sponsorship", icon: Megaphone },
+  { id: "payroll-giving", label: "4. Payroll Giving", icon: Gift },
+  { id: "corporate-volunteering", label: "5. Employee Volunteering", icon: Users },
   { id: "contact-csr", label: "Connect with CSR", icon: Mail },
 ];
 
@@ -540,11 +810,34 @@ function ProjectModal({
               </p>
             ))}
 
+            {/* Reach Section if available */}
+            {project.reach && project.reach.length > 0 && (
+              <div className="mt-6 rounded-2xl border border-[#ED6439]/15 bg-[#FFF8EE] p-5">
+                <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
+                  <Target className="h-4 w-4 text-[#ED6439]" />
+                  {project.reachTitle || "Current Reach"}
+                </h3>
+
+                <ul className="mt-3 space-y-2">
+                  {project.reach.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-[#526574]"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Impact Section */}
             {project.impact && project.impact.length > 0 && (
               <div className="mt-6 rounded-2xl border border-[#ED6439]/15 bg-[#FFF8EE] p-5">
                 <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
                   <Target className="h-4 w-4 text-[#ED6439]" />
-                  {project.impactTitle || "Key Impact"}
+                  {project.impactTitle || "Impact & Outcomes"}
                 </h3>
 
                 <ul className="mt-3 space-y-2">
@@ -561,10 +854,11 @@ function ProjectModal({
               </div>
             )}
 
+            {/* Services Section */}
             {project.services && project.services.length > 0 && (
               <div className="mt-6">
                 <h3 className="font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
-                  {project.servicesTitle || "Services Included"}
+                  {project.servicesTitle || "Services Include"}
                 </h3>
 
                 <ul className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -583,7 +877,7 @@ function ProjectModal({
 
             <div className="mt-8 border-t border-border pt-6">
               <a
-                href="mailto:rm@nightingaleseldercare.com?subject=Enquiry%20Regarding%20CSR%20Partnership"
+                href={`mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Enquiry:%20${encodeURIComponent(project.shortTitle)}`}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#ED6439]/25 transition-all hover:bg-[#d95730] sm:w-auto"
               >
                 Enquire About Supporting This Project
@@ -616,17 +910,17 @@ function GetInvolvedPage() {
       {/* ======================================================
           HERO BANNER
           ====================================================== */}
-      <section className="relative isolate min-h-[500px] w-full overflow-hidden bg-[#17232B] sm:min-h-[540px] lg:min-h-[580px]">
+      <section className="relative isolate min-h-[520px] w-full overflow-hidden bg-[#17232B] sm:min-h-[580px] lg:min-h-[620px]">
         <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40 mix-blend-luminosity"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-35 mix-blend-luminosity"
           style={{ backgroundImage: `url(${getInvolvedHeroImage})` }}
         />
 
         {/* Gradient Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#17232B] via-[#17232B]/85 to-[#ED6439]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#17232B] via-[#17232B]/90 to-[#ED6439]/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#17232B] via-transparent to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[500px] max-w-7xl flex-col justify-center px-5 py-16 sm:min-h-[540px] sm:px-8 lg:min-h-[580px] lg:px-10">
+        <div className="relative mx-auto flex min-h-[520px] max-w-7xl flex-col justify-center px-5 py-16 sm:min-h-[580px] sm:px-8 lg:min-h-[620px] lg:px-10">
           <Reveal className="max-w-3xl">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#FF9A78]">
@@ -637,24 +931,31 @@ function GetInvolvedPage() {
 
             {/* Badges */}
             <div className="mt-4 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-white shadow-md">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-md">
                 <Building2 className="h-3.5 w-3.5" />
-                CSR & Corporate Partnerships
+                Corporate Partnerships
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-sm">
-                <Building2 className="h-3.5 w-3.5 text-[#FF9A78]" />
-                80G, 12A & CSR-1 Certified
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-semibold text-white/90 backdrop-blur-sm">
+                <ShieldCheck className="h-3.5 w-3.5 text-[#FF9A78]" />
+                Eligible under Companies Act, 2013 | 80G & CSR-1
               </span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
-              Partner with Us to Build a Compassionate World for Elders.
+            {/* Main Heading as requested */}
+            <h1 className="mt-5 font-display text-1xl font-extrabold leading-[1.08] tracking-[-0.03em] text-white sm:text-2xl lg:text-5xl">
+              Partner with Us to Create Lasting Impact for Elders and Those with Dementia
             </h1>
 
-            <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg sm:leading-8">
-              Collaborate with Nightingales Medical Trust to deliver transformative healthcare, dignity, and protection for vulnerable elders and persons living with dementia.
-            </p>
+            {/* Intro text as requested */}
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-white/85 sm:text-lg sm:leading-8">
+              <p>
+                At Nightingales Medical Trust (NMT), we believe meaningful social change happens when individuals, corporates, and communities come together. We actively collaborate with corporates, government bodies, NGOs, and academic institutions to improve the quality of life of elders, especially those living with dementia and those from marginalized communities.
+              </p>
+      
+              <p className="font-semibold text-white">
+                We invite corporates to engage with us through CSR partnerships, employee engagement, and long-term collaborations that create measurable social impact.
+              </p>
+            </div>
 
             {/* Quick Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
@@ -662,7 +963,7 @@ function GetInvolvedPage() {
                 href="#partnership-options"
                 className="inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#ED6439]/30 transition hover:-translate-y-0.5 hover:bg-[#d95730]"
               >
-                Explore Projects to Adopt
+                1. Adopt a Project
                 <ArrowUpRight className="h-4 w-4" />
               </a>
 
@@ -670,15 +971,15 @@ function GetInvolvedPage() {
                 href="#corporate-donations"
                 className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/50 hover:bg-white/20"
               >
-                Capex & Smriti Gram
+                2. Smriti Gram Capex
               </a>
 
               <a
                 href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Enquiry"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3.5 text-sm font-semibold text-white/80 transition hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3.5 text-sm font-semibold text-white/90 transition hover:text-white"
               >
                 <Mail className="h-4 w-4" />
-                Quick Enquiry
+                rm@nightingaleseldercare.com
               </a>
             </div>
           </Reveal>
@@ -695,11 +996,11 @@ function GetInvolvedPage() {
             </div>
             <div>
               <p className="font-display text-2xl font-extrabold text-[#FF9A78] sm:text-3xl">2.7L+ Calls</p>
-              <p className="mt-1 text-xs text-white/70">1090 Elders Helpline Handled</p>
+              <p className="mt-1 text-xs text-white/70">Elders Helpline (1090 & 14567)</p>
             </div>
             <div>
               <p className="font-display text-2xl font-extrabold text-[#FF9A78] sm:text-3xl">300 Beds</p>
-              <p className="mt-1 text-xs text-white/70">Smriti Gram Dementia Campus</p>
+              <p className="mt-1 text-xs text-white/70">Smriti Gram Dementia Village</p>
             </div>
           </div>
         </div>
@@ -711,7 +1012,7 @@ function GetInvolvedPage() {
       <section className="sticky top-0 z-30 border-b border-border bg-[#FFF8EE]/95 shadow-xs backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-x-auto px-4 py-3 sm:px-6">
           <span className="hidden shrink-0 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439] md:block">
-            CSR Navigation:
+            Quick Jump:
           </span>
           <div className="flex items-center gap-1.5 sm:gap-2">
             {CSR_NAV.map((item) => {
@@ -741,8 +1042,8 @@ function GetInvolvedPage() {
             <div className="sticky top-20 space-y-6">
               <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft">
                 <div className="bg-[#263746] p-5 text-white">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">CSR Navigation</p>
-                  <p className="mt-1 font-display text-lg font-bold">Partner With Us</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">Navigation</p>
+                  <p className="mt-1 font-display text-lg font-bold">Corporate Partnerships</p>
                 </div>
                 <nav className="p-2">
                   {CSR_NAV.map((item, idx) => {
@@ -768,17 +1069,17 @@ function GetInvolvedPage() {
               <div className="rounded-2xl border border-[#ED6439]/20 bg-[#FFF8EE] p-5">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#ED6439]">
                   <ShieldCheck className="h-4 w-4" />
-                  Tax Exemption & Compliance
+                  CSR & Tax Compliance
                 </div>
                 <p className="mt-2 text-xs leading-relaxed text-[#526574]">
-                  All donations to NMT are eligible for 50% tax exemption under Section 80G of the Income Tax Act. NMT is fully registered under CSR-1 and FCRA.
+                  NMT is eligible for CSR funding under Section 135 of the Companies Act, 2013. Donations are entitled to 50% tax exemption under Section 80G. Valid 12A, CSR-1, and FCRA certified.
                 </p>
                 <div className="mt-4 border-t border-border/80 pt-3">
                   <a
                     href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Due%20Diligence%20Documents"
                     className="inline-flex items-center gap-1 text-xs font-bold text-[#ED6439] hover:underline"
                   >
-                    Request CSR Documents <ArrowUpRight className="h-3.5 w-3.5" />
+                    Request CSR Kit <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 </div>
               </div>
@@ -787,109 +1088,155 @@ function GetInvolvedPage() {
 
           {/* MAIN CONTENT AREA */}
           <div className="min-w-0 space-y-16 sm:space-y-24">
-            {/* 1. WHY PARTNER WITH NMT */}
-            <section id="csr-partnerships" className="scroll-mt-24">
+            {/* ======================================================
+                1. WHY PARTNER WITH NMT?
+                ====================================================== */}
+            <section id="why-partner" className="scroll-mt-24">
               <Reveal>
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-                  <Building2 className="h-3.5 w-3.5" />
-                  CSR Partnership Ecosystem
+                  <Award className="h-3.5 w-3.5" />
+                  Value Proposition
                 </span>
                 <h2 className="mt-3 font-display text-2xl font-extrabold text-[#263746] sm:text-4xl lg:text-5xl">
-                  Why Leading Corporates Partner with Nightingales
+                  Why Partner with NMT?
                 </h2>
                 <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
 
                 <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  At Nightingales Medical Trust (NMT), we combine nearly three decades of grassroots healthcare excellence with corporate governance rigor. We deliver high-impact, transparent, and scalable elder care programs that fulfill your CSR statutory mandates while measurably improving vulnerable lives.
+                  At Nightingales Medical Trust (NMT), we combine over two decades of grassroots elder and dementia care expertise with corporate governance rigor, transparent utilization reporting, and impactful employee engagement.
                 </p>
               </Reveal>
 
-              {/* 3 VALUE PILLARS */}
-              <div className="mt-10 grid gap-5 sm:grid-cols-3">
-                <Reveal delay={0}>
-                  <div className="h-full rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/30 hover:shadow-md">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439] text-white">
-                      <ShieldCheck className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-[#263746]">
-                      Transparent Governance
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                      Rigorous financial audits, CSR-1 registration, automated impact tracking, and tailored quarterly utilization reports for your board.
-                    </p>
-                  </div>
-                </Reveal>
+              {/* 5 BULLET POINTS FROM USER PROMPT */}
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {whyPartnerPillars.map((pillar, idx) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <Reveal key={pillar.title} delay={idx * 50} className="h-full">
+                      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/40 hover:shadow-md">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
+                            <Icon className="h-5 w-5" />
+                          </span>
+                          <span className="rounded-full bg-[#FFF4DF] px-3 py-1 text-[11px] font-bold text-[#ED6439]">
+                            {pillar.stat}
+                          </span>
+                        </div>
 
-                <Reveal delay={100}>
-                  <div className="h-full rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/30 hover:shadow-md">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439] text-white">
-                      <Target className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-[#263746]">
-                      Measurable Social Return (SROI)
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                      Direct tracking of beneficiary outcomes — from clinical cognitive stability in dementia patients to emergency calls answered and elders rescued.
-                    </p>
-                  </div>
-                </Reveal>
+                        <h3 className="mt-4 font-display text-base font-bold text-[#263746]">
+                          {pillar.title}
+                        </h3>
 
-                <Reveal delay={200}>
-                  <div className="h-full rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/30 hover:shadow-md">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439] text-white">
-                      <Users className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-[#263746]">
-                      Employee Sensitization
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                      Engage your workforce through volunteering, dementia empathy workshops, and certified lifesaving CPR drives in your corporate campuses.
-                    </p>
-                  </div>
-                </Reveal>
-              </div>
+                        <p className="mt-2.5 flex-1 text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
+                          {pillar.desc}
+                        </p>
 
-              {/* CAUSES TO SUPPORT */}
-              <div className="mt-12 rounded-3xl border border-[#ED6439]/15 bg-white p-6 shadow-soft sm:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">Focus Areas</span>
-                    <h3 className="mt-1 font-display text-xl font-bold text-[#263746] sm:text-2xl">Causes Your CSR Fund Can Champion</h3>
-                  </div>
-                  <a
-                    href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Focus%20Area%20Inquiry"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439]/10 px-4 py-2 text-xs font-bold text-[#ED6439] hover:bg-[#ED6439] hover:text-white transition-colors"
-                  >
-                    Select a Cause <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {causes.map((c) => (
-                    <div key={c.title} className="rounded-2xl border border-border/80 bg-[#FAF6F0] p-4 transition-all hover:border-[#ED6439]/30">
-                      <p className="font-display text-sm font-bold text-[#263746]">{c.title}</p>
-                      <p className="mt-1.5 text-xs text-muted-foreground">{c.desc}</p>
-                    </div>
-                  ))}
-                </div>
+                        <div className="mt-4 border-t border-border/70 pt-2.5 text-[11px] font-semibold text-[#ED6439]">
+                          {pillar.sublabel}
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
               </div>
             </section>
 
-            {/* 2. ADOPT A PROJECT CARDS */}
+            {/* ======================================================
+                2. CAUSES YOU CAN SUPPORT
+                ====================================================== */}
+            <section id="causes" className="scroll-mt-24">
+              <Reveal>
+                <div className="rounded-3xl border border-[#ED6439]/15 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+                        <Target className="h-3.5 w-3.5" />
+                        Focus Areas
+                      </span>
+                      <h2 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                        Causes You Can Support
+                      </h2>
+                      <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                        Your organization can choose to support one or more of the following focus areas:
+                      </p>
+                    </div>
+
+                    <a
+                      href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Focus%20Area%20Inquiry"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439] px-4 py-2 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
+                    >
+                      Enquire for Focus Areas <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {causes.map((c, idx) => {
+                      const Icon = c.icon;
+                      return (
+                        <div
+                          key={c.title}
+                          className="flex flex-col rounded-2xl border border-border/80 bg-[#FAF6F0] p-5 transition-all hover:-translate-y-1 hover:border-[#ED6439]/40 hover:bg-white hover:shadow-md"
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
+                              <Icon className="h-4 w-4" />
+                            </span>
+                            <span className="text-[11px] font-bold text-[#ED6439]">
+                              0{idx + 1}
+                            </span>
+                          </div>
+
+                          <h3 className="mt-3.5 font-display text-base font-bold text-[#263746]">
+                            {c.title}
+                          </h3>
+
+                          <p className="mt-2 flex-1 text-xs leading-relaxed text-[#526574]">
+                            {c.desc}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Reveal>
+            </section>
+
+            {/* ======================================================
+                PARTNERSHIP OPTIONS
+                ====================================================== */}
+            <div className="border-t border-border/70 pt-4">
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#ED6439]">
+                Collaboration Models
+              </span>
+              <h2 className="mt-1 font-display text-3xl font-extrabold text-[#263746] sm:text-4xl">
+                Partnership Options
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                We offer multiple structured pathways for corporate partners, from adopting flagship projects to sponsoring capital equipment, payroll giving, and employee volunteering.
+              </p>
+            </div>
+
+            {/* ======================================================
+                OPTION 1: ADOPT A PROJECT
+                ====================================================== */}
             <section id="partnership-options" className="scroll-mt-24">
+              <span id="adopt-a-project" className="relative -top-24 block" />
               <Reveal>
                 <div className="flex flex-wrap items-end justify-between gap-4">
                   <div>
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
                       <HeartHandshake className="h-3.5 w-3.5" />
-                      Flagship Projects
+                      Option 01
                     </span>
-                    <h2 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-4xl">
-                      Adopt a Need-Based Project
-                    </h2>
+                    <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                      1. Adopt a Project
+                    </h3>
+                    <p className="mt-1.5 text-sm font-semibold text-[#526574]">
+                      Support one or more of our need-based flagship programs:
+                    </p>
                   </div>
                   <p className="max-w-md text-xs text-muted-foreground sm:text-sm">
-                    Select a project to co-brand, fund annually, or sponsor capital equipment for direct beneficiary reach.
+                    Click on any project to explore its full reach, service portfolio, measurable impact, and proposal details.
                   </p>
                 </div>
                 <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
@@ -944,9 +1291,9 @@ function GetInvolvedPage() {
                             </span>
                           </div>
 
-                          <h3 className="mt-3 font-display text-lg font-bold leading-snug text-[#263746] transition-colors group-hover:text-[#ED6439]">
+                          <h4 className="mt-3 font-display text-lg font-bold leading-snug text-[#263746] transition-colors group-hover:text-[#ED6439]">
                             {project.shortTitle}
-                          </h3>
+                          </h4>
 
                           <p className="mt-2.5 flex-1 line-clamp-3 text-[13px] leading-relaxed text-muted-foreground">
                             {project.intro}
@@ -954,7 +1301,7 @@ function GetInvolvedPage() {
 
                           <div className="mt-5 flex items-center justify-between border-t border-border/70 pt-3.5">
                             <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ED6439]">
-                              View Impact & Details
+                              View Reach & Impact
                               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </span>
                           </div>
@@ -966,45 +1313,64 @@ function GetInvolvedPage() {
               </div>
             </section>
 
-            {/* 3. CORPORATE DONATIONS & SMRITI GRAM */}
+            {/* ======================================================
+                OPTION 2: CORPORATE DONATIONS & SMRITI GRAM
+                ====================================================== */}
             <section id="corporate-donations" className="scroll-mt-24">
+              <span id="donate" className="relative -top-24 block" />
+              <span id="corporate" className="relative -top-24 block" />
               <Reveal>
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
                   <HandCoins className="h-3.5 w-3.5" />
-                  Capital Grants & Infrastructure
+                  Option 02
                 </span>
-                <h2 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-4xl">
-                  Sponsor India's Model Dementia Village: Smriti Gram
-                </h2>
+                <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                  2. Corporate Donations
+                </h3>
+                <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Corporates may choose to contribute to a specific cause or infrastructure requirement aligned with their CSR priorities.
+                </p>
                 <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
               </Reveal>
 
               {/* SMRITI GRAM FEATURE BANNER */}
               <div className="mt-8 overflow-hidden rounded-3xl bg-[#17232B] text-white shadow-xl">
-                <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
                   <div className="p-7 sm:p-10">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
-                      Flagship Capital Campaign
+                      A National Model for Dementia Care
                     </span>
-                    <h3 className="mt-4 font-display text-2xl font-bold sm:text-3xl">
-                      Nightingales Smriti Gram
-                    </h3>
+                    <h4 className="mt-4 font-display text-2xl font-bold sm:text-3xl">
+                      Smriti Gram – A National Model for Dementia Care
+                    </h4>
                     <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">
-                      A 300-bed integrated dementia care village near Doddaballapur, Bengaluru Rural. Phase 1 provides 100 beds dedicated to elders from economically marginalized families at zero cost, along with an advanced Dementia Training & Research Academy.
+                      NMT is establishing Smriti Gram, a 300-bed comprehensive dementia care ecosystem, including 100 beds exclusively for marginalized elders.
                     </p>
 
-                    <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
-                      <div>
-                        <p className="text-xs text-[#FF9A78] font-bold uppercase tracking-[0.1em]">Phase 1 (100 Beds)</p>
-                        <p className="mt-1 font-display text-lg font-bold">Operational Sept 2026</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-[#FF9A78] font-bold uppercase tracking-[0.1em]">Phase 2 (200 Beds)</p>
-                        <p className="mt-1 font-display text-lg font-bold">Target Dec 2028</p>
-                      </div>
+                    {/* PROJECT STATUS SECTION AS REQUESTED */}
+                    <div className="mt-6 rounded-2xl border border-white/15 bg-white/5 p-4 sm:p-5">
+                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#FF9A78]">Project Status:</p>
+                      <ul className="mt-3 space-y-2 text-xs text-white/90 sm:text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span><strong>Location:</strong> Land acquired near Doddaballapur (1 hour from Bengaluru)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span><strong>Phase 1 (100 beds + Training Academy):</strong> Operational by September 2026</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span><strong>Phase 2 (additional 200 beds):</strong> Completion by December 2028</span>
+                        </li>
+                      </ul>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap items-center gap-3">
+                    <p className="mt-4 text-xs italic text-[#FF9A78]/90">
+                      Each contribution directly enhances quality of care, safety, sustainability, and dignity.
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-3">
                       <Link
                         to="/smriti-gram"
                         className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-[#263746] transition hover:bg-[#FF9A78]"
@@ -1013,10 +1379,10 @@ function GetInvolvedPage() {
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </Link>
                       <a
-                        href="mailto:rm@nightingaleseldercare.com?subject=Smriti%20Gram%20Capex%20Sponsorship"
+                        href="mailto:rm@nightingaleseldercare.com?subject=Smriti%20Gram%20Donation%20Opportunities"
                         className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-2.5 text-xs font-semibold text-white hover:bg-white/10"
                       >
-                        Request Capex Kit
+                        Request Capex Proposal
                       </a>
                     </div>
                   </div>
@@ -1024,7 +1390,7 @@ function GetInvolvedPage() {
                   <div className="relative min-h-[300px] bg-black/20 lg:min-h-full">
                     <img
                       src={smritiGramImage}
-                      alt="Nightingales Smriti Gram"
+                      alt="Nightingales Smriti Gram Dementia Village"
                       className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#17232B] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#17232B] lg:via-transparent" />
@@ -1032,139 +1398,205 @@ function GetInvolvedPage() {
                 </div>
               </div>
 
-              {/* STRUCTURED DONATION UNITS */}
-              <div className="mt-10">
-                <h3 className="font-display text-xl font-bold text-[#263746]">
-                  Key Infrastructure & Equipment Sponsorship Opportunities
-                </h3>
-                <p className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
-                  Corporates can sponsor entire dedicated units with naming rights, donor plaques, and comprehensive compliance reporting.
-                </p>
+              {/* DONATION OPPORTUNITIES AT SMRITI GRAM (EXACT COMPLETE LIST) */}
+              <div className="mt-12">
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                      Smriti Gram Giving Catalog
+                    </span>
+                    <h4 className="mt-1 font-display text-xl font-bold text-[#263746] sm:text-2xl">
+                      Donation Opportunities at Smriti Gram:
+                    </h4>
+                  </div>
+                  <p className="max-w-md text-xs text-muted-foreground">
+                    Each contribution directly enhances quality of care, safety, sustainability, and dignity.
+                  </p>
+                </div>
 
+                {/* Categorized Donation Opportunities */}
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                  {donationCategories.map((cat) => {
+                  {DONATION_CATEGORIES_GROUPED.map((cat) => {
                     const Icon = cat.icon;
                     return (
                       <div
                         key={cat.category}
-                        className="rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/30"
+                        className="flex flex-col justify-between rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/30"
                       >
-                        <div className="flex items-center gap-3">
-                          <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
-                            <Icon className="h-5 w-5" />
-                          </span>
-                          <h4 className="font-display text-base font-bold text-[#263746]">
-                            {cat.category}
-                          </h4>
+                        <div>
+                          <div className="flex items-center gap-3">
+                            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
+                              <Icon className="h-5 w-5" />
+                            </span>
+                            <h5 className="font-display text-base font-bold text-[#263746]">
+                              {cat.category}
+                            </h5>
+                          </div>
+
+                          <ul className="mt-4 space-y-2.5">
+                            {cat.items.map((item) => (
+                              <li key={item} className="flex items-start gap-2.5 text-xs text-muted-foreground sm:text-[13px]">
+                                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#ED6439]" />
+                                <span className="font-medium text-[#263746]">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
 
-                        <ul className="mt-4 space-y-2.5">
-                          {cat.items.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5 text-xs text-muted-foreground sm:text-[13px]">
-                              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#ED6439]" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="mt-6 border-t border-border/70 pt-3">
+                          <a
+                            href={`mailto:rm@nightingaleseldercare.com?subject=Enquiry%20to%20Sponsor%20Infrastructure:%20${encodeURIComponent(cat.category)}`}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#ED6439] hover:underline"
+                          >
+                            Sponsor this Category <ArrowUpRight className="h-3.5 w-3.5" />
+                          </a>
+                        </div>
                       </div>
                     );
                   })}
                 </div>
+
+                {/* Full 20-Item Pill Grid for Complete Clarity */}
+                <div className="mt-8 rounded-2xl border border-[#ED6439]/20 bg-[#FAF6F0] p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                    Complete List of Donation Items:
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Corporates can sponsor entire dedicated units or specific equipment packages:
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {SMRITI_GRAM_DONATION_ITEMS.map((itemObj) => (
+                      <a
+                        key={itemObj.item}
+                        href={`mailto:rm@nightingaleseldercare.com?subject=Sponsor%20Smriti%20Gram%20Item:%20${encodeURIComponent(itemObj.item)}`}
+                        className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1.5 text-xs font-semibold text-[#263746] shadow-2xs transition-colors hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+                      >
+                        <CheckCircle2 className="h-3 w-3 text-[#ED6439]" />
+                        <span>{itemObj.item}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </section>
 
-            {/* 4. EVENT SPONSORSHIP & OBSERVANCES */}
+            {/* ======================================================
+                OPTION 3: EVENT SPONSORSHIP & PARTICIPATION
+                ====================================================== */}
             <section id="event-sponsorship" className="scroll-mt-24">
               <Reveal>
-                <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FFF8EE] p-6 sm:p-8">
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+                <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FFF8EE] p-6 sm:p-8 lg:p-10">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">
                     <Megaphone className="h-4 w-4" />
-                    Community Visibility
-                  </div>
+                    Option 03
+                  </span>
 
-                  <h3 className="mt-2 font-display text-2xl font-bold text-[#263746]">
-                    Annual Event Sponsorship & Public Campaigns
+                  <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                    3. Event Sponsorship & Participation
                   </h3>
 
-                  <p className="mt-2 max-w-2xl text-xs text-muted-foreground sm:text-sm">
-                    Align your brand with high-visibility national and international awareness days. Opportunities include title sponsorship, media roadshows, and volunteer mobilizations.
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    Partner with us for national and international observances such as:
                   </p>
 
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                      { title: "World Alzheimer’s Month", date: "Every September", desc: "Memory walks, free cognitive camps, and symposia across Bengaluru." },
-                      { title: "World Elder Abuse Awareness Day", date: "June 15", desc: "Public awareness roadshows with Bengaluru Traffic Police & senior rallies." },
-                      { title: "International Day of Older Persons", date: "October 01", desc: "Celebratory intergenerational sports, cultural events, and awards." },
-                      { title: "Senior Citizens Job Fairs", date: "Bi-Annual", desc: "Jobs 60+ recruitment drives connecting 500+ seniors with employers." },
-                      { title: "Digital Safety Camps in Communities", date: "Year-Round", desc: "Neighborhood fraud prevention drives for vulnerable retirees." },
-                      { title: "CPR Life-Savers Inter-School Meet", date: "Quarterly", desc: "Emergency simulation competitions building lifesaver networks." },
-                    ].map((evt) => (
-                      <div key={evt.title} className="rounded-xl border border-border bg-white p-4 shadow-2xs">
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ED6439]">
-                          <CalendarDays className="h-3 w-3" />
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {observanceEvents.map((evt) => (
+                      <div key={evt.title} className="rounded-2xl border border-border bg-white p-5 shadow-2xs">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ED6439]/10 px-3 py-1 text-[11px] font-bold text-[#ED6439]">
+                          <CalendarDays className="h-3.5 w-3.5" />
                           {evt.date}
                         </span>
-                        <h4 className="mt-1.5 font-display text-sm font-bold text-[#263746]">{evt.title}</h4>
-                        <p className="mt-1 text-xs text-muted-foreground">{evt.desc}</p>
+                        <h4 className="mt-3 font-display text-base font-bold text-[#263746]">{evt.title}</h4>
+                        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{evt.desc}</p>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="mt-8 rounded-2xl border border-[#ED6439]/30 bg-white p-5">
+                    <p className="font-display text-sm font-bold text-[#263746]">
+                      Opportunities include event sponsorship, employee volunteering, and brand visibility.
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Co-brand community initiatives, mobilize corporate teams on the ground, and showcase your leadership in elder welfare.
+                    </p>
+                    <a
+                      href="mailto:rm@nightingaleseldercare.com?subject=Event%20Sponsorship%20Enquiry"
+                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#ED6439] hover:underline"
+                    >
+                      Enquire for Event Sponsorship Calendar <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
                   </div>
                 </div>
               </Reveal>
             </section>
 
-            {/* 5. PAYROLL GIVING */}
+            {/* ======================================================
+                OPTION 4: PAYROLL GIVING
+                ====================================================== */}
             <section id="payroll-giving" className="scroll-mt-24">
               <Reveal>
                 <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-soft">
                   <div className="grid md:grid-cols-[0.8fr_1.2fr]">
-                    <div className="flex flex-col justify-between bg-[#FAF6F0] p-6 sm:p-8">
+                    <div className="flex flex-col justify-between bg-[#FAF6F0] p-6 sm:p-8 lg:p-10">
                       <div>
                         <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
                           <Gift className="h-4 w-4" />
-                          Micro-Philanthropy
+                          Option 04
                         </span>
-                        <h3 className="mt-3 font-display text-2xl font-bold text-[#263746]">
-                          Corporate Payroll Giving
+                        <h3 className="mt-3 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                          4. Payroll Giving
                         </h3>
-                        <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                          Empower your employees to contribute as little as ₹100 or ₹500 every month directly from their salary, providing dependable recurring nutrition and medication for destitute elders.
+                        <p className="mt-4 text-sm leading-relaxed text-[#263746] sm:text-base">
+                          Enable your employees to support elder care and dementia care through monthly salary contributions toward NMT programs—an easy, consistent way to create long-term impact.
                         </p>
                       </div>
 
-                      <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-[#263746]">
-                        100% Tax-Exempt Under 80G for Employees
+                      <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-[#ED6439]">
+                        ✓ 100% Tax-Exempt Under Section 80G for Employees
                       </div>
                     </div>
 
-                    <div className="p-6 sm:p-8">
+                    <div className="p-6 sm:p-8 lg:p-10">
                       <h4 className="font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
-                        How It Works:
+                        Simple 3-Step Setup:
                       </h4>
 
-                      <div className="mt-4 space-y-4">
+                      <div className="mt-5 space-y-4">
                         {[
-                          { step: "01", title: "Enroll Your Organization", desc: "Our CSR desk integrates with your HR/Payroll team with ready employee collateral." },
-                          { step: "02", title: "Voluntary Opt-In", desc: "Employees choose their monthly donation amount (e.g. ₹250 / ₹500 / ₹1,000)." },
-                          { step: "03", title: "Transparent Impact Updates", desc: "Every contributor receives a quarterly impact digest and automated 80G tax certificates." },
+                          {
+                            step: "01",
+                            title: "Enroll Your Organization",
+                            desc: "Our CSR desk coordinates with your HR/Payroll team and provides ready communication collateral for employees.",
+                          },
+                          {
+                            step: "02",
+                            title: "Voluntary Opt-In",
+                            desc: "Employees choose their preferred monthly contribution (e.g. ₹200 / ₹500 / ₹1,000) directly from their monthly pay slip.",
+                          },
+                          {
+                            step: "03",
+                            title: "Transparent Impact & 80G Certificates",
+                            desc: "Employees receive automated 80G tax exemption certificates and quarterly updates on the elders their funds support.",
+                          },
                         ].map((s) => (
-                          <div key={s.step} className="flex items-start gap-3">
-                            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#ED6439] text-xs font-bold text-white">
+                          <div key={s.step} className="flex items-start gap-3.5">
+                            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#ED6439] text-xs font-bold text-white shadow-xs">
                               {s.step}
                             </span>
                             <div>
                               <p className="text-sm font-bold text-[#263746]">{s.title}</p>
-                              <p className="text-xs text-muted-foreground">{s.desc}</p>
+                              <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
                             </div>
                           </div>
                         ))}
                       </div>
 
                       <a
-                        href="mailto:rm@nightingaleseldercare.com?subject=Payroll%20Giving%20Setup%20Enquiry"
-                        className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#ED6439] hover:underline"
+                        href="mailto:rm@nightingaleseldercare.com?subject=Setup%20Payroll%20Giving"
+                        className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-6 py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
                       >
-                        Setup Payroll Giving for Your Company <ArrowUpRight className="h-3.5 w-3.5" />
+                        Setup Payroll Giving with NMT <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
                     </div>
                   </div>
@@ -1172,69 +1604,100 @@ function GetInvolvedPage() {
               </Reveal>
             </section>
 
-            {/* 6. EMPLOYEE VOLUNTEERING */}
+            {/* ======================================================
+                OPTION 5: CORPORATE VOLUNTEERING & EMPLOYEE ENGAGEMENT
+                ====================================================== */}
             <section id="corporate-volunteering" className="scroll-mt-24">
+              <span id="volunteer" className="relative -top-24 block" />
               <Reveal>
                 <div>
                   <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
                     <Users className="h-3.5 w-3.5" />
-                    Hands-on Engagement
+                    Option 05
                   </span>
-                  <h2 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
-                    Structured Corporate Volunteering Modules
-                  </h2>
-                  <p className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
-                    Build empathy, purpose, and team bonding through meaningful volunteer experiences.
+                  <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                    5. Corporate Volunteering & Employee Engagement
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    We offer structured volunteering opportunities where employees can contribute their time, skills, and expertise, including:
                   </p>
                 </div>
               </Reveal>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {volunteerModules.map((mod) => {
+              {/* ALL 11 VOLUNTEERING MODULES FROM PROMPT */}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {corporateVolunteeringItems.map((mod, idx) => {
                   const Icon = mod.icon;
                   return (
-                    <div
-                      key={mod.title}
-                      className="rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:border-[#ED6439]/30 hover:shadow-md"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <h4 className="font-display text-sm font-bold text-[#263746]">{mod.title}</h4>
+                    <Reveal key={mod.title} delay={(idx % 3) * 50} className="h-full">
+                      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md">
+                        <div className="flex items-center gap-3">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
+                            <Icon className="h-5 w-5" />
+                          </span>
+                          <span className="text-[11px] font-bold text-[#ED6439]">
+                            Module {String(idx + 1).padStart(2, "0")}
+                          </span>
+                        </div>
+
+                        <h4 className="mt-3.5 font-display text-sm font-bold leading-snug text-[#263746]">
+                          {mod.title}
+                        </h4>
+
+                        <p className="mt-2 flex-1 text-xs leading-relaxed text-muted-foreground">
+                          {mod.desc}
+                        </p>
                       </div>
-                      <p className="mt-2.5 text-xs leading-relaxed text-muted-foreground sm:text-[13px]">
-                        {mod.desc}
-                      </p>
-                    </div>
+                    </Reveal>
                   );
                 })}
               </div>
+
+              <div className="mt-8 rounded-2xl border border-[#ED6439]/20 bg-[#FFF8EE] p-5 text-center sm:p-6">
+                <p className="font-display text-base font-bold text-[#263746]">
+                  Interested in organizing an employee volunteering day?
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Our team coordinates half-day and full-day customized volunteering drives across our centres.
+                </p>
+                <a
+                  href="mailto:rm@nightingaleseldercare.com?subject=Corporate%20Volunteering%20Day%20Enquiry"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
+                >
+                  Schedule an Employee Volunteering Drive
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </section>
 
-            {/* 7. CONNECT WITH CSR DESK */}
+            {/* ======================================================
+                CONNECT WITH CSR DESK
+                ====================================================== */}
             <section id="contact-csr" className="scroll-mt-24">
+              <span id="contact" className="relative -top-24 block" />
               <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FAF6F0] p-6 sm:p-10">
                 <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">Direct CSR Contact</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">CSR Advisory Desk</span>
                     <h3 className="mt-2 font-display text-2xl font-bold text-[#263746] sm:text-3xl">
-                      Ready to Explore a Partnership?
+                      Partner with NMT to Create Meaningful Impact
                     </h3>
                     <p className="mt-3 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                      Our CSR advisory desk works with your committee to match funding requirements with verified beneficiary outcomes. We provide full documentation, project proposals, and site visits.
+                      Our CSR partnerships team works closely with your committee to match funding priorities with verified beneficiary outcomes. We provide detailed project documentation, financial budgets, and facilitate site visits.
                     </p>
 
                     <div className="mt-6 space-y-3">
                       <div className="flex items-center gap-3 text-sm text-[#263746]">
-                        <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
+                        <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
                           <Mail className="h-4 w-4" />
                         </span>
-                        <span>rm@nightingaleseldercare.com</span>
+                        <a href="mailto:rm@nightingaleseldercare.com" className="font-semibold hover:text-[#ED6439]">
+                          rm@nightingaleseldercare.com
+                        </a>
                       </div>
 
                       <div className="flex items-center gap-3 text-sm text-[#263746]">
-                        <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
+                        <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
                           <Phone className="h-4 w-4" />
                         </span>
                         <span>080 4242 6565 / +91 80 2354 8444</span>
@@ -1244,22 +1707,22 @@ function GetInvolvedPage() {
 
                   <div className="rounded-2xl border border-border bg-white p-6 shadow-soft">
                     <h4 className="font-display text-base font-bold text-[#263746]">
-                      Request a CSR Discussion
+                      Initiate a CSR Discussion
                     </h4>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      Reach out directly via email with your company name and focus area.
+                      Email us directly with your company name, preferred cause, and tentative timelines.
                     </p>
 
                     <a
-                      href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Discussion&body=Hello%20Nightingales%20Team,%0A%0AWe%20are%20interested%20in%20exploring%20a%20CSR%20collaboration%20with%20NMT.%0A%0ACompany%20Name:%0AFocus%20Area:%0APhone:%0A"
+                      href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Discussion&body=Hello%20Nightingales%20CSR%20Team,%0A%0AWe%20are%20interested%20in%20exploring%20a%20CSR%20collaboration%20with%20NMT.%0A%0ACompany%20Name:%0AFocus%20Area%20of%20Interest:%0AContact%20Person:%0APhone%20Number:%0A"
                       className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
                     >
                       <Mail className="h-4 w-4" />
-                      Email CSR Team Now
+                      Email CSR Team (rm@nightingaleseldercare.com)
                     </a>
 
                     <p className="mt-3 text-center text-[11px] text-muted-foreground">
-                      Response within 24–48 business hours
+                      Direct response from our CSR desk within 24–48 business hours
                     </p>
                   </div>
                 </div>
@@ -1270,7 +1733,7 @@ function GetInvolvedPage() {
       </main>
 
       {/* ======================================================
-          FINAL CALL TO ACTION
+          FINAL CALL TO ACTION (AS REQUESTED)
           ====================================================== */}
       <section className="relative overflow-hidden bg-[#17232B] py-16 sm:py-20 text-white">
         <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-[#ED6439]/20 blur-3xl" />
@@ -1280,25 +1743,29 @@ function GetInvolvedPage() {
             <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
               Let’s Build a Compassionate Future for Elders.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-              Together with our corporate partners, we ensure that every senior citizen lives with dignity, medical care, and community companionship.
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+              Partner with NMT to create meaningful, measurable, and lasting impact.
+            </p>
+
+            <p className="mt-2 text-xs text-white/60">
+              For more details, please contact us at <a href="mailto:rm@nightingaleseldercare.com" className="text-[#FF9A78] underline">rm@nightingaleseldercare.com</a>
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership"
-                className="inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#ED6439]/40 transition hover:-translate-y-0.5 hover:bg-[#d95730]"
+                href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Enquiry"
+                className="inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#ED6439]/40 transition hover:-translate-y-0.5 hover:bg-[#d95730]"
               >
-                Contact CSR Desk
+                Connect with CSR Desk
                 <ArrowUpRight className="h-4 w-4" />
               </a>
 
-              <Link
-                to="/donate"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/20"
+              <a
+                href="#partnership-options"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/20"
               >
-                Individual Donations
-              </Link>
+                Browse Projects
+              </a>
             </div>
           </Reveal>
         </div>
