@@ -498,9 +498,9 @@ function AboutPage() {
         {/* ======================================================
             HERO — dark capital-campaign-style banner
         ====================================================== */}
-        <section className="bg-[#FBF6EC] px-4 pb-10 pt-8 sm:px-6 sm:pt-10 lg:px-8">
+        <section className="bg-[#FBF6EC] pt-8 sm:px-6 sm:pt-10 lg:px-8">
           <Reveal>
-            <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#14212B]">
+            <div className="mx-auto max-w-12xl overflow-hidden rounded-[1rem] bg-[#14212B]">
               <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
                 {/* LEFT — content */}
                 <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 md:px-12 lg:px-14 lg:py-16">
@@ -524,7 +524,7 @@ function AboutPage() {
                 </div>
 
                 {/* RIGHT — banner photo */}
-                <div className="relative order-first h-[260px] w-full overflow-hidden lg:order-last lg:h-auto lg:min-h-[460px]">
+                <div className="relative order-first h-[360px] w-full overflow-hidden lg:order-last lg:h-auto lg:min-h-[480px]">
                   <img
                     src={aboutHeroImage}
                     alt="Nightingales Medical Trust community"
