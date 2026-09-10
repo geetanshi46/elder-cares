@@ -2,7 +2,7 @@ import heroImage1 from "@/assets/heroImage1.webp";
 import heroImage2 from "@/assets/heroImage2.webp";
 import heroImage3 from "@/assets/heroImage3.webp";
 import heroImage4 from "@/assets/heroImage4.webp";
-import heroImage5 from "@/assets/heroImage5.jpg";
+import heroImage5 from "@/assets/heroImage5.webp";
 
 import aboutImage from "@/assets/aboutImage.webp";
 

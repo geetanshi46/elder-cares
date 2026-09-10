@@ -1453,7 +1453,9 @@ function ServicesPage() {
                       <p>
                         NMT's Online Dementia Risk Reduction Programme enables
                         individuals to take practical steps towards healthier
-                        ageing, <strong>conveniently from home.</strong>
+                        ageing, <strong className="font-black text-black">
+  conveniently from home.
+</strong>
                       </p>
                     </div>
 
@@ -1492,9 +1494,9 @@ function ServicesPage() {
                       </p>
 
                       <div>
-                        <p className="mb-4 text-base font-bold text-[#263746] sm:text-lg">
-                          Who can benefit?
-                        </p>
+                       <p className="mb-4 text-xl font-bold text-[#263746] sm:text-2xl">
+  Who can benefit?
+</p>
 
                         <p className="mb-4 text-[13.5px] leading-[1.6] text-muted-foreground sm:text-[15px]">
                           The programme is particularly suitable for:
@@ -1567,7 +1569,7 @@ function ServicesPage() {
             {/* 2. MEMORY CLINICS */}
             <Reveal>
               <div className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
-                <div className="grid lg:grid-cols-2 lg:items-stretch">
+                <div className="grid lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
 
                   <div className="relative min-h-[340px] overflow-hidden bg-[#F6F1EC] sm:min-h-[460px] lg:min-h-full">
                     <img
@@ -1685,9 +1687,10 @@ function ServicesPage() {
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       Caring for a person with dementia at home can be challenging,
                       particularly when family members have work and other responsibilities.
-                      NMT's Dementia Day Care Centres provide a <strong>safe, stimulating and
-                      supportive environment during the day, while enabling the person to
-                      continue living with their family.</strong>
+                      NMT's Dementia Day Care Centres provide a <strong className="font-black text-[#263746] bg-[#FFF1DC] px-1">
+  safe, stimulating and supportive environment during the day, while enabling the person to
+  continue living with their family.
+</strong>
                     </p>
 
                     <p className="mt-5 font-semibold text-[#263746]">
@@ -1749,7 +1752,9 @@ function ServicesPage() {
 
                     <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       For families, it means: <br />
-                      <strong className="text-[#263746]">Professional care for your loved one — and much-needed respite for you.</strong>
+                      <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+  Professional care for your loved one — and much-needed respite for you.
+</strong>
                     </p>
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       Day care can also help families provide structured support while enabling the person to continue living at home for as long as possible.
@@ -1818,8 +1823,9 @@ function ServicesPage() {
       <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
         As dementia progresses, providing safe and continuous care at home
         can become increasingly difficult. NMT offers specialised residential
-        dementia-care facilities providing <strong>24-hour supervision, professional
-        care, medical support and a secure, nurturing environment.</strong>
+        dementia-care facilities providing <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+  24-hour supervision, professional care, medical support and a secure, nurturing environment.
+</strong>
       </p>
     </div>
 
@@ -2208,7 +2214,9 @@ function ServicesPage() {
                     </p>
 
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                      Building on nearly three decades of experience, NMT is creating <strong>Nightingales Smriti Gram — Dementia Care, Learning & Research, near Doddaballapur, Bengaluru Rural District.</strong>
+                      Building on nearly three decades of experience, NMT is creating <strong className="font-black text-[#263746]">
+  Nightingales Smriti Gram — Dementia Care, Learning & Research, near Doddaballapur, Bengaluru Rural District.
+</strong>
                     </p>
 
                     <p className="mt-4 text-[14px] leading-[1.8] font-bold text-[#263746] sm:text-[15px]">
@@ -2443,6 +2451,9 @@ function ServicesPage() {
 
                 <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                   Early assessment can help families understand the condition and plan care better.
+                </p>
+                <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                  Consider seeking professional advice if your loved one is experiencing:
                 </p>
               </div>
 
@@ -2918,8 +2929,8 @@ function ServicesPage() {
                 medical camps for elders here.
               </p>
 
-              <Link
-                to="/donate"
+              {/* <Link
+                to="/get-involved"
                 className="
                   mt-4
                   inline-flex
@@ -2933,7 +2944,7 @@ function ServicesPage() {
               >
                 READ MORE
                 <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              </Link> */}
             </div>
 
             {/* CONTACT */}
@@ -3841,12 +3852,11 @@ function ServicesPage() {
       PREVENTION OF ELDER ABUSE
       ====================================================== */}
 
-  <Section
-    id="elder-protection"
-    title="Prevention of Elder Abuse"
-    titleClassName="text-[#ED6439]"
-    tone="sand"
-  >
+ <Section
+  id="elder-protection"
+  title={<span className="text-[#ED6439]">Prevention of Elder Abuse</span>}
+  tone="sand"
+>
 
     {/* ==================================================
         FULL IMAGE BANNER
@@ -4036,17 +4046,16 @@ function ServicesPage() {
             </p>
 
             <p className="mt-4">
-              <strong className="font-semibold text-foreground">
-                It's the first project in the country where an NGO and the
-                law enforcing authorities joined together to address elder
-                abuse.
-              </strong>
+              <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+  It's the first project in the country where an NGO and the law enforcing
+  authorities joined together to address elder abuse.
+</strong>
             </p>
 
             <p className="mt-4">
-              <strong className="font-semibold text-foreground">
-                Located at the premises of Bengaluru City Police
-              </strong>
+              <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+  Located at the premises of Bengaluru City Police
+</strong>
               , the Helpline acts as an important link between older persons,
               their families, social workers, police and other support
               systems.
@@ -5177,12 +5186,11 @@ function ServicesPage() {
     SUPPORTING OLD AGE HOMES
     ====================================================== */}
 
-<Section
-  id="old-age-homes"
-  eyebrow=""
-  title="SUPPORTING OLD AGE HOMES"
-  titleClassName="text-[#ED6439]"
-  tone="sand"
+<Section 
+  id="old-age-homes" 
+  eyebrow="" 
+  title={<span className="text-[#ED6439]">SUPPORTING OLD AGE HOMES</span>}
+  tone="sand" 
 >
   {/* INTRO */}
   <Reveal className="max-w-4xl min-w-0">

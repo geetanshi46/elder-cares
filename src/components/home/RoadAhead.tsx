@@ -250,9 +250,8 @@ export function RoadAhead() {
                   sm:text-2xl
                 "
               >
-                Key Focus Areas
+                Key Focus Areas Include
               </h3>
-
             </div>
 
 

@@ -653,34 +653,48 @@ function AboutPage() {
               </Reveal>
 
               <div className="relative mt-9">
-                <div className="absolute left-[3px] top-2 bottom-2 w-px bg-[#1B2A35]/12 sm:left-[95px]" />
+  <div
+    className="
+      max-h-[520px]
+      overflow-y-auto
+      overscroll-contain
+      pr-3
+      scroll-smooth
+    "
+  >
+    <div className="relative">
+      <div className="absolute bottom-2 left-[3px] top-2 w-px bg-[#1B2A35]/12 sm:left-[95px]" />
 
-                <div className="space-y-0">
-                  {JOURNEY.map((item, index) => (
-                    <Reveal key={`${item.year}-${index}`} delay={index * 12}>
-                      <div className="relative grid grid-cols-1 gap-2 py-5 pl-6 sm:grid-cols-[95px_1fr] sm:gap-8 sm:pl-0">
-                        <div className="relative sm:pr-8 sm:text-right">
-                          <span className="absolute -left-[27px] top-1 h-2 w-2 rounded-full bg-[#ED6439] sm:-left-[5px]" />
-                          <span className="font-display text-sm font-bold text-[#ED6439] sm:text-[15px]">
-                            {item.year}
-                          </span>
-                        </div>
+      <div className="space-y-0">
+        {JOURNEY.map((item, index) => (
+          <Reveal key={`${item.year}-${index}`} delay={index * 12}>
+            <div className="relative grid grid-cols-1 gap-2 py-5 pl-6 sm:grid-cols-[95px_1fr] sm:gap-8 sm:pl-0">
+              <div className="relative sm:pr-8 sm:text-right">
+                <span className="absolute -left-[27px] top-1 h-2 w-2 rounded-full bg-[#ED6439] sm:-left-[5px]" />
 
-                        <div className="border-l border-[#1B2A35]/10 pl-6 sm:border-l-0 sm:pl-8">
-                          <h4 className="max-w-2xl font-display text-[15px] font-bold leading-[1.35] text-[#1B2A35] sm:text-base">
-                            {item.title}
-                          </h4>
-                          {item.body && (
-                            <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-[#4C5C68] sm:text-[13.5px]">
-                              {item.body}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
+                <span className="font-display text-sm font-bold text-[#ED6439] sm:text-[15px]">
+                  {item.year}
+                </span>
               </div>
+
+              <div className="border-l border-[#1B2A35]/10 pl-6 sm:border-l-0 sm:pl-8">
+                <h4 className="max-w-2xl font-display text-[15px] font-bold leading-[1.35] text-[#1B2A35] sm:text-base">
+                  {item.title}
+                </h4>
+
+                {item.body && (
+                  <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-[#4C5C68] sm:text-[13.5px]">
+                    {item.body}
+                  </p>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
             </div>
 
             <Reveal delay={100}>

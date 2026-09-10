@@ -208,6 +208,7 @@ export const Route = createFileRoute("/smriti-gram")({
 
 function SmritiGramPage() {
     const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [isAdmissionFormOpen, setIsAdmissionFormOpen] = useState(false);
 
   return (
     <SiteLayout>
@@ -561,6 +562,20 @@ function SmritiGramPage() {
               while receiving care that supports their physical, emotional,
               cognitive and social wellbeing.
             </p>
+
+            <p className="pt-2 font-semibold text-[#263746]">
+              The model brings together:
+            </p>
+
+            <ul className="space-y-3 rounded-[1.5rem] bg-[#FFF8EF] p-5 sm:p-6">
+              <li>Person-centred dementia care based on each person’s needs, abilities, preferences and life story.</li>
+              <li>Nature-based and therapeutic environments with gardens, walking paths, safe outdoor spaces and activity areas.</li>
+              <li>Holistic care that combines modern medical care with appropriate complementary and traditional approaches.</li>
+              <li>Rehabilitation and meaningful activities that promote physical, cognitive, emotional and social wellbeing.</li>
+              <li>Technology-enabled care to strengthen safety, monitoring, communication and continuity of care.</li>
+              <li>Palliative and supportive care focused on comfort, dignity and quality of life.</li>
+              <li>Family and community engagement to reduce loneliness and strengthen social connections.</li>
+            </ul>
           </div>
 
           {/* Bottom accent */}
@@ -772,6 +787,10 @@ function SmritiGramPage() {
               dementia care. It is also envisioned as a centre for learning,
               innovation and research to help build the future of dementia care
               in India.
+            </p>
+
+            <p className="mt-5 text-[15px] leading-7 text-[#526574] sm:text-[15.5px] md:text-base md:leading-7">
+              The campus will bring together three important components:
             </p>
           </div>
         </Reveal>
@@ -1280,7 +1299,7 @@ function SmritiGramPage() {
             We welcome donors, CSR partners, universities, research
             institutions, healthcare organisations, technology companies,
             government agencies, volunteers and like-minded organisations to
-            work with us.
+            work with us in areas such as:
           </p>
         </Reveal>
 
@@ -1306,6 +1325,9 @@ function SmritiGramPage() {
         </Reveal>
 
         <Reveal delay={160}>
+          <p className="mt-8 max-w-4xl text-[15.5px] leading-7 text-[#526574]">
+            Together, we can help reshape dementia care in India.
+          </p>
           <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap">
             <Link
               to="/get-involved"
@@ -1320,6 +1342,13 @@ function SmritiGramPage() {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#263746]/15 bg-white px-5 py-3.5 text-sm font-bold text-[#263746] sm:w-auto sm:px-6"
             >
               Collaborate With Us
+            </Link>
+
+            <Link
+              to="/smriti-gram"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#263746]/15 bg-white px-5 py-3.5 text-sm font-bold text-[#263746] sm:w-auto sm:px-6"
+            >
+              Visit Smriti Gram
             </Link>
           </div>
         </Reveal>
@@ -1405,7 +1434,10 @@ function SmritiGramPage() {
 
             <Reveal delay={80}>
               <div className="mt-7 rounded-[2rem] border border-[#ED6439]/15 bg-white p-7 sm:p-9">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <p className="text-[15px] leading-7 text-[#526574]">
+                  The following documents should be submitted along with the application:
+                </p>
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {[
                     "Medical records and dementia diagnosis",
                     "Aadhaar Card",
@@ -1556,13 +1588,14 @@ function SmritiGramPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
 
-                <a
-                  href="/application-form.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
-                >
-                  <FileText className="h-4 w-4" />
-                  Download Application Form
-                </a>
+                <button
+  type="button"
+  onClick={() => setIsAdmissionFormOpen(true)}
+  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+>
+  <FileText className="h-4 w-4" />
+  Click here to fill our form
+</button>
 
                 <Link
                   to="/contact"
@@ -1575,6 +1608,194 @@ function SmritiGramPage() {
           </Reveal>
         </div>
       </section>
+
+
+        {isAdmissionFormOpen && (
+  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
+    <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setIsAdmissionFormOpen(false)}
+        className="absolute right-4 top-4 rounded-full p-2 text-[#263746] transition-colors hover:bg-[#F5F1EB]"
+        aria-label="Close application form"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-10">
+        <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+          Smriti Gram
+        </p>
+
+        <h2 className="mt-2 text-2xl font-black text-[#263746] sm:text-3xl">
+          Apply for Admission
+        </h2>
+      </div>
+
+      {/* Form */}
+      <form
+  className="mt-8 space-y-5"
+  onSubmit={(e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const body = `
+Smriti Gram Admission Application
+
+Full Name: ${data.get("fullName")}
+Age: ${data.get("age")}
+Contact Number: ${data.get("contactNumber")}
+Email Address: ${data.get("email")}
+Dementia Diagnosis: ${data.get("dementiaDiagnosis")}
+Current Medical Condition / Dementia Stage: ${data.get("medicalCondition")}
+Requires 24-hour care: ${data.get("requires24HourCare")}
+Monthly Family Income: ${data.get("monthlyIncome")}
+Additional Information: ${data.get("additionalInformation")}
+    `.trim();
+
+    window.location.href =
+      `mailto:codebygeetanshi@gmail.com?subject=${encodeURIComponent(
+        "Smriti Gram Admission Application"
+      )}&body=${encodeURIComponent(body)}`;
+  }}
+>
+
+        {/* Full Name */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Full Name
+  </label>
+  <input
+    type="text"
+    name="fullName"
+    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Age */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Age
+  </label>
+  <input
+    type="number"
+    name="age"
+    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Contact Number */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Contact Number
+  </label>
+  <input
+    type="tel"
+    name="contactNumber"
+    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Email */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Email Address
+  </label>
+  <input
+    type="email"
+    name="email"
+    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Dementia Diagnosis */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Dementia Diagnosis
+  </label>
+
+  <select
+    name="dementiaDiagnosis"
+    className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  >
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</div>
+
+{/* Medical Condition / Dementia Stage */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Current Medical Condition / Dementia Stage
+  </label>
+  <textarea
+    name="medicalCondition"
+    rows={3}
+    className="w-full resize-none rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* 24-hour care */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Does the person require 24-hour care?
+  </label>
+
+  <select
+    name="requires24HourCare"
+    className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  >
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</div>
+
+{/* Income */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Monthly Family Income
+  </label>
+  <input
+    type="text"
+    name="monthlyIncome"
+    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Additional Information */}
+<div>
+  <label className="mb-2 block text-sm font-bold text-[#263746]">
+    Additional Information
+  </label>
+  <textarea
+    name="additionalInformation"
+    rows={4}
+    placeholder="Optional"
+    className="w-full resize-none rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
+  />
+</div>
+
+{/* Submit */}
+<button
+  type="submit"
+  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#D9532F]"
+>
+  Submit Application
+  <ArrowRight className="h-4 w-4" />
+</button>
+      </form>
+    </div>
+  </div>
+)}
+
+
 
 
 {/* =========================================================

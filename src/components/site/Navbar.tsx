@@ -28,7 +28,7 @@ const NAV_LINKS: NavItem[] = [
     to: "/about",
     children: [
       { label: "About Overview", to: "/about" },
-      { label: "Vision & Mission", to: "/about", hash: "vision" },
+      // { label: "Vision & Mission", to: "/about", hash: "vision" },
       // { label: "Our Founders", to: "/about", hash: "founders" },
       { label: "Executive Committee", to: "/executive-committee" },
       // { label: "Advisory Board", to: "/advisory-board" },
@@ -45,7 +45,7 @@ const NAV_LINKS: NavItem[] = [
       { label: "Empowerment & Livelihood", to: "/services", hash: "empowerment-livelihood" },
       { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
       { label: "Training & Capacity Building", to: "/services", hash: "capacity-building" },
-      { label: "Awareness & Advocacy", to: "/services", hash: "awareness-advocacy" },
+      // { label: "Awareness & Advocacy", to: "/services", hash: "awareness-advocacy" },
     ],
   },
   { label: "Smriti Gram", to: "/smriti-gram" },
