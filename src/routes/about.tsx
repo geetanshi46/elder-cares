@@ -1,35 +1,30 @@
+/* eslint-disable prettier/prettier */
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-// import { useState, type ReactNode } from "react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import {
-  ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Award,
   Check,
+  ChevronLeft,
+  ChevronRight,
   Eye,
   FileText,
-  FileBarChart,
-  ArrowUpRight,
   HeartHandshake,
   Landmark,
   ShieldCheck,
   Sparkles,
   Target,
   Users,
-  ChevronRight,
-  ChevronLeft,
 } from "lucide-react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 
 import aboutHeroImage from "../assets/about/about-hero.png";
-
-import { Heart } from "lucide-react";
-
-import { Recognitions } from "@/components/home/Recognitions";
 
 import internationalResearch from "@/assets/recognitions/international-research-award.webp";
 import vayoshreshtha from "@/assets/recognitions/vayoshreshtha-samman.webp";
@@ -40,9 +35,7 @@ import paulHarris from "@/assets/recognitions/paul-harris-fellowship.webp";
 import rotaryPioneer from "@/assets/recognitions/rotary-pioneer-award.webp";
 import ipsAward from "@/assets/recognitions/ips-kc-award.webp";
 
-
 import { Partners } from "@/components/home/Partners";
-
 
 const title =
   "About Nightingales Medical Trust — Compassionate Care. Innovative Ageing.";
@@ -65,7 +58,7 @@ export const Route = createFileRoute("/about")({
 });
 
 /* ============================================================
-   CLIENT CONTENT
+   CLIENT CONTENT — unchanged
    ============================================================ */
 
 const JOURNEY = [
@@ -162,38 +155,14 @@ const JOURNEY = [
 ];
 
 const VALUES = [
-  {
-    title: "Dignity",
-    body: "Respect for worth, rights and choices.",
-  },
-  {
-    title: "Compassion",
-    body: "Empathy, patience and understanding.",
-  },
-  {
-    title: "Person-centredness",
-    body: "Care designed around the individual.",
-  },
-  {
-    title: "Inclusion",
-    body: "Access irrespective of socio-economic circumstances.",
-  },
-  {
-    title: "Integrity",
-    body: "Honesty, accountability and transparency.",
-  },
-  {
-    title: "Innovation",
-    body: "Better, effective and sustainable solutions.",
-  },
-  {
-    title: "Professionalism",
-    body: "Knowledge, competence and evidence.",
-  },
-  {
-    title: "Partnership",
-    body: "Families, communities and institutions together.",
-  },
+  { title: "Dignity", body: "Respect for worth, rights and choices." },
+  { title: "Compassion", body: "Empathy, patience and understanding." },
+  { title: "Person-centredness", body: "Care designed around the individual." },
+  { title: "Inclusion", body: "Access irrespective of socio-economic circumstances." },
+  { title: "Integrity", body: "Honesty, accountability and transparency." },
+  { title: "Innovation", body: "Better, effective and sustainable solutions." },
+  { title: "Professionalism", body: "Knowledge, competence and evidence." },
+  { title: "Partnership", body: "Families, communities and institutions together." },
 ];
 
 const RECOGNITIONS = [
@@ -201,7 +170,7 @@ const RECOGNITIONS = [
     image: internationalResearch,
     title: "International Research Award 2011",
     description:
-      "For ‘Most promising intervention for people with dementia and their carers’ by Foundation Mederic Alzheimer and Alzheimer’s Disease International.",
+      "For 'Most promising intervention for people with dementia and their carers' by Foundation Mederic Alzheimer and Alzheimer's Disease International.",
   },
   {
     image: vayoshreshtha,
@@ -224,26 +193,22 @@ const RECOGNITIONS = [
   {
     image: nammaBengaluru,
     title: "Namma Bengaluru Award 2010",
-    description:
-      "For outstanding contribution to Bangalore city.",
+    description: "For outstanding contribution to Bangalore city.",
   },
   {
     image: paulHarris,
     title: "Paul Harris Fellowship 2005",
-    description:
-      "Rotary Foundation for our work in Elderly and Dementia care.",
+    description: "Rotary Foundation for our work in Elderly and Dementia care.",
   },
   {
     image: rotaryPioneer,
     title: "Rotary Pioneer Award 2019",
-    description:
-      "Presented by Rotary Club - Bangalore Downtown.",
+    description: "Presented by Rotary Club - Bangalore Downtown.",
   },
   {
     image: ipsAward,
     title: "IPS-KC Distinguished Service Award 2023",
-    description:
-      "By the Karnataka Chapter of the Indian Psychiatric Society.",
+    description: "By the Karnataka Chapter of the Indian Psychiatric Society.",
   },
 ];
 
@@ -302,91 +267,82 @@ const STATUTORY_DOCUMENTS = [
   "Social Stock Exchange — BSE / NSE",
 ];
 
-
-
 const annualReports = [
-  {
-    year: "2017-18",
-    pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf",
-  },
-  {
-    year: "2018-19",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf",
-  },
-  {
-    year: "2019-20",
-    pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf",
-  },
-  {
-    year: "2020-21",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf",
-  },
-  {
-    year: "2021-22",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf",
-  },
-  {
-    year: "2022-23",
-    pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf",
-  },
-  {
-    year: "2024-25",
-    pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
-  },
+  { year: "2017-18", pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf" },
+  { year: "2018-19", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf" },
+  { year: "2019-20", pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf" },
+  { year: "2020-21", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf" },
+  { year: "2021-22", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf" },
+  { year: "2022-23", pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf" },
+  { year: "2024-25", pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf" },
 ];
 
-
 /* ============================================================
-   SMALL DESIGN HELPERS
+   DESIGN TOKENS (as classes/constants for reuse)
+   ============================================================
+   Ink (dark surface):     #14212B
+   Ember (brand accent):   #ED6439
+   Moss (secondary dark):  #123F35
+   Parchment (page bg):    #FBF6EC
+   Slate (body text):      #4C5C68
+   Heading:                #1B2A35
    ============================================================ */
 
-function Eyebrow({
-  number,
-  children,
+/* ============================================================
+   SHARED SECTION MARKER
+   A section index + hairline rule + plain-case label — this
+   page is read top to bottom as a sequence, so the numbering
+   carries real meaning rather than decorating the heading.
+   ============================================================ */
+
+function SectionMarker({
+  index,
+  label,
+  tone = "light",
 }: {
-  number?: string;
-  children: ReactNode;
+  index: string;
+  label: string;
+  tone?: "light" | "dark";
 }) {
+  const ruleColor = tone === "dark" ? "bg-white/15" : "bg-[#1B2A35]/12";
+  const labelColor = tone === "dark" ? "text-white/55" : "text-[#4C5C68]";
+
   return (
-    <div className="mb-5 flex items-center gap-3">
-      {number && (
-        <span className="font-mono text-xs font-bold tracking-[0.18em] text-[#ED6439]">
-          {number}
-        </span>
-      )}
-
-      <span className="h-px w-8 bg-[#ED6439]" />
-
-      <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-        {children}
+    <div className="flex items-center gap-4">
+      <span className="font-display text-sm font-bold text-[#ED6439]">
+        {index}
       </span>
+      <span className={`h-px flex-1 ${ruleColor}`} />
+      <span className={`text-sm ${labelColor}`}>{label}</span>
     </div>
   );
 }
 
 function SectionHeading({
-  number,
-  eyebrow,
-  title,
+  title: heading,
   description: intro,
-  centered = false,
+  tone = "light",
 }: {
-  number?: string;
-  eyebrow: string;
   title: string;
   description?: string;
-  centered?: boolean;
+  tone?: "light" | "dark";
 }) {
   return (
-    <div className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <Eyebrow number={number}>{eyebrow}</Eyebrow>
-
-      <h2 className="font-display text-3xl font-bold leading-[1.08] tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-        {title}
+    <div className="mt-5 max-w-3xl">
+      <h2
+        className={`font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] sm:text-4xl lg:text-[2.75rem] ${
+          tone === "dark" ? "text-white" : "text-[#1B2A35]"
+        }`}
+      >
+        {heading}
       </h2>
 
       {intro && (
-        <p className="mt-6 text-[15px] leading-8 text-[#526574] sm:text-base">
+        <p
+          className={`mt-5 text-[15px] leading-7 sm:text-base ${
+            tone === "dark" ? "text-white/70" : "text-[#4C5C68]"
+          }`}
+        >
           {intro}
         </p>
       )}
@@ -394,31 +350,8 @@ function SectionHeading({
   );
 }
 
-function OrangeIcon({
-  children,
-  large = false,
-}: {
-  children: ReactNode;
-  large?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        "grid shrink-0 place-items-center rounded-2xl bg-[#FFF0E6] text-[#ED6439]",
-        large ? "h-16 w-16 rounded-[1.25rem]" : "h-12 w-12",
-      ].join(" ")}
-    >
-      {children}
-    </div>
-  );
-}
-
-function OrangeLine() {
-  return <div className="h-1 w-12 rounded-full bg-[#ED6439]" />;
-}
-
 /* ============================================================
-   PAGE
+   RECOGNITION CAROUSEL
    ============================================================ */
 
 function RecognitionCarousel() {
@@ -426,221 +359,90 @@ function RecognitionCarousel() {
 
   const scroll = (direction: "left" | "right") => {
     const slider = sliderRef.current;
-
     if (!slider) return;
-
-    slider.scrollBy({
-      left: direction === "right" ? 350 : -350,
-      behavior: "smooth",
-    });
+    slider.scrollBy({ left: direction === "right" ? 350 : -350, behavior: "smooth" });
   };
 
   useEffect(() => {
     const slider = sliderRef.current;
-
     if (!slider) return;
 
     let interval: ReturnType<typeof setInterval>;
 
     const startAutoScroll = () => {
       clearInterval(interval);
-
       interval = setInterval(() => {
         const maxScroll = slider.scrollWidth - slider.clientWidth;
-
         if (slider.scrollLeft >= maxScroll - 10) {
-          slider.scrollTo({
-            left: 0,
-            behavior: "smooth",
-          });
+          slider.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          slider.scrollBy({
-            left: 350,
-            behavior: "smooth",
-          });
+          slider.scrollBy({ left: 350, behavior: "smooth" });
         }
       }, 3000);
     };
 
-    const stopAutoScroll = () => {
-      clearInterval(interval);
-    };
+    const stopAutoScroll = () => clearInterval(interval);
 
     startAutoScroll();
-
     slider.addEventListener("mouseenter", stopAutoScroll);
     slider.addEventListener("mouseleave", startAutoScroll);
-
-    slider.addEventListener("touchstart", stopAutoScroll, {
-      passive: true,
-    });
-
-    slider.addEventListener("touchend", startAutoScroll, {
-      passive: true,
-    });
+    slider.addEventListener("touchstart", stopAutoScroll, { passive: true });
+    slider.addEventListener("touchend", startAutoScroll, { passive: true });
 
     return () => {
       clearInterval(interval);
-
       slider.removeEventListener("mouseenter", stopAutoScroll);
       slider.removeEventListener("mouseleave", startAutoScroll);
-
       slider.removeEventListener("touchstart", stopAutoScroll);
       slider.removeEventListener("touchend", startAutoScroll);
     };
   }, []);
 
   return (
-    <section
-      id="recognitions"
-      className="relative overflow-hidden bg-[#ED6439] py-16 sm:py-20 lg:py-24"
-    >
-      {/* SECTION HEADER */}
+    <section id="recognitions" className="relative overflow-hidden bg-[#ED6439] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="mb-9 sm:mb-11">
-          <div className="mb-3 flex items-center gap-3">
-            <span className="h-[3px] w-10 rounded-full bg-white" />
-
-            <span className="text-lg font-bold uppercase tracking-[0.2em] text-white sm:text-xl lg:text-2xl">
-              Our Achievements
-            </span>
-          </div>
-
-          <h2 className="font-display text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-            Recognitions & Awards
+          <SectionMarker index="06" label="Our achievements" tone="dark" />
+          <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            Recognitions & awards
           </h2>
-
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/85 sm:text-lg">
             Our work in elder care, dementia care and community service has
-            been recognized by institutions and organizations across India and
-            internationally.
+            been recognized by institutions and organizations across India
+            and internationally.
           </p>
         </div>
       </div>
 
-      {/* CAROUSEL */}
       <div className="relative">
-        {/* LEFT BUTTON */}
         <button
           type="button"
           onClick={() => scroll("left")}
           aria-label="Previous recognition"
-          className="
-            absolute
-            left-2
-            top-1/2
-            z-20
-            hidden
-            h-11
-            w-11
-            -translate-y-1/2
-            place-items-center
-            rounded-full
-            border
-            border-black/10
-            bg-white
-            text-[#263746]
-            shadow-sm
-            transition-all
-            duration-300
-            hover:bg-[#ED6439]
-            hover:text-white
-            lg:grid
-            xl:left-6
-          "
+          className="absolute left-2 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm transition-colors duration-300 hover:bg-[#14212B] hover:text-white lg:grid xl:left-6"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        {/* RIGHT BUTTON */}
         <button
           type="button"
           onClick={() => scroll("right")}
           aria-label="Next recognition"
-          className="
-            absolute
-            right-2
-            top-1/2
-            z-20
-            hidden
-            h-11
-            w-11
-            -translate-y-1/2
-            place-items-center
-            rounded-full
-            border
-            border-black/10
-            bg-white
-            text-[#263746]
-            shadow-sm
-            transition-all
-            duration-300
-            hover:bg-[#ED6439]
-            hover:text-white
-            lg:grid
-            xl:right-6
-          "
+          className="absolute right-2 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm transition-colors duration-300 hover:bg-[#14212B] hover:text-white lg:grid xl:right-6"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
 
-        {/* SLIDER */}
         <div
           ref={sliderRef}
-          className="
-            flex
-            gap-5
-            overflow-x-auto
-            px-[calc((100vw-285px)/2)]
-            pb-3
-            scroll-smooth
-            snap-x
-            snap-mandatory
-            [scrollbar-width:none]
-            [&::-webkit-scrollbar]:hidden
-
-            sm:gap-6
-            sm:px-[calc((100vw-310px)/2)]
-
-            lg:px-[max(5rem,calc((100vw-1280px)/2))]
-          "
+          className="flex gap-5 overflow-x-auto px-[calc((100vw-285px)/2)] pb-3 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-[calc((100vw-310px)/2)] lg:px-[max(5rem,calc((100vw-1280px)/2))]"
         >
           {RECOGNITIONS.map((recognition) => (
             <article
               key={recognition.title}
-              className="
-                flex
-                min-w-[285px]
-                max-w-[285px]
-                snap-start
-                flex-col
-                overflow-hidden
-                rounded-xl
-                border
-                border-black/[0.06]
-                bg-white
-                transition-transform
-                duration-300
-                hover:-translate-y-1
-                sm:min-w-[310px]
-                sm:max-w-[310px]
-                lg:min-w-[350px]
-                lg:max-w-[350px]
-              "
+              className="flex min-w-[285px] max-w-[285px] snap-start flex-col overflow-hidden rounded-lg bg-white sm:min-w-[310px] sm:max-w-[310px] lg:min-w-[350px] lg:max-w-[350px]"
             >
-              {/* IMAGE */}
-              <div
-                className="
-                  flex
-                  h-[175px]
-                  items-center
-                  justify-center
-                  bg-[#FAFAFA]
-                  px-6
-                  py-5
-                  sm:h-[185px]
-                "
-              >
+              <div className="flex h-[175px] items-center justify-center bg-[#FBF6EC] px-6 py-5 sm:h-[185px]">
                 <img
                   src={recognition.image}
                   alt={recognition.title}
@@ -649,47 +451,12 @@ function RecognitionCarousel() {
                 />
               </div>
 
-              {/* CONTENT */}
-              <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <div className="mb-3 flex items-center gap-2">
-                  <span
-                    className="
-                      grid
-                      h-8
-                      w-8
-                      place-items-center
-                      rounded-full
-                      bg-[#FFF0E8]
-                      text-[#ED6439]
-                    "
-                  >
-                    <Award className="h-4 w-4" />
-                  </span>
-
-                  <span className="h-[2px] w-7 rounded-full bg-[#ED6439]" />
-                </div>
-
-                <h3
-                  className="
-                    font-display
-                    text-lg
-                    font-extrabold
-                    leading-tight
-                    text-[#263746]
-                    sm:text-xl
-                  "
-                >
+              <div className="flex flex-1 flex-col border-t border-[#1B2A35]/8 p-5 sm:p-6">
+                <Award className="h-4 w-4 text-[#ED6439]" />
+                <h3 className="mt-3 font-display text-lg font-bold leading-tight text-[#1B2A35] sm:text-xl">
                   {recognition.title}
                 </h3>
-
-                <p
-                  className="
-                    mt-3
-                    text-sm
-                    leading-relaxed
-                    text-[#263746]/70
-                  "
-                >
+                <p className="mt-3 text-sm leading-relaxed text-[#1B2A35]/65">
                   {recognition.description}
                 </p>
               </div>
@@ -698,50 +465,20 @@ function RecognitionCarousel() {
         </div>
       </div>
 
-      {/* MOBILE BUTTONS */}
       <div className="mt-6 flex justify-center gap-3 lg:hidden">
         <button
           type="button"
           onClick={() => scroll("left")}
           aria-label="Previous recognition"
-          className="
-            grid
-            h-10
-            w-10
-            place-items-center
-            rounded-full
-            border
-            border-black/10
-            bg-white
-            text-[#263746]
-            shadow-sm
-            transition-colors
-            hover:bg-[#ED6439]
-            hover:text-white
-          "
+          className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
-
         <button
           type="button"
           onClick={() => scroll("right")}
           aria-label="Next recognition"
-          className="
-            grid
-            h-10
-            w-10
-            place-items-center
-            rounded-full
-            border
-            border-black/10
-            bg-white
-            text-[#263746]
-            shadow-sm
-            transition-colors
-            hover:bg-[#ED6439]
-            hover:text-white
-          "
+          className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
@@ -750,2285 +487,555 @@ function RecognitionCarousel() {
   );
 }
 
+/* ============================================================
+   PAGE
+   ============================================================ */
+
 function AboutPage() {
-  /* ============================================================
-     JOURNEY CAROUSEL STATE
-     ============================================================ */
-
-  const JOURNEY_PER_PAGE = 3;
-
-  const [journeyPage, setJourneyPage] = useState(0);
-
-  const totalJourneyPages = Math.ceil(
-    JOURNEY.length / JOURNEY_PER_PAGE,
-  );
-
-  const journeyStart = journeyPage * JOURNEY_PER_PAGE;
-
-  const visibleJourney = JOURNEY.slice(
-    journeyStart,
-    journeyStart + JOURNEY_PER_PAGE,
-  );
-
-  const previousJourneyPage = () => {
-    setJourneyPage((current) =>
-      current === 0 ? totalJourneyPages - 1 : current - 1,
-    );
-  };
-
-  const nextJourneyPage = () => {
-    setJourneyPage((current) =>
-      current === totalJourneyPages - 1 ? 0 : current + 1,
-    );
-  };
-
   return (
     <SiteLayout>
-      <main className="overflow-hidden bg-[#FFFDF9] text-[#263746]">
-
-    {/* ======================================================
-    HERO — ABOUT NMT
-====================================================== */}
-
-<section className="relative overflow-hidden border-b border-[#ED6439]/15 bg-[#FFF8EF]">
-
-  <div
-    className="
-      grid
-      w-full
-      grid-cols-1
-      items-stretch
-      lg:grid-cols-[0.85fr_1.15fr]
-      lg:min-h-[460px]
-      xl:min-h-[480px]
-    "
-  >
-
-    {/* ==================================================
-        LEFT — CONTENT
-    ================================================== */}
-
-    <div
-      className="
-        order-2
-        flex
-        items-center
-        bg-[#FFF8EF]
-        px-6
-        py-10
-        sm:px-10
-        sm:py-12
-        md:px-14
-        md:py-14
-        lg:order-1
-        lg:px-12
-        lg:py-12
-        xl:px-16
-      "
-    >
-      <Reveal>
-
-        <div className="w-full max-w-[560px]">
-
-          {/* TOP LABEL */}
-          <div className="mb-4 flex items-center gap-3">
-
-            <span
-              className="
-                h-[2px]
-                w-8
-                shrink-0
-                bg-[#ED6439]
-              "
-            />
-
-            <span
-              className="
-                text-[10px]
-                font-extrabold
-                uppercase
-                tracking-[0.18em]
-                text-[#ED6439]
-                sm:text-xs
-              "
-            >
-              About NMT Since 1998
-            </span>
-
-          </div>
-
-
-          {/* MAIN HEADING */}
-          <h1
-            className="
-              max-w-[560px]
-              font-display
-              text-[2rem]
-              font-bold
-              leading-[1.05]
-              tracking-[-0.035em]
-              text-[#263746]
-              sm:text-[2.35rem]
-              md:text-[2.65rem]
-              lg:text-[2.8rem]
-              xl:text-[3.15rem]
-            "
-          >
-            Compassionate and Innovative{" "}
-            <span className="text-[#ED6439]">
-              Age Care
-            </span>{" "}
-            Solutions
-          </h1>
-
-        </div>
-
-      </Reveal>
-    </div>
-
-
-    {/* ==================================================
-        RIGHT — BANNER PHOTO (END TO END)
-    ================================================== */}
-
-    <div
-      className="
-        order-1
-        relative
-        w-full
-        overflow-hidden
-        lg:order-2
-        lg:min-h-[460px]
-        xl:min-h-[480px]
-      "
-    >
-
-      <img
-        src={aboutHeroImage}
-        alt="Nightingales Medical Trust community"
-        width={1600}
-        height={1200}
-        className="
-          block
-          h-full
-          min-h-[260px]
-          w-full
-          object-cover
-          object-center
-        "
-      />
-
-    </div>
-
-  </div>
-
-</section>
-
+      <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
         {/* ======================================================
-    WHO WE ARE
-====================================================== */}
+            HERO — dark capital-campaign-style banner
+        ====================================================== */}
+        <section className="bg-[#FBF6EC] px-4 pb-10 pt-8 sm:px-6 sm:pt-10 lg:px-8">
+          <Reveal>
+            <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#14212B]">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
+                {/* LEFT — content */}
+                <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 md:px-12 lg:px-14 lg:py-16">
+                  <span className="inline-flex w-fit items-center rounded-full bg-[#ED6439] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+                    About NMT since 1998
+                  </span>
 
-<section className="relative overflow-hidden bg-[#FFF7EC]">
+                  <h1 className="mt-6 max-w-lg font-display text-[2.1rem] font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.5rem] md:text-[2.75rem] lg:text-[2.9rem]">
+                    Compassionate and innovative{" "}
+                    <span className="text-[#F6A36E]">age care</span>{" "}
+                    solutions
+                  </h1>
 
-  {/* Decorative background element */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      -right-32
-      top-10
-      h-72
-      w-72
-      rounded-full
-      bg-[#ED6439]/5
-      blur-3xl
-    "
-  />
+                  <div className="mt-8 h-px w-full max-w-md bg-white/12" />
 
-  <div
-    className="
-      relative
-      mx-auto
-      max-w-7xl
-      px-4
-      py-12
-      sm:px-8
-      sm:py-14
-      lg:px-10
-      lg:py-16
-    "
-  >
-
-    {/* ==================================================
-        SECTION HEADING
-    ================================================== */}
-
-    <Reveal>
-
-      <div className="w-full max-w-5xl">
-
-        {/* Who We Are */}
-        <p
-          className="
-            flex
-            items-center
-            gap-3
-            text-xs
-            font-bold
-            uppercase
-            tracking-[0.18em]
-            text-[#ED6439]
-          "
-        >
-          <span className="h-px w-10 bg-[#ED6439]" />
-          Who We Are
-        </p>
-
-
-        {/* Main heading — now directly below Who We Are */}
-        <h2
-  className="
-    w-full
-    font-display
-    text-3xl
-    font-bold
-    leading-tight
-    tracking-[-0.025em]
-    text-[#263746]
-    sm:text-4xl
-    lg:text-[3rem]
-    xl:text-[3.2rem]
-  "
->
-  Nearly Three Decades of Building{" "}
-  <span className="text-[#ED6439]">
-    Better Ways to Age.
-  </span>
-</h2>
-
-      </div>
-
-    </Reveal>
-
-
-    {/* ==================================================
-        MAIN CONTENT
-    ================================================== */}
-
-    <div className="relative mt-9 sm:mt-10">
-
-      {/* Connecting line */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-8
-          top-0
-          hidden
-          h-full
-          w-px
-          bg-[#ED6439]/15
-          lg:block
-        "
-      />
-
-      <div
-        className="
-          grid
-          gap-6
-          lg:grid-cols-2
-          lg:gap-10
-        "
-      >
-
-        {/* ==================================================
-            FROM SERVICES TO CARE MODELS
-        ================================================== */}
-
-        <Reveal>
-
-          <article className="relative lg:pl-16">
-
-            {/* Number */}
-            <div
-              className="
-                absolute
-                left-0
-                top-0
-                hidden
-                h-14
-                w-14
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#ED6439]/20
-                bg-[#FFF7EC]
-                font-display
-                text-base
-                font-bold
-                text-[#ED6439]
-                lg:flex
-              "
-            >
-              01
-            </div>
-
-
-            {/* Card */}
-            <div
-              className="
-                rounded-[1.25rem]
-                border
-                border-[#263746]/10
-                bg-white
-                p-6
-                shadow-[0_20px_60px_-45px_rgba(38,55,70,0.45)]
-                sm:p-7
-                lg:p-8
-              "
-            >
-
-              {/* Card heading */}
-              <div className="flex items-center gap-4">
-
-                <OrangeIcon large>
-                  <CompassIcon />
-                </OrangeIcon>
-
-                <p
-                  className="
-                    text-xs
-                    font-bold
-                    uppercase
-                    tracking-[0.16em]
-                    text-[#ED6439]
-                  "
-                >
-                  From services to care models
-                </p>
-
-              </div>
-
-
-              {/* Card content */}
-              <p
-                className="
-                  mt-5
-                  text-[15px]
-                  leading-7
-                  text-[#526574]
-                  sm:text-base
-                  sm:leading-7
-                "
-              >
-                NMT develops need-based solutions across dementia care,
-                healthy and active ageing, social integration, elder-abuse
-                prevention, livelihood and empowerment, community support,
-                training, awareness and advocacy.
-              </p>
-
-            </div>
-
-          </article>
-
-        </Reveal>
-
-
-        {/* ==================================================
-            OUR PURPOSE
-        ================================================== */}
-
-        <Reveal delay={100}>
-
-          <article className="relative lg:pl-16">
-
-            {/* Number */}
-            <div
-              className="
-                absolute
-                left-0
-                top-0
-                hidden
-                h-14
-                w-14
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#ED6439]/20
-                bg-[#FFF7EC]
-                font-display
-                text-base
-                font-bold
-                text-[#ED6439]
-                lg:flex
-              "
-            >
-              02
-            </div>
-
-
-            {/* Card */}
-            <div
-              className="
-                relative
-                overflow-hidden
-                rounded-[1.25rem]
-                bg-[#263746]
-                p-6
-                text-white
-                shadow-[0_25px_70px_-35px_rgba(38,55,70,0.6)]
-                sm:p-7
-                lg:p-8
-              "
-            >
-
-              {/* Decorative circle */}
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  -right-20
-                  -top-20
-                  h-52
-                  w-52
-                  rounded-full
-                  border
-                  border-[#ED6439]/20
-                "
-              />
-
-
-              <div className="relative">
-
-                {/* Card heading */}
-                <div className="flex items-center gap-4">
-
-                  <OrangeIcon large>
-                    <Target
-                      className="h-7 w-7"
-                      strokeWidth={1.7}
-                    />
-                  </OrangeIcon>
-
-                  <p
-                    className="
-                      text-xs
-                      font-bold
-                      uppercase
-                      tracking-[0.16em]
-                      text-[#F6A36E]
-                    "
-                  >
-                    Our purpose
+                  <p className="mt-8 max-w-md text-sm leading-6 text-white/55">
+                    Nightingales Medical Trust — a professionally managed
+                    not-for-profit building practical, holistic and
+                    family-centred solutions across ageing and dementia care.
                   </p>
-
                 </div>
 
-
-                {/* Purpose content */}
-                <p
-                  className="
-                    mt-5
-                    max-w-xl
-                    font-display
-                    text-xl
-                    font-bold
-                    leading-[1.3]
-                    text-white
-                    sm:text-2xl
-                    lg:text-[1.65rem]
-                  "
-                >
-                  Create practical, accessible and sustainable solutions so
-                  older persons can live with dignity—
-                  <span className="text-[#F6A36E]">
-                    {" "}and families can access the support they need.
-                  </span>
-                </p>
-
+                {/* RIGHT — banner photo */}
+                <div className="relative order-first h-[260px] w-full overflow-hidden lg:order-last lg:h-auto lg:min-h-[460px]">
+                  <img
+                    src={aboutHeroImage}
+                    alt="Nightingales Medical Trust community"
+                    width={1600}
+                    height={1200}
+                    className="block h-full w-full object-cover object-center"
+                  />
+                </div>
               </div>
-
             </div>
-
-          </article>
-
-        </Reveal>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-     {/* ======================================================
-    WHY WE EXIST
-====================================================== */}
-
-<section className="relative overflow-hidden bg-[#FFF7EC]">
-
-  {/* Decorative background */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      -left-32
-      top-20
-      h-64
-      w-64
-      rounded-full
-      bg-[#ED6439]/5
-      blur-3xl
-    "
-  />
-
-  <div
-    className="
-      mx-auto
-      max-w-7xl
-      px-4
-      py-12
-      sm:px-8
-      sm:py-14
-      lg:px-10
-      lg:py-16
-    "
-  >
-
-    {/* ==================================================
-        HEADER
-    ================================================== */}
-
-    <Reveal>
-      <div>
-
-        {/* Section label */}
-        <div className="flex items-center gap-3">
-          <span className="h-px w-10 bg-[#ED6439]" />
-
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-            Why We Exist
-          </p>
-        </div>
-
-        {/* Heading */}
-        <h2
-  className="
-    mt-4
-    w-full
-    font-display
-    text-2xl
-    font-bold
-    leading-[1.15]
-    tracking-[-0.035em]
-    text-[#263746]
-    sm:text-3xl
-    md:text-4xl
-    lg:text-[2.35rem]
-    xl:text-[2.7rem]
-  "
->
-  Ageing Should Not Mean Losing{" "}
-  <span className="text-[#ED6439]">
-    Dignity, Independence or Belonging.
-  </span>
-</h2>
-
-      </div>
-    </Reveal>
-
-
-    {/* ==================================================
-        CHALLENGES — 3 COLUMN COMPACT GRID
-    ================================================== */}
-
-    <div
-      className="
-        mt-9
-        grid
-        grid-cols-1
-        sm:grid-cols-2
-        lg:grid-cols-3
-        border-t
-        border-[#263746]/10
-      "
-    >
-
-      {CHALLENGES.map((challenge, index) => (
-        <Reveal
-          key={challenge}
-          delay={index * 30}
-        >
-          <div
-            className="
-              group
-              flex
-              min-h-[62px]
-              items-center
-              gap-3
-              border-b
-              border-[#263746]/10
-              px-2
-              py-3
-              transition-all
-              duration-300
-              hover:bg-white/60
-              sm:px-3
-              lg:border-r
-              lg:px-4
-              lg:last:border-r-0
-            "
-          >
-
-            {/* Number */}
-            <span
-              className="
-                flex
-                h-7
-                w-7
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                bg-white
-                font-display
-                text-[10px]
-                font-bold
-                text-[#ED6439]
-                shadow-[0_4px_15px_-8px_rgba(38,55,70,0.4)]
-                transition-all
-                duration-300
-                group-hover:bg-[#ED6439]
-                group-hover:text-white
-              "
-            >
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            {/* Challenge text */}
-            <p
-              className="
-                text-[12.5px]
-                font-medium
-                leading-5
-                text-[#526574]
-                transition-colors
-                duration-300
-                group-hover:text-[#263746]
-                sm:text-[13px]
-              "
-            >
-              {challenge}
-            </p>
-
-          </div>
-        </Reveal>
-      ))}
-
-    </div>
-
-
-    {/* ==================================================
-        CLOSING STATEMENT
-    ================================================== */}
-
-    <Reveal delay={180}>
-      <div
-        className="
-          mt-7
-          flex
-          flex-col
-          gap-2
-          border-t-2
-          border-[#ED6439]
-          pt-5
-          sm:flex-row
-          sm:items-center
-          sm:justify-between
-        "
-      >
-
-        {/* <p
-          className="
-            max-w-3xl
-            font-display
-            text-base
-            font-bold
-            leading-6
-            text-[#263746]
-            sm:text-lg
-          "
-        >
-          Every older person deserves the opportunity to age with dignity,
-          security and purpose.
-        </p>
-
-        <span
-          className="
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.14em]
-            text-[#ED6439]
-          "
-        >
-          Our commitment
-        </span> */}
-
-      </div>
-    </Reveal>
-
-  </div>
-</section>
+          </Reveal>
+        </section>
 
         {/* ======================================================
-    OUR JOURNEY
-====================================================== */}
+            WHO WE ARE
+        ====================================================== */}
+        <section className="bg-[#FBF6EC]">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
+            <Reveal>
+              <SectionMarker index="01" label="Who we are" />
+              <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#1B2A35] sm:text-4xl lg:text-[2.9rem]">
+                Nearly three decades of building better ways to age
+              </h2>
+            </Reveal>
 
-<section className="relative overflow-hidden bg-white">
+            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[#1B2A35]/10 bg-[#1B2A35]/10 lg:grid-cols-2">
+              <Reveal>
+                <div className="h-full bg-white p-7 sm:p-9">
+                  <CompassIcon />
+                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                    From services to care models
+                  </p>
+                  <p className="mt-4 text-[15px] leading-7 text-[#4C5C68] sm:text-base">
+                    NMT develops need-based solutions across dementia care,
+                    healthy and active ageing, social integration,
+                    elder-abuse prevention, livelihood and empowerment,
+                    community support, training, awareness and advocacy.
+                  </p>
+                </div>
+              </Reveal>
 
-  {/* Decorative background */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      -right-32
-      top-10
-      h-80
-      w-80
-      rounded-full
-      bg-[#ED6439]/5
-      blur-3xl
-    "
-  />
-
-  <div
-    className="
-      relative
-      mx-auto
-      max-w-7xl
-      px-4
-      py-14
-      sm:px-8
-      sm:py-16
-      lg:px-10
-      lg:py-20
-    "
-  >
-
-    {/* ==================================================
-        HEADER
-    ================================================== */}
-
-    <Reveal>
-      <div className="w-full max-w-6xl">
-
-        <div className="flex items-center gap-3">
-          <span className="h-px w-10 bg-[#ED6439]" />
-
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-            Our Journey
-          </p>
-        </div>
-
-        <h2
-          className="
-            mt-4
-            w-full
-            max-w-5xl
-            font-display
-            text-3xl
-            font-bold
-            leading-[1.08]
-            tracking-[-0.025em]
-            text-[#263746]
-            sm:text-4xl
-            lg:text-[42px]
-          "
-        >
-          Nightingales' Story Began In A Modest Garage In Sadashivnagar, Bengaluru.
-        </h2>
-
-      </div>
-    </Reveal>
-
-
-   {/* ==================================================
-    INTRODUCTION
-================================================== */}
-
-<Reveal delay={70}>
-  <div
-    className="
-      mt-7
-      max-w-6xl
-      border-l-2
-      border-[#ED6439]
-      pl-5
-      sm:pl-6
-    "
-  >
-
-    <p className="text-sm leading-7 text-[#526574] sm:text-[15px]">
-      Nightingales' story began in a modest garage in Sadashivnagar, Bengaluru.
-    </p>
-
-    <p className="mt-3 text-sm leading-7 text-[#526574] sm:text-[15px]">
-      The founders, Dr Radha S Murthy and Mr S Premkumar Raja, began by
-      providing home healthcare through Nightingales Home Health Services.
-      As they interacted with older persons and their families, they
-      recognised that medical care alone was not enough.
-    </p>
-
-    <p className="mt-3 text-sm leading-7 text-[#526574] sm:text-[15px]">
-      Many elders were also struggling with:
-    </p>
-
-    <p className="mt-1 text-sm leading-7 text-[#526574] sm:text-[15px]">
-      Loneliness. Emotional distress. abuse. Financial insecurity. Social isolation.
-    </p>
-
-    <p className="mt-3 text-sm leading-7 text-[#526574] sm:text-[15px]">
-      This realisation led to the establishment of Nightingales Medical
-      Trust in 1998, with a vision of creating a more comprehensive
-      approach to ageing.
-    </p>
-
-  </div>
-</Reveal>
-
-
-    {/* ==================================================
-        THREE DECADES
-    ================================================== */}
-
-    <Reveal delay={100}>
-      <div className="mt-9">
-
-        <div className="mb-4 flex items-center gap-4">
-
-          <h3
-            className="
-              font-display
-              text-xl
-              font-bold
-              tracking-[-0.02em]
-              text-[#263746]
-              sm:text-2xl
-            "
-          >
-            Three decades of innovation
-          </h3>
-
-          <span className="h-px flex-1 bg-[#263746]/10" />
-
-        </div>
-
-
-        {/* ==================================================
-            SCROLLABLE JOURNEY AREA
-        ================================================== */}
-
-        <div
-          className="
-            relative
-            overflow-hidden
-            rounded-[1.25rem]
-            border
-            border-[#263746]/10
-            bg-white
-            shadow-[0_15px_50px_-40px_rgba(38,55,70,0.45)]
-          "
-        >
-
-          {/* Scroll container */}
-          <div
-            className="
-              max-h-[520px]
-              overflow-y-auto
-              overscroll-contain
-              scroll-smooth
-              scrollbar-thin
-              scrollbar-track-[#FFF7EC]
-              scrollbar-thumb-[#ED6439]/40
-            "
-          >
-
-            <div className="min-w-0">
-
-              {/* Table header - desktop */}
-              <div
-                className="
-                  sticky
-                  top-0
-                  z-10
-                  hidden
-                  border-b
-                  border-[#263746]/10
-                  bg-[#FFF7EC]/95
-                  backdrop-blur-sm
-                  md:grid
-                  md:grid-cols-[100px_1fr_1.55fr]
-                  md:gap-6
-                  md:px-6
-                  md:py-3
-                "
-              >
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-                  Year
-                </span>
-
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-                  Milestone
-                </span>
-
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-                  Details
-                </span>
-              </div>
-
-
-              {/* Journey rows */}
-              <div className="divide-y divide-[#263746]/10">
-
-                {JOURNEY.map((item, index) => (
-                  <Reveal
-                    key={`${item.year}-${index}`}
-                    delay={index * 15}
-                  >
-
-                    <article
-                      className="
-                        relative
-                        px-5
-                        py-4
-                        transition-colors
-                        duration-200
-                        hover:bg-[#FFF7EC]/45
-                        md:grid
-                        md:grid-cols-[100px_1fr_1.55fr]
-                        md:items-start
-                        md:gap-6
-                        md:px-6
-                        md:py-4
-                      "
-                    >
-
-                      {/* Year */}
-                      <div className="flex items-center gap-3 md:block">
-
-                        <span
-                          className="
-                            font-display
-                            text-sm
-                            font-bold
-                            tracking-[-0.01em]
-                            text-[#ED6439]
-                            md:text-[15px]
-                          "
-                        >
-                          {item.year}
-                        </span>
-
-                      </div>
-
-
-                      {/* Milestone */}
-                      <div className="mt-2 md:mt-0">
-
-                        <h4
-                          className="
-                            max-w-md
-                            font-display
-                            text-[15px]
-                            font-bold
-                            leading-[1.3]
-                            tracking-[-0.01em]
-                            text-[#263746]
-                            sm:text-base
-                          "
-                        >
-                          {item.title}
-                        </h4>
-
-                      </div>
-
-
-                      {/* Details */}
-                      <div className="mt-2 md:mt-0">
-
-                        {item.body && (
-                          <p
-                            className="
-                              text-xs
-                              leading-5
-                              text-[#526574]
-                              sm:text-[13px]
-                              sm:leading-6
-                            "
-                          >
-                            {item.body}
-                          </p>
-                        )}
-
-                      </div>
-
-                    </article>
-
-                  </Reveal>
-                ))}
-
-              </div>
-
+              <Reveal delay={80}>
+                <div className="h-full bg-[#123F35] p-7 text-white sm:p-9">
+                  <Target className="h-7 w-7 text-[#F6A36E]" strokeWidth={1.7} />
+                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
+                    Our purpose
+                  </p>
+                  <p className="mt-4 max-w-xl font-display text-xl font-bold leading-[1.35] text-white sm:text-2xl">
+                    Create practical, accessible and sustainable solutions so
+                    older persons can live with dignity, and families can
+                    access the support they need.
+                  </p>
+                </div>
+              </Reveal>
             </div>
-
           </div>
+        </section>
 
-        </div>
+        {/* ======================================================
+            WHY WE EXIST
+        ====================================================== */}
+        <section className="bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
+            <Reveal>
+              <SectionMarker index="02" label="Why we exist" />
+              <h2 className="mt-5 max-w-3xl font-display text-2xl font-bold leading-[1.18] tracking-[-0.03em] text-[#1B2A35] sm:text-3xl md:text-4xl lg:text-[2.4rem]">
+                Ageing should not mean losing dignity, independence or
+                belonging
+              </h2>
+            </Reveal>
 
-      </div>
-    </Reveal>
-
-
-
-
-
-
-
-    {/* ==================================================
-        JOURNEY CLOSING
-    ================================================== */}
-
-    <Reveal delay={150}>
-      <div
-        className="
-          mt-6
-          rounded-xl
-          border
-          border-[#ED6439]/10
-          bg-[#FFF7EC]
-          px-4
-          py-5
-          text-center
-          sm:px-8
-          sm:py-6
-        "
-      >
-
-        <p
-          className="
-            font-display
-            text-base
-            font-bold
-            italic
-            leading-6
-            text-[#263746]
-            sm:text-lg
-          "
-        >
-          The journey continues.
-        </p>
-
-        <p
-          className="
-            mx-auto
-            mt-3
-            max-w-4xl
-            text-sm
-            leading-6
-            text-[#526574]
-          "
-        >
-          From a small beginning in Bengaluru, NMT has grown into a
-          multi-dimensional organisation working across age care, dementia
-          care, social protection, empowerment, training and advocacy.
-        </p>
-
-        <p
-          className="
-            mx-auto
-            mt-2
-            max-w-4xl
-            text-sm
-            leading-6
-            text-[#526574]
-          "
-        >
-          Our next chapter is focused on building scalable models for the future
-          of ageing and dementia care.
-        </p>
-
-      </div>
-    </Reveal>
-
-  </div>
-</section>
-
-    {/* ======================================================
-    VISION / MISSION / VALUES
-====================================================== */}
-
-<section className="relative overflow-hidden bg-[#FFF7EC]">
-  {/* Decorative background elements */}
-  <div className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#ED6439]/[0.045] blur-2xl" />
-  <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-[#123F35]/[0.05] blur-3xl" />
-
-  <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-
-    {/* ==================================================
-        SECTION HEADING
-    ================================================== */}
-
-    <Reveal>
-      <div>
-  <div className="mb-5 flex items-center gap-4">
-    <span
-      className="
-        font-display
-        text-2xl
-        font-bold
-        tracking-[-0.02em]
-        text-[#263746]
-        sm:text-3xl
-        lg:text-4xl
-      "
-    >
-      Vision, Mission & Values
-    </span>
-
-    <span className="h-px w-12 bg-[#ED6439]" />
-  </div>
-</div>
-    </Reveal>
-
-
-    {/* ==================================================
-        VISION + MISSION
-    ================================================== */}
-
-    <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-
-      {/* =========================
-          VISION
-      ========================= */}
-
-      <Reveal>
-        <article
-          className="
-            group
-            relative
-            overflow-hidden
-            rounded-[2rem]
-            bg-[#123F35]
-            p-7
-            text-white
-            shadow-[0_25px_70px_-35px_rgba(18,63,53,0.65)]
-            transition-all
-            duration-500
-            hover:-translate-y-1
-            sm:p-8
-            lg:p-9
-          "
-        >
-          {/* Glow */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#ED6439]/15 blur-3xl transition-transform duration-700 group-hover:scale-125" />
-
-          {/* Decorative ring */}
-          <div className="pointer-events-none absolute -bottom-20 -right-20 h-52 w-52 rounded-full border border-white/10" />
-          <div className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full border border-white/10" />
-
-          <div className="relative">
-
-            {/* Icon */}
-            <div className="grid h-14 w-14 place-items-center rounded-2xl border border-white/15 bg-white/10 text-[#F6A36E] backdrop-blur-sm">
-              <Eye
-                className="h-7 w-7"
-                strokeWidth={1.6}
-              />
+            <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-0 border-t border-[#1B2A35]/10 sm:grid-cols-3">
+              {CHALLENGES.map((challenge, index) => (
+                <Reveal key={challenge} delay={index * 25}>
+                  <div className="flex items-start gap-3 border-b border-[#1B2A35]/10 py-4">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                    <p className="text-[13.5px] leading-6 text-[#4C5C68]">
+                      {challenge}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
-
-            <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-[#F6A36E]">
-              Our vision
-            </p>
-
-            <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-[1.18] sm:text-3xl lg:text-[2rem]">
-              A society where elders are healthy, happy, empowered and
-              socially integrated.
-            </h3>
-
           </div>
-        </article>
-      </Reveal>
+        </section>
 
+        {/* ======================================================
+            OUR JOURNEY — vertical timeline
+        ====================================================== */}
+        <section className="bg-[#FBF6EC]">
+          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+            <Reveal>
+              <SectionMarker index="03" label="Our journey" />
+              <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
+                Nightingales' story began in a modest garage in
+                Sadashivnagar, Bengaluru
+              </h2>
+            </Reveal>
 
-      {/* =========================
-          MISSION
-      ========================= */}
-
-      <Reveal delay={100}>
-        <article
-          className="
-            group
-            relative
-            overflow-hidden
-            rounded-[2rem]
-            border
-            border-[#ED6439]/15
-            bg-white
-            p-7
-            shadow-[0_25px_65px_-40px_rgba(38,55,70,0.45)]
-            transition-all
-            duration-500
-            hover:-translate-y-1
-            hover:border-[#ED6439]/30
-            sm:p-8
-            lg:p-9
-          "
-        >
-          {/* Warm decorative shape */}
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#ED6439]/[0.07] blur-2xl transition-transform duration-700 group-hover:scale-125" />
-
-          <div className="relative">
-
-            {/* Icon */}
-            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[#FFF0E6] text-[#ED6439]">
-              <Target
-                className="h-7 w-7"
-                strokeWidth={1.6}
-              />
-            </div>
-
-            <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-              Our mission
-            </p>
-
-            <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#526574] sm:text-base sm:leading-7">
-              Enhance quality of life through community support,
-              geriatric and dementia care, active ageing, elder-abuse
-              prevention, livelihoods, education, advocacy and capacity
-              building.
-            </p>
-
-          </div>
-        </article>
-      </Reveal>
-
-    </div>
-
-
-    {/* ==================================================
-        VALUES
-    ================================================== */}
-
-    <div className="mt-14">
-
-      <Reveal>
-        <div className="mb-6 flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
-
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-            Our values
-          </p>
-        </div>
-      </Reveal>
-
-
-      {/* Value Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-        {VALUES.map((value, index) => (
-          <Reveal
-            key={value.title}
-            delay={index * 60}
-          >
-            <article
-              className="
-                group
-                relative
-                h-full
-                overflow-hidden
-                rounded-[1.5rem]
-                border
-                border-[#263746]/10
-                bg-white
-                p-6
-                transition-all
-                duration-400
-                hover:-translate-y-1.5
-                hover:border-[#ED6439]/25
-                hover:shadow-[0_20px_55px_-30px_rgba(38,55,70,0.45)]
-              "
-            >
-
-              {/* Top accent */}
-              <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-[#ED6439] to-[#F6A36E] opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
-
-              {/* Number */}
-              <div className="flex items-center justify-between">
-                <span className="font-display text-3xl font-bold text-[#ED6439]/15 transition-colors duration-300 group-hover:text-[#ED6439]/30">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-[#FFF7EC] text-xs font-bold text-[#ED6439] transition-all duration-300 group-hover:bg-[#ED6439] group-hover:text-white">
-                  +
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="mt-6">
-                <h4 className="font-display text-lg font-bold leading-tight text-[#263746] sm:text-xl">
-                  {value.title}
-                </h4>
-
-                <p className="mt-3 text-sm leading-6 text-[#526574]">
-                  {value.body}
+            <Reveal delay={60}>
+              <div className="mt-7 max-w-2xl space-y-4 text-sm leading-7 text-[#4C5C68] sm:text-[15px]">
+                <p>
+                  The founders, Dr Radha S Murthy and Mr S Premkumar Raja,
+                  began by providing home healthcare through Nightingales
+                  Home Health Services. As they interacted with older
+                  persons and their families, they recognised that medical
+                  care alone was not enough.
+                </p>
+                <p>
+                  Many elders were also struggling with loneliness, emotional
+                  distress, abuse, financial insecurity and social isolation.
+                </p>
+                <p>
+                  This realisation led to the establishment of Nightingales
+                  Medical Trust in 1998, with a vision of creating a more
+                  comprehensive approach to ageing.
                 </p>
               </div>
-
-              {/* Bottom line */}
-              <div className="mt-6 h-px w-10 bg-[#ED6439]/30 transition-all duration-300 group-hover:w-16 group-hover:bg-[#ED6439]" />
-
-            </article>
-          </Reveal>
-        ))}
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-      {/* ======================================================
-    PEOPLE & GOVERNANCE
-====================================================== */}
-
-<section className="relative overflow-hidden bg-white">
-  {/* Decorative background */}
-  <div className="pointer-events-none absolute -right-32 top-10 h-72 w-72 rounded-full bg-[#ED6439]/5 blur-3xl" />
-  <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-[#FFF7EC] blur-3xl" />
-
-  <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-
-    {/* ==================================================
-        SECTION HEADING
-    ================================================== */}
-
-    <Reveal>
-      <div className="w-full max-w-full">
-
-        <div className="mb-5 flex items-center gap-4">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-            People & Governance
-          </span>
-
-          <span className="h-px w-12 bg-[#ED6439]" />
-        </div>
-
-      <h2
-  className="
-    font-display
-    text-3xl
-    font-bold
-    leading-[1.08]
-    tracking-[-0.035em]
-    text-[#263746]
-    sm:text-4xl
-    lg:whitespace-nowrap
-    lg:text-[2.75rem]
-  "
->
-  Responsible Governance. People Who Turn Vision into Action.
-</h2>
-
-      </div>
-    </Reveal>
-
-
-    {/* ==================================================
-        FEATURE CARDS
-    ================================================== */}
-
-    <div className="mt-12 grid gap-6 lg:grid-cols-2">
-
-      {/* ==================================================
-          BOARD OF TRUSTEES
-      ================================================== */}
-
-      <Reveal>
-        <article
-          className="
-            group
-            relative
-            flex
-            min-h-[330px]
-            sm:min-h-[390px]
-            flex-col
-            overflow-hidden
-            rounded-[2rem]
-            bg-[#263746]
-            p-7
-            text-white
-            shadow-[0_25px_70px_-30px_rgba(38,55,70,0.45)]
-            transition-all
-            duration-500
-            hover:-translate-y-1
-            hover:shadow-[0_35px_80px_-30px_rgba(38,55,70,0.55)]
-            sm:p-9
-            lg:p-10
-          "
-        >
-          {/* Decorative circle */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-16
-              -top-16
-              h-48
-              w-48
-              rounded-full
-              border
-              border-white/10
-              transition-transform
-              duration-700
-              group-hover:scale-125
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-8
-              -top-8
-              h-32
-              w-32
-              rounded-full
-              bg-[#ED6439]/15
-              blur-2xl
-            "
-          />
-
-          {/* Icon */}
-          <div
-            className="
-              relative
-              grid
-              h-14
-              w-14
-              place-items-center
-              rounded-2xl
-              bg-[#ED6439]
-              text-white
-              shadow-[0_12px_30px_-8px_rgba(237,100,57,0.7)]
-              transition-transform
-              duration-500
-              group-hover:scale-105
-            "
-          >
-            <Landmark
-              className="h-7 w-7"
-              strokeWidth={1.7}
-            />
-          </div>
-
-          {/* Content */}
-          <div className="relative mt-auto pt-12">
-
-            <div className="mb-3 flex items-center gap-3">
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#F6A36E]">
-                01
-              </span>
-
-              <span className="h-px w-8 bg-[#ED6439]" />
-            </div>
-
-            <h3 className="font-display text-2xl font-bold leading-tight sm:text-3xl">
-              Board of Trustees
-            </h3>
-
-            <p className="mt-4 w-full max-w-lg text-sm leading-7 text-white/65 sm:text-base">
-              Experienced professionals providing strategic direction,
-              governance and oversight across NMT's work in age care,
-              healthcare and social development.
-            </p>
-
-            {/* Direct Board Page */}
-            <Link
-              to="/founders"
-              className="
-                mt-7
-                inline-flex
-                w-fit
-                items-center
-                gap-2
-                rounded-full
-                bg-[#ED6439]
-                px-5
-                py-2.5
-                text-sm
-                font-bold
-                text-white
-                shadow-[0_10px_25px_-10px_rgba(237,100,63,0.7)]
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:bg-[#d95538]
-              "
-            >
-              View Board of Trustees
-
-              <ArrowUpRight
-                className="
-                  h-4
-                  w-4
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-                strokeWidth={2.2}
-              />
-            </Link>
-
-          </div>
-        </article>
-      </Reveal>
-
-
-      {/* ==================================================
-          EXECUTIVE COMMITTEE
-      ================================================== */}
-
-      <Reveal delay={100}>
-        <article
-          className="
-            group
-            relative
-            flex
-            min-h-[330px]
-            sm:min-h-[390px]
-            flex-col
-            overflow-hidden
-            rounded-[2rem]
-            border
-            border-[#ED6439]/15
-            bg-[#FFF7EC]
-            p-7
-            shadow-[0_25px_70px_-35px_rgba(38,55,70,0.3)]
-            transition-all
-            duration-500
-            hover:-translate-y-1
-            hover:border-[#ED6439]/30
-            hover:shadow-[0_35px_80px_-35px_rgba(38,55,70,0.4)]
-            sm:p-9
-            lg:p-10
-          "
-        >
-          {/* Decorative shape */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-20
-              -top-20
-              h-52
-              w-52
-              rounded-full
-              border
-              border-[#ED6439]/10
-              transition-transform
-              duration-700
-              group-hover:scale-125
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              right-8
-              top-8
-              h-20
-              w-20
-              rounded-full
-              bg-[#ED6439]/10
-              blur-2xl
-            "
-          />
-
-          {/* Icon */}
-          <div
-            className="
-              relative
-              grid
-              h-14
-              w-14
-              place-items-center
-              rounded-2xl
-              bg-white
-              text-[#ED6439]
-              shadow-[0_12px_30px_-15px_rgba(38,55,70,0.35)]
-              transition-transform
-              duration-500
-              group-hover:scale-105
-            "
-          >
-            <Users
-              className="h-7 w-7"
-              strokeWidth={1.7}
-            />
-          </div>
-
-          {/* Content */}
-          <div className="relative mt-auto pt-12">
-
-            <div className="mb-3 flex items-center gap-3">
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-                02
-              </span>
-
-              <span className="h-px w-8 bg-[#ED6439]" />
-            </div>
-
-            <h3 className="font-display text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
-              Executive Committee
-            </h3>
-
-            <p className="mt-4 w-full max-w-lg text-sm leading-7 text-[#526574] sm:text-base">
-              A multidisciplinary professional team working together to
-              translate NMT's vision into meaningful programmes, services
-              and impact.
-            </p>
-
-            {/* Direct Executive Committee Page */}
-            <Link
-              to="/executive-committee"
-              className="
-                mt-7
-                inline-flex
-                w-fit
-                items-center
-                gap-2
-                rounded-full
-                bg-[#ED6439]
-                px-5
-                py-2.5
-                text-sm
-                font-bold
-                text-white
-                shadow-[0_10px_25px_-10px_rgba(237,100,63,0.7)]
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:bg-[#d95538]
-              "
-            >
-              Meet the Executive Committee
-
-              <ArrowUpRight
-                className="
-                  h-4
-                  w-4
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-                strokeWidth={2.2}
-              />
-            </Link>
-
-          </div>
-        </article>
-      </Reveal>
-
-    </div>
-
-  </div>
-</section>
-
-     {/* ======================================================
-    RECOGNITION
-====================================================== */}
-
-<RecognitionCarousel />
-
-       {/* ======================================================
-    PARTNERSHIPS
-====================================================== */}
-
-<Partners />
-
- {/* ======================================================
-    TRANSPARENCY
-====================================================== */}
-
-<section className="bg-[#263746] text-white">
-  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-
-    {/* ==================================================
-        HEADER
-    ================================================== */}
-
-    <div className="w-full max-w-3xl">
-
-      <Eyebrow>
-        Transparency
-      </Eyebrow>
-
-      <h2 className="font-display text-3xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">
-        Our Work, Our Impact.
-        <span className="text-[#F6A36E]"> Our Accountability.</span>
-      </h2>
-
-      <p className="mt-5 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-        We believe transparency builds trust. Explore our annual reports
-        and financial documents to learn more about our work, impact and
-        accountability.
-      </p>
-
-    </div>
-
-
-    {/* ==================================================
-        TRANSPARENCY LINKS
-    ================================================== */}
-
-    <div className="mt-12 grid gap-6 lg:grid-cols-2">
-
-
-      {/* ==================================================
-    ANNUAL REPORTS
-================================================== */}
-
-<Reveal>
-  <div
-    className="
-      group
-      relative
-      h-full
-      overflow-hidden
-      rounded-[1.75rem]
-      bg-white
-      text-[#263746]
-      shadow-[0_25px_60px_-30px_rgba(0,0,0,0.45)]
-      transition-all
-      duration-500
-      hover:-translate-y-1
-      hover:shadow-[0_30px_70px_-25px_rgba(237,100,57,0.25)]
-    "
-  >
-
-    {/* ================================================
-        VIBRANT TOP ACCENT
-    ================================================= */}
-
-    <div
-      className="
-        relative
-        overflow-hidden
-        bg-gradient-to-br
-        from-[#ED6439]
-        via-[#F47745]
-        to-[#F6A36E]
-        px-7
-        py-7
-        sm:px-9
-        sm:py-8
-      "
-    >
-
-      {/* Decorative circles */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-10
-          -top-16
-          h-40
-          w-40
-          rounded-full
-          border
-          border-white/20
-          bg-white/10
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -bottom-20
-          -left-10
-          h-36
-          w-36
-          rounded-full
-          bg-white/10
-        "
-      />
-
-      <div className="relative flex items-start justify-between gap-4">
-
-        {/* Icon */}
-
-        <div
-          className="
-            grid
-            h-12
-            w-12
-            shrink-0
-            place-items-center
-            rounded-2xl
-            bg-white/20
-            text-white
-            ring-1
-            ring-white/30
-            backdrop-blur-sm
-            transition-transform
-            duration-500
-            group-hover:scale-110
-          "
-        >
-          <FileText
-            className="h-6 w-6"
-            strokeWidth={1.8}
-          />
-        </div>
-
-        {/* Count */}
-
-        <div
-          className="
-            rounded-full
-            border
-            border-white/25
-            bg-white/15
-            px-3.5
-            py-1.5
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.16em]
-            text-white
-            backdrop-blur-sm
-          "
-        >
-          7 Reports
-        </div>
-
-      </div>
-
-      <div className="relative mt-6">
-
-        <p
-          className="
-            text-xs
-            font-bold
-            uppercase
-            tracking-[0.18em]
-            text-white/80
-          "
-        >
-          Annual Reports
-        </p>
-
-        <h3
-          className="
-            mt-2
-            font-display
-            text-2xl
-            font-bold
-            leading-tight
-            text-white
-            sm:text-3xl
-          "
-        >
-          Our work, year by year.
-        </h3>
-
-      </div>
-
-    </div>
-
-
-    {/* ================================================
-        REPORT CONTENT
-    ================================================= */}
-
-    <div className="px-7 py-7 sm:px-9 sm:py-8">
-
-      {/* <p
-        className="
-          max-w-xl
-          text-sm
-          leading-7
-          text-[#526574]
-          sm:text-base
-        "
-      >
-        Explore our annual reports to see our programmes,
-        impact, financial performance and achievements.
-      </p> */}
-
-
-      {/* ================================================
-          YEAR BUTTONS
-      ================================================= */}
-
-      <div className="mt-6 flex flex-wrap gap-2.5">
-
-        {annualReports.map((report) => (
-          <a
-            key={report.year}
-            href={report.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              group/year
-              inline-flex
-              items-center
-              gap-1.5
-              rounded-full
-              border
-              border-[#ED6439]/15
-              bg-[#FFF5EE]
-              px-4
-              py-2.5
-              text-sm
-              font-bold
-              text-[#263746]
-              transition-all
-              duration-300
-              hover:-translate-y-0.5
-              hover:border-[#ED6439]
-              hover:bg-[#ED6439]
-              hover:text-white
-              hover:shadow-[0_8px_20px_-8px_rgba(237,100,57,0.7)]
-            "
-          >
-            {report.year}
-
-            <ArrowUpRight
-              className="
-                h-3.5
-                w-3.5
-                opacity-40
-                transition-all
-                duration-300
-                group-hover/year:translate-x-0.5
-                group-hover/year:-translate-y-0.5
-                group-hover/year:opacity-100
-              "
-              strokeWidth={2.2}
-            />
-          </a>
-        ))}
-
-      </div>
-
-
-      {/* ================================================
-          BOTTOM INFO
-      ================================================= */}
-
-      <div
-        className="
-          mt-7
-          flex
-          items-center
-          gap-3
-          border-t
-          border-[#263746]/10
-          pt-5
-          text-xs
-          font-medium
-          text-[#526574]
-        "
-      >
-
-        <span
-          className="
-            h-2
-            w-2
-            rounded-full
-            bg-[#ED6439]
-          "
-        />
-
-        <span>
-          Programmes · Impact · Partnerships · Achievements
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-</Reveal>
-
-
-    {/* ==================================================
-    FINANCIAL REPORTS
-================================================== */}
-
-<Reveal delay={100}>
-
-  <Link
-    to="/financial-reports"
-    className="
-      group
-      block
-      rounded-[1.75rem]
-      border
-      border-white/10
-      bg-white/[0.06]
-      p-7
-      transition-all
-      duration-300
-      hover:-translate-y-1
-      hover:border-white/20
-      hover:bg-white/[0.09]
-      hover:shadow-[0_25px_60px_-30px_rgba(0,0,0,0.4)]
-      sm:p-9
-    "
-  >
-
-    {/* TOP ROW */}
-    <div className="flex items-start justify-between gap-5">
-
-      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#ED6439] text-white">
-        <ShieldCheck
-          className="h-5 w-5"
-          strokeWidth={1.7}
-        />
-      </div>
-
-      <ArrowUpRight
-        className="
-          h-5
-          w-5
-          text-[#F6A36E]/60
-          transition-all
-          duration-300
-          group-hover:-translate-y-0.5
-          group-hover:translate-x-0.5
-          group-hover:text-[#F6A36E]
-        "
-        strokeWidth={2}
-      />
-
-    </div>
-
-
-    {/* CONTENT */}
-
-    <p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-[#F6A36E]">
-      Financial Reports
-    </p>
-
-    <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
-      Transparency you can trust
-    </h3>
-
-    <p className="mt-3 w-full max-w-lg text-sm leading-7 text-white/65 sm:text-base">
-      Access our audited financial statements and statutory
-      documents for a transparent view of our financial
-      accountability.
-    </p>
-
-
-    {/* LINK */}
-
-    <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#F6A36E]">
-      View Financial Reports
-
-      <ArrowUpRight
-        className="
-          h-4
-          w-4
-          transition-transform
-          duration-300
-          group-hover:translate-x-0.5
-          group-hover:-translate-y-0.5
-        "
-        strokeWidth={2.2}
-      />
-    </div>
-
-  </Link>
-
-</Reveal>
-
-    </div>
-
-  </div>
-</section>
-
-
-
-{/* ======================================================
-    SETTING TRENDS IN AGE CARE
-====================================================== */}
-
-<section className="relative overflow-hidden bg-[#FFF7EC]">
-  {/* Decorative background elements */}
-  <div className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#ED6439]/[0.05] blur-3xl" />
-  <div className="pointer-events-none absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-[#263746]/[0.04] blur-3xl" />
-
-  <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-    <Reveal>
-      <div className="max-w-6xl">
-        {/* Eyebrow */}
-        <div className="mb-5 flex flex-wrap items-center gap-3">
-          <span className="h-px w-10 shrink-0 bg-[#ED6439]" />
-
-          <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-xs">
-            Setting Trends in Age Care
-          </span>
-        </div>
-
-        {/* Heading */}
-        <h2 className="max-w-5xl font-display text-3xl font-bold leading-[1.08] tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-          Setting Trends in{" "}
-          <span className="text-[#ED6439]">Age Care</span>
-        </h2>
-
-        {/* Intro */}
-        <p className="mt-6 max-w-4xl text-[15px] leading-7 text-[#526574] sm:text-base sm:leading-8">
-          For nearly three decades, NMT has sought to demonstrate that ageing
-          can be approached differently.
-        </p>
-      </div>
-    </Reveal>
-
-    <Reveal delay={80}>
-      <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
-        {/* Left statement */}
-        <div className="relative overflow-hidden rounded-[1.5rem] bg-[#263746] p-7 text-white shadow-[0_25px_70px_-35px_rgba(38,55,70,0.55)] sm:p-8 lg:p-9">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full border border-[#ED6439]/20" />
-
-          <div className="relative">
-            <div className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-[#ED6439]/10 text-[#F6A36E]">
-              <Sparkles className="h-6 w-6" strokeWidth={1.7} />
-            </div>
-
-            <p className="max-w-xl font-display text-xl font-bold leading-[1.35] sm:text-2xl lg:text-[1.7rem]">
-              We have moved beyond the traditional model of care to develop
-              solutions that combine:
-            </p>
-          </div>
-        </div>
-
-        {/* Care model */}
-        <div className="rounded-[1.5rem] border border-[#263746]/10 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(38,55,70,0.45)] sm:p-8">
-          <div className="flex flex-wrap gap-3">
-            {[
-              "Care",
-              "Community",
-              "Prevention",
-              "Empowerment",
-              "Innovation",
-              "Advocacy",
-            ].map((item, index) => (
-              <div
-                key={item}
-                className="flex min-w-0 flex-1 basis-[calc(50%-0.375rem)] items-center gap-3 rounded-xl border border-[#ED6439]/15 bg-[#FFF7EC] px-4 py-4 sm:basis-[calc(33.333%-0.5rem)] lg:basis-[calc(50%-0.375rem)]"
-              >
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#ED6439] font-mono text-[10px] font-bold text-white">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <span className="font-display text-sm font-bold text-[#263746] sm:text-base">
-                  {item}
-                </span>
+            </Reveal>
+
+            <div className="mt-14">
+              <Reveal>
+                <h3 className="font-display text-xl font-bold tracking-[-0.02em] text-[#1B2A35] sm:text-2xl">
+                  Three decades of innovation
+                </h3>
+              </Reveal>
+
+              <div className="relative mt-9">
+                <div className="absolute left-[3px] top-2 bottom-2 w-px bg-[#1B2A35]/12 sm:left-[95px]" />
+
+                <div className="space-y-0">
+                  {JOURNEY.map((item, index) => (
+                    <Reveal key={`${item.year}-${index}`} delay={index * 12}>
+                      <div className="relative grid grid-cols-1 gap-2 py-5 pl-6 sm:grid-cols-[95px_1fr] sm:gap-8 sm:pl-0">
+                        <div className="relative sm:pr-8 sm:text-right">
+                          <span className="absolute -left-[27px] top-1 h-2 w-2 rounded-full bg-[#ED6439] sm:-left-[5px]" />
+                          <span className="font-display text-sm font-bold text-[#ED6439] sm:text-[15px]">
+                            {item.year}
+                          </span>
+                        </div>
+
+                        <div className="border-l border-[#1B2A35]/10 pl-6 sm:border-l-0 sm:pl-8">
+                          <h4 className="max-w-2xl font-display text-[15px] font-bold leading-[1.35] text-[#1B2A35] sm:text-base">
+                            {item.title}
+                          </h4>
+                          {item.body && (
+                            <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-[#4C5C68] sm:text-[13.5px]">
+                              {item.body}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
+
+            <Reveal delay={100}>
+              <div className="mt-10 border-t border-[#ED6439] pt-6">
+                <p className="font-display text-lg font-bold italic leading-6 text-[#1B2A35]">
+                  The journey continues.
+                </p>
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4C5C68]">
+                  From a small beginning in Bengaluru, NMT has grown into a
+                  multi-dimensional organisation working across age care,
+                  dementia care, social protection, empowerment, training and
+                  advocacy.
+                </p>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-[#4C5C68]">
+                  Our next chapter is focused on building scalable models for
+                  the future of ageing and dementia care.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </div>
-    </Reveal>
+        </section>
 
-    <Reveal delay={140}>
-      <div className="mt-8 rounded-[1.5rem] border border-[#ED6439]/15 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(38,55,70,0.35)] sm:p-8 lg:p-9">
-        <p className="max-w-5xl text-[15px] leading-7 text-[#526574] sm:text-base sm:leading-8">
-          From dementia day care and specialised residential care to elder
-          helplines, active ageing, livelihood programmes, caregiver training
-          and Smriti Gram, our work is guided by one enduring belief:
-        </p>
+        {/* ======================================================
+            VISION / MISSION / VALUES
+        ====================================================== */}
+        <section className="bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+            <Reveal>
+              <SectionMarker index="04" label="Vision, mission & values" />
+            </Reveal>
 
-        <div className="mt-7 border-l-2 border-[#ED6439] pl-5 sm:pl-6">
-          <p className="max-w-4xl font-display text-xl font-bold leading-[1.4] text-[#263746] sm:text-2xl lg:text-[1.7rem]">
-            Every elder deserves to age with dignity, purpose, security and
-            belonging.
-          </p>
-        </div>
+            <div className="mt-9 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+              <Reveal>
+                <article className="flex h-full flex-col justify-between rounded-2xl bg-[#123F35] p-7 text-white sm:p-9">
+                  <Eye className="h-7 w-7 text-[#F6A36E]" strokeWidth={1.6} />
+                  <div className="mt-8">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
+                      Our vision
+                    </p>
+                    <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-[1.2] sm:text-3xl">
+                      A society where elders are healthy, happy, empowered
+                      and socially integrated.
+                    </h3>
+                  </div>
+                </article>
+              </Reveal>
 
-        <p className="mt-7 max-w-4xl text-[15px] leading-7 text-[#526574] sm:text-base sm:leading-8">
-          And every family should have access to the knowledge, care and
-          support they need.
-        </p>
-      </div>
-    </Reveal>
-  </div>
-</section>
+              <Reveal delay={80}>
+                <article className="flex h-full flex-col justify-between rounded-2xl border border-[#1B2A35]/10 bg-[#FBF6EC] p-7 sm:p-9">
+                  <Target className="h-7 w-7 text-[#ED6439]" strokeWidth={1.6} />
+                  <div className="mt-8">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                      Our mission
+                    </p>
+                    <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#4C5C68] sm:text-base">
+                      Enhance quality of life through community support,
+                      geriatric and dementia care, active ageing, elder-abuse
+                      prevention, livelihoods, education, advocacy and
+                      capacity building.
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            </div>
+
+            <div className="mt-16">
+              <Reveal>
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                  Our values
+                </p>
+              </Reveal>
+
+              <div className="mt-6 grid grid-cols-1 border-t border-[#1B2A35]/10 sm:grid-cols-2">
+                {VALUES.map((value, index) => (
+                  <Reveal key={value.title} delay={index * 40}>
+                    <div className="flex items-start gap-4 border-b border-[#1B2A35]/10 py-5 pr-6 odd:sm:border-r odd:sm:pr-8 even:sm:pl-8">
+                      <Check className="mt-1 h-4 w-4 shrink-0 text-[#ED6439]" strokeWidth={2.5} />
+                      <div>
+                        <h4 className="font-display text-base font-bold text-[#1B2A35] sm:text-lg">
+                          {value.title}
+                        </h4>
+                        <p className="mt-1.5 text-sm leading-6 text-[#4C5C68]">
+                          {value.body}
+                        </p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================
+            PEOPLE & GOVERNANCE
+        ====================================================== */}
+        <section className="bg-[#FBF6EC]">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+            <Reveal>
+              <SectionMarker index="05" label="People & governance" />
+              <h2 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
+                Responsible governance. People who turn vision into action.
+              </h2>
+            </Reveal>
+
+            <div className="mt-11 grid gap-5 lg:grid-cols-2">
+              <Reveal>
+                <article className="flex min-h-[300px] flex-col justify-between rounded-2xl bg-[#14212B] p-7 text-white sm:p-9">
+                  <Landmark className="h-7 w-7 text-[#ED6439]" strokeWidth={1.7} />
+
+                  <div className="mt-10">
+                    <h3 className="font-display text-2xl font-bold leading-tight sm:text-3xl">
+                      Board of Trustees
+                    </h3>
+                    <p className="mt-4 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
+                      Experienced professionals providing strategic
+                      direction, governance and oversight across NMT's work
+                      in age care, healthcare and social development.
+                    </p>
+
+                    <Link
+                      to="/founders"
+                      className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#d95538]"
+                    >
+                      View Board of Trustees
+                      <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+                    </Link>
+                  </div>
+                </article>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <article className="flex min-h-[300px] flex-col justify-between rounded-2xl border border-[#1B2A35]/10 bg-white p-7 sm:p-9">
+                  <Users className="h-7 w-7 text-[#ED6439]" strokeWidth={1.7} />
+
+                  <div className="mt-10">
+                    <h3 className="font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
+                      Executive Committee
+                    </h3>
+                    <p className="mt-4 max-w-lg text-sm leading-7 text-[#4C5C68] sm:text-base">
+                      A multidisciplinary professional team working together
+                      to translate NMT's vision into meaningful programmes,
+                      services and impact.
+                    </p>
+
+                    <Link
+                      to="/executive-committee"
+                      className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#d95538]"
+                    >
+                      Meet the Executive Committee
+                      <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+                    </Link>
+                  </div>
+                </article>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================
+            RECOGNITION
+        ====================================================== */}
+        <RecognitionCarousel />
+
+        {/* ======================================================
+            PARTNERSHIPS
+        ====================================================== */}
+        <Partners />
+
+        {/* ======================================================
+            TRANSPARENCY
+        ====================================================== */}
+        <section className="bg-[#14212B] text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+            <div className="max-w-3xl">
+              <SectionMarker index="08" label="Transparency" tone="dark" />
+              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
+                Our work, our impact, our accountability.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-white/65 sm:text-lg">
+                We believe transparency builds trust. Explore our annual
+                reports and financial documents to learn more about our
+                work, impact and accountability.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+              <Reveal>
+                <div className="h-full rounded-2xl bg-white p-7 text-[#1B2A35] sm:p-9">
+                  <div className="flex items-start justify-between gap-4">
+                    <FileText className="h-6 w-6 text-[#ED6439]" strokeWidth={1.8} />
+                    <span className="rounded-full border border-[#1B2A35]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#4C5C68]">
+                      7 reports
+                    </span>
+                  </div>
+
+                  <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+                    Annual reports
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
+                    Our work, year by year
+                  </h3>
+
+                  <div className="mt-6 flex flex-wrap gap-2.5">
+                    {annualReports.map((report) => (
+                      <a
+                        key={report.year}
+                        href={report.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#ED6439] hover:text-white"
+                      >
+                        {report.year}
+                        <ArrowUpRight className="h-3.5 w-3.5 opacity-50" strokeWidth={2.2} />
+                      </a>
+                    ))}
+                  </div>
+
+                  <div className="mt-7 flex items-center gap-3 border-t border-[#1B2A35]/10 pt-5 text-xs font-medium text-[#4C5C68]">
+                    <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
+                    <span>Programmes · Impact · Partnerships · Achievements</span>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={80}>
+                <Link
+                  to="/financial-reports"
+                  className="group block h-full rounded-2xl border border-white/12 bg-white/[0.05] p-7 transition-colors duration-300 hover:bg-white/[0.08] sm:p-9"
+                >
+                  <div className="flex items-start justify-between gap-5">
+                    <ShieldCheck className="h-6 w-6 text-[#ED6439]" strokeWidth={1.7} />
+                    <ArrowUpRight
+                      className="h-5 w-5 text-[#F6A36E]/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      strokeWidth={2}
+                    />
+                  </div>
+
+                  <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
+                    Financial reports
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
+                    Transparency you can trust
+                  </h3>
+                  <p className="mt-3 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
+                    Access our audited financial statements and statutory
+                    documents for a transparent view of our financial
+                    accountability.
+                  </p>
+
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#F6A36E]">
+                    View Financial Reports
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+                  </div>
+                </Link>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================================================
+            SETTING TRENDS IN AGE CARE
+        ====================================================== */}
+        <section className="bg-[#FBF6EC]">
+          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+            <Reveal>
+              <SectionMarker index="09" label="Setting trends in age care" />
+              <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-5xl">
+                Setting trends in age care
+              </h2>
+              <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-8">
+                For nearly three decades, NMT has sought to demonstrate that
+                ageing can be approached differently.
+              </p>
+            </Reveal>
+
+            <Reveal delay={70}>
+              <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="rounded-2xl bg-[#14212B] p-7 text-white sm:p-9">
+                  <Sparkles className="h-6 w-6 text-[#F6A36E]" strokeWidth={1.7} />
+                  <p className="mt-6 max-w-xl font-display text-xl font-bold leading-[1.4] sm:text-2xl">
+                    We have moved beyond the traditional model of care to
+                    develop solutions that combine:
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-[#1B2A35]/10 bg-white p-6 sm:p-8">
+                  <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+                    {["Care", "Community", "Prevention", "Empowerment", "Innovation", "Advocacy"].map(
+                      (item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-2 rounded-lg bg-[#FBF6EC] px-3.5 py-3 text-sm font-bold text-[#1B2A35]"
+                        >
+                          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          {item}
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={130}>
+              <div className="mt-6 rounded-2xl border border-[#1B2A35]/10 bg-white p-6 sm:p-8 lg:p-9">
+                <p className="max-w-4xl text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-8">
+                  From dementia day care and specialised residential care to
+                  elder helplines, active ageing, livelihood programmes,
+                  caregiver training and Smriti Gram, our work is guided by
+                  one enduring belief:
+                </p>
+
+                <p className="mt-6 max-w-3xl border-l-2 border-[#ED6439] pl-5 font-display text-xl font-bold leading-[1.4] text-[#1B2A35] sm:pl-6 sm:text-2xl">
+                  Every elder deserves to age with dignity, purpose, security
+                  and belonging.
+                </p>
+
+                <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-8">
+                  And every family should have access to the knowledge, care
+                  and support they need.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
 
         {/* ======================================================
             FINAL CTA
         ====================================================== */}
-
-        <section className="bg-[#FFF7EC]">
-
+        <section className="bg-white">
           <div className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-8 sm:py-20 lg:py-24">
-
             <Reveal>
-
-              {/* <Eyebrow>
-                Setting Trends in Age Care
-              </Eyebrow> */}
-
-              <h2 className="font-display text-3xl font-bold leading-tight tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
+              <h2 className="font-display text-3xl font-bold leading-tight tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-5xl">
                 The journey continues.
               </h2>
 
               <div className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2.5">
-
-                {[
-                  "Care",
-                  "Community",
-                  "Prevention",
-                  "Empowerment",
-                  "Innovation",
-                  "Advocacy",
-                ].map((item, index) => (
-
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#ED6439]/20 bg-white px-4 py-2.5 text-sm font-semibold text-[#263746]"
-                  >
-
-                    <span className="text-[#ED6439]">
-                      {index < 5 ? "+" : ""}
+                {["Care", "Community", "Prevention", "Empowerment", "Innovation", "Advocacy"].map(
+                  (item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-semibold text-[#1B2A35]"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#ED6439]" />
+                      {item}
                     </span>
-
-                    {item}
-
-                  </span>
-
-                ))}
-
+                  ),
+                )}
               </div>
 
               <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-
                 <a
                   href="/services"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white transition-transform duration-300 hover:-translate-y-0.5 hover:bg-[#D95730]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#D95730]"
                 >
                   Explore Our Programmes
                   <ArrowRight className="h-4 w-4" />
@@ -3036,26 +1043,21 @@ function AboutPage() {
 
                 <a
                   href="/get-involved"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#ED6439]/25 bg-white px-6 py-3.5 text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:border-[#ED6439] hover:bg-[#FFF0E6]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#ED6439]/30 bg-white px-6 py-3.5 text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:bg-[#FFF0E6]"
                 >
                   Partner With Us
                 </a>
 
                 <a
                   href="/get-involved"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#263746]/15 px-6 py-3.5 text-sm font-bold text-[#263746] transition-colors duration-300 hover:border-[#263746]/30 hover:bg-white"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1B2A35]/15 px-6 py-3.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#FBF6EC]"
                 >
                   Support Our Work
                 </a>
-
               </div>
-
             </Reveal>
-
           </div>
-
         </section>
-
       </main>
     </SiteLayout>
   );
@@ -3070,7 +1072,7 @@ function CompassIcon() {
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      className="h-7 w-7"
+      className="h-7 w-7 text-[#ED6439]"
       stroke="currentColor"
       strokeWidth="1.7"
       strokeLinecap="round"
