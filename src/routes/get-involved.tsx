@@ -439,53 +439,119 @@ function GetInvolvedPage() {
 
   return (
     <SiteLayout>
-      {/* ======================================================
-          HERO — full-bleed image banner (no rounded corners, edge-to-edge)
-          ====================================================== */}
-      <section className="relative w-full">
-        <Reveal>
-          <div className="relative h-[460px] w-full sm:h-[520px] lg:h-[600px]">
-            {/* Full-width banner image */}
-            <img
-              src={getInvolvedHeroImage}
-              alt="Nightingales Medical Trust corporate partnerships"
-              className="absolute inset-0 h-full w-full object-cover object-top"
-            />
+     {/* ======================================================
+    HERO — fully responsive full-bleed banner
+====================================================== */}
+<section className="relative w-full overflow-hidden">
+  <Reveal>
+    <div
+      className="
+        relative w-full
+        min-h-[620px]
+        sm:min-h-[600px]
+        md:h-[560px] md:min-h-0
+        lg:h-[600px] lg:min-h-0
+      "
+    >
+      {/* Full-width banner image */}
+      <img
+        src={getInvolvedHeroImage}
+        alt="Nightingales Medical Trust corporate partnerships"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-top
+        "
+      />
 
-            {/* Light gradient overlay — only enough for text contrast, image stays clear */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/70 via-[#17232B]/25 to-transparent" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/70 via-[#17232B]/25 to-transparent" />
 
-            {/* Content overlaid on image, left side */}
-            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-5 sm:px-8 lg:px-10">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#FF9A78]">
-                <Link to="/" className="transition hover:text-white">Home</Link>
-                <span>/</span>
-                <span className="text-white">Get Involved</span>
-              </div>
+      {/* Content */}
+      <div
+        className="
+          relative z-10 mx-auto flex min-h-[620px] w-full
+          max-w-7xl flex-col justify-center
+          px-5 py-10
+          sm:min-h-[600px] sm:px-8 sm:py-10
+          md:h-full md:min-h-0 md:px-10 md:py-10
+          lg:px-10 lg:py-12
+        "
+      >
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#FF9A78]">
+          <Link to="/" className="transition hover:text-white">
+            Home
+          </Link>
 
-              <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#ED6439] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-md">
-                <Building2 className="h-3.5 w-3.5" />
-                Corporate Partnerships
-              </span>
+          <span>/</span>
 
-             <h1 className="mt-5 max-w-5xl font-display text-[1.8rem] font-extrabold capitalize leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.2rem] lg:text-[2.7rem]">
-  Partner with Us to Create Lasting Impact for Elders and Those with Dementia
-</h1>
+          <span className="text-white">Get Involved</span>
+        </div>
 
-              <div className="mt-6 max-w-5xl space-y-4 text-base font-medium leading-relaxed text-white/90 sm:text-lg">
-              <p>
-  At Nightingales Medical Trust (NMT), we believe meaningful social change happens when individuals, corporates, and communities come together. We actively collaborate with corporates, government bodies, NGOs, and academic institutions to improve the quality of life of elders, especially those living with dementia and those from marginalized communities.
-</p>
+        {/* Badge */}
+        <span
+          className="
+            mt-4 inline-flex w-fit items-center gap-1.5
+            rounded-full bg-[#ED6439]
+            px-4 py-1.5
+            text-[10px] font-bold uppercase
+            tracking-[0.14em] text-white shadow-md
+            sm:text-xs
+          "
+        >
+          <Building2 className="h-3.5 w-3.5" />
+          Corporate Partnerships
+        </span>
 
-<p className="font-semibold text-white">
-  We invite corporates to engage with us through CSR partnerships, employee engagement, and long-term collaborations that create measurable social impact.
-</p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+        {/* Heading */}
+        <h1
+          className="
+            mt-4 w-full max-w-5xl
+            font-display font-extrabold
+            capitalize leading-[1.08]
+            tracking-[-0.03em] text-white
+            text-[1.8rem]
+            sm:mt-5 sm:text-[2.2rem]
+            md:text-[2.6rem]
+            lg:text-[2.7rem]
+          "
+        >
+          Partner with Us to Create Lasting Impact for Elders and Those with
+          Dementia
+        </h1>
+
+        {/* Text */}
+        <div
+          className="
+            mt-5 w-full max-w-5xl
+            space-y-4
+            text-sm font-medium
+            leading-6 text-white/90
+            sm:mt-6 sm:text-base sm:leading-7
+            md:text-lg
+            lg:text-lg
+          "
+        >
+          <p>
+            At Nightingales Medical Trust (NMT), we believe meaningful social
+            change happens when individuals, corporates, and communities come
+            together. We actively collaborate with corporates, government
+            bodies, NGOs, and academic institutions to improve the quality of
+            life of elders, especially those living with dementia and those
+            from marginalized communities.
+          </p>
+
+          <p className="font-semibold text-white">
+            We invite corporates to engage with us through CSR partnerships,
+            employee engagement, and long-term collaborations that create
+            measurable social impact.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Reveal>
+</section>
 
       {/* ======================================================
           NAVIGATIONAL SUB-BAR

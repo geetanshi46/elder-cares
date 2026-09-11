@@ -1624,6 +1624,7 @@ function ServicesPage() {
                           Bengaluru – Kasturinagar
                           <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
+
                       </li>
 
                       <li>
@@ -1833,7 +1834,7 @@ function ServicesPage() {
     {/* ==================================================
         RESIDENTIAL CARE CENTRES
         ================================================== */}
-    <div className="mt-7 flex min-w-0 gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+    <div className="mt-7 flex min-w-0 gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
 
       {[
         {
@@ -1870,22 +1871,33 @@ function ServicesPage() {
           body: "A 25-bed residential facility exclusively for women. The centre offers a peaceful, homely environment, two- and three-sharing rooms, specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care and clinical oversight from NMT's specialist team through telemedicine.",
         },
       ].map((centre) => (
-        <article
-          key={centre.name}
+  <article
+  key={centre.name}
   className="
-  flex
-  w-[calc(50%-0.75rem)]
-  min-w-0
-  shrink-0
+  !flex
+  !w-full
+  !min-w-full
+  !max-w-full
+  !shrink-0
+  !grow-0
   snap-start
   flex-col
   overflow-hidden
+  rounded-2xl
   border
   border-[#ED6439]/15
   bg-white
   shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+
+  sm:!w-[calc(50%-10px)]
+  sm:!min-w-[calc(50%-10px)]
+  sm:!max-w-[calc(50%-10px)]
+
+  lg:!w-[calc(33.333%-13.333px)]
+  lg:!min-w-[calc(33.333%-13.333px)]
+  lg:!max-w-[calc(33.333%-13.333px)]
 "
-        >
+      >
 
           {/* ==================================================
               RESPONSIVE CARD IMAGE WITH LOCATION BADGE

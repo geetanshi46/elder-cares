@@ -426,39 +426,93 @@ function AboutPage() {
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
-  {/* ======================================================
-    HERO — full-bleed image banner (no rounded corners, edge-to-edge)
+ {/* ======================================================
+    HERO — fully responsive full-bleed banner
 ====================================================== */}
-<section className="relative w-full">
+<section className="relative w-full overflow-hidden">
   <Reveal>
-    <div className="relative h-[420px] w-full sm:h-[480px] lg:h-[560px]">
+    <div
+      className="
+        relative w-full
+        h-[460px]
+        sm:h-[500px]
+        md:h-[560px]
+        lg:h-[560px]
+      "
+    >
       {/* Full-width banner image */}
       <img
         src={aboutHeroImage}
         alt="Nightingales Medical Trust community"
         width={1920}
         height={1080}
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-top
+        "
       />
 
-      {/* Light gradient overlay — only enough for text contrast, image stays clear */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
 
-      {/* Content overlaid on image, left side */}
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-12xl flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-14">
-        <span className="inline-flex w-fit items-center rounded-full bg-[#ED6439] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+      {/* Content */}
+      <div
+        className="
+          relative z-10 mx-auto flex h-full w-full
+          max-w-12xl flex-col justify-center
+          px-5 py-6
+          sm:px-8 sm:py-8
+          md:px-10 md:py-10
+          lg:px-14 lg:py-12
+        "
+      >
+        {/* Badge */}
+        <span
+          className="
+            inline-flex w-fit items-center
+            rounded-full bg-[#ED6439]
+            px-3.5 py-2
+            text-[10px] font-bold uppercase
+            tracking-[0.14em] text-white
+            sm:px-4 sm:text-[11px]
+          "
+        >
           About NMT since 1998
         </span>
 
-        <h1 className="mt-6 w-full max-w-6xl font-display text-[2.4rem] font-extrabold capitalize leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.4rem]">
+        {/* Heading */}
+        <h1
+          className="
+            mt-4 w-full max-w-6xl
+            font-display font-extrabold
+            capitalize leading-[1.08]
+            tracking-[-0.03em] text-white
+            text-[1.9rem]
+            sm:mt-5 sm:text-[2.4rem]
+            md:text-[3rem]
+            lg:text-[3.4rem]
+          "
+        >
           Compassionate and innovative{" "}
           <span className="text-[#F6A36E]">age care</span>{" "}
           solutions
         </h1>
 
-        <div className="mt-8 h-px w-full max-w-lg bg-white/25" />
+        {/* Divider */}
+        <div className="mt-5 h-px w-full max-w-lg bg-white/25 sm:mt-6" />
 
-        <p className="mt-8 w-full max-w-5xl text-base leading-7 text-white/85 sm:text-lg md:text-xl">
+        {/* Paragraph */}
+        <p
+          className="
+            mt-5 w-full max-w-5xl
+            text-sm font-medium
+            leading-6 text-white/90
+            sm:mt-6 sm:text-base sm:leading-7
+            md:text-lg
+            lg:text-xl
+          "
+        >
           Nightingales Medical Trust — a professionally managed
           not-for-profit building practical, holistic and
           family-centred solutions across ageing and dementia care.
