@@ -1580,22 +1580,23 @@ function SmritiGramPage() {
               </p>
 
               <div className="mt-7 flex w-full flex-col gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap">
-                <Link
-                  to="/contact"
+                <button
+                  type="button"
+                  onClick={() => setIsAdmissionFormOpen(true)}
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#ED6439] transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   Apply for Admission
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </button>
 
                 <button
-  type="button"
-  onClick={() => setIsAdmissionFormOpen(true)}
-  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
->
-  <FileText className="h-4 w-4" />
-  Click here to fill our form
-</button>
+                  type="button"
+                  onClick={() => setIsAdmissionFormOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                >
+                  <FileText className="h-4 w-4" />
+                  Click here to fill our form
+                </button>
 
                 <Link
                   to="/contact"
@@ -1611,196 +1612,335 @@ function SmritiGramPage() {
 
 
         {isAdmissionFormOpen && (
-  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
-    <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+  <div
+    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#263746]/70 p-3 backdrop-blur-sm sm:p-5"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="admission-form-title"
+  >
+    <div className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-[1.5rem] bg-[#FFF8EF] shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:rounded-[2rem]">
 
-      {/* Close */}
-      <button
-        type="button"
-        onClick={() => setIsAdmissionFormOpen(false)}
-        className="absolute right-4 top-4 rounded-full p-2 text-[#263746] transition-colors hover:bg-[#F5F1EB]"
-        aria-label="Close application form"
-      >
-        <X className="h-5 w-5" />
-      </button>
+      {/* FORM HEADER */}
+      <div className="shrink-0 bg-[#ED6439] px-5 py-5 text-white sm:px-8 sm:py-6">
+        <div className="flex items-start justify-between gap-5">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/75 sm:text-xs">
+              Nightingales Smriti Gram
+            </p>
+            <h2 id="admission-form-title" className="mt-2 font-display text-2xl font-extrabold leading-tight sm:text-3xl">
+              Application for Admission
+            </h2>
+            <p className="mt-2 max-w-2xl text-xs leading-5 text-white/80 sm:text-sm">
+              Please complete the application below. The form follows the admission application and criteria provided by Nightingales Medical Trust.
+            </p>
+          </div>
 
-      {/* Heading */}
-      <div className="pr-10">
-        <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-          Smriti Gram
-        </p>
-
-        <h2 className="mt-2 text-2xl font-black text-[#263746] sm:text-3xl">
-          Apply for Admission
-        </h2>
+          <button
+            type="button"
+            onClick={() => setIsAdmissionFormOpen(false)}
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/70"
+            aria-label="Close application form"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
       </div>
 
-      {/* Form */}
-      <form
-  className="mt-8 space-y-5"
-  onSubmit={(e) => {
-    e.preventDefault();
+      {/* SCROLLABLE FORM */}
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <form
+          className="p-5 sm:p-7 lg:p-9"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const data = new FormData(form);
+            const familyRows = [1, 2, 3, 4]
+              .map((number) => {
+                const name = data.get(`family${number}Name`);
+                if (!name) return null;
+                return `${number}. ${name} | Age: ${data.get(`family${number}Age`)} | Gender: ${data.get(`family${number}Gender`)} | Relationship: ${data.get(`family${number}Relationship`)} | Occupation: ${data.get(`family${number}Occupation`)} | Contact: ${data.get(`family${number}Contact`)}`;
+              })
+              .filter(Boolean)
+              .join("\n");
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
+            const reasons = data.getAll("admissionReasons").join(", ");
+            const body = `
+Nightingales Azim Premji Center for Dementia Care
+Application for Admission
 
-    const body = `
-Smriti Gram Admission Application
+APPLICANT / GUARDIAN / NOMINATED REPRESENTATIVE
+Name: ${data.get("applicantName")}
+Father's / Spouse's Name: ${data.get("applicantFatherSpouse")}
+Address: ${data.get("applicantAddress")}
+Occupation: ${data.get("applicantOccupation")}
+Phone: ${data.get("applicantPhone")}
+Mobile: ${data.get("applicantMobile")}
+Email: ${data.get("applicantEmail")}
+PAN Number: ${data.get("applicantPan")}
+Aadhar Number: ${data.get("applicantAadhar")}
+Relationship to Proposed Resident: ${data.get("applicantRelationship")}
 
-Full Name: ${data.get("fullName")}
-Age: ${data.get("age")}
-Contact Number: ${data.get("contactNumber")}
-Email Address: ${data.get("email")}
-Dementia Diagnosis: ${data.get("dementiaDiagnosis")}
-Current Medical Condition / Dementia Stage: ${data.get("medicalCondition")}
-Requires 24-hour care: ${data.get("requires24HourCare")}
-Monthly Family Income: ${data.get("monthlyIncome")}
-Additional Information: ${data.get("additionalInformation")}
+REASON(S) FOR ADMISSION
+${reasons}
+BPL Card Number: ${data.get("bplNumber")}
+Annual Family Income: ${data.get("annualFamilyIncome")}
+
+GUARANTOR
+Name: ${data.get("guarantorName")}
+Father's / Spouse's Name: ${data.get("guarantorFatherSpouse")}
+Address: ${data.get("guarantorAddress")}
+Occupation: ${data.get("guarantorOccupation")}
+Phone: ${data.get("guarantorPhone")}
+Mobile: ${data.get("guarantorMobile")}
+Email: ${data.get("guarantorEmail")}
+PAN Number: ${data.get("guarantorPan")}
+Aadhar Number: ${data.get("guarantorAadhar")}
+Relationship to Applicant: ${data.get("guarantorApplicantRelationship")}
+Relationship to Proposed Resident: ${data.get("guarantorResidentRelationship")}
+
+PATIENT / PROPOSED RESIDENT
+Name: ${data.get("patientName")}
+Father's / Spouse's Name: ${data.get("patientFatherSpouse")}
+Temporary Address: ${data.get("patientTemporaryAddress")}
+Permanent Address: ${data.get("patientPermanentAddress")}
+Occupation: ${data.get("patientOccupation")}
+Phone: ${data.get("patientPhone")}
+Mobile: ${data.get("patientMobile")}
+Email: ${data.get("patientEmail")}
+PAN Number: ${data.get("patientPan")}
+Aadhar Number: ${data.get("patientAadhar")}
+BPL Card Number: ${data.get("patientBplNumber")}
+Other BPL Card Members: ${data.get("otherBplMembers")}
+Nationality: ${data.get("nationality")}
+Religion: ${data.get("religion")}
+Monthly Income / Pension: ${data.get("monthlyPension")}
+Monthly Family Income: ${data.get("patientFamilyIncome")}
+Income Certificate Number: ${data.get("incomeCertificateNumber")}
+Income Certificate Issued Date: ${data.get("incomeCertificateDate")}
+Income Certificate Issued By: ${data.get("incomeCertificateIssuedBy")}
+
+FAMILY MEMBERS
+${familyRows || "None entered"}
+
+MEDICAL DETAILS
+Age / Date of Birth: ${data.get("patientAgeDob")}
+Gender: ${data.get("patientGender")}
+Marital Status: ${data.get("maritalStatus")}
+Diagnosis: ${data.get("diagnosis")}
+Health Problems: ${data.get("healthProblems")}
+Medicines Prescribed: ${data.get("medicines")}
+Special Instructions: ${data.get("specialInstructions")}
+Blood Group: ${data.get("bloodGroup")}
+Allergic To: ${data.get("allergies")}
+Family Physician: ${data.get("familyPhysician")}
+Family Physician Contact: ${data.get("familyPhysicianContact")}
+Preferable Date of Joining: ${data.get("joiningDate")}
+
+DECLARATION
+Applicant Declaration: ${data.get("applicantDeclaration")}
+Guarantor Declaration: ${data.get("guarantorDeclaration")}
+
+DOCUMENTS / FILES SELECTED
+${["medicalRecords", "referralLetter", "aadhaarCard", "rationCard", "ageProof", "incomeProof", "bplCard", "ayushmanCard"].map((name) => {
+              const file = data.get(name);
+              return `${name}: ${file instanceof File && file.name ? file.name : "Not selected"}`;
+            }).join("\n")}
+
+Application submitted through the Nightingales Smriti Gram website.
     `.trim();
 
-    window.location.href =
-      `mailto:codebygeetanshi@gmail.com?subject=${encodeURIComponent(
-        "Smriti Gram Admission Application"
-      )}&body=${encodeURIComponent(body)}`;
-  }}
->
+            window.location.href =
+              `mailto:contact@nightingaleseldercare.com?subject=${encodeURIComponent(
+                "Nightingales Smriti Gram - Admission Application"
+              )}&body=${encodeURIComponent(body)}`;
+          }}
+        >
 
-        {/* Full Name */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Full Name
-  </label>
-  <input
-    type="text"
-    name="fullName"
-    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+          {/* INTRO NOTE */}
+          <div className="mb-7 rounded-2xl border border-[#ED6439]/15 bg-white p-5 sm:p-6">
+            <div className="flex gap-3">
+              <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#ED6439]/10 text-[#ED6439]">
+                <ClipboardCheck className="h-4 w-4" />
+              </div>
+              <div>
+                <p className="font-bold text-[#263746]">Before you begin</p>
+                <p className="mt-1 text-sm leading-6 text-[#526574]">
+                  Please keep the patient’s medical, identity and income documents ready. Fields marked with * are required for submitting the application.
+                </p>
+              </div>
+            </div>
+          </div>
 
-{/* Age */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Age
-  </label>
-  <input
-    type="number"
-    name="age"
-    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+          {/* SECTION HELPER */}
+          <div className="space-y-8">
 
-{/* Contact Number */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Contact Number
-  </label>
-  <input
-    type="tel"
-    name="contactNumber"
-    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+            {/* APPLICANT */}
+            <FormSection title="1. Applicant / Guardian / Nominated Representative" subtitle="The person submitting the application on behalf of the proposed resident.">
+              <FormField label="Name" name="applicantName" required />
+              <FormField label="Father's / Spouse's Name" name="applicantFatherSpouse" />
+              <FormField label="Occupation" name="applicantOccupation" />
+              <FormField label="Phone" name="applicantPhone" type="tel" />
+              <FormField label="Mobile" name="applicantMobile" type="tel" required />
+              <FormField label="Email" name="applicantEmail" type="email" required />
+              <FormField label="PAN Number" name="applicantPan" />
+              <FormField label="Aadhar Number" name="applicantAadhar" />
+              <FormField label="Relationship to Proposed Resident" name="applicantRelationship" required />
+              <FormTextArea label="Address" name="applicantAddress" required className="sm:col-span-2" />
+            </FormSection>
 
-{/* Email */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Email Address
-  </label>
-  <input
-    type="email"
-    name="email"
-    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+            {/* ADMISSION REASONS */}
+            <FormSection title="2. Reason(s) for Admission" subtitle="Select all reasons that apply to the proposed resident.">
+              <div className="sm:col-span-2 grid grid-cols-1 gap-3 md:grid-cols-2">
+                {[
+                  "Family is a BPL family and has a BPL Card",
+                  "Total family income is less than Rupees 5 Lac Per Annum",
+                  "No caregiver is available at home for continuous care",
+                  "Family members are elderly, sick or physically unfit to take care",
+                  "The proposed resident lives alone",
+                  "The proposed resident is neglected or at risk of neglect",
+                  "Significant behavioural and psychological symptoms are difficult for the family to manage",
+                  "The proposed resident requires 24 hour care, supervision and support because of Dementia",
+                ].map((reason) => (
+                  <label key={reason} className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-[#FFF8EF] p-4 text-sm leading-6 text-[#526574] transition-colors hover:border-[#ED6439]/40">
+                    <input type="checkbox" name="admissionReasons" value={reason} className="mt-1 h-4 w-4 accent-[#ED6439]" />
+                    <span>{reason}</span>
+                  </label>
+                ))}
+              </div>
+              <FormField label="BPL Card Number" name="bplNumber" />
+              <FormField label="Total Annual Family Income" name="annualFamilyIncome" />
+            </FormSection>
 
-{/* Dementia Diagnosis */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Dementia Diagnosis
-  </label>
+            {/* GUARANTOR */}
+            <FormSection title="3. Details of Guarantor" subtitle="Guarantor details required as part of the admission application.">
+              <FormField label="Name" name="guarantorName" required />
+              <FormField label="Father's / Spouse's Name" name="guarantorFatherSpouse" />
+              <FormField label="Occupation" name="guarantorOccupation" />
+              <FormField label="Phone" name="guarantorPhone" type="tel" />
+              <FormField label="Mobile" name="guarantorMobile" type="tel" />
+              <FormField label="Email" name="guarantorEmail" type="email" />
+              <FormField label="PAN Number" name="guarantorPan" />
+              <FormField label="Aadhar Number" name="guarantorAadhar" />
+              <FormField label="Relationship to Applicant" name="guarantorApplicantRelationship" />
+              <FormField label="Relationship to Proposed Resident" name="guarantorResidentRelationship" />
+              <FormTextArea label="Address" name="guarantorAddress" required className="sm:col-span-2" />
+            </FormSection>
 
-  <select
-    name="dementiaDiagnosis"
-    className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  >
-    <option value="">Select</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</div>
+            {/* PATIENT */}
+            <FormSection title="4. Details of Patient / Proposed Resident" subtitle="Personal, family and financial information of the person seeking admission.">
+              <FormField label="Name" name="patientName" required />
+              <FormField label="Father's / Spouse's Name" name="patientFatherSpouse" />
+              <FormField label="Occupation" name="patientOccupation" />
+              <FormField label="Phone" name="patientPhone" type="tel" />
+              <FormField label="Mobile" name="patientMobile" type="tel" />
+              <FormField label="Email" name="patientEmail" type="email" />
+              <FormField label="PAN Number" name="patientPan" />
+              <FormField label="Aadhar Number" name="patientAadhar" />
+              <FormField label="BPL Card Number" name="patientBplNumber" />
+              <FormTextArea label="Names of Other Members in BPL Card" name="otherBplMembers" />
+              <FormField label="Nationality" name="nationality" />
+              <FormField label="Religion" name="religion" />
+              <FormField label="Monthly Income / Pension (if any)" name="monthlyPension" />
+              <FormField label="Monthly Income of the Family" name="patientFamilyIncome" required />
+              <FormTextArea label="Temporary Address" name="patientTemporaryAddress" required className="sm:col-span-2" />
+              <FormTextArea label="Permanent Address" name="patientPermanentAddress" required className="sm:col-span-2" />
+            </FormSection>
 
-{/* Medical Condition / Dementia Stage */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Current Medical Condition / Dementia Stage
-  </label>
-  <textarea
-    name="medicalCondition"
-    rows={3}
-    className="w-full resize-none rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+            {/* FAMILY MEMBERS */}
+            <FormSection title="5. Patient's Family Members" subtitle="Add family members including the applicant. You may leave unused rows blank.">
+              <div className="sm:col-span-2 overflow-x-auto rounded-2xl border border-[#E5DDD4] bg-white">
+                <div className="min-w-[760px]">
+                  <div className="grid grid-cols-[38px_1.4fr_0.6fr_0.7fr_1fr_1fr_1.3fr] gap-2 border-b border-[#E5DDD4] bg-[#FFF8EF] px-4 py-3 text-[10px] font-black uppercase tracking-[0.08em] text-[#ED6439]">
+                    <span>#</span><span>Name</span><span>Age</span><span>M/F</span><span>Relationship</span><span>Occupation</span><span>Address / Email / Phone</span>
+                  </div>
+                  {[1,2,3,4].map((number) => (
+                    <div key={number} className="grid grid-cols-[38px_1.4fr_0.6fr_0.7fr_1fr_1fr_1.3fr] gap-2 border-b border-[#eee5dc] px-4 py-3 last:border-b-0">
+                      <span className="pt-2 text-xs font-bold text-[#ED6439]">{number}</span>
+                      <input name={`family${number}Name`} className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                      <input name={`family${number}Age`} type="number" className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                      <input name={`family${number}Gender`} className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                      <input name={`family${number}Relationship`} className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                      <input name={`family${number}Occupation`} className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                      <input name={`family${number}Contact`} className="min-w-0 rounded-lg border border-[#D9D3CC] px-3 py-2 text-sm outline-none focus:border-[#ED6439]" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FormSection>
 
-{/* 24-hour care */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Does the person require 24-hour care?
-  </label>
+            {/* MEDICAL */}
+            <FormSection title="6. Medical Details of Patient" subtitle="Please provide the medical information requested in the application. Attach supporting reports where applicable.">
+              <FormField label="Age / Date of Birth" name="patientAgeDob" required />
+              <FormSelect label="Gender" name="patientGender" options={["Male", "Female", "Others"]} required />
+              <FormSelect label="Marital Status" name="maritalStatus" options={["Married", "Unmarried", "Widow", "Widower", "Separated", "Divorced"]} />
+              <FormField label="Diagnosis" name="diagnosis" required />
+              <FormTextArea label="Health Problems, if any" name="healthProblems" className="sm:col-span-2" />
+              <FormTextArea label="Medicines Prescribed and to be Administered" name="medicines" className="sm:col-span-2" />
+              <FormTextArea label="Special Instructions, if any" name="specialInstructions" className="sm:col-span-2" />
+              <FormField label="Blood Group" name="bloodGroup" />
+              <FormField label="Allergic To" name="allergies" />
+              <FormField label="Name of Family Physician" name="familyPhysician" />
+              <FormField label="Contact Details of Family Physician" name="familyPhysicianContact" />
+              <FormField label="Preferable Date of Joining" name="joiningDate" type="date" />
+            </FormSection>
 
-  <select
-    name="requires24HourCare"
-    className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  >
-    <option value="">Select</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</div>
+            {/* INCOME CERTIFICATE */}
+            <FormSection title="7. Income Certificate Details" subtitle="Complete these fields if applicable, especially where a BPL card is not available.">
+              <FormField label="Certificate Number" name="incomeCertificateNumber" />
+              <FormField label="Issued Date" name="incomeCertificateDate" type="date" />
+              <FormField label="Issued By" name="incomeCertificateIssuedBy" />
+            </FormSection>
 
-{/* Income */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Monthly Family Income
-  </label>
-  <input
-    type="text"
-    name="monthlyIncome"
-    className="w-full rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+            {/* DOCUMENTS */}
+            <FormSection title="8. Supporting Documents" subtitle="Select the documents you have ready. The admission criteria lists these documents as supporting records for the application.">
+              <FileField label="Medical records and dementia diagnosis" name="medicalRecords" />
+              <FileField label="Referral letter" name="referralLetter" />
+              <FileField label="Aadhaar Card" name="aadhaarCard" />
+              <FileField label="Ration Card" name="rationCard" />
+              <FileField label="Age proof" name="ageProof" />
+              <FileField label="Income proof" name="incomeProof" />
+              <FileField label="BPL Card (if applicable)" name="bplCard" />
+              <FileField label="Ayushman Bharat Card (if available)" name="ayushmanCard" />
+            </FormSection>
 
-{/* Additional Information */}
-<div>
-  <label className="mb-2 block text-sm font-bold text-[#263746]">
-    Additional Information
-  </label>
-  <textarea
-    name="additionalInformation"
-    rows={4}
-    placeholder="Optional"
-    className="w-full resize-none rounded-xl border border-[#D9D3CC] px-4 py-3 outline-none transition focus:border-[#ED6439]"
-  />
-</div>
+            {/* DECLARATION */}
+            <FormSection title="9. Declaration & Confirmation" subtitle="Please confirm that the information supplied is true and that you agree to the admission process and terms applicable to the centre.">
+              <div className="sm:col-span-2 space-y-3">
+                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-white p-4 text-sm leading-6 text-[#526574]">
+                  <input type="checkbox" name="applicantDeclaration" value="I confirm that the information provided is true and I agree to the admission process and terms." required className="mt-1 h-4 w-4 accent-[#ED6439]" />
+                  <span>I confirm that the information provided is true and complete to the best of my knowledge, and I agree to the admission process and terms applicable to the centre.</span>
+                </label>
+                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-white p-4 text-sm leading-6 text-[#526574]">
+                  <input type="checkbox" name="guarantorDeclaration" value="Guarantor agrees to the admission terms." className="mt-1 h-4 w-4 accent-[#ED6439]" />
+                  <span>I confirm that the guarantor information provided above is correct and that the guarantor agrees to the applicable admission terms.</span>
+                </label>
+              </div>
+            </FormSection>
+          </div>
 
-{/* Submit */}
-<button
-  type="submit"
-  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#D9532F]"
->
-  Submit Application
-  <ArrowRight className="h-4 w-4" />
-</button>
-      </form>
+          {/* FORM FOOTER */}
+          <div className="mt-9 rounded-2xl bg-[#263746] p-5 sm:p-6">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <p className="font-bold text-white">Ready to submit your application?</p>
+                <p className="mt-1 text-sm leading-6 text-white/65">
+                  Please review all details before submitting. Your application will be prepared for Nightingales Medical Trust.
+                </p>
+              </div>
+              <button
+                type="submit"
+                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#ED6439] px-7 py-4 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 hover:bg-[#D9532F] sm:w-auto"
+              >
+                Submit Application
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 )}
-
-
-
-
-{/* =========================================================
-    VIDEO MODAL
-========================================================= */}
 
 {isVideoOpen && (
   <div
@@ -1882,6 +2022,130 @@ Additional Information: ${data.get("additionalInformation")}
 )}
 
     </SiteLayout>
+  );
+}
+
+/* ============================================================
+   ADMISSION FORM HELPERS
+============================================================ */
+
+function FormSection({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="overflow-hidden rounded-[1.5rem] border border-[#E5DDD4] bg-white shadow-[0_8px_25px_rgba(38,55,70,0.04)] sm:rounded-[1.75rem]">
+      <div className="border-b border-[#eee5dc] bg-[#FFF8EF] px-5 py-5 sm:px-6">
+        <h3 className="font-display text-xl font-bold text-[#263746] sm:text-2xl">{title}</h3>
+        <p className="mt-1.5 text-xs leading-5 text-[#6B7280] sm:text-sm">{subtitle}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 sm:p-6">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function FormField({
+  label,
+  name,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-sm font-bold text-[#263746]">
+        {label}{required && <span className="ml-1 text-[#ED6439]">*</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 text-sm text-[#263746] outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+      />
+    </label>
+  );
+}
+
+function FormTextArea({
+  label,
+  name,
+  required = false,
+  className = "",
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  className?: string;
+}) {
+  return (
+    <label className={`block ${className}`}>
+      <span className="mb-2 block text-sm font-bold text-[#263746]">
+        {label}{required && <span className="ml-1 text-[#ED6439]">*</span>}
+      </span>
+      <textarea
+        name={name}
+        required={required}
+        rows={3}
+        className="w-full resize-y rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 text-sm leading-6 text-[#263746] outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+      />
+    </label>
+  );
+}
+
+function FormSelect({
+  label,
+  name,
+  options,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-sm font-bold text-[#263746]">
+        {label}{required && <span className="ml-1 text-[#ED6439]">*</span>}
+      </span>
+      <select
+        name={name}
+        required={required}
+        defaultValue=""
+        className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 text-sm text-[#263746] outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+      >
+        <option value="">Select</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function FileField({ label, name }: { label: string; name: string }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-sm font-bold text-[#263746]">{label}</span>
+      <input
+        type="file"
+        name={name}
+        className="block w-full cursor-pointer rounded-xl border border-[#D9D3CC] bg-white px-3 py-2.5 text-xs text-[#526574] file:mr-3 file:rounded-lg file:border-0 file:bg-[#ED6439]/10 file:px-3 file:py-2 file:text-xs file:font-bold file:text-[#ED6439] hover:file:bg-[#ED6439]/15"
+      />
+    </label>
   );
 }
 

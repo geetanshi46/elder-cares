@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
   Brain,
   HeartHandshake,
   ShieldCheck,
+  PlayCircle,
   Briefcase,
   GraduationCap,
   Megaphone,
@@ -88,7 +89,7 @@ import studentInternshipsImage from "@/assets/our-services/student-internships.w
 
 import trainingCapacityBuildingBanner from "@/assets/our-services/training-capacity-building-banner.webp";
 
-import freeGeriatricClinicImage from "@/assets/our-services/free-geriatric-clinic.png";
+import freeGeriatricClinicImage from "@/assets/our-services/free-geriatric-clinic.webp";
 
 
 
@@ -1832,7 +1833,7 @@ function ServicesPage() {
     {/* ==================================================
         RESIDENTIAL CARE CENTRES
         ================================================== */}
-    <div className="mt-7 grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-7 flex min-w-0 gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
 
       {[
         {
@@ -1871,17 +1872,19 @@ function ServicesPage() {
       ].map((centre) => (
         <article
           key={centre.name}
-          className="
-            flex
-            min-w-0
-            w-full
-            flex-col
-            overflow-hidden
-            border
-            border-[#ED6439]/15
-            bg-white
-            shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-          "
+  className="
+  flex
+  w-[calc(50%-0.75rem)]
+  min-w-0
+  shrink-0
+  snap-start
+  flex-col
+  overflow-hidden
+  border
+  border-[#ED6439]/15
+  bg-white
+  shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+"
         >
 
           {/* ==================================================
@@ -3640,7 +3643,7 @@ function ServicesPage() {
   </div>
 </Reveal>
 
-  {/* ======================================================
+ {/* ======================================================
     FREE GERIATRIC CLINIC
     ====================================================== */}
 
@@ -3656,13 +3659,13 @@ function ServicesPage() {
       border-t-[#ED6439]
       bg-white
       shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-      lg:grid-cols-[0.85fr_1.15fr]
+      lg:grid-cols-2
       lg:items-stretch
     "
   >
 
     {/* ==================================================
-        IMAGE — LEFT
+        IMAGE — LEFT — 50%
         ================================================== */}
 
     <div
@@ -3691,7 +3694,7 @@ function ServicesPage() {
 
 
     {/* ==================================================
-        CONTENT — RIGHT
+        CONTENT — RIGHT — 50%
         ================================================== */}
 
     <div
@@ -3761,92 +3764,132 @@ function ServicesPage() {
       <div
         className="
           mt-6
-            space-y-4
-            text-[14px]
-            leading-[1.75]
-            text-muted-foreground
-            sm:text-[14.5px]
-          "
-        >
+          space-y-4
+          text-[14px]
+          leading-[1.75]
+          text-muted-foreground
+          sm:text-[14.5px]
+        "
+      >
 
-          <p>
-            Older persons often live with multiple health conditions
-            requiring regular monitoring and coordinated care.
-          </p>
+        <p>
+          Older persons often live with multiple health conditions
+          requiring regular monitoring and coordinated care.
+        </p>
 
-          <p>
-            NMT's geriatric clinic provides accessible healthcare with a
-            focus on the unique needs of older persons.
-          </p>
+        <p>
+          NMT's geriatric clinic provides accessible healthcare with a
+          focus on the unique needs of older persons.
+        </p>
 
-          <p>Services include:</p>
+        <p>Services include:</p>
 
-          <ul className="space-y-2.5">
+        <ul className="space-y-2.5">
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Comprehensive geriatric assessment
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Comprehensive geriatric assessment</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Screening and early identification of health concerns
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Screening and early identification of health concerns</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Management of chronic conditions
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Management of chronic conditions</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Preventive healthcare
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Preventive healthcare</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Health education
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Health education</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Referral and follow-up
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Referral and follow-up</span>
+          </li>
 
-            <li className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>
-                Guidance to families and caregivers
-              </span>
-            </li>
+          <li className="flex items-start gap-2.5">
+            <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            <span>Guidance to families and caregivers</span>
+          </li>
 
-          </ul>
+        </ul>
 
-          <p className="font-bold text-[#ED6439]">
-            This geriatric clinic functions from the premises of
-            Sandhya Kirana.
-          </p>
-
-        </div>
+        <p className="font-bold text-[#ED6439]">
+          This geriatric clinic functions from the premises of
+          Sandhya Kirana.
+        </p>
 
       </div>
 
     </div>
-  </Reveal>
+
+  </div>
+</Reveal>
+
+
+
+  {/* ======================================================
+    GERIATRIC CARE TRAINING — YOUTUBE VIDEO
+    ====================================================== */}
+
+<Reveal className="mt-8 min-w-0 sm:mt-10">
+  <div className="w-full overflow-hidden bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
+
+    <a
+      href="https://youtu.be/go1GWETWmSM"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative block w-full"
+      aria-label="Watch Geriatric Care Training video"
+    >
+      <img
+        src="/geriatric-care-training-thumbnail.webp"
+        alt="Geriatric Care Training - Nightingales Medical Trust"
+        className="block h-auto w-full object-cover"
+      />
+
+      {/* Play button */}
+<span
+  className="
+    absolute
+    left-1/2
+    top-[63%]
+    grid
+    h-16
+    w-16
+    -translate-x-1/2
+    -translate-y-1/2
+    place-items-center
+    rounded-full
+    bg-[#ED6439]
+    text-white
+    shadow-[0_10px_30px_rgba(0,0,0,0.25)]
+    transition-transform
+    duration-300
+    group-hover:scale-110
+  "
+>
+  <PlayCircle className="h-8 w-8" strokeWidth={1.8} />
+</span>
+    </a>
+
+  </div>
+</Reveal>
     </div>
   </Section>
+
+
+
+
 
   {/* ======================================================
       PREVENTION OF ELDER ABUSE

@@ -8,6 +8,7 @@ import {
   ZoomIn,
   Eye,
   Sparkles,
+    FileText,
   Image as ImageIcon,
   CheckCircle2,
 } from "lucide-react";
@@ -194,6 +195,191 @@ function NewsEventsPage() {
           </Reveal>
         </div>
       </Section>
+
+    {/* ============================================================
+    APPEAL FOR MUSICAL INSTRUMENTS
+    ============================================================ */}
+
+<section className="relative overflow-hidden bg-[#FFF4EA] py-16 sm:py-20 lg:py-24">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    {/* SECTION HEADER */}
+    <Reveal>
+      <div className="mb-10 text-center sm:mb-12">
+        <span className="inline-flex items-center rounded-full bg-[#ED6439] px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-white shadow-[0_8px_20px_rgba(237,100,57,0.2)]">
+          Appeal
+        </span>
+
+        <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-[2.7rem]">
+          APPEAL FOR MUSICAL INSTRUMENTS
+        </h2>
+
+        <div className="mx-auto mt-5 h-1 w-16 bg-[#ED6439]" />
+      </div>
+    </Reveal>
+
+    {/* ========================================================
+        SINGLE FULL-WIDTH APPEAL CARD
+        ======================================================== */}
+
+    <Reveal>
+      <article className="w-full overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_20px_60px_-25px_rgba(70,45,10,0.18)]">
+
+        {/* TOP ORANGE STRIP */}
+        <div className="flex items-center justify-between bg-[#ED6439] px-6 py-5 sm:px-8 lg:px-10">
+          <p className="text-sm font-extrabold text-white sm:text-base">
+            11th September 2026
+          </p>
+
+          <FileText className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+        </div>
+
+        {/* APPEAL CONTENT */}
+        <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
+
+          <h3 className="font-display text-xl font-extrabold leading-tight text-[#ED6439] sm:text-2xl lg:text-3xl">
+            *APPEAL FOR MUSICAL INSTRUMENTS*
+          </h3>
+
+          <p className="mt-5 font-semibold leading-relaxed text-[#263746]">
+            _Donations for Nightingales Smriti Gram – India’s First Integrated
+            Dementia Care Village, Doddaballapur_
+          </p>
+
+          <div className="mt-7 space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[14.5px]">
+
+            <p>
+              Dear Sir / Madam,
+            </p>
+
+            <p>
+              Warm greetings to you.
+            </p>
+
+            <p>
+              Nightingales Medical Trust (NMT) is an NGO dedicated to improving
+              the lives of older persons through compassionate and innovative
+              age care services. We reach thousands of elders through a range
+              of need-based programmes every month
+              .
+            </p>
+
+            <p>
+              We are happy to share that Nightingales Smriti Gram – India’s
+              First Integrated Dementia Care Village, near Doddaballapur, is
+              nearing completion. Located just 36 km from Yelahanka, Smriti
+              Gram is being developed as a national model of compassionate,
+              person-centred and integrated dementia care.
+            </p>
+
+            <p>
+              The first phase, expected to become operational in September -
+              October 2026, will include a 100-bed residential dementia care
+              facility offering completely free care to economically
+              marginalized persons living with dementia, along with a Training
+              Academy and Research & Innovation Hub.
+            </p>
+
+            <p>
+              We firmly believe that financial circumstances should never
+              determine the quality of dementia care a person receives.
+            </p>
+
+            <p className="font-extrabold text-[#ED6439]">
+              *Help us bring music to Smriti Gram*
+            </p>
+
+            <p>
+              As part of our efforts to create a warm, stimulating and
+              therapeutic environment, we are setting up a Music Therapy Room
+              at Smriti Gram. Music can evoke memories, encourage
+              self-expression, reduce anxiety and bring joy and meaningful
+              engagement to people living with dementia.
+            </p>
+
+            <p>
+              We are therefore seeking musical instruments in good working
+              condition, such as:
+            </p>
+
+            <p className="font-bold text-[#263746]">
+              Keyboards • Harmoniums • Tablas • Dholaks • Maracas • Tambourines
+              • Flutes • Guitars • Violins • and other suitable instruments.
+            </p>
+
+            <p>
+              If you have instruments that are no longer in use, we would be
+              grateful if you would consider donating them to Smriti Gram.
+            </p>
+
+            <p>
+              We invite you to be part of this meaningful initiative and help
+              us create a place where every memory matters.
+            </p>
+
+            <p>
+              Thank you.
+            </p>
+
+            <div className="pt-3">
+              <p>
+                Warm regards,
+              </p>
+
+              <p className="mt-3 font-bold text-[#263746]">
+                S Premkumar Raja
+              </p>
+
+              <p>
+                Secretary and Co-founder
+              </p>
+            </div>
+
+          </div>
+
+          {/* ====================================================
+              DOWNLOAD CTA — SAME CARD
+              ==================================================== */}
+
+          <div className="mt-10 border-t border-[#ED6439]/15 pt-7 sm:mt-12 sm:pt-8">
+            <div className="flex flex-col gap-5 rounded-2xl bg-[#FFF4EA] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+
+              <div className="flex items-start gap-4">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
+                  <FileText className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="font-black text-[#263746]">
+                    Appeal Document
+                  </p>
+
+                  <p className="mt-1 text-sm leading-6 text-[#6B7280]">
+                    Download the complete appeal letter as a PDF.
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="/documents/appeal-for-musical-instruments.pdf"
+                download="Nightingales-Smriti-Gram-Appeal-for-Musical-Instruments.pdf"
+                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#ED6439] px-7 py-4 text-sm font-black text-white shadow-[0_10px_25px_rgba(237,100,57,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D95732] sm:w-auto"
+              >
+                <FileText className="h-5 w-5" />
+                Download Appeal PDF
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </Reveal>
+
+  </div>
+</section>
+
 
       {/* ======================================================
           NEW SECTION: PRINT MEDIA & NEWSPAPER CLIPPINGS GALLERY

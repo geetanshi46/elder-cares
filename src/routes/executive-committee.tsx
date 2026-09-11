@@ -13,7 +13,7 @@ import UrmilaImage from "@/assets/executives/Urmila.jpg";
 import KhizraImage from "@/assets/executives/khizra.png";
 import EdwardImage from "@/assets/executives/Edward.jpg";
 import SatishImage from "@/assets/executives/satish.jpg";
-import accountsManagerImage from "@/assets/executives/accounts-manager.png";
+import accountsManagerImage from "@/assets/executives/accounts-manager.webp";
 import seniorPsychiatristImage from "@/assets/executives/senior-psychiatrist.png";
 
 

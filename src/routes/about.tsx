@@ -351,52 +351,12 @@ function SectionHeading({
 }
 
 /* ============================================================
-   RECOGNITION CAROUSEL
+   RECOGNITION CAROUSEL — continuous marquee, never stops
    ============================================================ */
 
 function RecognitionCarousel() {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    slider.scrollBy({ left: direction === "right" ? 350 : -350, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    let interval: ReturnType<typeof setInterval>;
-
-    const startAutoScroll = () => {
-      clearInterval(interval);
-      interval = setInterval(() => {
-        const maxScroll = slider.scrollWidth - slider.clientWidth;
-        if (slider.scrollLeft >= maxScroll - 10) {
-          slider.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          slider.scrollBy({ left: 350, behavior: "smooth" });
-        }
-      }, 3000);
-    };
-
-    const stopAutoScroll = () => clearInterval(interval);
-
-    startAutoScroll();
-    slider.addEventListener("mouseenter", stopAutoScroll);
-    slider.addEventListener("mouseleave", startAutoScroll);
-    slider.addEventListener("touchstart", stopAutoScroll, { passive: true });
-    slider.addEventListener("touchend", startAutoScroll, { passive: true });
-
-    return () => {
-      clearInterval(interval);
-      slider.removeEventListener("mouseenter", stopAutoScroll);
-      slider.removeEventListener("mouseleave", startAutoScroll);
-      slider.removeEventListener("touchstart", stopAutoScroll);
-      slider.removeEventListener("touchend", startAutoScroll);
-    };
-  }, []);
+  // Duplicate the list so the loop is seamless
+  const loopItems = [...RECOGNITIONS, ...RECOGNITIONS];
 
   return (
     <section id="recognitions" className="relative overflow-hidden bg-[#ED6439] py-16 sm:py-20 lg:py-24">
@@ -414,33 +374,13 @@ function RecognitionCarousel() {
         </div>
       </div>
 
-      <div className="relative">
-        <button
-          type="button"
-          onClick={() => scroll("left")}
-          aria-label="Previous recognition"
-          className="absolute left-2 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm transition-colors duration-300 hover:bg-[#14212B] hover:text-white lg:grid xl:left-6"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        <button
-          type="button"
-          onClick={() => scroll("right")}
-          aria-label="Next recognition"
-          className="absolute right-2 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm transition-colors duration-300 hover:bg-[#14212B] hover:text-white lg:grid xl:right-6"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
-        <div
-          ref={sliderRef}
-          className="flex gap-5 overflow-x-auto px-[calc((100vw-285px)/2)] pb-3 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-[calc((100vw-310px)/2)] lg:px-[max(5rem,calc((100vw-1280px)/2))]"
-        >
-          {RECOGNITIONS.map((recognition) => (
+      {/* Marquee track */}
+      <div className="relative overflow-hidden">
+        <div className="marquee-track flex w-max gap-5 sm:gap-6">
+          {loopItems.map((recognition, i) => (
             <article
-              key={recognition.title}
-              className="flex min-w-[285px] max-w-[285px] snap-start flex-col overflow-hidden rounded-lg bg-white sm:min-w-[310px] sm:max-w-[310px] lg:min-w-[350px] lg:max-w-[350px]"
+              key={`${recognition.title}-${i}`}
+              className="flex min-w-[285px] max-w-[285px] flex-col overflow-hidden rounded-lg bg-white sm:min-w-[310px] sm:max-w-[310px] lg:min-w-[350px] lg:max-w-[350px]"
             >
               <div className="flex h-[175px] items-center justify-center bg-[#FBF6EC] px-6 py-5 sm:h-[185px]">
                 <img
@@ -465,24 +405,15 @@ function RecognitionCarousel() {
         </div>
       </div>
 
-      <div className="mt-6 flex justify-center gap-3 lg:hidden">
-        <button
-          type="button"
-          onClick={() => scroll("left")}
-          aria-label="Previous recognition"
-          className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={() => scroll("right")}
-          aria-label="Next recognition"
-          className="grid h-10 w-10 place-items-center rounded-full bg-white text-[#1B2A35] shadow-sm"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
+      <style>{`
+        .marquee-track {
+          animation: marquee-scroll 40s linear infinite;
+        }
+        @keyframes marquee-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }
@@ -495,48 +426,47 @@ function AboutPage() {
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
-        {/* ======================================================
-            HERO — dark capital-campaign-style banner
-        ====================================================== */}
-        <section className="bg-[#FBF6EC] pt-8 sm:px-6 sm:pt-10 lg:px-8">
-          <Reveal>
-            <div className="mx-auto max-w-12xl overflow-hidden rounded-[1rem] bg-[#14212B]">
-              <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
-                {/* LEFT — content */}
-                <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 md:px-12 lg:px-14 lg:py-16">
-                  <span className="inline-flex w-fit items-center rounded-full bg-[#ED6439] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
-                    About NMT since 1998
-                  </span>
+  {/* ======================================================
+    HERO — full-bleed image banner (no rounded corners, edge-to-edge)
+====================================================== */}
+<section className="relative w-full">
+  <Reveal>
+    <div className="relative h-[420px] w-full sm:h-[480px] lg:h-[560px]">
+      {/* Full-width banner image */}
+      <img
+        src={aboutHeroImage}
+        alt="Nightingales Medical Trust community"
+        width={1920}
+        height={1080}
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
 
-                  <h1 className="mt-6 max-w-lg font-display text-[2.1rem] font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.5rem] md:text-[2.75rem] lg:text-[2.9rem]">
-                    Compassionate and innovative{" "}
-                    <span className="text-[#F6A36E]">age care</span>{" "}
-                    solutions
-                  </h1>
+      {/* Light gradient overlay — only enough for text contrast, image stays clear */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
 
-                  <div className="mt-8 h-px w-full max-w-md bg-white/12" />
+      {/* Content overlaid on image, left side */}
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-12xl flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-14">
+        <span className="inline-flex w-fit items-center rounded-full bg-[#ED6439] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+          About NMT since 1998
+        </span>
 
-                  <p className="mt-8 max-w-md text-sm leading-6 text-white/55">
-                    Nightingales Medical Trust — a professionally managed
-                    not-for-profit building practical, holistic and
-                    family-centred solutions across ageing and dementia care.
-                  </p>
-                </div>
+        <h1 className="mt-6 w-full max-w-6xl font-display text-[2.4rem] font-extrabold capitalize leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.4rem]">
+          Compassionate and innovative{" "}
+          <span className="text-[#F6A36E]">age care</span>{" "}
+          solutions
+        </h1>
 
-                {/* RIGHT — banner photo */}
-                <div className="relative order-first h-[360px] w-full overflow-hidden lg:order-last lg:h-auto lg:min-h-[480px]">
-                  <img
-                    src={aboutHeroImage}
-                    alt="Nightingales Medical Trust community"
-                    width={1600}
-                    height={1200}
-                    className="block h-full w-full object-cover object-center"
-                  />
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        <div className="mt-8 h-px w-full max-w-lg bg-white/25" />
+
+        <p className="mt-8 w-full max-w-5xl text-base leading-7 text-white/85 sm:text-lg md:text-xl">
+          Nightingales Medical Trust — a professionally managed
+          not-for-profit building practical, holistic and
+          family-centred solutions across ageing and dementia care.
+        </p>
+      </div>
+    </div>
+  </Reveal>
+</section>
 
         {/* ======================================================
             WHO WE ARE

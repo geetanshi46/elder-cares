@@ -33,16 +33,16 @@ function ImpactPage() {
         intro="What decades of care add up to — and every report, story, video and publication behind those numbers."
       />
 
-      <Section eyebrow="Our impact" title="The numbers behind the care." tone="sand">
-        <StatRow
-          stats={[
-            { k: "5,047", v: "Persons with dementia helped" },
-            { k: "3,42,338", v: "Elders in distress assisted" },
-            { k: "5,217", v: "Senior citizens placed in jobs" },
-            { k: "800+", v: "Elders benefiting every day, 50% marginalised" },
-          ]}
-        />
-      </Section>
+   <Section eyebrow="Our Impact" title="The Numbers Behind The Care." tone="sand">
+  <StatRow
+    stats={[
+      { k: "5,047", v: "Persons with dementia helped" },
+      { k: "3,42,338", v: "Elders in distress assisted" },
+      { k: "5,217", v: "Senior citizens placed in jobs" },
+      { k: "800+", v: "Elders benefiting every day, 50% marginalised" },
+    ]}
+  />
+</Section>
 
       <Section eyebrow="Stories & case studies" title="Behind every number, a person.">
         <CardGrid cols={3}>
