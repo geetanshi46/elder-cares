@@ -15,20 +15,45 @@ import dementiaDayCareImage from "@/assets/dementia-day-care.webp";
 const SERVICES = [
   {
     icon: Brain,
+<<<<<<< HEAD
     title: "DEMENTIA AND MEDICAL CARE",
+=======
+    title: "Dementia and Medical Care",
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
     hash: "dementia-care",
     body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
     highlight: "Currently we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction Programme.",
   },
   {
     icon: HeartHandshake,
+<<<<<<< HEAD
     title: "CARE FOR MARGINALIZED ELDERS",
+=======
+    title: "Care for Marginalized Elders",
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
     hash: "marginalized",
     body: "5 Day Care Centres & Hiriyarawadies, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
   },
   {
+<<<<<<< HEAD
     icon: ShieldCheck,
     title: "PREVENTION OF ELDER ABUSE",
+=======
+    icon: Activity,
+    title: "Prevention of Elder Abuse",
+    hash: "old-age-homes",
+    body: "Active ageing programmes implemented across 28 old age homes, promoting physical health, cognitive engagement, emotional well-being, and social inclusion.",
+  },
+  {
+    icon: Briefcase,
+    title: "Empowerment and Livelihood",
+    hash: "empowerment-livelihood",
+    body: "Creating opportunities for meaningful engagement and income generation for older persons through second careers, skill development, digital literacy, and cyber safety programmes that foster independence and confidence.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Supporting Old Age Homes",
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
     hash: "elder-protection",
     body: "Providing timely assistance and protection for elders in distress, addressing issues of abuse, neglect, harassment, exploitation, and ill-treatment with sensitivity and urgency.",
   },
@@ -46,13 +71,21 @@ const SERVICES = [
   },
   {
     icon: GraduationCap,
+<<<<<<< HEAD
     title: "TRAINING AND CAPACITY BUILDING",
+=======
+    title: "Training and Capacity Building",
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
     hash: "capacity-building",
     body: "Designated as a Regional Resource and Training Centre by the Government of India, we build the capacity of NGOs engaged in elder care. We offer training for bedside assistants, family caregivers, dementia care professionals, and life-saving skills to strengthen the care ecosystem.",
   },
   {
     icon: Megaphone,
+<<<<<<< HEAD
     title: "AWARENESS AND ADVOCACY",
+=======
+    title: "Awareness and Advocacy",
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
     hash: "awareness",
     body: "Protecting the rights, dignity, and inclusion of older persons and individuals living with dementia through sustained policy advocacy, community engagement, and the creation of age-inclusive societies.",
   },

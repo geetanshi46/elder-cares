@@ -2,8 +2,8 @@
 
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
+import { useEffect, useRef, type ReactNode } from "react";
+import { useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -57,8 +57,10 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+
+
 /* ============================================================
-   CLIENT CONTENT — unchanged
+   CLIENT CONTENT — synced with the NMT "About Us" source copy
    ============================================================ */
 
 const JOURNEY = [
@@ -155,14 +157,42 @@ const JOURNEY = [
 ];
 
 const VALUES = [
-  { title: "Dignity", body: "Respect for worth, rights and choices." },
-  { title: "Compassion", body: "Empathy, patience and understanding." },
-  { title: "Person-centredness", body: "Care designed around the individual." },
-  { title: "Inclusion", body: "Access irrespective of socio-economic circumstances." },
-  { title: "Integrity", body: "Honesty, accountability and transparency." },
-  { title: "Innovation", body: "Better, effective and sustainable solutions." },
-  { title: "Professionalism", body: "Knowledge, competence and evidence." },
-  { title: "Partnership", body: "Families, communities and institutions together." },
+  {
+    title: "Dignity",
+    body: "We respect every older person as an individual with inherent worth, rights and choices.",
+  },
+  {
+    title: "Compassion",
+    body: "We respond to vulnerability with empathy, patience and understanding.",
+  },
+  {
+    title: "Person-centredness",
+    body: "We design care around the individual — not simply the condition or diagnosis.",
+  },
+  {
+    title: "Inclusion",
+    body: "We believe that every elder deserves access to care, support and opportunities irrespective of socio-economic circumstances.",
+  },
+  {
+    title: "Integrity",
+    body: "We act with honesty, accountability and transparency in everything we do.",
+  },
+  {
+    title: "Innovation",
+    body: "We continuously seek better, more effective and sustainable solutions to emerging challenges in ageing and dementia care.",
+  },
+  {
+    title: "Professionalism",
+    body: "We combine compassion with knowledge, competence, systems and evidence-informed practice.",
+  },
+  {
+    title: "Partnership",
+    body: "We believe lasting change is possible when families, communities, government, institutions, professionals and organisations work together.",
+  },
+  {
+    title: "Respect for independence",
+    body: "We encourage older persons to remain active participants in decisions affecting their lives.",
+  },
 ];
 
 const RECOGNITIONS = [
@@ -241,10 +271,10 @@ const CHALLENGES = [
   "Loneliness & social isolation",
   "Elder abuse & neglect",
   "Financial insecurity",
-  "Loss of livelihood",
+  "Loss of employment & livelihood",
   "Changing family structures",
-  "Limited access to care",
-  "Difficulty finding reliable services",
+  "Lack of appropriate care & support",
+  "Difficulty accessing reliable information & services",
 ];
 
 const REPORT_ITEMS = [
@@ -268,13 +298,13 @@ const STATUTORY_DOCUMENTS = [
 ];
 
 const annualReports = [
-  { year: "2017-18", pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf" },
-  { year: "2018-19", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf" },
-  { year: "2019-20", pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf" },
-  { year: "2020-21", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf" },
-  { year: "2021-22", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf" },
-  { year: "2022-23", pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf" },
   { year: "2024-25", pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf" },
+  { year: "2022-23", pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf" },
+  { year: "2021-22", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf" },
+  { year: "2020-21", pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf" },
+  { year: "2019-20", pdf:  "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf"},
+  { year: "2018-19", pdf:  "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf"},
+  { year: "2017-18", pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf" },
 ];
 
 /* ============================================================
@@ -282,7 +312,6 @@ const annualReports = [
    ============================================================
    Ink (dark surface):     #14212B
    Ember (brand accent):   #ED6439
-   Moss (secondary dark):  #123F35
    Parchment (page bg):    #FBF6EC
    Slate (body text):      #4C5C68
    Heading:                #1B2A35
@@ -295,25 +324,24 @@ const annualReports = [
    carries real meaning rather than decorating the heading.
    ============================================================ */
 
-function SectionMarker({
+export function SectionMarker({
   index,
   label,
-  tone = "light",
 }: {
   index: string;
   label: string;
-  tone?: "light" | "dark";
 }) {
-  const ruleColor = tone === "dark" ? "bg-white/15" : "bg-[#1B2A35]/12";
-  const labelColor = tone === "dark" ? "text-white/55" : "text-[#4C5C68]";
-
   return (
     <div className="flex items-center gap-4">
-      <span className="font-display text-sm font-bold text-[#ED6439]">
-        {index}
-      </span>
-      <span className={`h-px flex-1 ${ruleColor}`} />
-      <span className={`text-sm ${labelColor}`}>{label}</span>
+      <span className="text-lg font-extrabold tracking-wide text-[#ED6439]">
+  {index}
+</span>
+
+      <span className="h-px flex-1 bg-[#E8DED2]" />
+
+     <span className="text-lg font-bold tracking-wide text-[#ED6439]">
+  {label}
+</span>
     </div>
   );
 }
@@ -362,7 +390,7 @@ function RecognitionCarousel() {
     <section id="recognitions" className="relative overflow-hidden bg-[#ED6439] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="mb-9 sm:mb-11">
-          <SectionMarker index="06" label="Our achievements" tone="dark" />
+          <SectionMarker index="06" label="Our achievements" />
           <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Recognitions & awards
           </h2>
@@ -423,185 +451,414 @@ function RecognitionCarousel() {
    ============================================================ */
 
 function AboutPage() {
+  //  const [isAnnualReportsExpanded, setIsAnnualReportsExpanded] = useState(false);
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
- {/* ======================================================
-    HERO — fully responsive full-bleed banner
+        {/* ======================================================
+            HERO — full-bleed banner, image never crops, badge + heading only
+        ====================================================== */}
+        <section id="about-overview" className="relative w-full overflow-hidden scroll-mt-24">
+          <Reveal>
+            <div
+              className="
+                relative w-full
+                aspect-[4/5]
+                sm:aspect-[16/9]
+                md:aspect-[16/7]
+                lg:aspect-[21/9]
+                max-h-[560px]
+                min-h-[380px]
+                bg-[#14212B]
+              "
+            >
+              {/* Full-width banner image */}
+              <img
+                src={aboutHeroImage}
+                alt="Nightingales Medical Trust community"
+                width={1920}
+                height={1080}
+                className="
+                  absolute inset-0
+                  h-full w-full
+                  object-cover object-center
+                "
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
+
+              {/* Content */}
+              <div
+                className="
+                  relative z-10 mx-auto flex h-full w-full
+                  max-w-12xl flex-col justify-center
+                  px-5 py-6
+                  sm:px-8 sm:py-8
+                  md:px-10 md:py-10
+                  lg:px-14 lg:py-12
+                "
+              >
+                {/* Badge */}
+                {/* <span
+                  className="
+                    inline-flex w-fit items-center
+                    rounded-full bg-[#ED6439]
+                    px-3.5 py-2
+                    text-[10px] font-bold uppercase
+                    tracking-[0.14em] text-white
+                    sm:px-4 sm:text-[11px]
+                  "
+                >
+                  About NMT since 1998
+                </span> */}
+
+                {/* Heading */}
+                <h1
+                  className="
+                    mt-4 w-full max-w-6xl
+                    font-display font-extrabold
+                    capitalize leading-[1.08]
+                    tracking-[-0.03em] text-white
+                    text-[1.9rem]
+                    sm:mt-5 sm:text-[2.4rem]
+                    md:text-[3rem]
+                    lg:text-[3.4rem]
+                  "
+                >
+                  Compassionate and innovative{" "}
+                  <span className="text-white">age care</span>{" "}
+                  solutions
+                </h1>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+       {/* ======================================================
+    WHO WE ARE
 ====================================================== */}
-<section className="relative w-full overflow-hidden">
-  <Reveal>
-    <div
-      className="
-        relative w-full
-        h-[460px]
-        sm:h-[500px]
-        md:h-[560px]
-        lg:h-[560px]
-      "
-    >
-      {/* Full-width banner image */}
-      <img
-        src={aboutHeroImage}
-        alt="Nightingales Medical Trust community"
-        width={1920}
-        height={1080}
-        className="
-          absolute inset-0
-          h-full w-full
-          object-cover object-top
-        "
-      />
+<section id="who-we-are" className="bg-[#FBF6EC] scroll-mt-24">
+  <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
+    <Reveal>
+      <SectionMarker index="01" label="Who We Are" />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
+      {/* <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-4xl lg:text-[2.8rem]">
+        Who We Are
+      </h2> */}
+    </Reveal>
 
-      {/* Content */}
-      <div
-        className="
-          relative z-10 mx-auto flex h-full w-full
-          max-w-12xl flex-col justify-center
-          px-5 py-6
-          sm:px-8 sm:py-8
-          md:px-10 md:py-10
-          lg:px-14 lg:py-12
-        "
-      >
-        {/* Badge */}
-        <span
-          className="
-            inline-flex w-fit items-center
-            rounded-full bg-[#ED6439]
-            px-3.5 py-2
-            text-[10px] font-bold uppercase
-            tracking-[0.14em] text-white
-            sm:px-4 sm:text-[11px]
-          "
-        >
-          About NMT since 1998
-        </span>
+    <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+      {/* LEFT — MAIN CONTENT */}
+      <Reveal>
+        <div className="h-full rounded-2xl border border-[#1B2A35]/10 bg-white p-7 shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)] sm:p-9">
+          <CompassIcon />
 
-        {/* Heading */}
-        <h1
-          className="
-            mt-4 w-full max-w-6xl
-            font-display font-extrabold
-            capitalize leading-[1.08]
-            tracking-[-0.03em] text-white
-            text-[1.9rem]
-            sm:mt-5 sm:text-[2.4rem]
-            md:text-[3rem]
-            lg:text-[3.4rem]
-          "
-        >
-          Compassionate and innovative{" "}
-          <span className="text-[#F6A36E]">age care</span>{" "}
-          solutions
-        </h1>
+          <div className="mt-6 space-y-5 text-[15px] leading-7 text-[#4C5C68] sm:text-base">
+            <p>
+              Nightingales Medical Trust (NMT) is a professionally managed
+              not-for-profit organisation established in Bengaluru in 1998,
+              dedicated to improving the lives of older persons and people
+              living with dementia.
+            </p>
 
-        {/* Divider */}
-        <div className="mt-5 h-px w-full max-w-lg bg-white/25 sm:mt-6" />
+            <p>
+              For nearly three decades, NMT has been developing innovative,
+              holistic, need-based and family-centred solutions across the
+              continuum of ageing and dementia care.
+            </p>
 
-        {/* Paragraph */}
-        <p
-          className="
-            mt-5 w-full max-w-5xl
-            text-sm font-medium
-            leading-6 text-white/90
-            sm:mt-6 sm:text-base sm:leading-7
-            md:text-lg
-            lg:text-xl
-          "
-        >
-          Nightingales Medical Trust — a professionally managed
-          not-for-profit building practical, holistic and
-          family-centred solutions across ageing and dementia care.
-        </p>
-      </div>
+            <p>
+              Our work spans dementia care, healthy and active ageing, social
+              integration, prevention of elder abuse, livelihood and
+              empowerment, community-based support, training, capacity
+              building, public awareness and advocacy.
+            </p>
+
+            <p>
+              Many of our initiatives have evolved into models that have been
+              replicated in different parts of India and have contributed to
+              shaping the way elder care and dementia care are understood and
+              delivered.
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* RIGHT — BELIEF */}
+      <Reveal delay={80}>
+        <div className="flex h-full flex-col justify-between rounded-2xl bg-[#ED6439] p-7 text-white shadow-[0_18px_50px_-20px_rgba(237,100,57,0.28)] sm:p-9">
+          <div>
+            <Target
+              className="h-7 w-7 text-white"
+              strokeWidth={1.7}
+            />
+
+            <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+              Our Belief
+            </p>
+
+            <p className="mt-5 font-display text-2xl font-bold leading-[1.3] text-white sm:text-3xl">
+              Our belief is simple:
+            </p>
+
+            <blockquote className="mt-6 border-l-2 border-white/50 pl-5 font-display text-xl font-semibold leading-[1.45] text-white sm:text-2xl">
+            Every older person deserves to age with dignity, security,
+              purpose and the opportunity to remain connected with family and
+              society
+            </blockquote>
+          </div>
+        </div>
+      </Reveal>
     </div>
-  </Reveal>
+  </div>
 </section>
 
-        {/* ======================================================
-            WHO WE ARE
-        ====================================================== */}
-        <section className="bg-[#FBF6EC]">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
-            <Reveal>
-              <SectionMarker index="01" label="Who we are" />
-              <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#1B2A35] sm:text-4xl lg:text-[2.9rem]">
-                Nearly three decades of building better ways to age
-              </h2>
-            </Reveal>
+       {/* ======================================================
+    WHY WE EXIST
+====================================================== */}
+<section id="why-we-exist" className="bg-white scroll-mt-24">
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
-            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[#1B2A35]/10 bg-[#1B2A35]/10 lg:grid-cols-2">
-              <Reveal>
-                <div className="h-full bg-white p-7 sm:p-9">
-                  <CompassIcon />
-                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-                    From services to care models
-                  </p>
-                  <p className="mt-4 text-[15px] leading-7 text-[#4C5C68] sm:text-base">
-                    NMT develops need-based solutions across dementia care,
-                    healthy and active ageing, social integration,
-                    elder-abuse prevention, livelihood and empowerment,
-                    community support, training, awareness and advocacy.
-                  </p>
-                </div>
-              </Reveal>
+    <Reveal>
+      <SectionMarker index="02" label="Why we exist" />
 
-              <Reveal delay={80}>
-                <div className="h-full bg-[#123F35] p-7 text-white sm:p-9">
-                  <Target className="h-7 w-7 text-[#F6A36E]" strokeWidth={1.7} />
-                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
-                    Our purpose
-                  </p>
-                  <p className="mt-4 max-w-xl font-display text-xl font-bold leading-[1.35] text-white sm:text-2xl">
-                    Create practical, accessible and sustainable solutions so
-                    older persons can live with dignity, and families can
-                    access the support they need.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
+      <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#ED6439] sm:text-4xl lg:text-[2.6rem]">
+        Because Ageing Should Not Mean Losing Dignity, Independence or
+        Belonging.
+      </h2>
+
+      <div className="mt-7 max-w-5xl space-y-5 text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-7">
+        <p>
+          India is ageing rapidly. At the same time, families are changing,
+          traditional support systems are becoming weaker, and the needs of
+          older persons are becoming increasingly complex.
+        </p>
+
+        <p>
+          Loneliness, chronic illness, dementia, elder abuse, financial
+          insecurity, social isolation and loss of livelihood can profoundly
+          affect the quality of later life.
+        </p>
+
+        <p>
+          Dementia presents an additional challenge. As the condition
+          progresses, elders with dementia may require increasing levels of
+          supervision, specialised care and support. Families often struggle
+          to find affordable, professional and compassionate services.
+        </p>
+
+        <p>
+          NMT was founded in response to these realities.
+        </p>
+
+        <p>
+          We work to create practical, accessible and sustainable solutions
+          that enable older persons to live with dignity and families to
+          receive the support they need.
+        </p>
+
+        <p>
+          Our work is particularly committed to ensuring that economic
+          circumstances do not become a barrier to accessing essential care
+          and support.
+        </p>
+      </div>
+    </Reveal>
+
+    {/* KEY THEMES */}
+    <Reveal delay={100}>
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          "Dignity",
+          "Independence",
+          "Belonging",
+          "Compassionate Care",
+          "Accessible Support",
+          "Sustainable Solutions",
+        ].map((item) => (
+          <div
+            key={item}
+            className="flex items-center gap-3 rounded-xl bg-[#FBF6EC] px-5 py-4"
+          >
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#ED6439]" />
+            <span className="text-sm font-bold text-[#1B2A35] sm:text-base">
+              {item}
+            </span>
           </div>
-        </section>
+        ))}
+      </div>
+    </Reveal>
 
-        {/* ======================================================
-            WHY WE EXIST
-        ====================================================== */}
-        <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
-            <Reveal>
-              <SectionMarker index="02" label="Why we exist" />
-              <h2 className="mt-5 max-w-3xl font-display text-2xl font-bold leading-[1.18] tracking-[-0.03em] text-[#1B2A35] sm:text-3xl md:text-4xl lg:text-[2.4rem]">
-                Ageing should not mean losing dignity, independence or
-                belonging
-              </h2>
-            </Reveal>
+  </div>
+</section>
 
-            <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-0 border-t border-[#1B2A35]/10 sm:grid-cols-3">
-              {CHALLENGES.map((challenge, index) => (
-                <Reveal key={challenge} delay={index * 25}>
-                  <div className="flex items-start gap-3 border-b border-[#1B2A35]/10 py-4">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                    <p className="text-[13.5px] leading-6 text-[#4C5C68]">
-                      {challenge}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
+
+
+      {/* ======================================================
+    THE NEED FOR NMT
+====================================================== */}
+<section
+  id="the-need-for-nmt"
+  className="bg-[#FBF6EC] scroll-mt-24"
+>
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+
+    <Reveal>
+      <SectionMarker index="03" label="The Need for NMT" />
+
+      <div className="mt-5 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+
+        {/* LEFT — INTRO */}
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+            THE NEED FOR NMT
+          </p>
+
+          <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.7rem]">
+            India Is Ageing. The Need for Age Care Is Growing.
+          </h2>
+        </div>
+
+        {/* RIGHT — INTRODUCTION */}
+        <div className="space-y-5">
+          <p className="text-sm leading-7 text-[#4C5C68] sm:text-base">
+            India's elderly population has grown dramatically over the past
+            several decades and is expected to increase substantially in the
+            coming years. At the same time, the availability of specialised
+            services for older persons remains inadequate.
+          </p>
+
+          <p className="text-base font-bold text-[#1B2A35]">
+            The challenges are not limited to healthcare.
+          </p>
+        </div>
+      </div>
+    </Reveal>
+
+    {/* ==================================================
+        CHALLENGES
+    ================================================== */}
+    <Reveal delay={80}>
+      <div className="mt-10 rounded-2xl bg-white p-7 shadow-[0_18px_50px_-20px_rgba(70,45,10,0.12)] sm:p-9">
+
+        <p className="text-sm font-bold text-[#1B2A35] sm:text-base">
+          Older persons may face:
+        </p>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            "Chronic health conditions and disability",
+            "Dementia and cognitive decline",
+            "Loneliness and social isolation",
+            "Elder abuse and neglect",
+            "Financial insecurity",
+            "Loss of employment and livelihood",
+            "Changing family structures",
+            "Lack of appropriate care and support",
+            "Difficulty accessing reliable information and services",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-start gap-3 rounded-xl bg-[#FBF6EC] px-4 py-3.5 text-sm font-medium leading-6 text-[#1B2A35]"
+            >
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    </Reveal>
+
+    {/* ==================================================
+        DEMENTIA CHALLENGES
+    ================================================== */}
+    <Reveal delay={120}>
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+
+        <div className="rounded-2xl bg-[#ED6439] p-7 text-white sm:p-9">
+          <p className="text-sm font-bold uppercase tracking-[0.12em] text-white/80">
+            Dementia Care
+          </p>
+
+          <p className="mt-4 text-base leading-7 text-white/90 sm:text-lg">
+            People living with dementia and their families face an additional
+            set of challenges, including delayed diagnosis, lack of awareness,
+            shortage of trained caregivers, behavioural and psychological
+            symptoms, caregiver stress and limited access to specialised
+            residential and community-based care.
+          </p>
+        </div>
+
+        <div className="flex items-center rounded-2xl bg-white p-7 text-[#ED6439] sm:p-9">
+          <p className="font-display text-xl font-bold leading-[1.4] sm:text-2xl">
+            This is where NMT seeks to make a difference.
+          </p>
+        </div>
+
+      </div>
+    </Reveal>
+
+    {/* ==================================================
+        NMT'S APPROACH
+    ================================================== */}
+    <Reveal delay={160}>
+      <div className="mt-6 rounded-2xl border border-[#ED6439]/20 bg-white p-7 sm:p-9">
+
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+
+          <div className="max-w-xl">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+              NMT's Approach
+            </p>
+
+            <p className="mt-4 text-base leading-7 text-[#4C5C68] sm:text-lg">
+              We develop need-based solutions across the entire ageing and
+              dementia-care continuum from prevention and early assessment to
+              community support, day care, residential care, caregiver
+              training, advocacy and research.
+            </p>
           </div>
-        </section>
+
+          <div className="flex flex-wrap gap-2.5 lg:max-w-md lg:justify-end">
+            {[
+              "Prevention",
+              "Early assessment",
+              "Community support",
+              "Day care",
+              "Residential care",
+              "Caregiver training",
+              "Advocacy",
+              "Research",
+            ].map((item) => (
+              <span
+                key={item}
+                className="rounded-full bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </Reveal>
+
+  </div>
+</section>
+
+
 
         {/* ======================================================
             OUR JOURNEY — vertical timeline
         ====================================================== */}
-        <section className="bg-[#FBF6EC]">
+        <section id="our-journey" className="bg-[#FBF6EC] scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
               <SectionMarker index="03" label="Our journey" />
+              <h3 className="mt-5 max-w-5xl font-display text-2xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-3xl lg:text-[2.2rem]">
+  From a Garage to a Movement for Ageing with Dignity
+</h3>
               <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
                 Nightingales' story began in a modest garage in
                 Sadashivnagar, Bengaluru
@@ -637,48 +894,48 @@ function AboutPage() {
               </Reveal>
 
               <div className="relative mt-9">
-  <div
-    className="
-      max-h-[520px]
-      overflow-y-auto
-      overscroll-contain
-      pr-3
-      scroll-smooth
-    "
-  >
-    <div className="relative">
-      <div className="absolute bottom-2 left-[3px] top-2 w-px bg-[#1B2A35]/12 sm:left-[95px]" />
+                <div
+                  className="
+                    max-h-[520px]
+                    overflow-y-auto
+                    overscroll-contain
+                    pr-3
+                    scroll-smooth
+                  "
+                >
+                  <div className="relative">
+                    <div className="absolute bottom-2 left-[3px] top-2 w-px bg-[#1B2A35]/12 sm:left-[95px]" />
 
-      <div className="space-y-0">
-        {JOURNEY.map((item, index) => (
-          <Reveal key={`${item.year}-${index}`} delay={index * 12}>
-            <div className="relative grid grid-cols-1 gap-2 py-5 pl-6 sm:grid-cols-[95px_1fr] sm:gap-8 sm:pl-0">
-              <div className="relative sm:pr-8 sm:text-right">
-                <span className="absolute -left-[27px] top-1 h-2 w-2 rounded-full bg-[#ED6439] sm:-left-[5px]" />
+                    <div className="space-y-0">
+                      {JOURNEY.map((item, index) => (
+                        <Reveal key={`${item.year}-${index}`} delay={index * 12}>
+                          <div className="relative grid grid-cols-1 gap-2 py-5 pl-6 sm:grid-cols-[95px_1fr] sm:gap-8 sm:pl-0">
+                            <div className="relative sm:pr-8 sm:text-right">
+                              <span className="absolute -left-[27px] top-1 h-2 w-2 rounded-full bg-[#ED6439] sm:-left-[5px]" />
 
-                <span className="font-display text-sm font-bold text-[#ED6439] sm:text-[15px]">
-                  {item.year}
-                </span>
+                              <span className="font-display text-sm font-bold text-[#ED6439] sm:text-[15px]">
+                                {item.year}
+                              </span>
+                            </div>
+
+                            <div className="border-l border-[#1B2A35]/10 pl-6 sm:border-l-0 sm:pl-8">
+                              <h4 className="max-w-2xl font-display text-[15px] font-bold leading-[1.35] text-[#1B2A35] sm:text-base">
+                                {item.title}
+                              </h4>
+
+                              {item.body && (
+                                <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-[#4C5C68] sm:text-[13.5px]">
+                                  {item.body}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <div className="border-l border-[#1B2A35]/10 pl-6 sm:border-l-0 sm:pl-8">
-                <h4 className="max-w-2xl font-display text-[15px] font-bold leading-[1.35] text-[#1B2A35] sm:text-base">
-                  {item.title}
-                </h4>
-
-                {item.body && (
-                  <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-[#4C5C68] sm:text-[13.5px]">
-                    {item.body}
-                  </p>
-                )}
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
             </div>
 
             <Reveal delay={100}>
@@ -704,7 +961,7 @@ function AboutPage() {
         {/* ======================================================
             VISION / MISSION / VALUES
         ====================================================== */}
-        <section className="bg-white">
+        <section id="vision" className="bg-white scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
               <SectionMarker index="04" label="Vision, mission & values" />
@@ -712,10 +969,10 @@ function AboutPage() {
 
             <div className="mt-9 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
               <Reveal>
-                <article className="flex h-full flex-col justify-between rounded-2xl bg-[#123F35] p-7 text-white sm:p-9">
-                  <Eye className="h-7 w-7 text-[#F6A36E]" strokeWidth={1.6} />
+                <article className="flex h-full flex-col justify-between rounded-2xl bg-[#ED6439] p-7 text-white sm:p-9">
+                  <Eye className="h-7 w-7 text-white" strokeWidth={1.6} />
                   <div className="mt-8">
-                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-white/80">
                       Our vision
                     </p>
                     <h3 className="mt-3 max-w-xl font-display text-2xl font-bold leading-[1.2] sm:text-3xl">
@@ -734,10 +991,12 @@ function AboutPage() {
                       Our mission
                     </p>
                     <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#4C5C68] sm:text-base">
-                      Enhance quality of life through community support,
-                      geriatric and dementia care, active ageing, elder-abuse
-                      prevention, livelihoods, education, advocacy and
-                      capacity building.
+                      To enhance the quality of life of elders through
+                      innovative and appropriate community-based support
+                      systems, comprehensive geriatric care with special
+                      focus on dementia and active ageing, combating elder
+                      abuse, enabling livelihoods, public education,
+                      advocacy and capacity building.
                     </p>
                   </div>
                 </article>
@@ -772,172 +1031,471 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* ======================================================
-            PEOPLE & GOVERNANCE
-        ====================================================== */}
-        <section className="bg-[#FBF6EC]">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-            <Reveal>
-              <SectionMarker index="05" label="People & governance" />
-              <h2 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
-                Responsible governance. People who turn vision into action.
-              </h2>
-            </Reveal>
+      {/* ======================================================
+    PEOPLE & GOVERNANCE
+====================================================== */}
+<section id="governance" className="bg-[#FBF6EC] scroll-mt-24">
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
-            <div className="mt-11 grid gap-5 lg:grid-cols-2">
-              <Reveal>
-                <article className="flex min-h-[300px] flex-col justify-between rounded-2xl bg-[#14212B] p-7 text-white sm:p-9">
-                  <Landmark className="h-7 w-7 text-[#ED6439]" strokeWidth={1.7} />
+    <Reveal>
+      <SectionMarker index="05" label="People & governance" />
 
-                  <div className="mt-10">
-                    <h3 className="font-display text-2xl font-bold leading-tight sm:text-3xl">
-                      Board of Trustees
-                    </h3>
-                    <p className="mt-4 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
-                      Experienced professionals providing strategic
-                      direction, governance and oversight across NMT's work
-                      in age care, healthcare and social development.
-                    </p>
+      <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
+        Responsible governance. People who turn vision into action.
+      </h2>
+    </Reveal>
 
-                    <Link
-                      to="/founders"
-                      className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#d95538]"
-                    >
-                      View Board of Trustees
-                      <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-                    </Link>
-                  </div>
-                </article>
-              </Reveal>
+    <div className="mt-11 grid gap-6 lg:grid-cols-2">
 
-              <Reveal delay={80}>
-                <article className="flex min-h-[300px] flex-col justify-between rounded-2xl border border-[#1B2A35]/10 bg-white p-7 sm:p-9">
-                  <Users className="h-7 w-7 text-[#ED6439]" strokeWidth={1.7} />
+      {/* ==================================================
+          BOARD OF TRUSTEES
+      ================================================== */}
+      <Reveal>
+        <article className="flex h-full flex-col rounded-2xl bg-[#ED6439] p-7 text-white sm:p-9">
 
-                  <div className="mt-10">
-                    <h3 className="font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
-                      Executive Committee
-                    </h3>
-                    <p className="mt-4 max-w-lg text-sm leading-7 text-[#4C5C68] sm:text-base">
-                      A multidisciplinary professional team working together
-                      to translate NMT's vision into meaningful programmes,
-                      services and impact.
-                    </p>
+          <div className="flex items-start justify-between gap-4">
+            <Landmark
+              className="h-7 w-7 text-white"
+              strokeWidth={1.7}
+            />
 
-                    <Link
-                      to="/executive-committee"
-                      className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#d95538]"
-                    >
-                      Meet the Executive Committee
-                      <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-                    </Link>
-                  </div>
-                </article>
-              </Reveal>
+            <span className="rounded-full border border-white/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/90">
+              Board
+            </span>
+          </div>
+
+          <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+            BOARD OF TRUSTEES
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-bold leading-tight sm:text-3xl">
+            Responsible Governance. Independent Oversight. Shared Commitment.
+          </h3>
+
+          <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base">
+            Nightingales Medical Trust is guided by a Board of Trustees
+            comprising experienced professionals from diverse fields,
+            bringing expertise in healthcare, administration, finance,
+            business, public policy and social development.
+          </p>
+
+          <p className="mt-4 text-sm leading-7 text-white/85 sm:text-base">
+            The Board provides strategic direction and oversight, with major
+            policy decisions resting with the Board.
+          </p>
+
+          <div className="mt-7">
+            <p className="text-sm font-bold text-white">
+              Our governance philosophy is based on:
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                "Accountability",
+                "Transparency",
+                "Ethical Governance",
+                "Professional Oversight",
+                "Long-term Sustainability",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full bg-white/15 px-3.5 py-2 text-xs font-bold text-white"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
-        </section>
+
+          <div className="mt-7 border-t border-white/25 pt-6">
+            <h4 className="font-display text-xl font-bold sm:text-2xl">
+              Meet our Board of Trustees
+            </h4>
+
+            <p className="mt-3 text-sm leading-6 text-white/75">
+              [Board member profiles, photographs and designations ]
+            </p>
+
+            <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base">
+              The Board of Trustees provides strategic oversight and ensures
+              that NMT remains true to its mission while maintaining high
+              standards of governance and accountability.
+            </p>
+          </div>
+
+          {/* EXISTING LINK — PRESERVED */}
+          <div className="mt-auto pt-8">
+            <Link
+              to="/founders"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:bg-[#14212B] hover:text-white"
+            >
+              View Board of Trustees
+              <ArrowUpRight
+                className="h-4 w-4"
+                strokeWidth={2.2}
+              />
+            </Link>
+          </div>
+
+        </article>
+      </Reveal>
+
+      {/* ==================================================
+          LEADERSHIP TEAM
+      ================================================== */}
+      <Reveal delay={80}>
+        <article className="flex h-full flex-col rounded-2xl bg-white p-7 text-[#1B2A35] shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)] sm:p-9">
+
+          <div className="flex items-start justify-between gap-4">
+            <Users
+              className="h-7 w-7 text-[#ED6439]"
+              strokeWidth={1.7}
+            />
+
+            <span className="rounded-full border border-[#1B2A35]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#4C5C68]">
+              Leadership
+            </span>
+          </div>
+
+          <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+            LEADERSHIP TEAM
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
+            People Who Turn Vision into Action
+          </h3>
+
+          <p className="mt-5 text-sm leading-7 text-[#4C5C68] sm:text-base">
+            NMT's work is driven by a committed team of professionals who
+            bring expertise in medicine, dementia care, social work,
+            programme management, finance, human resources, technology,
+            communications, research and community development.
+          </p>
+
+          <p className="mt-4 text-sm leading-7 text-[#4C5C68] sm:text-base">
+            Our leadership team combines professional competence with a deep
+            commitment to social impact.
+          </p>
+
+          <div className="mt-7">
+            <p className="text-sm font-bold text-[#1B2A35]">
+              Leadership
+            </p>
+
+            <div className="mt-4 space-y-4">
+
+              <div className="rounded-xl bg-[#FBF6EC] p-5">
+                <h4 className="font-display text-lg font-bold text-[#1B2A35] sm:text-xl">
+                  Dr Radha S Murthy
+                </h4>
+
+                <p className="mt-1 text-sm font-bold text-[#ED6439]">
+                  Co-Founder & Managing Trustee
+                </p>
+
+                <p className="mt-3 text-sm leading-7 text-[#4C5C68]">
+                  A physician with more than three decades of experience,
+                  Dr Radha Murthy has been instrumental in shaping NMT's
+                  person-centred approach to elder and dementia care.
+                </p>
+              </div>
+
+              <div className="rounded-xl bg-[#FBF6EC] p-5">
+                <h4 className="font-display text-lg font-bold text-[#1B2A35] sm:text-xl">
+                  S Premkumar Raja
+                </h4>
+
+                <p className="mt-1 text-sm font-bold text-[#ED6439]">
+                  Co-Founder & Secretary
+                </p>
+
+                <p className="mt-3 text-sm leading-7 text-[#4C5C68]">
+                  With postgraduate qualifications in social sciences and
+                  40+ years experience in community welfare and healthcare
+                  administration, Mr Raja has played a key role in
+                  conceptualising and implementing NMT's innovative
+                  programmes.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-[#1B2A35]/10 pt-5">
+            <h4 className="font-display text-xl font-bold text-[#1B2A35] sm:text-2xl">
+              Senior Leadership Team
+            </h4>
+          </div>
+
+          {/* EXISTING LINK — PRESERVED */}
+          <div className="mt-auto pt-8">
+            <Link
+              to="/executive-committee"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#d95538]"
+            >
+              Meet the Executive Committee
+              <ArrowUpRight
+                className="h-4 w-4"
+                strokeWidth={2.2}
+              />
+            </Link>
+          </div>
+
+        </article>
+      </Reveal>
+
+    </div>
+  </div>
+</section>
 
         {/* ======================================================
             RECOGNITION
         ====================================================== */}
-        <RecognitionCarousel />
+        <section id="partners" className="scroll-mt-24">
+  <RecognitionCarousel />
+</section>
 
         {/* ======================================================
             PARTNERSHIPS
         ====================================================== */}
-        <Partners />
+        <section id="partners" className="scroll-mt-24">
+  <Partners />
+</section>
 
-        {/* ======================================================
-            TRANSPARENCY
-        ====================================================== */}
-        <section className="bg-[#14212B] text-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-            <div className="max-w-3xl">
-              <SectionMarker index="08" label="Transparency" tone="dark" />
-              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
-                Our work, our impact, our accountability.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/65 sm:text-lg">
-                We believe transparency builds trust. Explore our annual
-                reports and financial documents to learn more about our
-                work, impact and accountability.
-              </p>
-            </div>
+       {/* ======================================================
+    TRANSPARENCY
+====================================================== */}
+<section
+  id="transparency"
+  className="bg-[#14212B] text-white scroll-mt-24"
+>
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+    <div className="max-w-3xl">
+      <SectionMarker index="08" label="Transparency" />
 
-            <div className="mt-12 grid gap-6 lg:grid-cols-2">
-              <Reveal>
-                <div className="h-full rounded-2xl bg-white p-7 text-[#1B2A35] sm:p-9">
-                  <div className="flex items-start justify-between gap-4">
-                    <FileText className="h-6 w-6 text-[#ED6439]" strokeWidth={1.8} />
-                    <span className="rounded-full border border-[#1B2A35]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#4C5C68]">
-                      7 reports
-                    </span>
-                  </div>
+      <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
+        Our work, our impact, our accountability.
+      </h2>
 
-                  <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-                    Annual reports
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
-                    Our work, year by year
-                  </h3>
+      <p className="mt-5 max-w-2xl text-base leading-7 text-white/65 sm:text-lg">
+        We believe transparency builds trust. Explore our annual
+        reports and financial documents to learn more about our
+        work, impact and accountability.
+      </p>
+    </div>
 
-                  <div className="mt-6 flex flex-wrap gap-2.5">
-                    {annualReports.map((report) => (
-                      <a
-                        key={report.year}
-                        href={report.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#ED6439] hover:text-white"
-                      >
-                        {report.year}
-                        <ArrowUpRight className="h-3.5 w-3.5 opacity-50" strokeWidth={2.2} />
-                      </a>
-                    ))}
-                  </div>
+    <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
+      
+     {/* ==================================================
+    ANNUAL REPORTS
+================================================== */}
+<Reveal>
+  <div className="flex h-full flex-col rounded-2xl bg-white p-7 text-[#1B2A35] sm:p-9">
+    <div className="flex items-start justify-between gap-4">
+      <FileText
+        className="h-6 w-6 text-[#ED6439]"
+        strokeWidth={1.8}
+      />
 
-                  <div className="mt-7 flex items-center gap-3 border-t border-[#1B2A35]/10 pt-5 text-xs font-medium text-[#4C5C68]">
-                    <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
-                    <span>Programmes · Impact · Partnerships · Achievements</span>
-                  </div>
-                </div>
-              </Reveal>
+      <span className="rounded-full border border-[#1B2A35]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#4C5C68]">
+        7 reports
+      </span>
+    </div>
 
-              <Reveal delay={80}>
-                <Link
-                  to="/financial-reports"
-                  className="group block h-full rounded-2xl border border-white/12 bg-white/[0.05] p-7 transition-colors duration-300 hover:bg-white/[0.08] sm:p-9"
-                >
-                  <div className="flex items-start justify-between gap-5">
-                    <ShieldCheck className="h-6 w-6 text-[#ED6439]" strokeWidth={1.7} />
-                    <ArrowUpRight
-                      className="h-5 w-5 text-[#F6A36E]/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      strokeWidth={2}
-                    />
-                  </div>
+    <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+      ANNUAL REPORTS
+    </p>
 
-                  <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-[#F6A36E]">
-                    Financial reports
-                  </p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
-                    Transparency you can trust
-                  </h3>
-                  <p className="mt-3 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
-                    Access our audited financial statements and statutory
-                    documents for a transparent view of our financial
-                    accountability.
-                  </p>
+    <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-[#1B2A35] sm:text-3xl">
+      Our Work. Our Impact. Our Accountability.
+    </h3>
 
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#F6A36E]">
-                    View Financial Reports
-                    <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-                  </div>
-                </Link>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+    <p className="mt-5 text-sm leading-7 text-[#4C5C68] sm:text-base">
+      We believe that organisations working for social impact must be
+      accountable to the people and institutions that support them.
+    </p>
+
+    <p className="mt-6 text-sm font-bold leading-6 text-[#1B2A35]">
+      Our Annual Reports provide an overview of:
+    </p>
+
+    <ul className="mt-3 space-y-2">
+      {[
+        "Programmes and initiatives",
+        "Impact and beneficiaries",
+        "Organisational developments",
+        "Financial performance",
+        "Partnerships",
+        "Key achievements",
+        "Challenges and priorities for the future",
+      ].map((item) => (
+        <li
+          key={item}
+          className="flex items-start gap-3 text-sm leading-6 text-[#4C5C68]"
+        >
+          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div className="mt-6 flex flex-wrap gap-2.5">
+      {annualReports.map((report) => (
+        <a
+          key={report.year}
+          href={report.pdf}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#ED6439] hover:text-white"
+        >
+          {report.year}
+
+          <ArrowUpRight
+            className="h-3.5 w-3.5 opacity-50"
+            strokeWidth={2.2}
+          />
+        </a>
+      ))}
+    </div>
+
+    {/* FULL CONTENT — ALWAYS VISIBLE */}
+    <div className="mt-6 border-t border-[#1B2A35]/10 pt-6">
+      <p className="text-sm leading-7 text-[#4C5C68] sm:text-base">
+        Our latest published annual report describes NMT as a
+        professionally managed not-for-profit working for elders and
+        persons with dementia since 1998, with programmes spanning
+        dementia care, active ageing, social integration, elder-abuse
+        prevention, livelihoods, training, awareness and advocacy.
+      </p>
+    </div>
+  </div>
+</Reveal>
+
+     {/* ==================================================
+    FINANCIAL REPORTS
+================================================== */}
+<Reveal delay={80}>
+  <Link
+    to="/financial-reports"
+    className="group flex h-full flex-col rounded-2xl bg-[#ED6439] p-7 text-white transition-colors duration-300 hover:bg-[#d95538] sm:p-9"
+  >
+    <div className="flex items-start justify-between gap-5">
+      <ShieldCheck
+        className="h-6 w-6 text-white"
+        strokeWidth={1.7}
+      />
+
+      <ArrowUpRight
+        className="h-5 w-5 text-white/80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        strokeWidth={2}
+      />
+    </div>
+
+    <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white">
+      FINANCIAL STATEMENTS
+    </p>
+
+    <h3 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+      Transparency You Can Trust
+    </h3>
+
+    <p className="mt-4 text-sm leading-7 text-white/85 sm:text-base">
+      As a not-for-profit organisation, we recognise our responsibility to
+      use every contribution entrusted to us with care, integrity and
+      accountability.
+    </p>
+
+    <p className="mt-4 text-sm leading-7 text-white/85 sm:text-base">
+      NMT maintains transparent financial reporting and makes relevant
+      financial and statutory documents available for public review.
+    </p>
+
+    {/* Financial Documents */}
+    <div className="mt-7">
+      <p className="text-sm font-bold text-white sm:text-base">
+        Financial Documents
+      </p>
+
+      <p className="mt-4 text-sm font-bold text-white">
+        Audited Financial Statements
+      </p>
+
+      <ul className="mt-3 space-y-2">
+        {[
+          "2025–26",
+          "2024–25",
+          "2023–24",
+          "2022–23",
+          "2021–22",
+        ].map((year) => (
+          <li
+            key={year}
+            className="flex items-center gap-3 text-sm leading-6 text-white/80"
+          >
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+            <span>{year}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-6 text-sm font-bold text-white">
+        Statutory & Registration Documents
+      </p>
+
+      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+        {[
+          "Trust Deed",
+          "PAN",
+          "Income Tax Registration",
+          "80G Certificate",
+          "FCRA Registration",
+          "CSR Registration",
+          "Social Stock Exchange Registration – BSE",
+          "Social Stock Exchange Registration – NSE",
+        ].map((document) => (
+          <li
+            key={document}
+            className="flex items-start gap-3 text-sm leading-6 text-white/80"
+          >
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+            <span>{document}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Commitment */}
+    <div className="mt-7 border-t border-white/25 pt-6">
+      <p className="text-sm font-bold text-white sm:text-base">
+        Our commitment to transparency
+      </p>
+
+      <p className="mt-4 text-sm leading-7 text-white/85 sm:text-base">
+        We believe that transparency is not simply a compliance requirement.
+      </p>
+
+      <p className="mt-4 text-sm leading-7 text-white/85 sm:text-base">
+        It is a responsibility to our donors, partners, beneficiaries,
+        employees and the community we serve.
+      </p>
+    </div>
+
+    {/* KEEP BUTTON */}
+    <div className="mt-auto pt-7">
+      <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#ED6439] transition-colors duration-300 group-hover:bg-[#14212B] group-hover:text-white">
+        View Financial Statements
+
+        <ArrowUpRight
+          className="h-4 w-4"
+          strokeWidth={2.2}
+        />
+      </span>
+    </div>
+  </Link>
+</Reveal>
+    </div>
+  </div>
+</section>
 
         {/* ======================================================
             SETTING TRENDS IN AGE CARE
@@ -956,32 +1514,41 @@ function AboutPage() {
             </Reveal>
 
             <Reveal delay={70}>
-              <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="rounded-2xl bg-[#14212B] p-7 text-white sm:p-9">
-                  <Sparkles className="h-6 w-6 text-[#F6A36E]" strokeWidth={1.7} />
-                  <p className="mt-6 max-w-xl font-display text-xl font-bold leading-[1.4] sm:text-2xl">
-                    We have moved beyond the traditional model of care to
-                    develop solutions that combine:
-                  </p>
-                </div>
+  <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+    <div className="rounded-2xl bg-[#ED6439] p-7 text-white sm:p-9">
+      <Sparkles
+        className="h-6 w-6 text-white"
+        strokeWidth={1.7}
+      />
 
-                <div className="rounded-2xl border border-[#1B2A35]/10 bg-white p-6 sm:p-8">
-                  <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                    {["Care", "Community", "Prevention", "Empowerment", "Innovation", "Advocacy"].map(
-                      (item) => (
-                        <div
-                          key={item}
-                          className="flex items-center gap-2 rounded-lg bg-[#FBF6EC] px-3.5 py-3 text-sm font-bold text-[#1B2A35]"
-                        >
-                          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                          {item}
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+      <p className="mt-6 max-w-xl font-display text-xl font-bold leading-[1.4] sm:text-2xl">
+        We have moved beyond the traditional model of care to develop
+        solutions that combine:
+      </p>
+    </div>
+
+    <div className="rounded-2xl border border-[#1B2A35]/10 bg-white p-6 sm:p-8">
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+        {[
+          "Care",
+          "Community",
+          "Prevention",
+          "Empowerment",
+          "Innovation",
+          "Advocacy",
+        ].map((item) => (
+          <div
+            key={item}
+            className="flex items-center gap-2 rounded-lg bg-[#FBF6EC] px-3.5 py-3 text-sm font-bold text-[#1B2A35]"
+          >
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Reveal>
 
             <Reveal delay={130}>
               <div className="mt-6 rounded-2xl border border-[#1B2A35]/10 bg-white p-6 sm:p-8 lg:p-9">

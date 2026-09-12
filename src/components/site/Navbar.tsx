@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import type { FormEvent } from "react";
-import { Link } from "@tanstack/react-router";
+import type { FormEvent, MouseEvent } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Search,
   Menu,
@@ -23,19 +23,24 @@ interface NavItem {
 }
 
 const NAV_LINKS: NavItem[] = [
-  {
-    label: "About Us",
-    to: "/about",
-    children: [
-      { label: "About Overview", to: "/about" },
-      // { label: "Vision & Mission", to: "/about", hash: "vision" },
-      // { label: "Our Founders", to: "/about", hash: "founders" },
-      { label: "Executive Committee", to: "/executive-committee" },
-      // { label: "Advisory Board", to: "/advisory-board" },
-      { label: "Annual Reports", to: "/annual-reports" },
-      // { label: "FCRA Compliance", to: "/fcra" },
-    ],
-  },
+ {
+  label: "About Us",
+  to: "/about",
+  children: [
+    { label: "About Overview", to: "/about", hash: "about-overview" },
+    { label: "Who We Are", to: "/about", hash: "who-we-are" },
+    { label: "Why We Exist", to: "/about", hash: "why-we-exist" },
+    { label: "The Need for NMT", to: "/about", hash: "the-need-for-nmt" },
+    { label: "Our Journey", to: "/about", hash: "our-journey" },
+    { label: "Vision, Mission & Values", to: "/about", hash: "vision" },
+    { label: "People & Governance", to: "/about", hash: "governance" },
+    { label: "Executive Committee", to: "/executive-committee" },
+    { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
+    { label: "Partners", to: "/about", hash: "partners" },
+    { label: "Transparency", to: "/about", hash: "transparency" },
+    { label: "Annual Reports", to: "/annual-reports" },
+  ],
+},
   {
     label: "Our Services",
     to: "/services",
@@ -68,12 +73,41 @@ function normalizeSearchText(value: string) {
     .trim();
 }
 
+/**
+ * Scrolls smoothly to an element by id. Retries for a short window using
+ * requestAnimationFrame, since the target section may not be mounted yet
+ * right after a route change (e.g. navigating from another page to
+ * /about#who-we-are).
+ */
+function scrollToId(id: string, attempt = 0) {
+  const normalizedId = id.replace(/^#/, "");
+  const el = document.getElementById(normalizedId);
+
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  if (attempt < 40) {
+    requestAnimationFrame(() => scrollToId(id, attempt + 1));
+  }
+}
+
+function normalizePath(path: string) {
+  if (path.length > 1 && path.endsWith("/")) {
+    return path.slice(0, -1);
+  }
+  return path;
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+
+  const location = useRouterState({ select: (s) => s.location });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -86,6 +120,35 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  // Handles the case where the hash is already present when a page loads
+  // or when navigation to a different route with a hash completes.
+  useEffect(() => {
+    const hash = location.hash;
+    if (!hash) return;
+
+    const timeout = setTimeout(() => scrollToId(hash), 50);
+
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, location.hash]);
+
+  // Handles clicks on a hashed link while already on the target page —
+  // in that case the route doesn't actually change, so we scroll manually.
+  const handleHashLinkClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    item: { to: string; hash?: string }
+  ) => {
+    if (!item.hash) return;
+
+    const isSamePage = normalizePath(location.pathname) === normalizePath(item.to);
+
+    if (isSamePage) {
+      e.preventDefault();
+      window.history.replaceState(null, "", `${item.to}#${item.hash}`);
+      scrollToId(item.hash);
+    }
+  };
 
   const searchResults = useMemo(() => {
     const query = normalizeSearchText(searchQuery);
@@ -404,6 +467,7 @@ export function Navbar() {
                         key={child.label}
                         to={child.to}
                         hash={child.hash}
+                        onClick={(e) => handleHashLinkClick(e, child)}
                         className="
                           rounded-xl
                           px-3
@@ -513,6 +577,7 @@ export function Navbar() {
           <Link
             to="/get-involved"
             hash="donate"
+            onClick={(e) => handleHashLinkClick(e, { to: "/get-involved", hash: "donate" })}
             aria-label="Donate"
             className="
               hidden
@@ -818,7 +883,10 @@ export function Navbar() {
                         key={child.label}
                         to={child.to}
                         hash={child.hash}
-                        onClick={() => setMenuOpen(false)}
+                        onClick={(e) => {
+                          handleHashLinkClick(e, child);
+                          setMenuOpen(false);
+                        }}
                         className="
                           rounded-lg
                           px-2.5
@@ -870,7 +938,10 @@ export function Navbar() {
           <Link
             to="/get-involved"
             hash="donate"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              handleHashLinkClick(e, { to: "/get-involved", hash: "donate" });
+              setMenuOpen(false);
+            }}
             className="
               mt-4
               flex

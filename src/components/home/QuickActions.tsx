@@ -64,6 +64,7 @@ const ACTIONS = [
       "bg-[#FFF1DC] text-[#C66A1C] hover:bg-[#C66A1C] hover:text-white",
   },
   {
+<<<<<<< HEAD
     icon: Megaphone,
     label: "Awareness and Advocacy",
     href: "/services#awareness",
@@ -84,6 +85,28 @@ const ACTIONS = [
     color:
       "bg-[#F3EAF5] text-[#80518B] hover:bg-[#80518B] hover:text-white",
   },
+=======
+  icon: HandCoins,
+  label: "Donate",
+  href: "/get-involved#donate",
+  color:
+    "bg-[#FDE8D8] text-[#D35428] hover:bg-[#D35428] hover:text-white",
+},
+{
+  icon: Users,
+  label: "Volunteer / Intern",
+  href: "/services#volunteer",
+  color:
+    "bg-[#E9F1F8] text-[#3E6685] hover:bg-[#3E6685] hover:text-white",
+},
+{
+  icon: Handshake,
+  label: "CSR Partnerships",
+  href: "/#corporate",
+  color:
+    "bg-[#F3EAF5] text-[#80518B] hover:bg-[#80518B] hover:text-white",
+},
+>>>>>>> 6ea5ab2195c127764ce58bb73509f6900f35edce
 ] as const;
 
 export function QuickActions() {

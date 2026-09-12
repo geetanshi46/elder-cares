@@ -139,12 +139,14 @@ export function GetInvolved() {
   How you can help
 </span>
 
-          <h2
+          <h2 id="corporate"
             className="
+            
               mt-6
               font-display
               text-3xl
               font-extrabold
+              scroll-mt-24
               leading-tight
               text-ink
               sm:text-4xl
@@ -191,25 +193,26 @@ export function GetInvolved() {
               ===================================================== */}
 
           <Reveal delay={80}>
-  <div
-    className="
-      group
-      relative
-      h-full
-      overflow-hidden
-      border
-      border-[#ED6439]/20
-      bg-white
-      p-7
-      shadow-[0_18px_50px_-20px_rgba(70,45,10,0.18)]
-      transition-all
-      duration-500
-      hover:-translate-y-1.5
-      hover:border-[#ED6439]/40
-      hover:shadow-[0_28px_65px_-20px_rgba(237,100,57,0.24)]
-      sm:p-8
-    "
-  >
+<div
+  id="corporate"
+  className="
+    group
+    relative
+    h-full
+    overflow-hidden
+    border
+    border-[#ED6439]/20
+    bg-white
+    p-7
+    shadow-[0_18px_50px_-20px_rgba(70,45,10,0.18)]
+    transition-all
+    duration-500
+    hover:-translate-y-1.5
+    hover:border-[#ED6439]/40
+    hover:shadow-[0_28px_65px_-20px_rgba(237,100,57,0.24)]
+    sm:p-8
+  "
+>
     {/* Accent */}
     <div
       className="
@@ -263,9 +266,9 @@ export function GetInvolved() {
       </span>
 
       <div>
-        <h3 className="font-display text-xl font-bold text-ink">
-          CSR Partnerships
-        </h3>
+  <h3 className="font-display text-xl font-bold text-ink">
+    CSR Partnerships
+  </h3>
 
         <span className="mt-2 block h-1 w-10 rounded-full bg-[#ED6439] transition-all duration-300 group-hover:w-16" />
       </div>

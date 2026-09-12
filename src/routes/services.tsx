@@ -2937,16 +2937,18 @@ function ServicesPage() {
             </p>
 
             {/* VOLUNTEER */}
-            <div
-              className="
-                mt-6
-                border-t
-                border-[#ED6439]/15
-                pt-5
-                sm:mt-7
-                sm:pt-6
-              "
-            >
+          <div
+  id="volunteer"
+  className="
+    mt-6
+    border-t
+    border-[#ED6439]/15
+    pt-5
+    sm:mt-7
+    sm:pt-6
+    scroll-mt-24
+  "
+>
               <h4
                 className="
                   font-display
