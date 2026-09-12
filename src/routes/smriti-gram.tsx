@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Heart,
   Leaf,
+  PlayCircle,
   Microscope,
   Users,
   X,
@@ -48,6 +49,7 @@ function SmritiGramPage() {
   const [isAdmissionFormOpen, setIsAdmissionFormOpen] = useState(false);
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   const [expandedFacility, setExpandedFacility] = useState<number | null>(null);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isGuidingPrincipleExpanded, setIsGuidingPrincipleExpanded] =
   useState(false);
   return (
@@ -267,6 +269,216 @@ function SmritiGramPage() {
   </div>
 </section>
 
+
+{/* SHORT VIDEO SECTION */}
+{/* =========================================================
+    SHORT VIDEO SECTION
+    ========================================================= */}
+<section className="scroll-mt-24 bg-[#FBF6EC]">
+  <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
+    <Reveal delay={200}>
+      <div
+        className="
+          overflow-hidden
+          rounded-[2rem]
+          border
+          border-[#ED6439]/10
+          bg-white
+          shadow-[0_20px_55px_-30px_rgba(80,50,30,0.25)]
+        "
+      >
+        <div
+          className="
+            flex
+            flex-col
+            gap-6
+            px-6
+            py-8
+            sm:px-10
+            sm:py-9
+            lg:flex-row
+            lg:items-center
+            lg:justify-between
+            lg:px-12
+          "
+        >
+          {/* VIDEO TEXT */}
+          <div className="min-w-0">
+            <div className="mb-2 flex items-center gap-3">
+              <span className="h-[2px] w-8 rounded-full bg-[#ED6439]" />
+
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ED6439]">
+                Short Video
+              </span>
+            </div>
+
+            <h3 className="font-display text-2xl font-extrabold text-[#24333B] sm:text-3xl">
+              Discover Nightingales Smriti Gram
+            </h3>
+
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#66757E] sm:text-[15px]">
+              Take a closer look at our vision for a comprehensive model
+              of dementia care.
+            </p>
+          </div>
+
+          {/* VIDEO THUMBNAIL */}
+          <button
+            type="button"
+            onClick={() => setIsVideoOpen(true)}
+            aria-label="Watch Smriti Gram short video"
+            className="
+              group/thumb
+              relative
+              h-[160px]
+              w-full
+              shrink-0
+              cursor-pointer
+              overflow-hidden
+              rounded-2xl
+              border
+              border-[#ED6439]/25
+              bg-black
+              text-left
+              shadow-md
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:border-[#ED6439]/50
+              hover:shadow-[0_15px_35px_rgba(237,100,57,0.25)]
+              focus:outline-none
+              focus:ring-2
+              focus:ring-[#ED6439]/50
+              sm:h-[180px]
+              sm:w-[320px]
+            "
+          >
+            <img
+              src={smritiImage}
+              alt="Watch Nightingales Smriti Gram Video"
+              className="
+                h-full
+                w-full
+                object-cover
+                opacity-75
+                transition-transform
+                duration-500
+                ease-out
+                group-hover/thumb:scale-105
+                group-hover/thumb:opacity-90
+              "
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 p-4 text-center">
+              <div className="flex h-13 w-13 items-center justify-center rounded-full bg-[#ED6439] text-white shadow-[0_4px_20px_rgba(237,100,57,0.6)] transition-transform duration-300 group-hover/thumb:scale-110">
+                <PlayCircle className="h-7 w-7" strokeWidth={2.2} />
+              </div>
+
+              <span className="rounded-full bg-black/60 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                Watch Short Video
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+   {/* =========================================================
+    VIDEO MODAL
+    ========================================================= */}
+{isVideoOpen && (
+  <div
+    className="
+      fixed
+      inset-0
+      z-[9999]
+      flex
+      items-center
+      justify-center
+      bg-black/80
+      p-4
+      backdrop-blur-sm
+      sm:p-6
+    "
+    role="dialog"
+    aria-modal="true"
+    aria-label="Smriti Gram video"
+    onClick={() => setIsVideoOpen(false)}
+  >
+    <div
+      className="
+        relative
+        w-full
+        max-w-5xl
+        overflow-hidden
+        bg-black
+        shadow-2xl
+        !rounded-none
+      "
+      onClick={(event) => event.stopPropagation()}
+      style={{ borderRadius: 0 }}
+    >
+
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setIsVideoOpen(false)}
+        aria-label="Close video"
+        className="
+          absolute
+          right-3
+          top-3
+          z-10
+          grid
+          h-10
+          w-10
+          place-items-center
+          rounded-full
+          bg-black/60
+          text-white
+          backdrop-blur-md
+          transition-all
+          duration-200
+          hover:scale-105
+          hover:bg-black/80
+          focus:outline-none
+          focus:ring-2
+          focus:ring-white/70
+          sm:right-4
+          sm:top-4
+        "
+      >
+        <X className="h-5 w-5" strokeWidth={2.2} />
+      </button>
+
+      {/* VIDEO */}
+      <video
+        src="/videos/smriti-gram.mp4"
+        controls
+        autoPlay
+        playsInline
+        preload="metadata"
+        className="
+          block
+          max-h-[85vh]
+          w-full
+          object-contain
+          bg-black
+          !rounded-none
+        "
+        style={{
+          borderRadius: 0,
+        }}
+      />
+
+    </div>
+  </div>
+)}
+
       {/* ABOUT */}
 <section id="about-smriti-gram" className="scroll-mt-24 bg-white">
   <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-18 lg:px-10 lg:py-24">
@@ -311,19 +523,43 @@ function SmritiGramPage() {
             </p>
 
             {/* READ MORE CONTENT */}
-            {isAboutExpanded && (
-              <div className="space-y-5">
-                <p className="font-bold text-[#263746]">
-                  The model brings together:
-                </p>
+{isAboutExpanded && (
+  <div className="space-y-5">
+    <p className="font-bold text-[#263746]">
+      The model brings together:
+    </p>
 
-                <ul className="space-y-3">
-                  {aboutModelItems.map((item) => (
-                    <Bullet key={item}>{item}</Bullet>
-                  ))}
-                </ul>
-              </div>
-            )}
+    <ul className="space-y-3">
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Person-centred dementia care</span> based on each person’s needs, abilities, preferences and life story.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Nature-based and therapeutic environments</span> with gardens, walking paths, safe outdoor spaces and activity areas.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Holistic care</span> that combines modern medical care with appropriate complementary and traditional approaches.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Rehabilitation and meaningful activities</span> that promote physical, cognitive, emotional and social wellbeing.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Technology-enabled care</span> to strengthen safety, monitoring, communication and continuity of care.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Palliative and supportive care</span> focused on comfort, dignity and quality of life.</>
+      </Bullet>
+
+      <Bullet>
+        <><span className="font-bold text-[#ED6439]">Family and community engagement</span> to reduce loneliness and strengthen social connections.</>
+      </Bullet>
+    </ul>
+  </div>
+)}
           </div>
 
           {/* READ MORE / LESS */}
