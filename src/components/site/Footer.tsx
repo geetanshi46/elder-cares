@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Facebook,
   Instagram,
@@ -25,11 +26,14 @@ const COLUMNS = [
   {
     title: "Programmes",
     links: [
-      { label: "Dementia Care", to: "/services" },
-      { label: "Elder Care", to: "/services" },
-      { label: "Training", to: "/services" },
-      { label: "Research", to: "/services" },
-      { label: "Smriti Gram", to: "/smriti-gram" },
+      { label: "Dementia and Medical Care", to: "/services", hash: "dementia-care" },
+      { label: "Care for Marginalized Elders", to: "/services", hash: "marginalized" },
+      { label: "Prevention of Elder Abuse", to: "/services", hash: "elder-protection" },
+      { label: "Empowerment and Livelihood", to: "/services", hash: "empowerment-livelihood" },
+      { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
+      { label: "Training and Capacity Building", to: "/services", hash: "capacity-building" },
+      { label: "Awareness and Advocacy", to: "/services", hash: "awareness" },
+      { label: "Nightingales Smriti Gram", to: "/smriti-gram" },
     ],
   },
   {
@@ -95,36 +99,36 @@ export function Footer() {
             BRAND + NAVIGATION
             ===================================================== */}
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.15fr_2fr] lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[250px_1fr] lg:gap-10 xl:grid-cols-[270px_1fr] xl:gap-12">
 
           {/* LEFT — BRAND */}
-          <div>
+          <div className="max-w-[260px]">
             {/* Logo */}
-            <div className="inline-flex bg-white px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
+            <div className="inline-flex bg-white px-3.5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
               <img
                 src={logoHorizontal}
                 alt="Nightingales Medical Trust — NMT Eldercare, Estd 1998"
                 width={1419}
                 height={492}
-                className="h-12 w-auto max-w-[180px] object-contain sm:h-[52px] sm:max-w-[195px]"
+                className="h-10 w-auto max-w-[160px] object-contain sm:h-11 sm:max-w-[170px]"
               />
             </div>
 
             {/* Accent */}
-            <div className="mt-4 flex items-center gap-3">
-              <span className="h-[3px] w-11 rounded-full bg-white" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ED6439]" />
+            <div className="mt-3 flex items-center gap-2.5">
+              <span className="h-[2.5px] w-9 rounded-full bg-white" />
+              <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
             </div>
 
             {/* Description */}
-            <p className="mt-4 max-w-md text-[13.5px] leading-[1.65] text-white/85">
+            <p className="mt-3 text-[13px] leading-[1.6] text-white/80">
               A not-for-profit organisation dedicated to the well-being
               of the elderly and persons with Dementia
             </p>
           </div>
 
           {/* RIGHT — NAVIGATION */}
-          <div className="grid grid-cols-2 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-7">
             {COLUMNS.map((col) => (
               <div key={col.title}>
                 <div className="flex items-center gap-2.5">
@@ -140,6 +144,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         to={link.to}
+                        hash={"hash" in link ? (link.hash as string) : undefined}
                         className="inline-block text-white/80 transition-all duration-200 hover:translate-x-0.5 hover:text-white"
                       >
                         {link.label}

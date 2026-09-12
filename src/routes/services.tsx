@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
   import {
   Brain,
   HeartHandshake,
@@ -33,10 +33,12 @@ import riskReductionImage from "../assets/our-services/risk-reduction.webp";
 import memoryclinicImage from "../assets/our-services/memory-clinic.webp";
 import daycareImage from "../assets/our-services/day-care.webp";
 
-import kasturinagarImage from "../assets/our-services/Kasturinagar1.webp";
-import kolarImage from "../assets/our-services/kolar.webp";
-import kothanurImage from "../assets/our-services/Kothanur1.webp";
-// import elderImage from "../assets/our-services/elder-protection.webp";
+import kasturinagarFacilityImage from "../assets/our-services/Kasturinagar.webp";
+import kasturinagarElderImage from "../assets/our-services/Kasturinagar1.webp";
+import kolarFacilityImage from "../assets/our-services/kolar.webp";
+import kolarElderImage from "../assets/our-services/ECTM  (1).jpeg";
+import kothanurFacilityImage from "../assets/our-services/Kothanur.webp";
+import kothanurElderImage from "../assets/our-services/Kothanur1.webp";
 
 import familyCaregiverTrainingImage from "../assets/our-services/family-caregiver-training.webp";
 
@@ -114,6 +116,60 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
 })
 
+
+/* ============================================================
+   IMAGE SHUFFLE COMPONENT (AUTOMATIC PHOTOS TRANSITION)
+   ============================================================ */
+
+function ImageShuffle({
+  images,
+  alt,
+}: {
+  images: string[];
+  alt: string;
+}) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="relative h-full w-full">
+      {images.map((imgSrc, idx) => (
+        <img
+          key={imgSrc}
+          src={imgSrc}
+          alt={`${alt} - ${idx === 0 ? "Facility" : "Activities"}`}
+          loading="lazy"
+          decoding="async"
+          className={`absolute inset-0 block h-full w-full object-cover object-center transition-opacity duration-1000 ${
+            idx === activeIdx ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        />
+      ))}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 right-3 z-10 flex gap-1.5 rounded-full bg-black/40 px-2 py-1 backdrop-blur-xs">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setActiveIdx(idx)}
+              aria-label={`Photo ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === activeIdx ? "w-4 bg-[#ED6439]" : "w-1.5 bg-white/70 hover:bg-white"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ============================================================
    REUSABLE SERVICE CARD
@@ -393,12 +449,18 @@ function ServiceCard({
                     max-w-full
                     items-center
                     gap-2
+                    border-0
+                    bg-transparent
                     text-[12px]
                     font-bold
                     text-[#ED6439]
+                    outline-none
                     transition-all
                     duration-300
                     hover:gap-3
+                    focus:outline-none
+                    focus-visible:outline-none
+                    cursor-pointer
                     sm:text-[13px]
                   "
                 >
@@ -793,7 +855,7 @@ function TrainingCarousel() {
             cta="READ MORE"
             preview={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Creating Skilled and Compassionate Caregivers
                 </p>
 
@@ -811,29 +873,34 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   The training covers areas such as:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Understanding ageing</li>
-                  <li>Personal hygiene and personal care</li>
-                  <li>Nutrition</li>
-                  <li>Mobility and positioning</li>
-                  <li>Physiotherapy and exercise</li>
-                  <li>Medication and basic medical care</li>
-                  <li>Fall prevention</li>
-                  <li>Dementia care</li>
-                  <li>Communication</li>
-                  <li>First aid</li>
-                  <li>Infection prevention</li>
-                  <li>Safety and emergency response</li>
-                  <li>
-                    Professional conduct and caregiver responsibilities
-                  </li>
+                  {[
+                    "Understanding ageing",
+                    "Personal hygiene and personal care",
+                    "Nutrition",
+                    "Mobility and positioning",
+                    "Physiotherapy and exercise",
+                    "Medication and basic medical care",
+                    "Fall prevention",
+                    "Dementia care",
+                    "Communication",
+                    "First aid",
+                    "Infection prevention",
+                    "Safety and emergency response",
+                    "Professional conduct and caregiver responsibilities",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Our larger goal
                 </p>
 
@@ -870,7 +937,7 @@ function TrainingCarousel() {
             cta="READ MORE"
             preview={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Building Dementia-Friendly Communities
                 </p>
 
@@ -888,24 +955,29 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Training focuses on:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Understanding dementia</li>
-                  <li>Communication</li>
-                  <li>Person-centred care</li>
-                  <li>
-                    Behavioural and psychological symptoms of dementia
-                  </li>
-                  <li>Activities and cognitive stimulation</li>
-                  <li>Personal care</li>
-                  <li>Nutrition</li>
-                  <li>Mobility and falls prevention</li>
-                  <li>Managing challenging situations</li>
-                  <li>Family support</li>
-                  <li>Caregiver well-being</li>
+                  {[
+                    "Understanding dementia",
+                    "Communication",
+                    "Person-centred care",
+                    "Behavioural and psychological symptoms of dementia",
+                    "Activities and cognitive stimulation",
+                    "Personal care",
+                    "Nutrition",
+                    "Mobility and falls prevention",
+                    "Managing challenging situations",
+                    "Family support",
+                    "Caregiver well-being",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             }
@@ -954,20 +1026,27 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   NMT's family caregiver training helps families:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Understand dementia</li>
-                  <li>Communicate more effectively</li>
-                  <li>Manage behavioural changes</li>
-                  <li>Provide safe personal care</li>
-                  <li>Prevent falls and accidents</li>
-                  <li>Support nutrition and mobility</li>
-                  <li>Create meaningful daily routines</li>
-                  <li>Manage caregiver stress</li>
-                  <li>Know when professional help is required</li>
+                  {[
+                    "Understand dementia",
+                    "Communicate more effectively",
+                    "Manage behavioural changes",
+                    "Provide safe personal care",
+                    "Prevent falls and accidents",
+                    "Support nutrition and mobility",
+                    "Create meaningful daily routines",
+                    "Manage caregiver stress",
+                    "Know when professional help is required",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <p>
@@ -1016,20 +1095,25 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Training includes:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Basic first aid</li>
-                  <li>Recognition of medical emergencies</li>
-                  <li>Cardiopulmonary resuscitation awareness</li>
-                  <li>Response to falls</li>
-                  <li>Choking emergencies</li>
-                  <li>Basic emergency preparedness</li>
-                  <li>
-                    When and how to seek professional medical help
-                  </li>
+                  {[
+                    "Basic first aid",
+                    "Recognition of medical emergencies",
+                    "Cardiopulmonary resuscitation awareness",
+                    "Response to falls",
+                    "Choking emergencies",
+                    "Basic emergency preparedness",
+                    "When and how to seek professional medical help",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             }
@@ -1067,7 +1151,7 @@ function TrainingCarousel() {
                   technology and related fields.
                 </p>
 
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   We believe today's students can become tomorrow's leaders in age
                   care.
                 </p>
@@ -1075,18 +1159,25 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Interns gain experience through:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Field exposure</li>
-                  <li>Community programmes</li>
-                  <li>Dementia-care settings</li>
-                  <li>Research and documentation</li>
-                  <li>Awareness programmes</li>
-                  <li>Programme support</li>
-                  <li>Social-impact projects</li>
+                  {[
+                    "Field exposure",
+                    "Community programmes",
+                    "Dementia-care settings",
+                    "Research and documentation",
+                    "Awareness programmes",
+                    "Programme support",
+                    "Social-impact projects",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             }
@@ -1214,12 +1305,12 @@ function ServicesPage() {
 </section>
 
       {/* ======================================================
-          DEMENTIA CARE — CLIENT CONTENT
+          DEMENTIA AND MEDICAL CARE — CLIENT CONTENT
           ====================================================== */}
       <Section
         id="dementia-care"
-        eyebrow="Dementia Care"
-        title="Compassionate, Person-Centred Dementia Care Services"
+        eyebrow="Dementia and Medical Care"
+        title="Compassionate, Person-Centred Dementia & Medical Care Services"
         tone="sand"
       >
         <div className="relative space-y-12 overflow-hidden sm:space-y-16">
@@ -1689,7 +1780,7 @@ function ServicesPage() {
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       Caring for a person with dementia at home can be challenging,
                       particularly when family members have work and other responsibilities.
-                      NMT's Dementia Day Care Centres provide a <strong className="font-black text-[#263746] bg-[#FFF1DC] px-1">
+                      NMT's Dementia Day Care Centres provide a <strong className="font-bold text-[#263746]">
   safe, stimulating and supportive environment during the day, while enabling the person to
   continue living with their family.
 </strong>
@@ -1754,7 +1845,7 @@ function ServicesPage() {
 
                     <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       For families, it means: <br />
-                      <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+                      <strong className="font-bold text-[#263746]">
   Professional care for your loved one — and much-needed respite for you.
 </strong>
                     </p>
@@ -1825,7 +1916,7 @@ function ServicesPage() {
       <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
         As dementia progresses, providing safe and continuous care at home
         can become increasingly difficult. NMT offers specialised residential
-        dementia-care facilities providing <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+        dementia-care facilities providing <strong className="font-bold text-[#263746]">
   24-hour supervision, professional care, medical support and a secure, nurturing environment.
 </strong>
       </p>
@@ -1840,7 +1931,7 @@ function ServicesPage() {
         {
           name: "Nightingales Centre for Ageing and Alzheimer's – Kasturinagar",
           location: "Kasturinagar, Bengaluru",
-          image: { src: kasturinagarImage },
+          images: [kasturinagarFacilityImage, kasturinagarElderImage],
           usps: [
             "Multi-disciplinary team of doctors, psychiatrists, psychologists & nurses",
             "Conveniently located within city limits",
@@ -1851,7 +1942,7 @@ function ServicesPage() {
         {
           name: "ETCM Nightingales Dementia Care Centre – Kolar",
           location: "Bangarpet Road, Kolar",
-          image: { src: kolarImage },
+          images: [kolarFacilityImage, kolarElderImage],
           usps: [
             "Affordable residential care option",
             "An hour from KR Puram, Bengaluru",
@@ -1862,7 +1953,7 @@ function ServicesPage() {
         {
           name: "Nightingales Trust Tanya Mathias Centre – Kothanur",
           location: "Kothanur, Bengaluru",
-          image: { src: kothanurImage },
+          images: [kothanurFacilityImage, kothanurElderImage],
           usps: [
             "Exclusive for women",
             "Peaceful, homely environment",
@@ -1900,7 +1991,7 @@ function ServicesPage() {
       >
 
           {/* ==================================================
-              RESPONSIVE CARD IMAGE WITH LOCATION BADGE
+              RESPONSIVE CARD IMAGE WITH LOCATION BADGE & SHUFFLE
               ================================================== */}
           <div
             className="
@@ -1912,22 +2003,8 @@ function ServicesPage() {
               bg-[#F6F1EC]
             "
           >
-            <img
-              src={centre.image.src}
-              alt={centre.name}
-              loading="lazy"
-              decoding="async"
-              className="
-                absolute
-                inset-0
-                block
-                h-full
-                w-full
-                object-cover
-                object-center
-              "
-            />
-            <div className="absolute bottom-3 left-3 rounded bg-[#17232B]/85 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
+            <ImageShuffle images={centre.images} alt={centre.name} />
+            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#17232B]/85 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
               📍 {centre.location}
             </div>
           </div>
@@ -2545,13 +2622,13 @@ function ServicesPage() {
         </div>
       </Section>
   {/* ======================================================
-    CARE FOR MARGINALISED ELDERS & SOCIAL INTEGRATION
+    CARE FOR MARGINALIZED ELDERS
     ====================================================== */}
 
 <Section
   id="marginalized"
   eyebrow=""
-  title="CARE FOR MARGINALISED ELDERS & SOCIAL INTEGRATION"
+  title="CARE FOR MARGINALIZED ELDERS"
 >
   <Reveal className="w-full min-w-0">
   <div className="w-full">
@@ -2777,9 +2854,15 @@ function ServicesPage() {
               list-none
               items-center
               gap-2
+              border-0
+              bg-transparent
               text-[12px]
               font-bold
               text-[#ED6439]
+              outline-none
+              focus:outline-none
+              focus-visible:outline-none
+              select-none
               sm:text-[13px]
             "
           >
@@ -3233,12 +3316,18 @@ function ServicesPage() {
             inline-flex
             items-center
             gap-2
+            border-0
+            bg-transparent
             text-[12px]
             font-bold
             text-[#ED6439]
+            outline-none
             transition-all
             duration-300
             hover:gap-3
+            focus:outline-none
+            focus-visible:outline-none
+            cursor-pointer
             sm:text-[13px]
           "
         >
@@ -4101,14 +4190,14 @@ function ServicesPage() {
             </p>
 
             <p className="mt-4">
-              <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+              <strong className="font-bold text-[#263746]">
   It's the first project in the country where an NGO and the law enforcing
   authorities joined together to address elder abuse.
 </strong>
             </p>
 
             <p className="mt-4">
-              <strong className="bg-[#FFF1DC] px-1 font-black text-[#263746]">
+              <strong className="font-bold text-[#263746]">
   Located at the premises of Bengaluru City Police
 </strong>
               , the Helpline acts as an important link between older persons,
@@ -4131,9 +4220,15 @@ function ServicesPage() {
                 list-none
                 items-center
                 gap-2
+                border-0
+                bg-transparent
                 text-[12px]
                 font-bold
                 text-[#ED6439]
+                outline-none
+                focus:outline-none
+                focus-visible:outline-none
+                select-none
                 sm:text-[13px]
               "
             >
@@ -4458,7 +4553,7 @@ function ServicesPage() {
 <Section
   id="empowerment-livelihood"
   eyebrow=""
-  title="EMPOWERMENT & LIVELIHOOD"
+  title="EMPOWERMENT AND LIVELIHOOD"
   titleClassName="text-[#ED6439]"
 >
   <Reveal className="max-w-4xl min-w-0">
@@ -4636,9 +4731,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -4698,7 +4799,7 @@ function ServicesPage() {
                   aged, leading to some form of elder abuse.
                 </p>
 
-                <p className="mt-4 font-medium text-foreground">
+                <p className="mt-4 font-bold text-[#ED6439]">
                   Therefore, this programme supports older job seekers
                   through:
                 </p>
@@ -4896,9 +4997,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -4932,7 +5039,7 @@ function ServicesPage() {
                 "
               >
 
-                <p className="font-medium text-foreground">Training may include:</p>
+                <p className="font-bold text-[#ED6439]">Training may include:</p>
 
                 <ul className="mt-4 space-y-2.5">
                   {[
@@ -5107,9 +5214,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -5143,7 +5256,7 @@ function ServicesPage() {
                 "
               >
 
-                <p className="font-medium text-foreground">Topics include:</p>
+                <p className="font-bold text-[#ED6439]">Topics include:</p>
 
                 <ul className="mt-4 space-y-2.5">
                   {[
@@ -5334,7 +5447,7 @@ function ServicesPage() {
         }
         details={
           <>
-            <p className="font-semibold text-[#263746]">The programme includes:</p>
+            <p className="font-bold text-[#ED6439]">The programme includes:</p>
 
             <ul className="space-y-2.5">
               {[
@@ -5354,7 +5467,7 @@ function ServicesPage() {
               ))}
             </ul>
 
-            <p className="font-display font-extrabold text-[#263746]">
+            <p className="font-bold text-[#ED6439]">
               Our aim
             </p>
 
@@ -5389,7 +5502,7 @@ function ServicesPage() {
               .
             </p>
 
-            <p className="font-medium text-foreground">
+            <p className="font-bold text-[#ED6439]">
               The Centre serves as a resource for:
             </p>
           </>
@@ -5440,7 +5553,7 @@ function ServicesPage() {
               involving five selected old age homes.
             </p>
 
-            <p className="font-medium text-foreground">
+            <p className="font-bold text-[#ED6439]">
               The programme takes a comprehensive approach to
               strengthening institutions through:
             </p>
@@ -5448,51 +5561,25 @@ function ServicesPage() {
         }
         details={
           <>
-            <p className="font-semibold text-[#263746]">
-              1. Infrastructure Assistance
-            </p>
+            <ul className="space-y-3">
+              {[
+                { title: "Infrastructure Assistance", desc: "Improving the physical environment and essential facilities for residents." },
+                { title: "Staff Training", desc: "Building the knowledge and skills of caregivers and staff." },
+                { title: "Active Ageing Programmes", desc: "Introducing structured activities that enhance residents' physical, cognitive, emotional and social well-being." },
+                { title: "Governance & Management", desc: "Strengthening systems, policies, documentation, administration and management practices." },
+                { title: "Free Accessible Medical Care", desc: "Ensuring regular health screening, elder-friendly clinical support and free accessible medical care for residents." },
+              ].map((item) => (
+                <li key={item.title} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <div>
+                    <strong className="font-bold text-foreground">{item.title}: </strong>
+                    <span className="text-muted-foreground">{item.desc}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-            <p>
-              Improving the physical environment and essential
-              facilities for residents.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              2. Staff Training
-            </p>
-
-            <p>
-              Building the knowledge and skills of caregivers and staff.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              3. Active Ageing Programmes
-            </p>
-
-            <p>
-              Introducing structured activities that enhance residents'
-              physical, cognitive, emotional and social well-being.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              4. Governance & Management
-            </p>
-
-            <p>
-              Strengthening systems, policies, documentation,
-              administration and management practices.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              5. Free Accessible Medical Care
-            </p>
-
-            <p>
-              Ensuring regular health screening, elder-friendly clinical support
-              and free accessible medical care for residents.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
+            <p className="font-bold text-[#ED6439]">
               The objective
             </p>
 
@@ -5520,7 +5607,7 @@ function ServicesPage() {
 <Section
   id="capacity-building"
   eyebrow=""
-  title="TRAINING & CAPACITY BUILDING"
+  title="TRAINING AND CAPACITY BUILDING"
   titleClassName="text-[#ED6439]"
 >
   {/* ==================================================
@@ -5659,7 +5746,7 @@ function ServicesPage() {
 
 <Section
   id="awareness"
-  eyebrow="Awareness & advocacy"
+  eyebrow="Awareness and Advocacy"
   title="Changing how India sees ageing."
   tone="sand"
 >
@@ -5743,7 +5830,7 @@ function ServicesPage() {
           sm:w-14
         "
       >
-        <Sparkles
+        <Megaphone
           className="h-6 w-6 sm:h-7 sm:w-7 text-white"
           strokeWidth={2}
         />
@@ -5773,7 +5860,7 @@ function ServicesPage() {
           md:text-4xl
         "
       >
-        Awareness & Advocacy
+        Awareness and Advocacy
       </h3>
 
       <div className="mt-3 h-1 w-14 bg-[#ED6439]" />
