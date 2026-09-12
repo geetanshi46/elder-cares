@@ -30,6 +30,7 @@ const NAV_LINKS: NavItem[] = [
     { label: "About Overview", to: "/about", hash: "about-overview" },
     { label: "Who We Are", to: "/about", hash: "who-we-are" },
     { label: "Why We Exist", to: "/about", hash: "why-we-exist" },
+    { label: "The Need for NMT", to: "/about", hash: "the-need-for-nmt" },
     { label: "Our Journey", to: "/about", hash: "our-journey" },
     { label: "Vision, Mission & Values", to: "/about", hash: "vision" },
     { label: "People & Governance", to: "/about", hash: "governance" },
