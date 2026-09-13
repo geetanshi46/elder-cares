@@ -134,10 +134,8 @@ function SmritiGramPage() {
         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
       />
 
-      {/* VERY LIGHT OVERLAY */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/15 via-transparent to-transparent" />
 
-      {/* IMAGE BADGE */}
       <div className="absolute bottom-4 left-4 rounded-2xl border border-white/40 bg-white/95 px-4 py-3 shadow-[0_15px_40px_-20px_rgba(38,55,70,0.4)] backdrop-blur-sm sm:bottom-6 sm:left-6 sm:px-5 sm:py-3.5">
         <p className="font-display text-2xl font-extrabold leading-none text-[#ED6439] sm:text-3xl">
           100-bed

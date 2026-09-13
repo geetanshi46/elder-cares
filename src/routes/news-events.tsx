@@ -23,6 +23,7 @@ import {
   pressClippings,
   type PressClipping,
 } from "@/data/pressArticles";
+import newsEventsBanner from "@/assets/new&events/news-events-banner.webp";
 
 // Recent events cards with real visuals from print media & activities
 import clippingDeccanHerald2018 from "@/assets/new&events/deccan-herald-600x856.jpg.jpeg";
@@ -90,111 +91,95 @@ function NewsEventsPage() {
 
   return (
     <SiteLayout>
-      <PageHero
-        eyebrow="News & events"
-        title="News & Events"
-        intro="Memory walks, training batches, archival press coverage and announcements — everything happening across our centres."
-      />
+      {/* ======================================================
+    NEWS & EVENTS HERO BANNER
+    ====================================================== */}
+<section className="w-full bg-[#FBF6EC]">
+  <div className="relative w-full overflow-hidden">
+    <img
+      src={newsEventsBanner}
+      alt="News & Events"
+      className="
+        block
+        h-[320px]
+        w-full
+        object-cover
+        object-center
+        sm:h-[400px]
+        lg:h-[500px]
+      "
+    />
+
+    {/* VERY LIGHT OVERLAY */}
+    <div className="pointer-events-none absolute inset-0 bg-white/10" />
+
+    {/* HERO HEADING */}
+    <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
+      <h1
+        className="
+          font-display
+          text-4xl
+          font-extrabold
+          tracking-[-0.03em]
+          text-[#263746]
+          drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]
+          sm:text-5xl
+          lg:text-6xl
+        "
+      >
+        News & Events
+      </h1>
+    </div>
+  </div>
+
+  {/* CLEAN GAP BEFORE NEXT SECTION */}
+  <div className="h-8 bg-[#FBF6EC] sm:h-10 lg:h-12" />
+</section>
 
       <Events />
 
       {/* ======================================================
           RECENT EVENTS WITH PHOTO HIGHLIGHTS
           ====================================================== */}
-      <Section
-        eyebrow="Recent events"
-        title="What we've been doing at our centres."
-        tone="sand"
+    <section className="w-full bg-[#FBF6EC]">
+  <div className="relative w-full overflow-hidden">
+    <img
+      src={newsEventsBanner}
+      alt="News & Events"
+      className="
+        block
+        h-auto
+        w-full
+        object-contain
+      "
+    />
+
+    {/* VERY LIGHT OVERLAY */}
+    <div className="pointer-events-none absolute inset-0 bg-white/10" />
+
+    {/* HERO HEADING */}
+    <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
+      <h1
+        className="
+          font-display
+          text-3xl
+          font-extrabold
+          tracking-[-0.03em]
+          text-[#263746]
+          drop-shadow-[0_2px_10px_rgba(255,255,255,0.7)]
+          sm:text-4xl
+          md:text-5xl
+          lg:text-6xl
+        "
       >
-        <div className="grid gap-6 md:grid-cols-3">
-          <Reveal delay={0}>
-            <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="relative h-52 overflow-hidden bg-sand">
-                <img
-                  src={clippingDeccanHerald2024}
-                  alt="State Dementia Action Plan & Memory Screening"
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-[#263746] backdrop-blur-sm">
-                  <CalendarDays className="h-3.5 w-3.5 text-[#ED6439]" />
-                  Annual Campaign
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h4 className="font-display text-lg font-bold text-[#263746]">
-                  World Alzheimer's Month & Screening Camps
-                </h4>
-                <p className="mt-2.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">
-                  State-wide awareness drives, free memory screening camps, and community talks held across NMT centres and public institutions every September.
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#ED6439]">
-                  <CheckCircle2 className="h-4 w-4" />
-                  Over 1,200 seniors screened annually
-                </div>
-              </div>
-            </div>
-          </Reveal>
+        News & Events
+      </h1>
+    </div>
+  </div>
 
-          <Reveal delay={100}>
-            <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="relative h-52 overflow-hidden bg-sand">
-                <img
-                  src={clippingDeccanHerald2018}
-                  alt="World Elder Abuse Awareness Day Roadshow"
-                  className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-[#263746] backdrop-blur-sm">
-                  <CalendarDays className="h-3.5 w-3.5 text-[#ED6439]" />
-                  June 15 Roadshow
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h4 className="font-display text-lg font-bold text-[#263746]">
-                  Elder Abuse Awareness Day Roadshow
-                </h4>
-                <p className="mt-2.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">
-                  Senior citizens, police officials, and NMT volunteers gathered at public terminals and city hubs for lively roadshows, street plays, and awareness outreach.
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#ED6439]">
-                  <CheckCircle2 className="h-4 w-4" />
-                  Elders Helpline 1090 Public Outreach
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="relative h-52 overflow-hidden bg-sand">
-                <img
-                  src={clippingHinduJobs60}
-                  alt="Senior Citizens Employment and Livelihood"
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-[#263746] backdrop-blur-sm">
-                  <Sparkles className="h-3.5 w-3.5 text-[#ED6439]" />
-                  Jobs 60+ Initiative
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h4 className="font-display text-lg font-bold text-[#263746]">
-                  Dignified Livelihoods: Jobs 60+ Job Fairs
-                </h4>
-                <p className="mt-2.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">
-                  Dedicated placement drives and skills orientation helping post-retirement seniors find flexible, fulfilling, and financially independent job roles.
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-[#ED6439]">
-                  <CheckCircle2 className="h-4 w-4" />
-                  2,600+ Elders placed in active roles
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
+  {/* GAP BEFORE NEXT SECTION */}
+  <div className="h-8 sm:h-10 lg:h-12" />
+</section>
 
     {/* ============================================================
     APPEAL FOR MUSICAL INSTRUMENTS
