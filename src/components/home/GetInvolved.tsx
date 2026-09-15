@@ -477,7 +477,7 @@ export function GetInvolved() {
                 overflow-hidden
                 border
                 border-white/10
-                bg-[#17232B]
+                bg-[#E15925]
                 p-8
                 shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
                 transition-all

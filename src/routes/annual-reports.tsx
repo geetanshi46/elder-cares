@@ -45,7 +45,7 @@ function RouteComponent() {
       {/* ==================================================
           HERO
       ================================================== */}
-      <section className="relative overflow-hidden bg-[#263746]">
+      <section className="relative overflow-hidden bg-[#E15925]">
         {/* Decorative background */}
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#ED6439]/20 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-[#FFF7EC]/10 blur-3xl" />
@@ -53,7 +53,7 @@ function RouteComponent() {
         <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <div className="max-w-4xl">
 
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-[#F6A36E]">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-white">
               Transparency & Governance
             </p>
 
@@ -97,7 +97,7 @@ function RouteComponent() {
               Reports Archive
             </p>
 
-            <h2 className="mt-3 font-display text-3xl font-bold text-[#263746] sm:text-4xl">
+            <h2 className="mt-3 font-display text-3xl font-bold text-[#E15925] sm:text-4xl">
               Our Annual Reports
             </h2>
           </div>
@@ -114,7 +114,7 @@ function RouteComponent() {
                   overflow-hidden
                   rounded-[2rem]
                   border
-                  border-[#263746]/10
+                  border-[#E15925]/10
                   bg-white
                   p-7
                   shadow-[0_20px_60px_-35px_rgba(38,55,70,0.35)]
@@ -173,7 +173,7 @@ function RouteComponent() {
                     Annual Report
                   </p>
 
-                  <h3 className="mt-2 font-display text-3xl font-bold text-[#263746]">
+                  <h3 className="mt-2 font-display text-3xl font-bold text-[#E15925]">
                     {report.year}
                   </h3>
 
@@ -232,7 +232,7 @@ function RouteComponent() {
                     right-7
                     text-xs
                     font-bold
-                    text-[#263746]/10
+                    text-[#E15925]/10
                   "
                 >
                   {String(index + 1).padStart(2, "0")}

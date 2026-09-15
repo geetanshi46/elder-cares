@@ -303,7 +303,7 @@ function ProjectModal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#17232B]/75 p-3 backdrop-blur-md sm:p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#E15925]/75 p-3 backdrop-blur-md sm:p-6"
       onClick={onClose}
     >
       <div
@@ -317,7 +317,7 @@ function ProjectModal({
           type="button"
           onClick={onClose}
           aria-label="Close project details"
-          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-white text-[#263746] shadow-md transition-colors hover:bg-[#ED6439] hover:text-white"
+          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-white text-[#E15925] shadow-md transition-colors hover:bg-[#ED6439] hover:text-white"
         >
           <X className="h-5 w-5" />
         </button>
@@ -346,14 +346,14 @@ function ProjectModal({
 
             <h2
               id="project-modal-title"
-              className="mt-4 font-display text-2xl font-bold leading-tight text-[#263746] sm:text-3xl"
+              className="mt-4 font-display text-2xl font-bold leading-tight text-[#E15925] sm:text-3xl"
             >
               {project.title}
             </h2>
 
             <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
 
-            <p className="mt-5 text-[15px] font-medium leading-relaxed text-[#263746]">
+            <p className="mt-5 text-[15px] font-medium leading-relaxed text-[#E15925]">
               {project.intro}
             </p>
 
@@ -368,7 +368,7 @@ function ProjectModal({
 
             {project.reach && project.reach.length > 0 && (
               <div className="mt-6 rounded-2xl border border-[#ED6439]/15 bg-[#FFF8EE] p-5">
-                <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
+                <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.12em] text-[#E15925]">
                   <Target className="h-4 w-4 text-[#ED6439]" />
                   {project.reachTitle || "Reach"}
                 </h3>
@@ -389,7 +389,7 @@ function ProjectModal({
 
             {project.services && project.services.length > 0 && (
               <div className="mt-6">
-                <h3 className="font-display text-sm font-bold uppercase tracking-[0.12em] text-[#263746]">
+                <h3 className="font-display text-sm font-bold uppercase tracking-[0.12em] text-[#E15925]">
                   {project.servicesTitle || "Services Include"}
                 </h3>
 
@@ -465,7 +465,7 @@ function GetInvolvedPage() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/70 via-[#17232B]/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/70 via-[#E15925]/25 to-transparent" />
 
       {/* Content */}
       <div
@@ -568,7 +568,7 @@ function GetInvolvedPage() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-white px-3.5 py-1.5 text-xs font-bold text-[#263746] shadow-2xs transition-all hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-white px-3.5 py-1.5 text-xs font-bold text-[#E15925] shadow-2xs transition-all hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
                 >
                   <Icon className="h-3.5 w-3.5" />
                   <span>{item.label}</span>
@@ -588,7 +588,7 @@ function GetInvolvedPage() {
           <aside className="hidden lg:block">
             <div className="sticky top-20 space-y-6">
               <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft">
-                <div className="bg-[#263746] p-5 text-white">
+                <div className="bg-[#E15925] p-5 text-white">
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">Navigation</p>
                   <p className="mt-1 font-display text-lg font-bold">Corporate Partnerships</p>
                 </div>
@@ -599,7 +599,7 @@ function GetInvolvedPage() {
                       <a
                         key={item.id}
                         href={`#${item.id}`}
-                        className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#263746]"
+                        className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#E15925]"
                       >
                         <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[#ED6439]/10 text-[10px] font-bold text-[#ED6439] group-hover:bg-[#ED6439] group-hover:text-white">
                           {String(idx + 1).padStart(2, "0")}
@@ -621,7 +621,7 @@ function GetInvolvedPage() {
                 ====================================================== */}
             <section id="why-partner" className="scroll-mt-24">
               <Reveal>
-                <h2 className="font-display text-2xl font-extrabold text-[#263746] sm:text-4xl">
+                <h2 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-4xl">
                   Why Partner with NMT?
                 </h2>
                 <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
@@ -636,7 +636,7 @@ function GetInvolvedPage() {
                         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
                           <Icon className="h-5 w-5" />
                         </span>
-                        <p className="font-display text-sm font-bold leading-snug text-[#263746]">
+                        <p className="font-display text-sm font-bold leading-snug text-[#E15925]">
                           {pillar.title}
                         </p>
                       </div>
@@ -652,7 +652,7 @@ function GetInvolvedPage() {
             <section id="causes" className="scroll-mt-24">
               <Reveal>
                 <div className="rounded-3xl border border-[#ED6439]/15 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
-                  <h2 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                  <h2 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                     Causes You Can Support
                   </h2>
                   <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
@@ -670,7 +670,7 @@ function GetInvolvedPage() {
                           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
                             <Icon className="h-4 w-4" />
                           </span>
-                          <h3 className="font-display text-sm font-bold text-[#263746]">
+                          <h3 className="font-display text-sm font-bold text-[#E15925]">
                             {c.title}
                           </h3>
                         </div>
@@ -685,7 +685,7 @@ function GetInvolvedPage() {
                 PARTNERSHIP OPTIONS
                 ====================================================== */}
             <div className="border-t border-border/70 pt-4">
-              <h2 className="mt-1 font-display text-3xl font-extrabold text-[#263746] sm:text-4xl">
+              <h2 className="mt-1 font-display text-3xl font-extrabold text-[#E15925] sm:text-4xl">
                 Partnership Options
               </h2>
             </div>
@@ -695,7 +695,7 @@ function GetInvolvedPage() {
                 ====================================================== */}
             <section id="partnership-options" className="scroll-mt-24">
               <Reveal>
-                <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                   1. Adopt a Project
                 </h3>
                 <p className="mt-1.5 text-sm font-semibold text-[#526574]">
@@ -733,7 +733,7 @@ function GetInvolvedPage() {
                             <Icon className="h-4 w-4" />
                           </span>
 
-                          <h4 className="mt-3 font-display text-lg font-bold leading-snug text-[#263746] transition-colors group-hover:text-[#ED6439]">
+                          <h4 className="mt-3 font-display text-lg font-bold leading-snug text-[#E15925] transition-colors group-hover:text-[#ED6439]">
                             {project.shortTitle}
                           </h4>
 
@@ -760,7 +760,7 @@ function GetInvolvedPage() {
                 ====================================================== */}
             <section id="corporate-donations" className="scroll-mt-24">
               <Reveal>
-                <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                   2. Corporate Donations
                 </h3>
                 <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -770,7 +770,7 @@ function GetInvolvedPage() {
               </Reveal>
 
               {/* SMRITI GRAM FEATURE BANNER */}
-              <div className="mt-8 overflow-hidden rounded-3xl bg-[#17232B] text-white shadow-xl">
+              <div className="mt-8 overflow-hidden rounded-3xl bg-[#E15925] text-white shadow-xl">
                 <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
                   <div className="p-7 sm:p-10">
                     <h4 className="font-display text-2xl font-bold sm:text-3xl">
@@ -809,14 +809,14 @@ function GetInvolvedPage() {
                       alt="Nightingales Smriti Gram Dementia Village"
                       className="h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#17232B] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#17232B] lg:via-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#E15925] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#E15925] lg:via-transparent" />
                   </div>
                 </div>
               </div>
 
               {/* DONATION OPPORTUNITIES AT SMRITI GRAM — FLAT LIST, AS GIVEN */}
               <div className="mt-12">
-                <h4 className="font-display text-xl font-bold text-[#263746] sm:text-2xl">
+                <h4 className="font-display text-xl font-bold text-[#E15925] sm:text-2xl">
                   Donation Opportunities at Smriti Gram:
                 </h4>
 
@@ -825,7 +825,7 @@ function GetInvolvedPage() {
                     <a
                       key={item}
                       href={`mailto:rm@nightingaleseldercare.com?subject=Sponsor%20Smriti%20Gram%20Item:%20${encodeURIComponent(item)}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1.5 text-xs font-semibold text-[#263746] shadow-2xs transition-colors hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1.5 text-xs font-semibold text-[#E15925] shadow-2xs transition-colors hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
                     >
                       <span>{item}</span>
                     </a>
@@ -840,7 +840,7 @@ function GetInvolvedPage() {
             <section id="event-sponsorship" className="scroll-mt-24">
               <Reveal>
                 <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FFF8EE] p-6 sm:p-8 lg:p-10">
-                  <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                  <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                     3. Event Sponsorship & Participation
                   </h3>
 
@@ -852,7 +852,7 @@ function GetInvolvedPage() {
                     {observanceEvents.map((evt) => (
                       <span
                         key={evt}
-                        className="inline-flex items-center rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-[#263746]"
+                        className="inline-flex items-center rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-[#E15925]"
                       >
                         {evt}
                       </span>
@@ -872,10 +872,10 @@ function GetInvolvedPage() {
             <section id="payroll-giving" className="scroll-mt-24">
               <Reveal>
                 <div className="rounded-3xl border border-border bg-white p-6 shadow-soft sm:p-8 lg:p-10">
-                  <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                  <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                     4. Payroll Giving
                   </h3>
-                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#263746] sm:text-base">
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#E15925] sm:text-base">
                     Enable your employees to support elder care and dementia care through monthly salary contributions toward NMT programs—an easy, consistent way to create long-term impact.
                   </p>
 
@@ -894,7 +894,7 @@ function GetInvolvedPage() {
                 ====================================================== */}
             <section id="corporate-volunteering" className="scroll-mt-24">
               <Reveal>
-                <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
                   5. Corporate Volunteering & Employee Engagement
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -911,7 +911,7 @@ function GetInvolvedPage() {
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
                           <Icon className="h-5 w-5" />
                         </span>
-                        <p className="font-display text-sm font-bold leading-snug text-[#263746]">
+                        <p className="font-display text-sm font-bold leading-snug text-[#E15925]">
                           {mod.title}
                         </p>
                       </div>
@@ -928,14 +928,14 @@ function GetInvolvedPage() {
               <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FAF6F0] p-6 sm:p-10">
                 <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                   <div>
-                    <h3 className="font-display text-2xl font-bold text-[#263746] sm:text-3xl">
+                    <h3 className="font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
                       Let's Build a Compassionate Future for Elders.
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                       Partner with NMT to create meaningful, measurable, and lasting impact.
                     </p>
 
-                    <div className="mt-6 flex items-center gap-3 text-sm text-[#263746]">
+                    <div className="mt-6 flex items-center gap-3 text-sm text-[#E15925]">
                       <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
                         <Mail className="h-4 w-4" />
                       </span>
@@ -946,7 +946,7 @@ function GetInvolvedPage() {
                   </div>
 
                   <div className="rounded-2xl border border-border bg-white p-6 shadow-soft">
-                    <h4 className="font-display text-base font-bold text-[#263746]">
+                    <h4 className="font-display text-base font-bold text-[#E15925]">
                       Initiate a CSR Discussion
                     </h4>
                     <p className="mt-1 text-xs text-muted-foreground">

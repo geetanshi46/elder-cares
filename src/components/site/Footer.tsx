@@ -56,24 +56,24 @@ const DOWNLOADS = [
 
 const SOCIALS = [
   {
-    Icon: Facebook,
-    label: "Facebook",
-    href: "https://www.facebook.com/NightingalesMedicalTrustDementiaCare/",
-  },
-  {
     Icon: Instagram,
     label: "Instagram",
     href: "https://www.instagram.com/nmteldercare/",
   },
   {
-    Icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/nightingales-medical-trust",
-  },
-  {
     Icon: Youtube,
     label: "YouTube",
     href: "https://www.youtube.com/channel/UCfDVyJWQZ4JoPw300mnYsTw",
+  },
+  {
+    Icon: Facebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/NightingalesMedicalTrustDementiaCare/",
+  },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/nightingales-medical-trust",
   },
 ];
 
@@ -81,19 +81,19 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden bg-[#17242C] text-white"
+      className="relative overflow-hidden bg-[#E15925] text-white"
     >
       {/* Decorative glows */}
-      <div className="pointer-events-none absolute -left-32 -top-28 h-72 w-72 rounded-full bg-[#ED6439]/25 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 -top-28 h-72 w-72 rounded-full bg-white/12 blur-3xl" />
 
       <div className="pointer-events-none absolute -right-28 top-1/3 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-[#ED6439]/25 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-white/12 blur-3xl" />
 
       {/* Subtle texture */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">
 
         {/* =====================================================
             BRAND + NAVIGATION
@@ -102,22 +102,22 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[250px_1fr] lg:gap-10 xl:grid-cols-[270px_1fr] xl:gap-12">
 
           {/* LEFT — BRAND */}
-          <div className="max-w-[260px]">
+          <div className="w-full max-w-[280px]">
             {/* Logo */}
-            <div className="inline-flex bg-white px-3.5 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
+            <div className="inline-flex max-w-full rounded-md bg-white px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
               <img
                 src={logoHorizontal}
                 alt="Nightingales Medical Trust — NMT Eldercare, Estd 1998"
                 width={1419}
                 height={492}
-                className="h-10 w-auto max-w-[160px] object-contain sm:h-11 sm:max-w-[170px]"
+                className="h-auto w-auto max-h-11 max-w-[190px] object-contain sm:max-h-12 sm:max-w-[210px] md:max-w-[225px]"
               />
             </div>
 
             {/* Accent */}
             <div className="mt-3 flex items-center gap-2.5">
               <span className="h-[2.5px] w-9 rounded-full bg-white" />
-              <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
+              <span className="h-2 w-2 rounded-full bg-[#E15925]" />
             </div>
 
             {/* Description */}
@@ -128,11 +128,11 @@ export function Footer() {
           </div>
 
           {/* RIGHT — NAVIGATION */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-7">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-8 min-[420px]:grid-cols-2 sm:gap-y-9 lg:grid-cols-4 lg:gap-x-7">
             {COLUMNS.map((col) => (
               <div key={col.title}>
                 <div className="flex items-center gap-2.5">
-                  <span className="h-[2px] w-7 bg-[#ED6439]" />
+                  <span className="h-[2px] w-7 bg-[#E15925]" />
 
                   <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
                     {col.title}
@@ -158,7 +158,7 @@ export function Footer() {
             {/* Download Centre */}
             <div>
               <div className="flex items-center gap-2.5">
-                <span className="h-[2px] w-7 bg-[#ED6439]" />
+                <span className="h-[2px] w-7 bg-[#E15925]" />
 
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
                   Download Centre
@@ -172,7 +172,7 @@ export function Footer() {
                       href="#download"
                       className="group flex items-start gap-2.5 text-white/80 transition-colors hover:text-white"
                     >
-                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-white/10 text-[#ED6439] transition-colors group-hover:bg-white">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-white/10 text-[#E15925] transition-colors group-hover:bg-white">
                         <Download
                           className="h-3.5 w-3.5"
                           strokeWidth={1.8}
@@ -237,12 +237,12 @@ export function Footer() {
             SOCIAL MEDIA
             ===================================================== */}
 
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-7 flex flex-col gap-4 border-t border-white/25 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">
             Follow Us
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2.5">
             {SOCIALS.map(({ Icon, label, href }) => (
               <a
                 key={label}
@@ -250,7 +250,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid h-9 w-9 place-items-center border border-white/25 bg-white/[0.08] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#ED6439]"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/35 bg-white/[0.12] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#E15925] sm:h-11 sm:w-11"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.8} />
               </a>
@@ -262,7 +262,7 @@ export function Footer() {
             BOTTOM BAR
             ===================================================== */}
 
-        <div className="mt-7 grid gap-3 border-t border-white/20 pt-5 text-[11px] text-white/65 sm:flex sm:items-center sm:justify-between">
+        <div className="mt-7 grid gap-4 border-t border-white/25 pt-5 text-[11px] text-white/75 sm:flex sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Nightingales Medical Trust.
             All rights reserved.

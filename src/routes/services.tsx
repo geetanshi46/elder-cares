@@ -597,7 +597,7 @@ function ServiceImage({
               absolute
               inset-0
               bg-gradient-to-r
-              from-[#17232B]/35
+              from-[#E15925]/35
               via-transparent
               to-transparent
             "
@@ -1425,8 +1425,8 @@ function ServicesPage() {
       absolute
       inset-0
       bg-gradient-to-t
-      from-[#17232B]/65
-      via-[#17232B]/5
+      from-[#E15925]/65
+      via-[#E15925]/5
       to-transparent
     "
   />
@@ -1437,10 +1437,10 @@ function ServicesPage() {
           </Reveal>
 
           <Reveal>
-            <div className="relative overflow-hidden bg-[#17232B] px-5 py-7 text-white shadow-[0_25px_60px_-25px_rgba(23,35,43,0.35)] sm:px-8 sm:py-9 md:px-10">
+            <div className="relative overflow-hidden bg-[#E15925] px-5 py-7 text-white shadow-[0_25px_60px_-25px_rgba(23,35,43,0.35)] sm:px-8 sm:py-9 md:px-10">
               <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#ED6439]/20 blur-3xl" />
               <div className="relative">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white sm:text-sm">
                   You don't have to face dementia alone
                 </p>
                 <p className="mt-4 max-w-4xl text-[15px] leading-[1.8] text-white/80 sm:text-[16px]">
@@ -2004,7 +2004,7 @@ function ServicesPage() {
             "
           >
             <ImageShuffle images={centre.images} alt={centre.name} />
-            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#17232B]/85 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
+            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#E15925]/85 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
               📍 {centre.location}
             </div>
           </div>
@@ -2450,7 +2450,7 @@ function ServicesPage() {
                     absolute
                     inset-0
                     bg-gradient-to-t
-                    from-[#17232B]/45
+                    from-[#E15925]/45
                     via-transparent
                     to-transparent
                   "
@@ -2576,7 +2576,7 @@ function ServicesPage() {
 
           {/* FINAL DEMENTIA CTA */}
           <Reveal>
-            <div className="relative overflow-hidden bg-[#17232B] px-5 py-8 text-white sm:px-8 sm:py-10 md:px-10">
+            <div className="relative overflow-hidden bg-[#E15925] px-5 py-8 text-white sm:px-8 sm:py-10 md:px-10">
               <div className="absolute -left-20 -top-20 h-56 w-56 rounded-full bg-[#ED6439]/20 blur-3xl" />
 
               <div className="relative">
@@ -4502,9 +4502,9 @@ function ServicesPage() {
 
         {/* DIAL 14567 IN BLACK BOX WITH ORANGE TEXT */}
         <div className="mt-6 flex">
-          <div className="inline-flex items-center gap-3 bg-[#17232B] px-5 py-3 border border-[#ED6439]/30 shadow-md">
+          <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
             <PhoneCall className="h-5 w-5 text-[#ED6439]" />
-            <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
+            <span className="font-display text-lg font-extrabold tracking-wide text-[#263746]">
               Dial 14567
             </span>
           </div>
@@ -5299,7 +5299,7 @@ function ServicesPage() {
         relative
         min-w-0
         overflow-hidden
-        bg-[#17232B]
+        bg-[#E15925]
         px-5
         py-7
         shadow-[0_25px_60px_-25px_rgba(23,35,43,0.45)]
@@ -6252,7 +6252,7 @@ function ServicesPage() {
           FINAL CTA
           ====================================================== */}
 
-      <section className="relative overflow-hidden bg-[#17232B] py-12 sm:py-16 lg:py-20">
+      <section className="relative overflow-hidden bg-[#E15925] py-12 sm:py-16 lg:py-20">
         <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#ED6439]/20 blur-3xl" />
 
         <div className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-[#ED6439]/10 blur-3xl" />

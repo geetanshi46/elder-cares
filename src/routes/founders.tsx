@@ -77,7 +77,7 @@ function FoundersPage() {
             HERO
         ====================================================== */}
 
-        <section className="relative w-full overflow-hidden bg-[#263746]">
+        <section className="relative w-full overflow-hidden bg-[#E15925]">
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#ED6439]/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-[#F6A36E]/10 blur-3xl" />
 
@@ -87,16 +87,16 @@ function FoundersPage() {
               <div className="w-full max-w-4xl">
 
                 <div className="mb-5 flex flex-wrap items-center gap-3 sm:mb-7">
-                  <span className="h-px w-8 shrink-0 bg-[#ED6439] sm:w-10" />
+                  <span className="h-px w-8 shrink-0 bg-white sm:w-10" />
 
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#F6A36E] sm:text-xs sm:tracking-[0.2em]">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:text-xs sm:tracking-[0.2em]">
                     Our Founders
                   </span>
                 </div>
 
                 <h1 className="max-w-4xl break-words font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
                   The people who imagined
-                  <span className="block text-[#ED6439]">
+                  <span className="block text-white">
                     ageing with dignity.
                   </span>
                 </h1>
@@ -167,7 +167,7 @@ function FoundersPage() {
 
 
               <Reveal delay={100}>
-                <article className="w-full rounded-[1.5rem] border border-[#263746]/8 bg-white p-5 shadow-[0_25px_70px_-45px_rgba(38,55,70,0.35)] sm:rounded-[2rem] sm:p-10 lg:p-12">
+                <article className="w-full rounded-[1.5rem] border border-[#E15925]/8 bg-white p-5 shadow-[0_25px_70px_-45px_rgba(38,55,70,0.35)] sm:rounded-[2rem] sm:p-10 lg:p-12">
 
                   <HeartHandshake
                     className="h-8 w-8 text-[#ED6439] sm:h-9 sm:w-9"
@@ -194,7 +194,7 @@ function FoundersPage() {
                     <p>
                       This was the brain child of two people who yearned to
                       make a difference in eldercare —
-                      <strong className="font-bold text-[#263746]">
+                      <strong className="font-bold text-[#E15925]">
                         {" "}Dr Radha S Murthy and Mr S Premkumar Raja.
                       </strong>
                     </p>
@@ -233,7 +233,7 @@ function FoundersPage() {
                   The Founders
                 </p>
 
-                <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
+                <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-[#E15925] sm:text-4xl lg:text-5xl">
                   Two journeys. One shared belief.
                 </h2>
 
@@ -254,7 +254,7 @@ function FoundersPage() {
               ================================================== */}
 
               <Reveal>
-                <article className="group w-full overflow-hidden rounded-[1.5rem] border border-[#263746]/10 bg-[#FFF7EC] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-45px_rgba(38,55,70,0.45)] sm:rounded-[2rem]">
+                <article className="group w-full overflow-hidden rounded-[1.5rem] border border-[#E15925]/10 bg-[#FFF7EC] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-45px_rgba(38,55,70,0.45)] sm:rounded-[2rem]">
 
                   <div className="relative w-full overflow-hidden">
                     <img
@@ -277,7 +277,7 @@ function FoundersPage() {
                       Co-Founder & Managing Trustee
                     </p>
 
-                    <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#263746] sm:text-3xl">
+                    <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
                       Dr Radha S Murthy
                     </h3>
 
@@ -307,7 +307,7 @@ function FoundersPage() {
               ================================================== */}
 
               <Reveal delay={100}>
-                <article className="group w-full overflow-hidden rounded-[1.5rem] border border-[#263746]/10 bg-white shadow-[0_20px_70px_-45px_rgba(38,55,70,0.35)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-45px_rgba(38,55,70,0.5)] sm:rounded-[2rem]">
+                <article className="group w-full overflow-hidden rounded-[1.5rem] border border-[#E15925]/10 bg-white shadow-[0_20px_70px_-45px_rgba(38,55,70,0.35)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_80px_-45px_rgba(38,55,70,0.5)] sm:rounded-[2rem]">
 
                   <div className="relative w-full overflow-hidden">
 
@@ -332,7 +332,7 @@ function FoundersPage() {
                       Co-Founder & Secretary
                     </p>
 
-                    <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#263746] sm:text-3xl">
+                    <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
                       S Premkumar Raja
                     </h3>
 
@@ -372,7 +372,7 @@ function FoundersPage() {
           Board of Trustees
         </p>
 
-        <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
+        <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-[#E15925] sm:text-4xl lg:text-5xl">
           The people guiding the journey.
         </h2>
 
@@ -397,7 +397,7 @@ function FoundersPage() {
 
             <article
               className={`
-                grid items-center gap-10 border-t border-[#263746]/10
+                grid items-center gap-10 border-t border-[#E15925]/10
                 py-12 sm:gap-14 sm:py-16
                 lg:grid-cols-2 lg:gap-20 lg:py-20
                 ${index === trustees.length - 1 ? "border-b" : ""}
@@ -448,7 +448,7 @@ function FoundersPage() {
                 </div>
 
 
-                <h3 className="font-display text-3xl font-bold leading-tight text-[#263746] sm:text-4xl">
+                <h3 className="font-display text-3xl font-bold leading-tight text-[#E15925] sm:text-4xl">
                   {trustee.name}
                 </h3>
 
@@ -470,7 +470,7 @@ function FoundersPage() {
 
                   {trustee.name === "Indra Prem Menon" &&
                     trustee.quote && (
-                      <blockquote className="mt-6 border-l-2 border-[#ED6439] pl-5 font-serif text-base italic leading-7 text-[#263746] sm:text-lg">
+                      <blockquote className="mt-6 border-l-2 border-[#ED6439] pl-5 font-serif text-base italic leading-7 text-[#E15925] sm:text-lg">
                         “{trustee.quote}”
                       </blockquote>
                     )}
@@ -502,7 +502,7 @@ function FoundersPage() {
             CLOSING
         ====================================================== */}
 
-        <section className="w-full bg-[#263746]">
+        <section className="w-full bg-[#E15925]">
           <div className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
             <Reveal>
@@ -535,7 +535,7 @@ function FoundersPage() {
 
                   <Link
                     to="/about"
-                    className="group inline-flex w-fit shrink-0 items-center justify-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#263746] transition-all duration-300 hover:gap-4 hover:bg-[#FFF7EC]"
+                    className="group inline-flex w-fit shrink-0 items-center justify-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#E15925] transition-all duration-300 hover:gap-4 hover:bg-[#FFF7EC]"
                   >
                     Back to About
 

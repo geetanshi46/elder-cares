@@ -68,7 +68,7 @@ function SmritiGramPage() {
     />
 
     {/* LIGHT OVERLAY */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/15 via-[#17232B]/5 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/15 via-[#E15925]/5 to-transparent" />
 
     {/* CENTERED CONTENT */}
     <div className="relative z-10 mx-auto flex min-h-[520px] w-full max-w-7xl items-center justify-center px-5 py-12 sm:min-h-[580px] sm:px-8 sm:py-16 lg:min-h-[650px] lg:px-10 lg:py-20">
@@ -134,7 +134,7 @@ function SmritiGramPage() {
         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/15 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/15 via-transparent to-transparent" />
 
       <div className="absolute bottom-4 left-4 rounded-2xl border border-white/40 bg-white/95 px-4 py-3 shadow-[0_15px_40px_-20px_rgba(38,55,70,0.4)] backdrop-blur-sm sm:bottom-6 sm:left-6 sm:px-5 sm:py-3.5">
         <p className="font-display text-2xl font-extrabold leading-none text-[#ED6439] sm:text-3xl">
@@ -585,7 +585,7 @@ function SmritiGramPage() {
             className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/20 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/20 via-transparent to-transparent" />
         </div>
       </Reveal>
     </div>
@@ -888,7 +888,7 @@ function SmritiGramPage() {
           />
 
           {/* VERY LIGHT IMAGE OVERLAY */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/25 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/25 via-transparent to-transparent" />
 
           {/* IMAGE BADGE */}
           <div className="absolute bottom-5 left-5 rounded-2xl border border-white/50 bg-white/95 px-5 py-4 shadow-[0_18px_40px_-20px_rgba(38,55,70,0.4)] backdrop-blur-sm sm:bottom-7 sm:left-7">
@@ -1016,7 +1016,7 @@ function SmritiGramPage() {
           />
 
           {/* VERY LIGHT OVERLAY */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/10 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/10 via-transparent to-transparent" />
 
           {/* IMAGE LABEL */}
           <div className="absolute bottom-5 left-5 rounded-2xl border border-white/40 bg-white/95 px-5 py-3 shadow-[0_15px_40px_-20px_rgba(38,55,70,0.4)] backdrop-blur-sm sm:bottom-7 sm:left-7">
@@ -1414,7 +1414,7 @@ function SmritiGramPage() {
           />
 
           {/* Very light overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#17232B]/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#E15925]/20 via-transparent to-transparent" />
         </div>
       </Reveal>
 

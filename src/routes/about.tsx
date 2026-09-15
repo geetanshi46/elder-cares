@@ -67,7 +67,7 @@ const JOURNEY = [
   {
     year: "1998",
     title: "Nightingales Medical Trust established",
-    body: "Nightingales Medical Trust established as a not-for-profit organisation dedicated to age care.",
+    body: "As a not-for-profit organisation dedicated to age care.",
   },
   {
     year: "1999",
@@ -711,9 +711,9 @@ function AboutPage() {
 
         {/* LEFT — INTRO */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+          {/* <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
             THE NEED FOR NMT
-          </p>
+          </p> */}
 
           <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.7rem]">
             India Is Ageing. The Need for Age Care Is Growing.
@@ -949,10 +949,10 @@ function AboutPage() {
                   dementia care, social protection, empowerment, training and
                   advocacy.
                 </p>
-                <p className="mt-2 max-w-3xl text-sm leading-6 text-[#4C5C68]">
-                  Our next chapter is focused on building scalable models for
-                  the future of ageing and dementia care.
-                </p>
+                <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#4C5C68]">
+  Our next chapter is focused on building scalable models for
+  the future of ageing and dementia care.
+</p>
               </div>
             </Reveal>
           </div>
@@ -1411,16 +1411,16 @@ function AboutPage() {
     </p>
 
     {/* Financial Documents */}
-    <div className="mt-7">
-      <p className="text-sm font-bold text-white sm:text-base">
+    {/* <div className="mt-7"> */}
+      {/* <p className="text-sm font-bold text-white sm:text-base">
         Financial Documents
       </p>
 
       <p className="mt-4 text-sm font-bold text-white">
         Audited Financial Statements
-      </p>
+      </p> */}
 
-      <ul className="mt-3 space-y-2">
+      {/* <ul className="mt-3 space-y-2">
         {[
           "2025–26",
           "2024–25",
@@ -1436,13 +1436,13 @@ function AboutPage() {
             <span>{year}</span>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
-      <p className="mt-6 text-sm font-bold text-white">
+      {/* <p className="mt-6 text-sm font-bold text-white">
         Statutory & Registration Documents
-      </p>
+      </p> */}
 
-      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+      {/* <ul className="mt-3 grid gap-2 sm:grid-cols-2">
         {[
           "Trust Deed",
           "PAN",
@@ -1461,8 +1461,8 @@ function AboutPage() {
             <span>{document}</span>
           </li>
         ))}
-      </ul>
-    </div>
+      </ul> */}
+    {/* </div> */}
 
     {/* Commitment */}
     <div className="mt-7 border-t border-white/25 pt-6">
@@ -1503,10 +1503,9 @@ function AboutPage() {
         <section className="bg-[#FBF6EC]">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
-              <SectionMarker index="09" label="Setting trends in age care" />
+              <SectionMarker index="09" label="Our Commitment" />
               <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-5xl">
-                Setting trends in age care
-              </h2>
+                Our Commitment              </h2>
               <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-8">
                 For nearly three decades, NMT has sought to demonstrate that
                 ageing can be approached differently.

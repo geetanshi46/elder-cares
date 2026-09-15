@@ -89,7 +89,7 @@ lg:pb-12
             className="
               relative
               overflow-hidden
-              bg-[#17232B]
+              bg-[#E15925]
               shadow-[0_30px_80px_-25px_rgba(0,0,0,0.35)]
             "
           >
@@ -224,9 +224,9 @@ lg:pb-12
   "
 />
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17232B]/70 via-[#17232B]/15 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#E15925]/70 via-[#E15925]/15 to-transparent" />
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/45 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/45 via-transparent to-transparent" />
 
               </div>
 

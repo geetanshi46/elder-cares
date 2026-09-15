@@ -33,7 +33,7 @@ function UrmilaBio({ bio }: { bio: React.ReactNode }) {
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="mt-5 text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:text-[#263746]"
+        className="mt-5 text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:text-[#E15925]"
       >
         {expanded ? "Read less ↑" : "Read more →"}
       </button>
@@ -58,7 +58,7 @@ function ExpandableBio({ bio }: { bio: React.ReactNode }) {
       <button
         type="button"
         onClick={() => setExpanded((prev) => !prev)}
-        className="mt-5 self-start text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:text-[#263746]"
+        className="mt-5 self-start text-sm font-bold text-[#ED6439] transition-colors duration-300 hover:text-[#E15925]"
       >
         {expanded ? "Read less ↑" : "Read more →"}
       </button>
@@ -276,7 +276,7 @@ function ExecutiveCommittee() {
             HERO
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#263746]">
+        <section className="relative overflow-hidden bg-[#E15925]">
           <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#ED6439]/20 blur-3xl sm:h-72 sm:w-72" />
 
           <div className="absolute -bottom-32 -left-20 h-64 w-64 rounded-full bg-[#F6A36E]/10 blur-3xl sm:h-80 sm:w-80" />
@@ -295,7 +295,7 @@ function ExecutiveCommittee() {
 
                 <h1 className="font-display text-[2.6rem] font-bold leading-[1] tracking-tight text-white sm:text-6xl lg:text-7xl">
                   The people who lead
-                  <span className="block text-[#ED6439]">
+                  <span className="block text-white">
                     our mission forward.
                   </span>
                 </h1>
@@ -402,7 +402,7 @@ function ExecutiveCommittee() {
                           overflow-hidden
                           rounded-[1.5rem]
                           border
-                          border-[#263746]/10
+                          border-[#E15925]/10
                           bg-neutral-100
                           shadow-[0_20px_70px_-45px_rgba(38,55,70,0.35)]
                           transition-all
@@ -447,12 +447,12 @@ function ExecutiveCommittee() {
                             <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#ED6439] sm:text-xs sm:tracking-[0.15em]">
                               {member.role}
                             </p>
-                            <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#263746] sm:text-4xl lg:text-[42px]">
+                            <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#E15925] sm:text-4xl lg:text-[42px]">
                               {member.name}
                             </h2>
                           </>
                         ) : (
-                          <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#263746] sm:text-4xl lg:text-[42px]">
+                          <h2 className="mt-2 break-words font-display text-[2rem] font-bold leading-tight text-[#E15925] sm:text-4xl lg:text-[42px]">
                             {member.role}
                           </h2>
                         )}
@@ -483,7 +483,7 @@ function ExecutiveCommittee() {
             CLOSING
         ====================================================== */}
 
-        <section className="bg-[#263746]">
+        <section className="bg-[#E15925]">
           <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
             <Reveal>
@@ -531,7 +531,7 @@ function ExecutiveCommittee() {
                       py-3.5
                       text-sm
                       font-bold
-                      text-[#263746]
+                      text-[#E15925]
                       transition-all
                       duration-300
                       hover:gap-4

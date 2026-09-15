@@ -138,48 +138,7 @@ function NewsEventsPage() {
 
       <Events />
 
-      {/* ======================================================
-          RECENT EVENTS WITH PHOTO HIGHLIGHTS
-          ====================================================== */}
-    <section className="w-full bg-[#FBF6EC]">
-  <div className="relative w-full overflow-hidden">
-    <img
-      src={newsEventsBanner}
-      alt="News & Events"
-      className="
-        block
-        h-auto
-        w-full
-        object-contain
-      "
-    />
-
-    {/* VERY LIGHT OVERLAY */}
-    <div className="pointer-events-none absolute inset-0 bg-white/10" />
-
-    {/* HERO HEADING */}
-    <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
-      <h1
-        className="
-          font-display
-          text-3xl
-          font-extrabold
-          tracking-[-0.03em]
-          text-[#263746]
-          drop-shadow-[0_2px_10px_rgba(255,255,255,0.7)]
-          sm:text-4xl
-          md:text-5xl
-          lg:text-6xl
-        "
-      >
-        News & Events
-      </h1>
-    </div>
-  </div>
-
-  {/* GAP BEFORE NEXT SECTION */}
-  <div className="h-8 sm:h-10 lg:h-12" />
-</section>
+    
 
     {/* ============================================================
     APPEAL FOR MUSICAL INSTRUMENTS
