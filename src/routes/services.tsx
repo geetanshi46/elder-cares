@@ -4165,11 +4165,11 @@ function ServicesPage() {
         alt="National Helpline for Senior Citizens"
         className="
           block
-          h-[280px]
+          h-[260px]
           w-full
           object-cover
           object-center
-          sm:h-[320px]
+          sm:h-[300px]
         "
       />
     </div>
@@ -4268,7 +4268,7 @@ function ServicesPage() {
         <div className="mt-6 flex">
           <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
             <PhoneCall className="h-5 w-5 text-[#ED6439]" />
-            <span className="font-display text-lg font-extrabold tracking-wide text-[#fff]">
+            <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
               Dial 14567
             </span>
           </div>
