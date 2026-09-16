@@ -37,7 +37,7 @@ const NAV_LINKS: NavItem[] = [
     { label: "Executive Committee", to: "/executive-committee" },
     { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
     { label: "Partners", to: "/about", hash: "partners" },
-    { label: "Transparency", to: "/about", hash: "transparency" },
+    { label: "Founders", to: "/founders" },
     { label: "Annual Reports", to: "/annual-reports" },
   ],
 },
