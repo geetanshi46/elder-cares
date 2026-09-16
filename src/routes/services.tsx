@@ -33,12 +33,12 @@ import riskReductionImage from "../assets/our-services/risk-reduction.webp";
 import memoryclinicImage from "../assets/our-services/memory-clinic.webp";
 import daycareImage from "../assets/our-services/day-care.webp";
 
-import kasturinagarFacilityImage from "../assets/our-services/Kasturinagar.webp";
-import kasturinagarElderImage from "../assets/our-services/Kasturinagar1.webp";
-import kolarFacilityImage from "../assets/our-services/kolar.webp";
-import kolarElderImage from "../assets/our-services/ECTM  (1).jpeg";
-import kothanurFacilityImage from "../assets/our-services/Kothanur.webp";
-import kothanurElderImage from "../assets/our-services/Kothanur1.webp";
+import kasturinagarFacilityImage from "../assets/our-services/services (3).jpeg";
+import kasturinagarElderImage from "../assets/our-services/services (4).jpeg";
+import kolarFacilityImage from "../assets/our-services/services (1).jpeg";
+import kolarElderImage from "../assets/our-services/services (2).jpeg";
+import kothanurFacilityImage from "../assets/our-services/services (6).jpeg";
+import kothanurElderImage from "../assets/our-services/services (5).jpeg";
 
 import familyCaregiverTrainingImage from "../assets/our-services/family-caregiver-training.webp";
 
@@ -591,47 +591,7 @@ function ServiceImage({
             "
           />
 
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              bg-gradient-to-r
-              from-[#E15925]/35
-              via-transparent
-              to-transparent
-            "
-          />
 
-          <span
-            className="
-              absolute
-              bottom-4
-              left-4
-              max-w-[calc(100%-2rem)]
-              inline-flex
-              items-center
-              gap-2
-              bg-[#ED6439]
-              px-3
-              py-2
-              text-[10px]
-              font-bold
-              uppercase
-              tracking-[0.14em]
-              text-white
-              shadow-[0_10px_25px_rgba(237,100,57,0.28)]
-              sm:bottom-5
-              sm:left-5
-              sm:px-4
-              sm:py-2.5
-              sm:text-[11px]
-              sm:tracking-[0.16em]
-            "
-          >
-            <Sparkles className="h-3.5 w-3.5 shrink-0" />
-            <span className="break-words">{label}</span>
-          </span>
         </div>
 
         <div
@@ -1228,19 +1188,16 @@ function ServicesPage() {
     />
   </div>
 
-  {/* Orange overlay */}
-  {/* <div
+  {/* High contrast overlay for text readability */}
+  <div
     className="
       pointer-events-none
       absolute
       inset-0
       -z-10
-      bg-gradient-to-r
-      from-[#c2410c]/80
-      via-[#c2410c]/40
-      to-[#c2410c]/10
+      bg-black/45
     "
-  /> */}
+  />
 
   {/* Bottom readability gradient */}
   <div
@@ -1250,10 +1207,10 @@ function ServicesPage() {
       inset-x-0
       bottom-0
       -z-10
-      h-2/3
+      h-full
       bg-gradient-to-t
-      from-black/40
-      via-black/10
+      from-black/75
+      via-black/35
       to-transparent
     "
   />
@@ -1418,18 +1375,7 @@ function ServicesPage() {
     "
   />
 
-  {/* Image overlay */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      bg-gradient-to-t
-      from-[#E15925]/65
-      via-[#E15925]/5
-      to-transparent
-    "
-  />
+
 
 </div>
 
@@ -1997,14 +1943,14 @@ function ServicesPage() {
             className="
               relative
               w-full
-              aspect-[334/211]
-              min-h-0
+              h-64
+              sm:h-72
               overflow-hidden
               bg-[#F6F1EC]
             "
           >
             <ImageShuffle images={centre.images} alt={centre.name} />
-            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#E15925]/85 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
+            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#E15925]/90 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
               📍 {centre.location}
             </div>
           </div>
@@ -2012,7 +1958,7 @@ function ServicesPage() {
           {/* ==================================================
               CARD CONTENT
               ================================================== */}
-          <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+          <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
 
             <h5
               className="
@@ -2241,13 +2187,20 @@ function ServicesPage() {
                     </p>
 
                     <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground sm:text-[15px]">
-                      <li>Share experiences with others going through similar situations</li>
-                      <li>Learn from dementia-care professionals</li>
-                      <li>Discuss practical caregiving challenges</li>
-                      <li>Understand behavioural and psychological changes</li>
-                      <li>Learn coping strategies</li>
-                      <li>Exchange useful resources and experiences</li>
-                      <li>Find reassurance and emotional support</li>
+                      {[
+                        "Share experiences with others going through similar situations",
+                        "Learn from dementia-care professionals",
+                        "Discuss practical caregiving challenges",
+                        "Understand behavioural and psychological changes",
+                        "Learn coping strategies",
+                        "Exchange useful resources and experiences",
+                        "Find reassurance and emotional support",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5">
+                          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
                     </ul>
 
                     <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
@@ -2444,17 +2397,7 @@ function ServicesPage() {
                   "
                 />
 
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-[#E15925]/45
-                    via-transparent
-                    to-transparent
-                  "
-                />
+
               </div>
 
               {/* CONTENT */}
@@ -2580,7 +2523,7 @@ function ServicesPage() {
               <div className="absolute -left-20 -top-20 h-56 w-56 rounded-full bg-[#ED6439]/20 blur-3xl" />
 
               <div className="relative">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white sm:text-sm">
                   You Don't Have to Do This Alone
                 </p>
 
@@ -2721,26 +2664,7 @@ function ServicesPage() {
     "
   />
 
-  {/* Image label */}
-  <div
-    className="
-      absolute
-      bottom-5
-      left-5
-      bg-[#ED6439]
-      px-5
-      py-2.5
-      text-[10px]
-      font-bold
-      uppercase
-      tracking-[0.12em]
-      text-white
-      shadow-lg
-      sm:text-[11px]
-    "
-  >
-    SANDHYA SURAKSHA
-  </div>
+
 </div>
 
       {/* ==================================================
@@ -3136,26 +3060,7 @@ function ServicesPage() {
           "
         />
 
-        {/* IMAGE LABEL */}
-        <div
-          className="
-            absolute
-            bottom-5
-            left-5
-            bg-[#ED6439]
-            px-5
-            py-2.5
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-            text-white
-            shadow-lg
-            sm:text-[11px]
-          "
-        >
-          SANDHYA KIRANA
-        </div>
+
       </div>
 
 
@@ -3720,26 +3625,7 @@ function ServicesPage() {
           "
         />
 
-        {/* IMAGE LABEL */}
-        <div
-          className="
-            absolute
-            bottom-5
-            right-5
-            bg-[#ED6439]
-            px-5
-            py-2.5
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-            text-white
-            shadow-lg
-            sm:text-[11px]
-          "
-        >
-          HIRIYARAVADI
-        </div>
+
       </div>
 
     </div>
@@ -3940,53 +3826,7 @@ function ServicesPage() {
 
 
 
-  {/* ======================================================
-    GERIATRIC CARE TRAINING — YOUTUBE VIDEO
-    ====================================================== */}
 
-<Reveal className="mt-8 min-w-0 sm:mt-10">
-  <div className="w-full overflow-hidden bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
-
-    <a
-      href="https://youtu.be/go1GWETWmSM"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative block w-full"
-      aria-label="Watch Geriatric Care Training video"
-    >
-      <img
-        src="/geriatric-care-training-thumbnail.webp"
-        alt="Geriatric Care Training - Nightingales Medical Trust"
-        className="block h-auto w-full object-cover"
-      />
-
-      {/* Play button */}
-<span
-  className="
-    absolute
-    left-1/2
-    top-[63%]
-    grid
-    h-16
-    w-16
-    -translate-x-1/2
-    -translate-y-1/2
-    place-items-center
-    rounded-full
-    bg-[#ED6439]
-    text-white
-    shadow-[0_10px_30px_rgba(0,0,0,0.25)]
-    transition-transform
-    duration-300
-    group-hover:scale-110
-  "
->
-  <PlayCircle className="h-8 w-8" strokeWidth={1.8} />
-</span>
-    </a>
-
-  </div>
-</Reveal>
     </div>
   </Section>
 
@@ -4092,10 +3932,13 @@ function ServicesPage() {
         ELDERS HELPLINE – 1090
         ================================================== */}
 
-    <Reveal className="min-w-0">
+    <Reveal className="min-w-0 h-full">
       <div
         className="
+          flex
+          h-full
           min-w-0
+          flex-col
           overflow-hidden
           border
           border-[#ED6439]/15
@@ -4118,11 +3961,11 @@ function ServicesPage() {
             alt="Elders Helpline 1090"
             className="
               block
-              h-[280px]
+              h-[260px]
               w-full
               object-cover
               object-center
-              sm:h-[320px]
+              sm:h-[300px]
             "
           />
         </div>
@@ -4131,7 +3974,10 @@ function ServicesPage() {
         {/* CONTENT */}
         <div
           className="
+            flex
             min-w-0
+            flex-1
+            flex-col
             p-6
             sm:p-8
             md:p-9
@@ -4145,6 +3991,7 @@ function ServicesPage() {
               flex
               h-12
               w-12
+              shrink-0
               items-center
               justify-center
               rounded-full
@@ -4173,7 +4020,7 @@ function ServicesPage() {
           <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
 
 
-          {/* VISIBLE CONTENT */}
+          {/* CONTENT */}
           <div
             className="
               mt-6
@@ -4193,176 +4040,93 @@ function ServicesPage() {
 
             <p className="mt-4">
               <strong className="font-bold text-[#263746]">
-  It's the first project in the country where an NGO and the law enforcing
-  authorities joined together to address elder abuse.
-</strong>
+                It's the first project in the country where an NGO and the law enforcing
+                authorities joined together to address elder abuse.
+              </strong>
             </p>
 
             <p className="mt-4">
               <strong className="font-bold text-[#263746]">
-  Located at the premises of Bengaluru City Police
-</strong>
+                Located at the premises of Bengaluru City Police
+              </strong>
               , the Helpline acts as an important link between older persons,
               their families, social workers, police and other support
               systems.
             </p>
+
+            <p className="mt-5 font-semibold text-foreground">
+              The Helpline can help with:
+            </p>
+
+            <ul className="mt-4 space-y-2.5">
+              {[
+                "Elder abuse and neglect",
+                "Family-related issues and conciliations",
+                "Harassment and intimidation",
+                "Financial exploitation",
+                "Safety concerns",
+                "Counselling and guidance",
+                "Referral to appropriate services",
+                "Police and institutional intervention where required",
+                "Tracing of missing / straying elders",
+                "Assess to government schemes and facilities",
+                "Information on elder related services",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 font-bold text-foreground sm:text-[15px]">
+              Elders can avail free legal advice with prior appointments.
+            </p>
+
+            <p className="mt-4">
+              All the services rendered at the Elders Helpline are free of cost.
+            </p>
+
+            {/* DIAL 1090 IN BLACK BOX WITH ORANGE TEXT */}
+            <div className="mt-6 flex">
+              <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
+                <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+                <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
+                  Dial 1090
+                </span>
+              </div>
+            </div>
           </div>
 
-
-          {/* ==================================================
-              READ MORE / LESS
-              ================================================== */}
-
-          <details className="group mt-6">
-
-            <summary
+          {/* CONTACT BUTTON */}
+          <div className="mt-auto pt-6">
+            <Link
+              to="/contact"
               className="
-                flex
-                cursor-pointer
-                list-none
+                inline-flex
+                max-w-full
+                w-fit
                 items-center
+                justify-center
                 gap-2
-                border-0
-                bg-transparent
+                bg-[#ED6439]
+                px-4
+                py-3
+                text-center
                 text-[12px]
                 font-bold
-                text-[#ED6439]
-                outline-none
-                focus:outline-none
-                focus-visible:outline-none
-                select-none
+                text-white
+                transition-all
+                hover:-translate-y-0.5
+                hover:bg-[#d95730]
+                sm:px-5
                 sm:text-[13px]
               "
             >
-              <span className="group-open:hidden">
-                READ MORE
-              </span>
-
-              <span className="hidden group-open:inline">
-                READ LESS
-              </span>
-
-              <ArrowUpRight
-                className="
-                  h-4
-                  w-4
-                  transition-transform
-                  duration-300
-                  group-open:rotate-180
-                "
-              />
-            </summary>
-
-
-            {/* EXPANDED CONTENT */}
-            <div
-              className="
-                mt-6
-                border-t
-                border-[#ED6439]/15
-                pt-6
-              "
-            >
-
-              <p className="mb-4 font-medium text-foreground">
-                The Helpline can help with:
-              </p>
-
-              <ul className="space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground sm:text-[15px]">
-                {[
-                  "Elder abuse and neglect",
-                  "Family-related issues and conciliations",
-                  "Harassment and intimidation",
-                  "Financial exploitation",
-                  "Safety concerns",
-                  "Counselling and guidance",
-                  "Referral to appropriate services",
-                  "Police and institutional intervention where required",
-                  "Tracing of missing / straying elders",
-                  "Assess to government schemes and facilities",
-                  "Information on elder related services",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mt-6 font-bold text-foreground sm:text-[15px]">
-                Elders can avail free legal advice with prior appointments.
-              </p>
-
-              <p
-                className="
-                  mt-4
-                  text-[14px]
-                  leading-[1.8]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                Elders in distress and in need of help can call Helpline
-                on 1090 or walk in to the Helpline office. Our committed
-                staff of social workers, counsellors, legal professionals
-                and police personnel are skilled to solve complaints that
-                are reported here.
-              </p>
-
-              <p
-                className="
-                  mt-4
-                  text-[14px]
-                  leading-[1.8]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                The Elders Helpline is partly supported by the Department
-                for the Empowerment of Differently Abled and Senior
-                Citizens, Govt of Karnataka.
-              </p>
-
-              <p
-                className="
-                  mt-5
-                  font-semibold
-                  text-[#263746]
-                "
-              >
-                All the services rendered at the Elders Helpline are free
-                of cost.
-              </p>
-
-              <Link
-                to="/contact"
-                className="
-                  mt-6
-                  inline-flex
-                  max-w-full
-                  items-center
-                  justify-center
-                  gap-2
-                  bg-[#ED6439]
-                  px-4
-                  py-3
-                  text-center
-                  text-[12px]
-                  font-bold
-                  text-white
-                  transition-all
-                  hover:-translate-y-0.5
-                  hover:bg-[#d95730]
-                  sm:px-5
-                  sm:text-[13px]
-                "
-              >
-                CONTACT US
-                <ArrowUpRight className="h-4 w-4 shrink-0" />
-              </Link>
-
-            </div>
-          </details>
+              CONTACT US
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
+          </div>
 
         </div>
       </div>
@@ -4504,7 +4268,7 @@ function ServicesPage() {
         <div className="mt-6 flex">
           <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
             <PhoneCall className="h-5 w-5 text-[#ED6439]" />
-            <span className="font-display text-lg font-extrabold tracking-wide text-[#263746]">
+            <span className="font-display text-lg font-extrabold tracking-wide text-[#fff]">
               Dial 14567
             </span>
           </div>
@@ -5659,6 +5423,63 @@ function ServicesPage() {
     <TrainingCarousel />
   </div>
 
+  {/* ==================================================
+      GERIATRIC CARE TRAINING — VIDEO THUMBNAIL
+      ================================================== */}
+  <Reveal className="mt-8 min-w-0 sm:mt-10">
+    <div className="flex flex-col sm:flex-row items-center gap-6 border border-[#ED6439]/20 bg-white p-5 sm:p-6 shadow-[0_12px_35px_-15px_rgba(70,45,10,0.12)]">
+      <a
+        href="https://youtu.be/go1GWETWmSM"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full sm:w-72 shrink-0 aspect-[16/9] overflow-hidden rounded-lg bg-black shadow-md"
+        aria-label="Watch Geriatric Care Training video on YouTube"
+      >
+        <img
+          src="/geriatric-care-training-thumbnail.webp"
+          alt="Geriatric Care Training - Nightingales Medical Trust"
+          className="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <span
+          className="
+            absolute
+            inset-0
+            grid
+            place-items-center
+            bg-black/25
+            transition-colors
+            group-hover:bg-black/15
+          "
+        >
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-[#ED6439] text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+            <PlayCircle className="h-6 w-6" strokeWidth={2} />
+          </span>
+        </span>
+      </a>
+
+      <div className="min-w-0 flex-1">
+        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Featured Video
+        </span>
+        <h4 className="mt-1 font-display text-lg font-bold text-[#263746] sm:text-xl">
+          Geriatric Care Training Programme
+        </h4>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Watch how Nightingales Medical Trust trains professional caregivers and family members in compassionate, skilled, and person-centred elder care.
+        </p>
+        <a
+          href="https://youtu.be/go1GWETWmSM"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#ED6439] transition-all hover:gap-3"
+        >
+          <span>WATCH ON YOUTUBE</span>
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </Reveal>
+
 
   {/* ==================================================
       CONTACT CTA
@@ -6266,16 +6087,22 @@ function ServicesPage() {
                 items-center
                 justify-center
                 gap-2
-                text-[10px]
+                rounded-full
+                border
+                border-white/25
+                bg-white/10
+                px-3.5
+                py-1.5
+                text-[11px]
                 font-bold
                 uppercase
-                tracking-[0.18em]
-                text-[#ED6439]
-                sm:text-[11px]
-                sm:tracking-[0.2em]
+                tracking-[0.2em]
+                text-amber-100
+                backdrop-blur-xs
+                sm:text-xs
               "
             >
-              <Sparkles className="h-3.5 w-3.5 shrink-0" />
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-300" />
               Our Services
             </span>
 
