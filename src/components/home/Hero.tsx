@@ -300,25 +300,28 @@ export function Hero() {
       LEFT — 25+ YEARS OF SERVICE
       ========================================================= */}
   <div
-    className="
-      flex
-      w-fit
-      items-center
-      gap-2.5
-      rounded-2xl
-      border
-      border-white/30
-      bg-white/90
-      px-3
-      py-2.5
-      shadow-[0_12px_30px_rgba(0,0,0,0.18)]
-      backdrop-blur-md
+  className="
+    flex
+    w-fit
+    self-end
+    items-center
+    gap-2.5
+    rounded-2xl
+    border
+    border-white/30
+    bg-white/90
+    px-3
+    py-2.5
+    shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+    backdrop-blur-md
 
-      sm:gap-3
-      sm:px-5
-      sm:py-3.5
-    "
-  >
+    sm:gap-3
+    sm:px-5
+    sm:py-3.5
+
+    md:ml-auto
+  "
+>
     <span
       className="
         flex
@@ -375,7 +378,7 @@ export function Hero() {
   {/* =========================================================
       RIGHT — 24 HOUR HELPLINE
       ========================================================= */}
-  <div
+  {/* <div
     className="
       flex
       w-fit
@@ -456,7 +459,7 @@ export function Hero() {
     >
       24
     </span>
-  </div>
+  </div> */}
 </div>
 
   {/* =========================================================

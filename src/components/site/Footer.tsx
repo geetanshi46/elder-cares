@@ -93,7 +93,7 @@ export function Footer() {
       {/* Subtle texture */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 text-left sm:px-6 sm:py-10 lg:px-8 lg:py-14">
 
         {/* =====================================================
             BRAND + NAVIGATION
@@ -117,7 +117,7 @@ export function Footer() {
             {/* Accent */}
             <div className="mt-3 flex items-center gap-2.5">
               <span className="h-[2.5px] w-9 rounded-full bg-white" />
-              <span className="h-2 w-2 rounded-full bg-[#E15925]" />
+              <span className="h-2 w-2 rounded-full bg-[#F29000]" />
             </div>
 
             {/* Description */}
@@ -128,15 +128,13 @@ export function Footer() {
           </div>
 
           {/* RIGHT — NAVIGATION */}
-          <div className="grid grid-cols-1 gap-x-6 gap-y-8 min-[420px]:grid-cols-2 sm:gap-y-9 lg:grid-cols-4 lg:gap-x-7">
+          <div className="grid grid-cols-1 items-start gap-x-6 gap-y-8 text-left min-[420px]:grid-cols-2 sm:gap-y-9 lg:grid-cols-4 lg:gap-x-7">
             {COLUMNS.map((col) => (
-              <div key={col.title}>
-                <div className="flex items-center gap-2.5">
-                  <span className="h-[2px] w-7 bg-[#E15925]" />
-
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
-                    {col.title}
-                  </h3>
+              <div key={col.title} className="text-left">
+                <div className="text-left">
+                  <h3 className="text-left text-sm font-bold uppercase tracking-[0.18em] text-white/90">
+  {col.title}
+</h3>
                 </div>
 
                 <ul className="mt-4 space-y-2.5 text-[13.5px]">
@@ -156,13 +154,11 @@ export function Footer() {
             ))}
 
             {/* Download Centre */}
-            <div>
-              <div className="flex items-center gap-2.5">
-                <span className="h-[2px] w-7 bg-[#E15925]" />
-
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
-                  Download Centre
-                </h3>
+            <div className="text-left">
+              <div className="text-left">
+                <h3 className="text-left text-sm font-bold uppercase tracking-[0.18em] text-white/90">
+  Download Centre
+</h3>
               </div>
 
               <ul className="mt-4 space-y-3 text-[13px]">
@@ -172,9 +168,9 @@ export function Footer() {
                       href="#download"
                       className="group flex items-start gap-2.5 text-white/80 transition-colors hover:text-white"
                     >
-                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-white/10 text-[#E15925] transition-colors group-hover:bg-white">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-[#F29000] text-white transition-colors group-hover:bg-white">
                         <Download
-                          className="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5 text-white group-hover:text-[#F29000]"
                           strokeWidth={1.8}
                         />
                       </span>
@@ -195,12 +191,12 @@ export function Footer() {
         <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3">
 
           {/* Address */}
-          <div className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11]">
+          <div className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A]">
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <MapPin className="h-4 w-4" strokeWidth={1.8} />
+              <MapPin className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
-            <span className="text-[12.5px] leading-relaxed text-white/85">
+            <span className="text-[12.5px] leading-relaxed text-white">
               8P6, Kasturinagar, 3rd A Cross Rd, Banasawadi,
               Bengaluru 560043
             </span>
@@ -209,10 +205,10 @@ export function Footer() {
           {/* Phone */}
           <a
             href="tel:+918042426565"
-            className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 text-[13px] text-white/85 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11] hover:text-white"
+            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[13px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <Phone className="h-4 w-4" strokeWidth={1.8} />
+              <Phone className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
             +91 80 4242 6565
@@ -221,10 +217,10 @@ export function Footer() {
           {/* Email */}
           <a
             href="mailto:contact@nightingaleseldercare.com"
-            className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 text-[12.5px] text-white/85 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11] hover:text-white"
+            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[12.5px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <Mail className="h-4 w-4" strokeWidth={1.8} />
+              <Mail className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
             <span className="break-all">
@@ -250,7 +246,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/35 bg-white/[0.12] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#E15925] sm:h-11 sm:w-11"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/35 bg-white/[0.12] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#F29000] sm:h-11 sm:w-11"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.8} />
               </a>

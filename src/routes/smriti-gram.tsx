@@ -1427,13 +1427,13 @@ function SmritiGramPage() {
 
           <div className="relative z-10">
             <div className="mb-6 flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#ED6439] text-sm font-bold text-white">
+              {/* <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#ED6439] text-sm font-bold text-white">
                 01
-              </span>
+              </span> */}
 
-              <span className="text-sm font-bold uppercase tracking-[0.16em] text-[#263746]/55">
-                A commitment to dignity
-              </span>
+              <span className="text-base font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+  A commitment to dignity
+</span>
             </div>
 
             <div
@@ -1524,14 +1524,14 @@ function SmritiGramPage() {
             <ArrowRight className="h-4 w-4" />
           </button>
 
-          <button
+          {/* <button
             type="button"
             onClick={() => setIsAdmissionFormOpen(true)}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto"
           >
             <FileText className="h-4 w-4" />
             Click here to fill our form
-          </button>
+          </button> */}
 
           <Link
             to="/contact"

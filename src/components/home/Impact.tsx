@@ -248,7 +248,7 @@ lg:pb-12
     className="
       relative
       overflow-hidden
-      bg-[#ED6439]
+      bg-[#E15925]
       px-7
       py-10
       text-center
@@ -315,7 +315,7 @@ function ImpactStat({
         p-5
         transition-all
         duration-300
-        hover:border-[#ED6439]/30
+        hover:border-[#F29000]/30
         hover:bg-white/[0.08]
       "
     >
@@ -326,9 +326,9 @@ function ImpactStat({
           w-11
           shrink-0
           place-items-center
-          bg-[#ED6439]
+          bg-[#F29000]
           text-white
-          shadow-[0_8px_20px_rgba(237,100,57,0.25)]
+          shadow-[0_8px_20px_rgba(242,144,0,0.25)]
           transition-transform
           duration-300
           group-hover/stat:scale-110

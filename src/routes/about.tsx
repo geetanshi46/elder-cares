@@ -324,22 +324,24 @@ const annualReports = [
    carries real meaning rather than decorating the heading.
    ============================================================ */
 
-export function SectionMarker({
+function SectionMarker({
   index,
   label,
+  className = "text-white",
 }: {
   index: string;
   label: string;
+  className?: string;
 }) {
   return (
     <div className="flex items-center gap-4">
-      <span className="text-lg font-extrabold tracking-wide text-[#ED6439]">
+      <span className={`text-lg font-extrabold tracking-wide ${className}`}>
   {index}
 </span>
 
       <span className="h-px flex-1 bg-[#E8DED2]" />
 
-     <span className="text-lg font-bold tracking-wide text-[#ED6439]">
+    <span className={`text-sm font-bold uppercase tracking-[0.18em] ${className}`}>
   {label}
 </span>
     </div>
@@ -390,7 +392,11 @@ function RecognitionCarousel() {
     <section id="recognitions" className="relative overflow-hidden bg-[#ED6439] py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="mb-9 sm:mb-11">
-          <SectionMarker index="06" label="Our achievements" />
+          <SectionMarker
+  index="07"
+  label="Our achievements"
+  className="text-white"
+/>
           <h2 className="mt-5 font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Recognitions & awards
           </h2>
@@ -799,50 +805,89 @@ function AboutPage() {
       </div>
     </Reveal>
 
-    {/* ==================================================
-        NMT'S APPROACH
-    ================================================== */}
-    <Reveal delay={160}>
-      <div className="mt-6 rounded-2xl border border-[#ED6439]/20 bg-white p-7 sm:p-9">
+  {/* ==================================================
+    NMT'S APPROACH
+================================================== */}
 
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+<Reveal delay={160}>
+  <section className="mt-8 w-full overflow-hidden rounded-3xl border border-[#ED6439]/15 bg-white p-6 shadow-[0_12px_45px_rgba(38,55,70,0.06)] sm:p-8 lg:p-10">
 
-          <div className="max-w-xl">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
-              NMT's Approach
-            </p>
+    <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
 
-            <p className="mt-4 text-base leading-7 text-[#4C5C68] sm:text-lg">
-              We develop need-based solutions across the entire ageing and
-              dementia-care continuum from prevention and early assessment to
-              community support, day care, residential care, caregiver
-              training, advocacy and research.
-            </p>
-          </div>
+      {/* LEFT — DESCRIPTION */}
 
-          <div className="flex flex-wrap gap-2.5 lg:max-w-md lg:justify-end">
-            {[
-              "Prevention",
-              "Early assessment",
-              "Community support",
-              "Day care",
-              "Residential care",
-              "Caregiver training",
-              "Advocacy",
-              "Research",
-            ].map((item) => (
-              <span
-                key={item}
-                className="rounded-full bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35]"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+      <div className="text-left">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+          NMT's Approach
+        </p>
+
+        <p className="mt-4 text-base leading-8 text-[#4C5C68] sm:text-lg">
+          We develop need-based solutions across the entire ageing and
+          dementia-care continuum from prevention and early assessment to
+          community support, day care, residential care, caregiver
+          training, advocacy and research.
+        </p>
+      </div>
+
+
+      {/* RIGHT — INTERCONNECTED CARE CARDS */}
+
+      <div className="relative rounded-2xl bg-[#FFF9F1] p-5 sm:p-7">
+
+        <div className="pointer-events-none absolute inset-5 rounded-2xl border border-dashed border-[#F29000]/35" />
+
+        <div className="relative grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+          {[
+            "Prevention",
+            "Early assessment",
+            "Community support",
+            "Day care",
+            "Residential care",
+            "Caregiver training",
+            "Advocacy",
+            "Research",
+          ].map((item) => (
+            <div
+              key={item}
+              className="
+                flex
+                min-h-[68px]
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-[#F29000]/25
+                bg-white
+                px-3
+                py-3
+                text-center
+                text-xs
+                font-bold
+                text-[#1B2A35]
+                shadow-[0_4px_15px_rgba(38,55,70,0.05)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-[#F29000]
+                hover:bg-[#F29000]
+                hover:text-white
+                sm:min-h-[76px]
+                sm:text-sm
+              "
+            >
+              {item}
+            </div>
+          ))}
 
         </div>
+
       </div>
-    </Reveal>
+
+    </div>
+
+  </section>
+</Reveal>
 
   </div>
 </section>
@@ -855,7 +900,7 @@ function AboutPage() {
         <section id="our-journey" className="bg-[#FBF6EC] scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
-              <SectionMarker index="03" label="Our journey" />
+              <SectionMarker index="04" label="Our journey" />
               <h3 className="mt-5 max-w-5xl font-display text-2xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-3xl lg:text-[2.2rem]">
   From a Garage to a Movement for Ageing with Dignity
 </h3>
@@ -964,7 +1009,7 @@ function AboutPage() {
         <section id="vision" className="bg-white scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
-              <SectionMarker index="04" label="Vision, mission & values" />
+              <SectionMarker index="05" label="Vision, mission & values" />
             </Reveal>
 
             <div className="mt-9 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -1038,7 +1083,7 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="05" label="People & governance" />
+      <SectionMarker index="06" label="People & governance" />
 
       <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
         Responsible governance. People who turn vision into action.
@@ -1503,9 +1548,13 @@ function AboutPage() {
         <section className="bg-[#FBF6EC]">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
-              <SectionMarker index="09" label="Our Commitment" />
-              <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-5xl">
-                Our Commitment              </h2>
+              <SectionMarker
+  index="09"
+  label="Our Commitment"
+  className="text-[#ED6439]"
+/>
+              {/* <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-5xl">
+                Our Commitment              </h2> */}
               <p className="mt-6 max-w-3xl text-[15px] leading-7 text-[#4C5C68] sm:text-base sm:leading-8">
                 For nearly three decades, NMT has sought to demonstrate that
                 ageing can be approached differently.

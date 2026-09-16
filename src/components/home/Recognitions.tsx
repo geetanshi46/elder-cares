@@ -68,21 +68,34 @@ const RECOGNITIONS = [
 ];
 
 export function Recognitions() {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const recognitionSliderRef = useRef<HTMLDivElement | null>(null);
+  const isPausedRef = useRef(false);
 
-  const scroll = (direction: "left" | "right") => {
-    const slider = sliderRef.current;
+const scroll = (direction: "left" | "right") => {
+  const slider = recognitionSliderRef.current;
 
-    if (!slider) return;
+  if (!slider) return;
 
-    slider.scrollBy({
-      left: direction === "right" ? 350 : -350,
-      behavior: "smooth",
-    });
-  };
+  // Pause auto-scroll temporarily
+  isPausedRef.current = true;
+
+  const scrollAmount = 380;
+
+  slider.scrollTo({
+    left:
+      slider.scrollLeft +
+      (direction === "right" ? scrollAmount : -scrollAmount),
+    behavior: "smooth",
+  });
+
+  // Resume auto-scroll after manual scrolling
+  window.setTimeout(() => {
+    isPausedRef.current = false;
+  }, 1500);
+};
 
 useEffect(() => {
-  const slider = sliderRef.current;
+  const slider = recognitionSliderRef.current;
 
   if (!slider) return;
 
@@ -92,8 +105,8 @@ useEffect(() => {
   const speed = 1.6;
 
   const animate = () => {
-    if (!isPaused) {
-      slider.scrollLeft += speed;
+    if (!isPaused && !isPausedRef.current) {
+  slider.scrollLeft += speed;
 
       const halfScrollWidth = slider.scrollWidth / 2;
 
@@ -234,7 +247,7 @@ useEffect(() => {
 
         {/* SLIDER */}
         <div
-          ref={sliderRef}
+          ref={recognitionSliderRef}
           className="
             flex
             gap-5

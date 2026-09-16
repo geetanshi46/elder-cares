@@ -45,30 +45,27 @@ const PARTNERS = [
 ];
 
 export function Partners() {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
+  const partnersSliderRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollPartners = (direction: "left" | "right") => {
-    const slider = sliderRef.current;
+const scrollPartners = (direction: "left" | "right") => {
+  const slider = partnersSliderRef.current;
 
-    if (!slider) return;
+  if (!slider) return;
 
-    const scrollAmount = slider.clientWidth * 0.75;
+  const scrollAmount = slider.clientWidth * 0.75;
 
-    slider.scrollBy({
-      left:
-        direction === "right"
-          ? scrollAmount
-          : -scrollAmount,
-      behavior: "smooth",
-    });
-  };
+  slider.scrollBy({
+    left: direction === "right" ? scrollAmount : -scrollAmount,
+    behavior: "smooth",
+  });
+};
 
   /* =========================================================
      AUTO SCROLL
      ========================================================= */
 
   useEffect(() => {
-  const slider = sliderRef.current;
+  const slider = partnersSliderRef.current;
 
   if (!slider) return;
 
@@ -372,21 +369,21 @@ export function Partners() {
 
     {/* HORIZONTAL SCROLL AREA */}
     <div
-      ref={sliderRef}
-      className="
-        flex
-        gap-4
-        overflow-x-auto
-        scroll-smooth
-        px-10
-        py-5
-        [scrollbar-width:none]
-        sm:gap-5
-        sm:px-12
-        lg:gap-6
-        [&::-webkit-scrollbar]:hidden
-      "
-    >
+  ref={partnersSliderRef}
+  className="
+    flex
+    gap-4
+    overflow-x-auto
+    scroll-smooth
+    px-10
+    py-5
+    [scrollbar-width:none]
+    sm:gap-5
+    sm:px-12
+    lg:gap-6
+    [&::-webkit-scrollbar]:hidden
+  "
+>
       {[...PARTNERS, ...PARTNERS].map((logo, index) => (
         <div
           key={`${index}-${logo}`}

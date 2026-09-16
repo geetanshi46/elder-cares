@@ -572,6 +572,7 @@ lg:p-9
               <div className="relative">
 
   <span
+  id="donate"
     className="
       inline-flex
       items-center
@@ -583,7 +584,7 @@ lg:p-9
       text-white
     "
   >
-    <Sparkles className="h-4 w-4 text-white" />
+    <Sparkles className="h-4 w-4 text-[#F29000]" />
     Support our work
   </span>
 
@@ -600,7 +601,7 @@ lg:p-9
     "
   >
     Make a meaningful{" "}
-    <span className="text-[#ED6439]">
+    <span className="text-[#F6AF40]">
       difference.
     </span>
   </h2>
@@ -696,7 +697,7 @@ lg:p-9
       focus-within:bg-white/[0.09]
     "
   >
-    <span className="font-display text-lg font-bold text-[#ED6439]">
+    <span className="font-display text-lg font-bold text-[#F29000]">
       ₹
     </span>
 
@@ -768,10 +769,10 @@ Thank you.`;
       hover:shadow-[0_18px_40px_rgba(237,100,57,0.35)]
     "
   >
-    <HeartHandshake
-      className="h-5 w-5"
-      strokeWidth={1.8}
-    />
+  <HeartHandshake
+  className="h-5 w-5 text-[#F29000]"
+  strokeWidth={1.8}
+/>
 
     Donate
     {amount

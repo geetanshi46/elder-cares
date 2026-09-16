@@ -11,14 +11,14 @@ export const Route = createFileRoute("/founders")({
 
 const trustees = [
   {
-    name: "Pankaj C. Lakhani",
+    name: "Mr. Pankaj C. Lakhani",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/pankaj-lakhani-152x160.png",
     bio: "Mr. Pankaj C. Lakhani is the Managing Director of the Bangalore Soft Drinks Private Limited and the Director of the Saurashtra Bottling Private Limited. He also functions as a Trustee on the boards of several Non-profits.",
   },
   {
-    name: "Amarnath Kamath",
+    name: "Mr. Amarnath Kamath",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/amarnath-kamath-146x160.png",
@@ -27,7 +27,7 @@ const trustees = [
       "He moved to Bangalore in 1972 and started his practice as a first generation practitioner. He has now built up a fine practice and has, besides several prominent citizens of Bangalore, a large number of corporates, banks and financial institutions as clients of his firm, Amarnath Kamath & Associates.",
   },
   {
-    name: "Indra Prem Menon",
+    name: "Ms. Indra Prem Menon",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/indira-menon-145x160.png",
@@ -38,7 +38,7 @@ const trustees = [
       "I rarely regret anything I have ever done, but I always regret the things that I have not done",
   },
   {
-    name: "Basant Poddar",
+    name: "Mr. Basant Poddar",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/poddar-144x144.png",
@@ -47,7 +47,7 @@ const trustees = [
       "He is also the Vice President of Federation of Indian Mineral Industries, an apex body [founded in 1966] and has keen interest in Community Development.",
   },
   {
-    name: "Sudhakar Rao",
+    name: "Mr. Sudhakar Rao",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/rao-150x160.png",
@@ -58,7 +58,7 @@ const trustees = [
       "Mr. Rao is closely associated with several non-profit organizations and is presently the Chairman of Public Affairs Foundation, Common Purpose (India Chapter), CherYsh-India and the Advisory Committees of the National Gallery of Modern Art, Bangalore and the Bangalore School of Music, besides being Director / Trustee of several others, such as CMCA, Bengaluru, The Teacher Foundation and the Public Affairs Centre.",
   },
   {
-    name: "Manoj Shah",
+    name: "Mr. Manoj Shah",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/mike-shah-131x135.jpg",
@@ -333,7 +333,7 @@ function FoundersPage() {
                     </p>
 
                     <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
-                      S Premkumar Raja
+                     Mr  S Premkumar Raja
                     </h3>
 
                     <div className="my-5 h-px w-14 bg-[#ED6439]/40 sm:my-6" />
