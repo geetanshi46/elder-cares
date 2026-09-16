@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   Building2,
@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   GraduationCap,
   Briefcase,
-  Sparkles,
   ArrowUpRight,
   Laptop,
   Activity,
@@ -19,20 +18,19 @@ import {
   Gift,
   Megaphone,
   X,
-  Heart,
-  ChevronLeft,
-  ChevronRight,
+  Mail,
+  UtensilsCrossed,
+  Target,
+  Car,
+  Microscope,
+  Paintbrush,
+  FileCheck2,
+  PackageCheck,
 } from "lucide-react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
 import getInvolvedHeroImage from "../assets/get-involved/GetInvolvedBanner.png";
-
-// import job60Image1 from "@/assets/our-services/Job 60+.png";
-// import job60Image2 from "@/assets/projects/job60/Job 60+ Computer training.jpg";
-// import job60Image3 from "@/assets/projects/job60/Job 60+ mela.jpg";
-// import job60Image4 from "@/assets/projects/job60/Job60+ (3).JPG.jpeg";
-// import job60Image5 from "@/assets/projects/job60/Job60+ Mela'.jpg";
 
 import activeAgeingImage from "../assets/get-involved/project-1.jpg";
 import digitalLiteracyImage from "../assets/get-involved/project-2.jpg";
@@ -42,10 +40,11 @@ import hiriyaravadiImage from "../assets/get-involved/hiriyaravadi.jpg";
 import eldersHelplineImage from "../assets/our-services/elders-helpline.png";
 import job60Image1 from "../assets/our-services/Job 60+.png";
 import smritiGramImage from "../assets/get-involved/smriti-gram.jpg";
-import dementiaTrainingImage from "../assets/our-services/free-geriatric-clinic.png";
-import lifesavingServicesImage from "../assets/our-services/lifesaving-skills.webp";
-const title = "Get Involved — Corporate Partnerships | NMT";
+import autoDriversImage from "../assets/our-services/lifesaving-skills.jpeg";
+import researchImage from "../assets/our-services/researchInnovation.png";
+import mobileOutreachImage from "../assets/our-services/free-geriatric-clinic.webp";
 
+const title = "Get Involved — Corporate Partnerships | NMT";
 const description =
   "Partner with Nightingales Medical Trust to create lasting impact for elders and those with dementia through CSR partnerships, employee engagement and long-term collaborations.";
 
@@ -63,17 +62,175 @@ export const Route = createFileRoute("/get-involved")({
   component: GetInvolvedPage,
 });
 
-const causes = [
-  "Dementia Care",
-  "Health & Wellness",
-  "Nutritional Support",
-  "Education & Awareness",
-  "Livelihood & Skill Development",
-  "Addressing Social Isolation",
-  "Safety & Protection of Elders",
+// ==========================================
+// 1. WHY PARTNER WITH NMT DATA
+// ==========================================
+const whyPartnerPillars = [
+  {
+    title: "Over two decades of experience in elder and dementia care",
+    icon: Target,
+  },
+  {
+    title: "Proven, scalable programs with measurable outcomes",
+    icon: Activity,
+  },
+  {
+    title: "Opportunities for employee sensitization on ageing, dementia, and caregiving",
+    icon: Users,
+  },
+  {
+    title: "Strong governance and transparent impact reporting",
+    icon: ShieldCheck,
+  },
+  {
+    title: "NMT is eligible for CSR funding under the Companies Act, 2013.",
+    icon: Building2,
+  },
 ];
 
-const smritiDonations = [
+// ==========================================
+// 2. CAUSES YOU CAN SUPPORT DATA
+// ==========================================
+const causes = [
+  { title: "Dementia Care", icon: Activity },
+  { title: "Health & Wellness", icon: Stethoscope },
+  { title: "Nutritional Support", icon: UtensilsCrossed },
+  { title: "Education & Awareness", icon: GraduationCap },
+  { title: "Livelihood & Skill Development", icon: Briefcase },
+  { title: "Addressing Social Isolation", icon: HeartHandshake },
+  { title: "Safety & Protection of Elders", icon: ShieldCheck },
+];
+
+// ==========================================
+// 3. ADOPT A PROJECT DATA
+// ==========================================
+type Project = {
+  title: string;
+  shortTitle: string;
+  icon: LucideIcon;
+  image?: string | null;
+  intro: string;
+  paragraphs?: string[];
+  reachTitle?: string;
+  reach?: string[];
+  servicesTitle?: string;
+  services?: string[];
+};
+
+const projects: Project[] = [
+  {
+    title: "Promoting Well-Being of Elders in Old Age Homes (Active Ageing Program)",
+    shortTitle: "Mobile Active Ageing Program",
+    icon: Activity,
+    image: activeAgeingImage,
+    intro:
+      "Bengaluru has over 150 old age homes, many offering only basic facilities. Elders need continuous physical, cognitive, emotional, and social engagement to age with dignity.",
+    paragraphs: [
+      "Since 2018, our Mobile Active Ageing Program delivers free, holistic well-being services directly to old age homes.",
+      "Your support brings movement, purpose, and joy to elders who need it the most.",
+    ],
+    reachTitle: "Current Reach",
+    reach: [
+      "28 old age homes",
+      "650+ elders annually",
+      "2-hour sessions, three times a week",
+    ],
+    servicesTitle: "Services Include",
+    services: [
+      "Cognitive stimulation & group activities",
+      "Physical exercises & physiotherapy",
+      "Social engagement",
+      "Medical consultations (psychiatry, physician support)",
+      "Capacity building of old age home staff",
+    ],
+  },
+  {
+    title: "Digital Literacy & Cyber Safety for Elders",
+    shortTitle: "Digital Literacy & Cyber Safety",
+    icon: Laptop,
+    image: digitalLiteracyImage,
+    intro:
+      "Digital inclusion enables seniors to access healthcare, manage finances, stay connected, and remain independent. At the same time, cyber fraud poses a growing threat.",
+    paragraphs: [
+      "Through structured training programs, we equip elders with basic digital skills, online safety awareness and fraud prevention strategies.",
+    ],
+    reachTitle: "Annual Impact",
+    reach: ["1,200 elders empowered to live safer, more independent digital lives."],
+  },
+  {
+    title: "Lifesavers Clubs in Schools (CPR Awareness)",
+    shortTitle: "Lifesavers Clubs in Schools",
+    icon: HeartHandshake,
+    image: lifesaversClubsImage,
+    intro:
+      "To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified professionals.",
+    paragraphs: [
+      "This initiative aligns with our vision of making Bengaluru the CPR Capital of India.",
+    ],
+    reachTitle: "Impact",
+    reach: [
+      "Trained high-school students capable of responding to emergencies",
+      "Increased survival chances during cardiac arrest",
+      "Culture of preparedness and social responsibility",
+    ],
+  },
+  {
+    title: "Destitute Homes for Homeless Elderly",
+    shortTitle: "Destitute Homes for Homeless Elderly",
+    icon: Home,
+    image: destituteHomesImage,
+    intro:
+      "Support for destitute and abandoned homeless elderly through NMT's care homes.",
+  },
+  {
+    title: "Hiriyaravadis",
+    shortTitle: "Hiriyaravadis",
+    icon: Users,
+    image: hiriyaravadiImage,
+    intro:
+      "Day care & activity centres for marginalised elders living in urban slums.",
+  },
+  {
+    title: "Elders Helpline for Elders in Distress",
+    shortTitle: "Elders Helpline",
+    icon: PhoneCall,
+    image: eldersHelplineImage,
+    intro: "Helpline for elders in distress.",
+  },
+  {
+    title: "Job 60+ : Employment and Skilling for Needy Elderly",
+    shortTitle: "Job 60+",
+    icon: Briefcase,
+    image: job60Image1,
+    intro: "Employment and skilling for needy elderly.",
+  },
+  {
+    title: "Training of Auto Drivers in Lifesaving Skills",
+    shortTitle: "Training of Auto Drivers in Lifesaving Skills",
+    icon: Car,
+    image: autoDriversImage,
+    intro: "Proposal available on request.",
+  },
+  {
+    title: "Research Department",
+    shortTitle: "Research Department",
+    icon: Microscope,
+    image: researchImage,
+    intro: "Proposal available on request.",
+  },
+  {
+    title: "Mobile Outreach Project",
+    shortTitle: "Mobile Outreach Project",
+    icon: Stethoscope,
+    image: mobileOutreachImage,
+    intro: "Proposal available on request.",
+  },
+];
+
+// ==========================================
+// 4. CORPORATE DONATIONS: SMRITI GRAM ITEMS (flat list, as given)
+// ==========================================
+const SMRITI_GRAM_DONATION_ITEMS = [
   "Tele-medicine Unit",
   "Activity & Therapy Areas",
   "Rehabilitation Unit",
@@ -96,375 +253,44 @@ const smritiDonations = [
   "Landscaping & Sensory Garden",
 ];
 
-const volunteerAreas = [
-  "Recreational activities & outings with elders",
-  "Awareness & communication campaigns",
-  "Governance & strategy support",
-  "Livelihood and income-generation initiatives",
-  "Skill building & training",
-  "Technology and digital tool development",
-  "Fundraising support",
-  "Beautification & facility enhancement",
-  "Digital literacy training",
-  "Documentation & impact reporting",
-  "In-kind donations",
+// ==========================================
+// 5. CORPORATE VOLUNTEERING MODULES (names only, as given)
+// ==========================================
+const corporateVolunteeringItems = [
+  { title: "Recreational activities & outings with elders", icon: HeartHandshake },
+  { title: "Awareness & communication campaigns", icon: Megaphone },
+  { title: "Governance & strategy support", icon: ShieldCheck },
+  { title: "Livelihood and income-generation initiatives", icon: Briefcase },
+  { title: "Skill building & training", icon: GraduationCap },
+  { title: "Technology and digital tool development", icon: Laptop },
+  { title: "Fundraising support", icon: Gift },
+  { title: "Beautification & facility enhancement", icon: Paintbrush },
+  { title: "Digital literacy training", icon: Laptop },
+  { title: "Documentation & impact reporting", icon: FileCheck2 },
+  { title: "In-kind donations", icon: PackageCheck },
 ];
 
-type Project = {
-  title: string;
-  shortTitle: string;
-  icon: LucideIcon;
-  category: string;
-  image?: string | null;
-  images?: string[];
-  intro: string;
-  paragraphs?: string[];
-  impactTitle?: string;
-  impact?: string[];
-  servicesTitle?: string;
-  services?: string[];
-};
-
-const projects: Project[] = [
-  {
-    title:
-      "Promoting Well-Being of Elders in Old Age Homes — Active Ageing Program",
-    shortTitle: "Active Ageing Program",
-    icon: Activity,
-    category: "Active Ageing",
-    image: activeAgeingImage,
-    intro:
-      "Bengaluru has over 150 old age homes, many offering only basic facilities. Elders need continuous physical, cognitive, emotional, and social engagement to age with dignity.",
-    paragraphs: [
-      "Since 2018, our Mobile Active Ageing Program delivers free, holistic well-being services directly to old age homes.",
-      "Your support brings movement, purpose, and joy to elders who need it the most.",
-    ],
-    impactTitle: "Current Reach",
-    impact: [
-      "28 old age homes",
-      "650+ elders annually",
-      "2-hour sessions, three times a week",
-    ],
-    servicesTitle: "Services Include",
-    services: [
-      "Cognitive stimulation & group activities",
-      "Physical exercises & physiotherapy",
-      "Social engagement",
-      "Medical consultations (psychiatry, physician support)",
-      "Capacity building of old age home staff",
-    ],
-  },
-
-  {
-    title: "Digital Literacy & Cyber Safety for Elders",
-    shortTitle: "Digital Literacy & Cyber Safety",
-    icon: Laptop,
-    category: "Livelihood & Empowerment",
-    image: digitalLiteracyImage,
-    intro:
-      "Digital inclusion enables seniors to access healthcare, manage finances, stay connected, and remain independent. At the same time, cyber fraud poses a growing threat.",
-    paragraphs: [
-      "Through structured training programs, we equip elders with basic digital skills, online safety awareness and fraud prevention strategies.",
-    ],
-    impactTitle: "Annual Impact",
-    impact: [
-      "1,200 elders empowered to live safer, more independent digital lives.",
-    ],
-  },
-
-  {
-    title: "Lifesavers Clubs in Schools — CPR Awareness",
-    shortTitle: "Lifesavers Clubs",
-    icon: ShieldCheck,
-    category: "Training & Capacity Building",
-    image: lifesaversClubsImage,
-    intro:
-      "To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified professionals.",
-    impactTitle: "Impact",
-    impact: [
-      "Trained high-school students capable of responding to emergencies",
-      "Increased survival chances during cardiac arrest",
-      "Culture of preparedness and social responsibility",
-    ],
-    paragraphs: [
-      "This initiative aligns with our vision of making Bengaluru the CPR Capital of India.",
-    ],
-  },
-
-  {
-    title: "Destitute Homes for Homeless Elderly",
-    shortTitle: "Destitute Homes",
-    icon: Home,
-    category: "Programs for Marginalized Elders",
-    image: destituteHomesImage,
-    intro:
-      "NMT supports residential care for economically disadvantaged and destitute elders through dedicated homes and support services.",
-    paragraphs: [
-      "The existing NMT programs include Sandhya Suraksha, a home for destitute elderly women, and SK Home, a home for destitute elderly men.",
-      "These initiatives provide elders with a safe and supportive place to live.",
-    ],
-  },
-
-  {
-    title: "Hiriyaravadi — Day Care & Activity Centres",
-    shortTitle: "Hiriyaravadi",
-    icon: Users,
-    category: "Programs for Marginalized Elders",
-    image: hiriyaravadiImage,
-    intro:
-      "Hiriyaravadi centres provide community-based support for marginalized elders living in urban communities.",
-    paragraphs: [
-      "NMT's existing work includes Hiriyaravadi centres in Bengaluru, alongside day-care and outreach activities for elders from economically disadvantaged communities.",
-      "The model brings elders together for social interaction, meaningful activities and community-based support.",
-    ],
-    servicesTitle: "Activities & Support",
-    services: [
-      "Day care and social interaction",
-      "Community-building activities",
-      "Income-generation activities",
-      "Outreach support",
-      "Geriatric care and support",
-    ],
-  },
-
-  {
-    title: "Elders Helpline for Elders in Distress",
-    shortTitle: "Elders Helpline",
-    icon: PhoneCall,
-    category: "Prevention of Elder Abuse",
-    image: eldersHelplineImage,
-    intro:
-      "Elders Helpline 1090 is an NMT initiative addressing the needs of elders in distress and supporting them in situations involving abuse, neglect and vulnerability.",
-    paragraphs: [
-      "NMT established Elders Helpline 1090 as a dedicated support service for elders in distress. The existing NMT network also includes the National Helpline for Senior Citizens — Elder Line 14567.",
-    ],
-  },
-
-  {
-    title: "Jobs 60+ — Employment & Skilling for Needy Elders",
-    shortTitle: "Jobs 60+",
-    icon: Briefcase,
-    category: "Livelihood & Empowerment",
-    image: job60Image1,
-    // images: [
-    //   job60Image1,
-    //   job60Image2,
-    //   job60Image3,
-    //   job60Image4,
-    //   job60Image5,
-    // ],
-    intro:
-      "Nightingales Jobs 60+ is a program offering job facilitation for elderly job seekers after retirement.",
-    paragraphs: [
-      "The program includes a free online job portal for elderly job seekers and supports seniors in finding suitable employment opportunities.",
-      "The program also offers skills training including basic computers, advanced computers, digital literacy and cyber safety for senior citizens.",
-    ],
-    servicesTitle: "Support Includes",
-    services: [
-      "Job facilitation",
-      "Employment opportunities for elderly job seekers",
-      "Basic computer training",
-      "Advanced computer training",
-      "Digital literacy",
-      "Cyber safety training",
-    ],
-  },
-
-  {
-    title: "Nightingales Smriti Gram — India's Largest Dementia Care Village",
-    shortTitle: "Nightingales Smriti Gram",
-    icon: Building2,
-    category: "Dementia Care",
-    image: smritiGramImage,
-    intro:
-      "Nightingales Smriti Gram is a pioneering initiative of Nightingales Medical Trust to create a new model of dementia care in India.",
-    paragraphs: [
-      "The project brings together quality care, dignity, companionship, learning, innovation and research in one caring community.",
-      "The first phase includes a 100-bed residential dementia care facility providing free care to elders from economically disadvantaged backgrounds. The campus will ultimately support 300 persons with dementia.",
-    ],
-    servicesTitle: "Ways to Support",
-    services: [
-      "Tele-medicine Unit",
-      "Activity & Therapy Areas",
-      "Rehabilitation Unit",
-      "Alternate Therapy Unit",
-      "Solar Power System",
-      "Therapeutic Landscape",
-      "Medical Equipment",
-      "Safety and Surveillance Equipment",
-      "Ambulance",
-      "Landscaping & Sensory Garden",
-    ],
-  },
-
-  {
-    title: "Dementia & Geriatric Care Training",
-    shortTitle: "Dementia & Geriatric Care Training",
-    icon: GraduationCap,
-    category: "Training & Capacity Building",
-    image: dementiaTrainingImage,
-    intro:
-      "NMT's training initiatives build knowledge and practical skills in dementia care, geriatric care and eldercare.",
-    paragraphs: [
-      "The existing NMT program includes Dementia and Geriatric Care Training and the Regional Resource and Training Centre for Age Care.",
-      "Training and capacity building help strengthen the quality of care available to elders and persons living with dementia.",
-    ],
-  },
-
-  {
-    title: "Nightingales Lifesaving Services",
-    shortTitle: "Nightingales Lifesaving Services",
-    icon: Stethoscope,
-    category: "Training & Capacity Building",
-    image: lifesavingServicesImage,
-    intro:
-      "Nightingales Lifesaving Services is an NMT initiative focused on training carers, families and others in lifesaving skills.",
-    paragraphs: [
-      "The program forms part of NMT's wider training and capacity-building work and supports communities to be better prepared for emergencies.",
-    ],
-  },
+// ==========================================
+// 6. EVENT SPONSORSHIP OBSERVANCES (names only, as given)
+// ==========================================
+const observanceEvents = [
+  "International Day of Older Persons",
+  "World Elder Abuse Awareness Day",
+  "World Alzheimer's Day",
+  "Senior Citizen Job Fairs",
+  "Digital Literacy & Cyber Safety Programs",
 ];
 
-function BulletList({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-      {items.map((item) => (
-        <li
-          key={item}
-          className="flex min-w-0 items-start gap-3 text-[15px] leading-relaxed text-muted-foreground"
-        >
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-          <span className="min-w-0 break-words">{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function ContentCard({
-  icon: Icon,
-  title,
-  children,
-  className = "",
-}: {
-  icon: LucideIcon;
-  title?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <Reveal className={`h-full ${className}`}>
-      <article className="group relative h-full overflow-hidden border border-[#ED6439]/15 bg-white p-5 shadow-[0_18px_50px_-20px_rgba(70,45,10,0.16)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/35 hover:shadow-[0_28px_65px_-20px_rgba(237,100,57,0.22)] sm:p-7">
-        <div className="absolute inset-x-0 top-0 h-1 bg-[#ED6439]" />
-
-        <div className="relative">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white shadow-[0_10px_25px_rgba(237,100,57,0.25)] sm:h-12 sm:w-12">
-            <Icon className="h-5 w-5" strokeWidth={1.8} />
-          </span>
-
-          {title && (
-            <h3 className="mt-5 break-words font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
-              {title}
-            </h3>
-          )}
-
-          {title && <div className="mt-3 h-1 w-10 rounded-full bg-[#ED6439]" />}
-
-          <div className="mt-5 space-y-4 text-[14.5px] leading-relaxed text-muted-foreground sm:text-[15px]">
-            {children}
-          </div>
-        </div>
-      </article>
-    </Reveal>
-  );
-}
-
-function PhotoPlaceholder({ title }: { title: string }) {
-  return (
-    <div className="relative flex h-56 w-full items-center justify-center overflow-hidden bg-[#FFF4DF] sm:h-64">
-      <div className="absolute inset-0 border border-dashed border-[#ED6439]/25" />
-
-      <div className="relative px-6 text-center">
-        <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#ED6439]/10 text-[#ED6439]">
-          <Sparkles className="h-5 w-5" />
-        </div>
-
-        <p className="mt-4 text-xs font-bold uppercase tracking-[0.16em] text-[#263746]/70">
-          Photo Space
-        </p>
-
-        <p className="mt-1 text-xs text-[#526574]/70">
-          {title}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function ProjectCard({
-  project,
-  index,
-  onOpen,
-}: {
-  project: Project;
-  index: number;
-  onOpen: () => void;
-}) {
-  const Icon = project.icon;
-
-  return (
-    <Reveal delay={index * 60} className="h-full">
-      <button
-        type="button"
-        onClick={onOpen}
-        className="group flex h-full w-full flex-col overflow-hidden border border-[#263746]/10 bg-white text-left shadow-[0_18px_50px_-25px_rgba(38,55,70,0.22)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/35 hover:shadow-[0_25px_60px_-25px_rgba(237,100,57,0.25)]"
-      >
-        <div className="relative overflow-hidden">
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-          ) : (
-            <PhotoPlaceholder title="Client photograph can be added here" />
-          )}
-
-          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#ED6439] shadow-sm">
-            Project {String(index + 1).padStart(2, "0")}
-          </span>
-        </div>
-
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <div className="flex items-start justify-between gap-4">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
-              <Icon className="h-5 w-5" strokeWidth={1.8} />
-            </span>
-
-            <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-[#ED6439] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </div>
-
-          <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
-            {project.category}
-          </p>
-
-          <h3 className="mt-2 font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-[22px]">
-            {project.shortTitle}
-          </h3>
-
-          <p className="mt-3 line-clamp-3 text-[14px] leading-6 text-[#526574]">
-            {project.intro}
-          </p>
-
-          <span className="mt-auto pt-6 text-sm font-bold text-[#ED6439]">
-            Explore project
-            <span className="ml-2">→</span>
-          </span>
-        </div>
-      </button>
-    </Reveal>
-  );
-}
+const CSR_NAV = [
+  { id: "why-partner", label: "Why Partner?", icon: Target },
+  { id: "causes", label: "Causes You Can Support", icon: Target },
+  { id: "partnership-options", label: "1. Adopt a Project", icon: HeartHandshake },
+  { id: "corporate-donations", label: "2. Corporate Donations", icon: HandCoins },
+  { id: "event-sponsorship", label: "3. Event Sponsorship", icon: Megaphone },
+  { id: "payroll-giving", label: "4. Payroll Giving", icon: Gift },
+  { id: "corporate-volunteering", label: "5. Employee Volunteering", icon: Users },
+  { id: "contact-csr", label: "Connect with CSR", icon: Mail },
+];
 
 function ProjectModal({
   project,
@@ -474,154 +300,86 @@ function ProjectModal({
   onClose: () => void;
 }) {
   const Icon = project.icon;
-  const [activeImage, setActiveImage] = useState(0);
-
-  const projectImages =
-    project.images && project.images.length > 0
-      ? project.images
-      : project.image
-        ? [project.image]
-        : [];
-
-  const hasMultipleImages = projectImages.length > 1;
-
-  const showPreviousImage = () => {
-    if (!hasMultipleImages) return;
-    setActiveImage((current) =>
-      current === 0 ? projectImages.length - 1 : current - 1,
-    );
-  };
-
-  const showNextImage = () => {
-    if (!hasMultipleImages) return;
-    setActiveImage((current) => (current + 1) % projectImages.length);
-  };
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm sm:p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#E15925]/75 p-3 backdrop-blur-md sm:p-6"
       onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
-        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto bg-[#FFF8EE] shadow-2xl"
+        className="relative max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         <button
           type="button"
           onClick={onClose}
           aria-label="Close project details"
-          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-white text-[#263746] shadow-md transition-colors hover:bg-[#ED6439] hover:text-white"
+          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-white text-[#E15925] shadow-md transition-colors hover:bg-[#ED6439] hover:text-white"
         >
           <X className="h-5 w-5" />
         </button>
 
         <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="relative bg-[#FFF4DF] lg:sticky lg:top-0 lg:self-start">
-            {projectImages.length > 0 ? (
-              <div className="relative">
-                <img
-                  src={projectImages[activeImage]}
-                  alt={`${project.title} — image ${activeImage + 1}`}
-                  className="h-72 w-full object-cover sm:h-96 lg:h-[620px]"
-                />
-
-                {hasMultipleImages && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={showPreviousImage}
-                      aria-label="Previous project image"
-                      className="absolute left-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-[#263746] shadow-lg transition-all hover:scale-105 hover:bg-[#ED6439] hover:text-white"
-                    >
-                      <ChevronLeft className="h-5 w-5" />
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={showNextImage}
-                      aria-label="Next project image"
-                      className="absolute right-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-[#263746] shadow-lg transition-all hover:scale-105 hover:bg-[#ED6439] hover:text-white"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                  </>
-                )}
-
-                {hasMultipleImages && (
-                  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#17232B]/65 px-3 py-2 backdrop-blur-sm">
-                    {projectImages.map((_, imageIndex) => (
-                      <button
-                        key={imageIndex}
-                        type="button"
-                        onClick={() => setActiveImage(imageIndex)}
-                        aria-label={`Show project image ${imageIndex + 1}`}
-                        aria-current={activeImage === imageIndex}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          activeImage === imageIndex
-                            ? "w-6 bg-[#ED6439]"
-                            : "w-2 bg-white/75 hover:bg-white"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+          <div className="relative bg-[#FAF6F0] lg:sticky lg:top-0 lg:self-start">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="h-72 w-full object-cover sm:h-96 lg:h-[620px]"
+              />
             ) : (
-              <div className="h-72 sm:h-96 lg:h-[620px]">
-                <PhotoPlaceholder title="Project photograph can be added here" />
+              <div className="flex h-72 items-center justify-center bg-[#FFF4DF] sm:h-96 lg:h-[620px]">
+                <Icon className="h-16 w-16 text-[#ED6439]/40" />
               </div>
             )}
           </div>
 
-          <div className="p-6 sm:p-9 lg:p-12">
-            <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#ED6439] text-white">
+          <div className="p-6 sm:p-8 lg:p-10">
+            <div className="flex items-center gap-2.5">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#ED6439] text-white shadow-md shadow-[#ED6439]/20">
                 <Icon className="h-5 w-5" />
-              </span>
-
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
-                {project.category}
               </span>
             </div>
 
             <h2
               id="project-modal-title"
-              className="mt-6 break-words font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-[#263746] sm:text-4xl"
+              className="mt-4 font-display text-2xl font-bold leading-tight text-[#E15925] sm:text-3xl"
             >
               {project.title}
             </h2>
 
-            <div className="mt-5 h-1 w-12 bg-[#ED6439]" />
+            <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
 
-            <p className="mt-7 text-[16px] font-medium leading-7 text-[#263746]">
+            <p className="mt-5 text-[15px] font-medium leading-relaxed text-[#E15925]">
               {project.intro}
             </p>
 
             {project.paragraphs?.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mt-5 text-[15px] leading-7 text-[#526574]"
+                className="mt-4 text-[14px] leading-relaxed text-muted-foreground"
               >
                 {paragraph}
               </p>
             ))}
 
-            {project.impact && project.impact.length > 0 && (
-              <div className="mt-8 border border-[#ED6439]/15 bg-white p-5 sm:p-6">
-                <h3 className="font-display text-lg font-extrabold text-[#263746]">
-                  {project.impactTitle}
+            {project.reach && project.reach.length > 0 && (
+              <div className="mt-6 rounded-2xl border border-[#ED6439]/15 bg-[#FFF8EE] p-5">
+                <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.12em] text-[#E15925]">
+                  <Target className="h-4 w-4 text-[#ED6439]" />
+                  {project.reachTitle || "Reach"}
                 </h3>
 
-                <ul className="mt-4 space-y-3">
-                  {project.impact.map((item) => (
+                <ul className="mt-3 space-y-2">
+                  {project.reach.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 text-sm leading-6 text-[#526574]"
+                      className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-[#526574]"
                     >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -630,37 +388,32 @@ function ProjectModal({
             )}
 
             {project.services && project.services.length > 0 && (
-              <div className="mt-8">
-                <h3 className="font-display text-lg font-extrabold text-[#263746]">
-                  {project.servicesTitle}
+              <div className="mt-6">
+                <h3 className="font-display text-sm font-bold uppercase tracking-[0.12em] text-[#E15925]">
+                  {project.servicesTitle || "Services Include"}
                 </h3>
 
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                   {project.services.map((service) => (
                     <li
                       key={service}
-                      className="flex min-w-0 items-start gap-3 border border-[#263746]/10 bg-white p-3.5 text-sm leading-5 text-[#526574]"
+                      className="flex items-start gap-2 rounded-xl border border-border bg-[#FAF6F0] p-2.5 text-[13px] text-[#526574]"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span className="break-words">{service}</span>
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{service}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
 
-            <div className="mt-9 border-t border-[#263746]/10 pt-7">
-              <p className="text-sm leading-6 text-[#526574]">
-                Partner with NMT to support this project and create meaningful,
-                measurable and lasting impact.
-              </p>
-
+            <div className="mt-8 border-t border-border pt-6">
               <a
-                href="mailto:rm@nightingaleseldercare.com"
-                className="mt-5 inline-flex items-center justify-center rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5"
+                href={`mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Enquiry:%20${encodeURIComponent(project.shortTitle)}`}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#ED6439]/25 transition-all hover:bg-[#d95730] sm:w-auto"
               >
-                Enquire About This Project
-                <ArrowUpRight className="ml-2 h-4 w-4" />
+                Enquire About Supporting This Project
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -673,210 +426,152 @@ function ProjectModal({
 function GetInvolvedPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const siteMap = [
-    { id: "donate", number: "01", label: "Donate", icon: HandCoins, items: ["Online Donation", "Monthly Giving", "In Memory Giving"] },
-    { id: "volunteer", number: "02", label: "Volunteer", icon: Users, items: ["Volunteer Opportunities", "Apply Online"] },
-    { id: "internship", number: "03", label: "Internship", icon: GraduationCap, items: ["Internship Areas", "Problem Statements", "Apply Online"] },
-    { id: "careers", number: "04", label: "Careers", icon: Briefcase, items: ["Current Openings", "Apply"] },
-    { id: "csr-partnerships", number: "05", label: "CSR Partnerships", icon: Building2, items: ["CSR Opportunities", "Partner with Us"] },
-    { id: "research", number: "06", label: "Research Collaboration", icon: Sparkles, items: ["Medical Colleges & Universities", "Researchers", "International Partners"] },
-  ];
-
-  const activeMapSections = [
-    { id: "csr-partnerships", label: "CSR Partnerships", icon: Building2 },
-    { id: "partnership-options", label: "Adopt a Project", icon: HeartHandshake },
-    { id: "corporate-donations", label: "Corporate Donations", icon: HandCoins },
-    { id: "event-sponsorship", label: "Event Sponsorship", icon: Megaphone },
-    { id: "payroll-giving", label: "Payroll Giving", icon: Gift },
-    { id: "corporate-volunteering", label: "Employee Engagement", icon: Users },
-  ];
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
 
   return (
     <SiteLayout>
-      {/* HERO */}
-    <section className="relative isolate w-full overflow-hidden bg-[#D7663A]">
-  {/* HERO IMAGE */}
-<div
-  className="
-    relative
-    min-h-[520px]
-    w-full
-    overflow-hidden
-    sm:min-h-[540px]
-    md:min-h-[400px]
-    lg:min-h-[440px]
-    xl:min-h-[460px]
-  "
->
-  {/* HERO BACKGROUND IMAGE */}
-  <div
-    className="
-      absolute
-      inset-0
-      bg-cover
-      bg-top
-      bg-no-repeat
-    "
-    style={{
-      backgroundImage: `url(${getInvolvedHeroImage})`,
-    }}
-  />
-
-  {/* NMT ORANGE OVERLAY */}
-  {/* <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      bg-[#ED6439]/35
-    "
-  /> */}
-
-  {/* Extra subtle orange depth on left */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      bg-gradient-to-r
-      from-[#B84A2B]/40
-      via-[#B84A2B]/15
-      to-transparent
-    "
-  />
-
-  {/* CONTENT */}
-  <div className="relative z-10">
+     {/* ======================================================
+    HERO — fully responsive full-bleed banner
+====================================================== */}
+<section className="relative w-full overflow-hidden">
+  <Reveal>
     <div
       className="
-        mx-auto
-        flex
-        min-h-[520px]
-        w-full
-        max-w-7xl
-        items-end
-        px-5
-        pb-7
-        sm:min-h-[540px]
-        sm:px-8
-        sm:pb-10
-        md:min-h-[400px]
-        lg:min-h-[440px]
-        lg:px-10
-        lg:pb-14
-        xl:min-h-[460px]
-        xl:px-12
+        relative w-full
+        min-h-[620px]
+        sm:min-h-[600px]
+        md:h-[560px] md:min-h-0
+        lg:h-[600px] lg:min-h-0
       "
     >
-      <Reveal className="max-w-4xl">
+      {/* Full-width banner image */}
+      <img
+        src={getInvolvedHeroImage}
+        alt="Nightingales Medical Trust corporate partnerships"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-top
+        "
+      />
 
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/70 via-[#E15925]/25 to-transparent" />
+
+      {/* Content */}
+      <div
+        className="
+          relative z-10 mx-auto flex min-h-[620px] w-full
+          max-w-7xl flex-col justify-center
+          px-5 py-10
+          sm:min-h-[600px] sm:px-8 sm:py-10
+          md:h-full md:min-h-0 md:px-10 md:py-10
+          lg:px-10 lg:py-12
+        "
+      >
         {/* Breadcrumb */}
-        <Link
-          to="/"
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#FF9A78]">
+          <Link to="/" className="transition hover:text-white">
+            Home
+          </Link>
+
+          <span>/</span>
+
+          <span className="text-white">Get Involved</span>
+        </div>
+
+        {/* Badge */}
+        <span
           className="
-            mb-3
-            inline-flex
-            items-center
-            gap-2
-            text-[10px]
-            font-semibold
-            uppercase
-            tracking-[0.16em]
-            text-white/85
-            transition
-            hover:text-white
-            sm:mb-5
+            mt-4 inline-flex w-fit items-center gap-1.5
+            rounded-full bg-[#ED6439]
+            px-4 py-1.5
+            text-[10px] font-bold uppercase
+            tracking-[0.14em] text-white shadow-md
             sm:text-xs
           "
         >
-          Home
-          <span className="text-[#FF9A78]">/</span>
-          Get Involved
-        </Link>
-
-        {/* Eyebrow */}
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-[#FF9A78] sm:w-10" />
-        </div>
+          <Building2 className="h-3.5 w-3.5" />
+          Corporate Partnerships
+        </span>
 
         {/* Heading */}
         <h1
           className="
-            mt-3
-            font-display
-            text-[2rem]
-            font-extrabold
-            leading-[1.02]
-            tracking-[-0.035em]
-            text-white
-            sm:mt-4
-            sm:text-4xl
-            md:text-5xl
-            lg:text-6xl
-            xl:text-7xl
-          "
-        >
-          Get Involved.
-          <br />
-          <span className="text-[#FFF8EE]">
-            Corporate Partnerships
-          </span>
-        </h1>
-
-        {/* Description */}
-        <p
-          className="
-            mt-3
-            max-w-2xl
-            text-xs
-            leading-5
-            text-white
-            sm:mt-4
-            sm:text-sm
-            sm:leading-6
-            md:text-base
-            md:leading-7
-            lg:text-lg
-            lg:leading-8
+            mt-4 w-full max-w-5xl
+            font-display font-extrabold
+            capitalize leading-[1.08]
+            tracking-[-0.03em] text-white
+            text-[1.8rem]
+            sm:mt-5 sm:text-[2.2rem]
+            md:text-[2.6rem]
+            lg:text-[2.7rem]
           "
         >
           Partner with Us to Create Lasting Impact for Elders and Those with
           Dementia
-        </p>
+        </h1>
 
-      </Reveal>
+        {/* Text */}
+        <div
+          className="
+            mt-5 w-full max-w-5xl
+            space-y-4
+            text-sm font-medium
+            leading-6 text-white/90
+            sm:mt-6 sm:text-base sm:leading-7
+            md:text-lg
+            lg:text-lg
+          "
+        >
+          <p>
+            At Nightingales Medical Trust (NMT), we believe meaningful social
+            change happens when individuals, corporates, and communities come
+            together. We actively collaborate with corporates, government
+            bodies, NGOs, and academic institutions to improve the quality of
+            life of elders, especially those living with dementia and those
+            from marginalized communities.
+          </p>
+
+          <p className="font-semibold text-white">
+            We invite corporates to engage with us through CSR partnerships,
+            employee engagement, and long-term collaborations that create
+            measurable social impact.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-  {/* Bottom orange accent */}
-  <div className="absolute bottom-0 left-0 h-1 w-full bg-[#ED6439]" />
+  </Reveal>
 </section>
 
-      {/* SITE MAP */}
-      <section className="border-b border-[#263746]/10 bg-[#FFF8EE]">
-        <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
-          <div className="mb-5 flex items-end justify-between gap-5">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ED6439] sm:text-xs">Explore</p>
-              <h2 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">Get Involved Map</h2>
-            </div>
-            <p className="hidden max-w-md text-right text-sm leading-6 text-[#526574] lg:block">Choose how you would like to contribute to NMT's work.</p>
-          </div>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {siteMap.map((item) => {
+      {/* ======================================================
+          NAVIGATIONAL SUB-BAR
+          ====================================================== */}
+      <section className="sticky top-0 z-30 border-b border-border bg-[#FFF8EE]/95 shadow-xs backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-x-auto px-4 py-3 sm:px-6">
+          <span className="hidden shrink-0 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439] md:block">
+            Quick Jump:
+          </span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {CSR_NAV.map((item) => {
               const Icon = item.icon;
-              const available = item.id === "csr-partnerships";
               return (
-                <a key={item.id} href={available ? "#csr-partnerships" : "#get-involved-contact"} className={`group flex min-h-[94px] flex-col justify-between border p-4 transition-all duration-300 ${available ? "border-[#ED6439]/35 bg-white shadow-[0_14px_35px_-25px_rgba(237,100,57,0.5)] hover:-translate-y-0.5 hover:border-[#ED6439]" : "border-[#263746]/10 bg-white/70 hover:border-[#263746]/25"}`}>
-                  <div className="flex items-start justify-between gap-3">
-                    <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${available ? "bg-[#ED6439] text-white" : "bg-[#263746]/7 text-[#526574]"}`}><Icon className="h-4 w-4" /></span>
-                    <span className="text-[10px] font-bold tracking-[0.12em] text-[#526574]/55">{item.number}</span>
-                  </div>
-                  <div className="mt-4">
-                    <p className="font-display text-sm font-extrabold text-[#263746]">{item.label}</p>
-                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#ED6439]">{available ? "Explore below" : "Connect with us"}</p>
-                  </div>
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-white px-3.5 py-1.5 text-xs font-bold text-[#E15925] shadow-2xs transition-all hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{item.label}</span>
                 </a>
               );
             })}
@@ -884,162 +579,401 @@ function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* MAIN CONTENT */}
+      {/* ======================================================
+          MAIN BODY LAYOUT
+          ====================================================== */}
       <main className="bg-[#FFFDF9]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-12 lg:px-10 lg:py-20">
-          {/* STICKY MAP */}
-          <aside className="lg:sticky lg:top-24 lg:h-fit">
-            <div className="overflow-hidden border border-[#263746]/10 bg-white shadow-[0_18px_50px_-30px_rgba(38,55,70,0.35)]">
-              <div className="border-b border-[#263746]/10 bg-[#263746] p-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">On this page</p>
-                <p className="mt-1 font-display text-xl font-extrabold text-white">CSR Partnerships</p>
-              </div>
-              <nav className="p-2">
-                {activeMapSections.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <a key={item.id} href={`#${item.id}`} className="group flex items-center gap-3 px-3 py-3 text-sm font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#263746]">
-                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#ED6439]/8 text-[9px] font-bold text-[#ED6439] group-hover:bg-[#ED6439] group-hover:text-white">{String(index + 1).padStart(2, "0")}</span>
-                      <Icon className="h-4 w-4 shrink-0 text-[#ED6439]" />
-                      <span className="min-w-0">{item.label}</span>
-                    </a>
-                  );
-                })}
-              </nav>
-              <div className="m-3 border-t border-[#263746]/10 p-3">
-                <a href="mailto:rm@nightingaleseldercare.com" className="flex items-center gap-2 text-xs font-bold text-[#ED6439] hover:underline">Partner with NMT <ArrowUpRight className="h-3.5 w-3.5" /></a>
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-12 lg:px-10 lg:py-20">
+          {/* STICKY DESKTOP ASIDE */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-20 space-y-6">
+              <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft">
+                <div className="bg-[#E15925] p-5 text-white">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">Navigation</p>
+                  <p className="mt-1 font-display text-lg font-bold">Corporate Partnerships</p>
+                </div>
+                <nav className="p-2">
+                  {CSR_NAV.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#E15925]"
+                      >
+                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[#ED6439]/10 text-[10px] font-bold text-[#ED6439] group-hover:bg-[#ED6439] group-hover:text-white">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <Icon className="h-3.5 w-3.5 shrink-0 text-[#ED6439]" />
+                        <span className="truncate">{item.label}</span>
+                      </a>
+                    );
+                  })}
+                </nav>
               </div>
             </div>
           </aside>
 
-          <div className="min-w-0 space-y-16 sm:space-y-20">
-            {/* CSR INTRO */}
-            <section id="csr-partnerships" className="scroll-mt-28">
+          {/* MAIN CONTENT AREA */}
+          <div className="min-w-0 space-y-16 sm:space-y-24">
+            {/* ======================================================
+                1. WHY PARTNER WITH NMT?
+                ====================================================== */}
+            <section id="why-partner" className="scroll-mt-24">
               <Reveal>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ED6439] sm:text-xs">05 / CSR Partnerships</p>
-                <h2 className="mt-3 max-w-4xl font-display text-3xl font-extrabold leading-tight tracking-[-0.025em] text-[#263746] sm:text-4xl lg:text-5xl">Partner with Us to Create Lasting Impact for Elders and Those with Dementia</h2>
-                <div className="mt-5 h-1 w-12 bg-[#ED6439]" />
-                <div className="mt-7 max-w-4xl space-y-5 text-[15px] leading-7 text-[#526574] sm:text-base sm:leading-8">
-                  <p>At Nightingales Medical Trust (NMT), we believe meaningful social change happens when individuals, corporates, and communities come together. We actively collaborate with corporates, government bodies, NGOs, and academic institutions to improve the quality of life of elders, especially those living with dementia and those from marginalized communities.</p>
-                  <p>Corporate partnerships play a vital role in strengthening elder care and dementia services in India. Through CSR support, employee volunteering, and collaborative initiatives, corporates help us deliver need-based interventions while fulfilling their social responsibility goals.</p>
-                  <p>We invite corporates to engage with us through CSR partnerships, employee engagement, and long-term collaborations that create measurable social impact.</p>
-                </div>
+                <h2 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-4xl">
+                  Why Partner with NMT?
+                </h2>
+                <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
               </Reveal>
 
-              <div className="mt-10 grid gap-5 md:grid-cols-2">
-                <ContentCard icon={Building2} title="Why Partner with NMT?">
-                  <BulletList items={["Over two decades of experience in elder and dementia care", "Proven, scalable programs with measurable outcomes", "Opportunities for employee sensitization on ageing, dementia, and caregiving", "Strong governance and transparent impact reporting", "NMT is eligible for CSR funding under the Companies Act, 2013."]} />
-                </ContentCard>
-                <ContentCard icon={HeartHandshake} title="Causes You Can Support">
-                  <p>Your organization can choose to support one or more of the following focus areas:</p>
-                  <BulletList items={causes} />
-                </ContentCard>
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {whyPartnerPillars.map((pillar, idx) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <Reveal key={pillar.title} delay={idx * 50} className="h-full">
+                      <div className="flex h-full items-start gap-3 rounded-2xl border border-border bg-white p-6 shadow-soft transition-all hover:border-[#ED6439]/40 hover:shadow-md">
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <p className="font-display text-sm font-bold leading-snug text-[#E15925]">
+                          {pillar.title}
+                        </p>
+                      </div>
+                    </Reveal>
+                  );
+                })}
               </div>
             </section>
 
-            {/* PARTNERSHIP OPTIONS */}
-            <section id="partnership-options" className="scroll-mt-28">
+            {/* ======================================================
+                2. CAUSES YOU CAN SUPPORT
+                ====================================================== */}
+            <section id="causes" className="scroll-mt-24">
               <Reveal>
-                <div className="flex flex-wrap items-end justify-between gap-5">
+                <div className="rounded-3xl border border-[#ED6439]/15 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
+                  <h2 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                    Causes You Can Support
+                  </h2>
+                  <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                    Your organization can choose to support one or more of the following focus areas:
+                  </p>
+
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {causes.map((c) => {
+                      const Icon = c.icon;
+                      return (
+                        <div
+                          key={c.title}
+                          className="flex items-center gap-3 rounded-2xl border border-border/80 bg-[#FAF6F0] p-5 transition-all hover:border-[#ED6439]/40 hover:bg-white hover:shadow-md"
+                        >
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <h3 className="font-display text-sm font-bold text-[#E15925]">
+                            {c.title}
+                          </h3>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Reveal>
+            </section>
+
+            {/* ======================================================
+                PARTNERSHIP OPTIONS
+                ====================================================== */}
+            <div className="border-t border-border/70 pt-4">
+              <h2 className="mt-1 font-display text-3xl font-extrabold text-[#E15925] sm:text-4xl">
+                Partnership Options
+              </h2>
+            </div>
+
+            {/* ======================================================
+                OPTION 1: ADOPT A PROJECT
+                ====================================================== */}
+            <section id="partnership-options" className="scroll-mt-24">
+              <Reveal>
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                  1. Adopt a Project
+                </h3>
+                <p className="mt-1.5 text-sm font-semibold text-[#526574]">
+                  Support one or more of our need-based flagship programs:
+                </p>
+                <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
+              </Reveal>
+
+              <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {projects.map((project, index) => {
+                  const Icon = project.icon;
+                  return (
+                    <Reveal key={project.title} delay={(index % 3) * 60} className="h-full">
+                      <div
+                        onClick={() => setSelectedProject(project)}
+                        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ED6439]/40 hover:shadow-xl"
+                      >
+                        <div className="relative h-48 w-full overflow-hidden bg-[#FAF6F0]">
+                          {project.image ? (
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="flex h-full items-center justify-center bg-[#FFF4DF]">
+                              <Icon className="h-12 w-12 text-[#ED6439]/40" />
+                            </div>
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        </div>
+
+                        <div className="flex flex-1 flex-col p-5 sm:p-6">
+                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
+                            <Icon className="h-4 w-4" />
+                          </span>
+
+                          <h4 className="mt-3 font-display text-lg font-bold leading-snug text-[#E15925] transition-colors group-hover:text-[#ED6439]">
+                            {project.shortTitle}
+                          </h4>
+
+                          <p className="mt-2.5 flex-1 line-clamp-3 text-[13px] leading-relaxed text-muted-foreground">
+                            {project.intro}
+                          </p>
+
+                          <div className="mt-5 flex items-center justify-between border-t border-border/70 pt-3.5">
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-[#ED6439]">
+                              View Details
+                              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* ======================================================
+                OPTION 2: CORPORATE DONATIONS & SMRITI GRAM
+                ====================================================== */}
+            <section id="corporate-donations" className="scroll-mt-24">
+              <Reveal>
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                  2. Corporate Donations
+                </h3>
+                <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Corporates may choose to contribute to a specific cause or infrastructure requirement aligned with their CSR priorities.
+                </p>
+                <div className="mt-4 h-1 w-12 bg-[#ED6439]" />
+              </Reveal>
+
+              {/* SMRITI GRAM FEATURE BANNER */}
+              <div className="mt-8 overflow-hidden rounded-3xl bg-[#E15925] text-white shadow-xl">
+                <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
+                  <div className="p-7 sm:p-10">
+                    <h4 className="font-display text-2xl font-bold sm:text-3xl">
+                      Smriti Gram – A National Model for Dementia Care
+                    </h4>
+                    <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">
+                      NMT is establishing Smriti Gram, a 300-bed comprehensive dementia care ecosystem, including 100 beds exclusively for marginalized elders.
+                    </p>
+
+                    <div className="mt-6 rounded-2xl border border-white/15 bg-white/5 p-4 sm:p-5">
+                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#FF9A78]">Project Status:</p>
+                      <ul className="mt-3 space-y-2 text-xs text-white/90 sm:text-sm">
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span>Land acquired near Doddaballapur (1 hour from Bengaluru)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span>Phase 1 (100 beds + Training Academy): Operational by September 2026</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span>Phase 2 (additional 200 beds): Completion by December 2028</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p className="mt-4 text-xs italic text-[#FF9A78]/90">
+                      Each contribution directly enhances quality of care, safety, sustainability, and dignity.
+                    </p>
+                  </div>
+
+                  <div className="relative min-h-[300px] bg-black/20 lg:min-h-full">
+                    <img
+                      src={smritiGramImage}
+                      alt="Nightingales Smriti Gram Dementia Village"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#E15925] via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#E15925] lg:via-transparent" />
+                  </div>
+                </div>
+              </div>
+
+              {/* DONATION OPPORTUNITIES AT SMRITI GRAM — FLAT LIST, AS GIVEN */}
+              <div className="mt-12">
+                <h4 className="font-display text-xl font-bold text-[#E15925] sm:text-2xl">
+                  Donation Opportunities at Smriti Gram:
+                </h4>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {SMRITI_GRAM_DONATION_ITEMS.map((item) => (
+                    <a
+                      key={item}
+                      href={`mailto:rm@nightingaleseldercare.com?subject=Sponsor%20Smriti%20Gram%20Item:%20${encodeURIComponent(item)}`}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1.5 text-xs font-semibold text-[#E15925] shadow-2xs transition-colors hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+                    >
+                      <span>{item}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* ======================================================
+                OPTION 3: EVENT SPONSORSHIP & PARTICIPATION
+                ====================================================== */}
+            <section id="event-sponsorship" className="scroll-mt-24">
+              <Reveal>
+                <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FFF8EE] p-6 sm:p-8 lg:p-10">
+                  <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                    3. Event Sponsorship & Participation
+                  </h3>
+
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    Partner with us for national and international observances such as:
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {observanceEvents.map((evt) => (
+                      <span
+                        key={evt}
+                        className="inline-flex items-center rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-[#E15925]"
+                      >
+                        {evt}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="mt-6 text-sm text-muted-foreground">
+                    Opportunities include event sponsorship, employee volunteering, and brand visibility.
+                  </p>
+                </div>
+              </Reveal>
+            </section>
+
+            {/* ======================================================
+                OPTION 4: PAYROLL GIVING
+                ====================================================== */}
+            <section id="payroll-giving" className="scroll-mt-24">
+              <Reveal>
+                <div className="rounded-3xl border border-border bg-white p-6 shadow-soft sm:p-8 lg:p-10">
+                  <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                    4. Payroll Giving
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#E15925] sm:text-base">
+                    Enable your employees to support elder care and dementia care through monthly salary contributions toward NMT programs—an easy, consistent way to create long-term impact.
+                  </p>
+
+                  <a
+                    href="mailto:rm@nightingaleseldercare.com?subject=Setup%20Payroll%20Giving"
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-6 py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
+                  >
+                    Setup Payroll Giving with NMT <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </Reveal>
+            </section>
+
+            {/* ======================================================
+                OPTION 5: CORPORATE VOLUNTEERING & EMPLOYEE ENGAGEMENT
+                ====================================================== */}
+            <section id="corporate-volunteering" className="scroll-mt-24">
+              <Reveal>
+                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+                  5. Corporate Volunteering & Employee Engagement
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  We offer structured volunteering opportunities where employees can contribute their time, skills, and expertise, including:
+                </p>
+              </Reveal>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {corporateVolunteeringItems.map((mod, idx) => {
+                  const Icon = mod.icon;
+                  return (
+                    <Reveal key={mod.title} delay={(idx % 3) * 50} className="h-full">
+                      <div className="flex h-full items-center gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md">
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <p className="font-display text-sm font-bold leading-snug text-[#E15925]">
+                          {mod.title}
+                        </p>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* ======================================================
+                CONNECT WITH CSR DESK
+                ====================================================== */}
+            <section id="contact-csr" className="scroll-mt-24">
+              <div className="rounded-3xl border border-[#ED6439]/20 bg-[#FAF6F0] p-6 sm:p-10">
+                <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ED6439] sm:text-xs">CSR Opportunities</p>
-                    <h2 className="mt-2 font-display text-3xl font-extrabold text-[#263746] sm:text-4xl">Adopt a Project</h2>
+                    <h3 className="font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
+                      Let's Build a Compassionate Future for Elders.
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      Partner with NMT to create meaningful, measurable, and lasting impact.
+                    </p>
+
+                    <div className="mt-6 flex items-center gap-3 text-sm text-[#E15925]">
+                      <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#ED6439]/10 text-[#ED6439]">
+                        <Mail className="h-4 w-4" />
+                      </span>
+                      <a href="mailto:rm@nightingaleseldercare.com" className="font-semibold hover:text-[#ED6439]">
+                        rm@nightingaleseldercare.com
+                      </a>
+                    </div>
                   </div>
-                  <p className="max-w-xl text-sm leading-6 text-[#526574]">Support one or more of our need-based flagship programs.</p>
-                </div>
-              </Reveal>
-              <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                {projects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} onOpen={() => setSelectedProject(project)} />)}
-              </div>
-            </section>
 
-            {/* DONATIONS */}
-            <section id="corporate-donations" className="scroll-mt-28">
-              <Reveal>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ED6439] sm:text-xs">CSR Opportunities</p>
-                <h2 className="mt-2 font-display text-3xl font-extrabold text-[#263746] sm:text-4xl">Corporate Donations</h2>
-              </Reveal>
-              <div className="mt-7 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-                <div className="bg-[#263746] p-6 text-white sm:p-8">
-                  <HandCoins className="h-8 w-8 text-[#FF9A78]" />
-                  <h3 className="mt-6 font-display text-2xl font-extrabold">Smriti Gram — A National Model for Dementia Care</h3>
-                  <p className="mt-5 text-sm leading-7 text-white/70">NMT is establishing Smriti Gram, a 300-bed comprehensive dementia care ecosystem, including 100 beds exclusively for marginalized elders.</p>
-                  <div className="mt-7 border-t border-white/10 pt-6 text-sm leading-7 text-white/70">
-                    <p><strong className="text-white">Project Status:</strong></p>
-                    <p className="mt-2">Land acquired near Doddaballapur (1 hour from Bengaluru)</p>
-                    <p>Phase 1 (100 beds + Training Academy): Operational by September 2026</p>
-                    <p>Phase 2 (additional 200 beds): Completion by December 2028</p>
+                  <div className="rounded-2xl border border-border bg-white p-6 shadow-soft">
+                    <h4 className="font-display text-base font-bold text-[#E15925]">
+                      Initiate a CSR Discussion
+                    </h4>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      For more details, please contact us.
+                    </p>
+
+                    <a
+                      href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Discussion"
+                      className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
+                    >
+                      <Mail className="h-4 w-4" />
+                      Email CSR Team
+                    </a>
                   </div>
                 </div>
-                <div className="border border-[#263746]/10 bg-white p-6 sm:p-8">
-                  <p className="font-display text-xl font-extrabold text-[#263746]">Donation Opportunities</p>
-                  <BulletList items={smritiDonations} />
-                  <p className="mt-7 border-t border-[#263746]/10 pt-5 text-sm leading-6 text-[#526574]">Each contribution directly enhances quality of care, safety, sustainability, and dignity.</p>
-                </div>
-              </div>
-            </section>
-
-            {/* EVENT */}
-            <section id="event-sponsorship" className="scroll-mt-28">
-              <ContentCard icon={Megaphone} title="Event Sponsorship & Participation">
-                <p>Partner with us for national and international observances such as:</p>
-                <BulletList items={["International Day of Older Persons", "World Elder Abuse Awareness Day", "World Alzheimer’s Day", "Senior Citizen Job Fairs", "Digital Literacy & Cyber Safety Programs"]} />
-                <p>Opportunities include event sponsorship, employee volunteering, and brand visibility.</p>
-              </ContentCard>
-            </section>
-
-            {/* PAYROLL */}
-            <section id="payroll-giving" className="scroll-mt-28">
-              <div className="grid gap-5 md:grid-cols-[0.3fr_1fr]">
-                <div className="flex items-center gap-4 border border-[#ED6439]/15 bg-[#FFF4DF] p-5 sm:p-7">
-                  <Gift className="h-7 w-7 shrink-0 text-[#ED6439]" />
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">Giving</p>
-                </div>
-                <ContentCard icon={Gift} title="Payroll Giving">
-                  <p>Enable your employees to support elder care and dementia care through monthly salary contributions toward NMT programs—an easy, consistent way to create long-term impact.</p>
-                </ContentCard>
-              </div>
-            </section>
-
-            {/* VOLUNTEERING */}
-            <section id="corporate-volunteering" className="scroll-mt-28">
-              <ContentCard icon={Users} title="Corporate Volunteering & Employee Engagement">
-                <p>We offer structured volunteering opportunities where employees can contribute their time, skills, and expertise, including:</p>
-                <BulletList items={volunteerAreas} />
-              </ContentCard>
-            </section>
-
-            {/* SITEMAP CONNECTOR */}
-            <section id="get-involved-contact" className="scroll-mt-28 border-t border-[#263746]/10 pt-10">
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {siteMap.map((item) => <div key={item.id} className="border border-[#263746]/10 bg-white p-5"><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">{item.number}</p><h3 className="mt-2 font-display text-lg font-extrabold text-[#263746]">{item.label}</h3><p className="mt-2 text-xs leading-5 text-[#526574]">Connect with NMT to explore this opportunity.</p></div>)}
               </div>
             </section>
           </div>
         </div>
       </main>
 
-      {/* FINAL CTA */}
-      <section className="relative overflow-hidden bg-[#17232B] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <Reveal>
-            <Sparkles className="mx-auto h-7 w-7 text-[#ED6439]" />
-            <h2 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">Let’s Build a Compassionate Future for Elders.</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">Partner with NMT to create meaningful, measurable, and lasting impact.</p>
-            <a href="mailto:rm@nightingaleseldercare.com" className="mt-8 inline-flex items-center justify-center rounded-full bg-[#ED6439] px-7 py-4 text-sm font-bold text-white shadow-[0_15px_35px_-12px_rgba(237,100,57,0.7)] transition hover:-translate-y-0.5 hover:bg-[#f1734c]">Contact Us <ArrowUpRight className="ml-2 h-4 w-4" /></a>
-            <br />
-            <a
-  href="mailto:rm@nightingaleseldercare.com"
-  className="mt-5 inline-block text-sm text-white/45 underline underline-offset-4 transition hover:text-white"
->
-  rm@nightingaleseldercare.com
-</a>
-          </Reveal>
-        </div>
-      </section>
-
-      {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </SiteLayout>
   );
 }
-

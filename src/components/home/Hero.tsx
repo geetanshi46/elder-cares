@@ -2,6 +2,7 @@ import heroImage1 from "@/assets/heroImage1.webp";
 import heroImage2 from "@/assets/heroImage2.webp";
 import heroImage3 from "@/assets/heroImage3.webp";
 import heroImage4 from "@/assets/heroImage4.webp";
+import heroImage5 from "@/assets/heroImage5.webp";
 
 import aboutImage from "@/assets/aboutImage.webp";
 
@@ -9,6 +10,10 @@ import { ArrowUpRight, HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const heroSlides = [
+  {
+    src: heroImage5,
+    alt: "Nightingales Medical Trust — compassionate elder care",
+  },
   {
     src: heroImage1,
     alt: "Nightingales Medical Trust — elder care",
@@ -295,25 +300,28 @@ export function Hero() {
       LEFT — 25+ YEARS OF SERVICE
       ========================================================= */}
   <div
-    className="
-      flex
-      w-fit
-      items-center
-      gap-2.5
-      rounded-2xl
-      border
-      border-white/30
-      bg-white/90
-      px-3
-      py-2.5
-      shadow-[0_12px_30px_rgba(0,0,0,0.18)]
-      backdrop-blur-md
+  className="
+    flex
+    w-fit
+    self-end
+    items-center
+    gap-2.5
+    rounded-2xl
+    border
+    border-white/30
+    bg-white/90
+    px-3
+    py-2.5
+    shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+    backdrop-blur-md
 
-      sm:gap-3
-      sm:px-5
-      sm:py-3.5
-    "
-  >
+    sm:gap-3
+    sm:px-5
+    sm:py-3.5
+
+    md:ml-auto
+  "
+>
     <span
       className="
         flex
@@ -370,7 +378,7 @@ export function Hero() {
   {/* =========================================================
       RIGHT — 24 HOUR HELPLINE
       ========================================================= */}
-  <div
+  {/* <div
     className="
       flex
       w-fit
@@ -451,7 +459,7 @@ export function Hero() {
     >
       24
     </span>
-  </div>
+  </div> */}
 </div>
 
   {/* =========================================================

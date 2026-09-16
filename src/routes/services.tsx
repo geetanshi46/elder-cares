@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
   import {
   Brain,
   HeartHandshake,
   ShieldCheck,
+  PlayCircle,
   Briefcase,
   GraduationCap,
   Megaphone,
@@ -32,10 +33,12 @@ import riskReductionImage from "../assets/our-services/risk-reduction.webp";
 import memoryclinicImage from "../assets/our-services/memory-clinic.webp";
 import daycareImage from "../assets/our-services/day-care.webp";
 
-import kasturinagarImage from "../assets/our-services/Kasturinagar1.webp";
-import kolarImage from "../assets/our-services/kolar.webp";
-import kothanurImage from "../assets/our-services/Kothanur1.webp";
-// import elderImage from "../assets/our-services/elder-protection.webp";
+import kasturinagarFacilityImage from "../assets/our-services/services (3).jpeg";
+import kasturinagarElderImage from "../assets/our-services/services (4).jpeg";
+import kolarFacilityImage from "../assets/our-services/services (1).jpeg";
+import kolarElderImage from "../assets/our-services/services (2).jpeg";
+import kothanurFacilityImage from "../assets/our-services/services (6).jpeg";
+import kothanurElderImage from "../assets/our-services/services (5).jpeg";
 
 import familyCaregiverTrainingImage from "../assets/our-services/family-caregiver-training.webp";
 
@@ -88,7 +91,7 @@ import studentInternshipsImage from "@/assets/our-services/student-internships.w
 
 import trainingCapacityBuildingBanner from "@/assets/our-services/training-capacity-building-banner.webp";
 
-import freeGeriatricClinicImage from "@/assets/our-services/free-geriatric-clinic.png";
+import freeGeriatricClinicImage from "@/assets/our-services/free-geriatric-clinic.webp";
 
 
 
@@ -115,12 +118,67 @@ export const Route = createFileRoute("/services")({
 
 
 /* ============================================================
+   IMAGE SHUFFLE COMPONENT (AUTOMATIC PHOTOS TRANSITION)
+   ============================================================ */
+
+function ImageShuffle({
+  images,
+  alt,
+}: {
+  images: string[];
+  alt: string;
+}) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="relative h-full w-full">
+      {images.map((imgSrc, idx) => (
+        <img
+          key={imgSrc}
+          src={imgSrc}
+          alt={`${alt} - ${idx === 0 ? "Facility" : "Activities"}`}
+          loading="lazy"
+          decoding="async"
+          className={`absolute inset-0 block h-full w-full object-cover object-center transition-opacity duration-1000 ${
+            idx === activeIdx ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        />
+      ))}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 right-3 z-10 flex gap-1.5 rounded-full bg-black/40 px-2 py-1 backdrop-blur-xs">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setActiveIdx(idx)}
+              aria-label={`Photo ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === activeIdx ? "w-4 bg-[#ED6439]" : "w-1.5 bg-white/70 hover:bg-white"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ============================================================
    REUSABLE SERVICE CARD
    ============================================================ */
 
 function ServiceCard({
   icon: Icon,
   title,
+  titleClassName = "text-[#ED6439]",
   children,
   items,
   image,
@@ -131,6 +189,7 @@ function ServiceCard({
 }: {
   icon: typeof HeartHandshake;
   title: string;
+  titleClassName?: string;
   children?: ReactNode;
   items?: string[];
   image?: string;
@@ -254,16 +313,16 @@ function ServiceCard({
 
             {/* TITLE */}
             <h3
-              className="
+              className={`
                 mt-5
                 break-words
                 font-display
                 text-lg
                 font-extrabold
                 leading-[1.2]
-                text-[#263746]
+                ${titleClassName}
                 sm:text-xl
-              "
+              `}
             >
               {title}
             </h3>
@@ -285,9 +344,9 @@ function ServiceCard({
             />
 
             {/* ==================================================
-                PREVIEW CONTENT
+                PREVIEW CONTENT (ALWAYS VISIBLE)
                 ================================================== */}
-            {preview && !expanded && (
+            {preview && (
               <div
                 className="
                   mt-5
@@ -390,12 +449,18 @@ function ServiceCard({
                     max-w-full
                     items-center
                     gap-2
+                    border-0
+                    bg-transparent
                     text-[12px]
                     font-bold
                     text-[#ED6439]
+                    outline-none
                     transition-all
                     duration-300
                     hover:gap-3
+                    focus:outline-none
+                    focus-visible:outline-none
+                    cursor-pointer
                     sm:text-[13px]
                   "
                 >
@@ -526,47 +591,7 @@ function ServiceImage({
             "
           />
 
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              bg-gradient-to-r
-              from-[#17232B]/35
-              via-transparent
-              to-transparent
-            "
-          />
 
-          <span
-            className="
-              absolute
-              bottom-4
-              left-4
-              max-w-[calc(100%-2rem)]
-              inline-flex
-              items-center
-              gap-2
-              bg-[#ED6439]
-              px-3
-              py-2
-              text-[10px]
-              font-bold
-              uppercase
-              tracking-[0.14em]
-              text-white
-              shadow-[0_10px_25px_rgba(237,100,57,0.28)]
-              sm:bottom-5
-              sm:left-5
-              sm:px-4
-              sm:py-2.5
-              sm:text-[11px]
-              sm:tracking-[0.16em]
-            "
-          >
-            <Sparkles className="h-3.5 w-3.5 shrink-0" />
-            <span className="break-words">{label}</span>
-          </span>
         </div>
 
         <div
@@ -743,7 +768,6 @@ function TrainingCarousel() {
 
 
 
-  {/* return ( */}
     <div className="relative mt-8 min-w-0 sm:mt-10">
       {/* ==================================================
           CAROUSEL
@@ -784,13 +808,14 @@ function TrainingCarousel() {
           "
         >
           <ServiceCard
-  icon={GraduationCap}
-  title="Bedside Assistant Training Course"
-  image={bedsideAssistantImage}
-  cta="READ MORE"
-  preview={
+            icon={GraduationCap}
+            title="Bedside Assistant Training Course"
+            titleClassName="text-[#ED6439]"
+            image={bedsideAssistantImage}
+            cta="READ MORE"
+            preview={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Creating Skilled and Compassionate Caregivers
                 </p>
 
@@ -800,7 +825,7 @@ function TrainingCarousel() {
                   persons and people requiring assistance with daily living.
                 </p>
 
-                <p>
+                <p className="font-semibold text-foreground">
                   The programme combines classroom learning with practical,
                   hands-on training.
                 </p>
@@ -808,32 +833,34 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p>The training covers areas such as:</p>
-
-                <ul className="space-y-2.5">
-                  <li>Understanding ageing</li>
-                  <li>Personal hygiene and personal care</li>
-                  <li>Nutrition</li>
-                  <li>Mobility and positioning</li>
-                  <li>Physiotherapy and exercise</li>
-                  <li>Medication and basic medical care</li>
-                  <li>Fall prevention</li>
-                  <li>Dementia care</li>
-                  <li>Communication</li>
-                  <li>First aid</li>
-                  <li>Infection prevention</li>
-                  <li>Safety and emergency response</li>
-                  <li>
-                    Professional conduct and caregiver responsibilities
-                  </li>
-                </ul>
-
-                <p>
-                  The programme combines classroom learning with practical,
-                  hands-on training.
+                <p className="font-bold text-[#ED6439]">
+                  The training covers areas such as:
                 </p>
 
-                <p className="font-semibold text-[#263746]">
+                <ul className="space-y-2.5">
+                  {[
+                    "Understanding ageing",
+                    "Personal hygiene and personal care",
+                    "Nutrition",
+                    "Mobility and positioning",
+                    "Physiotherapy and exercise",
+                    "Medication and basic medical care",
+                    "Fall prevention",
+                    "Dementia care",
+                    "Communication",
+                    "First aid",
+                    "Infection prevention",
+                    "Safety and emergency response",
+                    "Professional conduct and caregiver responsibilities",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="font-bold text-[#ED6439]">
                   Our larger goal
                 </p>
 
@@ -863,13 +890,14 @@ function TrainingCarousel() {
           "
         >
           <ServiceCard
-  icon={Brain}
-  title="Dementia Care Training"
-  image={dementiaCareImage}
-  cta="READ MORE"
-  preview={
+            icon={Brain}
+            title="Dementia Care Training"
+            titleClassName="text-[#ED6439]"
+            image={dementiaCareImage}
+            cta="READ MORE"
+            preview={
               <>
-                <p className="font-semibold text-[#263746]">
+                <p className="font-bold text-[#ED6439]">
                   Building Dementia-Friendly Communities
                 </p>
 
@@ -879,7 +907,7 @@ function TrainingCarousel() {
                   organisations and community groups.
                 </p>
 
-                <p>
+                <p className="font-semibold text-foreground">
                   Training focuses on practical knowledge, communication,
                   person-centred care and caregiver well-being.
                 </p>
@@ -887,22 +915,29 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p>Training focuses on:</p>
+                <p className="font-bold text-[#ED6439]">
+                  Training focuses on:
+                </p>
 
                 <ul className="space-y-2.5">
-                  <li>Understanding dementia</li>
-                  <li>Communication</li>
-                  <li>Person-centred care</li>
-                  <li>
-                    Behavioural and psychological symptoms of dementia
-                  </li>
-                  <li>Activities and cognitive stimulation</li>
-                  <li>Personal care</li>
-                  <li>Nutrition</li>
-                  <li>Mobility and falls prevention</li>
-                  <li>Managing challenging situations</li>
-                  <li>Family support</li>
-                  <li>Caregiver well-being</li>
+                  {[
+                    "Understanding dementia",
+                    "Communication",
+                    "Person-centred care",
+                    "Behavioural and psychological symptoms of dementia",
+                    "Activities and cognitive stimulation",
+                    "Personal care",
+                    "Nutrition",
+                    "Mobility and falls prevention",
+                    "Managing challenging situations",
+                    "Family support",
+                    "Caregiver well-being",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             }
@@ -926,11 +961,12 @@ function TrainingCarousel() {
           "
         >
           <ServiceCard
-  icon={HeartHandshake}
-  title="Family Caregiver Training"
-  image={familyCaregiverImage}
-  cta="READ MORE"
-  preview={
+            icon={HeartHandshake}
+            title="Family Caregiver Training"
+            titleClassName="text-[#ED6439]"
+            image={familyCaregiverImage}
+            cta="READ MORE"
+            preview={
               <>
                 <p>
                   Family members are often the primary caregivers for people
@@ -942,7 +978,7 @@ function TrainingCarousel() {
                   skills and understanding.
                 </p>
 
-                <p>
+                <p className="font-semibold text-foreground">
                   NMT's family caregiver training helps families provide
                   safer and more meaningful care.
                 </p>
@@ -950,25 +986,31 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p>
+                <p className="font-bold text-[#ED6439]">
                   NMT's family caregiver training helps families:
                 </p>
 
                 <ul className="space-y-2.5">
-                  <li>Understand dementia</li>
-                  <li>Communicate more effectively</li>
-                  <li>Manage behavioural changes</li>
-                  <li>Provide safe personal care</li>
-                  <li>Prevent falls and accidents</li>
-                  <li>Support nutrition and mobility</li>
-                  <li>Create meaningful daily routines</li>
-                  <li>Manage caregiver stress</li>
-                  <li>Know when professional help is required</li>
+                  {[
+                    "Understand dementia",
+                    "Communicate more effectively",
+                    "Manage behavioural changes",
+                    "Provide safe personal care",
+                    "Prevent falls and accidents",
+                    "Support nutrition and mobility",
+                    "Create meaningful daily routines",
+                    "Manage caregiver stress",
+                    "Know when professional help is required",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <p>
-                  Because caring for the caregiver is also part of dementia
-                  care.
+                  Caring for the caregiver is also part of dementia care.
                 </p>
               </>
             }
@@ -992,11 +1034,12 @@ function TrainingCarousel() {
           "
         >
           <ServiceCard
-  icon={ShieldCheck}
-  title="Lifesaving Skills Training"
-  image={lifesavingSkillsImage}
-  cta="READ MORE"
-  preview={
+            icon={ShieldCheck}
+            title="Lifesaving Skills Training"
+            titleClassName="text-[#ED6439]"
+            image={lifesavingSkillsImage}
+            cta="READ MORE"
+            preview={
               <>
                 <p>
                   Older persons are particularly vulnerable to falls,
@@ -1012,18 +1055,25 @@ function TrainingCarousel() {
             }
             details={
               <>
-                <p>Training includes:</p>
+                <p className="font-bold text-[#ED6439]">
+                  Training includes:
+                </p>
 
                 <ul className="space-y-2.5">
-                  <li>Basic first aid</li>
-                  <li>Recognition of medical emergencies</li>
-                  <li>Cardiopulmonary resuscitation awareness</li>
-                  <li>Response to falls</li>
-                  <li>Choking emergencies</li>
-                  <li>Basic emergency preparedness</li>
-                  <li>
-                    When and how to seek professional medical help
-                  </li>
+                  {[
+                    "Basic first aid",
+                    "Recognition of medical emergencies",
+                    "Cardiopulmonary resuscitation awareness",
+                    "Response to falls",
+                    "Choking emergencies",
+                    "Basic emergency preparedness",
+                    "When and how to seek professional medical help",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </>
             }
@@ -1032,85 +1082,70 @@ function TrainingCarousel() {
 
 
         {/* ==================================================
-    5. STUDENT INTERNSHIPS
-    ================================================== */}
+            5. STUDENT INTERNSHIPS
+            ================================================== */}
 
-<div
-  className="
-    flex
-    min-w-0
-    shrink-0
-    basis-full
-    snap-start
-    sm:basis-[calc((100%-24px)/2)]
-    lg:basis-[calc((100%-48px)/3)]
-  "
->
-  <ServiceCard
-    icon={HeartHandshake}
-    title="Student Internships"
-    image={studentInternshipsImage}
-    cta="READ MORE"
-    preview={
-      <>
-        <p>
-          NMT offers internship opportunities for students who want
-          practical exposure to elder care, dementia care, social work,
-          psychology, healthcare, community development, communications,
-          technology and related fields.
-        </p>
+        <div
+          className="
+            flex
+            min-w-0
+            shrink-0
+            basis-full
+            snap-start
+            sm:basis-[calc((100%-24px)/2)]
+            lg:basis-[calc((100%-48px)/3)]
+          "
+        >
+          <ServiceCard
+            icon={HeartHandshake}
+            title="Student Internships"
+            titleClassName="text-[#ED6439]"
+            image={studentInternshipsImage}
+            cta="READ MORE"
+            preview={
+              <>
+                <p>
+                  NMT offers internship opportunities for students who want
+                  practical exposure to elder care, dementia care, social work,
+                  psychology, healthcare, community development, communications,
+                  technology and related fields.
+                </p>
 
-        <p>Interns gain experience through:</p>
+                <p className="font-bold text-[#ED6439]">
+                  We believe today's students can become tomorrow's leaders in age
+                  care.
+                </p>
+              </>
+            }
+            details={
+              <>
+                <p className="font-bold text-[#ED6439]">
+                  Interns gain experience through:
+                </p>
 
-        <ul className="space-y-2.5">
-          <li>Field exposure</li>
-          <li>Community programmes</li>
-          <li>Dementia-care settings</li>
-          <li>Research and documentation</li>
-          <li>Awareness programmes</li>
-          <li>Programme support</li>
-          <li>Social-impact projects</li>
-        </ul>
-
-        <p>
-          We believe today's students can become tomorrow's leaders in age
-          care.
-        </p>
-      </>
-    }
-    details={
-      <>
-        <p>
-          NMT offers internship opportunities for students who want
-          practical exposure to elder care, dementia care, social work,
-          psychology, healthcare, community development, communications,
-          technology and related fields.
-        </p>
-
-        <p>Interns gain experience through:</p>
-
-        <ul className="space-y-2.5">
-          <li>Field exposure</li>
-          <li>Community programmes</li>
-          <li>Dementia-care settings</li>
-          <li>Research and documentation</li>
-          <li>Awareness programmes</li>
-          <li>Programme support</li>
-          <li>Social-impact projects</li>
-        </ul>
-
-        <p>
-          We believe today's students can become tomorrow's leaders in age
-          care.
-        </p>
-      </>
-    }
-  />
-</div>
+                <ul className="space-y-2.5">
+                  {[
+                    "Field exposure",
+                    "Community programmes",
+                    "Dementia-care settings",
+                    "Research and documentation",
+                    "Awareness programmes",
+                    "Programme support",
+                    "Social-impact projects",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          />
+        </div>
 
       </div>
     </div>
-  )
 
 
         {/* ==================================================
@@ -1153,19 +1188,16 @@ function ServicesPage() {
     />
   </div>
 
-  {/* Orange overlay */}
-  {/* <div
+  {/* High contrast overlay for text readability */}
+  <div
     className="
       pointer-events-none
       absolute
       inset-0
       -z-10
-      bg-gradient-to-r
-      from-[#c2410c]/80
-      via-[#c2410c]/40
-      to-[#c2410c]/10
+      bg-black/45
     "
-  /> */}
+  />
 
   {/* Bottom readability gradient */}
   <div
@@ -1175,10 +1207,10 @@ function ServicesPage() {
       inset-x-0
       bottom-0
       -z-10
-      h-2/3
+      h-full
       bg-gradient-to-t
-      from-black/40
-      via-black/10
+      from-black/75
+      via-black/35
       to-transparent
     "
   />
@@ -1206,15 +1238,6 @@ function ServicesPage() {
       <Reveal>
         <div className="max-w-5xl">
 
-          {/* Eyebrow */}
-          <div className="mb-5 flex items-center gap-3 sm:mb-6 sm:gap-4">
-            <span className="text-xs font-bold uppercase tracking-[0.16em] text-white">
-              Our Services
-            </span>
-
-            <span className="h-px w-10 shrink-0 bg-[#ED6439] sm:w-12" />
-          </div>
-
           {/* Heading */}
           <h1
             className="
@@ -1231,27 +1254,6 @@ function ServicesPage() {
           >
             Our Services
           </h1>
-
-          {/* Intro */}
-          <p
-            className="
-              mt-5
-              max-w-3xl
-              text-[15px]
-              font-medium
-              leading-7
-              text-white/90
-              sm:mt-6
-              sm:text-base
-              sm:leading-8
-              lg:text-lg
-            "
-          >
-            Seven programme areas that together form a continuum of care —
-            from the first signs of forgetting through to residential and
-            palliative support.
-          </p>
-
         </div>
       </Reveal>
     </div>
@@ -1260,12 +1262,12 @@ function ServicesPage() {
 </section>
 
       {/* ======================================================
-          DEMENTIA CARE — CLIENT CONTENT
+          DEMENTIA AND MEDICAL CARE — CLIENT CONTENT
           ====================================================== */}
       <Section
         id="dementia-care"
-        eyebrow="Dementia Care"
-        title="Compassionate, Person-Centred Dementia Care Services"
+        eyebrow="Dementia and Medical Care"
+        title="Compassionate, Person-Centred Dementia & Medical Care Services"
         tone="sand"
       >
         <div className="relative space-y-12 overflow-hidden sm:space-y-16">
@@ -1302,7 +1304,7 @@ function ServicesPage() {
 
                 <p className="mt-5 text-[15px] leading-[1.85] text-[#46627A] sm:text-[16px]">
                   Since 2006, NMT has been pioneering professional and compassionate
-                  dementia-care services. With two decades of experience, we have
+                  dementia-care services. With nearly three decades of experience, we have
                   developed a comprehensive continuum of dementia care — from
                   dementia risk reduction and early assessment to day care,
                   residential care, caregiver training and family support.
@@ -1314,20 +1316,6 @@ function ServicesPage() {
                   support and other non-pharmacological approaches, within safe and
                   dementia-friendly environments.
                 </p>
-
-                <div className="mt-7 flex flex-wrap gap-2.5 border-t border-[#263746]/10 pt-5">
-                  {["Person-centred", "Dignity first", "Family support"].map(
-                    (item) => (
-                      <span
-                        key={item}
-                        className="inline-flex items-center border border-[#ED6439]/20 bg-[#FFF4DF] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#263746] sm:text-[11px]"
-                      >
-                        <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#ED6439]" />
-                        {item}
-                      </span>
-                    )
-                  )}
-                </div>
               </div>
 
               {/* RIGHT — IMAGE
@@ -1387,79 +1375,18 @@ function ServicesPage() {
     "
   />
 
-  {/* Image overlay */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      bg-gradient-to-t
-      from-[#17232B]/65
-      via-[#17232B]/5
-      to-transparent
-    "
-  />
 
-  {/* Image label */}
-  <div
-    className="
-      absolute
-      bottom-5
-      left-5
-      right-5
-      sm:bottom-7
-      sm:left-7
-      sm:right-7
-    "
-  >
-    <div className="flex items-end justify-between gap-4">
 
-      <div
-        className="
-          border
-          border-white/25
-          bg-[#17232B]/80
-          px-4
-          py-2.5
-          shadow-[0_12px_30px_rgba(23,35,43,0.25)]
-          backdrop-blur-md
-        "
-      >
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white sm:text-xs">
-          Care with dignity
-        </span>
-      </div>
-
-      <span
-        className="
-          hidden
-          h-10
-          w-10
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          bg-[#ED6439]
-          text-white
-          shadow-[0_12px_30px_rgba(237,100,57,0.35)]
-          sm:flex
-        "
-      >
-        <ArrowUpRight className="h-4 w-4" />
-      </span>
-
-    </div>
-  </div>
 </div>
 
             </div>
           </Reveal>
 
           <Reveal>
-            <div className="relative overflow-hidden bg-[#17232B] px-5 py-7 text-white shadow-[0_25px_60px_-25px_rgba(23,35,43,0.35)] sm:px-8 sm:py-9 md:px-10">
+            <div className="relative overflow-hidden bg-[#E15925] px-5 py-7 text-white shadow-[0_25px_60px_-25px_rgba(23,35,43,0.35)] sm:px-8 sm:py-9 md:px-10">
               <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#ED6439]/20 blur-3xl" />
               <div className="relative">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white sm:text-sm">
                   You don't have to face dementia alone
                 </p>
                 <p className="mt-4 max-w-4xl text-[15px] leading-[1.8] text-white/80 sm:text-[16px]">
@@ -1518,136 +1445,6 @@ function ServicesPage() {
             </p>
           </Reveal>
 
-          {/* WHY CHOOSE NMT */}
-          <Reveal>
-            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-
-             {/* PORTRAIT IMAGE */}
-<div
-  className="
-    relative
-    min-w-0
-    overflow-hidden
-    bg-[#FFF4DF]
-    sm:min-h-[460px]
-    lg:min-h-[600px]
-  "
->
-  <img
-    src={careWithDignity}
-    alt="Care with dignity at Nightingales Medical Trust"
-    loading="lazy"
-    decoding="async"
-    className="
-      relative
-      block
-      h-auto
-      min-h-0
-      w-full
-      object-contain
-      object-center
-
-      lg:absolute
-      lg:inset-0
-      lg:h-full
-      lg:w-full
-      lg:object-cover
-    "
-  />
-
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      bg-gradient-to-t
-      from-[#17232B]/45
-      via-transparent
-      to-transparent
-    "
-  />
-
-  <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7">
-    <div className="inline-flex items-center border border-white/30 bg-[#17232B]/75 px-4 py-2 backdrop-blur-sm">
-      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white sm:text-xs">
-        Care with dignity
-      </span>
-    </div>
-  </div>
-</div>
-
-              {/* CONTENT */}
-              <div className="flex flex-col justify-center lg:py-5">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
-                  Why Choose Nightingales Medical Trust?
-                </p>
-
-                <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight tracking-[-0.025em] text-[#263746] sm:text-3xl lg:text-[36px]">
-                  Care with dignity
-                </h3>
-
-                <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                  We believe that a diagnosis of dementia should never take away
-                  a person's dignity, identity or right to be treated with respect.
-                </p>
-
-                <div className="mt-7 border-t border-[#263746]/10">
-                  {[
-                    [
-                      "Almost three decades of experience in age-care",
-                      "Since 1998, NMT has been dedicated to improving the lives of elders and developing innovative solutions for dementia care.",
-                    ],
-                    [
-                      "Comprehensive dementia-care ecosystem",
-                      "From risk reduction and Memory Clinics to Day Care, Residential Care, Family Support and Caregiver Training, our services cover changing needs.",
-                    ],
-                    [
-                      "Person-centred care",
-                      "Every person with dementia is unique. We focus on each individual's abilities, preferences, life history, interests and changing needs - not merely the diagnosis.",
-                    ],
-                    [
-                      "Multidisciplinary expertise",
-                      "Our dementia-care teams bring together doctors, psychiatrists, psychologists, nurses, physiotherapists and specially trained caregivers to provide holistic care.",
-                    ],
-                    [
-                      "Dementia-friendly environments",
-                      "Our centres are designed for safety, familiarity, comfort and meaningful engagement while avoiding unnecessary restrictions.",
-                    ],
-                    [
-                      "Emphasis on non-pharmacological care",
-                      "Activities, Cognitive stimulation, physical exercise, psychosocial interventions and meaningful engagement and other non-pharmacological approaches from an important part of our dementia-care philosophy.",
-                    ],
-                    [
-                      "Supporting the whole family",
-                      "Dementia affects the entire family. We equip caregivers with knowledge, practical skills and emotional support so they can make informed decisions and provide better care.",
-                    ],
-                  ].map(([heading, body], index) => (
-                    <div
-                      key={heading}
-                      className="group border-b border-[#263746]/10 py-4 sm:py-5"
-                    >
-                      <div className="flex gap-4">
-                        <span className="mt-0.5 shrink-0 font-display text-sm font-extrabold text-[#ED6439]/70">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <div className="min-w-0">
-                          <h4 className="font-display text-[15px] font-extrabold leading-snug text-[#263746] transition-colors duration-300 group-hover:text-[#ED6439] sm:text-base">
-                            {heading}
-                          </h4>
-
-                          <p className="mt-1.5 max-w-2xl text-[13px] leading-[1.7] text-muted-foreground sm:text-[13.5px]">
-                            {body}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
           {/* DEMENTIA PROGRAMMES */}
           <div className="space-y-8 sm:space-y-10">
 
@@ -1673,11 +1470,11 @@ function ServicesPage() {
                       </p>
                     </div>
 
-                    <h3 className="max-w-2xl font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl lg:text-[34px]">
-                      Online Dementia Risk Reduction Programm
+                    <h3 className="max-w-2xl font-display text-2xl font-extrabold leading-tight text-[#ED6439] sm:text-3xl lg:text-[34px]">
+                      1. Online Dementia Risk Reduction Programme
                     </h3>
 
-                    <p className="mt-4 text-base font-bold leading-relaxed text-[#263746]">
+                    <p className="mt-4 text-lg font-bold leading-relaxed text-[#263746] sm:text-xl">
                       Take Action Today for a Healthier Brain Tomorrow
                     </p>
 
@@ -1694,7 +1491,9 @@ function ServicesPage() {
                       <p>
                         NMT's Online Dementia Risk Reduction Programme enables
                         individuals to take practical steps towards healthier
-                        ageing, conveniently from home.
+                        ageing, <strong className="font-black text-black">
+  conveniently from home.
+</strong>
                       </p>
                     </div>
 
@@ -1732,47 +1531,55 @@ function ServicesPage() {
                         information.
                       </p>
 
-                    <div>
-  <p className="mb-4 text-sm font-bold text-[#263746]">
-    Who can benefit?
-  </p>
+                      <div>
+                       <p className="mb-4 text-xl font-bold text-[#263746] sm:text-2xl">
+  Who can benefit?
+</p>
 
-  <p className="mb-4 text-[13.5px] leading-[1.6] text-muted-foreground sm:text-[15px]">
-    The programme is particularly suitable for:
-  </p>
+                        <p className="mb-4 text-[13.5px] leading-[1.6] text-muted-foreground sm:text-[15px]">
+                          The programme is particularly suitable for:
+                        </p>
 
-  <ul className="space-y-2.5">
-    {[
-      "Adults concerned about their memory or future dementia risk",
-      "People with a family history of dementia",
-      "Older persons who want to maintain cognitive and physical health",
-      "Individuals looking to adopt healthier ageing habits",
-      "People with subjective memory concerns who want to take proactive steps",
-      "Families looking for evidence-informed ways to support brain health",
-    ].map((item) => (
-      <li
-        key={item}
-        className="flex items-start gap-3 text-[13.5px] leading-[1.6] text-muted-foreground sm:text-[15px]"
-      >
-        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-        <span>{item}</span>
-      </li>
-    ))}
-  </ul>
+                        <ul className="space-y-2.5">
+                          {[
+                            "Adults concerned about their memory or future dementia risk",
+                            "People with a family history of dementia",
+                            "Older persons who want to maintain cognitive and physical health",
+                            "Individuals looking to adopt healthier ageing habits",
+                            "People with subjective memory concerns who want to take proactive steps",
+                            "Families looking for evidence-informed ways to support brain health",
+                          ].map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-3 text-[13.5px] leading-[1.6] text-muted-foreground sm:text-[15px]"
+                            >
+                              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
 
-  <p className="mt-5 text-[14px] font-semibold leading-[1.7] text-[#263746] sm:text-[15px]">
-    Start caring for your brain health today.
-  </p>
-</div>
+                        <p className="mt-5 text-base font-bold leading-[1.7] text-[#263746] sm:text-lg">
+                          Start caring for your brain health today.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="mt-8">
-                      <button
-                        type="button"
-                        className="inline-flex items-center justify-center bg-[#ED6439] px-6 py-3 text-xs font-bold tracking-[0.12em] text-white transition-all duration-300 hover:bg-[#d95730] hover:shadow-lg"
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      <a
+                        href="tel:08042426565"
+                        className="inline-flex items-center justify-center gap-2 bg-[#ED6439] px-6 py-3 text-xs font-bold tracking-[0.12em] text-white transition-all duration-300 hover:bg-[#d95730] hover:shadow-lg"
                       >
-                        JOIN THE PROGRAMME
-                      </button>
+                        <PhoneCall className="h-4 w-4" />
+                        JOIN THE PROGRAMME (CALL 080 - 4242 6565)
+                      </a>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center justify-center gap-2 border border-[#ED6439]/30 bg-white px-6 py-3 text-xs font-bold tracking-[0.12em] text-[#ED6439] transition-all duration-300 hover:bg-[#FFF4DF]"
+                      >
+                        ENQUIRE ONLINE
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Link>
                     </div>
                   </div>
 
@@ -1800,7 +1607,7 @@ function ServicesPage() {
             {/* 2. MEMORY CLINICS */}
             <Reveal>
               <div className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
-                <div className="grid lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+                <div className="grid lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
 
                   <div className="relative min-h-[340px] overflow-hidden bg-[#F6F1EC] sm:min-h-[460px] lg:min-h-full">
                     <img
@@ -1813,11 +1620,11 @@ function ServicesPage() {
                   </div>
 
                   <div className="p-5 sm:p-7 md:p-9">
-                    <h4 className="font-display text-xl font-extrabold text-[#263746] sm:text-2xl">
+                    <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
                       2. Memory Clinics
                     </h4>
 
-                    <p className="mt-2 font-semibold text-[#ED6439]">
+                    <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
                       Early Assessment. Early Understanding. Better Planning.
                     </p>
 
@@ -1831,67 +1638,44 @@ function ServicesPage() {
                       NMT operates Memory Clinics at Bengaluru and Kolar:
                     </p>
 
-                  <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground">
-  <li>
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
-    >
-      Jayanagar
-      <ArrowUpRight className="h-3.5 w-3.5" />
-    </a>
-  </li>
+                    <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground">
+                      <li>
+                        <a
+                          href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
+                        >
+                          Bengaluru – Jayanagar
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      </li>
 
-  <li>
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+No.+337,+2nd+Cross+Rd,+1st+Block,+RT+Nagar,+Bengaluru"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
-    >
-      RT Nagar
-      <ArrowUpRight className="h-3.5 w-3.5" />
-    </a>
-  </li>
+                      <li>
+                        <a
+                          href="https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
+                        >
+                          Bengaluru – Kasturinagar
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
 
-  <li>
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
-    >
-      Kasturinagar
-      <ArrowUpRight className="h-3.5 w-3.5" />
-    </a>
-  </li>
+                      </li>
 
-  <li>
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+-+Tanya+Mathias+Elder+Care+Centre,+Sonam+Layout,+Dodda+Gubbi+Road,+Kothanur,+Bengaluru"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
-    >
-      Kothanur
-      <ArrowUpRight className="h-3.5 w-3.5" />
-    </a>
-  </li>
-
-  <li>
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
-    >
-      Kolar
-      <ArrowUpRight className="h-3.5 w-3.5" />
-    </a>
-  </li>
-</ul>
+                      <li>
+                        <a
+                          href="https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
+                        >
+                          Kolar – ETCM Hospital
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      </li>
+                    </ul>
 
                     <p className="mt-5 font-semibold text-[#263746]">
                       Our Memory Clinics offer:
@@ -1907,7 +1691,7 @@ function ServicesPage() {
                       <li>Care planning and referral to appropriate NMT services</li>
                     </ul>
 
-                    <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                    <p className="mt-5 text-[14px] leading-[1.8] font-bold text-[#263746] sm:text-[15px]">
                       Our goal is not simply to provide a diagnosis. We help families
                       understand what is happening and what they can do next.
                     </p>
@@ -1931,20 +1715,21 @@ function ServicesPage() {
                 <div className="grid lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
 
                   <div className="p-5 sm:p-7 md:p-9 lg:order-1">
-                    <h4 className="font-display text-xl font-extrabold text-[#263746] sm:text-2xl">
+                    <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
                       3. Dementia Day Care
                     </h4>
 
-                    <p className="mt-2 font-semibold text-[#ED6439]">
+                    <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
                       Professional Care During the Day. Peace of Mind and Respite for the Family.
                     </p>
 
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       Caring for a person with dementia at home can be challenging,
                       particularly when family members have work and other responsibilities.
-                      NMT's Dementia Day Care Centres provide a safe, stimulating and
-                      supportive environment during the day, while enabling the person to
-                      continue living with their family.
+                      NMT's Dementia Day Care Centres provide a <strong className="font-bold text-[#263746]">
+  safe, stimulating and supportive environment during the day, while enabling the person to
+  continue living with their family.
+</strong>
                     </p>
 
                     <p className="mt-5 font-semibold text-[#263746]">
@@ -1957,9 +1742,10 @@ function ServicesPage() {
                           href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+190+Rashtriya+Vidyalaya+Road,+2nd+Block,+Jayanagar,+Bengaluru,+Karnataka+560004"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="transition-colors hover:text-[#ED6439] hover:underline"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
                         >
                           Jayanagar
+                          <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                       </li>
 
@@ -1968,9 +1754,10 @@ function ServicesPage() {
                           href="https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+337+2nd+Cross,+1st+Block,+RT+Nagar,+Bengaluru,+Karnataka+560032"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="transition-colors hover:text-[#ED6439] hover:underline"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
                         >
                           RT Nagar
+                          <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                       </li>
 
@@ -1979,9 +1766,10 @@ function ServicesPage() {
                           href="https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru,+Karnataka+560043"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="transition-colors hover:text-[#ED6439] hover:underline"
+                          className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED6439] hover:underline"
                         >
                           Kasturinagar
+                          <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                       </li>
                     </ul>
@@ -2002,11 +1790,12 @@ function ServicesPage() {
                     </ul>
 
                     <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                      For families, it means:- <br />
-                      Professional care for your loved one —
-                      and much-needed respite for you.
+                      For families, it means: <br />
+                      <strong className="font-bold text-[#263746]">
+  Professional care for your loved one — and much-needed respite for you.
+</strong>
                     </p>
-                    <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                    <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       Day care can also help families provide structured support while enabling the person to continue living at home for as long as possible.
                     </p>
 
@@ -2062,93 +1851,114 @@ function ServicesPage() {
 
     {/* SECTION INTRO */}
     <div className="max-w-4xl min-w-0">
-      <h4 className="font-display text-xl font-extrabold text-[#263746] sm:text-2xl">
+      <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
         4. Specialised Residential Dementia Care
       </h4>
 
-      <p className="mt-2 font-semibold text-[#ED6439]">
+      <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
         When Your Loved One Needs Care Around the Clock, We Are There.
       </p>
 
       <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
         As dementia progresses, providing safe and continuous care at home
         can become increasingly difficult. NMT offers specialised residential
-        dementia-care facilities providing 24-hour supervision, professional
-        care, medical support and a secure, nurturing environment.
+        dementia-care facilities providing <strong className="font-bold text-[#263746]">
+  24-hour supervision, professional care, medical support and a secure, nurturing environment.
+</strong>
       </p>
     </div>
 
     {/* ==================================================
         RESIDENTIAL CARE CENTRES
         ================================================== */}
-    <div className="mt-7 grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-7 flex min-w-0 gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
 
       {[
         {
           name: "Nightingales Centre for Ageing and Alzheimer's – Kasturinagar",
-          image: { src: kasturinagarImage },
-          body: "Our 96-bed facility, established in 2010, provides specialised dementia care in an elder-friendly environment. A multidisciplinary team comprising psychiatrists, doctors, psychologists, physiotherapists, nurses and specially trained caregivers provides round-the-clock care. The facility also has a step-down ward to manage chronic and minor medical conditions, helping minimise avoidable hospitalisation. Located within city limits. Registered under the Mental Healthcare Act and follows applicable regulatory and patient-rights requirements.",
+          location: "Kasturinagar, Bengaluru",
+          images: [kasturinagarFacilityImage, kasturinagarElderImage],
+          usps: [
+            "Multi-disciplinary team of doctors, psychiatrists, psychologists & nurses",
+            "Conveniently located within city limits",
+            "Registered under the Mental Healthcare Act, 2017",
+          ],
+          body: "Our 97-bed facility, established in 2010, provides specialised dementia care in an elder-friendly environment. A multidisciplinary team comprising psychiatrists, doctors, psychologists, physiotherapists, nurses and specially trained caregivers provides round-the-clock care. The facility also has a step-down ward to manage chronic and minor medical conditions, helping minimise avoidable hospitalisation.",
         },
         {
           name: "ETCM Nightingales Dementia Care Centre – Kolar",
-          image: { src: kolarImage },
-          body: "A 50-bed facility located within a missionary hospital campus, providing access to round-the-clock medical support. The centre offers specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care, a safe elder-friendly environment and telemedicine-supported clinical oversight from NMT's specialist team. Located approximately an hour from KR Puram, Bengaluru, it offers a more affordable residential-care option without compromising on professional care. Registered under the Mental Healthcare Act, 2017 and follows applicable regulatory and patient-rights requirements.",
+          location: "Bangarpet Road, Kolar",
+          images: [kolarFacilityImage, kolarElderImage],
+          usps: [
+            "Affordable residential care option",
+            "An hour from KR Puram, Bengaluru",
+            "Registered under the Mental Healthcare Act, 2017",
+          ],
+          body: "A 50-bed facility located within a missionary hospital campus, providing access to round-the-clock medical support. The centre offers specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care, a safe elder-friendly environment and telemedicine-supported clinical oversight from NMT's specialist team.",
         },
         {
           name: "Nightingales Trust Tanya Mathias Centre – Kothanur",
-          image: { src: kothanurImage },
-          body: "A 25-bed residential facility exclusively for women. The centre offers a peaceful, homely environment, two- and three-sharing rooms, specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care and clinical oversight from NMT's specialist team through telemedicine. Registered under the Mental Healthcare Act, 2017 and follows applicable regulatory and patient-rights requirements.",
+          location: "Kothanur, Bengaluru",
+          images: [kothanurFacilityImage, kothanurElderImage],
+          usps: [
+            "Exclusive for women",
+            "Peaceful, homely environment",
+            "Registered under the Mental Healthcare Act, 2017",
+          ],
+          body: "A 25-bed residential facility exclusively for women. The centre offers a peaceful, homely environment, two- and three-sharing rooms, specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care and clinical oversight from NMT's specialist team through telemedicine.",
         },
       ].map((centre) => (
-        <article
-          key={centre.name}
-          className="
-            flex
-            min-w-0
-            w-full
-            flex-col
-            overflow-hidden
-            border
-            border-[#ED6439]/15
-            bg-white
-            shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-          "
-        >
+  <article
+  key={centre.name}
+  className="
+  !flex
+  !w-full
+  !min-w-full
+  !max-w-full
+  !shrink-0
+  !grow-0
+  snap-start
+  flex-col
+  overflow-hidden
+  rounded-2xl
+  border
+  border-[#ED6439]/15
+  bg-white
+  shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+
+  sm:!w-[calc(50%-10px)]
+  sm:!min-w-[calc(50%-10px)]
+  sm:!max-w-[calc(50%-10px)]
+
+  lg:!w-[calc(33.333%-13.333px)]
+  lg:!min-w-[calc(33.333%-13.333px)]
+  lg:!max-w-[calc(33.333%-13.333px)]
+"
+      >
 
           {/* ==================================================
-              RESPONSIVE CARD IMAGE
+              RESPONSIVE CARD IMAGE WITH LOCATION BADGE & SHUFFLE
               ================================================== */}
           <div
             className="
               relative
               w-full
-              aspect-[334/211]
-              min-h-0
+              h-64
+              sm:h-72
               overflow-hidden
               bg-[#F6F1EC]
             "
           >
-            <img
-              src={centre.image.src}
-              alt={centre.name}
-              loading="lazy"
-              decoding="async"
-              className="
-                absolute
-                inset-0
-                block
-                h-full
-                w-full
-                object-cover
-                object-center
-              "
-            />
+            <ImageShuffle images={centre.images} alt={centre.name} />
+            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#E15925]/90 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
+              📍 {centre.location}
+            </div>
           </div>
 
           {/* ==================================================
               CARD CONTENT
               ================================================== */}
-          <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
+          <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
 
             <h5
               className="
@@ -2162,6 +1972,15 @@ function ServicesPage() {
             >
               {centre.name}
             </h5>
+
+            <ul className="mt-3 space-y-1.5 border-y border-[#263746]/10 py-3 text-xs font-semibold text-[#ED6439]">
+              {centre.usps.map((usp) => (
+                <li key={usp} className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <span>{usp}</span>
+                </li>
+              ))}
+            </ul>
 
             <p
               className="
@@ -2196,11 +2015,11 @@ function ServicesPage() {
         sm:p-7
       "
     >
-      <h5 className="font-display text-lg font-extrabold text-[#263746] sm:text-xl">
+      <h5 className="font-display text-lg font-extrabold text-[#ED6439] sm:text-xl">
         Our residential-care philosophy
       </h5>
 
-      <p className="mt-3 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+      <p className="mt-3 text-[15px] font-bold text-[#263746]">
         Residential care should never mean simply providing accommodation.
       </p>
       <p className="mt-3 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
@@ -2267,49 +2086,75 @@ function ServicesPage() {
 </div>
 
                 <div>
-                  <p className="font-semibold text-[#263746]">
-                    Because Knowledge Changes the Way We Care.
+                  <p className="text-base font-bold text-[#263746] sm:text-lg">
+                    Knowledge Changes the Way We Care.
                   </p>
 
-                  <p>
+                  <p className="mt-3 text-[14px] leading-[1.75] text-muted-foreground">
                     Dementia caregiving requires more than good intentions. Families need
                     practical knowledge and skills to understand the condition, communicate
                     effectively and respond appropriately to changing needs.
                   </p>
 
-                  <p>
-                    NMT provides structured dementia-care training for family members,
-                    caregivers and professionals.
+                  <p className="mt-3 text-[14px] leading-[1.75] text-muted-foreground">
+                    NMT's family caregiver training helps families provide safer and more meaningful care.
+                    Training focuses on practical knowledge, communication, person-centred care and caregiver well-being.
                   </p>
 
-                  <p>Training covers:</p>
+                  <p className="mt-4 font-semibold text-[#263746]">
+                    The training covers areas such as:
+                  </p>
 
-                  <ul className="space-y-2.5">
-                    <li>Understanding dementia</li>
-                    <li>Communication with a person with dementia</li>
-                    <li>Managing behavioural changes</li>
-                    <li>Personal care</li>
-                    <li>Nutrition and hydration</li>
-                    <li>Mobility and exercise</li>
-                    <li>Prevention of falls</li>
-                    <li>Medication and medical care</li>
-                    <li>Meaningful activities</li>
-                    <li>Emotional support</li>
-                    <li>Palliative and end-of-life considerations</li>
-                    <li>Caregiver self-care and stress management</li>
+                  <ul className="mt-3 space-y-2 text-[13.5px] leading-[1.6] text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Understanding dementia and stages of cognitive changes</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Communication with a person living with dementia</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Managing behavioural and psychological changes with empathy</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Assistance with personal care and daily routines</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Nutrition, hydration and swallowing safety</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Mobility support and fall prevention in the home</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Medication management and coordinating medical care</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Meaningful activities and cognitive stimulation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Emotional support and caregiver stress management / self-care</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>Palliative care considerations and long-term planning</span>
+                    </li>
                   </ul>
 
-                  <p>
-                    Our training combines theory with practical, hands-on learning, helping
-                    caregivers become more confident and competent.
+                  <p className="mt-4 text-[13.5px] leading-[1.7] text-muted-foreground">
+                    Our training combines classroom learning with practical, hands-on guidance, helping
+                    caregivers become confident and competent.
                   </p>
 
-                  <p className="font-semibold text-[#263746]">
-                    Our aim
-                  </p>
-
-                  <p>
-                    To make dementia caregiving safer, more informed and more humane.
+                  <p className="mt-4 font-bold text-[#ED6439]">
+                    Our aim: To make dementia caregiving safer, more informed and more humane.
                   </p>
                 </div>
               </div>
@@ -2324,12 +2169,12 @@ function ServicesPage() {
                     <div className="flex items-center gap-3">
                       <HeartHandshake className="h-7 w-7 text-[#ED6439]" />
 
-                      <h4 className="font-display text-xl font-extrabold text-[#263746] sm:text-2xl">
+                      <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
                         6. Dementia Family Support Groups
                       </h4>
                     </div>
 
-                    <p className="mt-5 font-semibold text-[#263746]">
+                    <p className="mt-5 text-lg font-bold text-[#263746] sm:text-xl">
                       You Need Support Too.
                     </p>
 
@@ -2337,18 +2182,25 @@ function ServicesPage() {
                       Dementia can be isolating not only for the person living with the condition, but also for the family caregiver.
                     </p>
 
-                    <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                    <p className="mt-4 text-[14px] leading-[1.8] font-bold text-[#263746] sm:text-[15px]">
                       NMT's support groups provide families with an opportunity to:
                     </p>
 
                     <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground sm:text-[15px]">
-                      <li>Share experiences with others going through similar situations</li>
-                      <li>Learn from dementia-care professionals</li>
-                      <li>Discuss practical caregiving challenges</li>
-                      <li>Understand behavioural and psychological changes</li>
-                      <li>Learn coping strategies</li>
-                      <li>Exchange useful resources and experiences</li>
-                      <li>Find reassurance and emotional support</li>
+                      {[
+                        "Share experiences with others going through similar situations",
+                        "Learn from dementia-care professionals",
+                        "Discuss practical caregiving challenges",
+                        "Understand behavioural and psychological changes",
+                        "Learn coping strategies",
+                        "Exchange useful resources and experiences",
+                        "Find reassurance and emotional support",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5">
+                          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
                     </ul>
 
                     <p className="mt-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
@@ -2393,49 +2245,75 @@ function ServicesPage() {
                     />
                   </div>
 
-                  <div className="p-5 sm:p-7 md:p-9">
-                    <h4 className="font-display text-xl font-extrabold text-[#263746] sm:text-2xl">
+                  <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
+                    <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
                       7. Nightingales Smriti Gram
                     </h4>
 
-                    <p className="mt-2 font-semibold text-[#ED6439]">
+                    <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
                       A New Vision for Dementia Care in India
                     </p>
 
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                      Since 2006, NMT has been pioneering professional and compassionate dementia-care services. With two decades of experience, we have developed a comprehensive continuum of dementia care — from dementia risk reduction and early assessment to day care, residential care, caregiver training and family support.
-                      Building on nearly three decades of experience, NMT is creating Nightingales Smriti Gram — Dementia Care, Learning & Research, near Doddaballapur, Bengaluru Rural District.
+                      Since 2006, NMT has been pioneering professional and compassionate dementia-care services. With nearly three decades of experience, we have developed a comprehensive continuum of dementia care — from dementia risk reduction and early assessment to day care, residential care, caregiver training and family support.
                     </p>
 
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                      Building on nearly three decades of experience, NMT is creating <strong className="font-black text-[#263746]">
+  Nightingales Smriti Gram — Dementia Care, Learning & Research, near Doddaballapur, Bengaluru Rural District.
+</strong>
+                    </p>
+
+                    <p className="mt-4 text-[14px] leading-[1.8] font-bold text-[#263746] sm:text-[15px]">
                       Envisioned as a landmark integrated dementia-care village, Smriti Gram will bring together:
                     </p>
 
                     <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground">
-                      <li>Person-centred dementia care</li>
-                      <li>Nature-enriched living</li>
-                      <li>Therapeutic outdoor spaces</li>
-                      <li>Meaningful activities</li>
-                      <li>Alternative and complementary therapies alongside modern medical care</li>
-                      <li>Training and capacity building</li>
-                      <li>Research and innovation</li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Person-centred dementia care</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Nature-enriched living</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Therapeutic outdoor spaces</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Meaningful activities</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Alternative and complementary therapies alongside modern medical care</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Training and capacity building</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                        <span>Research and innovation</span>
+                      </li>
                     </ul>
 
                     <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                       The planned campus will ultimately provide 300 beds, creating a new benchmark for dementia care in India. The first phase includes a 100-bed facility for elders from economically marginalised communities, along with a Training Academy.
                     </p>
 
-                    <p className="mt-4 font-semibold text-[#263746]">
+                    <p className="mt-4 font-bold text-[#263746]">
                       Smriti Gram represents NMT's commitment to:
                     </p>
 
-                    <p className="mt-4 font-semibold text-[#263746]">
+                    <p className="mt-1 font-semibold text-[#ED6439]">
                       Making quality dementia care accessible, compassionate and innovative.
                     </p>
 
                     <Link
-                      to="/contact"
-                      className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+                      to="/smriti-gram"
+                      className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] transition-all duration-300 hover:gap-3 sm:text-[13px]"
                     >
                       LEARN MORE ABOUT NIGHTINGALES SMRITI GRAM
                       <ArrowUpRight className="h-4 w-4" />
@@ -2482,6 +2360,118 @@ function ServicesPage() {
             </div>
           </Reveal>
 
+          {/* WHY CHOOSE NMT */}
+          <Reveal>
+            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+
+              {/* PORTRAIT IMAGE */}
+              <div
+                className="
+                  relative
+                  min-w-0
+                  overflow-hidden
+                  bg-[#FFF4DF]
+                  sm:min-h-[460px]
+                  lg:min-h-[600px]
+                "
+              >
+                <img
+                  src={careWithDignity}
+                  alt="Compassionate care at Nightingales Medical Trust"
+                  loading="lazy"
+                  decoding="async"
+                  className="
+                    relative
+                    block
+                    h-auto
+                    min-h-0
+                    w-full
+                    object-contain
+                    object-center
+
+                    lg:absolute
+                    lg:inset-0
+                    lg:h-full
+                    lg:w-full
+                    lg:object-cover
+                  "
+                />
+
+
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex flex-col justify-center lg:py-5">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+                  Why Choose Nightingales Medical Trust?
+                </p>
+
+                <h3 className="mt-3 max-w-xl font-display text-2xl font-extrabold leading-tight tracking-[-0.025em] text-[#263746] sm:text-3xl lg:text-[36px]">
+                  Compassionate, Professional Care
+                </h3>
+
+                <p className="mt-4 max-w-2xl text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                  We believe that a diagnosis of dementia should never take away
+                  a person's dignity, identity or right to be treated with respect.
+                </p>
+
+                <div className="mt-7 border-t border-[#263746]/10">
+                  {[
+                    [
+                      "Nearly three decades of experience in age-care",
+                      "Since 1998, NMT has been dedicated to improving the lives of elders and developing innovative solutions for dementia care.",
+                    ],
+                    [
+                      "Comprehensive dementia-care ecosystem",
+                      "From risk reduction and Memory Clinics to Day Care, Residential Care, Family Support and Caregiver Training, our services cover changing needs.",
+                    ],
+                    [
+                      "Person-centred care",
+                      "Every person with dementia is unique. We focus on each individual's abilities, preferences, life history, interests and changing needs - not merely the diagnosis.",
+                    ],
+                    [
+                      "Multidisciplinary expertise",
+                      "Our dementia-care teams bring together doctors, psychiatrists, psychologists, nurses, physiotherapists and specially trained caregivers to provide holistic care.",
+                    ],
+                    [
+                      "Dementia-friendly environments",
+                      "Our centres are designed for safety, familiarity, comfort and meaningful engagement while avoiding unnecessary restrictions.",
+                    ],
+                    [
+                      "Emphasis on non-pharmacological care",
+                      "Activities, cognitive stimulation, physical exercise, psychosocial interventions, meaningful engagement and other non-pharmacological approaches form an important part of our dementia-care philosophy.",
+                    ],
+                    [
+                      "Supporting the whole family",
+                      "Dementia affects the entire family. We equip caregivers with knowledge, practical skills and emotional support so they can make informed decisions and provide better care.",
+                    ],
+                  ].map(([heading, body], index) => (
+                    <div
+                      key={heading}
+                      className="group border-b border-[#263746]/10 py-4 sm:py-5"
+                    >
+                      <div className="flex gap-4">
+                        <span className="mt-0.5 shrink-0 font-display text-sm font-extrabold text-[#ED6439]/70">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+
+                        <div className="min-w-0">
+                          <h4 className="font-display text-[15px] font-extrabold leading-snug text-[#263746] transition-colors duration-300 group-hover:text-[#ED6439] sm:text-base">
+                            {heading}
+                          </h4>
+
+                          <p className="mt-1.5 max-w-2xl text-[13px] leading-[1.7] text-muted-foreground sm:text-[13.5px]">
+                            {body}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
           {/* WHEN TO SEEK HELP */}
           <Reveal>
             <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr]">
@@ -2496,6 +2486,9 @@ function ServicesPage() {
 
                 <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
                   Early assessment can help families understand the condition and plan care better.
+                </p>
+                <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+                  Consider seeking professional advice if your loved one is experiencing:
                 </p>
               </div>
 
@@ -2526,11 +2519,11 @@ function ServicesPage() {
 
           {/* FINAL DEMENTIA CTA */}
           <Reveal>
-            <div className="relative overflow-hidden bg-[#17232B] px-5 py-8 text-white sm:px-8 sm:py-10 md:px-10">
+            <div className="relative overflow-hidden bg-[#E15925] px-5 py-8 text-white sm:px-8 sm:py-10 md:px-10">
               <div className="absolute -left-20 -top-20 h-56 w-56 rounded-full bg-[#ED6439]/20 blur-3xl" />
 
               <div className="relative">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-white sm:text-sm">
                   You Don't Have to Do This Alone
                 </p>
 
@@ -2572,13 +2565,13 @@ function ServicesPage() {
         </div>
       </Section>
   {/* ======================================================
-    CARE FOR MARGINALISED ELDERS & SOCIAL INTEGRATION
+    CARE FOR MARGINALIZED ELDERS
     ====================================================== */}
 
 <Section
   id="marginalized"
   eyebrow=""
-  title="CARE FOR MARGINALISED ELDERS & SOCIAL INTEGRATION"
+  title="CARE FOR MARGINALIZED ELDERS"
 >
   <Reveal className="w-full min-w-0">
   <div className="w-full">
@@ -2671,26 +2664,7 @@ function ServicesPage() {
     "
   />
 
-  {/* Image label */}
-  <div
-    className="
-      absolute
-      bottom-5
-      left-5
-      bg-[#ED6439]
-      px-5
-      py-2.5
-      text-[10px]
-      font-bold
-      uppercase
-      tracking-[0.12em]
-      text-white
-      shadow-lg
-      sm:text-[11px]
-    "
-  >
-    SANDHYA SURAKSHA
-  </div>
+
 </div>
 
       {/* ==================================================
@@ -2730,7 +2704,7 @@ function ServicesPage() {
             font-display
             text-xl
             font-extrabold
-            text-[#263746]
+            text-[#ED6439]
             sm:text-2xl
           "
         >
@@ -2752,30 +2726,43 @@ function ServicesPage() {
           "
         >
           <p>
-            Sandhya Suraksha is a model home for homeless elderly women in
-            Bengaluru. It was established in association with the Methodist
+            Sandhya Suraksha is a model home for{" "}
+            <strong className="font-semibold text-foreground">
+              homeless elderly women
+            </strong>{" "}
+            in Bengaluru. It was established in association with the Methodist
             Church of India. Located in an attractive ambience, this centre
-            provides residential care and support for vulnerable and
-            destitute older persons irrespective of caste, creed or religion
+            provides{" "}
+            <strong className="font-semibold text-foreground">
+              residential care and support for vulnerable and destitute older
+              persons irrespective of caste, creed or religion
+            </strong>{" "}
             who have limited or no family support.
           </p>
 
           <p className="mt-4">
-            Equipped with 95 beds, this senior friendly home provides a safe
-            and caring environment where residents receive:
+            <strong className="font-semibold text-foreground">
+              Equipped with 95 beds
+            </strong>
+            , this senior friendly home provides a safe and caring environment
+            where residents receive:
           </p>
 
           <ul className="mt-4 space-y-2.5">
-            <li>Accommodation and nutritious food</li>
-            <li>Healthcare support</li>
-            <li>Personal care</li>
-            <li>Emotional and psychosocial support</li>
-            <li>Recreational and social activities</li>
-            <li>Opportunities for meaningful engagement</li>
-            <li>
-              Assistance in accessing government entitlements and other
-              services
-            </li>
+            {[
+              "Accommodation and nutritious food",
+              "Healthcare support",
+              "Personal care",
+              "Emotional and psychosocial support",
+              "Recreational and social activities",
+              "Opportunities for meaningful engagement",
+              "Assistance in accessing government entitlements and other services",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -2791,9 +2778,15 @@ function ServicesPage() {
               list-none
               items-center
               gap-2
+              border-0
+              bg-transparent
               text-[12px]
               font-bold
               text-[#ED6439]
+              outline-none
+              focus:outline-none
+              focus-visible:outline-none
+              select-none
               sm:text-[13px]
             "
           >
@@ -2868,16 +2861,18 @@ function ServicesPage() {
             </p>
 
             {/* VOLUNTEER */}
-            <div
-              className="
-                mt-6
-                border-t
-                border-[#ED6439]/15
-                pt-5
-                sm:mt-7
-                sm:pt-6
-              "
-            >
+          <div
+  id="volunteer"
+  className="
+    mt-6
+    border-t
+    border-[#ED6439]/15
+    pt-5
+    sm:mt-7
+    sm:pt-6
+    scroll-mt-24
+  "
+>
               <h4
                 className="
                   font-display
@@ -2905,7 +2900,7 @@ function ServicesPage() {
               </p>
 
               <Link
-                to="/contact"
+                to="/get-involved"
                 className="
                   mt-4
                   inline-flex
@@ -2958,8 +2953,8 @@ function ServicesPage() {
                 medical camps for elders here.
               </p>
 
-              <Link
-                to="/contact"
+              {/* <Link
+                to="/get-involved"
                 className="
                   mt-4
                   inline-flex
@@ -2973,7 +2968,7 @@ function ServicesPage() {
               >
                 READ MORE
                 <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              </Link> */}
             </div>
 
             {/* CONTACT */}
@@ -3065,26 +3060,7 @@ function ServicesPage() {
           "
         />
 
-        {/* IMAGE LABEL */}
-        <div
-          className="
-            absolute
-            bottom-5
-            left-5
-            bg-[#ED6439]
-            px-5
-            py-2.5
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-            text-white
-            shadow-lg
-            sm:text-[11px]
-          "
-        >
-          SANDHYA KIRANA
-        </div>
+
       </div>
 
 
@@ -3134,7 +3110,7 @@ function ServicesPage() {
             font-display
             text-xl
             font-extrabold
-            text-[#263746]
+            text-[#ED6439]
             sm:text-2xl
           "
         >
@@ -3162,8 +3138,19 @@ function ServicesPage() {
             Sandhya Kirana provides day care to economically disadvantaged
             and socially vulnerable older persons, particularly those living
             in underserved communities. It's an initiative of Nightingales
-            Medical Trust in collaboration with the Bruhat Bengaluru
-            Mahanagara Palika (City Corporation).
+            Medical Trust in{" "}
+            <strong className="font-semibold text-foreground">
+              collaboration with the Bruhat Bengaluru Mahanagara Palika (City
+              Corporation)
+            </strong>
+            .
+          </p>
+
+          <p className="mt-4">
+            <strong className="font-semibold text-foreground">
+              Sandhya Kirana Home provides safe shelter and take care of Homeless
+              Elderly Men irrespective of caste, creed or religion.
+            </strong>
           </p>
 
           <p className="mt-4">
@@ -3177,288 +3164,260 @@ function ServicesPage() {
 
 
         {/* ==================================================
-    SUPPORT INCLUDES — ALWAYS VISIBLE
-    ================================================== */}
+            SUPPORT INCLUDES — ALL IN ONE PLACE
+            ================================================== */}
 
-<div className="mt-6">
+        <div className="mt-6">
 
-  <h4
-    className="
-      font-display
-      text-lg
-      font-extrabold
-      text-[#263746]
-      sm:text-xl
-    "
-  >
-    Support includes:
-  </h4>
+          <h4
+            className="
+              font-display
+              text-lg
+              font-extrabold
+              text-[#263746]
+              sm:text-xl
+            "
+          >
+            Support includes:
+          </h4>
 
-  <ul
-    className="
-      mt-5
-      space-y-3
-      text-[14px]
-      leading-[1.7]
-      text-muted-foreground
-      sm:text-[15px]
-    "
-  >
-    {/* ALWAYS VISIBLE */}
-    <li>Health and geriatric care</li>
-    <li>Nutrition support</li>
-  </ul>
+          <ul
+            className="
+              mt-4
+              space-y-2.5
+              text-[14px]
+              leading-[1.7]
+              text-muted-foreground
+              sm:text-[15px]
+            "
+          >
+            {[
+              "Health and geriatric care",
+              "Nutrition support",
+              "Social interaction",
+              "Income generation activities",
+              "Recreation and meaningful activities",
+              "Awareness on health and welfare schemes",
+              "Counselling and emotional support",
+              "Linkages to appropriate government and community services",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-</div>
-
-
-{/* ==================================================
-    READ MORE / READ LESS
-    ================================================== */}
-
-<button
-  type="button"
-  onClick={() => setSandhyaExpanded((prev) => !prev)}
-  className="
-    mt-6
-    inline-flex
-    items-center
-    gap-2
-    text-[12px]
-    font-bold
-    text-[#ED6439]
-    transition-all
-    duration-300
-    hover:gap-3
-    sm:text-[13px]
-  "
->
-  <span>
-    {sandhyaExpanded ? "READ LESS" : "READ MORE"}
-  </span>
-
-  <ArrowUpRight
-    className={`
-      h-4
-      w-4
-      shrink-0
-      transition-transform
-      duration-300
-      ${sandhyaExpanded ? "rotate-180" : ""}
-    `}
-    strokeWidth={2.2}
-  />
-</button>
+        </div>
 
 
-{/* ==================================================
-    EXPANDED CONTENT
-    ================================================== */}
+        {/* ==================================================
+            READ MORE / READ LESS
+            ================================================== */}
 
-{sandhyaExpanded && (
-  <div
-    className="
-      mt-6
-      border-t
-      border-[#ED6439]/15
-      pt-6
-    "
-  >
+        <button
+          type="button"
+          onClick={() => setSandhyaExpanded((prev) => !prev)}
+          className="
+            mt-6
+            inline-flex
+            items-center
+            gap-2
+            border-0
+            bg-transparent
+            text-[12px]
+            font-bold
+            text-[#ED6439]
+            outline-none
+            transition-all
+            duration-300
+            hover:gap-3
+            focus:outline-none
+            focus-visible:outline-none
+            cursor-pointer
+            sm:text-[13px]
+          "
+        >
+          <span>
+            {sandhyaExpanded ? "READ LESS" : "READ MORE"}
+          </span>
 
-    {/* ==================================================
-        REMAINING SUPPORT
-        ================================================== */}
-
-    <ul
-      className="
-        space-y-3
-        text-[14px]
-        leading-[1.7]
-        text-muted-foreground
-        sm:text-[15px]
-      "
-    >
-      <li>Social interaction</li>
-      <li>Income generation activities</li>
-      <li>Recreation and meaningful activities</li>
-      <li>Awareness on health and welfare schemes</li>
-      <li>Counselling and emotional support</li>
-      <li>
-        Linkages to appropriate government and community services
-      </li>
-    </ul>
-
-
-    {/* ==================================================
-        ADDITIONAL INFORMATION
-        ================================================== */}
-
-    <div
-      className="
-        mt-7
-        border-t
-        border-[#ED6439]/15
-        pt-6
-      "
-    >
-
-      <p
-        className="
-          text-[13.5px]
-          leading-[1.75]
-          text-muted-foreground
-          sm:text-[14.5px]
-        "
-      >
-        Nightingales Sandhya Kirana currently has more than 50
-        members and on an average 40 elders attend the day care
-        activities on a daily basis.
-      </p>
-
-      <p
-        className="
-          mt-5
-          font-semibold
-          text-[#263746]
-        "
-      >
-        All services provided here are free of cost.
-      </p>
-
-      <p
-        className="
-          mt-5
-          text-[13.5px]
-          leading-[1.75]
-          text-muted-foreground
-          sm:text-[14.5px]
-        "
-      >
-        NMT depends on socially conscious persons and organisations
-        to support the work done at Nightingales Sandhya Kirana.
-      </p>
-
-    </div>
+          <ArrowUpRight
+            className={`
+              h-4
+              w-4
+              shrink-0
+              transition-transform
+              duration-300
+              ${sandhyaExpanded ? "rotate-180" : ""}
+            `}
+            strokeWidth={2.2}
+          />
+        </button>
 
 
-    {/* ==================================================
-        VOLUNTEER
-        ================================================== */}
+        {/* ==================================================
+            EXPANDED CONTENT
+            ================================================== */}
 
-    <div
-      className="
-        mt-7
-        border-t
-        border-[#ED6439]/15
-        pt-6
-      "
-    >
+        {sandhyaExpanded && (
+          <div
+            className="
+              mt-6
+              border-t
+              border-[#ED6439]/15
+              pt-6
+            "
+          >
 
-      <h4
-        className="
-          font-display
-          text-base
-          font-extrabold
-          text-[#263746]
-          sm:text-lg
-        "
-      >
-        Volunteer Your Time ....
-      </h4>
+            {/* ADDITIONAL INFORMATION */}
+            <div>
+              <p
+                className="
+                  text-[13.5px]
+                  leading-[1.75]
+                  text-muted-foreground
+                  sm:text-[14.5px]
+                "
+              >
+                Nightingales Sandhya Kirana currently has more than 50
+                members and on an average 40 elders attend the day care
+                activities on a daily basis.
+              </p>
 
-      <p
-        className="
-          mt-3
-          text-[13.5px]
-          leading-[1.75]
-          text-muted-foreground
-          sm:text-[14.5px]
-        "
-      >
-        There are many opportunities you as an individual or a
-        corporate team can touch the lives of the elders at this
-        centre.
-      </p>
+              <p
+                className="
+                  mt-5
+                  font-semibold
+                  text-[#263746]
+                "
+              >
+                All services provided here are free of cost.
+              </p>
 
-      <Link
-        to="/contact"
-        className="
-          mt-4
-          inline-flex
-          items-center
-          gap-2
-          text-[12px]
-          font-bold
-          text-[#ED6439]
-          sm:text-[13px]
-        "
-      >
-        READ MORE
-        <ArrowUpRight className="h-4 w-4 shrink-0" />
-      </Link>
-
-    </div>
+              <p
+                className="
+                  mt-5
+                  text-[13.5px]
+                  leading-[1.75]
+                  text-muted-foreground
+                  sm:text-[14.5px]
+                "
+              >
+                NMT depends on socially conscious persons and organisations
+                to support the work done at Nightingales Sandhya Kirana.
+              </p>
+            </div>
 
 
-    {/* ==================================================
-        DONATE
-        ================================================== */}
+            {/* VOLUNTEER */}
+            <div
+              className="
+                mt-7
+                border-t
+                border-[#ED6439]/15
+                pt-6
+              "
+            >
+              <h4
+                className="
+                  font-display
+                  text-base
+                  font-extrabold
+                  text-[#263746]
+                  sm:text-lg
+                "
+              >
+                Volunteer Your Time ....
+              </h4>
 
-    <div
-      className="
-        mt-7
-        border-t
-        border-[#ED6439]/15
-        pt-6
-      "
-    >
+              <p
+                className="
+                  mt-3
+                  text-[13.5px]
+                  leading-[1.75]
+                  text-muted-foreground
+                  sm:text-[14.5px]
+                "
+              >
+                There are many opportunities you as an individual or a
+                corporate team can touch the lives of the elders at this
+                centre.
+              </p>
 
-      <h4
-        className="
-          font-display
-          text-base
-          font-extrabold
-          text-[#263746]
-          sm:text-lg
-        "
-      >
-        Donate Your Resources
-      </h4>
+              <Link
+                to="/get-involved"
+                className="
+                  mt-4
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[12px]
+                  font-bold
+                  text-[#ED6439]
+                  sm:text-[13px]
+                "
+              >
+                READ MORE
+                <ArrowUpRight className="h-4 w-4 shrink-0" />
+              </Link>
+            </div>
 
-      <p
-        className="
-          mt-3
-          text-[13.5px]
-          leading-[1.75]
-          text-muted-foreground
-          sm:text-[14.5px]
-        "
-      >
-        Your contributions can help feed the elderly and organise
-        medical camps for elders here.
-      </p>
 
-      <Link
-        to="/contact"
-        className="
-          mt-4
-          inline-flex
-          items-center
-          gap-2
-          text-[12px]
-          font-bold
-          text-[#ED6439]
-          sm:text-[13px]
-        "
-      >
-        READ MORE
-        <ArrowUpRight className="h-4 w-4 shrink-0" />
-      </Link>
+            {/* DONATE */}
+            <div
+              className="
+                mt-7
+                border-t
+                border-[#ED6439]/15
+                pt-6
+              "
+            >
+              <h4
+                className="
+                  font-display
+                  text-base
+                  font-extrabold
+                  text-[#263746]
+                  sm:text-lg
+                "
+              >
+                Donate Your Resources
+              </h4>
 
-    </div>
+              <p
+                className="
+                  mt-3
+                  text-[13.5px]
+                  leading-[1.75]
+                  text-muted-foreground
+                  sm:text-[14.5px]
+                "
+              >
+                Your contributions can help feed the elderly and organise
+                medical camps for elders here.
+              </p>
 
-  </div>
-)}
+              <Link
+                to="/donate"
+                className="
+                  mt-4
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[12px]
+                  font-bold
+                  text-[#ED6439]
+                  sm:text-[13px]
+                "
+              >
+                READ MORE
+                <ArrowUpRight className="h-4 w-4 shrink-0" />
+              </Link>
+            </div>
+
+          </div>
+        )}
 
 
 {/* ==================================================
@@ -3551,7 +3510,7 @@ function ServicesPage() {
             font-display
             text-xl
             font-extrabold
-            text-[#263746]
+            text-[#ED6439]
             sm:text-2xl
           "
         >
@@ -3582,36 +3541,58 @@ function ServicesPage() {
             and support closer to where vulnerable elders live.
           </p>
 
-          <p className="mt-4">
+          <p className="mt-4 font-medium text-foreground">
             The centres provide opportunities for:
           </p>
 
           <ul className="mt-4 space-y-2.5">
-            <li>Social interaction</li>
-            <li>Active ageing</li>
-            <li>Recreation</li>
-            <li>Health care</li>
-            <li>Cognitive stimulation</li>
-            <li>Income generation activities</li>
-            <li>Community participation</li>
-            <li>Access to government schemes and support</li>
+            {[
+              "Social interaction",
+              "Active ageing",
+              "Recreation",
+              "Health care",
+              "Cognitive stimulation",
+              "Income generation activities",
+              "Community participation",
+              "Access to government schemes and support",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
 
           {/* ==================================================
               CENTRES
               ================================================== */}
-          <div className="mt-6">
+          <div className="mt-6 border-t border-[#ED6439]/15 pt-6">
 
-            <p>
+            <p className="font-semibold text-foreground">
               NMT runs five Hiriyaravadi centres at:
             </p>
 
             <ul className="mt-4 space-y-2.5">
-              <li>SK – Shantinagar</li>
-              <li>DJ Halli</li>
-              <li>Ragendra Nagar</li>
-              <li>Vannarpet</li>
-              <li>Lingarajapuram</li>
+              {[
+                { name: "SK – Shantinagar", query: "Shantinagar, Bengaluru" },
+                { name: "DJ Halli", query: "DJ Halli, Bengaluru" },
+                { name: "Rajendra Nagar", query: "Rajendra Nagar, Bengaluru" },
+                { name: "Vannarpet", query: "Vannarpet, Bengaluru" },
+                { name: "Lingarajapuram", query: "Lingarajapuram, Bengaluru" },
+              ].map((centre) => (
+                <li key={centre.name} className="flex items-center gap-2.5">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(centre.query)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-[#263746] transition-colors hover:text-[#ED6439]"
+                  >
+                    <span>{centre.name}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[#ED6439]" />
+                  </a>
+                </li>
+              ))}
             </ul>
 
           </div>
@@ -3644,33 +3625,14 @@ function ServicesPage() {
           "
         />
 
-        {/* IMAGE LABEL */}
-        <div
-          className="
-            absolute
-            bottom-5
-            right-5
-            bg-[#ED6439]
-            px-5
-            py-2.5
-            text-[10px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-            text-white
-            shadow-lg
-            sm:text-[11px]
-          "
-        >
-          HIRIYARAVADI
-        </div>
+
       </div>
 
     </div>
   </div>
 </Reveal>
 
-  {/* ======================================================
+ {/* ======================================================
     FREE GERIATRIC CLINIC
     ====================================================== */}
 
@@ -3686,13 +3648,13 @@ function ServicesPage() {
       border-t-[#ED6439]
       bg-white
       shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-      lg:grid-cols-[0.85fr_1.15fr]
+      lg:grid-cols-2
       lg:items-stretch
     "
   >
 
     {/* ==================================================
-        IMAGE — LEFT
+        IMAGE — LEFT — 50%
         ================================================== */}
 
     <div
@@ -3721,7 +3683,7 @@ function ServicesPage() {
 
 
     {/* ==================================================
-        CONTENT — RIGHT
+        CONTENT — RIGHT — 50%
         ================================================== */}
 
     <div
@@ -3766,7 +3728,7 @@ function ServicesPage() {
               text-xl
               font-extrabold
               leading-tight
-              text-[#263746]
+              text-[#ED6439]
               sm:text-2xl
             "
           >
@@ -3815,56 +3777,42 @@ function ServicesPage() {
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Comprehensive geriatric assessment
-            </span>
+            <span>Comprehensive geriatric assessment</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Screening and early identification of health concerns
-            </span>
+            <span>Screening and early identification of health concerns</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Management of chronic conditions
-            </span>
+            <span>Management of chronic conditions</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Preventive healthcare
-            </span>
+            <span>Preventive healthcare</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Health education
-            </span>
+            <span>Health education</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Referral and follow-up
-            </span>
+            <span>Referral and follow-up</span>
           </li>
 
           <li className="flex items-start gap-2.5">
             <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-            <span>
-              Guidance to families and caregivers
-            </span>
+            <span>Guidance to families and caregivers</span>
           </li>
 
         </ul>
 
-        <p>
+        <p className="font-bold text-[#ED6439]">
           This geriatric clinic functions from the premises of
           Sandhya Kirana.
         </p>
@@ -3875,69 +3823,56 @@ function ServicesPage() {
 
   </div>
 </Reveal>
-  </div>
-</Section>
 
-{/* ======================================================
-    ELDER PROTECTION
-    ====================================================== */}
 
-<Section
+
+
+    </div>
+  </Section>
+
+
+
+
+
+  {/* ======================================================
+      PREVENTION OF ELDER ABUSE
+      ====================================================== */}
+
+ <Section
   id="elder-protection"
-  title="ELDER PROTECTION"
+  title={<span className="text-[#ED6439]">Prevention of Elder Abuse</span>}
   tone="sand"
 >
 
-  {/* ==================================================
-      FULL IMAGE BANNER
-      ================================================== */}
+    {/* ==================================================
+        FULL IMAGE BANNER
+        ================================================== */}
 
-  <Reveal className="w-full">
-    <div
-      className="
-        relative
-        w-full
-        overflow-hidden
-        bg-[#f8f5ef]
-      "
-    >
-      <img
-        src={elderProtectionImage}
-        alt="Elder Protection"
-        className="
-          block
-          h-auto
-          min-h-[260px]
-          w-full
-          object-cover
-          object-center
-          sm:min-h-[320px]
-          md:min-h-[400px]
-        "
-      />
-
-      {/* Image label */}
+    <Reveal className="w-full">
       <div
         className="
-          absolute
-          bottom-5
-          left-5
-          bg-[#ED6439]
-          px-5
-          py-2.5
-          text-[10px]
-          font-bold
-          uppercase
-          tracking-[0.12em]
-          text-white
-          shadow-lg
-          sm:text-[11px]
+          relative
+          w-full
+          overflow-hidden
+          bg-[#f8f5ef]
         "
       >
-        ELDER PROTECTION
+        <img
+          src={elderProtectionImage}
+          alt="Prevention of Elder Abuse"
+          className="
+            block
+            h-auto
+            min-h-[260px]
+            w-full
+            object-cover
+            object-center
+            sm:min-h-[320px]
+            md:min-h-[400px]
+          "
+        />
       </div>
-    </div>
-  </Reveal>
+    </Reveal>
 
 
   {/* ==================================================
@@ -3997,10 +3932,13 @@ function ServicesPage() {
         ELDERS HELPLINE – 1090
         ================================================== */}
 
-    <Reveal className="min-w-0">
+    <Reveal className="min-w-0 h-full">
       <div
         className="
+          flex
+          h-full
           min-w-0
+          flex-col
           overflow-hidden
           border
           border-[#ED6439]/15
@@ -4020,43 +3958,26 @@ function ServicesPage() {
         >
           <img
             src={eldersHelplineImage}
-            alt="National Helpline 1090"
+            alt="Elders Helpline 1090"
             className="
               block
-              h-[280px]
+              h-[260px]
               w-full
               object-cover
               object-center
-              sm:h-[320px]
+              sm:h-[300px]
             "
           />
-
-          <div
-            className="
-              absolute
-              bottom-5
-              left-5
-              bg-[#ED6439]
-              px-5
-              py-2.5
-              text-[10px]
-              font-bold
-              uppercase
-              tracking-[0.12em]
-              text-white
-              shadow-lg
-              sm:text-[11px]
-            "
-          >
-            ELDERS HELPLINE – 1090
-          </div>
         </div>
 
 
         {/* CONTENT */}
         <div
           className="
+            flex
             min-w-0
+            flex-1
+            flex-col
             p-6
             sm:p-8
             md:p-9
@@ -4070,6 +3991,7 @@ function ServicesPage() {
               flex
               h-12
               w-12
+              shrink-0
               items-center
               justify-center
               rounded-full
@@ -4088,7 +4010,7 @@ function ServicesPage() {
               font-display
               text-xl
               font-extrabold
-              text-[#263746]
+              text-[#ED6439]
               sm:text-2xl
             "
           >
@@ -4098,7 +4020,7 @@ function ServicesPage() {
           <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
 
 
-          {/* VISIBLE CONTENT */}
+          {/* CONTENT */}
           <div
             className="
               mt-6
@@ -4117,177 +4039,94 @@ function ServicesPage() {
             </p>
 
             <p className="mt-4">
-              It's the first project in the country where an NGO and the
-              law enforcing authorities joined together to address elder
-              abuse.
+              <strong className="font-bold text-[#263746]">
+                It's the first project in the country where an NGO and the law enforcing
+                authorities joined together to address elder abuse.
+              </strong>
             </p>
 
             <p className="mt-4">
-              Located at the premises of Bengaluru City Police, the
-              Helpline acts as an important link between older persons,
+              <strong className="font-bold text-[#263746]">
+                Located at the premises of Bengaluru City Police
+              </strong>
+              , the Helpline acts as an important link between older persons,
               their families, social workers, police and other support
               systems.
             </p>
+
+            <p className="mt-5 font-semibold text-foreground">
+              The Helpline can help with:
+            </p>
+
+            <ul className="mt-4 space-y-2.5">
+              {[
+                "Elder abuse and neglect",
+                "Family-related issues and conciliations",
+                "Harassment and intimidation",
+                "Financial exploitation",
+                "Safety concerns",
+                "Counselling and guidance",
+                "Referral to appropriate services",
+                "Police and institutional intervention where required",
+                "Tracing of missing / straying elders",
+                "Assess to government schemes and facilities",
+                "Information on elder related services",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 font-bold text-foreground sm:text-[15px]">
+              Elders can avail free legal advice with prior appointments.
+            </p>
+
+            <p className="mt-4">
+              All the services rendered at the Elders Helpline are free of cost.
+            </p>
+
+            {/* DIAL 1090 IN BLACK BOX WITH ORANGE TEXT */}
+            <div className="mt-6 flex">
+              <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
+                <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+                <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
+                  Dial 1090
+                </span>
+              </div>
+            </div>
           </div>
 
-
-          {/* ==================================================
-              READ MORE / LESS
-              ================================================== */}
-
-          <details className="group mt-6">
-
-            <summary
+          {/* CONTACT BUTTON */}
+          <div className="mt-auto pt-6">
+            <Link
+              to="/contact"
               className="
-                flex
-                cursor-pointer
-                list-none
+                inline-flex
+                max-w-full
+                w-fit
                 items-center
+                justify-center
                 gap-2
+                bg-[#ED6439]
+                px-4
+                py-3
+                text-center
                 text-[12px]
                 font-bold
-                text-[#ED6439]
+                text-white
+                transition-all
+                hover:-translate-y-0.5
+                hover:bg-[#d95730]
+                sm:px-5
                 sm:text-[13px]
               "
             >
-              <span className="group-open:hidden">
-                READ MORE
-              </span>
-
-              <span className="hidden group-open:inline">
-                READ LESS
-              </span>
-
-              <ArrowUpRight
-                className="
-                  h-4
-                  w-4
-                  transition-transform
-                  duration-300
-                  group-open:rotate-180
-                "
-              />
-            </summary>
-
-
-            {/* EXPANDED CONTENT */}
-            <div
-              className="
-                mt-6
-                border-t
-                border-[#ED6439]/15
-                pt-6
-              "
-            >
-
-              <p className="mb-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                The Helpline can help with:
-              </p>
-
-              <ul
-                className="
-                  space-y-3
-                  text-[14px]
-                  leading-[1.7]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                <li>Elder abuse and neglect</li>
-                <li>Family-related issues and conciliations</li>
-                <li>Harassment and intimidation</li>
-                <li>Financial exploitation</li>
-                <li>Safety concerns</li>
-                <li>Counselling and guidance</li>
-                <li>Referral to appropriate services</li>
-                <li>Police and institutional intervention where required</li>
-                <li>Tracing of missing / straying elders</li>
-                <li>Assess to government schemes and facilities</li>
-                <li>Information on elder related services</li>
-              </ul>
-
-              <p
-                className="
-                  mt-6
-                  text-[14px]
-                  leading-[1.8]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                Elders can avail free legal advice with prior appointments.
-              </p>
-
-              <p
-                className="
-                  mt-4
-                  text-[14px]
-                  leading-[1.8]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                Elders in distress and in need of help can call Helpline
-                on 1090 or walk in to the Helpline office. Our committed
-                staff of social workers, counsellors, legal professionals
-                and police personnel are skilled to solve complaints that
-                are reported here.
-              </p>
-
-              <p
-                className="
-                  mt-4
-                  text-[14px]
-                  leading-[1.8]
-                  text-muted-foreground
-                  sm:text-[15px]
-                "
-              >
-                The Elders Helpline is partly supported by the Department
-                for the Empowerment of Differently Abled and Senior
-                Citizens, Govt of Karnataka.
-              </p>
-
-              <p
-                className="
-                  mt-5
-                  font-semibold
-                  text-[#263746]
-                "
-              >
-                All the services rendered at the Elders Helpline are free
-                of cost.
-              </p>
-
-              <Link
-                to="/contact"
-                className="
-                  mt-6
-                  inline-flex
-                  max-w-full
-                  items-center
-                  justify-center
-                  gap-2
-                  bg-[#ED6439]
-                  px-4
-                  py-3
-                  text-center
-                  text-[12px]
-                  font-bold
-                  text-white
-                  transition-all
-                  hover:-translate-y-0.5
-                  hover:bg-[#d95730]
-                  sm:px-5
-                  sm:text-[13px]
-                "
-              >
-                CONTACT US
-                <ArrowUpRight className="h-4 w-4 shrink-0" />
-              </Link>
-
-            </div>
-          </details>
+              CONTACT US
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
+          </div>
 
         </div>
       </div>
@@ -4333,26 +4172,6 @@ function ServicesPage() {
           sm:h-[320px]
         "
       />
-
-      <div
-        className="
-          absolute
-          bottom-5
-          left-5
-          bg-[#ED6439]
-          px-5
-          py-2.5
-          text-[10px]
-          font-bold
-          uppercase
-          tracking-[0.12em]
-          text-white
-          shadow-lg
-          sm:text-[11px]
-        "
-      >
-        NATIONAL HELPLINE – 14567
-      </div>
     </div>
 
     {/* CONTENT */}
@@ -4393,7 +4212,7 @@ function ServicesPage() {
           font-display
           text-xl
           font-extrabold
-          text-[#263746]
+          text-[#ED6439]
           sm:text-2xl
         "
       >
@@ -4414,72 +4233,47 @@ function ServicesPage() {
       >
         <p>
           NMT has been implementing the Karnataka wing of the National
-          Helpline for Senior Citizens (14567), an initiative of
-          Ministry of Social Justice and Empowerment, Government of
-          India, supporting older persons in accessing information,
+          Helpline for Senior Citizens (14567),{" "}
+          <strong className="font-semibold text-foreground">
+            an initiative of Ministry of Social Justice and Empowerment,
+            Government of India
+          </strong>
+          , supporting older persons in accessing information,
           guidance, assistance and appropriate services.
         </p>
 
-        <p className="mt-4">
+        <p className="mt-4 font-medium text-foreground">
           The Helpline provides support on issues including:
         </p>
 
-        {/* ALWAYS VISIBLE */}
-        <ul className="mt-5 space-y-3">
-          <li>Government schemes and entitlements</li>
-          <li>Healthcare and care services</li>
-          <li>Elder abuse</li>
+        <ul className="mt-4 space-y-2.5">
+          {[
+            "Government schemes and entitlements",
+            "Healthcare and care services",
+            "Elder abuse",
+            "Legal and social support",
+            "Maintenance-related concerns",
+            "Shelter and rehabilitation",
+            "Emotional support",
+            "Linkages to relevant agencies and services",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2.5">
+              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
 
-        {/* READ MORE CONTENT */}
-        {nationalHelplineExpanded && (
-          <>
-            <ul className="mt-3 space-y-3">
-              <li>Legal and social support</li>
-              <li>Maintenance-related concerns</li>
-              <li>Shelter and rehabilitation</li>
-              <li>Emotional support</li>
-              <li>Linkages to relevant agencies and services</li>
-            </ul>
-
-            <p className="mt-6 font-bold text-[#ED6439]">
+        {/* DIAL 14567 IN BLACK BOX WITH ORANGE TEXT */}
+        <div className="mt-6 flex">
+          <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
+            <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+            <span className="font-display text-lg font-extrabold tracking-wide text-[#fff]">
               Dial 14567
-            </p>
-          </>
-        )}
+            </span>
+          </div>
+        </div>
       </div>
-
-      {/* READ MORE / LESS */}
-      <button
-        type="button"
-        onClick={() =>
-          setNationalHelplineExpanded(!nationalHelplineExpanded)
-        }
-        className="
-          mt-6
-          inline-flex
-          w-fit
-          items-center
-          gap-2
-          text-[12px]
-          font-bold
-          text-[#ED6439]
-          transition-colors
-          hover:text-[#d95730]
-          sm:text-[13px]
-        "
-      >
-        {nationalHelplineExpanded ? "READ LESS" : "READ MORE"}
-
-        <ArrowUpRight
-          className={`
-            h-4
-            w-4
-            transition-transform
-            ${nationalHelplineExpanded ? "rotate-[-90deg]" : ""}
-          `}
-        />
-      </button>
 
       {/* CONTACT BUTTON */}
       <Link
@@ -4525,7 +4319,8 @@ function ServicesPage() {
 <Section
   id="empowerment-livelihood"
   eyebrow=""
-  title="EMPOWERMENT & LIVELIHOOD"
+  title="EMPOWERMENT AND LIVELIHOOD"
+  titleClassName="text-[#ED6439]"
 >
   <Reveal className="max-w-4xl min-w-0">
     <p className="text-[14px] leading-[1.75] text-muted-foreground sm:text-[15px] md:text-[16px]">
@@ -4546,7 +4341,7 @@ function ServicesPage() {
       ====================================================== */}
 
   <div className="mt-8 min-w-0 sm:mt-10">
-    <div className="grid min-w-0 gap-6 lg:grid-cols-3 sm:gap-8">
+    <div className="grid min-w-0 items-start gap-6 lg:grid-cols-3 sm:gap-8">
 
 
       {/* ==================================================
@@ -4595,26 +4390,6 @@ function ServicesPage() {
                 group-hover:scale-[1.03]
               "
             />
-
-            <div
-              className="
-                absolute
-                bottom-4
-                left-4
-                bg-[#ED6439]
-                px-4
-                py-2
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.12em]
-                text-white
-                shadow-lg
-                sm:text-[11px]
-              "
-            >
-              NIGHTINGALES JOBS 60+
-            </div>
           </div>
 
 
@@ -4657,7 +4432,7 @@ function ServicesPage() {
                 text-lg
                 font-extrabold
                 leading-[1.2]
-                text-[#263746]
+                text-[#ED6439]
                 sm:text-xl
               "
             >
@@ -4693,15 +4468,21 @@ function ServicesPage() {
               "
             >
               <p>
-                Nightingales Jobs 60+, connects experienced older persons
-                with employment and livelihood opportunities.
+                Nightingales Jobs 60+,{" "}
+                <strong className="font-semibold text-foreground">
+                  connects experienced older persons with employment and
+                  livelihood opportunities.
+                </strong>
               </p>
 
               <p>
-                Launched in 2011, the programme challenges the traditional
-                perception that age is a barrier to employment and
-                demonstrates that experience, reliability, knowledge, and
-                commitment continue to have enormous value.
+                Launched in 2011,{" "}
+                <strong className="font-semibold text-foreground">
+                  the programme challenges the traditional perception
+                </strong>{" "}
+                that age is a barrier to employment and demonstrates that
+                experience, reliability, knowledge, and commitment continue to
+                have enormous value.
               </p>
             </div>
 
@@ -4716,9 +4497,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -4761,10 +4548,13 @@ function ServicesPage() {
                 </p>
 
                 <p className="mt-4">
-                  In India, only 11% of the retired employees get pension
-                  from the government and the remaining 89% are forced to
-                  survive on their savings which often get exhausted within
-                  a few years of retirement.
+                  In India,{" "}
+                  <strong className="font-semibold text-foreground">
+                    only 11% of the retired employees get pension from the
+                    government
+                  </strong>{" "}
+                  and the remaining 89% are forced to survive on their savings
+                  which often get exhausted within a few years of retirement.
                 </p>
 
                 <p className="mt-4">
@@ -4775,19 +4565,26 @@ function ServicesPage() {
                   aged, leading to some form of elder abuse.
                 </p>
 
-                <p className="mt-4">
+                <p className="mt-4 font-bold text-[#ED6439]">
                   Therefore, this programme supports older job seekers
                   through:
                 </p>
 
                 <ul className="mt-4 space-y-2.5">
-                  <li>Job registration</li>
-                  <li>Career guidance</li>
-                  <li>Skill development</li>
-                  <li>Employer connections</li>
-                  <li>Job fairs</li>
-                  <li>Placement support</li>
-                  <li>Opportunities for flexible and part-time work</li>
+                  {[
+                    "Job registration",
+                    "Career guidance",
+                    "Skill development",
+                    "Employer connections",
+                    "Job fairs",
+                    "Placement support",
+                    "Opportunities for flexible and part-time work",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
                 <p className="mt-4">
@@ -4801,39 +4598,18 @@ function ServicesPage() {
               </div>
             </details>
 
-
-            {/* CTA */}
-            {/* <div className="mt-auto pt-7">
-              <Link
-                to="/contact"
-                className="
-                  inline-flex
-                  max-w-full
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  transition-all
-                  duration-300
-                  hover:gap-3
-                  sm:text-[13px]
-                "
+            {/* EXTERNAL LINK BUTTON */}
+            <div className="mt-auto pt-6">
+              <a
+                href="https://www.nightingalesjobs60plus.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#ED6439] px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-[#d95730]"
               >
-                READ MORE
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    shrink-0
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-0.5
-                  "
-                />
-              </Link>
-            </div> */}
+                <span>VISIT JOBS 60+</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
 
           </div>
         </article>
@@ -4886,26 +4662,6 @@ function ServicesPage() {
                 group-hover:scale-[1.03]
               "
             />
-
-            <div
-              className="
-                absolute
-                bottom-4
-                left-4
-                bg-[#ED6439]
-                px-4
-                py-2
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.12em]
-                text-white
-                shadow-lg
-                sm:text-[11px]
-              "
-            >
-              DIGITAL LITERACY
-            </div>
           </div>
 
 
@@ -4948,7 +4704,7 @@ function ServicesPage() {
                 text-lg
                 font-extrabold
                 leading-[1.2]
-                text-[#263746]
+                text-[#ED6439]
                 sm:text-xl
               "
             >
@@ -5007,9 +4763,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -5043,55 +4805,28 @@ function ServicesPage() {
                 "
               >
 
-                <p>Training may include:</p>
+                <p className="font-bold text-[#ED6439]">Training may include:</p>
 
                 <ul className="mt-4 space-y-2.5">
-                  <li>Smartphone use</li>
-                  <li>WhatsApp and video calls</li>
-                  <li>Digital payments</li>
-                  <li>Online services</li>
-                  <li>Accessing government services</li>
-                  <li>Email and internet use</li>
-                  <li>Online health resources</li>
-                  <li>Basic digital safety</li>
+                  {[
+                    "Smartphone use",
+                    "WhatsApp and video calls",
+                    "Digital payments",
+                    "Online services",
+                    "Accessing government services",
+                    "Email and internet use",
+                    "Online health resources",
+                    "Basic digital safety",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
               </div>
             </details>
-
-
-            {/* CTA */}
-            {/* <div className="mt-auto pt-7">
-              <Link
-                to="/contact"
-                className="
-                  inline-flex
-                  max-w-full
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  transition-all
-                  duration-300
-                  hover:gap-3
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    shrink-0
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-0.5
-                  "
-                />
-              </Link>
-            </div> */}
 
           </div>
         </article>
@@ -5144,26 +4879,6 @@ function ServicesPage() {
                 group-hover:scale-[1.03]
               "
             />
-
-            <div
-              className="
-                absolute
-                bottom-4
-                left-4
-                bg-[#ED6439]
-                px-4
-                py-2
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.12em]
-                text-white
-                shadow-lg
-                sm:text-[11px]
-              "
-            >
-              CYBERSECURITY AWARENESS
-            </div>
           </div>
 
 
@@ -5206,7 +4921,7 @@ function ServicesPage() {
                 text-lg
                 font-extrabold
                 leading-[1.2]
-                text-[#263746]
+                text-[#ED6439]
                 sm:text-xl
               "
             >
@@ -5265,9 +4980,15 @@ function ServicesPage() {
                   list-none
                   items-center
                   gap-2
+                  border-0
+                  bg-transparent
                   text-[12px]
                   font-bold
                   text-[#ED6439]
+                  outline-none
+                  focus:outline-none
+                  focus-visible:outline-none
+                  select-none
                   sm:text-[13px]
                 "
               >
@@ -5301,55 +5022,28 @@ function ServicesPage() {
                 "
               >
 
-                <p>Topics include:</p>
+                <p className="font-bold text-[#ED6439]">Topics include:</p>
 
                 <ul className="mt-4 space-y-2.5">
-                  <li>Identifying online scams</li>
-                  <li>Phishing and fraudulent messages</li>
-                  <li>Safe use of digital payments</li>
-                  <li>Protecting passwords and OTPs</li>
-                  <li>Avoiding impersonation scams</li>
-                  <li>Social-media safety</li>
-                  <li>Recognising suspicious links and calls</li>
-                  <li>What to do if fraud occurs</li>
+                  {[
+                    "Identifying online scams",
+                    "Phishing and fraudulent messages",
+                    "Safe use of digital payments",
+                    "Protecting passwords and OTPs",
+                    "Avoiding impersonation scams",
+                    "Social-media safety",
+                    "Recognising suspicious links and calls",
+                    "What to do if fraud occurs",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
 
               </div>
             </details>
-
-
-            {/* CTA */}
-            {/* <div className="mt-auto pt-7">
-              <Link
-                to="/contact"
-                className="
-                  inline-flex
-                  max-w-full
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  transition-all
-                  duration-300
-                  hover:gap-3
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    shrink-0
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:-translate-y-0.5
-                  "
-                />
-              </Link>
-            </div> */}
 
           </div>
         </article>
@@ -5369,7 +5063,7 @@ function ServicesPage() {
         relative
         min-w-0
         overflow-hidden
-        bg-[#17232B]
+        bg-[#E15925]
         px-5
         py-7
         shadow-[0_25px_60px_-25px_rgba(23,35,43,0.45)]
@@ -5392,10 +5086,30 @@ function ServicesPage() {
       />
 
       <div className="relative">
-        <p className="break-words text-[13.5px] leading-[1.75] text-white/75 sm:text-[14.5px]">
-          Please take contact details from the existing website under
-          Nightingales Jobs 60+
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p className="font-display text-lg font-bold text-white">
+              Connect With Nightingales Jobs 60+
+            </p>
+            <p className="mt-1 text-[13.5px] leading-[1.75] text-white/80 sm:text-[14.5px]">
+              For registrations and corporate hiring partnerships, contact our team today.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="tel:08042426565"
+              className="inline-flex items-center gap-2 bg-[#ED6439] px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-[#d95730]"
+            >
+              <span>080 4242 6565</span>
+            </a>
+            <a
+              href="mailto:jobs60plus@nightingaleseldercare.com"
+              className="inline-flex items-center gap-2 bg-white/10 px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/20"
+            >
+              <span>EMAIL US</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </Reveal>
@@ -5406,11 +5120,11 @@ function ServicesPage() {
     SUPPORTING OLD AGE HOMES
     ====================================================== */}
 
-<Section
-  id="old-age-homes"
-  eyebrow=""
-  title="SUPPORTING OLD AGE HOMES"
-  tone="sand"
+<Section 
+  id="old-age-homes" 
+  eyebrow="" 
+  title={<span className="text-[#ED6439]">SUPPORTING OLD AGE HOMES</span>}
+  tone="sand" 
 >
   {/* INTRO */}
   <Reveal className="max-w-4xl min-w-0">
@@ -5421,8 +5135,11 @@ function ServicesPage() {
     </p>
 
     <p className="mt-4 text-[14px] leading-[1.75] text-muted-foreground sm:text-[15px] md:text-[16px]">
-      NMT believes that improving elder care requires strengthening the
-      entire care ecosystem not just individual institutions.
+      NMT believes that{" "}
+      <strong className="font-semibold text-foreground">
+        improving elder care requires strengthening the entire care ecosystem
+      </strong>{" "}
+      not just individual institutions.
     </p>
 
     <p className="mt-4 text-[14px] leading-[1.75] text-muted-foreground sm:text-[15px] md:text-[16px]">
@@ -5475,6 +5192,7 @@ function ServicesPage() {
       <ServiceCard
         icon={Activity}
         title="Mobile Active Ageing"
+        titleClassName="text-[#ED6439]"
         image={mobileActiveAgeingImage}
         cta="READ MORE"
         preview={
@@ -5487,26 +5205,35 @@ function ServicesPage() {
             </p>
 
             <p>
-              MAA currently reaches 28 old age homes.
+              <strong className="font-semibold text-foreground">
+                MAA currently reaches 28 old age homes.
+              </strong>
             </p>
           </>
         }
         details={
           <>
-            <p>The programme includes:</p>
+            <p className="font-bold text-[#ED6439]">The programme includes:</p>
 
             <ul className="space-y-2.5">
-              <li>Physical activity and exercise</li>
-              <li>Cognitive stimulation</li>
-              <li>Recreation</li>
-              <li>Music and creative activities</li>
-              <li>Social interaction</li>
-              <li>Health awareness</li>
-              <li>Meaningful engagement</li>
-              <li>Active-ageing practices for residents</li>
+              {[
+                "Physical activity and exercise",
+                "Cognitive stimulation",
+                "Recreation",
+                "Music and creative activities",
+                "Social interaction",
+                "Health awareness",
+                "Meaningful engagement",
+                "Active-ageing practices for residents",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
 
-            <p className="font-display font-extrabold text-[#263746]">
+            <p className="font-bold text-[#ED6439]">
               Our aim
             </p>
 
@@ -5526,17 +5253,22 @@ function ServicesPage() {
       <ServiceCard
         icon={Building2}
         title="Regional Resource & Training Centre"
+        titleClassName="text-[#ED6439]"
         image={rrtcImage}
         cta="READ MORE"
         preview={
           <>
             <p>
               NMT has been designated as a Regional Resource and
-              Training Centre (RRTC) by the Ministry of Social Justice
-              & Empowerment for Karnataka and Kerala.
+              Training Centre (RRTC) by the{" "}
+              <strong className="font-semibold text-foreground">
+                Ministry of Social Justice & Empowerment for Karnataka, Kerala &
+                Lakshadweep
+              </strong>
+              .
             </p>
 
-            <p>
+            <p className="font-bold text-[#ED6439]">
               The Centre serves as a resource for:
             </p>
           </>
@@ -5544,13 +5276,20 @@ function ServicesPage() {
         details={
           <>
             <ul className="space-y-2.5">
-              <li>Training and capacity building</li>
-              <li>Development of training materials</li>
-              <li>Knowledge sharing</li>
-              <li>Technical support</li>
-              <li>Good practices in elder care</li>
-              <li>Awareness and advocacy</li>
-              <li>Strengthening service providers</li>
+              {[
+                "Training and capacity building",
+                "Development of training materials",
+                "Knowledge sharing",
+                "Technical support",
+                "Good practices in elder care",
+                "Awareness and advocacy",
+                "Strengthening service providers",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
 
             <p>
@@ -5570,17 +5309,17 @@ function ServicesPage() {
       <ServiceCard
         icon={Home}
         title="Vayo Alambana – Old Age Home Capacity-Building Initiative"
+        titleClassName="text-[#ED6439]"
         image={capacityBuildingImage}
         cta="READ MORE"
         preview={
           <>
             <p>
-              With support from Vayo Alambana Trust, NMT has undertaken
-              a pilot capacity-building initiative involving five
-              selected old age homes.
+              NMT has undertaken a pilot capacity-building initiative
+              involving five selected old age homes.
             </p>
 
-            <p>
+            <p className="font-bold text-[#ED6439]">
               The programme takes a comprehensive approach to
               strengthening institutions through:
             </p>
@@ -5588,42 +5327,25 @@ function ServicesPage() {
         }
         details={
           <>
-            <p className="font-semibold text-[#263746]">
-              1. Infrastructure Assistance
-            </p>
+            <ul className="space-y-3">
+              {[
+                { title: "Infrastructure Assistance", desc: "Improving the physical environment and essential facilities for residents." },
+                { title: "Staff Training", desc: "Building the knowledge and skills of caregivers and staff." },
+                { title: "Active Ageing Programmes", desc: "Introducing structured activities that enhance residents' physical, cognitive, emotional and social well-being." },
+                { title: "Governance & Management", desc: "Strengthening systems, policies, documentation, administration and management practices." },
+                { title: "Free Accessible Medical Care", desc: "Ensuring regular health screening, elder-friendly clinical support and free accessible medical care for residents." },
+              ].map((item) => (
+                <li key={item.title} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                  <div>
+                    <strong className="font-bold text-foreground">{item.title}: </strong>
+                    <span className="text-muted-foreground">{item.desc}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-            <p>
-              Improving the physical environment and essential
-              facilities for residents.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              2. Staff Training
-            </p>
-
-            <p>
-              Building the knowledge and skills of caregivers and staff.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              3. Active Ageing Programmes
-            </p>
-
-            <p>
-              Introducing structured activities that enhance residents'
-              physical, cognitive, emotional and social well-being.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
-              4. Governance & Management
-            </p>
-
-            <p>
-              Strengthening systems, policies, documentation,
-              administration and management practices.
-            </p>
-
-            <p className="font-semibold text-[#263746]">
+            <p className="font-bold text-[#ED6439]">
               The objective
             </p>
 
@@ -5651,7 +5373,8 @@ function ServicesPage() {
 <Section
   id="capacity-building"
   eyebrow=""
-  title="TRAINING & CAPACITY BUILDING"
+  title="TRAINING AND CAPACITY BUILDING"
+  titleClassName="text-[#ED6439]"
 >
   {/* ==================================================
       INTRO
@@ -5699,6 +5422,63 @@ function ServicesPage() {
   <div className="mt-8 min-w-0 sm:mt-10">
     <TrainingCarousel />
   </div>
+
+  {/* ==================================================
+      GERIATRIC CARE TRAINING — VIDEO THUMBNAIL
+      ================================================== */}
+  <Reveal className="mt-8 min-w-0 sm:mt-10">
+    <div className="flex flex-col sm:flex-row items-center gap-6 border border-[#ED6439]/20 bg-white p-5 sm:p-6 shadow-[0_12px_35px_-15px_rgba(70,45,10,0.12)]">
+      <a
+        href="https://youtu.be/go1GWETWmSM"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full sm:w-72 shrink-0 aspect-[16/9] overflow-hidden rounded-lg bg-black shadow-md"
+        aria-label="Watch Geriatric Care Training video on YouTube"
+      >
+        <img
+          src="/geriatric-care-training-thumbnail.webp"
+          alt="Geriatric Care Training - Nightingales Medical Trust"
+          className="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <span
+          className="
+            absolute
+            inset-0
+            grid
+            place-items-center
+            bg-black/25
+            transition-colors
+            group-hover:bg-black/15
+          "
+        >
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-[#ED6439] text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+            <PlayCircle className="h-6 w-6" strokeWidth={2} />
+          </span>
+        </span>
+      </a>
+
+      <div className="min-w-0 flex-1">
+        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Featured Video
+        </span>
+        <h4 className="mt-1 font-display text-lg font-bold text-[#263746] sm:text-xl">
+          Geriatric Care Training Programme
+        </h4>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Watch how Nightingales Medical Trust trains professional caregivers and family members in compassionate, skilled, and person-centred elder care.
+        </p>
+        <a
+          href="https://youtu.be/go1GWETWmSM"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#ED6439] transition-all hover:gap-3"
+        >
+          <span>WATCH ON YOUTUBE</span>
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </Reveal>
 
 
   {/* ==================================================
@@ -5789,13 +5569,13 @@ function ServicesPage() {
 
 <Section
   id="awareness"
-  eyebrow="Awareness & advocacy"
+  eyebrow="Awareness and Advocacy"
   title="Changing how India sees ageing."
   tone="sand"
 >
   <div className="grid min-w-0 grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:gap-8">
 
-   {/* ==================================================
+{/* ==================================================
     AWARENESS & ADVOCACY
     ================================================== */}
 
@@ -5808,12 +5588,15 @@ function ServicesPage() {
       min-w-0
       flex-col
       overflow-hidden
+      border
+      border-[#ED6439]/15
       bg-white
-      shadow-[0_18px_45px_-20px_rgba(38,55,70,0.28)]
+      p-6
+      shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
       transition-all
       duration-500
       hover:-translate-y-1
-      hover:shadow-[0_24px_55px_-20px_rgba(38,55,70,0.32)]
+      sm:p-8
     "
   >
 
@@ -5846,19 +5629,6 @@ function ServicesPage() {
         "
       />
 
-      {/* SUBTLE OVERLAY */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-gradient-to-t
-          from-black/30
-          via-transparent
-          to-transparent
-          opacity-70
-        "
-      />
-
       {/* ICON */}
       <div
         className="
@@ -5877,7 +5647,6 @@ function ServicesPage() {
           transition-transform
           duration-300
           group-hover:scale-105
-
           sm:bottom-5
           sm:left-6
           sm:h-14
@@ -5885,7 +5654,7 @@ function ServicesPage() {
         "
       >
         <Megaphone
-          className="h-5 w-5 sm:h-6 sm:w-6"
+          className="h-6 w-6 sm:h-7 sm:w-7 text-white"
           strokeWidth={2}
         />
       </div>
@@ -5898,52 +5667,44 @@ function ServicesPage() {
         flex
         flex-1
         flex-col
-        px-5
-        pb-6
         pt-6
-
-        sm:px-7
-        sm:pb-8
-        sm:pt-7
+        sm:pt-8
       "
     >
 
       <h3
         className="
           font-display
-          text-xl
+          text-2xl
           font-extrabold
           leading-tight
-          text-[#263746]
-
-          sm:text-2xl
-          md:text-[26px]
+          text-[#ED6439]
+          sm:text-3xl
+          md:text-4xl
         "
       >
-        Awareness & Advocacy
+        Awareness and Advocacy
       </h3>
 
-      <div className="mt-3 h-1 w-12 bg-[#ED6439]" />
+      <div className="mt-3 h-1 w-14 bg-[#ED6439]" />
 
       <ul
         className="
-          mt-5
-          space-y-3
-          text-[14px]
-          leading-[1.6]
+          mt-6
+          space-y-3.5
+          text-[15px]
+          leading-[1.75]
           text-muted-foreground
-
-          sm:mt-6
+          sm:mt-7
           sm:space-y-4
-          sm:text-[15px]
-          sm:leading-[1.7]
+          sm:text-[16px]
         "
       >
 
         <li className="flex items-start gap-3">
           <span
             className="
-              mt-[8px]
+              mt-[9px]
               h-2
               w-2
               shrink-0
@@ -5951,7 +5712,7 @@ function ServicesPage() {
               bg-[#ED6439]
             "
           />
-          <span className="min-w-0">
+          <span className="min-w-0 font-medium">
             Public campaigns and memory walks
           </span>
         </li>
@@ -5959,7 +5720,7 @@ function ServicesPage() {
         <li className="flex items-start gap-3">
           <span
             className="
-              mt-[8px]
+              mt-[9px]
               h-2
               w-2
               shrink-0
@@ -5967,7 +5728,7 @@ function ServicesPage() {
               bg-[#ED6439]
             "
           />
-          <span className="min-w-0">
+          <span className="min-w-0 font-medium">
             School and college outreach
           </span>
         </li>
@@ -5975,7 +5736,7 @@ function ServicesPage() {
         <li className="flex items-start gap-3">
           <span
             className="
-              mt-[8px]
+              mt-[9px]
               h-2
               w-2
               shrink-0
@@ -5983,7 +5744,7 @@ function ServicesPage() {
               bg-[#ED6439]
             "
           />
-          <span className="min-w-0">
+          <span className="min-w-0 font-medium">
             Media engagement on ageing issues
           </span>
         </li>
@@ -5991,7 +5752,7 @@ function ServicesPage() {
         <li className="flex items-start gap-3">
           <span
             className="
-              mt-[8px]
+              mt-[9px]
               h-2
               w-2
               shrink-0
@@ -5999,7 +5760,7 @@ function ServicesPage() {
               bg-[#ED6439]
             "
           />
-          <span className="min-w-0">
+          <span className="min-w-0 font-medium">
             Policy advocacy with state and central bodies
           </span>
         </li>
@@ -6008,21 +5769,16 @@ function ServicesPage() {
 
 
       {/* BOTTOM ACCENT */}
-      <div className="mt-6 pt-5 sm:mt-auto sm:pt-7">
-        <div className="h-px w-full bg-[#eee]" />
-
+      <div className="mt-8 border-t border-[#ED6439]/15 pt-5 sm:mt-auto sm:pt-6">
         <p
           className="
-            mt-4
-            text-[10px]
+            text-xs
             font-bold
             uppercase
             leading-relaxed
-            tracking-[0.12em]
+            tracking-[0.14em]
             text-[#ED6439]
-
-            sm:text-xs
-            sm:tracking-[0.16em]
+            sm:text-sm
           "
         >
           Creating awareness • Inspiring change
@@ -6317,7 +6073,7 @@ function ServicesPage() {
           FINAL CTA
           ====================================================== */}
 
-      <section className="relative overflow-hidden bg-[#17232B] py-12 sm:py-16 lg:py-20">
+      <section className="relative overflow-hidden bg-[#E15925] py-12 sm:py-16 lg:py-20">
         <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#ED6439]/20 blur-3xl" />
 
         <div className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-[#ED6439]/10 blur-3xl" />
@@ -6331,16 +6087,22 @@ function ServicesPage() {
                 items-center
                 justify-center
                 gap-2
-                text-[10px]
+                rounded-full
+                border
+                border-white/25
+                bg-white/10
+                px-3.5
+                py-1.5
+                text-[11px]
                 font-bold
                 uppercase
-                tracking-[0.18em]
-                text-[#ED6439]
-                sm:text-[11px]
-                sm:tracking-[0.2em]
+                tracking-[0.2em]
+                text-amber-100
+                backdrop-blur-xs
+                sm:text-xs
               "
             >
-              <Sparkles className="h-3.5 w-3.5 shrink-0" />
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-300" />
               Our Services
             </span>
 

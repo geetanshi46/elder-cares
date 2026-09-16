@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
+import roadAheadHero from "@/assets/road-ahead-hero.png";
 
 export const Route = createFileRoute("/the-road-ahead")({
   head: () => ({
@@ -170,55 +171,65 @@ function TheRoadAheadPage() {
   return (
     <SiteLayout>
       <main className="bg-white text-slate-800">
-        {/* HERO — intentionally image-free to match the existing NMT visual system */}
-        <section className="bg-[#f6efe6]">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
-            <Reveal>
-              <div className="max-w-4xl">
-                <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#d9792b]">
-                  The Road Ahead
-                </p>
-                <h1 className="text-4xl font-bold leading-tight text-[#173b3d] sm:text-5xl lg:text-6xl">
-                  Shaping the Future of Age Care
-                </h1>
-                <div className="mt-7 h-1 w-16 bg-[#d9792b]" />
-                <p className="mt-8 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-                  India is ageing rapidly, and the needs of older persons are
-                  increasingly complex. Dementia, social isolation, poverty,
-                  elder abuse, financial insecurity and lack of accessible care
-                  affect millions.
-                </p>
-              </div>
-            </Reveal>
+        {/* HERO */}
+        <section id="road-ahead" className="relative isolate w-full overflow-hidden">
+          <div className="relative min-h-[360px] w-full sm:min-h-[440px] lg:min-h-[520px]">
+            <img
+              src={roadAheadHero}
+              alt="The Road Ahead"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              loading="eager"
+            />
+            {/* Very light overlay — image stays clearly visible */}
+            <div className="absolute inset-0 bg-white/18" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-transparent" />
+
+            <div className="relative z-10 mx-auto flex min-h-[360px] w-full max-w-7xl items-center px-6 sm:min-h-[440px] sm:px-10 lg:min-h-[520px] lg:px-16">
+              <Reveal>
+                <div className="flex items-center gap-4">
+                  <span className="h-1 w-14 bg-[#ed6439] sm:w-20" />
+                  <h1 className="text-4xl font-extrabold tracking-tight text-[#ed6439] sm:text-5xl lg:text-7xl">
+                    The Road Ahead
+                  </h1>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
         {/* INTRO */}
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-20">
+        <section className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
             <Reveal>
-              <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#d9792b]">
-                    Looking Forward
-                  </p>
-                  <h2 className="mt-3 text-3xl font-bold leading-tight text-[#173b3d] sm:text-4xl">
+              <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+                <div className="lg:sticky lg:top-28 lg:self-start">
+                  <div className="flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-[#ed6439]" />
+                    <span className="h-px w-12 bg-[#ed6439]" />
+                    <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ed6439]">
+                      Looking Forward
+                    </span>
+                  </div>
+                  <h2 className="mt-4 text-3xl font-extrabold leading-tight text-[#252525] sm:text-4xl lg:text-5xl">
                     Taking proven solutions to a larger scale.
                   </h2>
                 </div>
-                <div className="space-y-5 text-base leading-8 text-slate-600">
-                  <p>
-                    For over 25 years, NMT has responded through innovative,
-                    need-based and community-oriented programmes spanning
-                    dementia care, active ageing, care for marginalized elders,
-                    elder protection, livelihoods, training, advocacy and
-                    capacity building.
-                  </p>
-                  <p>
-                    The next chapter is about taking these solutions to larger
-                    scale, creating compassionate, evidence-based, affordable,
-                    inclusive, sustainable and scalable models.
-                  </p>
+
+                <div className="rounded-[1.75rem] border border-[#ed6439]/15 bg-[#fffaf7] p-7 sm:p-10 lg:p-12">
+                  <div className="space-y-6 text-base leading-8 text-slate-600 sm:text-lg">
+                    <p>
+                      For over 25 years, NMT has responded through innovative,
+                      need-based and community-oriented programmes spanning
+                      dementia care, active ageing, care for marginalized elders,
+                      elder protection, livelihoods, training, advocacy and
+                      capacity building.
+                    </p>
+                    <p>
+                      The next chapter is about taking these solutions to larger
+                      scale, creating compassionate, evidence-based, affordable,
+                      inclusive, sustainable and scalable models.
+                    </p>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -229,11 +240,15 @@ function TheRoadAheadPage() {
         <section className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
             <Reveal>
-              <div className="mb-12 max-w-2xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#d9792b]">
-                  Our Focus Areas
-                </p>
-                <h2 className="mt-3 text-3xl font-bold text-[#173b3d] sm:text-4xl">
+              <div className="mx-auto mb-12 max-w-3xl text-center">
+                <div className="flex items-center justify-center gap-3">
+                  <span className="h-px w-10 bg-[#ed6439]" />
+                  <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ed6439]">
+                    Our Focus Areas
+                  </span>
+                  <span className="h-px w-10 bg-[#ed6439]" />
+                </div>
+                <h2 className="mt-4 text-3xl font-extrabold text-[#252525] sm:text-4xl lg:text-5xl">
                   The work that will shape the years ahead.
                 </h2>
               </div>
@@ -246,26 +261,26 @@ function TheRoadAheadPage() {
                   <Reveal key={item.number}>
                     <article
   id={item.number === "09" ? "research-innovation" : undefined}
-  className="py-12 sm:py-14"
+  className="py-12 sm:py-14 first:pt-8 last:pb-8"
 >
-                      <div className="grid gap-8 lg:grid-cols-[90px_1fr] lg:gap-10">
+                      <div className="grid gap-8 rounded-[1.5rem] border border-[#ed6439]/12 bg-white p-5 shadow-[0_12px_40px_rgba(237,100,57,0.06)] sm:p-8 lg:grid-cols-[90px_1fr] lg:gap-10">
                         <div className="flex items-start justify-between lg:block">
-                          <span className="text-3xl font-bold text-[#d9792b]">
+                          <span className="text-3xl font-bold text-[#ed6439]">
                             {item.number}
                           </span>
                           <Icon
-                            className="h-7 w-7 text-[#d9792b] lg:mt-8"
+                            className="h-7 w-7 text-[#ed6439] lg:mt-8"
                             strokeWidth={1.7}
                           />
                         </div>
 
                         <div>
-                          <h3 className="max-w-4xl text-2xl font-bold leading-tight text-[#173b3d] sm:text-3xl">
+                          <h3 className="max-w-4xl text-2xl font-bold leading-tight text-[#252525] sm:text-3xl">
                             {item.title}
                           </h3>
 
                           {"subtitle" in item && item.subtitle ? (
-                            <p className="mt-2 text-sm font-semibold text-[#d9792b]">
+                            <p className="mt-2 text-sm font-semibold text-[#ed6439]">
                               {item.subtitle}
                             </p>
                           ) : null}
@@ -285,12 +300,12 @@ function TheRoadAheadPage() {
                               {item.columns.map((column) => (
                                 <div
                                   key={column.title}
-                                  className="border-l-2 border-[#d9792b]/50 pl-5"
+                                  className="border-l-2 border-[#ed6439]/50 pl-5"
                                 >
-                                  <p className="font-bold text-[#173b3d]">
+                                  <p className="font-bold text-[#252525]">
                                     {column.title}
                                   </p>
-                                  <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#d9792b]">
+                                  <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-[#ed6439]">
                                     {column.label}
                                   </p>
                                   <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -308,7 +323,7 @@ function TheRoadAheadPage() {
                                   key={point}
                                   className="flex items-start gap-3 text-sm leading-6 text-slate-600"
                                 >
-                                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d9792b]" />
+                                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ed6439]" />
                                   <span>{point}</span>
                                 </div>
                               ))}
@@ -316,8 +331,8 @@ function TheRoadAheadPage() {
                           ) : null}
 
                           {"stat" in item && item.stat ? (
-                            <div className="mt-9 inline-flex items-center gap-5 border border-[#d9792b]/30 bg-[#fdf7f0] px-6 py-5">
-                              <div className="text-3xl font-bold text-[#173b3d]">
+                            <div className="mt-9 inline-flex items-center gap-5 border border-[#ed6439]/30 bg-[#fff8f4] px-6 py-5">
+                              <div className="text-3xl font-bold text-[#252525]">
                                 {item.stat}
                               </div>
                               <div className="max-w-xs text-sm leading-6 text-slate-600">
@@ -327,8 +342,8 @@ function TheRoadAheadPage() {
                           ) : null}
 
                           {"noteTitle" in item && item.noteTitle ? (
-                            <div className="mt-9 border-l-2 border-[#d9792b] pl-5">
-                              <p className="font-bold text-[#173b3d]">
+                            <div className="mt-9 border-l-2 border-[#ed6439] pl-5">
+                              <p className="font-bold text-[#252525]">
                                 {item.noteTitle}
                               </p>
                               <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">
@@ -347,18 +362,18 @@ function TheRoadAheadPage() {
         </section>
 
         {/* CLOSING */}
-        <section className="bg-[#173b3d]">
+        <section className="bg-[#ed6439]">
           <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
             <Reveal>
               <div className="max-w-4xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f0a15d]">
+                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/85">
                   Be Part of the Road Ahead
                 </p>
-                <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+                <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
                   Together, we can build a more compassionate, inclusive and
                   age-friendly society.
                 </h2>
-                <p className="mt-6 max-w-3xl text-base leading-8 text-white/70">
+                <p className="mt-6 max-w-3xl text-base leading-8 text-white/85">
                   The future we envision is one where older persons, families
                   and communities have the care, knowledge, skills and support
                   they need.
@@ -378,12 +393,12 @@ function TheRoadAheadPage() {
                 ].map((item, index) => (
                   <div
                     key={item}
-                    className="border border-white/15 bg-white/[0.04] p-6"
+                    className="border border-white/30 bg-white p-6"
                   >
-                    <span className="text-sm font-bold text-[#f0a15d]">
+                    <span className="text-sm font-extrabold text-[#ed6439]">
                       0{index + 1}
                     </span>
-                    <p className="mt-4 text-sm leading-7 text-white/75">
+                    <p className="mt-4 text-sm leading-7 text-slate-700">
                       {item}
                     </p>
                   </div>
@@ -392,8 +407,8 @@ function TheRoadAheadPage() {
             </Reveal>
 
             <Reveal>
-              <div className="mt-16 border-t border-white/15 pt-10">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f0a15d]">
+              <div className="mt-16 border-t border-white/30 pt-10">
+                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/85">
                   How You Can Partner With Us
                 </p>
                 <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -408,15 +423,15 @@ function TheRoadAheadPage() {
                     <a
                       key={item}
                       href="/get-involved"
-                      className="group flex items-center justify-between border border-white/15 px-5 py-4 text-sm font-medium text-white transition hover:border-[#f0a15d]"
+                      className="group flex items-center justify-between border border-white/35 bg-white px-5 py-4 text-sm font-semibold text-[#252525] transition hover:bg-[#fff5f0]"
                     >
                       {item}
-                      <ArrowRight className="h-4 w-4 text-[#f0a15d] transition group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 text-[#ed6439] transition group-hover:translate-x-1" />
                     </a>
                   ))}
                 </div>
 
-                <p className="mt-10 max-w-2xl text-xl font-semibold leading-8 text-white">
+                <p className="mt-10 max-w-2xl text-xl font-bold leading-8 text-white">
                   The road ahead is ambitious. With your partnership, it can
                   become a reality.
                 </p>

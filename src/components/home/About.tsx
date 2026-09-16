@@ -73,7 +73,7 @@ export function About() {
               </p>
 
               <p>
-                Dementia is emerging as a major, often overlooked, public
+                Dementia is emerging as a major, and often invisible, public
                 health and social care challenge - affecting not only
                 individuals, but entire families. Many older persons,
                 particularly those from vulnerable communities, struggle to
@@ -83,11 +83,8 @@ export function About() {
               </p>
 
               <p>
-                These are no longer individual or family concerns. They are
-                challenges that society must address together with
-                compassion, innovation and a commitment to ensuring that
-                every older person can age with dignity, security and
-                purpose.
+                These challanges are no longer individual or family problems. They are
+                national concers requiring immediate coordinated action.
               </p>
             </div>
           </Reveal>

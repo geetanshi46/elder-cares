@@ -1,28 +1,100 @@
 import { useEffect, useMemo, useState } from "react";
-import type { FormEvent } from "react";
-import { Link } from "@tanstack/react-router";
+import type { FormEvent, MouseEvent } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Search,
   Menu,
   X,
   ChevronRight,
+  ChevronDown,
   Phone,
   Mail,
+  ArrowRight,
 } from "lucide-react";
 
 import logoHorizontal from "@/assets/nmt-logo-horizontal.png";
 import { SITE_SEARCH_INDEX } from "../../lib/searchIndex";
 
-const NAV_LINKS = [
-  { label: "About Us", to: "/about" },
-  { label: "Our Services", to: "/services" },
-  { label: "Smriti Gram", to: "/smriti-gram" },
-  { label: "The Road Ahead", to: "/the-road-ahead" },
+interface NavItem {
+  label: string;
+  to: string;
+  hash?: string;
+  children?: { label: string; to: string; hash?: string }[];
+}
+
+const NAV_LINKS: NavItem[] = [
+ {
+  label: "About Us",
+  to: "/about",
+  children: [
+    // { label: "About Overview", to: "/about", hash: "about-overview" },
+    { label: "Who We Are", to: "/about", hash: "who-we-are" },
+    { label: "Why We Exist", to: "/about", hash: "why-we-exist" },
+    { label: "The Need for NMT", to: "/about", hash: "the-need-for-nmt" },
+    { label: "Our Journey", to: "/about", hash: "our-journey" },
+    { label: "Vision, Mission & Values", to: "/about", hash: "vision" },
+    { label: "People & Governance", to: "/about", hash: "governance" },
+    { label: "Executive Committee", to: "/executive-committee" },
+    { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
+    { label: "Partners", to: "/about", hash: "partners" },
+    { label: "Founders", to: "/founders" },
+    { label: "Annual Reports", to: "/annual-reports" },
+  ],
+},
+  {
+    label: "Our Services",
+    to: "/services",
+    children: [
+      { label: "Dementia and Medical Care", to: "/services", hash: "dementia-care" },
+      { label: "Care for Marginalized Elders", to: "/services", hash: "marginalized" },
+      { label: "Prevention of Elder Abuse", to: "/services", hash: "elder-protection" },
+      { label: "Empowerment and Livelihood", to: "/services", hash: "empowerment-livelihood" },
+      { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
+      { label: "Training and Capacity Building", to: "/services", hash: "capacity-building" },
+      { label: "Awareness and Advocacy", to: "/services", hash: "awareness" },
+    ],
+  },
+ {
+  label: "Smriti Gram",
+  to: "/smriti-gram",
+  children: [
+    {
+      label: "Why Nightingales Smriti Gram",
+      to: "/smriti-gram",
+      hash: "why-smriti-gram",
+    },
+    {
+      label: "About Nightingales Smriti Gram",
+      to: "/smriti-gram",
+      hash: "about-smriti-gram",
+    },
+    {
+      label: "Services and Facilities",
+      to: "/smriti-gram",
+      hash: "services-facilities",
+    },
+    {
+      label: "Partner With Us",
+      to: "/smriti-gram",
+      hash: "partner",
+    },
+    {
+      label: "Admission For Residential Care",
+      to: "/smriti-gram",
+      hash: "admission",
+    },
+  ],
+},
+
+  { label: "Road Ahead", to: "/the-road-ahead" },
   { label: "Get Involved", to: "/get-involved" },
-  { label: "Impact", to: "/impact" },
+  {
+    label: "Impact",
+    to: "/impact"
+  },
   { label: "News & Events", to: "/news-events" },
   { label: "Contact", to: "/contact" },
-] as const;
+];
 
 function normalizeSearchText(value: string) {
   return value
@@ -32,11 +104,41 @@ function normalizeSearchText(value: string) {
     .trim();
 }
 
+/**
+ * Scrolls smoothly to an element by id. Retries for a short window using
+ * requestAnimationFrame, since the target section may not be mounted yet
+ * right after a route change (e.g. navigating from another page to
+ * /about#who-we-are).
+ */
+function scrollToId(id: string, attempt = 0) {
+  const normalizedId = id.replace(/^#/, "");
+  const el = document.getElementById(normalizedId);
+
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  if (attempt < 40) {
+    requestAnimationFrame(() => scrollToId(id, attempt + 1));
+  }
+}
+
+function normalizePath(path: string) {
+  if (path.length > 1 && path.endsWith("/")) {
+    return path.slice(0, -1);
+  }
+  return path;
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+
+  const location = useRouterState({ select: (s) => s.location });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -49,6 +151,35 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  // Handles the case where the hash is already present when a page loads
+  // or when navigation to a different route with a hash completes.
+  useEffect(() => {
+    const hash = location.hash;
+    if (!hash) return;
+
+    const timeout = setTimeout(() => scrollToId(hash), 50);
+
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, location.hash]);
+
+  // Handles clicks on a hashed link while already on the target page —
+  // in that case the route doesn't actually change, so we scroll manually.
+  const handleHashLinkClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    item: { to: string; hash?: string }
+  ) => {
+    if (!item.hash) return;
+
+    const isSamePage = normalizePath(location.pathname) === normalizePath(item.to);
+
+    if (isSamePage) {
+      e.preventDefault();
+      window.history.replaceState(null, "", `${item.to}#${item.hash}`);
+      scrollToId(item.hash);
+    }
+  };
 
   const searchResults = useMemo(() => {
     const query = normalizeSearchText(searchQuery);
@@ -155,6 +286,9 @@ export function Navbar() {
                 strokeWidth={2.2}
               />
 
+              <span className="rounded bg-white/20 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider sm:text-[10px]">
+                24 Hour Helpline
+              </span>
               <span>080 - 4242 6565</span>
             </a>
 
@@ -289,38 +423,127 @@ export function Navbar() {
             items-center
             justify-center
             gap-0
-            overflow-hidden
             xl:flex
             xl:px-1
             2xl:gap-0.5
           "
         >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              activeProps={{
-                className: "bg-primary-soft text-primary-deep",
-              }}
-              className="
-                whitespace-nowrap
-                rounded-full
-                px-2.5
-                py-2.5
-                text-[13px]
-                font-semibold
-                text-foreground
-                transition-all
-                duration-200
-                hover:bg-primary-soft
-                hover:text-primary-deep
-                2xl:px-3
-                2xl:text-[13.5px]
-              "
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.children ? (
+              <div key={link.label} className="group relative py-2">
+                <Link
+                  to={link.to}
+                  activeProps={{
+                    className: "bg-primary-soft text-primary-deep",
+                  }}
+                  className="
+                    inline-flex
+                    items-center
+                    gap-1
+                    whitespace-nowrap
+                    rounded-full
+                    px-2.5
+                    py-2
+                    text-[13px]
+                    font-semibold
+                    text-foreground
+                    transition-all
+                    duration-200
+                    hover:bg-primary-soft
+                    hover:text-primary-deep
+                    group-hover:bg-primary-soft
+                    group-hover:text-primary-deep
+                    2xl:px-3
+                    2xl:text-[13.5px]
+                  "
+                >
+                  <span>{link.label}</span>
+                  <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover:rotate-180" />
+                </Link>
+
+                {/* Dropdown Menu */}
+                <div
+                  className="
+                    pointer-events-none
+                    invisible
+                    absolute
+                    left-0
+                    top-full
+                    z-50
+                    w-60
+                    origin-top-left
+                    translate-y-1
+                    scale-95
+                    rounded-2xl
+                    border
+                    border-border/80
+                    bg-card/95
+                    p-2
+                    opacity-0
+                    shadow-xl
+                    backdrop-blur-xl
+                    transition-all
+                    duration-200
+                    ease-out
+                    group-hover:pointer-events-auto
+                    group-hover:visible
+                    group-hover:translate-y-0
+                    group-hover:scale-100
+                    group-hover:opacity-100
+                  "
+                >
+                  <div className="flex flex-col gap-0.5">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        to={child.to}
+                        hash={child.hash}
+                        onClick={(e) => handleHashLinkClick(e, child)}
+                        className="
+                          rounded-xl
+                          px-3
+                          py-2
+                          text-xs
+                          font-medium
+                          text-foreground/80
+                          transition-colors
+                          hover:bg-primary-soft
+                          hover:text-primary-deep
+                        "
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                activeProps={{
+                  className: "bg-primary-soft text-primary-deep",
+                }}
+                className="
+                  whitespace-nowrap
+                  rounded-full
+                  px-2.5
+                  py-2
+                  text-[13px]
+                  font-semibold
+                  text-foreground
+                  transition-all
+                  duration-200
+                  hover:bg-primary-soft
+                  hover:text-primary-deep
+                  2xl:px-3
+                  2xl:text-[13.5px]
+                "
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* =======================================================
@@ -379,37 +602,46 @@ export function Navbar() {
             )}
           </button>
 
-          {/* =====================================================
-              DONATE NOW
-              ===================================================== */}
-          <Link
-            to="/get-involved"
-            hash="donate"
-            aria-label="Donate"
-            className="
-              hidden
-              shrink-0
-              items-center
-              justify-center
-              rounded-full
-              bg-[#ED6439]
-              px-4
-              py-2.5
-              text-[13px]
-              font-bold
-              text-white
-              shadow-sm
-              transition-all
-              duration-300
-              hover:-translate-y-0.5
-              hover:bg-[#ED6439]
-              hover:shadow-lg
-              xl:inline-flex
-              2xl:px-5
-            "
-          >
-            Donate
-          </Link>
+         {/* =====================================================
+    DONATE NOW
+    ===================================================== */}
+
+<Link
+  to="/"
+  hash="donate"
+  onClick={(e) =>
+    handleHashLinkClick(e, {
+      to: "/",
+      hash: "donate",
+    })
+  }
+  aria-label="Donate"
+  className="
+    hidden
+    shrink-0
+    items-center
+    justify-center
+    gap-1.5
+    rounded-full
+    bg-[#ED6439]
+    px-4
+    py-2.5
+    text-[13px]
+    font-bold
+    text-white
+    shadow-sm
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:bg-[#d55229]
+    hover:shadow-lg
+    xl:inline-flex
+    2xl:px-5
+  "
+>
+  <span>Donate</span>
+  <ArrowRight className="h-3.5 w-3.5" />
+</Link>
 
           {/* MOBILE MENU */}
           <button
@@ -643,45 +875,116 @@ export function Navbar() {
             xl:hidden
           "
         >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              onClick={() => setMenuOpen(false)}
-              className="
-                flex
-                items-center
-                justify-between
-                rounded-xl
-                px-3
-                py-3
-                text-[15px]
-                font-medium
-                text-foreground/85
-                transition-colors
-                hover:bg-primary-soft
-                hover:text-primary-deep
-              "
-            >
-              {link.label}
+          {NAV_LINKS.map((link) =>
+            link.children ? (
+              <div key={link.label} className="border-b border-border/30 py-1 last:border-none">
+                <div className="flex items-center justify-between">
+                  <Link
+                    to={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className="
+                      flex-1
+                      rounded-xl
+                      px-3
+                      py-2.5
+                      text-[15px]
+                      font-semibold
+                      text-foreground/90
+                      transition-colors
+                      hover:text-primary-deep
+                    "
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    type="button"
+                    aria-label={`Toggle ${link.label} submenu`}
+                    onClick={() =>
+                      setOpenMobileAccordion(
+                        openMobileAccordion === link.label ? null : link.label
+                      )
+                    }
+                    className="rounded-lg p-2 text-muted-foreground transition-colors hover:bg-primary-soft hover:text-primary-deep"
+                  >
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        openMobileAccordion === link.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+                {openMobileAccordion === link.label && (
+                  <div className="ml-3 my-1 flex flex-col space-y-1 border-l-2 border-[#ED6439]/30 pl-3">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        to={child.to}
+                        hash={child.hash}
+                        onClick={(e) => {
+                          handleHashLinkClick(e, child);
+                          setMenuOpen(false);
+                        }}
+                        className="
+                          rounded-lg
+                          px-2.5
+                          py-1.5
+                          text-[13.5px]
+                          text-muted-foreground
+                          transition-colors
+                          hover:bg-primary-soft
+                          hover:text-primary-deep
+                        "
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  rounded-xl
+                  px-3
+                  py-2.5
+                  text-[15px]
+                  font-medium
+                  text-foreground/85
+                  transition-colors
+                  hover:bg-primary-soft
+                  hover:text-primary-deep
+                "
+              >
+                {link.label}
 
-              <ChevronRight
-                className="h-4 w-4 text-muted-foreground"
-                strokeWidth={1.8}
-              />
-            </Link>
-          ))}
+                <ChevronRight
+                  className="h-4 w-4 text-muted-foreground"
+                  strokeWidth={1.8}
+                />
+              </Link>
+            )
+          )}
 
           {/* MOBILE DONATE BUTTON */}
           <Link
             to="/get-involved"
             hash="donate"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              handleHashLinkClick(e, { to: "/get-involved", hash: "donate" });
+              setMenuOpen(false);
+            }}
             className="
-              mt-3
+              mt-4
               flex
               items-center
               justify-center
+              gap-2
               rounded-xl
               bg-[#ED6439]
               px-4
@@ -692,11 +995,12 @@ export function Navbar() {
               shadow-sm
               transition-all
               duration-300
-              hover:bg-[#ED6439]
+              hover:bg-[#d55229]
               hover:shadow-lg
             "
           >
-            Donate
+            <span>Donate</span>
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </nav>
       )}

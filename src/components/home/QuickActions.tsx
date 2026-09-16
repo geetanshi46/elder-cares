@@ -1,13 +1,15 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useRef, useState } from "react";
 import { HandHeart } from "lucide-react";
 import {
   Brain,
   HeartHandshake,
   ShieldCheck,
-  HandCoins,
+  Briefcase,
   Home,
   GraduationCap,
   Landmark,
+  Megaphone,
   Users,
   Handshake,
 } from "lucide-react";
@@ -15,28 +17,28 @@ import {
 const ACTIONS = [
   {
     icon: Brain,
-    label: "Seek Dementia Care",
+    label: "Dementia and Medical Care",
     href: "/services#dementia-care",
     color:
       "bg-[#FFF0E8] text-[#D94D2B] hover:bg-[#D94D2B] hover:text-white",
   },
   {
     icon: HeartHandshake,
-    label: "Care for Marginalized",
+    label: "Care for Marginalized Elders",
     href: "/services#marginalized",
     color:
       "bg-[#F4EAF8] text-[#7A3F8C] hover:bg-[#7A3F8C] hover:text-white",
   },
  {
   icon: HandHeart,
-  label: "Elder Care",
+  label: "Prevention of Elder Abuse",
   href: "/services#elder-protection",
   color:
     "bg-[#FFF5D9] text-[#C88616] hover:bg-[#C88616] hover:text-white",
 },
   {
-    icon: HandCoins,
-    label: "Empowerment & Livelihood",
+    icon: Briefcase,
+    label: "Empowerment and Livelihood",
     href: "/services#empowerment-livelihood",
     color:
       "bg-[#E8F5F2] text-[#287D72] hover:bg-[#287D72] hover:text-white",
@@ -50,25 +52,25 @@ const ACTIONS = [
   },
   {
     icon: GraduationCap,
-    label: "Training & Capacity Building",
+    label: "Training and Capacity Building",
     href: "/services#capacity-building",
     color:
       "bg-[#F1ECFA] text-[#68479A] hover:bg-[#68479A] hover:text-white",
   },
   {
     icon: Landmark,
-    label: "Smriti Gram",
+    label: "Nightingales Smriti Gram",
     href: "/smriti-gram",
     color:
       "bg-[#FFF1DC] text-[#C66A1C] hover:bg-[#C66A1C] hover:text-white",
   },
   {
-  icon: HandCoins,
-  label: "Donate",
-  href: "#donate",
-  color:
-    "bg-[#FDE8D8] text-[#D35428] hover:bg-[#D35428] hover:text-white",
-},
+    icon: Megaphone,
+    label: "Awareness and Advocacy",
+    href: "/services#awareness",
+    color:
+      "bg-[#FDE8D8] text-[#D35428] hover:bg-[#D35428] hover:text-white",
+  },
   {
     icon: Users,
     label: "Volunteer / Intern",
@@ -79,7 +81,7 @@ const ACTIONS = [
   {
     icon: Handshake,
     label: "CSR Partnerships",
-    href: "/get-involved#csr",
+    href: "/get-involved#corporate",
     color:
       "bg-[#F3EAF5] text-[#80518B] hover:bg-[#80518B] hover:text-white",
   },

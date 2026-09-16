@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Facebook,
   Instagram,
@@ -25,11 +26,14 @@ const COLUMNS = [
   {
     title: "Programmes",
     links: [
-      { label: "Dementia Care", to: "/services" },
-      { label: "Elder Care", to: "/services" },
-      { label: "Training", to: "/services" },
-      { label: "Research", to: "/services" },
-      { label: "Smriti Gram", to: "/smriti-gram" },
+      { label: "Dementia and Medical Care", to: "/services", hash: "dementia-care" },
+      { label: "Care for Marginalized Elders", to: "/services", hash: "marginalized" },
+      { label: "Prevention of Elder Abuse", to: "/services", hash: "elder-protection" },
+      { label: "Empowerment and Livelihood", to: "/services", hash: "empowerment-livelihood" },
+      { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
+      { label: "Training and Capacity Building", to: "/services", hash: "capacity-building" },
+      { label: "Awareness and Advocacy", to: "/services", hash: "awareness" },
+      { label: "Nightingales Smriti Gram", to: "/smriti-gram" },
     ],
   },
   {
@@ -52,24 +56,24 @@ const DOWNLOADS = [
 
 const SOCIALS = [
   {
-    Icon: Facebook,
-    label: "Facebook",
-    href: "https://www.facebook.com/NightingalesMedicalTrustDementiaCare/",
-  },
-  {
     Icon: Instagram,
     label: "Instagram",
     href: "https://www.instagram.com/nmteldercare/",
   },
   {
-    Icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/nightingales-medical-trust",
-  },
-  {
     Icon: Youtube,
     label: "YouTube",
     href: "https://www.youtube.com/channel/UCfDVyJWQZ4JoPw300mnYsTw",
+  },
+  {
+    Icon: Facebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/NightingalesMedicalTrustDementiaCare/",
+  },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/nightingales-medical-trust",
   },
 ];
 
@@ -77,62 +81,60 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative overflow-hidden bg-[#17242C] text-white"
+      className="relative overflow-hidden bg-[#E15925] text-white"
     >
       {/* Decorative glows */}
-      <div className="pointer-events-none absolute -left-32 -top-28 h-72 w-72 rounded-full bg-[#ED6439]/25 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 -top-28 h-72 w-72 rounded-full bg-white/12 blur-3xl" />
 
       <div className="pointer-events-none absolute -right-28 top-1/3 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-[#ED6439]/25 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-white/12 blur-3xl" />
 
       {/* Subtle texture */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 text-left sm:px-6 sm:py-10 lg:px-8 lg:py-14">
 
         {/* =====================================================
             BRAND + NAVIGATION
             ===================================================== */}
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.15fr_2fr] lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[250px_1fr] lg:gap-10 xl:grid-cols-[270px_1fr] xl:gap-12">
 
           {/* LEFT — BRAND */}
-          <div>
+          <div className="w-full max-w-[280px]">
             {/* Logo */}
-            <div className="inline-flex bg-white px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
+            <div className="inline-flex max-w-full rounded-md bg-white px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
               <img
                 src={logoHorizontal}
                 alt="Nightingales Medical Trust — NMT Eldercare, Estd 1998"
                 width={1419}
                 height={492}
-                className="h-12 w-auto max-w-[180px] object-contain sm:h-[52px] sm:max-w-[195px]"
+                className="h-auto w-auto max-h-11 max-w-[190px] object-contain sm:max-h-12 sm:max-w-[210px] md:max-w-[225px]"
               />
             </div>
 
             {/* Accent */}
-            <div className="mt-4 flex items-center gap-3">
-              <span className="h-[3px] w-11 rounded-full bg-white" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ED6439]" />
+            <div className="mt-3 flex items-center gap-2.5">
+              <span className="h-[2.5px] w-9 rounded-full bg-white" />
+              <span className="h-2 w-2 rounded-full bg-[#F29000]" />
             </div>
 
             {/* Description */}
-            <p className="mt-4 max-w-md text-[13.5px] leading-[1.65] text-white/85">
+            <p className="mt-3 text-[13px] leading-[1.6] text-white/80">
               A not-for-profit organisation dedicated to the well-being
               of the elderly and persons with Dementia
             </p>
           </div>
 
           {/* RIGHT — NAVIGATION */}
-          <div className="grid grid-cols-2 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 items-start gap-x-6 gap-y-8 text-left min-[420px]:grid-cols-2 sm:gap-y-9 lg:grid-cols-4 lg:gap-x-7">
             {COLUMNS.map((col) => (
-              <div key={col.title}>
-                <div className="flex items-center gap-2.5">
-                  <span className="h-[2px] w-7 bg-[#ED6439]" />
-
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
-                    {col.title}
-                  </h3>
+              <div key={col.title} className="text-left">
+                <div className="text-left">
+                  <h3 className="text-left text-sm font-bold uppercase tracking-[0.18em] text-white/90">
+  {col.title}
+</h3>
                 </div>
 
                 <ul className="mt-4 space-y-2.5 text-[13.5px]">
@@ -140,6 +142,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         to={link.to}
+                        hash={"hash" in link ? (link.hash as string) : undefined}
                         className="inline-block text-white/80 transition-all duration-200 hover:translate-x-0.5 hover:text-white"
                       >
                         {link.label}
@@ -151,13 +154,11 @@ export function Footer() {
             ))}
 
             {/* Download Centre */}
-            <div>
-              <div className="flex items-center gap-2.5">
-                <span className="h-[2px] w-7 bg-[#ED6439]" />
-
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/75">
-                  Download Centre
-                </h3>
+            <div className="text-left">
+              <div className="text-left">
+                <h3 className="text-left text-sm font-bold uppercase tracking-[0.18em] text-white/90">
+  Download Centre
+</h3>
               </div>
 
               <ul className="mt-4 space-y-3 text-[13px]">
@@ -167,9 +168,9 @@ export function Footer() {
                       href="#download"
                       className="group flex items-start gap-2.5 text-white/80 transition-colors hover:text-white"
                     >
-                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-white/10 text-[#ED6439] transition-colors group-hover:bg-white">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-[#F29000] text-white transition-colors group-hover:bg-white">
                         <Download
-                          className="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5 text-white group-hover:text-[#F29000]"
                           strokeWidth={1.8}
                         />
                       </span>
@@ -190,12 +191,12 @@ export function Footer() {
         <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3">
 
           {/* Address */}
-          <div className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11]">
+          <div className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A]">
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <MapPin className="h-4 w-4" strokeWidth={1.8} />
+              <MapPin className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
-            <span className="text-[12.5px] leading-relaxed text-white/85">
+            <span className="text-[12.5px] leading-relaxed text-white">
               8P6, Kasturinagar, 3rd A Cross Rd, Banasawadi,
               Bengaluru 560043
             </span>
@@ -204,10 +205,10 @@ export function Footer() {
           {/* Phone */}
           <a
             href="tel:+918042426565"
-            className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 text-[13px] text-white/85 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11] hover:text-white"
+            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[13px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <Phone className="h-4 w-4" strokeWidth={1.8} />
+              <Phone className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
             +91 80 4242 6565
@@ -216,10 +217,10 @@ export function Footer() {
           {/* Email */}
           <a
             href="mailto:contact@nightingaleseldercare.com"
-            className="flex items-center gap-3 border border-white/20 bg-black/[0.07] px-3.5 py-3 text-[12.5px] text-white/85 transition-all duration-300 hover:border-white/35 hover:bg-black/[0.11] hover:text-white"
+            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[12.5px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
-              <Mail className="h-4 w-4" strokeWidth={1.8} />
+              <Mail className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
 
             <span className="break-all">
@@ -232,12 +233,12 @@ export function Footer() {
             SOCIAL MEDIA
             ===================================================== */}
 
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-7 flex flex-col gap-4 border-t border-white/25 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">
             Follow Us
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2.5">
             {SOCIALS.map(({ Icon, label, href }) => (
               <a
                 key={label}
@@ -245,7 +246,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid h-9 w-9 place-items-center border border-white/25 bg-white/[0.08] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#ED6439]"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/35 bg-white/[0.12] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#F29000] sm:h-11 sm:w-11"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.8} />
               </a>
@@ -257,7 +258,7 @@ export function Footer() {
             BOTTOM BAR
             ===================================================== */}
 
-        <div className="mt-7 grid gap-3 border-t border-white/20 pt-5 text-[11px] text-white/65 sm:flex sm:items-center sm:justify-between">
+        <div className="mt-7 grid gap-4 border-t border-white/25 pt-5 text-[11px] text-white/75 sm:flex sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Nightingales Medical Trust.
             All rights reserved.

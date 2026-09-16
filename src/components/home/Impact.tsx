@@ -89,7 +89,7 @@ lg:pb-12
             className="
               relative
               overflow-hidden
-              bg-[#17232B]
+              bg-[#E15925]
               shadow-[0_30px_80px_-25px_rgba(0,0,0,0.35)]
             "
           >
@@ -114,7 +114,7 @@ lg:pb-12
                   <span className="h-[3px] w-10 rounded-full bg-gradient-to-r from-[#E85A3F] to-[#F5A623]" />
 
                   <h3 className="font-display text-xl font-extrabold text-white sm:text-2xl">
-                    Since 1998
+                    Lifetime Impact
                   </h3>
                 </div>
 
@@ -224,9 +224,9 @@ lg:pb-12
   "
 />
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#17232B]/70 via-[#17232B]/15 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#E15925]/70 via-[#E15925]/15 to-transparent" />
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#17232B]/45 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E15925]/45 via-transparent to-transparent" />
 
               </div>
 
@@ -248,7 +248,7 @@ lg:pb-12
     className="
       relative
       overflow-hidden
-      bg-[#ED6439]
+      bg-[#E15925]
       px-7
       py-10
       text-center
@@ -274,7 +274,7 @@ lg:pb-12
         "
       >
         EVERY DAY 800+ OLDER PERSONS FROM ALL SOCIAL AND ECONOMIC
-        BACKGROUNDS BENEFITS
+        BACKGROUNDS BENEFIT
       </p>
     </div>
   </div>
@@ -315,7 +315,7 @@ function ImpactStat({
         p-5
         transition-all
         duration-300
-        hover:border-[#ED6439]/30
+        hover:border-[#F29000]/30
         hover:bg-white/[0.08]
       "
     >
@@ -326,9 +326,9 @@ function ImpactStat({
           w-11
           shrink-0
           place-items-center
-          bg-[#ED6439]
+          bg-[#F29000]
           text-white
-          shadow-[0_8px_20px_rgba(237,100,57,0.25)]
+          shadow-[0_8px_20px_rgba(242,144,0,0.25)]
           transition-transform
           duration-300
           group-hover/stat:scale-110

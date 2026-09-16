@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
-
+import { useEffect, useRef, useState } from "react";
 export function Section({
   id,
   eyebrow,
@@ -125,13 +125,83 @@ export function StatRow({ stats }: { stats: { k: string; v: string }[] }) {
     <dl className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((s, i) => (
         <Reveal key={s.v} delay={i * 90}>
-          <div className="card-soft h-full p-7">
-            <dt className="font-display text-3xl font-extrabold text-gradient-warm">{s.k}</dt>
-            <dd className="mt-2 text-[13.5px] leading-snug text-muted-foreground">{s.v}</dd>
-          </div>
+          <AnimatedStat stat={s} />
         </Reveal>
       ))}
     </dl>
+  );
+}
+
+function AnimatedStat({ stat }: { stat: { k: string; v: string } }) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const statRef = useRef<HTMLDivElement>(null);
+
+  const target = Number(stat.k.replace(/[^0-9]/g, ""));
+  const hasPlus = stat.k.includes("+");
+
+  useEffect(() => {
+    const element = statRef.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime: number | null = null;
+    const duration = 1600;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+
+      const progress = Math.min(
+        (timestamp - startTime) / duration,
+        1,
+      );
+
+      // Smooth ease-out animation
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      setCount(Math.floor(target * easedProgress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, target]);
+
+  const formattedCount = count.toLocaleString("en-IN");
+
+  return (
+    <div ref={statRef} className="card-soft h-full p-7">
+      <dt className="font-display text-3xl font-extrabold text-gradient-warm">
+        {formattedCount}
+        {hasPlus && "+"}
+      </dt>
+
+      <dd className="mt-2 text-[13.5px] leading-snug text-muted-foreground">
+        {stat.v}
+      </dd>
+    </div>
   );
 }
 
