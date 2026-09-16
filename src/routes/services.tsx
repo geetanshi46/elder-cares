@@ -4276,33 +4276,34 @@ function ServicesPage() {
       </div>
 
       {/* CONTACT BUTTON */}
-      <Link
-        to="/contact"
-        className="
-          mt-6
-          inline-flex
-          max-w-full
-          w-fit
-          items-center
-          justify-center
-          gap-2
-          bg-[#ED6439]
-          px-4
-          py-3
-          text-center
-          text-[12px]
-          font-bold
-          text-white
-          transition-all
-          hover:-translate-y-0.5
-          hover:bg-[#d95730]
-          sm:px-5
-          sm:text-[13px]
-        "
-      >
-        CONTACT US
-        <ArrowUpRight className="h-4 w-4 shrink-0" />
-      </Link>
+      <div className="mt-auto pt-6">
+        <Link
+          to="/contact"
+          className="
+            inline-flex
+            max-w-full
+            w-fit
+            items-center
+            justify-center
+            gap-2
+            bg-[#ED6439]
+            px-4
+            py-3
+            text-center
+            text-[12px]
+            font-bold
+            text-white
+            transition-all
+            hover:-translate-y-0.5
+            hover:bg-[#d95730]
+            sm:px-5
+            sm:text-[13px]
+          "
+        >
+          CONTACT US
+          <ArrowUpRight className="h-4 w-4 shrink-0" />
+        </Link>
+      </div>
 
     </div>
   </div>
@@ -5104,9 +5105,9 @@ function ServicesPage() {
             </a>
             <a
               href="mailto:jobs60plus@nightingaleseldercare.com"
-              className="inline-flex items-center gap-2 bg-white/10 px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/20"
+              className="inline-flex items-center gap-2 bg-white/15 px-4 py-2.5 text-xs font-bold text-white transition-all hover:bg-white/25"
             >
-              <span>EMAIL US</span>
+              <span>EMAIL: jobs60plus@nightingaleseldercare.com</span>
             </a>
           </div>
         </div>
