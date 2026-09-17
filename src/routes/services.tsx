@@ -1541,13 +1541,13 @@ function ServicesPage() {
                         <Brain className="h-5 w-5 text-[#ED6439]" />
                       </div>
 
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+                      {/* <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439]">
                         Programme 01
-                      </p>
+                      </p> */}
                     </div>
 
                     <h3 className="max-w-2xl font-display text-2xl font-extrabold leading-tight text-[#ED6439] sm:text-3xl lg:text-[34px]">
-                      1. Online Dementia Risk Reduction Programme
+                      Online Dementia Risk Reduction Programme
                     </h3>
 
                     <p className="mt-4 text-lg font-bold leading-relaxed text-[#263746] sm:text-xl">
@@ -1699,7 +1699,7 @@ function ServicesPage() {
 
                   <div className="p-5 sm:p-7 md:p-9">
                     <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
-                      2. Memory Clinics
+                     Memory Clinics
                     </h4>
 
                     <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
@@ -1759,15 +1759,15 @@ function ServicesPage() {
                       Our Memory Clinics offer:
                     </p>
 
-                    <ul className="mt-3 space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground">
-                      <li>Comprehensive memory and cognitive assessments</li>
-                      <li>Clinical evaluation and expert consultation</li>
-                      <li>Identification of possible causes of memory problems</li>
-                      <li>Guidance on further investigations and care</li>
-                      <li>Advice on managing behavioural and functional changes</li>
-                      <li>Counselling and guidance for families</li>
-                      <li>Care planning and referral to appropriate NMT services</li>
-                    </ul>
+                    <ul className="mt-3 list-disc list-inside space-y-2.5 text-[14px] leading-[1.7] text-muted-foreground">
+  <li>Comprehensive memory and cognitive assessments</li>
+  <li>Clinical evaluation and expert consultation</li>
+  <li>Identification of possible causes of memory problems</li>
+  <li>Guidance on further investigations and care</li>
+  <li>Advice on managing behavioural and functional changes</li>
+  <li>Counselling and guidance for families</li>
+  <li>Care planning and referral to appropriate NMT services</li>
+</ul>
 
                     <p className="mt-5 text-[14px] leading-[1.8] font-bold text-[#263746] sm:text-[15px]">
                       Our goal is not simply to provide a diagnosis. We help families
@@ -1794,7 +1794,7 @@ function ServicesPage() {
 
                   <div className="p-5 sm:p-7 md:p-9 lg:order-1">
                     <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
-                      3. Dementia Day Care
+                      Dementia Day Care
                     </h4>
 
                     <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
@@ -1930,7 +1930,7 @@ function ServicesPage() {
     {/* SECTION INTRO */}
     <div className="max-w-4xl min-w-0">
       <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
-        4. Specialised Residential Dementia Care
+        Specialised Residential Dementia Care
       </h4>
 
       <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
@@ -2148,7 +2148,7 @@ function ServicesPage() {
             {/* 5. CAREGIVER TRAINING */}
             <ServiceCard
               icon={GraduationCap}
-              title="5. Family Caregiver Training"
+              title="Family Caregiver Training"
               cta="ENQUIRE ABOUT CAREGIVER TRAINING"
             >
               <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-2 lg:items-start">
@@ -2248,7 +2248,7 @@ function ServicesPage() {
                       <HeartHandshake className="h-7 w-7 text-[#ED6439]" />
 
                       <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
-                        6. Dementia Family Support Groups
+                        Dementia Family Support Groups
                       </h4>
                     </div>
 
@@ -2325,7 +2325,7 @@ function ServicesPage() {
 
                   <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
                     <h4 className="font-display text-xl font-extrabold text-[#ED6439] sm:text-2xl">
-                      7. Nightingales Smriti Gram
+                      Nightingales Smriti Gram
                     </h4>
 
                     <p className="mt-2 text-lg font-bold text-[#263746] sm:text-xl">
@@ -3632,6 +3632,7 @@ function ServicesPage() {
               "Cognitive stimulation",
               "Income generation activities",
               "Community participation",
+              "Nutritional support",
               "Access to government schemes and support",
             ].map((item) => (
               <li key={item} className="flex items-start gap-2.5">
@@ -4345,14 +4346,14 @@ function ServicesPage() {
           </ul>
 
           {/* DIAL 14567 */}
-          <div className="mt-6 flex">
+          {/* <div className="mt-6 flex">
             <div className="inline-flex items-center gap-3 border border-[#ED6439]/30 bg-[#263746] px-5 py-3 shadow-md">
               <PhoneCall className="h-5 w-5 text-[#ED6439]" />
               <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
                 Dial 14567
               </span>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* CONTACT BUTTON */}

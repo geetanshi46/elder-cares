@@ -148,6 +148,36 @@ function ImpactStat({
   delay?: number;
   dark?: boolean;
 }) {
+
+  useEffect(() => {
+  const slider = document.getElementById(
+    "impact-testimonials-slider"
+  );
+
+  if (!slider) return;
+
+  const autoScroll = window.setInterval(() => {
+    const maxScrollLeft =
+      slider.scrollWidth - slider.clientWidth;
+
+    if (slider.scrollLeft >= maxScrollLeft - 5) {
+      slider.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      slider.scrollBy({
+        left: Math.min(slider.clientWidth * 0.82, 420),
+        behavior: "smooth",
+      });
+    }
+  }, 3500);
+
+  return () => {
+    window.clearInterval(autoScroll);
+  };
+}, []);
+
   return (
     <Reveal delay={delay}>
       <div
@@ -271,7 +301,7 @@ const impactTestimonials = [
       "My mother has greatly benefitted from the program conducted by the Red Cross - Nightingales Trust Dementia Care Centre. She is involved in many creative activities on a daily basis like drawing, puzzle solving, cooking and Physiotherapy at the Centre. I have seen a drastic change in her health and activity since she has been enrolled. She seems to be mentally happier, and physically active. She truly has a great time with the volunteers and staff there. I would like to thank the team for this wonderful improvement in my mother’s life.",
     title: "Drastic change in mother's health",
     author:
-      "Nizar Ali - Son of Mrs Habeeba Begum, a member of the Dementia Day Care Centre at Hyderabad",
+      "Nizar Ali - Son of Mrs Habeeba Begum, a member of the Dementia Day Care Centre.",
   },
   {
     quote:
@@ -562,9 +592,7 @@ function ImpactPage() {
             </div>
 
             <h2 className="mt-5 max-w-5xl font-display text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-              We have transformed the lives of elders and their families
-              through compassionate accessible dementia and elder care
-              services that restore purpose and dignity.
+              We are transforming the lives of elders and their families through compassionate, accessible dementia and elder care services that restore purpose and dignity.
             </h2>
           </Reveal>
 
@@ -610,9 +638,9 @@ function ImpactPage() {
                 </div>
 
                 <div className="p-7 sm:p-9">
-                  <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
+                  {/* <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
                     Outreach
-                  </p>
+                  </p> */}
 
                   <h3 className="mt-4 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
                     Personalization of Eldercare and Addressing a Wide
@@ -648,9 +676,9 @@ function ImpactPage() {
                 </div>
 
                 <div className="p-7 sm:p-9">
-                  <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
+                  {/* <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
                     Training Centre
-                  </p>
+                  </p> */}
 
                   <h3 className="mt-4 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
                     Advocacy Awareness Campaigns that Have Stood the Test
@@ -741,7 +769,7 @@ function ImpactPage() {
             </div>
 
             <h2 className="mt-5 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-              We have been able to touch many lives over the years.
+              we have tounched many lives
             </h2>
 
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#526574] sm:text-base">

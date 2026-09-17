@@ -74,9 +74,9 @@ function ContactPage() {
                 Reach us
               </p>
 
-              <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
+              {/* <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
                 Head office, helplines and email.
-              </h2>
+              </h2> */}
 
               <div className="mt-5 h-1 w-16 bg-[#F29000]" />
 
@@ -147,10 +147,10 @@ function ContactPage() {
                     text: "contact@nightingaleseldercare.com",
                     href: "mailto:contact@nightingaleseldercare.com",
                   },
-                  {
-                    text: "secretary@nightingaleseldercare.com",
-                    href: "mailto:secretary@nightingaleseldercare.com",
-                  },
+                  // {
+                  //   text: "secretary@nightingaleseldercare.com",
+                  //   href: "mailto:secretary@nightingaleseldercare.com",
+                  // },
                 ]}
               />
 
@@ -333,9 +333,11 @@ function ContactPage() {
                 </p>
 
                 <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
-                  Send an enquiry.
+                  Send An Enquiry.
                 </h2>
-
+                <h5 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
+                  Request to call back
+                </h5>
                 <div className="mt-5 h-1 w-16 bg-[#F29000]" />
 
                 <p className="mt-6 text-base leading-8 text-[#526574] sm:text-lg">

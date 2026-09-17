@@ -600,9 +600,9 @@ lg:p-9
       sm:text-[2.5rem]
     "
   >
-    Make a meaningful{" "}
-    <span className="text-[#F6AF40]">
-      difference.
+    Make A Meaningful{" "}
+    <span className="text-[#14212B]">
+      Difference.
     </span>
   </h2>
 
@@ -697,7 +697,7 @@ lg:p-9
       focus-within:bg-white/[0.09]
     "
   >
-    <span className="font-display text-lg font-bold text-[#F29000]">
+    <span className="font-display text-lg font-bold text-[#14212B]">
       ₹
     </span>
 
@@ -722,9 +722,9 @@ lg:p-9
   </div>
 
 
-  {/* Donate button */}
+ {/* Donate button */}
 
-  <button
+<button
   type="button"
   onClick={() => {
     const subject = monthly
@@ -750,36 +750,38 @@ Thank you.`;
     )}&body=${encodeURIComponent(body)}`;
   }}
   className="
-      mt-4
-      flex
-      w-full
-      items-center
-      justify-center
-      gap-2
-      bg-[#ED6439]
-      px-6
-      py-3.5
-      text-[15px]
-      font-bold
-      text-white
-      shadow-[0_12px_30px_rgba(237,100,57,0.25)]
-      transition-all
-      duration-300
-      hover:-translate-y-1
-      hover:shadow-[0_18px_40px_rgba(237,100,57,0.35)]
-    "
-  >
+    mt-4
+    flex
+    w-full
+    items-center
+    justify-center
+    gap-2
+    bg-[#14212B]
+    px-6
+    py-3.5
+    text-[15px]
+    font-bold
+    text-white
+    shadow-[0_12px_30px_rgba(20,33,43,0.25)]
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:bg-white
+    hover:text-[#14212B]
+    hover:shadow-[0_18px_40px_rgba(20,33,43,0.25)]
+  "
+>
   <HeartHandshake
-  className="h-5 w-5 text-[#F29000]"
+  className="h-5 w-5 text-white group-hover:text-[#14212B]"
   strokeWidth={1.8}
 />
 
-    Donate
-    {amount
-      ? ` ₹${Number(amount).toLocaleString("en-IN")}`
-      : ""}
-    {monthly ? " monthly" : " now"}
-  </button>
+  Donate
+  {amount
+    ? ` ₹${Number(amount).toLocaleString("en-IN")}`
+    : ""}
+  {monthly ? " monthly" : " now"}
+</button>
 
 </div>
             </div>

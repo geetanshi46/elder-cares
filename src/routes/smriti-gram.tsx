@@ -238,7 +238,7 @@ function SmritiGramPage() {
             </div>
 
             <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#526574] sm:text-sm">
-              First phase
+              First phase for marginalized
             </p>
           </div>
         </Reveal>
@@ -497,7 +497,7 @@ function SmritiGramPage() {
             <p>
               Nightingales Smriti Gram is a pioneering initiative of
               Nightingales Medical Trust (NMT) to create a new model of
-              dementia care in India , where quality care, dignity,
+              dementia care in India, where quality care, dignity,
               companionship, learning, innovation and research come together
               in one caring community.
             </p>
@@ -633,8 +633,7 @@ function SmritiGramPage() {
                 <span className="block h-1 w-12 rounded-full bg-[#ED6439]" />
 
                 <p className="mt-6 font-display text-lg font-bold leading-7 text-[#263746] sm:text-xl sm:leading-8">
-                  Nightingales Smriti Gram is our effort to turn this belief
-                  into reality.
+                  Financial constraints should never be a barrier to quality dementia care
                 </p>
 
                 <div className="mt-7 h-px w-full bg-[#263746]/10" />

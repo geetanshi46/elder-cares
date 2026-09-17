@@ -20,7 +20,7 @@ const COLUMNS = [
       { label: "Leadership", to: "/about" },
       { label: "Annual Reports", to: "/impact" },
       { label: "Careers", to: "/get-involved" },
-      { label: "Newsroom", to: "/news-events" },
+      { label: "NMT In News", to: "/news-events" },
     ],
   },
   {
@@ -49,9 +49,14 @@ const COLUMNS = [
 ] as const;
 
 const DOWNLOADS = [
-  "Resources",
-  "Annual Report 2024–25 (PDF)",
-  "80G & FCRA Certificates (PDF)",
+  {
+    label: "Annual Report 2024–25 (PDF)",
+    href: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
+  },
+  {
+    label: "80G & FCRA Certificates (PDF)",
+    href: "#download",
+  },
 ];
 
 const SOCIALS = [
@@ -163,22 +168,24 @@ export function Footer() {
 
               <ul className="mt-4 space-y-3 text-[13px]">
                 {DOWNLOADS.map((file) => (
-                  <li key={file}>
-                    <a
-                      href="#download"
-                      className="group flex items-start gap-2.5 text-white/80 transition-colors hover:text-white"
-                    >
-                      <span className="grid h-7 w-7 shrink-0 place-items-center bg-[#F29000] text-white transition-colors group-hover:bg-white">
-                        <Download
-                          className="h-3.5 w-3.5 text-white group-hover:text-[#F29000]"
-                          strokeWidth={1.8}
-                        />
-                      </span>
+  <li key={file.label}>
+    <a
+      href={file.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-start gap-2.5 text-white/80 transition-colors hover:text-white"
+    >
+      <span className="grid h-7 w-7 shrink-0 place-items-center bg-[#14212B] text-white transition-colors group-hover:bg-white">
+        <Download
+          className="h-3.5 w-3.5 text-white group-hover:text-[#14212B]"
+          strokeWidth={1.8}
+        />
+      </span>
 
-                      <span className="leading-relaxed">{file}</span>
-                    </a>
-                  </li>
-                ))}
+      <span className="leading-relaxed">{file.label}</span>
+    </a>
+  </li>
+))}
               </ul>
             </div>
           </div>
@@ -191,7 +198,7 @@ export function Footer() {
         <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3">
 
           {/* Address */}
-          <div className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A]">
+          <div className="flex items-center gap-3 border border-[#14212B]/70 bg-[#14212B] px-3.5 py-3 transition-all duration-300 hover:border-white/60 hover:bg-[#14212B]">
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
               <MapPin className="h-4 w-4 text-white" strokeWidth={1.8} />
             </span>
@@ -205,7 +212,7 @@ export function Footer() {
           {/* Phone */}
           <a
             href="tel:+918042426565"
-            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[13px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
+            className="flex items-center gap-3 border border-[#14212B]/70 bg-[#14212B] px-3.5 py-3 text-[13px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#14212B] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
               <Phone className="h-4 w-4 text-white" strokeWidth={1.8} />
@@ -217,7 +224,7 @@ export function Footer() {
           {/* Email */}
           <a
             href="mailto:contact@nightingaleseldercare.com"
-            className="flex items-center gap-3 border border-[#F29000]/70 bg-[#F29000] px-3.5 py-3 text-[12.5px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#F6A51A] hover:text-white"
+            className="flex items-center gap-3 border border-[#14212B]/70 bg-[#14212B] px-3.5 py-3 text-[12.5px] text-white transition-all duration-300 hover:border-white/60 hover:bg-[#14212B] hover:text-white"
           >
             <span className="grid h-8 w-8 shrink-0 place-items-center bg-white/15">
               <Mail className="h-4 w-4 text-white" strokeWidth={1.8} />

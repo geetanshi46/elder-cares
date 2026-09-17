@@ -101,7 +101,12 @@ const JOURNEY = [
   },
   {
     year: "2008",
-    title: "International collaboration with Alzheimer's Australia for technical support. NMT's work received the Vayoshreshtha Samman, National Award.",
+    title: "International collaboration with Alzheimer's Australia for technical support.",
+    body: "",
+  },
+  {
+    year: "2009",
+    title: "NMT's work received the Vayoshreshtha Samman, National Award.",
     body: "",
   },
   {
