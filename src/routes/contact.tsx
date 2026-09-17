@@ -14,12 +14,16 @@ import {
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import type { ReactNode } from "react";
 
 const title =
   "Contact Nightingales Medical Trust — Centres, Helplines & Enquiries";
 
 const description =
   "Reach Nightingales Medical Trust: head office address, centre locations, helpline numbers, WhatsApp, email and an online enquiry form.";
+
+const WHATSAPP_NUMBER = "919035025438"; // +91 90350 25438, no + or spaces for wa.me
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -54,9 +58,11 @@ function ContactPage() {
 
       {/* ==================================================
           CONTACT — REACH US
+          Divided info panel (not a card grid) so it reads
+          differently from the Centres grid below.
       ================================================== */}
 
-      <section className="w-full bg-[#E15925] py-16 sm:py-20 lg:py-24">
+      <section className="w-full bg-[#FFFCF7] py-16 sm:py-20 lg:py-24">
 
         <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12">
 
@@ -64,11 +70,11 @@ function ContactPage() {
 
             <div className="mb-10 max-w-4xl sm:mb-14">
 
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75 sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E15925] sm:text-sm">
                 Reach us
               </p>
 
-              <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+              <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
                 Head office, helplines and email.
               </h2>
 
@@ -79,60 +85,78 @@ function ContactPage() {
           </Reveal>
 
 
-          {/* CONTACT CARDS */}
+          {/* CONTACT INFO PANEL */}
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={90}>
 
-            <ContactInfoCard
-              icon={Building2}
-              title="Head Office"
-              body="Nightingales Medical Trust, 8P6, Kasturinagar, 3rd A Cross Rd, East of NGEF Layout, Banasawadi, Bengaluru, Karnataka 560043."
-            />
+            <div
+              className="
+                grid
+                grid-cols-1
+                divide-y
+                divide-[#263746]/10
+                border
+                border-[#263746]/10
+                bg-white
+                sm:grid-cols-2
+                sm:divide-x
+                sm:divide-y-0
+                lg:grid-cols-4
+              "
+            >
 
-            <ContactInfoCard
-              icon={PhoneCall}
-              title="Phone (24 hours)"
-              delay={90}
-              links={[
-                {
-                  text: "+91 80 4242 6565",
-                  href: "tel:+918042426565",
-                },
-                {
-                  text: "Elders Helpline 1090",
-                  href: "tel:1090",
-                },
-                {
-                  text: "National Helpline 14567",
-                  href: "tel:14567",
-                },
-              ]}
-            />
+              <ContactInfoCard
+                icon={Building2}
+                title="Head Office"
+                body="Nightingales Medical Trust, 8P6, Kasturinagar, 3rd A Cross Rd, East of NGEF Layout, Banasawadi, Bengaluru, Karnataka 560043."
+              />
 
-            <ContactInfoCard
-              icon={MessageCircle}
-              title="WhatsApp"
-              delay={180}
-              body="Message us on +91 80 4242 6565 for dementia care guidance, available every day."
-            />
+              <ContactInfoCard
+                icon={PhoneCall}
+                title="Phone (24 hours)"
+                links={[
+                  {
+                    text: "+91 80 4242 6565",
+                    href: "tel:+918042426565",
+                  },
+                  {
+                    text: "Elders Helpline 1090",
+                    href: "tel:1090",
+                  },
+                  {
+                    text: "National Helpline 14567",
+                    href: "tel:14567",
+                  },
+                ]}
+              />
 
-            <ContactInfoCard
-              icon={Mail}
-              title="Email"
-              delay={270}
-              links={[
-                {
-                  text: "contact@nightingaleseldercare.com",
-                  href: "mailto:contact@nightingaleseldercare.com",
-                },
-                {
-                  text: "secretary@nightingaleseldercare.com",
-                  href: "mailto:secretary@nightingaleseldercare.com",
-                },
-              ]}
-            />
+              <ContactInfoCard
+                icon={MessageCircle}
+                title="WhatsApp"
+                body="Message us on +91 90350 25438 for dementia care guidance, available every day."
+                href={WHATSAPP_LINK}
+                cta="Chat on WhatsApp"
+                highlight
+              />
 
-          </div>
+              <ContactInfoCard
+                icon={Mail}
+                title="Email"
+                links={[
+                  {
+                    text: "contact@nightingaleseldercare.com",
+                    href: "mailto:contact@nightingaleseldercare.com",
+                  },
+                  {
+                    text: "secretary@nightingaleseldercare.com",
+                    href: "mailto:secretary@nightingaleseldercare.com",
+                  },
+                ]}
+              />
+
+            </div>
+
+          </Reveal>
 
         </div>
 
@@ -481,6 +505,10 @@ function ContactPage() {
 
 /* ==================================================
     CONTACT INFO CARD
+    Renders as a plain block, or — when `href` is passed
+    (WhatsApp) — as a fully clickable link that opens the
+    chat directly. `highlight` gives it the coral CTA
+    treatment instead of a plain white block.
 ================================================== */
 
 function ContactInfoCard({
@@ -488,120 +516,173 @@ function ContactInfoCard({
   title,
   body,
   links,
-  delay = 0,
+  href,
+  cta,
+  highlight = false,
 }: {
   icon: LucideIcon;
   title: string;
-  body?: string;
+  body?: ReactNode;
   links?: {
     text: string;
     href: string;
   }[];
-  delay?: number;
+  href?: string;
+  cta?: string;
+  highlight?: boolean;
 }) {
+
+  const Wrapper = href ? "a" : "div";
+
+  const wrapperProps = href
+    ? {
+        href,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "aria-label": `${title} — opens in a new tab`,
+      }
+    : {};
 
   return (
 
-    <Reveal delay={delay} className="min-w-0">
+    <Wrapper
+      {...wrapperProps}
+      className={`
+        group
+        relative
+        flex
+        h-full
+        min-w-0
+        flex-col
+        p-8
+        transition-colors
+        duration-300
+        ${highlight
+          ? "bg-[#E15925] text-white hover:bg-[#C94B1E]"
+          : "bg-white hover:bg-[#FFFCF7]"}
+        ${href ? "cursor-pointer" : ""}
+      `}
+    >
 
-      <article
-        className="
-          group
-          relative
+      {/* ICON */}
+
+      <span
+        className={`
           flex
-          h-full
-          min-w-0
-          flex-col
-          overflow-hidden
-          border
-          border-white/40
-          bg-white
-          p-6
-          shadow-[0_15px_40px_rgba(38,30,20,0.12)]
-          transition-all
+          h-12
+          w-12
+          w-fit
+          items-center
+          justify-center
+          transition-colors
           duration-300
-          hover:-translate-y-2
-          hover:shadow-[0_22px_55px_rgba(38,30,20,0.2)]
-          sm:p-7
-          lg:p-8
-        "
+          ${highlight
+            ? "bg-white/15 text-white"
+            : "bg-[#FFF1D6] text-[#F29000] group-hover:bg-[#F29000] group-hover:text-white"}
+        `}
       >
 
-        {/* ICON */}
+        <Icon className="h-6 w-6" strokeWidth={1.6} />
+
+      </span>
+
+
+      {/* TITLE */}
+
+      <h3
+        className={`
+          mt-6
+          font-display
+          text-xl
+          font-extrabold
+          leading-snug
+          ${highlight ? "text-white" : "text-[#263746]"}
+        `}
+      >
+        {title}
+        {href ? (
+          <ArrowUpRight
+            className={`
+              ml-1
+              inline-block
+              h-4
+              w-4
+              align-top
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+              group-hover:-translate-y-1
+              ${highlight ? "text-white" : "text-[#E15925]"}
+            `}
+          />
+        ) : null}
+      </h3>
+
+
+      {/* BODY */}
+
+      {body ? (
+
+        <p
+          className={`
+            mt-4
+            text-sm
+            leading-7
+            ${highlight ? "text-white/90" : "text-[#526574]"}
+          `}
+        >
+          {body}
+        </p>
+
+      ) : null}
+
+
+      {/* LINKS */}
+
+      {links?.length ? (
+
+        <div className="mt-5 space-y-3 text-sm leading-6">
+
+          {links.map((link) => (
+  <a
+    key={link.href}
+    href={link.href}
+    onClick={(e) => e.stopPropagation()}
+    className="block min-w-0 break-words text-[#526574] transition-colors duration-300 hover:text-[#E15925]"
+  >
+    {link.text}
+  </a>
+))}
+
+          ))
+
+        </div>
+
+      ) : null}
+
+
+      {/* CTA */}
+
+      {cta ? (
 
         <span
           className="
-            flex
-            h-12
-            w-12
+            mt-6
+            inline-flex
             w-fit
             items-center
-            justify-center
-            bg-[#FFF1D6]
-            text-[#F29000]
-            transition-all
-            duration-300
-            group-hover:bg-[#F29000]
-            group-hover:text-white
+            gap-2
+            text-sm
+            font-bold
+            text-white
           "
         >
-
-          <Icon className="h-6 w-6" strokeWidth={1.6} />
-
+          {cta}
         </span>
 
+      ) : null}
 
-        {/* TITLE */}
-
-        <h3 className="mt-6 font-display text-xl font-extrabold leading-snug text-[#263746]">
-          {title}
-        </h3>
-
-
-        {/* BODY */}
-
-        {body ? (
-
-          <p className="mt-4 text-sm leading-7 text-[#526574]">
-            {body}
-          </p>
-
-        ) : null}
-
-
-        {/* LINKS */}
-
-        {links?.length ? (
-
-          <div className="mt-5 space-y-3 text-sm leading-6">
-
-            {links.map((link) => (
-
-              <a
-                key={link.href}
-                href={link.href}
-                className="
-                  block
-                  min-w-0
-                  break-words
-                  text-[#526574]
-                  transition-colors
-                  duration-300
-                  hover:text-[#E15925]
-                "
-              >
-                {link.text}
-              </a>
-
-            ))}
-
-          </div>
-
-        ) : null}
-
-      </article>
-
-    </Reveal>
+    </Wrapper>
 
   );
 }

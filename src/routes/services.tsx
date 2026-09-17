@@ -102,6 +102,8 @@ const title =
 const description =
   "Explore Nightingales Medical Trust services and programmes for older persons, including dementia care, elder protection, empowerment, old age home support, training and capacity building.";
 
+  
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -176,6 +178,7 @@ function ImageShuffle({
    ============================================================ */
 
 function ServiceCard({
+   id,
   icon: Icon,
   title,
   titleClassName = "text-[#ED6439]",
@@ -187,6 +190,7 @@ function ServiceCard({
   delay = 0,
   cta = "READ MORE",
 }: {
+  id?: string;
   icon: typeof HeartHandshake;
   title: string;
   titleClassName?: string;
@@ -203,6 +207,7 @@ function ServiceCard({
   return (
     <Reveal delay={delay} className="h-full min-w-0">
       <article
+      id={id}
   className={`
     group
     relative
@@ -808,6 +813,7 @@ function TrainingCarousel() {
           "
         >
           <ServiceCard
+          id="caregiver-training"
             icon={GraduationCap}
             title="Bedside Assistant Training Course"
             titleClassName="text-[#ED6439]"
@@ -1167,7 +1173,8 @@ function TrainingCarousel() {
 
 function ServicesPage() {
     const [sandhyaExpanded, setSandhyaExpanded] = useState(false)
-
+    const [showEldersMore, setShowEldersMore] = useState(false);
+    
   const [nationalHelplineExpanded, setNationalHelplineExpanded] =
   useState(false)
   return (
@@ -1399,25 +1406,92 @@ function ServicesPage() {
           </Reveal>
 
           {/* DEMENTIA CARE CONTINUUM */}
-          <Reveal>
-            <div className="min-w-0">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
-                Our Dementia Care Continuum
-              </p>
+<Reveal>
+  <div className="min-w-0">
+    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
+      Our Dementia Care Continuum
+    </p>
 
-              <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl md:text-4xl">
-                Prevent. Detect. Support. Care. Empower.
-              </h3>
+    <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl md:text-4xl">
+      Prevent. Detect. Support. Care. Empower.
+    </h3>
 
-              <p className="mt-4 max-w-4xl text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
-                At NMT, dementia care begins well before a person requires
-                residential care. We support individuals and families across the
-                dementia journey.
-              </p>
-            </div>
-          </Reveal>
+    <p className="mt-4 max-w-4xl text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+      At NMT, dementia care begins well before a person requires
+      residential care. We support individuals and families across the
+      dementia journey.
+    </p>
+  </div>
+</Reveal>
 
-          <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {[
+    {
+      number: "01",
+      step: "Reduce Risk",
+      text: "Online Dementia Risk Reduction Programme",
+      hash: "online-risk-reduction",
+    },
+    {
+      number: "02",
+      step: "Detect Early",
+      text: "Memory Clinics & Cognitive Assessment",
+      hash: "memory-clinics",
+    },
+    {
+      number: "03",
+      step: "Support Independence",
+      text: "Dementia Day Care & Meaningful Engagement",
+      hash: "day-care",
+    },
+    {
+      number: "04",
+      step: "Empower Families",
+      text: "Caregiver Training & Family Support Groups",
+      hash: "caregiver-training",
+    },
+    {
+      number: "05",
+      step: "Provide Continuing Care",
+      text: "Specialised Residential Dementia Care",
+      hash: "residential-care",
+    },
+    {
+      number: "06",
+      step: "Build the Future of Dementia Care",
+      text: "Nightingales Smriti Gram – Dementia Care, Learning & Research",
+      hash: "smriti-gram",
+    },
+  ].map(({ number, step, text, hash }, index) => (
+    <Reveal key={step} delay={(index % 3) * 80}>
+      <Link
+        to="/services"
+        hash={hash}
+        className="group block h-full"
+      >
+        <div className="h-full border border-[#ED6439]/15 bg-white p-5 shadow-[0_16px_45px_-22px_rgba(70,45,10,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-[0_20px_50px_-20px_rgba(237,100,57,0.22)] sm:p-6">
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-display text-lg font-extrabold text-[#ED6439]">
+              {number}
+            </span>
+
+            <ArrowUpRight className="h-4 w-4 text-[#ED6439] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </div>
+
+          <span className="mt-3 block text-xs font-bold uppercase tracking-[0.14em] text-[#ED6439]">
+            {step}
+          </span>
+
+          <p className="mt-3 font-display text-base font-extrabold leading-snug text-[#263746] sm:text-lg">
+            {text}
+          </p>
+        </div>
+      </Link>
+    </Reveal>
+  ))}
+</div>
+
+          {/* <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               ["Reduce Risk", "Online Dementia Risk Reduction Programme"],
               ["Detect Early", "Memory Clinics & Cognitive Assessment"],
@@ -1437,7 +1511,7 @@ function ServicesPage() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </div> */}
 
           <Reveal>
             <p className="font-display text-lg font-extrabold text-[#ED6439] sm:text-xl">
@@ -1456,7 +1530,9 @@ function ServicesPage() {
 
             {/* 1. ONLINE RISK REDUCTION */}
             <Reveal>
-              <div className="overflow-hidden border border-[#ED6439]/10 bg-white">
+              <div
+              id="online-risk-reduction"
+              className="overflow-hidden border border-[#ED6439]/10 bg-white">
                 <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
 
                   <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
@@ -1606,7 +1682,9 @@ function ServicesPage() {
 
             {/* 2. MEMORY CLINICS */}
             <Reveal>
-              <div className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
+              <div 
+              id="memory-clinics"
+              className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
                 <div className="grid lg:grid-cols-[1.2fr_0.8fr] lg:items-stretch">
 
                   <div className="relative min-h-[340px] overflow-hidden bg-[#F6F1EC] sm:min-h-[460px] lg:min-h-full">
@@ -1711,7 +1789,7 @@ function ServicesPage() {
 
             {/* 3. DAY CARE */}
             <Reveal>
-              <div className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
+              <div id="day-care" className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
                 <div className="grid lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
 
                   <div className="p-5 sm:p-7 md:p-9 lg:order-1">
@@ -1847,7 +1925,7 @@ function ServicesPage() {
 
             {/* 4. RESIDENTIAL CARE */}
 <Reveal>
-  <div className="min-w-0">
+  <div id="residential-care" className="min-w-0">
 
     {/* SECTION INTRO */}
     <div className="max-w-4xl min-w-0">
@@ -2162,7 +2240,7 @@ function ServicesPage() {
 
             {/* 6. FAMILY SUPPORT GROUPS */}
             <Reveal>
-              <div className="border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
+              <div id="family-support-groups" className="border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
                 <div className="grid lg:grid-cols-2">
 
                   <div className="p-6 sm:p-8 lg:p-10">
@@ -2234,7 +2312,7 @@ function ServicesPage() {
 
             {/* 8. SMRITI GRAM */}
             <Reveal>
-              <div className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
+              <div id="smriti-gram" className="overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]">
                 <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
 
                   <div className="h-full min-h-[320px] sm:min-h-[420px] lg:min-h-[500px]">
@@ -2362,7 +2440,7 @@ function ServicesPage() {
 
           {/* WHY CHOOSE NMT */}
           <Reveal>
-            <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+            <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-stretch">
 
               {/* PORTRAIT IMAGE */}
               <div
@@ -3910,406 +3988,408 @@ function ServicesPage() {
     </p>
   </Reveal>
 
-
-  {/* ==================================================
-      HELPLINE CARDS
-      SIDE BY SIDE
-      ================================================== */}
-
-  <div
-    className="
-      mt-8
-      grid
-      min-w-0
-      gap-6
-      sm:mt-10
-      sm:gap-8
-      lg:grid-cols-2
-    "
-  >
-
-    {/* ==================================================
-        ELDERS HELPLINE – 1090
-        ================================================== */}
-
-    <Reveal className="min-w-0 h-full">
-      <div
-        className="
-          flex
-          h-full
-          min-w-0
-          flex-col
-          overflow-hidden
-          border
-          border-[#ED6439]/15
-          bg-white
-          shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-        "
-      >
-
-        {/* IMAGE */}
-        <div
-          className="
-            relative
-            w-full
-            overflow-hidden
-            bg-[#f8f5ef]
-          "
-        >
-          <img
-            src={eldersHelplineImage}
-            alt="Elders Helpline 1090"
-            className="
-              block
-              h-[260px]
-              w-full
-              object-cover
-              object-center
-              sm:h-[300px]
-            "
-          />
-        </div>
-
-
-        {/* CONTENT */}
-        <div
-          className="
-            flex
-            min-w-0
-            flex-1
-            flex-col
-            p-6
-            sm:p-8
-            md:p-9
-          "
-        >
-
-          {/* ICON */}
-          <div
-            className="
-              mb-5
-              flex
-              h-12
-              w-12
-              shrink-0
-              items-center
-              justify-center
-              rounded-full
-              bg-[#ED6439]
-              text-white
-              shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
-            "
-          >
-            <PhoneCall className="h-5 w-5" />
-          </div>
-
-
-          {/* TITLE */}
-          <h3
-            className="
-              font-display
-              text-xl
-              font-extrabold
-              text-[#ED6439]
-              sm:text-2xl
-            "
-          >
-            Elders Helpline – 1090
-          </h3>
-
-          <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
-
-
-          {/* CONTENT */}
-          <div
-            className="
-              mt-6
-              text-[14px]
-              leading-[1.8]
-              text-muted-foreground
-              sm:text-[15px]
-            "
-          >
-            <p>
-              It's a joint project of Bengaluru City Police and
-              Nightingales Medical Trust. Established in 2002, the Elders
-              Helpline provides assistance to older persons facing problems
-              including abuse, neglect, exploitation, harassment, family
-              disputes and other forms of vulnerability.
-            </p>
-
-            <p className="mt-4">
-              <strong className="font-bold text-[#263746]">
-                It's the first project in the country where an NGO and the law enforcing
-                authorities joined together to address elder abuse.
-              </strong>
-            </p>
-
-            <p className="mt-4">
-              <strong className="font-bold text-[#263746]">
-                Located at the premises of Bengaluru City Police
-              </strong>
-              , the Helpline acts as an important link between older persons,
-              their families, social workers, police and other support
-              systems.
-            </p>
-
-            <p className="mt-5 font-semibold text-foreground">
-              The Helpline can help with:
-            </p>
-
-            <ul className="mt-4 space-y-2.5">
-              {[
-                "Elder abuse and neglect",
-                "Family-related issues and conciliations",
-                "Harassment and intimidation",
-                "Financial exploitation",
-                "Safety concerns",
-                "Counselling and guidance",
-                "Referral to appropriate services",
-                "Police and institutional intervention where required",
-                "Tracing of missing / straying elders",
-                "Assess to government schemes and facilities",
-                "Information on elder related services",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
-                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-5 font-bold text-foreground sm:text-[15px]">
-              Elders can avail free legal advice with prior appointments.
-            </p>
-
-            <p className="mt-4">
-              All the services rendered at the Elders Helpline are free of cost.
-            </p>
-
-            {/* DIAL 1090 IN BLACK BOX WITH ORANGE TEXT */}
-            <div className="mt-6 flex">
-              <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
-                <PhoneCall className="h-5 w-5 text-[#ED6439]" />
-                <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
-                  Dial 1090
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* CONTACT BUTTON */}
-          <div className="mt-auto pt-6">
-            <Link
-              to="/contact"
-              className="
-                inline-flex
-                max-w-full
-                w-fit
-                items-center
-                justify-center
-                gap-2
-                bg-[#ED6439]
-                px-4
-                py-3
-                text-center
-                text-[12px]
-                font-bold
-                text-white
-                transition-all
-                hover:-translate-y-0.5
-                hover:bg-[#d95730]
-                sm:px-5
-                sm:text-[13px]
-              "
-            >
-              CONTACT US
-              <ArrowUpRight className="h-4 w-4 shrink-0" />
-            </Link>
-          </div>
-
-        </div>
-      </div>
-    </Reveal>
-
-{/* ==================================================
-    NATIONAL HELPLINE – 14567
+<br />
+ {/* ==================================================
+    HELPLINE SECTIONS
     ================================================== */}
 
-<Reveal className="min-w-0 h-full">
-  <div
-    className="
-      flex
-      h-full
-      min-w-0
-      flex-col
-      overflow-hidden
-      border
-      border-[#ED6439]/15
-      bg-white
-      shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
-    "
-  >
+<div className="grid items-stretch gap-8 lg:grid-cols-2">
 
-    {/* IMAGE */}
-    <div
-      className="
-        relative
-        w-full
-        overflow-hidden
-        bg-[#f8f5ef]
-      "
-    >
-      <img
-        src={nationalHelplineImage}
-        alt="National Helpline for Senior Citizens"
-        className="
-          block
-          h-[260px]
-          w-full
-          object-cover
-          object-center
-          sm:h-[300px]
-        "
-      />
-    </div>
+  {/* ==================================================
+      ELDERS HELPLINE – 1090
+      ================================================== */}
 
-    {/* CONTENT */}
+  <Reveal className="min-w-0 h-full">
     <div
       className="
         flex
+        h-full
         min-w-0
-        flex-1
         flex-col
-        p-6
-        sm:p-8
-        md:p-9
+        overflow-hidden
+        border
+        border-[#ED6439]/15
+        bg-white
+        shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
       "
     >
 
-      {/* ICON */}
+      {/* IMAGE */}
       <div
         className="
-          mb-5
-          flex
-          h-12
-          w-12
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          bg-[#ED6439]
-          text-white
-          shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
+          relative
+          w-full
+          overflow-hidden
+          bg-[#f8f5ef]
         "
       >
-        <ShieldCheck className="h-5 w-5" />
+        <img
+          src={eldersHelplineImage}
+          alt="Elders Helpline 1090"
+          className="
+            block
+            h-[260px]
+            w-full
+            object-cover
+            object-center
+            sm:h-[300px]
+          "
+        />
       </div>
-
-      {/* TITLE */}
-      <h3
-        className="
-          font-display
-          text-xl
-          font-extrabold
-          text-[#ED6439]
-          sm:text-2xl
-        "
-      >
-        National Helpline for Senior Citizens – 14567
-      </h3>
-
-      <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
 
       {/* CONTENT */}
       <div
         className="
-          mt-6
-          text-[14px]
-          leading-[1.8]
-          text-muted-foreground
-          sm:text-[15px]
+          flex
+          min-w-0
+          flex-1
+          flex-col
+          p-6
+          sm:p-8
+          md:p-9
         "
       >
-        <p>
-          NMT has been implementing the Karnataka wing of the National
-          Helpline for Senior Citizens (14567),{" "}
-          <strong className="font-semibold text-foreground">
-            an initiative of Ministry of Social Justice and Empowerment,
-            Government of India
-          </strong>
-          , supporting older persons in accessing information,
-          guidance, assistance and appropriate services.
-        </p>
 
-        <p className="mt-4 font-medium text-foreground">
-          The Helpline provides support on issues including:
-        </p>
-
-        <ul className="mt-4 space-y-2.5">
-          {[
-            "Government schemes and entitlements",
-            "Healthcare and care services",
-            "Elder abuse",
-            "Legal and social support",
-            "Maintenance-related concerns",
-            "Shelter and rehabilitation",
-            "Emotional support",
-            "Linkages to relevant agencies and services",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* DIAL 14567 IN BLACK BOX WITH ORANGE TEXT */}
-        <div className="mt-6 flex">
-          <div className="inline-flex items-center gap-3 bg-[#263746] px-5 py-3 border border-[#ED6439]/30 shadow-md">
-            <PhoneCall className="h-5 w-5 text-[#ED6439]" />
-            <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
-              Dial 14567
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* CONTACT BUTTON */}
-      <div className="mt-auto pt-6">
-        <Link
-          to="/contact"
+        {/* ICON */}
+        <div
           className="
-            inline-flex
-            max-w-full
-            w-fit
+            mb-5
+            flex
+            h-12
+            w-12
+            shrink-0
             items-center
             justify-center
-            gap-2
+            rounded-full
             bg-[#ED6439]
-            px-4
-            py-3
-            text-center
-            text-[12px]
-            font-bold
             text-white
-            transition-all
-            hover:-translate-y-0.5
-            hover:bg-[#d95730]
-            sm:px-5
-            sm:text-[13px]
+            shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
           "
         >
-          CONTACT US
-          <ArrowUpRight className="h-4 w-4 shrink-0" />
-        </Link>
+          <PhoneCall className="h-5 w-5" />
+        </div>
+
+        {/* TITLE */}
+        <h3
+          className="
+            font-display
+            text-xl
+            font-extrabold
+            text-[#ED6439]
+            sm:text-2xl
+          "
+        >
+          Elders Helpline – 1090
+        </h3>
+
+        <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
+
+        {/* CONTENT */}
+        <div
+          className={`
+            mt-6
+            overflow-hidden
+            text-[14px]
+            leading-[1.8]
+            text-muted-foreground
+            transition-all
+            duration-300
+            sm:text-[15px]
+            ${showEldersMore ? "max-h-none" : "max-h-[420px]"}
+          `}
+        >
+          <p>
+            It's a joint project of Bengaluru City Police and
+            Nightingales Medical Trust. Established in 2002, the Elders
+            Helpline provides assistance to older persons facing problems
+            including abuse, neglect, exploitation, harassment, family
+            disputes and other forms of vulnerability.
+          </p>
+
+          <p className="mt-4">
+            <strong className="font-bold text-[#263746]">
+              It's the first project in the country where an NGO and the law enforcing
+              authorities joined together to address elder abuse.
+            </strong>
+          </p>
+
+          <p className="mt-4">
+            <strong className="font-bold text-[#263746]">
+              Located at the premises of Bengaluru City Police
+            </strong>
+            , the Helpline acts as an important link between older persons,
+            their families, social workers, police and other support
+            systems.
+          </p>
+
+          <p className="mt-5 font-semibold text-foreground">
+            The Helpline can help with:
+          </p>
+
+          <ul className="mt-4 space-y-2.5">
+            {[
+              "Elder abuse and neglect",
+              "Family-related issues and conciliations",
+              "Harassment and intimidation",
+              "Financial exploitation",
+              "Safety concerns",
+              "Counselling and guidance",
+              "Referral to appropriate services",
+              "Police and institutional intervention where required",
+              "Tracing of missing / straying elders",
+              "Assess to government schemes and facilities",
+              "Information on elder related services",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-5 font-bold text-foreground sm:text-[15px]">
+            Elders can avail free legal advice with prior appointments.
+          </p>
+
+          <p className="mt-4">
+            All the services rendered at the Elders Helpline are free of cost.
+          </p>
+
+          {/* DIAL 1090 */}
+          <div className="mt-6 flex">
+            <div className="inline-flex items-center gap-3 border border-[#ED6439]/30 bg-[#263746] px-5 py-3 shadow-md">
+              <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+              <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
+                Dial 1090
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* READ MORE / READ LESS */}
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={() => setShowEldersMore((previous) => !previous)}
+            className="font-bold text-[#ED6439] underline underline-offset-4 transition-colors hover:text-[#d95730]"
+          >
+            {showEldersMore ? "Read Less" : "Read More"}
+          </button>
+        </div>
+
+        {/* CONTACT BUTTON */}
+        <div className="mt-auto pt-6">
+          <Link
+            to="/contact"
+            className="
+              inline-flex
+              max-w-full
+              w-fit
+              items-center
+              justify-center
+              gap-2
+              bg-[#ED6439]
+              px-4
+              py-3
+              text-center
+              text-[12px]
+              font-bold
+              text-white
+              transition-all
+              hover:-translate-y-0.5
+              hover:bg-[#d95730]
+              sm:px-5
+              sm:text-[13px]
+            "
+          >
+            CONTACT US
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  </Reveal>
+
+
+  {/* ==================================================
+      NATIONAL HELPLINE – 14567
+      ================================================== */}
+
+  <Reveal className="min-w-0 h-full">
+    <div
+      className="
+        flex
+        h-full
+        min-w-0
+        flex-col
+        overflow-hidden
+        border
+        border-[#ED6439]/15
+        bg-white
+        shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+      "
+    >
+
+      {/* IMAGE */}
+      <div
+        className="
+          relative
+          w-full
+          overflow-hidden
+          bg-[#f8f5ef]
+        "
+      >
+        <img
+          src={nationalHelplineImage}
+          alt="National Helpline for Senior Citizens"
+          className="
+            block
+            h-[260px]
+            w-full
+            object-cover
+            object-center
+            sm:h-[300px]
+          "
+        />
       </div>
 
-    </div>
-  </div>
-</Reveal>
+      {/* CONTENT */}
+      <div
+        className="
+          flex
+          min-w-0
+          flex-1
+          flex-col
+          p-6
+          sm:p-8
+          md:p-9
+        "
+      >
 
-  </div>
+        {/* ICON */}
+        <div
+          className="
+            mb-5
+            flex
+            h-12
+            w-12
+            shrink-0
+            items-center
+            justify-center
+            rounded-full
+            bg-[#ED6439]
+            text-white
+            shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
+          "
+        >
+          <ShieldCheck className="h-5 w-5" />
+        </div>
+
+        {/* TITLE */}
+        <h3
+          className="
+            font-display
+            text-xl
+            font-extrabold
+            text-[#ED6439]
+            sm:text-2xl
+          "
+        >
+          National Helpline for Senior Citizens – 14567
+        </h3>
+
+        <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
+
+        {/* CONTENT */}
+        <div
+          className="
+            mt-6
+            text-[14px]
+            leading-[1.8]
+            text-muted-foreground
+            sm:text-[15px]
+          "
+        >
+          <p>
+            NMT has been implementing the Karnataka wing of the National
+            Helpline for Senior Citizens (14567),{" "}
+            <strong className="font-semibold text-foreground">
+              an initiative of Ministry of Social Justice and Empowerment,
+              Government of India
+            </strong>
+            , supporting older persons in accessing information,
+            guidance, assistance and appropriate services.
+          </p>
+
+          <p className="mt-4 font-medium text-foreground">
+            The Helpline provides support on issues including:
+          </p>
+
+          <ul className="mt-4 space-y-2.5">
+            {[
+              "Government schemes and entitlements",
+              "Healthcare and care services",
+              "Elder abuse",
+              "Legal and social support",
+              "Maintenance-related concerns",
+              "Shelter and rehabilitation",
+              "Emotional support",
+              "Linkages to relevant agencies and services",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* DIAL 14567 */}
+          <div className="mt-6 flex">
+            <div className="inline-flex items-center gap-3 border border-[#ED6439]/30 bg-[#263746] px-5 py-3 shadow-md">
+              <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+              <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
+                Dial 14567
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* CONTACT BUTTON */}
+        <div className="mt-auto pt-6">
+          <Link
+            to="/contact"
+            className="
+              inline-flex
+              max-w-full
+              w-fit
+              items-center
+              justify-center
+              gap-2
+              bg-[#ED6439]
+              px-4
+              py-3
+              text-center
+              text-[12px]
+              font-bold
+              text-white
+              transition-all
+              hover:-translate-y-0.5
+              hover:bg-[#d95730]
+              sm:px-5
+              sm:text-[13px]
+            "
+          >
+            CONTACT US
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  </Reveal>
+
+</div>
 
 </Section>
 

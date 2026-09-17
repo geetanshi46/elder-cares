@@ -119,111 +119,46 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Promoting Well-Being of Elders in Old Age Homes (Active Ageing Program)",
-    shortTitle: "Mobile Active Ageing Program",
-    icon: Activity,
-    image: activeAgeingImage,
-    intro:
-      "Bengaluru has over 150 old age homes, many offering only basic facilities. Elders need continuous physical, cognitive, emotional, and social engagement to age with dignity.",
-    paragraphs: [
-      "Since 2018, our Mobile Active Ageing Program delivers free, holistic well-being services directly to old age homes.",
-      "Your support brings movement, purpose, and joy to elders who need it the most.",
-    ],
-    reachTitle: "Current Reach",
-    reach: [
-      "28 old age homes",
-      "650+ elders annually",
-      "2-hour sessions, three times a week",
-    ],
-    servicesTitle: "Services Include",
-    services: [
-      "Cognitive stimulation & group activities",
-      "Physical exercises & physiotherapy",
-      "Social engagement",
-      "Medical consultations (psychiatry, physician support)",
-      "Capacity building of old age home staff",
-    ],
-  },
-  {
-    title: "Digital Literacy & Cyber Safety for Elders",
-    shortTitle: "Digital Literacy & Cyber Safety",
-    icon: Laptop,
-    image: digitalLiteracyImage,
-    intro:
-      "Digital inclusion enables seniors to access healthcare, manage finances, stay connected, and remain independent. At the same time, cyber fraud poses a growing threat.",
-    paragraphs: [
-      "Through structured training programs, we equip elders with basic digital skills, online safety awareness and fraud prevention strategies.",
-    ],
-    reachTitle: "Annual Impact",
-    reach: ["1,200 elders empowered to live safer, more independent digital lives."],
-  },
-  {
-    title: "Lifesavers Clubs in Schools (CPR Awareness)",
-    shortTitle: "Lifesavers Clubs in Schools",
-    icon: HeartHandshake,
-    image: lifesaversClubsImage,
-    intro:
-      "To build a generation prepared to save lives, NMT proposes Lifesavers Clubs in schools, providing CPR awareness and hands-on training by certified professionals.",
-    paragraphs: [
-      "This initiative aligns with our vision of making Bengaluru the CPR Capital of India.",
-    ],
-    reachTitle: "Impact",
-    reach: [
-      "Trained high-school students capable of responding to emergencies",
-      "Increased survival chances during cardiac arrest",
-      "Culture of preparedness and social responsibility",
-    ],
-  },
-  {
-    title: "Destitute Homes for Homeless Elderly",
-    shortTitle: "Destitute Homes for Homeless Elderly",
+    title: "Destitute homes for homeless elderly",
+    shortTitle: "Destitute homes for homeless elderly",
     icon: Home,
     image: destituteHomesImage,
-    intro:
-      "Support for destitute and abandoned homeless elderly through NMT's care homes.",
+    intro: `Background\n\nMany individuals with no financial security and social support become dependent on already burdened families, leading to intergenerational conflict, neglect, and in extreme cases, abandonment. Deserted elderly live on streets without adequate food, shelter, medical care or social support.\n\nOur intervention\n\nDestitute home for Homeless and Abandoned elderly—a transit home and Care Centre which offers a critical safety net—providing immediate shelter, nutrition, medical attention, and emotional support for elderly. Admissions of the elderly in crisis happen through the police.\n\nLocation\n\nBengaluru\n\nSupport sought\n\nTo cover nutrition, shelter, healthcare and shelter maintenance costs\n\nOutcomes\n\n· Improved health & nutrition of elders\n· Improves safety & well-being of elders\n· Healthy & active ageing of elders\n\nOur beneficiaries\n\n125 homeless and deserted elderly (100 Elderly Women and 25 Elderly Men housed at Sandhya Suraksha and Sandhya Kirana Homes respectively)`,
   },
   {
-    title: "Hiriyaravadis",
-    shortTitle: "Hiriyaravadis",
+    title: "Hiriyaravadis for the Elderly",
+    shortTitle: "Hiriyaravadis for the Elderly",
     icon: Users,
     image: hiriyaravadiImage,
-    intro:
-      "Day care & activity centres for marginalised elders living in urban slums.",
+    intro: `Background\n\nThe marginalized elderly dwelling in urban slums face extreme poverty, hunger, poor sanitation, inadequate healthcare, limited social support and difficult living conditions. All these contribute to a life of hardship, isolation, and deteriorating health for elderly.\n\nOur intervention\n\n‘Hiriyaravadi’ – Day Care & Activity Centres for marginalized elders living in urban slums, providing a safe space for elders, providing support in nutrition, health and medical care, linking to government services and, empowerment through income-generation activities.\n\nLocations\n\nUrban and Peri-urban settlements of Bengaluru\n\nSupport sought\n\nFor operational expenses, income generation activities, healthcare services, and nutrition for one year.\n\nOutcomes\n\n· Improved health and nutrition of elders\n· Healthy and active ageing of elders\n· Improved safety & well-being of elders\n· Social inclusion of elders\n\nOur beneficiaries\n\n180 marginalized elders where each centre will support 30 elders.`,
   },
   {
-    title: "Elders Helpline for Elders in Distress",
-    shortTitle: "Elders Helpline",
+    title: "Elders Helpline – Helpline for Elders in Distress",
+    shortTitle: "Elders Helpline – Helpline for Elders in Distress",
     icon: PhoneCall,
     image: eldersHelplineImage,
-    intro: "Helpline for elders in distress.",
+    intro: `Background\n\nWith rising cases of elder abuse, neglect, isolation, and financial exploitation, senior citizens often have no one to reach out during distress. Any are unaware of the rights of elderly and services available.\n\nOur intervention\n\nElderline 1090: a joint initiative of Nightingales Medical Trust & Bengaluru City Police, Elderline is a helpline offering immediate assistance, counseling, legal aid, rescue support, safety, dignity, and timely intervention for vulnerable senior citizens.\n\nLocations\n\nBengaluru city\n\nSupport sought\n\nTo cover costs of operating helpline, legal assistance, counseling to distressed elders.\n\nOutcomes\n\n· Improved safety and security of elders\n· Enhanced access to justice to elders.\n\nOur beneficiaries\n\n15000 to 18000 elders in a year. 1500 calls and walk-ins per month.`,
   },
   {
-    title: "Job 60+ : Employment and Skilling for Needy Elderly",
-    shortTitle: "Job 60+",
+    title: "Jobs 60+: Employment and Skilling for Needy Elderly",
+    shortTitle: "Jobs 60+: Employment and Skilling for Needy Elderly",
     icon: Briefcase,
     image: job60Image1,
-    intro: "Employment and skilling for needy elderly.",
+    intro: `Background\n\nAs life expectancy rises and traditional family support structures decline, many elderly find themselves in need of continued income and purposeful engagement after retirement. Post-retirement employment helps them attain economic independence, self-esteem and mental well-being.\n\nOur intervention\n\nPost-retirement employment through job portal, job fairs, employment bureau and skilling viz. computer skills training, digital literacy and cyber safety skills training.\n\nLocation\n\nBengaluru\n\nSupport sought\n\nTo cover costs of job placement facilities, annual job fairs, conducting digital literacy, computer skills training, and cyber safety training programs\n\nOutcomes\n\n· Financial security & economic independence for elders\n· Improved self-esteem for elders\n\nOur beneficiaries\n\n300 elders with jobs\n\n600 elders trained in digital literacy and cyber safety`,
   },
   {
-    title: "Training of Auto Drivers in Lifesaving Skills",
-    shortTitle: "Training of Auto Drivers in Lifesaving Skills",
-    icon: Car,
-    image: autoDriversImage,
-    intro: "Proposal available on request.",
+    title: "Active ageing in old age homes",
+    shortTitle: "Active ageing in old age homes",
+    icon: Activity,
+    image: activeAgeingImage,
+    intro: `Background\n\nMany of the old age homes focus primarily on food and shelter but there is a pressing need for incorporating active ageing services to enhance the physical, mental and social well-being of the residents. Such meaningful activities aim to facilitate continuous learning and social integration.\n\nOur interventions\n\nTrained active ageing facilitators conduct physical activity, cognitive engagement, and sessions on social interaction and emotional well-being for elders in old age homes. Our mobile units with exercise equipment and activity materials cover old age homes in North and South Bengaluru.\n\nLocations\n\nIn and around Bengaluru.\n\nSupport sought\n\nTo cover costs of active ageing facilitators, assessment costs, travel, health camps and active ageing kits provided to the old age homes.\n\nOutcomes\n\n· Healthy and active ageing of elders in old age homes\n· Improved health and well-being of elders living in old age homes\n\nOur beneficiaries\n\n30 to 32 old age homes in Bengaluru\n\n600+ elders in old age homes`,
   },
   {
-    title: "Research Department",
-    shortTitle: "Research Department",
-    icon: Microscope,
-    image: researchImage,
-    intro: "Proposal available on request.",
-  },
-  {
-    title: "Mobile Outreach Project",
-    shortTitle: "Mobile Outreach Project",
-    icon: Stethoscope,
-    image: mobileOutreachImage,
-    intro: "Proposal available on request.",
+    title: "Smriti Gram – India’s Largest Dementia Care Village",
+    shortTitle: "Smriti Gram – India’s Largest Dementia Care Village",
+    icon: HeartHandshake,
+    image: smritiGramImage,
+    intro: `Background\n\nWith no known cure for dementia and the situation rapidly escalating where it is estimated that around 8.8 million elders are affected by dementia in India, the challenges are many. Family caregivers burnout, high costs attached to caregiving, availability and affordability of home caregivers, and scarcity of specialized and quality dementia care centres are some of them\n\nOur intervention\n\nA 5-acre Dementia Care Village situated in Doddaballapur, Bengaluru Rural District to provide affordable and high-quality dementia care to 300 persons living with dementia and 100 beds earmarked for marginalized elders with dementia. A state-of-the-art training centre will train 1000 individuals in geriatric and dementia care every year.\n\nLocations\n\nBengaluru, Karnataka, and other states in southern India\n\nSupport sought\n\nTo cover costs of medical equipment and facilities\n\nOutcomes\n\n· Improved quality of dementia care\n· Reduction of progression of dementia\n· Improved health, nutrition, and well-being of elders with dementia\n· Strengthened capacity of caregivers in dementia care.\n\nOur beneficiaries\n\n300 elders with dementia, of which 100 are marginalized elders\n\n1000 caregivers`,
   },
 ];
 
@@ -522,7 +457,7 @@ function GetInvolvedPage() {
         </h1>
 
         {/* Text */}
-        <div
+        {/* <div
           className="
             mt-5 w-full max-w-5xl
             space-y-4
@@ -547,11 +482,12 @@ function GetInvolvedPage() {
             employee engagement, and long-term collaborations that create
             measurable social impact.
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   </Reveal>
 </section>
+
 
       {/* ======================================================
           NAVIGATIONAL SUB-BAR
@@ -578,6 +514,45 @@ function GetInvolvedPage() {
           </div>
         </div>
       </section>
+
+
+{/* ======================================================
+    CORPORATE PARTNERSHIPS INTRODUCTION
+====================================================== */}
+<section className="w-full bg-[#FFF8EE] py-14 sm:py-18 lg:py-20">
+  <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <Reveal>
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E15925] sm:text-sm">
+          Why Collaborate with NMT
+        </p>
+
+        <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight text-[#E15925] sm:text-4xl lg:text-5xl">
+          Together, We Can Create Meaningful Social Impact
+        </h2>
+
+        <div className="mx-auto mt-5 h-1 w-16 bg-[#F29000]" />
+
+        <div className="mt-6 space-y-4 text-sm font-medium leading-7 text-[#526574] sm:text-base sm:leading-8 lg:text-lg">
+          <p>
+            At Nightingales Medical Trust (NMT), we believe meaningful social
+            change happens when individuals, corporates, and communities come
+            together. We actively collaborate with corporates, government
+            bodies, NGOs, and academic institutions to improve the quality of
+            life of elders, especially those living with dementia and those
+            from marginalized communities.
+          </p>
+
+          <p className="font-semibold text-[#E15925]">
+            We invite corporates to engage with us through CSR partnerships,
+            employee engagement, and long-term collaborations that create
+            measurable social impact.
+          </p>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>
 
       {/* ======================================================
           MAIN BODY LAYOUT
