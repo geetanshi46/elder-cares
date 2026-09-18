@@ -46,18 +46,32 @@ const PARTNERS = [
 
 export function Partners() {
   const partnersSliderRef = useRef<HTMLDivElement | null>(null);
+  const isPausedRef = useRef(false);
+const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 const scrollPartners = (direction: "left" | "right") => {
   const slider = partnersSliderRef.current;
 
   if (!slider) return;
 
-  const scrollAmount = slider.clientWidth * 0.75;
+  // Pause auto-scroll temporarily
+  isPausedRef.current = true;
+
+  if (resumeTimeoutRef.current) {
+    clearTimeout(resumeTimeoutRef.current);
+  }
+
+  const scrollAmount = slider.clientWidth * 0.8;
 
   slider.scrollBy({
     left: direction === "right" ? scrollAmount : -scrollAmount,
     behavior: "smooth",
   });
+
+  // Resume auto-scroll after 2 seconds
+  resumeTimeoutRef.current = setTimeout(() => {
+    isPausedRef.current = false;
+  }, 2000);
 };
 
   /* =========================================================
@@ -75,8 +89,8 @@ const scrollPartners = (direction: "left" | "right") => {
   const speed = 1.2;
 
   const animate = () => {
-    if (!isPaused) {
-      slider.scrollLeft += speed;
+    if (!isPaused && !isPausedRef.current) {
+  slider.scrollLeft += speed;
 
       const halfScrollWidth = slider.scrollWidth / 2;
 
@@ -389,9 +403,10 @@ const scrollPartners = (direction: "left" | "right") => {
           key={`${index}-${logo}`}
           className="
             group
-            flex
-            h-32
-            min-w-[170px]
+flex
+h-32
+shrink-0
+min-w-[170px]
             snap-start
             items-center
             justify-center
