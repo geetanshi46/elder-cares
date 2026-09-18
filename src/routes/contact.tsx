@@ -183,7 +183,7 @@ function ContactPage() {
                 Care, protection and training centres across Bengaluru & Karnataka.
               </h2>
 
-              <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+              <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
             </div>
 
@@ -221,7 +221,7 @@ function ContactPage() {
                     transition-all
                     duration-300
                     hover:-translate-y-1
-                    hover:border-[#F29000]/60
+                    hover:border-[#17232B]/60
                     hover:shadow-[0_18px_45px_rgba(38,55,70,0.12)]
                   "
                 >
@@ -235,10 +235,10 @@ function ContactPage() {
                       items-center
                       justify-center
                       bg-[#FFF1D6]
-                      text-[#F29000]
+                      text-[#17232B]
                       transition-colors
                       duration-300
-                      group-hover:bg-[#F29000]
+                      group-hover:bg-[#17232B]
                       group-hover:text-white
                     "
                   >
@@ -282,7 +282,7 @@ function ContactPage() {
                 On the map
               </h2>
 
-              <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+              <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
             </div>
 
@@ -338,7 +338,7 @@ function ContactPage() {
                 <h5 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
                   Request to call back
                 </h5>
-                <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+                <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
                 <p className="mt-6 text-base leading-8 text-[#526574] sm:text-lg">
                   Tell us how Nightingales Medical Trust can help, and our team will get back to you.

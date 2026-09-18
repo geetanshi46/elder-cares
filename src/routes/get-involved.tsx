@@ -400,7 +400,7 @@ function GetInvolvedPage() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/70 via-[#E15925]/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/20 via-[#E15925]/5 to-transparent" />
 
       {/* Content */}
       <div
@@ -564,7 +564,7 @@ function GetInvolvedPage() {
             <div className="sticky top-20 space-y-6">
               <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft">
                 <div className="bg-[#E15925] p-5 text-white">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A78]">Navigation</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">Navigation</p>
                   <p className="mt-1 font-display text-lg font-bold">Corporate Partnerships</p>
                 </div>
                 <nav className="p-2">
@@ -756,7 +756,7 @@ function GetInvolvedPage() {
                     </p>
 
                     <div className="mt-6 rounded-2xl border border-white/15 bg-white/5 p-4 sm:p-5">
-                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#FF9A78]">Project Status:</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-white">Project Status:</p>
                       <ul className="mt-3 space-y-2 text-xs text-white/90 sm:text-sm">
                         <li className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
@@ -773,7 +773,7 @@ function GetInvolvedPage() {
                       </ul>
                     </div>
 
-                    <p className="mt-4 text-xs italic text-[#FF9A78]/90">
+                    <p className="mt-4 text-xs italic text-white/90">
                       Each contribution directly enhances quality of care, safety, sustainability, and dignity.
                     </p>
                   </div>

@@ -705,9 +705,9 @@ function ImpactPage() {
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
             <Reveal>
               <article className="h-full rounded-[2rem] border border-[#ED6439]/15 bg-white p-7 shadow-[0_20px_55px_-28px_rgba(38,55,70,0.18)] sm:p-9 lg:p-10">
-                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
+                {/* <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
                   Outreach
-                </p>
+                </p> */}
 
                 <h3 className="mt-4 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
                   Sustainability is Another Key Marker in NMT’s Vision for
@@ -730,9 +730,9 @@ function ImpactPage() {
 
             <Reveal delay={120}>
               <article className="h-full rounded-[2rem] border border-[#ED6439]/15 bg-white p-7 shadow-[0_20px_55px_-28px_rgba(38,55,70,0.18)] sm:p-9 lg:p-10">
-                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
+                {/* <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439]">
                   Training Centre
-                </p>
+                </p> */}
 
                 <h3 className="mt-4 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
                   Towards a Better Society

@@ -6162,31 +6162,31 @@ function ServicesPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <Reveal>
-            <span
-              className="
-                inline-flex
-                max-w-full
-                items-center
-                justify-center
-                gap-2
-                rounded-full
-                border
-                border-white/25
-                bg-white/10
-                px-3.5
-                py-1.5
-                text-[11px]
-                font-bold
-                uppercase
-                tracking-[0.2em]
-                text-amber-100
-                backdrop-blur-xs
-                sm:text-xs
-              "
-            >
-              <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-300" />
-              Our Services
-            </span>
+           <span
+  className="
+    inline-flex
+    max-w-full
+    items-center
+    justify-center
+    gap-2
+    rounded-full
+    border
+    border-white/25
+    bg-white/10
+    px-3.5
+    py-1.5
+    text-[11px]
+    font-bold
+    uppercase
+    tracking-[0.2em]
+    text-white
+    backdrop-blur-xs
+    sm:text-xs
+  "
+>
+  <Sparkles className="h-3.5 w-3.5 shrink-0 text-white" />
+  Our Services
+</span>
 
             <h2
               className="
