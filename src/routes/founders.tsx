@@ -339,7 +339,7 @@ function FoundersPage() {
                     <div className="my-5 h-px w-14 bg-[#ED6439]/40 sm:my-6" />
 
                     <p className="text-sm leading-7 text-[#526574] sm:text-base">
-                      With two Masters Degrees in Social Sciences and over 30
+                      With two Masters Degrees in Social Sciences and over 40
                       years of experience as a Community Welfare and
                       Healthcare Administrator, Mr Raja has planned and
                       successfully implemented several innovative social and

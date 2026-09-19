@@ -178,7 +178,7 @@ function ImageShuffle({
    ============================================================ */
 
 function ServiceCard({
-   id,
+  id,
   icon: Icon,
   title,
   titleClassName = "text-[#ED6439]",
@@ -189,6 +189,7 @@ function ServiceCard({
   details,
   delay = 0,
   cta = "READ MORE",
+  whatsappUrl,
 }: {
   id?: string;
   icon: typeof HeartHandshake;
@@ -201,6 +202,7 @@ function ServiceCard({
   details?: ReactNode;
   delay?: number;
   cta?: string;
+  whatsappUrl?: string;
 }) {
   const [expanded, setExpanded] = useState(false)
 
@@ -493,43 +495,79 @@ function ServiceCard({
             )}
 
             {/* ==================================================
-                OLD CONTACT LINK — ONLY FOR CARDS WITHOUT DETAILS
-                ================================================== */}
-            {!preview && !details && (
-              <div className="mt-auto pt-7">
-                <Link
-                  to="/contact"
-                  className="
-                    inline-flex
-                    max-w-full
-                    items-center
-                    gap-2
-                    text-[12px]
-                    font-bold
-                    text-[#ED6439]
-                    transition-all
-                    duration-300
-                    hover:gap-3
-                    sm:text-[13px]
-                  "
-                >
-                  <span className="break-words">{cta}</span>
+    OLD CONTACT LINK — ONLY FOR CARDS WITHOUT DETAILS
+    ================================================== */}
+{!preview && !details && (
+  <div className="mt-auto pt-7">
+    {whatsappUrl ? (
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          inline-flex
+          max-w-full
+          items-center
+          gap-2
+          text-[12px]
+          font-bold
+          text-[#ED6439]
+          transition-all
+          duration-300
+          hover:gap-3
+          sm:text-[13px]
+        "
+      >
+        <span className="break-words">{cta}</span>
 
-                  <ArrowUpRight
-                    className="
-                      h-4
-                      w-4
-                      shrink-0
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                      group-hover:-translate-y-0.5
-                    "
-                    strokeWidth={2.2}
-                  />
-                </Link>
-              </div>
-            )}
+        <ArrowUpRight
+          className="
+            h-4
+            w-4
+            shrink-0
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+            group-hover:-translate-y-0.5
+          "
+          strokeWidth={2.2}
+        />
+      </a>
+    ) : (
+      <Link
+        to="/contact"
+        className="
+          inline-flex
+          max-w-full
+          items-center
+          gap-2
+          text-[12px]
+          font-bold
+          text-[#ED6439]
+          transition-all
+          duration-300
+          hover:gap-3
+          sm:text-[13px]
+        "
+      >
+        <span className="break-words">{cta}</span>
+
+        <ArrowUpRight
+          className="
+            h-4
+            w-4
+            shrink-0
+            transition-transform
+            duration-300
+            group-hover:translate-x-1
+            group-hover:-translate-y-0.5
+          "
+          strokeWidth={2.2}
+        />
+      </Link>
+    )}
+  </div>
+)}
 
           </div>
         </div>
@@ -1649,13 +1687,13 @@ function ServicesPage() {
                         <PhoneCall className="h-4 w-4" />
                         JOIN THE PROGRAMME (CALL 080 - 4242 6565)
                       </a>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center justify-center gap-2 border border-[#ED6439]/30 bg-white px-6 py-3 text-xs font-bold tracking-[0.12em] text-[#ED6439] transition-all duration-300 hover:bg-[#FFF4DF]"
-                      >
-                        ENQUIRE ONLINE
-                        <ArrowUpRight className="h-4 w-4" />
-                      </Link>
+                      <a
+  href="mailto:contact@nightingaleseldercare.com"
+  className="inline-flex items-center justify-center gap-2 border border-[#ED6439]/30 bg-white px-6 py-3 text-xs font-bold tracking-[0.12em] text-[#ED6439] transition-all duration-300 hover:bg-[#FFF4DF]"
+>
+  ENQUIRE ONLINE
+  <ArrowUpRight className="h-4 w-4" />
+</a>
                     </div>
                   </div>
 
@@ -1774,13 +1812,15 @@ function ServicesPage() {
                       understand what is happening and what they can do next.
                     </p>
 
-                    <Link
-                      to="/contact"
-                      className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
-                    >
-                      BOOK A MEMORY ASSESSMENT
-                      <ArrowUpRight className="h-4 w-4" />
-                    </Link>
+              <a
+  href="https://wa.me/919035025438"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+>
+  BOOK A MEMORY ASSESSMENT
+  <ArrowUpRight className="h-4 w-4" />
+</a>
                   </div>
 
                 </div>
@@ -1877,13 +1917,15 @@ function ServicesPage() {
                       Day care can also help families provide structured support while enabling the person to continue living at home for as long as possible.
                     </p>
 
-                    <Link
-                      to="/contact"
-                      className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
-                    >
-                      ENQUIRE ABOUT DEMENTIA DAY CARE
-                      <ArrowUpRight className="h-4 w-4" />
-                    </Link>
+                    <a
+  href="https://wa.me/919035025438"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+>
+  ENQUIRE ABOUT DEMENTIA DAY CARE
+  <ArrowUpRight className="h-4 w-4" />
+</a>
                   </div>
 
                   <div
@@ -2131,9 +2173,14 @@ function ServicesPage() {
           sm:text-[13px]
         "
       >
-        <span className="break-words">
-          EXPLORE RESIDENTIAL DEMENTIA CARE
-        </span>
+        <a
+  href="https://wa.me/919035025438"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="break-words"
+>
+  EXPLORE RESIDENTIAL DEMENTIA CARE
+</a>
 
         <ArrowUpRight
           className="h-4 w-4 shrink-0"
@@ -2146,11 +2193,13 @@ function ServicesPage() {
 </Reveal>
 
             {/* 5. CAREGIVER TRAINING */}
-            <ServiceCard
-              icon={GraduationCap}
-              title="Family Caregiver Training"
-              cta="ENQUIRE ABOUT CAREGIVER TRAINING"
-            >
+         {/* 5. CAREGIVER TRAINING */}
+<ServiceCard
+  icon={GraduationCap}
+  title="Family Caregiver Training"
+  cta="ENQUIRE ABOUT CAREGIVER TRAINING"
+  whatsappUrl="https://wa.me/919035025438"
+>
               <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-2 lg:items-start">
 
                 <div className="flex w-full items-center justify-center overflow-hidden border border-[#ED6439]/15 bg-[#F8F5F0]">
@@ -2289,13 +2338,15 @@ function ServicesPage() {
                       You are not alone. There is a community that understands.
                     </p>
 
-                    <Link
-                      to="/contact"
-                      className="mt-6 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
-                    >
-                      JOIN A SUPPORT GROUP
-                      <ArrowUpRight className="h-4 w-4" />
-                    </Link>
+                    <a
+  href="https://wa.me/919035025438"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-6 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+>
+  JOIN A SUPPORT GROUP
+  <ArrowUpRight className="h-4 w-4" />
+</a>
                   </div>
 
                   <div className="flex items-center justify-center p-5 sm:p-6">
@@ -4180,32 +4231,34 @@ function ServicesPage() {
 
         {/* CONTACT BUTTON */}
         <div className="mt-auto pt-6">
-          <Link
-            to="/contact"
-            className="
-              inline-flex
-              max-w-full
-              w-fit
-              items-center
-              justify-center
-              gap-2
-              bg-[#ED6439]
-              px-4
-              py-3
-              text-center
-              text-[12px]
-              font-bold
-              text-white
-              transition-all
-              hover:-translate-y-0.5
-              hover:bg-[#d95730]
-              sm:px-5
-              sm:text-[13px]
-            "
-          >
-            CONTACT US
-            <ArrowUpRight className="h-4 w-4 shrink-0" />
-          </Link>
+         <a
+  href="https://wa.me/919035025438"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    inline-flex
+    max-w-full
+    w-fit
+    items-center
+    justify-center
+    gap-2
+    bg-[#ED6439]
+    px-4
+    py-3
+    text-center
+    text-[12px]
+    font-bold
+    text-white
+    transition-all
+    hover:-translate-y-0.5
+    hover:bg-[#d95730]
+    sm:px-5
+    sm:text-[13px]
+  "
+>
+  CONTACT US
+  <ArrowUpRight className="h-4 w-4 shrink-0" />
+</a>
         </div>
 
       </div>
@@ -4358,32 +4411,32 @@ function ServicesPage() {
 
         {/* CONTACT BUTTON */}
         <div className="mt-auto pt-6">
-          <Link
-            to="/contact"
-            className="
-              inline-flex
-              max-w-full
-              w-fit
-              items-center
-              justify-center
-              gap-2
-              bg-[#ED6439]
-              px-4
-              py-3
-              text-center
-              text-[12px]
-              font-bold
-              text-white
-              transition-all
-              hover:-translate-y-0.5
-              hover:bg-[#d95730]
-              sm:px-5
-              sm:text-[13px]
-            "
-          >
-            CONTACT US
-            <ArrowUpRight className="h-4 w-4 shrink-0" />
-          </Link>
+        <a
+  href="mailto:contact@nightingaleseldercare.com"
+  className="
+    inline-flex
+    max-w-full
+    w-fit
+    items-center
+    justify-center
+    gap-2
+    bg-[#ED6439]
+    px-4
+    py-3
+    text-center
+    text-[12px]
+    font-bold
+    text-white
+    transition-all
+    hover:-translate-y-0.5
+    hover:bg-[#d95730]
+    sm:px-5
+    sm:text-[13px]
+  "
+>
+  CONTACT US
+  <ArrowUpRight className="h-4 w-4 shrink-0" />
+</a>
         </div>
 
       </div>
