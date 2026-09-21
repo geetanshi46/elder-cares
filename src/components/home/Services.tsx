@@ -16,10 +16,14 @@ import dementiaDayCareImage from "@/assets/dementia-day-care.webp";
 const SERVICES = [
   {
     icon: Brain,
-    title: "DEMENTIA AND MEDICAL CARE",
-    hash: "dementia-care",
-    body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
-    highlight: "Currently we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction Programme.",
+
+title: "DEMENTIA AND MEDICAL CARE",
+
+hash: "dementia-care",
+
+body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation, and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
+
+highlight: "Currently, we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities, and an online Dementia Risk Reduction Programme.",
   },
   {
     icon: HeartHandshake,

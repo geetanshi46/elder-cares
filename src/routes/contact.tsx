@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { createFileRoute } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -10,7 +11,7 @@ import {
   Send,
   ArrowUpRight,
 } from "lucide-react";
-
+import contactHeroImage from "../assets/contact/contact-hero.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
@@ -24,6 +25,11 @@ const description =
 
 const WHATSAPP_NUMBER = "919035025438"; // +91 90350 25438, no + or spaces for wa.me
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+const EMAILJS_SERVICE_ID = "service_j9tymph";
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_mp0i3mc";
+const EMAILJS_AUTO_REPLY_TEMPLATE_ID = "template_hgaw8ho";
+const EMAILJS_PUBLIC_KEY = "T1bLrv0aySSP-mrpui5cf";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -41,19 +47,113 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    topic: "Dementia care",
+    message: "",
+  });
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+const handleSubmit = async (
+  event: React.FormEvent<HTMLFormElement>
+) => {
+  event.preventDefault();
+
+  setSending(true);
+  setSent(false);
+  setError("");
+
+  const templateParams = {
+    from_name: formData.name,
+    phone: formData.phone,
+    reply_to: formData.email,
+    topic: formData.topic,
+    message: formData.message,
+  };
+
+  try {
+    // Send enquiry email to admin
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_CONTACT_TEMPLATE_ID,
+      templateParams,
+      {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      }
+    );
+
+    // Send auto-reply email to user
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_AUTO_REPLY_TEMPLATE_ID,
+      templateParams,
+      {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      }
+    );
+
+    setSent(true);
+
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      topic: "Dementia care",
+      message: "",
+    });
+  } catch (submissionError) {
+    console.error(
+      "EmailJS submission failed:",
+      submissionError
+    );
+
+    setError(
+      "Something went wrong. Please try again or contact us directly."
+    );
+  } finally {
+    setSending(false);
+  }
+};
 
   return (
     <SiteLayout>
 
       {/* ==================================================
-          HERO SECTION
-      ================================================== */}
+    HERO SECTION
+================================================== */}
 
-      <PageHero
-        eyebrow="Contact us"
-        title="Contact Us"
-        intro="Whether you need dementia care, want to volunteer or simply have a question — someone here will answer."
-      />
+<section className="relative isolate w-full overflow-hidden bg-[#263746]">
+  <div className="relative h-[320px] w-full sm:h-[400px] lg:h-[480px]">
+    {/* Hero Banner Image */}
+    <img
+      src={contactHeroImage}
+      alt="Contact Nightingales Medical Trust"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    />
+
+    {/* Light Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/55 via-[#17232B]/20 to-transparent" />
+
+    {/* Hero Heading */}
+    <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 sm:px-8 lg:px-10">
+      <Reveal>
+        <h1 className="font-display text-5xl font-black tracking-[-0.045em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.3)] sm:text-6xl lg:text-8xl">
+          Contact Us
+        </h1>
+      </Reveal>
+    </div>
+  </div>
+</section>
 
 
       {/* ==================================================
@@ -354,10 +454,7 @@ function ContactPage() {
             <Reveal delay={120}>
 
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
+                onSubmit={handleSubmit}
                 className="
                   grid
                   min-w-0
@@ -373,11 +470,28 @@ function ContactPage() {
                 "
               >
 
-                <Field label="Full name" id="name" />
+                <Field
+                  label="Full name"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
 
-                <Field label="Phone" id="phone" type="tel" />
+                <Field
+                  label="Phone"
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
 
-                <Field label="Email" id="email" type="email" />
+                <Field
+                  label="Email"
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
 
 
                 <div className="flex min-w-0 flex-col gap-2">
@@ -391,6 +505,10 @@ function ContactPage() {
 
                   <select
                     id="topic"
+                    name="topic"
+                    value={formData.topic}
+                    onChange={handleInputChange}
+                    required
                     className="
                       min-w-0
                       rounded-none
@@ -434,6 +552,10 @@ function ContactPage() {
 
                   <textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                     rows={5}
                     placeholder="Tell us how we can help…"
                     className="
@@ -458,6 +580,7 @@ function ContactPage() {
 
                 <button
                   type="submit"
+                  disabled={sending}
                   className="
                     inline-flex
                     w-fit
@@ -482,13 +605,21 @@ function ContactPage() {
 
                   <Send className="h-4 w-4" strokeWidth={1.9} />
 
-                  {sent
-                    ? "Thank you — we'll be in touch"
-                    : "Send enquiry"}
+                  {sending
+                    ? "Sending..."
+                    : sent
+                      ? "Thank you — we'll be in touch"
+                      : "Send enquiry"}
 
                   <ArrowUpRight className="h-4 w-4" />
 
                 </button>
+
+                {error && (
+                  <p className="text-sm font-medium text-red-600 sm:col-span-2">
+                    {error}
+                  </p>
+                )}
 
               </form>
 
@@ -656,7 +787,7 @@ function ContactInfoCard({
   </a>
 ))}
 
-          ))
+         
 
         </div>
 
@@ -698,10 +829,14 @@ function Field({
   label,
   id,
   type = "text",
+  value,
+  onChange,
 }: {
   label: string;
   id: string;
   type?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 
   return (
@@ -717,7 +852,11 @@ function Field({
 
       <input
         id={id}
+        name={id}
         type={type}
+        value={value}
+        onChange={onChange}
+        required
         className="
           min-w-0
           rounded-none

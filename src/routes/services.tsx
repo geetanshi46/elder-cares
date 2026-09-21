@@ -3702,28 +3702,68 @@ function ServicesPage() {
               NMT runs five Hiriyaravadi centres at:
             </p>
 
-            <ul className="mt-4 space-y-2.5">
-              {[
-                { name: "SK – Shantinagar", query: "Shantinagar, Bengaluru" },
-                { name: "DJ Halli", query: "DJ Halli, Bengaluru" },
-                { name: "Rajendra Nagar", query: "Rajendra Nagar, Bengaluru" },
-                { name: "Vannarpet", query: "Vannarpet, Bengaluru" },
-                { name: "Lingarajapuram", query: "Lingarajapuram, Bengaluru" },
-              ].map((centre) => (
-                <li key={centre.name} className="flex items-center gap-2.5">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(centre.query)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-medium text-[#263746] transition-colors hover:text-[#ED6439]"
-                  >
-                    <span>{centre.name}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-[#ED6439]" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+      <ul className="mt-4 space-y-2.5">
+  {[
+    {
+      name: "SK – Shantinagar",
+      query:
+        "Nightingales Sandhya Kirana Shanthinagar Bengaluru",
+    },
+   {
+  name: "DJ Halli",
+  query:
+    "https://www.google.com/maps/dir/?api=1&destination=13.01396018730527%2C77.60314167507718",
+},
+    {
+      name: "Rajendra Nagar",
+      query:
+        "MV Challengers Group of Disability Charitable Trust NGO Bengaluru",
+    },
+    {
+      name: "Vannarpet",
+      query:
+        "https://www.google.com/maps/dir/?api=1&destination=B.A%20Mukri%20Store%2C%20XJ3C%2BWJ2%2C%20Vannarpet%2C%20Vivek%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560047",
+    },
+    {
+      name: "Lingarajapuram",
+      query:
+        "https://www.google.com/maps/dir/?api=1&destination=13.00806638731068%2C77.61785467507701",
+    },
+  ].map((centre) => {
+    const href =
+      centre.query === "#"
+        ? "#"
+        : centre.query.startsWith("http")
+          ? centre.query
+          : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              centre.query
+            )}`;
+
+    return (
+      <li
+        key={centre.name}
+        className="flex items-center gap-2.5"
+      >
+        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+
+        <a
+          href={href}
+          target={centre.query !== "#" ? "_blank" : undefined}
+          rel={
+            centre.query !== "#"
+              ? "noopener noreferrer"
+              : undefined
+          }
+          className="inline-flex items-center gap-1.5 font-medium text-[#263746] transition-colors hover:text-[#ED6439]"
+        >
+          <span>{centre.name}</span>
+
+          <ArrowUpRight className="h-3.5 w-3.5 text-[#ED6439]" />
+        </a>
+      </li>
+    );
+  })}
+</ul>
 
           </div>
         </div>
