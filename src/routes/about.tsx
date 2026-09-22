@@ -553,7 +553,7 @@ function AboutPage() {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
+<div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/25 via-[#14212B]/5 to-transparent" />
 
               {/* Content */}
               <div
@@ -581,22 +581,21 @@ function AboutPage() {
                 </span> */}
 
                 {/* Heading */}
-                <h1
-                  className="
-                    mt-4 w-full max-w-6xl
-                    font-display font-extrabold
-                    capitalize leading-[1.08]
-                    tracking-[-0.03em] text-white
-                    text-[1.9rem]
-                    sm:mt-5 sm:text-[2.4rem]
-                    md:text-[3rem]
-                    lg:text-[3.4rem]
-                  "
-                >
-                  Compassionate and innovative{" "}
-                  <span className="text-white">age care</span>{" "}
-                  solutions
-                </h1>
+       <h1
+  className="
+    mt-4 w-full max-w-none
+    whitespace-nowrap
+    font-display font-extrabold
+    capitalize leading-[1.08]
+    tracking-[-0.035em] text-white
+    text-[1.7rem]
+    sm:mt-5 sm:text-[2.15rem]
+    md:text-[2.7rem]
+    lg:text-[3.1rem]
+  "
+>
+  Compassionate and innovative age care solutions
+</h1>
               </div>
             </div>
           </Reveal>
@@ -692,7 +691,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="02" label="Why we exist" />
+     <SectionMarker
+  index="02"
+  label="Why we exist"
+  className="text-[#ED6439]"
+/>
 
       <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#ED6439] sm:text-4xl lg:text-[2.6rem]">
         Because Ageing Should Not Mean Losing Dignity, Independence or
@@ -776,7 +779,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="03" label="The Need for NMT" />
+      <SectionMarker
+  index="03"
+  label="The Need for NMT"
+  className="text-[#ED6439]"
+/>
 
       <div className="mt-5 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
 
@@ -965,7 +972,11 @@ function AboutPage() {
         <section id="our-journey" className="bg-[#FBF6EC] scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
-              <SectionMarker index="04" label="Our journey" />
+              <SectionMarker
+  index="04"
+  label="Our journey"
+  className="text-[#ED6439]"
+/>
               <h3 className="mt-5 max-w-5xl font-display text-2xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-3xl lg:text-[2.2rem]">
   From a Garage to a Movement for Ageing with Dignity
 </h3>
@@ -1074,7 +1085,11 @@ function AboutPage() {
         <section id="vision" className="bg-white scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
-              <SectionMarker index="05" label="Vision, mission & values" />
+              <SectionMarker
+  index="05"
+  label="Vision, mission & values"
+  className="text-[#ED6439]"
+/>
             </Reveal>
 
             <div className="mt-9 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -1148,7 +1163,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="06" label="People & governance" />
+      <SectionMarker
+  index="06"
+  label="People & governance"
+  className="text-[#ED6439]"
+/>
 
       <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
         Responsible governance. People who turn vision into action.
@@ -1222,9 +1241,9 @@ function AboutPage() {
               Meet our Board of Trustees
             </h4>
 
-            <p className="mt-3 text-sm leading-6 text-white/75">
+            {/* <p className="mt-3 text-sm leading-6 text-white/75">
               Board member profiles, photographs and designations 
-            </p>
+            </p> */}
 
             <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base">
               The Board of Trustees provides strategic oversight and ensures
@@ -1312,7 +1331,7 @@ function AboutPage() {
 
               <div className="rounded-xl bg-[#FBF6EC] p-5">
                 <h4 className="font-display text-lg font-bold text-[#1B2A35] sm:text-xl">
-                  S Premkumar Raja
+                  Mr S Premkumar Raja
                 </h4>
 
                 <p className="mt-1 text-sm font-bold text-[#ED6439]">

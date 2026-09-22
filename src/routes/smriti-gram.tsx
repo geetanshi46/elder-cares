@@ -12,6 +12,7 @@ import {
   Users,
   X,
 } from "lucide-react";
+import { createPortal } from "react-dom";
 import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Reveal } from "@/components/site/Reveal";
@@ -46,6 +47,9 @@ export const Route = createFileRoute("/smriti-gram")({
 });
 
 function SmritiGramPage() {
+  const [smritiGramPopup, setSmritiGramPopup] = useState(false);
+  const [collaborationPopup, setCollaborationPopup] = useState(false);
+  const [visitPopup, setVisitPopup] = useState(false);
   const [isAdmissionFormOpen, setIsAdmissionFormOpen] = useState(false);
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   const [expandedFacility, setExpandedFacility] = useState<number | null>(null);
@@ -238,7 +242,7 @@ function SmritiGramPage() {
             </div>
 
             <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#526574] sm:text-sm">
-              First phase for marginalized
+              First phase for marginalized elders
             </p>
           </div>
         </Reveal>
@@ -1164,27 +1168,519 @@ function SmritiGramPage() {
 
           {/* CTA BUTTONS */}
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link
-              to="/get-involved"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#ED6439] shadow-[0_12px_30px_-12px_rgba(38,55,70,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FFF8EF]"
-            >
-              Support Nightingales Smriti Gram
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <button
+  type="button"
+  onClick={() => setSmritiGramPopup(true)}
+  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#ED6439] shadow-[0_12px_30px_-12px_rgba(38,55,70,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FFF8EF]"
+>
+  Support Nightingales Smriti Gram
+  <ArrowRight className="h-4 w-4" />
+</button>
 
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
-            >
-              Collaborate With Us
-            </Link>
+{smritiGramPopup &&
+  createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm"
+      onClick={() => setSmritiGramPopup(false)}
+    >
+      <div
+        className="relative w-full max-w-lg max-h-[calc(100vh-48px)] overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:max-h-[calc(100vh-64px)] sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={() => setSmritiGramPopup(false)}
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#F5F5F5] text-xl text-[#252525] transition hover:bg-[#FFF0EA]"
+          aria-label="Close"
+        >
+          ×
+        </button>
 
-            <a
-              href="#smriti-gram"
-              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
+        {/* Heading */}
+        <div className="pr-10">
+          <h3 className="font-display text-2xl font-bold text-[#E15925]">
+            Support Nightingales Smriti Gram
+          </h3>
+
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Share your details and our team will get in touch with you.
+          </p>
+        </div>
+
+       {/* Form */}
+<form
+  action="https://formsubmit.co/contact@nightingaleseldercare.com"
+  method="POST"
+  className="mt-6 space-y-4"
+>
+  {/* FormSubmit Settings */}
+  <input
+    type="hidden"
+    name="_subject"
+    value="New Smriti Gram Support Enquiry"
+  />
+
+  <input
+    type="hidden"
+    name="_template"
+    value="table"
+  />
+
+  {/* Full Name */}
+  <div>
+    <label
+      htmlFor="smriti-name"
+      className="mb-1.5 block text-sm font-semibold text-[#252525]"
+    >
+      Full Name
+    </label>
+
+    <input
+      id="smriti-name"
+      type="text"
+      name="name"
+      required
+      placeholder="Enter your full name"
+      className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+    />
+  </div>
+
+  {/* Email */}
+  <div>
+    <label
+      htmlFor="smriti-email"
+      className="mb-1.5 block text-sm font-semibold text-[#252525]"
+    >
+      Email Address
+    </label>
+
+    <input
+      id="smriti-email"
+      type="email"
+      name="email"
+      required
+      placeholder="you@example.com"
+      className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+    />
+  </div>
+
+  {/* Phone */}
+  <div>
+    <label
+      htmlFor="smriti-phone"
+      className="mb-1.5 block text-sm font-semibold text-[#252525]"
+    >
+      Phone Number
+    </label>
+
+    <input
+      id="smriti-phone"
+      type="tel"
+      name="phone"
+      required
+      placeholder="Enter your phone number"
+      className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+    />
+  </div>
+
+  {/* Message */}
+  <div>
+    <label
+      htmlFor="smriti-message"
+      className="mb-1.5 block text-sm font-semibold text-[#252525]"
+    >
+      Message
+    </label>
+
+    <textarea
+      id="smriti-message"
+      name="message"
+      rows={3}
+      maxLength={500}
+      placeholder="Tell us how you would like to support."
+      className="w-full resize-none rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+    />
+
+    <p className="mt-1 text-right text-[11px] text-muted-foreground">
+      Maximum 500 characters
+    </p>
+  </div>
+
+  {/* Submit */}
+  <button
+    type="submit"
+    className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3.5 text-sm font-bold text-white shadow-md shadow-[#ED6439]/20 transition hover:bg-[#d95730]"
+  >
+    Submit Interest
+    <ArrowRight className="h-4 w-4" />
+  </button>
+</form>
+      </div>
+    </div>,
+    document.body
+  )}
+
+            <button
+  type="button"
+  onClick={() => setCollaborationPopup(true)}
+  className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
+>
+  Collaborate With Us
+</button>
+
+{collaborationPopup &&
+  createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm"
+      onClick={() => setCollaborationPopup(false)}
+    >
+      <div
+        className="relative w-full max-w-lg max-h-[calc(100vh-48px)] overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:max-h-[calc(100vh-64px)] sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={() => setCollaborationPopup(false)}
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#F5F5F5] text-xl text-[#252525] transition hover:bg-[#FFF0EA]"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        {/* Heading */}
+        <div className="pr-10">
+          <h3 className="font-display text-2xl font-bold text-[#E15925]">
+            Collaborate With Us
+          </h3>
+
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Share your details and our team will get in touch to explore
+            opportunities for collaboration.
+          </p>
+        </div>
+
+        {/* Form */}
+        <form
+          action="https://formsubmit.co/contact@nightingaleseldercare.com"
+          method="POST"
+          className="mt-6 space-y-4"
+        >
+          {/* FormSubmit Settings */}
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Collaboration Enquiry - Nightingales Medical Trust"
+          />
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          />
+
+          {/* Full Name */}
+          <div>
+            <label
+              htmlFor="collab-name"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
             >
-              Visit Smriti Gram
-            </a>
+              Full Name
+            </label>
+
+            <input
+              id="collab-name"
+              type="text"
+              name="name"
+              required
+              placeholder="Enter your full name"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="collab-email"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Email Address
+            </label>
+
+            <input
+              id="collab-email"
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label
+              htmlFor="collab-phone"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Phone Number
+            </label>
+
+            <input
+              id="collab-phone"
+              type="tel"
+              name="phone"
+              required
+              placeholder="Enter your phone number"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Collaboration Type */}
+          <div>
+            <label
+              htmlFor="collab-type"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Area of Collaboration
+            </label>
+
+            <select
+              id="collab-type"
+              name="collaboration_type"
+              required
+              defaultValue=""
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            >
+              <option value="" disabled>
+                Select an option
+              </option>
+              <option value="CSR Partnership">CSR Partnership</option>
+              <option value="Research & Academic Collaboration">
+                Research & Academic Collaboration
+              </option>
+              <option value="Healthcare Collaboration">
+                Healthcare Collaboration
+              </option>
+              <option value="Technology & Innovation">
+                Technology & Innovation
+              </option>
+              <option value="Community Outreach">
+                Community Outreach
+              </option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          {/* Message */}
+          <div>
+            <label
+              htmlFor="collab-message"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Message
+            </label>
+
+            <textarea
+              id="collab-message"
+              name="message"
+              rows={3}
+              maxLength={500}
+              placeholder="Please share a brief note about your collaboration."
+              className="w-full resize-none rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+
+            <p className="mt-1 text-right text-[11px] text-muted-foreground">
+              Maximum 500 characters
+            </p>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3.5 text-sm font-bold text-white shadow-md shadow-[#ED6439]/20 transition hover:bg-[#d95730]"
+          >
+            Submit Collaboration Enquiry
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </form>
+      </div>
+    </div>,
+    document.body
+  )}
+
+            <button
+  type="button"
+  onClick={() => setVisitPopup(true)}
+  className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
+>
+  Visit Smriti Gram
+</button>
+
+{visitPopup &&
+  createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm"
+      onClick={() => setVisitPopup(false)}
+    >
+      <div
+        className="relative w-full max-w-lg max-h-[calc(100vh-48px)] overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:max-h-[calc(100vh-64px)] sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={() => setVisitPopup(false)}
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-[#F5F5F5] text-xl text-[#252525] transition hover:bg-[#FFF0EA]"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        {/* Heading */}
+        <div className="pr-10">
+          <h3 className="font-display text-2xl font-bold text-[#E15925]">
+            Visit Nightingales Smriti Gram
+          </h3>
+
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Please share your details and preferred visit date. Our team will
+            get in touch with you to confirm your visit.
+          </p>
+        </div>
+
+        {/* Form */}
+        <form
+          action="https://formsubmit.co/contact@nightingaleseldercare.com"
+          method="POST"
+          className="mt-6 space-y-4"
+        >
+          {/* FormSubmit Settings */}
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Smriti Gram Visit Request"
+          />
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          />
+
+          {/* Full Name */}
+          <div>
+            <label
+              htmlFor="visit-name"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Full Name
+            </label>
+
+            <input
+              id="visit-name"
+              type="text"
+              name="name"
+              required
+              placeholder="Enter your full name"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="visit-email"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Email Address
+            </label>
+
+            <input
+              id="visit-email"
+              type="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label
+              htmlFor="visit-phone"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Phone Number
+            </label>
+
+            <input
+              id="visit-phone"
+              type="tel"
+              name="phone"
+              required
+              placeholder="Enter your phone number"
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Visit Date */}
+          <div>
+            <label
+              htmlFor="visit-date"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Preferred Visit Date
+            </label>
+
+            <input
+              id="visit-date"
+              type="date"
+              name="visit_date"
+              min={new Date().toISOString().split("T")[0]}
+              required
+              className="w-full rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm text-[#252525] outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+          </div>
+
+          {/* Additional Message */}
+          <div>
+            <label
+              htmlFor="visit-message"
+              className="mb-1.5 block text-sm font-semibold text-[#252525]"
+            >
+              Additional Information
+            </label>
+
+            <textarea
+              id="visit-message"
+              name="message"
+              rows={3}
+              maxLength={500}
+              placeholder="Any additional details you'd like to share."
+              className="w-full resize-none rounded-xl border border-[#ED6439]/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
+            />
+
+            <p className="mt-1 text-right text-[11px] text-muted-foreground">
+              Maximum 500 characters
+            </p>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3.5 text-sm font-bold text-white shadow-md shadow-[#ED6439]/20 transition hover:bg-[#d95730]"
+          >
+            Request a Visit
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </form>
+      </div>
+    </div>,
+    document.body
+  )}
           </div>
 
         </div>
@@ -2146,3 +2642,5 @@ function ProcessCard({
     </article>
   );
 }
+
+

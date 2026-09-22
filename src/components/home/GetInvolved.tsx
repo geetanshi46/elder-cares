@@ -584,7 +584,7 @@ lg:p-9
       text-white
     "
   >
-    <Sparkles className="h-4 w-4 text-[#F29000]" />
+    <Sparkles className="h-4 w-4 text-white" />
     Support our work
   </span>
 
@@ -622,48 +622,47 @@ lg:p-9
 
 
   {/* Frequency selector */}
-
-  <div
-    role="group"
-    aria-label="Donation frequency"
-    className="
-      mt-5
-      inline-flex
-      rounded-full
-      border
-      border-white/10
-      bg-white/5
-      p-1
-    "
-  >
-    {[
-      { label: "Monthly", value: true },
-      { label: "One time", value: false },
-    ].map((opt) => (
-      <button
-        key={opt.label}
-        type="button"
-        aria-pressed={monthly === opt.value}
-        onClick={() => setMonthly(opt.value)}
-        className={`
-          rounded-full
-          px-5
-          py-2
-          text-sm
-          font-semibold
-          transition-all
-          duration-300
-          ${
-            monthly === opt.value
-              ? "bg-[#ED6439] text-white shadow-[0_5px_18px_rgba(237,100,57,0.28)]"
-              : "text-white/55 hover:text-white"
-          }
-        `}
-      >
-        {opt.label}
-      </button>
-    ))}
-  </div>
+<div
+  role="group"
+  aria-label="Donation frequency"
+  className="
+    mt-5
+    inline-flex
+    rounded-full
+    border
+    border-white/10
+    bg-white/5
+    p-1
+  "
+>
+  {[
+    { label: "Monthly", value: true },
+    { label: "One time", value: false },
+  ].map((opt) => (
+    <button
+      key={opt.label}
+      type="button"
+      aria-pressed={monthly === opt.value}
+      onClick={() => setMonthly(opt.value)}
+      className={`
+        rounded-full
+        px-5
+        py-2
+        text-sm
+        font-semibold
+        transition-all
+        duration-300
+        ${
+          monthly === opt.value
+            ? "bg-[#14212B] text-white shadow-[0_5px_18px_rgba(20,33,43,0.28)]"
+            : "text-white/55 hover:text-white"
+        }
+      `}
+    >
+      {opt.label}
+    </button>
+  ))}
+</div>
 
 
   {/* Amount */}

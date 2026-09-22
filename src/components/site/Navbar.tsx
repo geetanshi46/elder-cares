@@ -37,7 +37,7 @@ const NAV_LINKS: NavItem[] = [
     { label: "Executive Committee", to: "/executive-committee" },
     { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
     { label: "Partners", to: "/about", hash: "partners" },
-    { label: "Founders", to: "/founders" },
+    { label: "Finances", to: "/finances" },
     { label: "Annual Reports", to: "/annual-reports" },
   ],
 },
@@ -46,70 +46,75 @@ const NAV_LINKS: NavItem[] = [
   to: "/services",
   children: [
     {
-      label: "Dementia and Medical Care",
-      to: "/services",
-      hash: "dementia-care",
-      children: [
-        {
-          label: "Memory Assessment",
-          to: "/services",
-          hash: "memory-clinics",
-        },
-        {
-          label: "Day Care",
-          to: "/services",
-          hash: "day-care",
-        },
-        {
-          label: "Residential Care",
-          to: "/services",
-          hash: "residential-care",
-        },
-        {
-          label: "Caregiver Training",
-          to: "/services",
-          hash: "caregiver-training",
-        },
-        {
-          label: "Family Support",
-          to: "/services",
-          hash: "family-support-groups",
-        },
-        {
-          label: "Other Dementia Services",
-          to: "/services",
-          hash: "other-dementia-services",
-        },
-      ],
-    },
-
+  label: "Dementia and Medical Care",
+  to: "/services",
+  hash: "dementia-care",
+  children: [
     {
-      label: "Care for Marginalized Elders",
+      label: "Online Dementia Risk Reduction Programme",
       to: "/services",
-      hash: "marginalized",
-      children: [
-        {
-          label: "Residential Care",
-          to: "/services",
-          hash: "sandhya-suraksha",
-        },
-        {
-          label: "Day Care",
-          to: "/services",
-          hash: "sandhya-kirana",
-        },
-        {
-          label: "Community Elder Care",
-          to: "/services",
-          hash: "hiriyaravadi",
-        },
-        {
-          label: "Free Geriatric Clinic",
-          to: "/services",
-          hash: "geriatric-clinic",
-        },
-      ],
+      hash: "online-risk-reduction",
     },
+    {
+      label: "Memory Clinics",
+      to: "/services",
+      hash: "memory-clinics",
+    },
+    {
+      label: "Dementia Day Care",
+      to: "/services",
+      hash: "day-care",
+    },
+    {
+      label: "Specialised Residential Dementia Care",
+      to: "/services",
+      hash: "residential-care",
+    },
+    {
+      label: "Family Caregiver Training",
+      to: "/services",
+      hash: "caregiver-training",
+    },
+    {
+      label: "Dementia Family Support Groups",
+      to: "/services",
+      hash: "family-support-groups",
+    },
+    {
+      label: "Nightingales Smriti Gram",
+      to: "/services",
+      hash: "smriti-gram",
+    },
+  ],
+},
+
+   {
+  label: "Care for Marginalized Elders",
+  to: "/services",
+  hash: "marginalized",
+  children: [
+    {
+      label: "Sandhya Suraksha",
+      to: "/services",
+      hash: "sandhya-suraksha",
+    },
+    {
+      label: "Sandhya Kirana",
+      to: "/services",
+      hash: "sandhya-kirana",
+    },
+    {
+      label: "Hiriyaravadi",
+      to: "/services",
+      hash: "hiriyaravadi",
+    },
+    {
+      label: "Free Geriatric Clinic",
+      to: "/services",
+      hash: "geriatric-clinic",
+    },
+  ],
+},
 
     {
       label: "Prevention of Elder Abuse",

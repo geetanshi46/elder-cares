@@ -749,7 +749,7 @@ function TrainingCarousel() {
 
         <div className="mb-5 flex items-end justify-between gap-4">
           <div className="min-w-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439] sm:text-xs">
+            <p id="training-programmes" className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439] sm:text-xs">
               Our Training Programmes
             </p>
 
@@ -1218,92 +1218,71 @@ function ServicesPage() {
   return (
   <SiteLayout>
     <div className="w-full min-w-0 overflow-x-clip">
- {/* ======================================================
+{/* ======================================================
     OUR SERVICES — HERO BANNER
-    ====================================================== */}
+====================================================== */}
 
-<section className="relative isolate w-full overflow-hidden border-b border-[#ED6439]/15">
+<section className="relative w-full overflow-hidden border-b border-[#ED6439]/15">
+  <Reveal>
+    <div
+      className="
+        relative w-full
+        aspect-[4/5]
+        sm:aspect-[16/9]
+        md:aspect-[16/7]
+        lg:aspect-[21/9]
+        max-h-[560px]
+        min-h-[380px]
+        bg-[#14212B]
+      "
+    >
+      {/* Full-width banner image */}
+      <img
+        src={servicesHeroImage}
+        alt="Older persons participating in activities at Nightingales Medical Trust"
+        width={1920}
+        height={1080}
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-center
+        "
+      />
 
-  {/* Background Image — FULL WIDTH */}
-  <div className="absolute inset-0 -z-20">
-    <img
-      src={servicesHeroImage}
-      alt="Older persons participating in activities at Nightingales Medical Trust"
-      className="block h-full w-full object-cover object-center"
-    />
-  </div>
+      {/* Very light overlay only for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/25 via-[#14212B]/8 to-transparent" />
 
-  {/* High contrast overlay for text readability */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-0
-      -z-10
-      bg-black/45
-    "
-  />
-
-  {/* Bottom readability gradient */}
-  <div
-    className="
-      pointer-events-none
-      absolute
-      inset-x-0
-      bottom-0
-      -z-10
-      h-full
-      bg-gradient-to-t
-      from-black/75
-      via-black/35
-      to-transparent
-    "
-  />
-
-  {/* Content */}
-  <div
-    className="
-      relative
-      flex
-      min-h-[420px]
-      w-full
-      items-end
-      px-5
-      pb-10
-      pt-16
-      sm:px-8
-      sm:pb-12
-      sm:pt-20
-      lg:px-10
-      lg:pb-14
-      lg:pt-24
-    "
-  >
-    <div className="mx-auto w-full max-w-7xl">
-      <Reveal>
-        <div className="max-w-5xl">
-
-          {/* Heading */}
-          <h1
-            className="
-              max-w-4xl
-              font-display
-              text-4xl
-              font-extrabold
-              leading-[1.05]
-              tracking-[-0.04em]
-              text-white
-              sm:text-5xl
-              lg:text-6xl
-            "
-          >
-            Our Services
-          </h1>
-        </div>
-      </Reveal>
+      {/* Content */}
+      <div
+        className="
+          relative z-10 mx-auto flex h-full w-full
+          max-w-12xl flex-col justify-center
+          px-5 py-6
+          sm:px-8 sm:py-8
+          md:px-10 md:py-10
+          lg:px-14 lg:py-12
+        "
+      >
+        {/* Heading */}
+        <h1
+          className="
+            mt-4 w-full max-w-none
+            whitespace-nowrap
+            font-display font-extrabold
+            leading-[1.08]
+            tracking-[-0.035em]
+            text-white
+            text-[2rem]
+            sm:text-[2.5rem]
+            md:text-[3rem]
+            lg:text-[3.4rem]
+          "
+        >
+          Our Services
+        </h1>
+      </div>
     </div>
-  </div>
-
+  </Reveal>
 </section>
 
       {/* ======================================================
@@ -2195,6 +2174,7 @@ function ServicesPage() {
             {/* 5. CAREGIVER TRAINING */}
          {/* 5. CAREGIVER TRAINING */}
 <ServiceCard
+  id="caregiver-training"
   icon={GraduationCap}
   title="Family Caregiver Training"
   cta="ENQUIRE ABOUT CAREGIVER TRAINING"
@@ -3872,7 +3852,7 @@ function ServicesPage() {
     >
 
       {/* TITLE */}
-      <div className="flex items-start gap-4">
+      <div id="geriatric-clinic" className="flex items-start gap-4">
 
         <span
           className="
@@ -3895,7 +3875,7 @@ function ServicesPage() {
         <div className="min-w-0">
 
           <h3
-          id="geriatric-clinic"
+          
             className="
               break-words
               font-display

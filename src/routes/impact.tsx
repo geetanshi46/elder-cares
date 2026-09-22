@@ -407,11 +407,21 @@ useEffect(() => {
   id="impact"
   className="relative isolate w-full overflow-hidden bg-[#263746]"
 >
-  <div className="relative w-full">
+  <div
+    className="
+      relative w-full
+      aspect-[4/5]
+      sm:aspect-[16/9]
+      md:aspect-[16/7]
+      lg:aspect-[21/9]
+      max-h-[560px]
+      min-h-[380px]
+    "
+  >
     <img
       src={impactBanner}
       alt="Our Impact"
-      className="block h-auto w-full object-cover object-center"
+      className="absolute inset-0 h-full w-full object-cover object-center"
     />
 
     {/* Very light overlay — image remains clearly visible */}
@@ -421,8 +431,8 @@ useEffect(() => {
     <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 sm:px-8 lg:px-10">
       <Reveal>
         <h1 className="font-display text-5xl font-black tracking-[-0.045em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.3)] sm:text-6xl lg:text-8xl">
-  Impact
-</h1>
+          Impact
+        </h1>
       </Reveal>
     </div>
   </div>
@@ -608,7 +618,7 @@ useEffect(() => {
             <div className="mt-8 overflow-hidden rounded-[2rem] bg-[#ED6439] px-6 py-8 text-center shadow-[0_25px_70px_-30px_rgba(237,100,57,0.45)] sm:px-10 sm:py-10">
               <p className="font-display text-xl font-black uppercase tracking-wide text-white sm:text-2xl lg:text-3xl">
                 EVERY DAY 800+ OLDER PERSONS FROM ALL SOCIAL AND ECONOMIC
-                BACKGROUNDS
+                BACKGROUNDS BENEFITS
               </p>
             </div>
           </Reveal>
@@ -1226,7 +1236,7 @@ useEffect(() => {
             {
               name: "Annual Report 2024–25",
               meta: "PDF · Annual report",
-              href: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
+              href: "/annual-reports",
             },
           ]}
         />
@@ -1406,9 +1416,9 @@ useEffect(() => {
           BLOG
           ====================================================== */}
 
-      <section id="blog" className="scroll-mt-24">
+      {/* <section id="blog" className="scroll-mt-24">
         <Blogs />
-      </section>
+      </section> */}
 
       {/* ======================================================
           VIDEO MODAL

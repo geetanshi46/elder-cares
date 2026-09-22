@@ -64,7 +64,7 @@ function ContactPage() {
     setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   setSending(true);
@@ -98,7 +98,6 @@ const handleSubmit = async (e) => {
       topic: "Dementia care",
       message: "",
     });
-
   } catch (err) {
     console.error("Form submission error:", err);
     setError("Something went wrong. Please try again.");
@@ -110,12 +109,22 @@ const handleSubmit = async (e) => {
   return (
     <SiteLayout>
 
-      {/* ==================================================
+     {/* ==================================================
     HERO SECTION
 ================================================== */}
 
 <section className="relative isolate w-full overflow-hidden bg-[#263746]">
-  <div className="relative h-[320px] w-full sm:h-[400px] lg:h-[480px]">
+  <div
+    className="
+      relative w-full
+      aspect-[4/5]
+      sm:aspect-[16/9]
+      md:aspect-[16/7]
+      lg:aspect-[21/9]
+      max-h-[560px]
+      min-h-[380px]
+    "
+  >
     {/* Hero Banner Image */}
     <img
       src={contactHeroImage}
@@ -272,72 +281,111 @@ const handleSubmit = async (e) => {
           </Reveal>
 
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {[
+    {
+      name: "Kasturinagar — NCAA residential dementia care & head office",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru",
+    },
+    {
+      name: "Kolar — ETCM Nightingales Trust Geriatric Unit",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar",
+    },
+    {
+      name: "Kothanur — Tanya Mathias Elder Care Centre",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+-+Tanya+Mathias+Elder+Care+Centre+For+Women,+Kothanur,+Bengaluru",
+    },
+    {
+      name: "Jayanagar — Day care for the elderly",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru",
+    },
+    {
+      name: "RT Nagar — Day care, Jobs 60+ & training",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+337+2nd+Cross,+1st+Block,+RT+Nagar,+Bengaluru,+Karnataka+560032",
+    },
+    {
+      name: "Shanthinagar — Sandhya Kirana day care",
+      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+-+Shanthinagar",
+    },
+    {
+      name: "Anepalya — Sandhya Suraksha, home for destitute elderly women",
+      href: "https://www.google.com/maps/search/?api=1&query=Sandhya+Suraksha+-+A+Home+for+Helpless+Elderly+Women",
+    },
+    {
+      name: "Richmond Town — SK Home, home for destitute elderly men",
+      href: "#",
+    },
+    {
+      name: "Ali Asker Road — Elders Helpline 1090",
+      href: "https://www.google.com/maps/search/?api=1&query=Elders+Helpline,+Ali+Asker+Road,+Bengaluru",
+    },
+  ].map((centre, index) => (
+    <Reveal key={centre.name} delay={(index % 3) * 90}>
+      <article
+        className="
+          group
+          flex
+          h-full
+          items-start
+          gap-4
+          border
+          border-[#E15925]/15
+          bg-white
+          p-6
+          shadow-[0_12px_35px_rgba(38,55,70,0.06)]
+          transition-all
+          duration-300
+          hover:-translate-y-1
+          hover:border-[#17232B]/60
+          hover:shadow-[0_18px_45px_rgba(38,55,70,0.12)]
+        "
+      >
+        <span
+          className="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            bg-[#FFF1D6]
+            text-[#17232B]
+            transition-colors
+            duration-300
+            group-hover:bg-[#17232B]
+            group-hover:text-white
+          "
+        >
+          <MapPin className="h-5 w-5" strokeWidth={1.8} />
+        </span>
 
-            {[
-              "Kasturinagar — NCAA residential dementia care & head office",
-              "Kolar — ETCM Nightingales Trust Geriatric Unit",
-              "Kothanur — Tanya Mathias Elder Care Centre",
-              "Jayanagar — Day care for the elderly",
-              "RT Nagar — Day care, Jobs 60+ & training",
-              "Shanthinagar — Sandhya Kirana day care",
-              "Anepalya — Sandhya Suraksha, home for destitute elderly women",
-              "Richmond Town — SK Home, home for destitute elderly men",
-              "Ali Asker Road — Elders Helpline 1090",
-            ].map((centre, index) => (
-
-              <Reveal key={centre} delay={(index % 3) * 90}>
-
-                <article
-                  className="
-                    group
-                    flex
-                    h-full
-                    items-start
-                    gap-4
-                    border
-                    border-[#E15925]/15
-                    bg-white
-                    p-6
-                    shadow-[0_12px_35px_rgba(38,55,70,0.06)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-[#17232B]/60
-                    hover:shadow-[0_18px_45px_rgba(38,55,70,0.12)]
-                  "
-                >
-
-                  <span
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      shrink-0
-                      items-center
-                      justify-center
-                      bg-[#FFF1D6]
-                      text-[#17232B]
-                      transition-colors
-                      duration-300
-                      group-hover:bg-[#17232B]
-                      group-hover:text-white
-                    "
-                  >
-                    <MapPin className="h-5 w-5" strokeWidth={1.8} />
-                  </span>
-
-                  <span className="pt-1 text-sm font-semibold leading-6 text-[#263746]">
-                    {centre}
-                  </span>
-
-                </article>
-
-              </Reveal>
-
-            ))}
-
-          </div>
+        {centre.href !== "#" ? (
+          <a
+            href={centre.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              pt-1
+              text-sm
+              font-semibold
+              leading-6
+              text-[#263746]
+              transition-colors
+              hover:text-[#ED6439]
+              hover:underline
+            "
+          >
+            {centre.name}
+          </a>
+        ) : (
+          <span className="pt-1 text-sm font-semibold leading-6 text-[#263746]">
+            {centre.name}
+          </span>
+        )}
+      </article>
+    </Reveal>
+  ))}
+</div>
 
         </div>
 
@@ -681,25 +729,26 @@ function ContactInfoCard({
 
       {/* ICON */}
 
-      <span
-        className={`
-          flex
-          h-12
-          w-12
-          w-fit
-          items-center
-          justify-center
-          transition-colors
-          duration-300
-          ${highlight
-            ? "bg-white/15 text-white"
-            : "bg-[#FFF1D6] text-[#F29000] group-hover:bg-[#F29000] group-hover:text-white"}
-        `}
-      >
-
-        <Icon className="h-6 w-6" strokeWidth={1.6} />
-
-      </span>
+<span
+  className={`
+    flex
+    h-12
+    w-12
+    shrink-0
+    items-center
+    justify-center
+    rounded-xl
+    transition-all
+    duration-300
+    ${
+      highlight
+        ? "bg-white/15 text-white group-hover:bg-white/20"
+        : "bg-[#FFF1D6] text-[#F29000] group-hover:bg-[#F29000] group-hover:text-white"
+    }
+  `}
+>
+  <Icon className="h-6 w-6" strokeWidth={1.8} />
+</span>
 
 
       {/* TITLE */}

@@ -14,7 +14,7 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { Events } from "@/components/home/Events";
 import { GetInvolved } from "@/components/home/GetInvolved";
 import { Partners } from "@/components/home/Partners";
-import { Blogs } from "@/components/home/Blogs";
+// import { Blogs } from "@/components/home/Blogs";
 import { Newsletter } from "@/components/home/Newsletter";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Recognitions } from "@/components/home/Recognitions";

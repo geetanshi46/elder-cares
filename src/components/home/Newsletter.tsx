@@ -3,7 +3,7 @@ import { ArrowRight, Mail } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
 export function Newsletter() {
-  const [done, setDone] = useState(false);
+  // const [done, setDone] = useState(false);
 
   return (
     <section
@@ -161,7 +161,7 @@ export function Newsletter() {
     sm:text-3xl
   "
 >
-  Care notes, once a month - free of cost
+  NewsLetter
 </h2>
 
               {/* Accent */}
@@ -193,111 +193,120 @@ export function Newsletter() {
                 FORM
                 ================================================= */}
 
-            <form
-              className="
-                relative
-                z-10
-                mt-8
-                grid
-                gap-3
-                lg:mt-0
-              "
-              onSubmit={(e) => {
-                e.preventDefault();
-                setDone(true);
-              }}
-            >
-              <label
-                htmlFor="newsletter-email"
-                className="sr-only"
-              >
-                Email address
-              </label>
+           <form
+  action="https://formsubmit.co/contact@nightingaleseldercare.com"
+  method="POST"
+  className="
+    relative
+    z-10
+    mt-8
+    grid
+    gap-3
+    lg:mt-0
+  "
+>
+  <input
+    type="hidden"
+    name="_subject"
+    value="New Newsletter Subscription - Nightingales Medical Trust"
+  />
 
-              {/* Email input */}
+  <input
+    type="hidden"
+    name="_template"
+    value="table"
+  />
 
-              <input
-                id="newsletter-email"
-                type="email"
-                required
-                placeholder="you@example.com"
-                className="
-                  w-full
-                  border
-                  border-white/40
-                  bg-white
-                  px-5
-                  py-4
-                  text-[15px]
-                  text-ink
-                  outline-none
-                  shadow-[0_8px_25px_rgba(0,0,0,0.10)]
-                  transition-all
-                  duration-300
-                  placeholder:text-muted-foreground
-                  focus:border-white
-                  focus:ring-2
-                  focus:ring-white/30
-                "
-              />
+  <input
+    type="hidden"
+    name="_captcha"
+    value="true"
+  />
 
-              {/* Subscribe button */}
+  <label
+    htmlFor="newsletter-email"
+    className="sr-only"
+  >
+    Email address
+  </label>
 
-              <button
-                type="submit"
-                className="
-                  group/cta
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  border
-                  border-white
-                  bg-white
-                  px-6
-                  py-4
-                  text-[15px]
-                  font-bold
-                  text-black
-                  shadow-[0_12px_28px_rgba(0,0,0,0.16)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-0.5
-                  hover:bg-white
-                  hover:shadow-[0_16px_35px_rgba(0,0,0,0.22)]
-                "
-              >
-                {done ? "Subscribed — thank you" : "Subscribe"}
+  <input
+    id="newsletter-email"
+    name="email"
+    type="email"
+    required
+    placeholder="you@example.com"
+    className="
+      w-full
+      border
+      border-white/40
+      bg-white
+      px-5
+      py-4
+      text-[15px]
+      text-ink
+      outline-none
+      shadow-[0_8px_25px_rgba(0,0,0,0.10)]
+      transition-all
+      duration-300
+      placeholder:text-muted-foreground
+      focus:border-white
+      focus:ring-2
+      focus:ring-white/30
+    "
+  />
 
-                <ArrowRight
-                  className="
-                    h-4
-                    w-4
-                    text-black
-                    transition-transform
-                    duration-300
-                    group-hover/cta:translate-x-1
-                  "
-                  strokeWidth={2}
-                  />
-              </button>
+  <button
+    type="submit"
+    className="
+      group/cta
+      inline-flex
+      items-center
+      justify-center
+      gap-2
+      border
+      border-white
+      bg-white
+      px-6
+      py-4
+      text-[15px]
+      font-bold
+      text-black
+      shadow-[0_12px_28px_rgba(0,0,0,0.16)]
+      transition-all
+      duration-300
+      hover:-translate-y-0.5
+      hover:bg-white
+      hover:shadow-[0_16px_35px_rgba(0,0,0,0.22)]
+    "
+  >
+    Subscribe
 
-              {/* Status */}
+    <ArrowRight
+      className="
+        h-4
+        w-4
+        text-black
+        transition-transform
+        duration-300
+        group-hover/cta:translate-x-1
+      "
+      strokeWidth={2}
+    />
+  </button>
 
-              <p
-                aria-live="polite"
-                className="
-                  text-center
-                  text-xs
-                  font-medium
-                  text-white/80
-                "
-              >
-                {done
-                  ? "You're on the list."
-                  : "We never share your email."}
-              </p>
-            </form>
+  <p
+    aria-live="polite"
+    className="
+      text-center
+      text-xs
+      font-medium
+      text-white/80
+    "
+  >
+    We never share your email.
+  </p>
+</form>
           </div>
         </Reveal>
       </div>

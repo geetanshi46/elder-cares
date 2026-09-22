@@ -91,44 +91,48 @@ function NewsEventsPage() {
 
   return (
     <SiteLayout>
-      {/* ======================================================
+   {/* ======================================================
     NEWS & EVENTS HERO BANNER
     ====================================================== */}
 <section className="w-full bg-[#FBF6EC]">
-  <div className="relative w-full overflow-hidden">
+  <div
+    className="
+      relative w-full overflow-hidden
+      aspect-[4/5]
+      sm:aspect-[16/9]
+      md:aspect-[16/7]
+      lg:aspect-[21/9]
+      max-h-[560px]
+      min-h-[380px]
+    "
+  >
     <img
       src={newsEventsBanner}
       alt="News & Events"
-      className="
-        block
-        h-[320px]
-        w-full
-        object-cover
-        object-center
-        sm:h-[400px]
-        lg:h-[500px]
-      "
+      className="absolute inset-0 h-full w-full object-cover object-center"
     />
 
     {/* VERY LIGHT OVERLAY */}
-    <div className="pointer-events-none absolute inset-0 bg-white/10" />
+    <div className="pointer-events-none absolute inset-0 bg-white/15" />
 
     {/* HERO HEADING */}
     <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
-      <h1
-        className="
-          font-display
-          text-4xl
-          font-extrabold
-          tracking-[-0.03em]
-          text-[#263746]
-          drop-shadow-[0_2px_10px_rgba(255,255,255,0.65)]
-          sm:text-5xl
-          lg:text-6xl
-        "
-      >
-        News & Events
-      </h1>
+      <div className="rounded-2xl bg-white/35 px-6 py-3 backdrop-blur-[2px] sm:px-8 sm:py-4">
+        <h1
+          className="
+            font-display
+            text-4xl
+            font-extrabold
+            tracking-[-0.03em]
+            text-[#263746]
+            drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]
+            sm:text-5xl
+            lg:text-6xl
+          "
+        >
+          News & Events
+        </h1>
+      </div>
     </div>
   </div>
 
@@ -136,10 +140,10 @@ function NewsEventsPage() {
   <div className="h-8 bg-[#FBF6EC] sm:h-10 lg:h-12" />
 </section>
 
-      <Events />
+      {/* <Events /> */}
 
     
-
+ 
     {/* ============================================================
     APPEAL FOR MUSICAL INSTRUMENTS
     ============================================================ */}
@@ -271,7 +275,7 @@ function NewsEventsPage() {
               </p>
 
               <p className="mt-3 font-bold text-[#263746]">
-                S Premkumar Raja
+                Mr. S Premkumar Raja
               </p>
 
               <p>
@@ -486,10 +490,16 @@ function NewsEventsPage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-6 text-[13px] text-muted-foreground">
-          Exact upcoming batch dates will be added once shared by the client — write to
-          training@nightingaleseldercare.com to ask about the next intake.
-        </p>
+       <p className="mt-6 text-[13px] text-muted-foreground">
+  Exact upcoming batch dates will be added shortly - write to{" "}
+  <a
+    href="mailto:training@nightingaleseldercare.com"
+    className="text-[#E15925] hover:underline"
+  >
+    training@nightingaleseldercare.com
+  </a>{" "}
+  for any enquiries.
+</p>
       </Section>
 
       {/* ======================================================

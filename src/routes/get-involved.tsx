@@ -6,6 +6,7 @@ import {
   HeartHandshake,
   HandCoins,
   Users,
+  Sparkles,
   ShieldCheck,
   GraduationCap,
   Briefcase,
@@ -40,6 +41,7 @@ import hiriyaravadiImage from "../assets/get-involved/hiriyaravadi.jpg";
 import eldersHelplineImage from "../assets/our-services/elders-helpline.png";
 import job60Image1 from "../assets/our-services/Job 60+.png";
 import smritiGramImage from "../assets/get-involved/smriti-gram.jpg";
+import smritiImage from "@/assets/smriti-gram.webp";
 import autoDriversImage from "../assets/our-services/lifesaving-skills.jpeg";
 import researchImage from "../assets/our-services/researchInnovation.png";
 import mobileOutreachImage from "../assets/our-services/free-geriatric-clinic.webp";
@@ -225,6 +227,7 @@ const CSR_NAV = [
   { id: "payroll-giving", label: "4. Payroll Giving", icon: Gift },
   { id: "corporate-volunteering", label: "5. Employee Volunteering", icon: Users },
   { id: "contact-csr", label: "Connect with CSR", icon: Mail },
+  { id: "donate", label: "Donate", icon: HeartHandshake },
 ];
 
 function ProjectModal({
@@ -360,6 +363,8 @@ function ProjectModal({
 
 function GetInvolvedPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [monthly, setMonthly] = useState(true);
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     if (selectedProject) {
@@ -656,6 +661,9 @@ function GetInvolvedPage() {
               </Reveal>
             </section>
 
+
+
+
             {/* ======================================================
                 PARTNERSHIP OPTIONS
                 ====================================================== */}
@@ -780,7 +788,7 @@ function GetInvolvedPage() {
 
                   <div className="relative min-h-[300px] bg-black/20 lg:min-h-full">
                     <img
-                      src={smritiGramImage}
+                      src={smritiImage}
                       alt="Nightingales Smriti Gram Dementia Village"
                       className="h-full w-full object-cover"
                     />
@@ -929,15 +937,170 @@ function GetInvolvedPage() {
                     </p>
 
                     <a
-                      href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Discussion"
-                      className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
-                    >
-                      <Mail className="h-4 w-4" />
-                      Email CSR Team
-                    </a>
+  href="mailto:rm@nightingaleseldercare.com?subject=CSR%20Partnership%20Discussion"
+  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#ED6439] py-3 text-xs font-bold text-white shadow-md shadow-[#ED6439]/20 transition-all hover:bg-[#d95730]"
+>
+  <Mail className="h-4 w-4" />
+  Email CSR Team
+</a>
                   </div>
                 </div>
               </div>
+            </section>
+
+
+              {/* ======================================================
+                DONATE
+                ====================================================== */}
+            <section id="donate" className="scroll-mt-24">
+              <Reveal>
+                <div className="mt-2 grid grid-cols-1 gap-6">
+                  <div
+                    className="
+                      group relative h-full overflow-hidden
+                      border border-white/10 bg-[#E15925]
+                      p-8
+                      shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
+                      transition-all duration-500
+                      hover:-translate-y-1
+                      hover:border-[#ED6439]/35
+                      hover:shadow-[0_38px_90px_-18px_rgba(23,35,43,0.62),0_15px_38px_rgba(237,100,57,0.28)]
+                      sm:p-8 lg:p-9
+                    "
+                  >
+                    {/* Left accent */}
+                    <div className="absolute left-0 top-0 h-full w-1 bg-[#14212B]" />
+
+                    {/* Bottom accent */}
+                    <div className="absolute bottom-0 left-0 h-1 w-full bg-[#14212B]/80" />
+
+                    {/* Glow */}
+                    <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+                    <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#14212B]/15 blur-3xl" />
+
+                    <div className="relative">
+                      {/* Label */}
+                      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
+                        <Sparkles className="h-4 w-4" />
+                        Support our work
+                      </span>
+
+                      {/* Heading */}
+                      <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+                        Make A Meaningful{" "}
+                        <span className="text-[#14212B]">Difference.</span>
+                      </h2>
+
+                      {/* Description */}
+                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
+                        Support ongoing and new initiatives that improve the
+                        lives of elders, strengthen dementia care, and build a
+                        more compassionate future.
+                      </p>
+
+                      {/* Frequency selector */}
+                      <div
+                        role="group"
+                        aria-label="Donation frequency"
+                        className="mt-5 inline-flex rounded-full border border-white/15 bg-white/10 p-1"
+                      >
+                        {[
+                          { label: "Monthly", value: true },
+                          { label: "One time", value: false },
+                        ].map((opt) => (
+                          <button
+                            key={opt.label}
+                            type="button"
+                            aria-pressed={monthly === opt.value}
+                            onClick={() => setMonthly(opt.value)}
+                            className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
+                              monthly === opt.value
+                                ? "bg-[#14212B] text-white shadow-[0_5px_18px_rgba(20,33,43,0.28)]"
+                                : "text-white/70 hover:text-white"
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Amount */}
+                      <div className="mt-5 max-w-sm">
+                        <label
+                          htmlFor="donation-amount"
+                          className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-white/80"
+                        >
+                          Donation amount
+                        </label>
+
+                        <div className="flex items-center rounded-xl border border-white/15 bg-white px-4 py-3">
+                          <span className="font-display text-lg font-bold text-[#14212B]">
+                            ₹
+                          </span>
+
+                          <input
+                            id="donation-amount"
+                            inputMode="numeric"
+                            value={amount}
+                            onChange={(e) =>
+                              setAmount(e.target.value.replace(/\D/g, ""))
+                            }
+                            placeholder="Enter amount"
+                            className="ml-2 w-full bg-transparent text-sm font-semibold text-[#14212B] outline-none placeholder:text-[#526574]/50"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Donate button */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const subject = monthly
+                            ? "Monthly Donation Enquiry"
+                            : "One-Time Donation Enquiry";
+
+                          const body = `Hello Nightingales Medical Trust,
+
+I would like to make a ${
+                            monthly ? "monthly" : "one-time"
+                          } donation${
+                            amount
+                              ? ` of ₹${Number(amount).toLocaleString("en-IN")}`
+                              : ""
+                          }.
+
+Please share the payment details/instructions.
+
+Thank you.`;
+
+                          window.location.href = `mailto:rm@nightingaleseldercare.com?subject=${encodeURIComponent(
+                            subject
+                          )}&body=${encodeURIComponent(body)}`;
+                        }}
+                        className="mt-4 flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#14212B] px-5 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#1d2d3a] hover:shadow-xl"
+                      >
+                        <HeartHandshake className="h-4 w-4" />
+                        Donate
+                        {amount
+                          ? ` ₹${Number(amount).toLocaleString("en-IN")}`
+                          : ""}
+                        {monthly ? " monthly" : " now"}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* TRUST / LEGAL STRIP */}
+                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-white px-5 py-4 shadow-soft">
+                    <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#ED6439]" />
+
+                    <p className="text-xs leading-relaxed text-[#526574]">
+                      Donations to Nightingales Medical Trust are exempt under
+                      Section 80G, subject to applicable conditions. NMT is
+                      eligible for CSR partnerships and operates as an NPO.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
             </section>
           </div>
         </div>

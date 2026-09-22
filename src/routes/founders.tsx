@@ -27,7 +27,7 @@ const trustees = [
       "He moved to Bangalore in 1972 and started his practice as a first generation practitioner. He has now built up a fine practice and has, besides several prominent citizens of Bangalore, a large number of corporates, banks and financial institutions as clients of his firm, Amarnath Kamath & Associates.",
   },
   {
-    name: "Mrs. Indra Prem Menon",
+    name: "Mrs. Indira Prem Menon",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/indira-menon-145x160.png",
@@ -313,7 +313,7 @@ function FoundersPage() {
 
                     <img
                       src="https://nightingaleseldercare.com/assets/images/founder-mr-raja-1046x698.jpeg"
-                      alt="S Premkumar Raja"
+                      alt=" Mr. S Premkumar Raja"
                       className="block aspect-[3/2] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                     />
 
@@ -333,7 +333,7 @@ function FoundersPage() {
                     </p>
 
                     <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
-                     Mr  S Premkumar Raja
+                     Mr.  S Premkumar Raja
                     </h3>
 
                     <div className="my-5 h-px w-14 bg-[#ED6439]/40 sm:my-6" />

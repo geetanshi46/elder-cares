@@ -238,22 +238,22 @@ const committeeMembers = [
 
   {
     name: "Dr. Vijetha Daas",
-    role: "Manager, Accounts and Finance",
-    image: seniorPsychiatristImage,
+    role: "Senior Consultant Psychiatrist",
+    image: accountsManagerImage,
     bio: (
       <>
-        <strong>Manager, Accounts and Finance</strong> with over 30 years of experience in senior roles at international manufacturing, services and audit organizations. Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.
+        <strong>Senior consultant psychiatrist</strong> graduated from Nimhans. Has vast experience in medical practices and holistic approach towards patient care. Was trainer of trainer (TOT) to medical doctors and paramedical staff in mental health and awareness in DMHP. Now into dementia care and residential practices. Good administrator, dedicated, assertive and with leadership qualities.
       </>
     ),
   },
 
   {
     name: "Mr. Subramanian Narayan",
-    role: "Senior Consultant Psychiatrist",
-    image: accountsManagerImage,
+    role: "Manager, Accounts and Finance",
+    image: seniorPsychiatristImage,
     bio: (
       <>
-        <strong>Senior consultant psychiatrist</strong> graduated from Nimhans. Has vast experience in medical practices and holistic approach towards patient care. Was trainer of trainer (TOT) to medical doctors and paramedical staff in mental health and awareness in DMHP. Now into dementia care and residential practices. Good administrator, dedicated, assertive and with leadership qualities.
+        <strong>Manager, Accounts and Finance</strong> with over 30 years of experience in senior roles at international manufacturing, services and audit organizations. Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.
       </>
     ),
   },
