@@ -178,7 +178,7 @@ export function SmritiGram() {
 
                   <p>
                     A national model for dementia care, Smriti Gram is being
-                    developed near Doddaballapur, one hour drive from Yelhanka,
+                    developed near Doddaballapur, one hour drive from Yelahanka,
                     Bengaluru. Drawing on nearly three decades of experience,
                     the first phase, expected to be operational by October
                     2026, will include a 100-bed residential dementia care

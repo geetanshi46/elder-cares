@@ -297,10 +297,14 @@ function ImpactStat({
   icon: Icon,
   number,
   text,
+
+  // context="Cumulative figure"
 }: {
   icon: typeof Users;
   number: string;
   text: string;
+  context?: string;
+  
 }) {
   return (
     <div
@@ -355,6 +359,9 @@ function ImpactStat({
         <p className="mt-2 text-[13px] leading-snug text-white/70">
           {text}
         </p>
+        {/* <p className="mt-1 text-[11px] leading-snug text-white/50">
+          {context}
+        </p> */}
       </div>
     </div>
   );

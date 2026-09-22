@@ -1561,7 +1561,7 @@ function ServicesPage() {
           <div className="space-y-8 sm:space-y-10">
 
             <Reveal>
-              <h3 className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+              <h3 id="other-dementia-services" className="font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
                 Dementia Care Services
               </h3>
             </Reveal>
@@ -2846,6 +2846,7 @@ function ServicesPage() {
             VISIBLE CONTENT
             ================================================== */}
         <div
+        id="sandhya-suraksha"
           className="
             mt-6
             text-[14px]
@@ -3235,6 +3236,7 @@ function ServicesPage() {
             ================================================== */}
 
         <h3
+        id="sandhya-kirana"
           className="
             font-display
             text-xl
@@ -3635,6 +3637,7 @@ function ServicesPage() {
 
         {/* TITLE */}
         <h3
+        id="hiriyaravadi"
           className="
             font-display
             text-xl
@@ -3892,6 +3895,7 @@ function ServicesPage() {
         <div className="min-w-0">
 
           <h3
+          id="geriatric-clinic"
             className="
               break-words
               font-display

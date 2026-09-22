@@ -19,7 +19,7 @@ interface NavItem {
   label: string;
   to: string;
   hash?: string;
-  children?: { label: string; to: string; hash?: string }[];
+  children?: NavItem[];
 }
 
 const NAV_LINKS: NavItem[] = [
@@ -41,19 +41,107 @@ const NAV_LINKS: NavItem[] = [
     { label: "Annual Reports", to: "/annual-reports" },
   ],
 },
-  {
-    label: "Our Services",
-    to: "/services",
-    children: [
-      { label: "Dementia and Medical Care", to: "/services", hash: "dementia-care" },
-      { label: "Care for Marginalized Elders", to: "/services", hash: "marginalized" },
-      { label: "Prevention of Elder Abuse", to: "/services", hash: "elder-protection" },
-      { label: "Empowerment and Livelihood", to: "/services", hash: "empowerment-livelihood" },
-      { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
-      { label: "Training and Capacity Building", to: "/services", hash: "capacity-building" },
-      { label: "Awareness and Advocacy", to: "/services", hash: "awareness" },
-    ],
-  },
+{
+  label: "Our Services",
+  to: "/services",
+  children: [
+    {
+      label: "Dementia and Medical Care",
+      to: "/services",
+      hash: "dementia-care",
+      children: [
+        {
+          label: "Memory Assessment",
+          to: "/services",
+          hash: "memory-clinics",
+        },
+        {
+          label: "Day Care",
+          to: "/services",
+          hash: "day-care",
+        },
+        {
+          label: "Residential Care",
+          to: "/services",
+          hash: "residential-care",
+        },
+        {
+          label: "Caregiver Training",
+          to: "/services",
+          hash: "caregiver-training",
+        },
+        {
+          label: "Family Support",
+          to: "/services",
+          hash: "family-support-groups",
+        },
+        {
+          label: "Other Dementia Services",
+          to: "/services",
+          hash: "other-dementia-services",
+        },
+      ],
+    },
+
+    {
+      label: "Care for Marginalized Elders",
+      to: "/services",
+      hash: "marginalized",
+      children: [
+        {
+          label: "Residential Care",
+          to: "/services",
+          hash: "sandhya-suraksha",
+        },
+        {
+          label: "Day Care",
+          to: "/services",
+          hash: "sandhya-kirana",
+        },
+        {
+          label: "Community Elder Care",
+          to: "/services",
+          hash: "hiriyaravadi",
+        },
+        {
+          label: "Free Geriatric Clinic",
+          to: "/services",
+          hash: "geriatric-clinic",
+        },
+      ],
+    },
+
+    {
+      label: "Prevention of Elder Abuse",
+      to: "/services",
+      hash: "elder-protection",
+    },
+
+    {
+      label: "Empowerment and Livelihood",
+      to: "/services",
+      hash: "empowerment-livelihood",
+    },
+
+    {
+      label: "Supporting Old Age Homes",
+      to: "/services",
+      hash: "old-age-homes",
+    },
+
+    {
+      label: "Training and Capacity Building",
+      to: "/services",
+      hash: "capacity-building",
+    },
+
+    {
+      label: "Awareness and Advocacy",
+      to: "/services",
+      hash: "awareness",
+    },
+  ],
+},
  {
   label: "Smriti Gram",
   to: "/smriti-gram",
@@ -129,6 +217,95 @@ function normalizePath(path: string) {
     return path.slice(0, -1);
   }
   return path;
+}
+
+
+type HashLinkHandler = (
+  e: MouseEvent<HTMLAnchorElement>,
+  item: { to: string; hash?: string }
+) => void;
+
+function DesktopSubmenu({
+  items,
+  handleHashLinkClick,
+}: {
+  items: NavItem[];
+  handleHashLinkClick: HashLinkHandler;
+}) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      {items.map((item) => (
+        <div key={`${item.label}-${item.hash ?? item.to}`} className="group/sub relative">
+          <Link
+            to={item.to}
+            hash={item.hash}
+            onClick={(e) => handleHashLinkClick(e, item)}
+            className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-foreground/80 transition-colors hover:bg-primary-soft hover:text-primary-deep"
+          >
+            <span>{item.label}</span>
+            {item.children && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
+          </Link>
+
+          {item.children && (
+            <div className="invisible pointer-events-none absolute left-full top-0 z-50 ml-1 w-60 rounded-2xl border border-border/80 bg-card/95 p-2 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-200 group-hover/sub:pointer-events-auto group-hover/sub:visible group-hover/sub:opacity-100">
+              <DesktopSubmenu
+                items={item.children}
+                handleHashLinkClick={handleHashLinkClick}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MobileSubmenu({
+  items,
+  handleHashLinkClick,
+  closeMenu,
+  depth = 0,
+}: {
+  items: NavItem[];
+  handleHashLinkClick: HashLinkHandler;
+  closeMenu: () => void;
+  depth?: number;
+}) {
+  return (
+    <div
+      className={`${
+        depth === 0
+          ? "ml-3 border-l-2 border-[#ED6439]/30 pl-3"
+          : "ml-3 border-l border-border/50 pl-3"
+      } my-1 flex flex-col space-y-1`}
+    >
+      {items.map((item) => (
+        <div key={`${item.label}-${item.hash ?? item.to}`}>
+          <Link
+            to={item.to}
+            hash={item.hash}
+            onClick={(e) => {
+              handleHashLinkClick(e, item);
+              closeMenu();
+            }}
+            className="flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13.5px] text-muted-foreground transition-colors hover:bg-primary-soft hover:text-primary-deep"
+          >
+            <span>{item.label}</span>
+            {item.children && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
+          </Link>
+
+          {item.children && (
+            <MobileSubmenu
+              items={item.children}
+              handleHashLinkClick={handleHashLinkClick}
+              closeMenu={closeMenu}
+              depth={depth + 1}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export function Navbar() {
@@ -492,29 +669,10 @@ export function Navbar() {
                     group-hover:opacity-100
                   "
                 >
-                  <div className="flex flex-col gap-0.5">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.to}
-                        hash={child.hash}
-                        onClick={(e) => handleHashLinkClick(e, child)}
-                        className="
-                          rounded-xl
-                          px-3
-                          py-2
-                          text-xs
-                          font-medium
-                          text-foreground/80
-                          transition-colors
-                          hover:bg-primary-soft
-                          hover:text-primary-deep
-                        "
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <DesktopSubmenu
+                    items={link.children}
+                    handleHashLinkClick={handleHashLinkClick}
+                  />
                 </div>
               </div>
             ) : (
@@ -914,31 +1072,11 @@ export function Navbar() {
                   </button>
                 </div>
                 {openMobileAccordion === link.label && (
-                  <div className="ml-3 my-1 flex flex-col space-y-1 border-l-2 border-[#ED6439]/30 pl-3">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.to}
-                        hash={child.hash}
-                        onClick={(e) => {
-                          handleHashLinkClick(e, child);
-                          setMenuOpen(false);
-                        }}
-                        className="
-                          rounded-lg
-                          px-2.5
-                          py-1.5
-                          text-[13.5px]
-                          text-muted-foreground
-                          transition-colors
-                          hover:bg-primary-soft
-                          hover:text-primary-deep
-                        "
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <MobileSubmenu
+                    items={link.children}
+                    handleHashLinkClick={handleHashLinkClick}
+                    closeMenu={() => setMenuOpen(false)}
+                  />
                 )}
               </div>
             ) : (

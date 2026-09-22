@@ -53,10 +53,6 @@ export const Route = createFileRoute("/impact")({
   component: ImpactPage,
 });
 
-// ============================================================
-// ANIMATED NUMBER
-// ============================================================
-
 function AnimatedNumber({
   value,
   duration = 1400,
@@ -65,7 +61,7 @@ function AnimatedNumber({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const [displayValue, setDisplayValue] = useState("0");
+  const [displayValue, setDisplayValue] = useState(value);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
@@ -130,7 +126,18 @@ function AnimatedNumber({
     requestAnimationFrame(animate);
   }, [started, value, duration]);
 
-  return <span ref={ref}>{displayValue}</span>;
+  return (
+    <span
+      ref={ref}
+      data-value={value}
+      aria-label={value}
+      suppressHydrationWarning
+    >
+      {/* The approved value remains in the HTML as the fallback content. */}
+      <span className="sr-only">{value}</span>
+      <span aria-hidden="true">{displayValue}</span>
+    </span>
+  );
 }
 
 // ============================================================
@@ -148,36 +155,6 @@ function ImpactStat({
   delay?: number;
   dark?: boolean;
 }) {
-
-  useEffect(() => {
-  const slider = document.getElementById(
-    "impact-testimonials-slider"
-  );
-
-  if (!slider) return;
-
-  const autoScroll = window.setInterval(() => {
-    const maxScrollLeft =
-      slider.scrollWidth - slider.clientWidth;
-
-    if (slider.scrollLeft >= maxScrollLeft - 5) {
-      slider.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    } else {
-      slider.scrollBy({
-        left: Math.min(slider.clientWidth * 0.82, 420),
-        behavior: "smooth",
-      });
-    }
-  }, 3500);
-
-  return () => {
-    window.clearInterval(autoScroll);
-  };
-}, []);
-
   return (
     <Reveal delay={delay}>
       <div
@@ -214,12 +191,12 @@ const impactVideos = [
     src: "/videos/nmt-family-stories.mp4",
     poster: impactStory,
   },
-{
-  title: "Awareness",
-  category: "Awareness Videos",
-  src: "/videos/nmt-awareness.mp4",
-  poster: impactBanner,
-},
+  {
+    title: "Awareness",
+    category: "Awareness Videos",
+    src: "/videos/nmt-archives.mp4",
+    poster: impactBanner,
+  },
   {
     title: "Jobs 60+ Mini Job Fair",
     category: "Senior Livelihood",
@@ -237,6 +214,12 @@ const impactVideos = [
     category: "Volunteer / Interns Stories",
     src: "/videos/01-impact-stories-volunteers-day.mp4",
     poster: impactStory,
+  },
+  {
+    title: "Smriti Gram",
+    category: "Smriti Gram",
+    src: "/videos/smriti-gram.mp4",
+    poster: impactMedia,
   },
 ];
 
@@ -301,7 +284,7 @@ const impactTestimonials = [
       "My mother has greatly benefitted from the program conducted by the Red Cross - Nightingales Trust Dementia Care Centre. She is involved in many creative activities on a daily basis like drawing, puzzle solving, cooking and Physiotherapy at the Centre. I have seen a drastic change in her health and activity since she has been enrolled. She seems to be mentally happier, and physically active. She truly has a great time with the volunteers and staff there. I would like to thank the team for this wonderful improvement in my mother’s life.",
     title: "Drastic change in mother's health",
     author:
-      "Nizar Ali - Son of Mrs Habeeba Begum, a member of the Dementia Day Care Centre.",
+      "Nizar Ali - Son of Mrs Habeeba Begum, a member of the Dementia Day Care Centre at Hyderabad",
   },
   {
     quote:
@@ -341,6 +324,51 @@ function ImpactPage() {
     (typeof impactVideos)[number] | null
   >(null);
 
+  const videosCarouselRef = useRef<HTMLDivElement>(null);
+
+const scrollVideos = (direction: "left" | "right") => {
+  if (!videosCarouselRef.current) return;
+
+  videosCarouselRef.current.scrollBy({
+    left: direction === "left" ? -400 : 400,
+    behavior: "smooth",
+  });
+};
+
+
+// ======================================================
+// AUTO-SCROLL TESTIMONIALS
+// ======================================================
+
+useEffect(() => {
+  const slider = document.getElementById(
+    "impact-testimonials-slider",
+  );
+
+  if (!slider) return;
+
+  const autoScroll = setInterval(() => {
+    const maxScrollLeft =
+      slider.scrollWidth - slider.clientWidth;
+
+    // Last card par pahunchne ke baad beginning par return
+    if (slider.scrollLeft >= maxScrollLeft - 10) {
+      slider.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      slider.scrollBy({
+        left: Math.min(slider.clientWidth * 0.82, 420),
+        behavior: "smooth",
+      });
+    }
+  }, 4000); // Every 4 seconds
+
+  return () => clearInterval(autoScroll);
+}, []);
+
+
   useEffect(() => {
     if (!selectedVideo) {
       document.body.style.overflow = "";
@@ -348,6 +376,8 @@ function ImpactPage() {
     }
 
     document.body.style.overflow = "hidden";
+
+
 
     return () => {
       document.body.style.overflow = "";
@@ -385,7 +415,7 @@ function ImpactPage() {
     />
 
     {/* Very light overlay — image remains clearly visible */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/30 via-[#E15925]/10 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/30 via-[#17232B]/10 to-transparent" />
 
     {/* Hero Content */}
     <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 sm:px-8 lg:px-10">
@@ -479,6 +509,18 @@ function ImpactPage() {
             <ImpactStat
               value="5000+"
               label="Caregivers Trained"
+              delay={640}
+            />
+
+            <ImpactStat
+              value="8000+"
+              label="Volunteer and Interns engaged"
+              delay={640}
+            />
+
+             <ImpactStat
+              value="60+"
+              label="Corporate Organisations partnered"
               delay={640}
             />
           </div>
@@ -592,7 +634,9 @@ function ImpactPage() {
             </div>
 
             <h2 className="mt-5 max-w-5xl font-display text-3xl font-extrabold leading-[1.12] tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-              We are transforming the lives of elders and their families through compassionate, accessible dementia and elder care services that restore purpose and dignity.
+              We have transformed the lives of elders and their families
+              through compassionate accessible dementia and elder care
+              services that restore purpose and dignity.
             </h2>
           </Reveal>
 
@@ -769,7 +813,7 @@ function ImpactPage() {
             </div>
 
             <h2 className="mt-5 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-              we have tounched many lives
+              We Have Been Able To Touch Many Lives.
             </h2>
 
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#526574] sm:text-base">
@@ -1180,225 +1224,120 @@ function ImpactPage() {
               href: "https://nightingaleseldercare.com/assets/files/NMT-Brochure.pdf",
             },
             {
-              name: "Smriti Gram Brochure",
-              meta: "PDF · coming soon",
-            },
-            {
-              name: "Annual Report",
-              meta: "PDF · coming soon",
-            },
-            {
-              name: "Research: Dementia prevalence in urban Karnataka",
-              meta: "PDF · coming soon",
-            },
-            {
-              name: "Research: Caregiver burden study",
-              meta: "PDF · coming soon",
+              name: "Annual Report 2024–25",
+              meta: "PDF · Annual report",
+              href: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
             },
           ]}
         />
       </Section>
 
-     {/* ======================================================
+      {/* ======================================================
     VIDEOS
-    ====================================================== */}
+====================================================== */}
 
 <section
   id="videos"
   className="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24"
 >
   <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-    <Reveal>
-      <div className="flex items-center gap-3">
-        <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
-        <span className="h-px w-12 bg-[#ED6439]" />
-        <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439] sm:text-base">
-          Videos
-        </span>
-      </div>
 
-      <h2 className="mt-5 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
-        Watch our work.
-      </h2>
+    <Reveal>
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-3">
+            <span className="h-2 w-2 rounded-full bg-[#ED6439]" />
+
+            <span className="h-px w-12 bg-[#ED6439]" />
+
+            <span className="text-sm font-extrabold uppercase tracking-[0.18em] text-[#ED6439] sm:text-base">
+              Videos
+            </span>
+          </div>
+
+          <h2 className="mt-5 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#263746] sm:text-4xl lg:text-5xl">
+            Watch our work.
+          </h2>
+        </div>
+
+        {/* Carousel Arrows */}
+        <div className="flex shrink-0 gap-2">
+          <button
+            type="button"
+            onClick={() => scrollVideos("left")}
+            aria-label="Previous videos"
+            className="grid h-11 w-11 place-items-center rounded-full border border-[#ED6439]/30 text-[#ED6439] transition-all duration-300 hover:bg-[#ED6439] hover:text-white"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollVideos("right")}
+            aria-label="Next videos"
+            className="grid h-11 w-11 place-items-center rounded-full border border-[#ED6439]/30 text-[#ED6439] transition-all duration-300 hover:bg-[#ED6439] hover:text-white"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
     </Reveal>
 
-    <div className="relative mt-10">
-      {/* DESKTOP LEFT ARROW */}
-      <button
-        type="button"
-        onClick={() => {
-          const slider = document.getElementById("impact-videos-slider");
-          if (slider) {
-            slider.scrollBy({
-              left: -Math.min(slider.clientWidth * 0.82, 420),
-              behavior: "smooth",
-            });
-          }
-        }}
-        aria-label="Previous video"
-        className="
-          absolute left-0 top-1/2 z-30 hidden
-          h-11 w-11 -translate-y-1/2 -translate-x-1/2
-          place-items-center rounded-full
-          border border-[#ED6439]/20
-          bg-white text-[#ED6439]
-          shadow-[0_8px_25px_rgba(237,100,57,0.18)]
-          transition-all duration-300
-          hover:bg-[#ED6439] hover:text-white
-          lg:grid
-        "
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
+    {/* Horizontal Carousel */}
+    <div
+      ref={videosCarouselRef}
+      className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {impactVideos.map((video, index) => (
+        <Reveal key={video.title} delay={(index % 4) * 90}>
+          <article className="group w-[85vw] shrink-0 snap-start overflow-hidden rounded-[1.6rem] border border-[#ED6439]/15 bg-white shadow-[0_18px_45px_-25px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#ED6439]/35 hover:shadow-[0_25px_55px_-25px_rgba(237,100,57,0.25)] sm:w-[calc((100vw-5rem)/2)] lg:w-[calc((100vw-8rem)/3)] xl:w-[calc((100vw-11rem)/4)]">
 
-      {/* DESKTOP RIGHT ARROW */}
-      <button
-        type="button"
-        onClick={() => {
-          const slider = document.getElementById("impact-videos-slider");
-          if (slider) {
-            slider.scrollBy({
-              left: Math.min(slider.clientWidth * 0.82, 420),
-              behavior: "smooth",
-            });
-          }
-        }}
-        aria-label="Next video"
-        className="
-          absolute right-0 top-1/2 z-30 hidden
-          h-11 w-11 -translate-y-1/2 translate-x-1/2
-          place-items-center rounded-full
-          border border-[#ED6439]/20
-          bg-white text-[#ED6439]
-          shadow-[0_8px_25px_rgba(237,100,57,0.18)]
-          transition-all duration-300
-          hover:bg-[#ED6439] hover:text-white
-          lg:grid
-        "
-      >
-        <ChevronRight className="h-5 w-5" />
-      </button>
+            <button
+              type="button"
+              onClick={() => setSelectedVideo(video)}
+              className="relative block aspect-video w-full overflow-hidden bg-[#263746] text-left"
+              aria-label={`Play ${video.title}`}
+            >
+              <img
+                src={video.poster}
+                alt={`${video.title} video thumbnail`}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
 
-      {/* SLIDER */}
-      <div
-        id="impact-videos-slider"
-        className="
-          flex gap-5
-          overflow-x-auto
-          scroll-smooth
-          snap-x snap-mandatory
-          pb-3
-          [scrollbar-width:none]
-          [&::-webkit-scrollbar]:hidden
-          sm:gap-6
-        "
-      >
-        {impactVideos.map((video, index) => (
-          <Reveal
-            key={video.title}
-            delay={(index % 4) * 90}
-            className="
-              min-w-[88%]
-              snap-start
-              sm:min-w-[380px]
-              lg:min-w-[calc((100%-48px)/3)]
-            "
-          >
-            <article className="group h-full overflow-hidden rounded-[1.6rem] border border-[#ED6439]/15 bg-white shadow-[0_18px_45px_-25px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#ED6439]/35 hover:shadow-[0_25px_55px_-25px_rgba(237,100,57,0.25)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-[#ED6439] text-white shadow-[0_12px_35px_rgba(237,100,57,0.35)] transition-all duration-300 group-hover:scale-110">
+                  <PlayCircle className="h-7 w-7" />
+                </span>
+              </div>
+            </button>
+
+            <div className="p-5">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.17em] text-[#ED6439]">
+                {video.category}
+              </p>
+
+              <h3 className="mt-2 font-display text-lg font-extrabold leading-tight text-[#263746] transition-colors group-hover:text-[#ED6439]">
+                {video.title}
+              </h3>
+
               <button
                 type="button"
                 onClick={() => setSelectedVideo(video)}
-                className="relative block aspect-video w-full overflow-hidden bg-[#263746] text-left"
-                aria-label={`Play ${video.title}`}
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#ED6439]"
               >
-                <img
-                  src={video.poster}
-                  alt={`${video.title} video thumbnail`}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-
-                <div className="absolute inset-0 grid place-items-center">
-                  <span className="grid h-14 w-14 place-items-center rounded-full bg-[#ED6439] text-white shadow-[0_12px_35px_rgba(237,100,57,0.35)] transition-all duration-300 group-hover:scale-110">
-                    <PlayCircle className="h-7 w-7" />
-                  </span>
-                </div>
+                Watch video
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </button>
+            </div>
 
-              <div className="p-5">
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.17em] text-[#ED6439]">
-                  {video.category}
-                </p>
-
-                <h3 className="mt-2 font-display text-lg font-extrabold leading-tight text-[#263746] transition-colors group-hover:text-[#ED6439]">
-                  {video.title}
-                </h3>
-
-                <button
-                  type="button"
-                  onClick={() => setSelectedVideo(video)}
-                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#ED6439]"
-                >
-                  Watch video
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* MOBILE ARROWS */}
-      <div className="mt-6 flex justify-center gap-3 lg:hidden">
-        <button
-          type="button"
-          onClick={() => {
-            const slider = document.getElementById("impact-videos-slider");
-            if (slider) {
-              slider.scrollBy({
-                left: -Math.min(slider.clientWidth * 0.82, 420),
-                behavior: "smooth",
-              });
-            }
-          }}
-          aria-label="Previous video"
-          className="
-            grid h-10 w-10 place-items-center
-            rounded-full border border-[#ED6439]/20
-            bg-white text-[#ED6439]
-            shadow-sm transition-colors
-            hover:bg-[#ED6439] hover:text-white
-          "
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            const slider = document.getElementById("impact-videos-slider");
-            if (slider) {
-              slider.scrollBy({
-                left: Math.min(slider.clientWidth * 0.82, 420),
-                behavior: "smooth",
-              });
-            }
-          }}
-          aria-label="Next video"
-          className="
-            grid h-10 w-10 place-items-center
-            rounded-full border border-[#ED6439]/20
-            bg-white text-[#ED6439]
-            shadow-sm transition-colors
-            hover:bg-[#ED6439] hover:text-white
-          "
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
+          </article>
+        </Reveal>
+      ))}
     </div>
+
   </div>
 </section>
 
@@ -1409,7 +1348,7 @@ function ImpactPage() {
       <Section
         id="media-centre"
         eyebrow="Media centre"
-        title="Press releases, coverage & photo gallery"
+        title="Press Releases, Coverage & Photo Gallery"
         tone="sand"
       >
         <CardGrid cols={3}>
@@ -1442,7 +1381,25 @@ function ImpactPage() {
           />
         </CardGrid>
 
-       
+        {/* <Reveal delay={200}>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[impactMedia, impactStory].map(
+  (image, index) => (
+                <div
+                  key={index}
+                  className="group aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-[#ED6439]/15 bg-white shadow-[0_15px_40px_-25px_rgba(38,55,70,0.18)]"
+                >
+                  <img
+                    src={image}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    loading="lazy"
+                  />
+                </div>
+              ),
+            )}
+          </div>
+        </Reveal> */}
       </Section>
 
       {/* ======================================================

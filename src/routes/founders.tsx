@@ -27,7 +27,7 @@ const trustees = [
       "He moved to Bangalore in 1972 and started his practice as a first generation practitioner. He has now built up a fine practice and has, besides several prominent citizens of Bangalore, a large number of corporates, banks and financial institutions as clients of his firm, Amarnath Kamath & Associates.",
   },
   {
-    name: "Ms. Indra Prem Menon",
+    name: "Mrs. Indra Prem Menon",
     role: "Trustee",
     image:
       "https://www.nightingaleseldercare.com/assets/images/indira-menon-145x160.png",

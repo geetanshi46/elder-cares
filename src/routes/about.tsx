@@ -64,101 +64,157 @@ export const Route = createFileRoute("/about")({
    ============================================================ */
 
 const JOURNEY = [
-  {
-    year: "1998",
-    title: "Nightingales Medical Trust established",
-    body: "As a not-for-profit organisation dedicated to age care.",
-  },
-  {
-    year: "1999",
-    title: "Nightingales Elders Enrichment Centre established in Malleshwaram.",
-    body: "",
-  },
-  {
-    year: "2000",
-    title: "Nightingales Lifesaving Services",
-    body: "",
-  },
-  {
-    year: "2002",
-    title: "Elders Helpline launched",
-    body: "Elders Helpline launched in association with Bengaluru City Police - the first of its kind in the country to help elders in distress and combat elder abuse",
-  },
-  {
-    year: "2003",
-    title: "Received the Karnataka Rajyotsava Award for outstanding social service.",
-    body: "",
-  },
-  {
-    year: "2004",
-    title: "Nightingales Sandhya Kirana established as a Day Care Centre for economically disadvantaged older persons.",
-    body: "",
-  },
-  {
-    year: "2006",
-    title: "Dementia Day Care services introduced to support persons with dementia and provide respite to family caregivers.",
-    body: "",
-  },
-  {
-    year: "2008",
-    title: "International collaboration with Alzheimer's Australia for technical support.",
-    body: "",
-  },
-  {
-    year: "2009",
-    title: "NMT's work received the Vayoshreshtha Samman, National Award.",
-    body: "",
-  },
-  {
-    year: "2010",
-    title: "Nightingales Centre for Ageing and Alzheimer's established as a specialised residential dementia-care facility.",
-    body: "",
-  },
-  {
-    year: "2011",
-    title: "Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care, by the government of India.",
-    body: "",
-  },
-  {
-    year: "2011",
-    title: "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders",
-    body: "",
-  },
-  {
-    year: "2014",
-    title: "ETCM – Nightingales Trust Dementia Residential Care Centre established in Kolar using telemedicine solutions and bringing down cost by 30%",
-    body: "NMT also expanded its work in dementia risk reduction and active ageing.",
-  },
-  {
-    year: "2017–2018",
-    title: "Expansion of Dementia Day Care services and establishment of additional elder-care initiatives.",
-    body: "",
-  },
-  {
-    year: "2019",
-    title: "Strengthened training and advocacy initiatives",
-    body: "",
-  },
-  {
-    year: "2021",
-    title: "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka.",
-    body: "",
-  },
+{
+  year: "1998",
+
+  title: "Nightingales Medical Trust established",
+
+  body: "As a not-for-profit organisation dedicated to elder care.",
+},
+
+{
+  year: "1999",
+
+  title: "Nightingales Elders Enrichment Centre established in Malleshwaram.",
+
+  body: "",
+},
+
+{
+  year: "2000",
+
+  title: "Nightingales Lifesaving Services",
+
+  body: "",
+},
+
+{
+  year: "2002",
+
+  title: "Elders Helpline launched",
+
+  body: "Elders Helpline launched in association with Bengaluru City Police—the first of its kind in the country to help elders in distress and combat elder abuse.",
+},
+
+{
+  year: "2003",
+
+  title: "Received the Karnataka Rajyotsava Award for outstanding social service.",
+
+  body: "",
+},
+
+{
+  year: "2004",
+
+  title: "Nightingales Sandhya Kirana established as a Day Care Centre for economically disadvantaged older persons.",
+
+  body: "",
+},
+
+{
+  year: "2006",
+
+  title: "Dementia Day Care services introduced to support persons with dementia and provide respite to family caregivers.",
+
+  body: "",
+},
+
+{
+  year: "2008",
+
+  title: "International collaboration with Alzheimer's Australia for technical support.",
+
+  body: "",
+},
+
+{
+  year: "2009",
+
+  title: "NMT's work received the Vayoshreshtha Samman, National Award.",
+
+  body: "",
+},
+
+{
+  year: "2010",
+
+  title: "Nightingales Centre for Ageing and Alzheimer's established as a specialised residential dementia care facility.",
+
+  body: "",
+},
+
+{
+  year: "2011",
+
+  title: "Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care by the Government of India.",
+
+  body: "",
+},
+
+{
+  year: "2011",
+
+  title: "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders.",
+
+  body: "",
+},
+
+{
+  year: "2014",
+
+  title: "ETCM – Nightingales Trust Dementia Residential Care Centre established in Kolar using telemedicine solutions and bringing down costs by 30%.",
+
+  body: "NMT also expanded its work in dementia risk reduction and active ageing.",
+},
+
+{
+  year: "2017–2018",
+
+  title: "Expansion of Dementia Day Care services and establishment of additional elder-care initiatives.",
+
+  body: "",
+},
+
+{
+  year: "2019",
+
+  title: "Strengthened training and advocacy initiatives.",
+
+  body: "",
+},
+
+{
+  year: "2021",
+
+  title: "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka.",
+
+  body: "",
+},
   {
     year: "2022",
-    title: "NMT established it's first Hiriyarawadi to help marginalized elders in a city slum",
-    body: "NMT launched Mobile Active Ageing program in 28 old age homes",
+
+title: "NMT established its first Hiriyaravadi to help marginalized elders in a city slum",
+
+body: "NMT launched a Mobile Active Ageing Programme in 28 old age homes",
   },
-  {
-    year: "2023",
-    title: "NMT completed 25 years of service. It also received the IPS-KC Distinguished Service Award for exemplary service in the field of mental health.",
-    body: "",
-  },
-  {
-    year: "2024–2026",
-    title: "NMT continued to expand its dementia-care, active ageing, community support, training, technology and advocacy initiatives while developing Nightingales Smriti Gram – Dementia Care, Learning & Research, a new integrated model of dementia care.",
-    body: "",
-  },
+{
+  year: "2023",
+
+  title:
+    "NMT completed 25 years of service. It also received the IPS-KC Distinguished Service Award for exemplary service in the field of mental health.",
+
+  body: "",
+},
+
+{
+  year: "2024–2026",
+
+  title:
+    "NMT continued to expand its dementia care, active ageing, community support, training, technology, and advocacy initiatives while developing Nightingales Smriti Gram – Dementia Care, Learning & Research, a new integrated model of dementia care.",
+
+  body: "",
+},
 ];
 
 const VALUES = [
@@ -552,7 +608,11 @@ function AboutPage() {
 <section id="who-we-are" className="bg-[#FBF6EC] scroll-mt-24">
   <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
     <Reveal>
-      <SectionMarker index="01" label="Who We Are" />
+      <SectionMarker
+  index="01"
+  label="Who We Are"
+  className="text-[#E15925]"
+/>
 
       {/* <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-4xl lg:text-[2.8rem]">
         Who We Are
@@ -1163,7 +1223,7 @@ function AboutPage() {
             </h4>
 
             <p className="mt-3 text-sm leading-6 text-white/75">
-              [Board member profiles, photographs and designations ]
+              Board member profiles, photographs and designations 
             </p>
 
             <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base">

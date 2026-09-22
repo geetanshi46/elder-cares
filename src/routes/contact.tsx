@@ -64,41 +64,28 @@ function ContactPage() {
     setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
-const handleSubmit = async (
-  event: React.FormEvent<HTMLFormElement>
-) => {
-  event.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
   setSending(true);
   setSent(false);
   setError("");
 
-  const templateParams = {
-    from_name: formData.name,
-    phone: formData.phone,
-    reply_to: formData.email,
-    topic: formData.topic,
-    message: formData.message,
-  };
-
   try {
-    // Send enquiry email to admin
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_CONTACT_TEMPLATE_ID,
-      templateParams,
-      {
-        publicKey: EMAILJS_PUBLIC_KEY,
-      }
-    );
+    const formBody = new URLSearchParams();
 
-    // Send auto-reply email to user
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_AUTO_REPLY_TEMPLATE_ID,
-      templateParams,
+    formBody.append("name", formData.name);
+    formBody.append("email", formData.email);
+    formBody.append("phone", formData.phone);
+    formBody.append("writingAbout", formData.topic);
+    formBody.append("message", formData.message);
+
+    await fetch(
+      "https://script.google.com/a/macros/nightingaleseldercare.com/s/AKfycbwY1-z5hG5_LOtCHwvBeFukuJnjl0nHvqJ7RJt0ToyizS-hR9CsEy-gqFKmtfTBzBxYMw/exec",
       {
-        publicKey: EMAILJS_PUBLIC_KEY,
+        method: "POST",
+        mode: "no-cors",
+        body: formBody,
       }
     );
 
@@ -111,15 +98,10 @@ const handleSubmit = async (
       topic: "Dementia care",
       message: "",
     });
-  } catch (submissionError) {
-    console.error(
-      "EmailJS submission failed:",
-      submissionError
-    );
 
-    setError(
-      "Something went wrong. Please try again or contact us directly."
-    );
+  } catch (err) {
+    console.error("Form submission error:", err);
+    setError("Something went wrong. Please try again.");
   } finally {
     setSending(false);
   }
@@ -531,7 +513,7 @@ const handleSubmit = async (
                       "Volunteering",
                       "Internship",
                       "CSR partnership",
-                      "Something else",
+                      "Other matters",
                     ].map((option) => (
                       <option key={option}>{option}</option>
                     ))}

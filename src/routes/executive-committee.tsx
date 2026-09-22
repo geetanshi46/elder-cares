@@ -237,7 +237,7 @@ const committeeMembers = [
 
 
   {
-    name: "Vijetha Daas",
+    name: "Dr. Vijetha Daas",
     role: "Manager, Accounts and Finance",
     image: seniorPsychiatristImage,
     bio: (
@@ -248,7 +248,7 @@ const committeeMembers = [
   },
 
   {
-    name: "Subramanian Narayan",
+    name: "Mr. Subramanian Narayan",
     role: "Senior Consultant Psychiatrist",
     image: accountsManagerImage,
     bio: (
