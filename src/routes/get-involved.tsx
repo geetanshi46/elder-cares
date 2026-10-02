@@ -159,7 +159,7 @@ const projects: Project[] = [
     title: "Smriti Gram – India’s Largest Dementia Care Village",
     shortTitle: "Smriti Gram – India’s Largest Dementia Care Village",
     icon: HeartHandshake,
-    image: smritiGramImage,
+    image: smritiImage,
     intro: `Background\n\nWith no known cure for dementia and the situation rapidly escalating where it is estimated that around 8.8 million elders are affected by dementia in India, the challenges are many. Family caregivers burnout, high costs attached to caregiving, availability and affordability of home caregivers, and scarcity of specialized and quality dementia care centres are some of them\n\nOur intervention\n\nA 5-acre Dementia Care Village situated in Doddaballapur, Bengaluru Rural District to provide affordable and high-quality dementia care to 300 persons living with dementia and 100 beds earmarked for marginalized elders with dementia. A state-of-the-art training centre will train 1000 individuals in geriatric and dementia care every year.\n\nLocations\n\nBengaluru, Karnataka, and other states in southern India\n\nSupport sought\n\nTo cover costs of medical equipment and facilities\n\nOutcomes\n\n· Improved quality of dementia care\n· Reduction of progression of dementia\n· Improved health, nutrition, and well-being of elders with dementia\n· Strengthened capacity of caregivers in dementia care.\n\nOur beneficiaries\n\n300 elders with dementia, of which 100 are marginalized elders\n\n1000 caregivers`,
   },
 ];
@@ -219,15 +219,39 @@ const observanceEvents = [
 ];
 
 const CSR_NAV = [
-  { id: "why-partner", label: "Why Partner?", icon: Target },
-  { id: "causes", label: "Causes You Can Support", icon: Target },
-  { id: "partnership-options", label: "1. Adopt a Project", icon: HeartHandshake },
-  { id: "corporate-donations", label: "2. Corporate Donations", icon: HandCoins },
-  { id: "event-sponsorship", label: "3. Event Sponsorship", icon: Megaphone },
-  { id: "payroll-giving", label: "4. Payroll Giving", icon: Gift },
-  { id: "corporate-volunteering", label: "5. Employee Volunteering", icon: Users },
-  { id: "contact-csr", label: "Connect with CSR", icon: Mail },
-  { id: "donate", label: "Donate", icon: HeartHandshake },
+  {
+    id: "why-partner",
+    label: "Why Partner?",
+    icon: Target,
+  },
+  {
+    id: "causes",
+    label: "Causes You Can Support",
+    icon: Target,
+  },
+  {
+    id: "partnership",
+    label: " Partnership",
+    icon: HeartHandshake,
+    children: [
+      { id: "partnership-options", label: "1. Adopt a Project" },
+      { id: "corporate-donations", label: "2. Corporate Donations" },
+      { id: "event-sponsorship", label: "3. Event Sponsorship" },
+      { id: "payroll-giving", label: "4. Payroll Giving" },
+      { id: "corporate-volunteering", label: "5. Volunteering" },
+      { id: "internship", label: "6. Internship" },
+    ],
+  },
+  {
+    id: "contact-csr",
+    label: " Connect with CSR",
+    icon: Mail,
+  },
+  {
+    id: "donate",
+    label: " Donate",
+    icon: HeartHandshake,
+  },
 ];
 
 function ProjectModal({
@@ -379,8 +403,8 @@ function GetInvolvedPage() {
 
   return (
     <SiteLayout>
-     {/* ======================================================
-    HERO — fully responsive full-bleed banner
+    {/* ======================================================
+    HERO — GET INVOLVED
 ====================================================== */}
 <section className="relative w-full overflow-hidden">
   <Reveal>
@@ -404,91 +428,129 @@ function GetInvolvedPage() {
         "
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#E15925]/20 via-[#E15925]/5 to-transparent" />
-
-      {/* Content */}
+      {/* Light overlay */}
       <div
         className="
-          relative z-10 mx-auto flex min-h-[620px] w-full
-          max-w-7xl flex-col justify-center
-          px-5 py-10
-          sm:min-h-[600px] sm:px-8 sm:py-10
-          md:h-full md:min-h-0 md:px-10 md:py-10
-          lg:px-10 lg:py-12
+          absolute inset-0
+          bg-gradient-to-r
+          from-[#17232B]/30
+          via-[#17232B]/10
+          to-transparent
         "
-      >
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#FF9A78]">
-          <Link to="/" className="transition hover:text-white">
-            Home
-          </Link>
+      />
 
-          <span>/</span>
+      {/* Bottom readability gradient */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-[210px]
+          bg-gradient-to-t
+          from-[#17232B]/60
+          via-[#17232B]/25
+          to-transparent
 
-          <span className="text-white">Get Involved</span>
-        </div>
+          sm:h-[240px]
+          md:h-[260px]
+          lg:h-[290px]
+        "
+      />
 
-        {/* Badge */}
-        <span
-          className="
-            mt-4 inline-flex w-fit items-center gap-1.5
-            rounded-full bg-[#ED6439]
-            px-4 py-1.5
-            text-[10px] font-bold uppercase
-            tracking-[0.14em] text-white shadow-md
-            sm:text-xs
-          "
-        >
-          <Building2 className="h-3.5 w-3.5" />
-          Corporate Partnerships
-        </span>
+      {/* ======================================================
+    HERO CONTENT
+====================================================== */}
+<div
+  className="
+    absolute
+    inset-x-0
+    bottom-0
+    z-10
+    w-full
+    px-5
+    pb-10
 
-        {/* Heading */}
-        <h1
-          className="
-            mt-4 w-full max-w-5xl
-            font-display font-extrabold
-            capitalize leading-[1.08]
-            tracking-[-0.03em] text-white
-            text-[1.8rem]
-            sm:mt-5 sm:text-[2.2rem]
-            md:text-[2.6rem]
-            lg:text-[2.7rem]
-          "
-        >
-          Partner with Us to Create Lasting Impact for Elders and Those with
-          Dementia
-        </h1>
+    sm:px-8
+    sm:pb-12
 
-        {/* Text */}
-        {/* <div
-          className="
-            mt-5 w-full max-w-5xl
-            space-y-4
-            text-sm font-medium
-            leading-6 text-white/90
-            sm:mt-6 sm:text-base sm:leading-7
-            md:text-lg
-            lg:text-lg
-          "
-        >
-          <p>
-            At Nightingales Medical Trust (NMT), we believe meaningful social
-            change happens when individuals, corporates, and communities come
-            together. We actively collaborate with corporates, government
-            bodies, NGOs, and academic institutions to improve the quality of
-            life of elders, especially those living with dementia and those
-            from marginalized communities.
-          </p>
+    md:px-10
+    md:pb-14
 
-          <p className="font-semibold text-white">
-            We invite corporates to engage with us through CSR partnerships,
-            employee engagement, and long-term collaborations that create
-            measurable social impact.
-          </p>
-        </div> */}
-      </div>
+    lg:px-14
+    lg:pb-16
+  "
+>
+  {/* Get Involved label */}
+  <p
+    className="
+      mb-4
+      text-xs
+      font-bold
+      uppercase
+      tracking-[0.16em]
+      text-white
+
+      sm:mb-5
+      sm:text-sm
+    "
+  >
+    Get Involved
+  </p>
+
+  {/* Heading with orange line */}
+  <div
+    className="
+      flex
+      w-full
+      items-start
+      gap-3
+
+      sm:gap-5
+    "
+  >
+    {/* Orange vertical accent line */}
+<span
+  className="
+    mt-1
+    h-[62px]
+    w-[3px]
+    shrink-0
+    rounded-full
+    bg-[#ED6439]
+
+    sm:h-[80px]
+    sm:w-1
+
+    md:h-[90px]
+
+    lg:h-[105px]
+  "
+/>
+
+
+    {/* Heading */}
+   <h1
+  className="
+    max-w-[1250px]
+    font-display
+    text-[2rem]
+    font-extrabold
+    leading-[1.08]
+    tracking-[-0.035em]
+    text-white
+    drop-shadow-[0_3px_10px_rgba(0,0,0,0.55)]
+
+    sm:text-[2.35rem]
+    md:text-[2.7rem]
+    lg:text-[3rem]
+  "
+>
+  Partner with Us to Create Lasting Impact for Elders and Those with
+  Dementia
+</h1>
+  </div>
+</div>
     </div>
   </Reveal>
 </section>
@@ -502,21 +564,37 @@ function GetInvolvedPage() {
           <span className="hidden shrink-0 text-xs font-bold uppercase tracking-[0.16em] text-[#ED6439] md:block">
             Quick Jump:
           </span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {CSR_NAV.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-white px-3.5 py-1.5 text-xs font-bold text-[#E15925] shadow-2xs transition-all hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
-                >
-                  <Icon className="h-3.5 w-3.5" />
-                  <span>{item.label}</span>
-                </a>
-              );
-            })}
+       <div className="flex min-w-max items-center gap-1.5 sm:gap-2">
+  {CSR_NAV.map((item) => {
+    const Icon = item.icon;
+
+    return (
+      <div key={item.id} className="flex shrink-0 items-center gap-2">
+        <a
+          href={`#${item.id}`}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border/80 bg-white px-3.5 py-1.5 text-xs font-bold text-[#E15925] shadow-2xs transition-all hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+        >
+          <Icon className="h-3.5 w-3.5" />
+          <span>{item.label}</span>
+        </a>
+
+        {item.children && (
+          <div className="flex shrink-0 items-center gap-2">
+            {item.children.map((child) => (
+              <a
+                key={child.id}
+                href={`#${child.id}`}
+                className="inline-flex shrink-0 items-center text-[11px] font-semibold text-[#526574] transition-colors hover:text-[#E15925]"
+              >
+                • {child.label}
+              </a>
+            ))}
           </div>
+        )}
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 
@@ -572,24 +650,42 @@ function GetInvolvedPage() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">Navigation</p>
                   <p className="mt-1 font-display text-lg font-bold">Corporate Partnerships</p>
                 </div>
-                <nav className="p-2">
-                  {CSR_NAV.map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <a
-                        key={item.id}
-                        href={`#${item.id}`}
-                        className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#E15925]"
-                      >
-                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-md bg-[#ED6439]/10 text-[10px] font-bold text-[#ED6439] group-hover:bg-[#ED6439] group-hover:text-white">
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                        <Icon className="h-3.5 w-3.5 shrink-0 text-[#ED6439]" />
-                        <span className="truncate">{item.label}</span>
-                      </a>
-                    );
-                  })}
-                </nav>
+               <nav className="p-2">
+  {CSR_NAV.map((item, idx) => {
+    const Icon = item.icon;
+
+    return (
+      <div key={item.id}>
+        <a
+          href={`#${item.id}`}
+          className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#526574] transition hover:bg-[#FFF4DF] hover:text-[#E15925]"
+        >
+          <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#ED6439]/10 text-[10px] font-bold text-[#ED6439] group-hover:bg-[#ED6439] group-hover:text-white">
+            {String(idx + 1).padStart(2, "0")}
+          </span>
+
+          <Icon className="h-3.5 w-3.5 shrink-0 text-[#ED6439]" />
+
+          <span>{item.label}</span>
+        </a>
+
+        {item.children && (
+          <div className="ml-[3.75rem] mb-2 mt-0.5 flex flex-col gap-1">
+            {item.children.map((child) => (
+              <a
+                key={child.id}
+                href={`#${child.id}`}
+                className="text-[11px] font-medium leading-5 text-[#526574] transition-colors hover:text-[#E15925]"
+              >
+                • {child.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  })}
+</nav>
               </div>
             </div>
           </aside>
@@ -872,37 +968,126 @@ function GetInvolvedPage() {
               </Reveal>
             </section>
 
-            {/* ======================================================
-                OPTION 5: CORPORATE VOLUNTEERING & EMPLOYEE ENGAGEMENT
-                ====================================================== */}
-            <section id="corporate-volunteering" className="scroll-mt-24">
-              <Reveal>
-                <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
-                  5. Corporate Volunteering & Employee Engagement
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  We offer structured volunteering opportunities where employees can contribute their time, skills, and expertise, including:
-                </p>
-              </Reveal>
+           {/* ======================================================
+    OPTION 5: VOLUNTEERING
+====================================================== */}
+<section id="corporate-volunteering" className="scroll-mt-24">
+  <Reveal>
+    <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+      5. Volunteering
+    </h3>
+  </Reveal>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {corporateVolunteeringItems.map((mod, idx) => {
-                  const Icon = mod.icon;
-                  return (
-                    <Reveal key={mod.title} delay={(idx % 3) * 50} className="h-full">
-                      <div className="flex h-full items-center gap-3 rounded-2xl border border-border bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#ED6439]/10 text-[#ED6439]">
-                          <Icon className="h-5 w-5" />
-                        </span>
-                        <p className="font-display text-sm font-bold leading-snug text-[#E15925]">
-                          {mod.title}
-                        </p>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-            </section>
+  <div className="mt-6 grid gap-5 md:grid-cols-2">
+    {/* Individual / Small Groups */}
+    <Reveal className="h-full">
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md sm:p-7">
+        <h4 className="font-display text-lg font-extrabold uppercase leading-tight text-[#E15925] sm:text-xl">
+          Volunteering: Individuals / Small Groups
+        </h4>
+
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Volunteering for the cause of the elderly can be a very satisfying
+          experience. We encourage individuals to come forward to volunteer at
+          our senior care and dementia care projects.
+        </p>
+
+        <a
+  href="/individual"
+  className="mt-6 inline-flex w-fit items-center rounded-lg bg-[#E15925] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C94B1E]"
+>
+  Learn More
+</a>
+      </div>
+    </Reveal>
+
+    {/* Corporate Team */}
+    <Reveal className="h-full" delay={100}>
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md sm:p-7">
+        <h4 className="font-display text-lg font-extrabold uppercase leading-tight text-[#E15925] sm:text-xl">
+          Volunteering Corporate Team
+        </h4>
+
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          There are numerous ways for you to volunteer as a corporate body, a
+          team or even a group of colleagues or friends. Elders love it when
+          volunteers conduct activities for them, spend time with them or even
+          help in the garden.
+        </p>
+
+       <Link
+  to="/corporate-volunteering"
+  className="mt-6 inline-flex w-fit items-center rounded-lg bg-[#E15925] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C94B1E]"
+>
+  Learn More
+</Link>
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+
+{/* ======================================================
+    OPTION 6: INTERNSHIP
+====================================================== */}
+<section id="internship" className="scroll-mt-24">
+  <Reveal>
+    <h3 className="font-display text-2xl font-extrabold text-[#E15925] sm:text-3xl">
+      6. Internship
+    </h3>
+
+    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+      Nightingales Medical Trust welcomes students to do an internship at any
+      of our projects. We believe that the experience with NMT will help
+      individuals to continue to impact the lives of elders.
+    </p>
+  </Reveal>
+
+  <div className="mt-6 grid gap-5 md:grid-cols-2">
+    {/* Based on Projects */}
+    <Reveal className="h-full">
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md sm:p-7">
+        <h4 className="font-display text-lg font-extrabold uppercase leading-tight text-[#E15925] sm:text-xl">
+          Based on Projects
+        </h4>
+
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Explore internship opportunities based on the projects and initiatives
+          of Nightingales Medical Trust.
+        </p>
+
+        <Link
+          to="/internship-projects"
+          className="mt-6 inline-flex w-fit items-center rounded-lg bg-[#E15925] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C94B1E]"
+        >
+          Learn More
+        </Link>
+      </div>
+    </Reveal>
+
+    {/* Based on Profession */}
+    <Reveal className="h-full" delay={100}>
+      <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-[#ED6439]/40 hover:shadow-md sm:p-7">
+        <h4 className="font-display text-lg font-extrabold uppercase leading-tight text-[#E15925] sm:text-xl">
+          Based on Profession
+        </h4>
+
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Explore internship opportunities based on your professional skills
+          and area of expertise.
+        </p>
+
+        <Link
+          to="/internship-profession"
+          className="mt-6 inline-flex w-fit items-center rounded-lg bg-[#E15925] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C94B1E]"
+        >
+          Learn More
+        </Link>
+      </div>
+    </Reveal>
+  </div>
+</section>
+
 
             {/* ======================================================
                 CONNECT WITH CSR DESK
@@ -950,158 +1135,230 @@ function GetInvolvedPage() {
 
 
               {/* ======================================================
-                DONATE
-                ====================================================== */}
-            <section id="donate" className="scroll-mt-24">
-              <Reveal>
-                <div className="mt-2 grid grid-cols-1 gap-6">
-                  <div
-                    className="
-                      group relative h-full overflow-hidden
-                      border border-white/10 bg-[#E15925]
-                      p-8
-                      shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
-                      transition-all duration-500
-                      hover:-translate-y-1
-                      hover:border-[#ED6439]/35
-                      hover:shadow-[0_38px_90px_-18px_rgba(23,35,43,0.62),0_15px_38px_rgba(237,100,57,0.28)]
-                      sm:p-8 lg:p-9
-                    "
-                  >
-                    {/* Left accent */}
-                    <div className="absolute left-0 top-0 h-full w-1 bg-[#14212B]" />
+    DONATE
+    ====================================================== */}
 
-                    {/* Bottom accent */}
-                    <div className="absolute bottom-0 left-0 h-1 w-full bg-[#14212B]/80" />
+<section id="donate" className="scroll-mt-24">
+  <Reveal>
+    <div className="mt-2 grid grid-cols-1 gap-6">
 
-                    {/* Glow */}
-                    <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
-                    <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#14212B]/15 blur-3xl" />
+      {/* =================================================
+          DONATION PANEL
+          ================================================= */}
 
-                    <div className="relative">
-                      {/* Label */}
-                      <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white">
-                        <Sparkles className="h-4 w-4" />
-                        Support our work
-                      </span>
+      <div
+        className="
+          group
+          relative
+          h-full
+          overflow-hidden
+          border
+          border-white/10
+          bg-[#E15925]
+          p-8
+          shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
+          transition-all
+          duration-500
+          hover:-translate-y-1
+          hover:border-[#ED6439]/35
+          hover:shadow-[0_38px_90px_-18px_rgba(23,35,43,0.62),0_15px_38px_rgba(237,100,57,0.28)]
+          sm:p-8
+          lg:p-9
+        "
+      >
 
-                      {/* Heading */}
-                      <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-                        Make A Meaningful{" "}
-                        <span className="text-[#14212B]">Difference.</span>
-                      </h2>
+        {/* Left accent */}
 
-                      {/* Description */}
-                      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
-                        Support ongoing and new initiatives that improve the
-                        lives of elders, strengthen dementia care, and build a
-                        more compassionate future.
-                      </p>
+        <div
+          className="
+            absolute
+            left-0
+            top-0
+            h-full
+            w-1
+            bg-[#14212B]
+          "
+        />
 
-                      {/* Frequency selector */}
-                      <div
-                        role="group"
-                        aria-label="Donation frequency"
-                        className="mt-5 inline-flex rounded-full border border-white/15 bg-white/10 p-1"
-                      >
-                        {[
-                          { label: "Monthly", value: true },
-                          { label: "One time", value: false },
-                        ].map((opt) => (
-                          <button
-                            key={opt.label}
-                            type="button"
-                            aria-pressed={monthly === opt.value}
-                            onClick={() => setMonthly(opt.value)}
-                            className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
-                              monthly === opt.value
-                                ? "bg-[#14212B] text-white shadow-[0_5px_18px_rgba(20,33,43,0.28)]"
-                                : "text-white/70 hover:text-white"
-                            }`}
-                          >
-                            {opt.label}
-                          </button>
-                        ))}
-                      </div>
+        {/* Bottom accent */}
 
-                      {/* Amount */}
-                      <div className="mt-5 max-w-sm">
-                        <label
-                          htmlFor="donation-amount"
-                          className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-white/80"
-                        >
-                          Donation amount
-                        </label>
+        <div
+          className="
+            absolute
+            bottom-0
+            left-0
+            h-1
+            w-full
+            bg-[#14212B]/80
+          "
+        />
 
-                        <div className="flex items-center rounded-xl border border-white/15 bg-white px-4 py-3">
-                          <span className="font-display text-lg font-bold text-[#14212B]">
-                            ₹
-                          </span>
+        {/* Glow */}
 
-                          <input
-                            id="donation-amount"
-                            inputMode="numeric"
-                            value={amount}
-                            onChange={(e) =>
-                              setAmount(e.target.value.replace(/\D/g, ""))
-                            }
-                            placeholder="Enter amount"
-                            className="ml-2 w-full bg-transparent text-sm font-semibold text-[#14212B] outline-none placeholder:text-[#526574]/50"
-                          />
-                        </div>
-                      </div>
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -right-20
+            -top-20
+            h-48
+            w-48
+            rounded-full
+            bg-white/10
+            blur-3xl
+          "
+        />
 
-                      {/* Donate button */}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const subject = monthly
-                            ? "Monthly Donation Enquiry"
-                            : "One-Time Donation Enquiry";
+        <div
+          className="
+            pointer-events-none
+            absolute
+            -bottom-20
+            -left-20
+            h-48
+            w-48
+            rounded-full
+            bg-[#14212B]/15
+            blur-3xl
+          "
+        />
 
-                          const body = `Hello Nightingales Medical Trust,
+        <div className="relative">
 
-I would like to make a ${
-                            monthly ? "monthly" : "one-time"
-                          } donation${
-                            amount
-                              ? ` of ₹${Number(amount).toLocaleString("en-IN")}`
-                              : ""
-                          }.
+          {/* Label */}
 
-Please share the payment details/instructions.
+          <span
+            className="
+              inline-flex
+              items-center
+              gap-2
+              text-xs
+              font-bold
+              uppercase
+              tracking-[0.18em]
+              text-white
+            "
+          >
+            <Sparkles className="h-4 w-4" />
+            Support our work
+          </span>
 
-Thank you.`;
+          {/* Heading */}
 
-                          window.location.href = `mailto:rm@nightingaleseldercare.com?subject=${encodeURIComponent(
-                            subject
-                          )}&body=${encodeURIComponent(body)}`;
-                        }}
-                        className="mt-4 flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-[#14212B] px-5 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#1d2d3a] hover:shadow-xl"
-                      >
-                        <HeartHandshake className="h-4 w-4" />
-                        Donate
-                        {amount
-                          ? ` ₹${Number(amount).toLocaleString("en-IN")}`
-                          : ""}
-                        {monthly ? " monthly" : " now"}
-                      </button>
-                    </div>
-                  </div>
+          <h2
+            className="
+              mt-3
+              font-display
+              text-3xl
+              font-extrabold
+              leading-tight
+              text-white
+              sm:text-4xl
+            "
+          >
+            Support Nightingales{" "}
+            <span className="text-[#14212B]">
+              Medical Trust.
+            </span>
+          </h2>
 
-                  {/* TRUST / LEGAL STRIP */}
-                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-white px-5 py-4 shadow-soft">
-                    <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#ED6439]" />
+          {/* Description */}
 
-                    <p className="text-xs leading-relaxed text-[#526574]">
-                      Donations to Nightingales Medical Trust are exempt under
-                      Section 80G, subject to applicable conditions. NMT is
-                      eligible for CSR partnerships and operates as an NPO.
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </section>
+          <p
+            className="
+              mt-4
+              max-w-2xl
+              text-sm
+              leading-relaxed
+              text-white/80
+              sm:text-base
+            "
+          >
+            Your contribution can help us create meaningful and
+            sustainable impact in the lives of older persons, people
+            living with dementia, and vulnerable communities.
+          </p>
+
+          {/* Donate button */}
+
+          <button
+            type="button"
+            onClick={() => {
+              window.location.href = "/donate";
+            }}
+            className="
+              mt-5
+              flex
+              w-full
+              max-w-sm
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-[#14212B]
+              px-5
+              py-3.5
+              text-sm
+              font-bold
+              text-white
+              shadow-lg
+              transition-all
+              hover:-translate-y-0.5
+              hover:bg-[#1d2d3a]
+              hover:shadow-xl
+            "
+          >
+            <HeartHandshake className="h-4 w-4" />
+            Donate Now
+          </button>
+
+        </div>
+      </div>
+
+      {/* =================================================
+          TRUST / LEGAL STRIP
+          ================================================= */}
+
+      <div
+        className="
+          flex
+          items-start
+          gap-3
+          rounded-2xl
+          border
+          border-border
+          bg-white
+          px-5
+          py-4
+          shadow-soft
+        "
+      >
+        <ShieldCheck
+          className="
+            mt-0.5
+            h-5
+            w-5
+            shrink-0
+            text-[#ED6439]
+          "
+        />
+
+        <p
+          className="
+            text-xs
+            leading-relaxed
+            text-[#526574]
+          "
+        >
+          Donations to Nightingales Medical Trust are exempt under
+          Section 80G, subject to applicable conditions. NMT is
+          eligible for CSR partnerships and operates as an NPO.
+        </p>
+      </div>
+
+    </div>
+  </Reveal>
+</section>
           </div>
         </div>
       </main>

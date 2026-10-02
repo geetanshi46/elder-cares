@@ -51,11 +51,25 @@ function SmritiGramPage() {
   const [collaborationPopup, setCollaborationPopup] = useState(false);
   const [visitPopup, setVisitPopup] = useState(false);
   const [isAdmissionFormOpen, setIsAdmissionFormOpen] = useState(false);
-  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
+  const [formLang, setFormLang] = useState<FormLang>("en");
+  const t = formTranslations[formLang];
+
+  const closeAdmissionForm = () => {
+    setIsAdmissionFormOpen(false);
+    setFormLang("en");
+  };
+
   const [expandedFacility, setExpandedFacility] = useState<number | null>(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [showResearchModal, setShowResearchModal] = useState(false);
+  const [showTrainingAcademyModal, setShowTrainingAcademyModal] =
+  useState(false);
   const [isGuidingPrincipleExpanded, setIsGuidingPrincipleExpanded] =
   useState(false);
+  const [showGuidingPrincipleModal, setShowGuidingPrincipleModal] =
+  useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   return (
     <SiteLayout>
     {/* HERO */}
@@ -494,91 +508,198 @@ function SmritiGramPage() {
     </div>
 
     <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[1fr_1fr]">
-      {/* CONTENT */}
-      <Reveal>
-        <div className="h-full rounded-[2rem] border border-[#263746]/10 bg-[#FBF6EC] p-7 shadow-[0_20px_55px_-30px_rgba(38,55,70,0.16)] sm:p-9 lg:p-10">
-          <div className="space-y-5 text-[15px] leading-7 text-[#526574] sm:text-[15.5px] sm:leading-7">
-            <p>
-              Nightingales Smriti Gram is a pioneering initiative of
-              Nightingales Medical Trust (NMT) to create a new model of
-              dementia care in India, where quality care, dignity,
-              companionship, learning, innovation and research come together
-              in one caring community.
-            </p>
+    {/* CONTENT */}
+<Reveal>
+  <div className="h-full rounded-[2rem] border border-[#263746]/10 bg-[#FBF6EC] p-7 shadow-[0_20px_55px_-30px_rgba(38,55,70,0.16)] sm:p-9 lg:p-10">
+    <div className="space-y-5 text-[15px] leading-7 text-[#526574] sm:text-[15.5px] sm:leading-7">
+      <p>
+        Nightingales Smriti Gram is a pioneering initiative of
+        Nightingales Medical Trust (NMT) to create a new model of
+        dementia care in India, where quality care, dignity,
+        companionship, learning, innovation and research come together
+        in one caring community.
+      </p>
 
-            <p>
-              Located near Doddaballapur, about an hour’s drive from Yelahanka,
-              Bengaluru, Nightingales Smriti Gram is spread across a five-acre,
-              green and thoughtfully designed campus.
-            </p>
+      <p>
+        Located near Doddaballapur, about an hour’s drive from Yelahanka,
+        Bengaluru, Nightingales Smriti Gram is spread across a five-acre,
+        green and thoughtfully designed campus.
+      </p>
 
-            <p>
-              Nightingales Smriti Gram goes beyond the conventional model of
-              institutional care.
-            </p>
+      <p>
+        Nightingales Smriti Gram goes beyond the conventional model of
+        institutional care.
+      </p>
 
-            <p>
-              It is designed as a living, caring and learning community where
-              persons with dementia can feel safe, respected and connected,
-              while receiving care that supports their physical, emotional,
-              cognitive and social wellbeing.
-            </p>
+      <p>
+        It is designed as a living, caring and learning community where
+        persons with dementia can feel safe, respected and connected,
+        while receiving care that supports their physical, emotional,
+        cognitive and social wellbeing.
+      </p>
+    </div>
 
-            {/* READ MORE CONTENT */}
-{isAboutExpanded && (
-  <div className="space-y-5">
-    <p className="font-bold text-[#263746]">
-      The model brings together:
-    </p>
+    {/* READ MORE */}
+    <button
+      type="button"
+      onClick={() => setShowAboutModal(true)}
+      className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ED6439]/25 bg-white px-5 py-2.5 text-sm font-bold text-[#ED6439] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+    >
+      Read More
+      <ArrowRight className="h-4 w-4" />
+    </button>
+  </div>
+</Reveal>
 
-    <ul className="space-y-3">
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Person-centred dementia care</span> based on each person’s needs, abilities, preferences and life story.</>
-      </Bullet>
+{/* ABOUT / SMRITI GRAM MODEL MODAL */}
+{showAboutModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowAboutModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* CLOSE ICON */}
+      <button
+        type="button"
+        onClick={() => setShowAboutModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Nature-based and therapeutic environments</span> with gardens, walking paths, safe outdoor spaces and activity areas.</>
-      </Bullet>
+      {/* HEADER */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          NIGHTINGALES SMRITI GRAM
+        </span>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Holistic care</span> that combines modern medical care with appropriate complementary and traditional approaches.</>
-      </Bullet>
+        <h3 className="font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
+          The Smriti Gram Model
+        </h3>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Rehabilitation and meaningful activities</span> that promote physical, cognitive, emotional and social wellbeing.</>
-      </Bullet>
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Technology-enabled care</span> to strengthen safety, monitoring, communication and continuity of care.</>
-      </Bullet>
+      {/* FULL CONTENT */}
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574] sm:text-base">
+        <p>
+          Nightingales Smriti Gram is a pioneering initiative of
+          Nightingales Medical Trust (NMT) to create a new model of
+          dementia care in India, where quality care, dignity,
+          companionship, learning, innovation and research come together
+          in one caring community.
+        </p>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Palliative and supportive care</span> focused on comfort, dignity and quality of life.</>
-      </Bullet>
+        <p>
+          Located near Doddaballapur, about an hour’s drive from Yelahanka,
+          Bengaluru, Nightingales Smriti Gram is spread across a five-acre,
+          green and thoughtfully designed campus.
+        </p>
 
-      <Bullet>
-        <><span className="font-bold text-[#ED6439]">Family and community engagement</span> to reduce loneliness and strengthen social connections.</>
-      </Bullet>
-    </ul>
+        <p>
+          Nightingales Smriti Gram goes beyond the conventional model of
+          institutional care.
+        </p>
+
+        <p>
+          It is designed as a living, caring and learning community where
+          persons with dementia can feel safe, respected and connected,
+          while receiving care that supports their physical, emotional,
+          cognitive and social wellbeing.
+        </p>
+
+        <p className="font-bold text-[#263746]">
+          The model brings together:
+        </p>
+
+        <ul className="space-y-3">
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Person-centred dementia care
+              </span>{" "}
+              based on each person’s needs, abilities, preferences and life
+              story.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Nature-based and therapeutic environments
+              </span>{" "}
+              with gardens, walking paths, safe outdoor spaces and activity
+              areas.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Holistic care
+              </span>{" "}
+              that combines modern medical care with appropriate
+              complementary and traditional approaches.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Rehabilitation and meaningful activities
+              </span>{" "}
+              that promote physical, cognitive, emotional and social
+              wellbeing.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Technology-enabled care
+              </span>{" "}
+              to strengthen safety, monitoring, communication and continuity
+              of care.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Palliative and supportive care
+              </span>{" "}
+              focused on comfort, dignity and quality of life.
+            </>
+          </Bullet>
+
+          <Bullet>
+            <>
+              <span className="font-bold text-[#ED6439]">
+                Family and community engagement
+              </span>{" "}
+              to reduce loneliness and strengthen social connections.
+            </>
+          </Bullet>
+        </ul>
+      </div>
+
+      {/* CLOSE BUTTON */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowAboutModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
   </div>
 )}
-          </div>
-
-          {/* READ MORE / LESS */}
-          <button
-            type="button"
-            onClick={() => setIsAboutExpanded((prev) => !prev)}
-            className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ED6439]/25 bg-white px-5 py-2.5 text-sm font-bold text-[#ED6439] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#ED6439] hover:bg-[#ED6439] hover:text-white"
-          >
-            {isAboutExpanded ? "Read Less" : "Read More"}
-            <ArrowRight
-              className={`h-4 w-4 transition-transform duration-300 ${
-                isAboutExpanded ? "-rotate-90" : "rotate-0"
-              }`}
-            />
-          </button>
-        </div>
-      </Reveal>
 
       {/* IMAGE */}
       <Reveal delay={100}>
@@ -701,173 +822,262 @@ function SmritiGramPage() {
       </div>
     </Reveal>
 
-    {/* THREE COMPONENTS */}
-    <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
+   {/* THREE COMPONENTS */}
+<div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
 
-      {/* 01 — RESIDENTIAL CARE */}
-      <Reveal delay={100}>
-        <article className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
+  {/* 01 — RESIDENTIAL CARE */}
+  <Reveal delay={100} className="h-full">
+    <article className="flex h-full min-h-[300px] flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
 
-          <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
-            <span className="font-display text-3xl font-extrabold text-[#ED6439]">
-              01
-            </span>
+      <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
+        <span className="font-display text-3xl font-extrabold text-[#ED6439]">
+          01
+        </span>
 
-            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
-              <Heart className="h-5 w-5" strokeWidth={1.8} />
-            </div>
-          </div>
+        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
+          <Heart className="h-5 w-5" strokeWidth={1.8} />
+        </div>
+      </div>
 
-          <div className="flex flex-1 flex-col p-6 sm:p-7">
-            <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
-              Residential Dementia Care
-            </h3>
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
+          Residential Dementia Care
+        </h3>
 
-            <p className="mt-5 text-[15px] leading-7 text-[#526574] sm:text-base">
-              A specialised residential care facility providing
-              person-centred, holistic and dignified care to persons living
-              with dementia.
-            </p>
-          </div>
-        </article>
-      </Reveal>
+        <p className="mt-5 text-[15px] leading-7 text-[#526574] sm:text-base">
+          A specialised residential care facility providing
+          person-centred, holistic and dignified care to persons living
+          with dementia.
+        </p>
+      </div>
+    </article>
+  </Reveal>
 
-      {/* 02 — TRAINING ACADEMY */}
-      <Reveal delay={180}>
-        <article className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
 
-          <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
-            <span className="font-display text-3xl font-extrabold text-[#ED6439]">
-              02
-            </span>
+  {/* 02 — TRAINING ACADEMY */}
+  <Reveal delay={180} className="h-full">
+    <article className="flex h-full min-h-[300px] flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
 
-            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
-              <GraduationCap className="h-5 w-5" strokeWidth={1.8} />
-            </div>
-          </div>
+      <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
+        <span className="font-display text-3xl font-extrabold text-[#ED6439]">
+          02
+        </span>
 
-          <div className="flex flex-1 flex-col p-6 sm:p-7">
-            <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
-              Training Academy
-            </h3>
+        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
+          <GraduationCap className="h-5 w-5" strokeWidth={1.8} />
+        </div>
+      </div>
 
-            <div
-              className={`mt-5 text-[15px] leading-7 text-[#526574] sm:text-base ${
-                expandedFacility === 1 ? "" : "line-clamp-6"
-              }`}
-            >
-              <p>
-                India faces a growing shortage of trained dementia and
-                eldercare professionals.
-              </p>
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
+          Training Academy
+        </h3>
 
-              <p className="mt-5">
-                The Nightingales Smriti Gram Training Academy will provide
-                practical, competency-based and technology-enabled training
-                for caregivers, healthcare professionals, students and
-                others interested in eldercare.
-              </p>
+        <p className="mt-5 text-[15px] leading-7 text-[#526574] sm:text-base">
+          India faces a growing shortage of trained dementia and
+          eldercare professionals.
+        </p>
 
-              <p className="mt-5">
-                The Academy will focus on building skills, improving the
-                quality of care and creating new opportunities for people to
-                build meaningful careers in dementia and eldercare.
-              </p>
-            </div>
+        <button
+          type="button"
+          onClick={() => setShowTrainingAcademyModal(true)}
+          className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-sm font-extrabold text-[#ED6439] transition-colors hover:text-[#D9532F]"
+        >
+          Read More
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+    </article>
+  </Reveal>
 
-            <button
-              type="button"
-              onClick={() =>
-                setExpandedFacility(
-                  expandedFacility === 1 ? null : 1
-                )
-              }
-              className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-sm font-extrabold text-[#ED6439] transition-colors hover:text-[#D9532F]"
-            >
-              {expandedFacility === 1 ? "Read Less" : "Read More"}
-              <ArrowRight
-                className={`h-4 w-4 transition-transform duration-300 ${
-                  expandedFacility === 1 ? "rotate-[-90deg]" : ""
-                }`}
-              />
-            </button>
-          </div>
-        </article>
-      </Reveal>
 
-      {/* 03 — RESEARCH & INNOVATION HUB */}
-      <Reveal delay={260}>
-        <article className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
+{showTrainingAcademyModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowTrainingAcademyModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowTrainingAcademyModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
 
-          <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
-            <span className="font-display text-3xl font-extrabold text-[#ED6439]">
-              03
-            </span>
+      {/* Header */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          SMRITI GRAM
+        </span>
 
-            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
-              <Microscope className="h-5 w-5" strokeWidth={1.8} />
-            </div>
-          </div>
+        <h3 className="font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
+          Training Academy
+        </h3>
 
-          <div className="flex flex-1 flex-col p-6 sm:p-7">
-            <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
-              Research & Innovation Hub
-            </h3>
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
 
-            <div
-              className={`mt-5 text-[15px] leading-7 text-[#526574] sm:text-base ${
-                expandedFacility === 2 ? "" : "line-clamp-6"
-              }`}
-            >
-              <p>
-                The Research & Innovation Hub will generate knowledge from
-                real-world dementia care and explore better ways of supporting
-                persons with dementia and their families.
-              </p>
+      {/* Content */}
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574] sm:text-base">
+        <p>
+          India faces a growing shortage of trained dementia and eldercare
+          professionals.
+        </p>
 
-              <p className="mt-5 font-bold text-[#263746]">
-                It will focus on areas such as:
-              </p>
+        <p>
+          The Nightingales Smriti Gram Training Academy will provide
+          practical, competency-based and technology-enabled training for
+          caregivers, healthcare professionals, students and others
+          interested in eldercare.
+        </p>
 
-              <div className="mt-4 space-y-2.5">
-                {researchItems.map((item) => (
-                  <span
-                    key={item}
-                    className="flex gap-2 text-[15px] leading-6"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                    <span>{item}</span>
-                  </span>
-                ))}
-              </div>
+        <p>
+          The Academy will focus on building skills, improving the quality
+          of care and creating new opportunities for people to build
+          meaningful careers in dementia and eldercare.
+        </p>
+      </div>
 
-              <p className="mt-5">
-                The Hub will work with universities, research institutions,
-                healthcare organisations, technology companies, government
-                agencies and like-minded organisations in India and abroad.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={() =>
-                setExpandedFacility(
-                  expandedFacility === 2 ? null : 2
-                )
-              }
-              className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-sm font-extrabold text-[#ED6439] transition-colors hover:text-[#D9532F]"
-            >
-              {expandedFacility === 2 ? "Read Less" : "Read More"}
-              <ArrowRight
-                className={`h-4 w-4 transition-transform duration-300 ${
-                  expandedFacility === 2 ? "rotate-[-90deg]" : ""
-                }`}
-              />
-            </button>
-          </div>
-        </article>
-      </Reveal>
+      {/* Close Button */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowTrainingAcademyModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
     </div>
+  </div>
+)}
+
+
+
+  {/* 03 — RESEARCH & INNOVATION HUB */}
+  <Reveal delay={260} className="h-full">
+    <article className="flex h-full min-h-[300px] flex-col overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-30px_rgba(38,55,70,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#ED6439]/30 hover:shadow-[0_28px_65px_-30px_rgba(237,100,57,0.25)]">
+
+      <div className="flex items-center justify-between border-b border-[#263746]/10 px-6 py-5 sm:px-7">
+        <span className="font-display text-3xl font-extrabold text-[#ED6439]">
+          03
+        </span>
+
+        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#FFF1EA] text-[#ED6439]">
+          <Microscope className="h-5 w-5" strokeWidth={1.8} />
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <h3 className="font-display text-xl font-extrabold leading-tight text-[#263746] sm:text-2xl">
+          Research & Innovation Hub
+        </h3>
+
+        <p className="mt-5 line-clamp-3 text-[15px] leading-7 text-[#526574] sm:text-base">
+          The Research & Innovation Hub will generate knowledge from
+          real-world dementia care and explore better ways of supporting
+          persons with dementia and their families.
+        </p>
+
+        <button
+  type="button"
+  onClick={() => setShowResearchModal(true)}
+  className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-sm font-extrabold text-[#ED6439] transition-colors hover:text-[#D9532F]"
+>
+  Read More
+  <ArrowRight className="h-4 w-4" />
+</button>
+      </div>
+    </article>
+  </Reveal>
+
+
+{showResearchModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowResearchModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close Button */}
+      <button
+        type="button"
+        onClick={() => setShowResearchModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close Research & Innovation Hub popup"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Header */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          SMRITI GRAM
+        </span>
+
+        <h3 className="font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
+          Research & Innovation Hub
+        </h3>
+
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Full Content */}
+      <div className="mt-6 text-sm leading-7 text-[#526574] sm:text-base">
+        <p>
+          The Research & Innovation Hub will generate knowledge from
+          real-world dementia care and explore better ways of supporting
+          persons with dementia and their families.
+        </p>
+
+        <p className="mt-5 font-bold text-[#263746]">
+          It will focus on areas such as:
+        </p>
+
+        <div className="mt-4 space-y-2.5">
+          {researchItems.map((item) => (
+            <div
+              key={item}
+              className="flex gap-2 text-[15px] leading-6"
+            >
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-5">
+          The Hub will work with universities, research institutions,
+          healthcare organisations, technology companies, government
+          agencies and like-minded organisations in India and abroad.
+        </p>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowResearchModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
+</div>
   </div>
 </section>
 
@@ -1960,26 +2170,97 @@ function SmritiGramPage() {
             </div>
 
             {/* Read More / Less */}
-            <button
-              type="button"
-              onClick={() =>
-                setIsGuidingPrincipleExpanded(
-                  !isGuidingPrincipleExpanded
-                )
-              }
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              {isGuidingPrincipleExpanded ? "Read Less" : "Read More"}
-
-              <ArrowRight
-                className={`h-4 w-4 transition-transform duration-300 ${
-                  isGuidingPrincipleExpanded ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+           <button
+  type="button"
+  onClick={() => setShowGuidingPrincipleModal(true)}
+  className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-5 py-2.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+>
+  Read More
+  <ArrowRight className="h-4 w-4" />
+</button>
           </div>
         </div>
       </Reveal>
+
+
+      {showGuidingPrincipleModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowGuidingPrincipleModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowGuidingPrincipleModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Header */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          SMRITI GRAM
+        </span>
+
+        <h3 className="font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
+          A commitment to dignity
+        </h3>
+
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Full Content */}
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574] sm:text-base">
+        <p>
+          Nightingales Smriti Gram is committed to providing free residential
+          dementia care to persons from economically disadvantaged backgrounds
+          who need it most.
+        </p>
+
+        <p>
+          Every admission will be guided by fairness, compassion, transparency
+          and dignity.
+        </p>
+
+        <p>
+          At the same time, Nightingales Smriti Gram is a specialised dementia
+          care facility and is not a general home for destitute or abandoned
+          persons. The facility is designed specifically for persons who meet
+          the admission criteria and require specialised dementia care.
+        </p>
+
+        <p>
+          Before admission, a formal agreement will be entered into between
+          Nightingales Medical Trust and the family or legal guardian. The
+          agreement will clearly define the responsibilities of both the
+          family/legal guardian and NMT.
+        </p>
+
+        <p>
+          This process will help ensure that Smriti Gram remains a centre of
+          quality, specialised and dignified dementia care.
+        </p>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowGuidingPrincipleModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   </div>
 </section>
@@ -2051,27 +2332,61 @@ function SmritiGramPage() {
 
       {/* FORM HEADER */}
       <div className="shrink-0 bg-[#ED6439] px-5 py-5 text-white sm:px-8 sm:py-6">
-        <div className="flex items-start justify-between gap-5">
-          <div>
+        <div className="flex items-start justify-between gap-3 sm:gap-5">
+          <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/75 sm:text-xs">
-              Nightingales Smriti Gram
+              {t.brand}
             </p>
             <h2 id="admission-form-title" className="mt-2 font-display text-2xl font-extrabold leading-tight sm:text-3xl">
-              Application for Admission
+              {t.formTitle}
             </h2>
             <p className="mt-2 max-w-2xl text-xs leading-5 text-white/80 sm:text-sm">
-              Please complete the application below. Please complete the application below with the required details.
+              {t.formSubtitle}
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setIsAdmissionFormOpen(false)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/70"
-            aria-label="Close application form"
-          >
-            <X className="h-5 w-5" />
-          </button>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            {/* LANGUAGE TOGGLE */}
+            <div
+              className="inline-flex items-center rounded-full bg-white/15 p-0.5 sm:p-1"
+              role="group"
+              aria-label="Language"
+            >
+              <button
+                type="button"
+                onClick={() => setFormLang("en")}
+                aria-pressed={formLang === "en"}
+                className={`rounded-full px-2.5 py-1.5 text-[11px] font-extrabold transition-colors sm:px-3.5 sm:text-xs ${
+                  formLang === "en"
+                    ? "bg-white text-[#ED6439] shadow-sm"
+                    : "text-white hover:bg-white/15"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setFormLang("kn")}
+                aria-pressed={formLang === "kn"}
+                className={`rounded-full px-2.5 py-1.5 text-[11px] font-extrabold transition-colors sm:px-3.5 sm:text-xs ${
+                  formLang === "kn"
+                    ? "bg-white text-[#ED6439] shadow-sm"
+                    : "text-white hover:bg-white/15"
+                }`}
+              >
+                ಕನ್ನಡ
+              </button>
+            </div>
+
+            <button
+              type="button"
+              onClick={closeAdmissionForm}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25 focus:outline-none focus:ring-2 focus:ring-white/70"
+              aria-label={t.closeForm}
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2192,9 +2507,9 @@ Application submitted through the Nightingales Smriti Gram website.
                 <ClipboardCheck className="h-4 w-4" />
               </div>
               <div>
-                <p className="font-bold text-[#263746]">Before you begin</p>
+                <p className="font-bold text-[#263746]">{t.beforeTitle}</p>
                 <p className="mt-1 text-sm leading-6 text-[#526574]">
-                  Please keep the patient’s medical, identity and income documents ready. Fields marked with * are required for submitting the application.
+                  {t.beforeBody}
                 </p>
               </div>
             </div>
@@ -2204,83 +2519,76 @@ Application submitted through the Nightingales Smriti Gram website.
           <div className="space-y-8">
 
             {/* APPLICANT */}
-            <FormSection title="1. Applicant / Guardian / Nominated Representative" subtitle="The person submitting the application on behalf of the proposed resident.">
-              <FormField label="Name" name="applicantName" required />
-              <FormField label="Father's / Spouse's Name" name="applicantFatherSpouse" />
-              <FormField label="Occupation" name="applicantOccupation" />
-              <FormField label="Phone" name="applicantPhone" type="tel" />
-              <FormField label="Mobile" name="applicantMobile" type="tel" required />
-              <FormField label="Email" name="applicantEmail" type="email" required />
-              <FormField label="PAN Number" name="applicantPan" />
-              <FormField label="Aadhar Number" name="applicantAadhar" />
-              <FormField label="Relationship to Proposed Resident" name="applicantRelationship" required />
-              <FormTextArea label="Address" name="applicantAddress" required className="sm:col-span-2" />
+            <FormSection title={t.s1.title} subtitle={t.s1.subtitle}>
+              <FormField label={t.f.name} name="applicantName" required />
+              <FormField label={t.f.fatherSpouse} name="applicantFatherSpouse" />
+              <FormField label={t.f.occupation} name="applicantOccupation" />
+              <FormField label={t.f.phone} name="applicantPhone" type="tel" />
+              <FormField label={t.f.mobile} name="applicantMobile" type="tel" required />
+              <FormField label={t.f.email} name="applicantEmail" type="email" required />
+              <FormField label={t.f.pan} name="applicantPan" />
+              <FormField label={t.f.aadhar} name="applicantAadhar" />
+              <FormField label={t.f.relToResident} name="applicantRelationship" required />
+              <FormTextArea label={t.f.address} name="applicantAddress" required className="sm:col-span-2" />
             </FormSection>
 
             {/* ADMISSION REASONS */}
-            <FormSection title="2. Reason(s) for Admission" subtitle="Select all reasons that apply to the proposed resident.">
+            <FormSection title={t.s2.title} subtitle={t.s2.subtitle}>
               <div className="sm:col-span-2 grid grid-cols-1 gap-3 md:grid-cols-2">
-                {[
-                  "Family is a BPL family and has a BPL Card",
-                  "Total family income is less than Rupees 5 Lac Per Annum",
-                  "No caregiver is available at home for continuous care",
-                  "Family members are elderly, sick or physically unfit to take care",
-                  "The proposed resident lives alone",
-                  "The proposed resident is neglected or at risk of neglect",
-                  "Significant behavioural and psychological symptoms are difficult for the family to manage",
-                  "The proposed resident requires 24 hour care, supervision and support because of Dementia",
-                ].map((reason) => (
-                  <label key={reason} className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-[#FFF8EF] p-4 text-sm leading-6 text-[#526574] transition-colors hover:border-[#ED6439]/40">
-                    <input type="checkbox" name="admissionReasons" value={reason} className="mt-1 h-4 w-4 accent-[#ED6439]" />
-                    <span>{reason}</span>
+                {reasonValues.map((reasonValue, index) => (
+                  <label key={reasonValue} className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-[#FFF8EF] p-4 text-sm leading-6 text-[#526574] transition-colors hover:border-[#ED6439]/40">
+                    <input type="checkbox" name="admissionReasons" value={reasonValue} className="mt-1 h-4 w-4 shrink-0 accent-[#ED6439]" />
+                    <span>{t.reasons[index]}</span>
                   </label>
                 ))}
               </div>
-              <FormField label="BPL Card Number" name="bplNumber" />
-              <FormField label="Total Annual Family Income" name="annualFamilyIncome" />
+              <FormField label={t.f.bplNumber} name="bplNumber" />
+              <FormField label={t.f.annualIncome} name="annualFamilyIncome" />
             </FormSection>
 
             {/* GUARANTOR */}
-            <FormSection title="3. Details of Guarantor" subtitle="Guarantor details required as part of the admission application.">
-              <FormField label="Name" name="guarantorName" required />
-              <FormField label="Father's / Spouse's Name" name="guarantorFatherSpouse" />
-              <FormField label="Occupation" name="guarantorOccupation" />
-              <FormField label="Phone" name="guarantorPhone" type="tel" />
-              <FormField label="Mobile" name="guarantorMobile" type="tel" />
-              <FormField label="Email" name="guarantorEmail" type="email" />
-              <FormField label="PAN Number" name="guarantorPan" />
-              <FormField label="Aadhar Number" name="guarantorAadhar" />
-              <FormField label="Relationship to Applicant" name="guarantorApplicantRelationship" />
-              <FormField label="Relationship to Proposed Resident" name="guarantorResidentRelationship" />
-              <FormTextArea label="Address" name="guarantorAddress" required className="sm:col-span-2" />
+            <FormSection title={t.s3.title} subtitle={t.s3.subtitle}>
+              <FormField label={t.f.name} name="guarantorName" required />
+              <FormField label={t.f.fatherSpouse} name="guarantorFatherSpouse" />
+              <FormField label={t.f.occupation} name="guarantorOccupation" />
+              <FormField label={t.f.phone} name="guarantorPhone" type="tel" />
+              <FormField label={t.f.mobile} name="guarantorMobile" type="tel" />
+              <FormField label={t.f.email} name="guarantorEmail" type="email" />
+              <FormField label={t.f.pan} name="guarantorPan" />
+              <FormField label={t.f.aadhar} name="guarantorAadhar" />
+              <FormField label={t.f.relToApplicant} name="guarantorApplicantRelationship" />
+              <FormField label={t.f.relToResident} name="guarantorResidentRelationship" />
+              <FormTextArea label={t.f.address} name="guarantorAddress" required className="sm:col-span-2" />
             </FormSection>
 
             {/* PATIENT */}
-            <FormSection title="4. Details of Patient / Proposed Resident" subtitle="Personal, family and financial information of the person seeking admission.">
-              <FormField label="Name" name="patientName" required />
-              <FormField label="Father's / Spouse's Name" name="patientFatherSpouse" />
-              <FormField label="Occupation" name="patientOccupation" />
-              <FormField label="Phone" name="patientPhone" type="tel" />
-              <FormField label="Mobile" name="patientMobile" type="tel" />
-              <FormField label="Email" name="patientEmail" type="email" />
-              <FormField label="PAN Number" name="patientPan" />
-              <FormField label="Aadhar Number" name="patientAadhar" />
-              <FormField label="BPL Card Number" name="patientBplNumber" />
-              <FormTextArea label="Names of Other Members in BPL Card" name="otherBplMembers" />
-              <FormField label="Nationality" name="nationality" />
-              <FormField label="Religion" name="religion" />
-              <FormField label="Monthly Income / Pension (if any)" name="monthlyPension" />
-              <FormField label="Monthly Income of the Family" name="patientFamilyIncome" required />
-              <FormTextArea label="Temporary Address" name="patientTemporaryAddress" required className="sm:col-span-2" />
-              <FormTextArea label="Permanent Address" name="patientPermanentAddress" required className="sm:col-span-2" />
+            <FormSection title={t.s4.title} subtitle={t.s4.subtitle}>
+              <FormField label={t.f.name} name="patientName" required />
+              <FormField label={t.f.fatherSpouse} name="patientFatherSpouse" />
+              <FormField label={t.f.occupation} name="patientOccupation" />
+              <FormField label={t.f.phone} name="patientPhone" type="tel" />
+              <FormField label={t.f.mobile} name="patientMobile" type="tel" />
+              <FormField label={t.f.email} name="patientEmail" type="email" />
+              <FormField label={t.f.pan} name="patientPan" />
+              <FormField label={t.f.aadhar} name="patientAadhar" />
+              <FormField label={t.f.bplNumber} name="patientBplNumber" />
+              <FormTextArea label={t.f.otherBpl} name="otherBplMembers" />
+              <FormField label={t.f.nationality} name="nationality" />
+              <FormField label={t.f.religion} name="religion" />
+              <FormField label={t.f.monthlyPension} name="monthlyPension" />
+              <FormField label={t.f.monthlyFamilyIncome} name="patientFamilyIncome" required />
+              <FormTextArea label={t.f.tempAddress} name="patientTemporaryAddress" required className="sm:col-span-2" />
+              <FormTextArea label={t.f.permAddress} name="patientPermanentAddress" required className="sm:col-span-2" />
             </FormSection>
 
             {/* FAMILY MEMBERS */}
-            <FormSection title="5. Patient's Family Members" subtitle="Add family members including the applicant. You may leave unused rows blank.">
+            <FormSection title={t.s5.title} subtitle={t.s5.subtitle}>
               <div className="sm:col-span-2 overflow-x-auto rounded-2xl border border-[#E5DDD4] bg-white">
                 <div className="min-w-[760px]">
                   <div className="grid grid-cols-[38px_1.4fr_0.6fr_0.7fr_1fr_1fr_1.3fr] gap-2 border-b border-[#E5DDD4] bg-[#FFF8EF] px-4 py-3 text-[10px] font-black uppercase tracking-[0.08em] text-[#ED6439]">
-                    <span>#</span><span>Name</span><span>Age</span><span>M/F</span><span>Relationship</span><span>Occupation</span><span>Address / Email / Phone</span>
+                    {t.familyHeaders.map((header, index) => (
+                      <span key={index}>{header}</span>
+                    ))}
                   </div>
                   {[1,2,3,4].map((number) => (
                     <div key={number} className="grid grid-cols-[38px_1.4fr_0.6fr_0.7fr_1fr_1fr_1.3fr] gap-2 border-b border-[#eee5dc] px-4 py-3 last:border-b-0">
@@ -2298,50 +2606,61 @@ Application submitted through the Nightingales Smriti Gram website.
             </FormSection>
 
             {/* MEDICAL */}
-            <FormSection title="6. Medical Details of Patient" subtitle="Please provide the medical information requested in the application. Attach supporting reports where applicable.">
-              <FormField label="Age / Date of Birth" name="patientAgeDob" required />
-              <FormSelect label="Gender" name="patientGender" options={["Male", "Female", "Others"]} required />
-              <FormSelect label="Marital Status" name="maritalStatus" options={["Married", "Unmarried", "Widow", "Widower", "Separated", "Divorced"]} />
-              <FormField label="Diagnosis" name="diagnosis" required />
-              <FormTextArea label="Health Problems, if any" name="healthProblems" className="sm:col-span-2" />
-              <FormTextArea label="Medicines Prescribed and to be Administered" name="medicines" className="sm:col-span-2" />
-              <FormTextArea label="Special Instructions, if any" name="specialInstructions" className="sm:col-span-2" />
-              <FormField label="Blood Group" name="bloodGroup" />
-              <FormField label="Allergic To" name="allergies" />
-              <FormField label="Name of Family Physician" name="familyPhysician" />
-              <FormField label="Contact Details of Family Physician" name="familyPhysicianContact" />
-              <FormField label="Preferable Date of Joining" name="joiningDate" type="date" />
+            <FormSection title={t.s6.title} subtitle={t.s6.subtitle}>
+              <FormField label={t.f.ageDob} name="patientAgeDob" required />
+              <FormSelect
+                label={t.f.gender}
+                name="patientGender"
+                placeholder={t.select}
+                options={genderValues.map((value, index) => ({ value, label: t.genderOptions[index] }))}
+                required
+              />
+              <FormSelect
+                label={t.f.maritalStatus}
+                name="maritalStatus"
+                placeholder={t.select}
+                options={maritalValues.map((value, index) => ({ value, label: t.maritalOptions[index] }))}
+              />
+              <FormField label={t.f.diagnosis} name="diagnosis" required />
+              <FormTextArea label={t.f.healthProblems} name="healthProblems" className="sm:col-span-2" />
+              <FormTextArea label={t.f.medicines} name="medicines" className="sm:col-span-2" />
+              <FormTextArea label={t.f.specialInstructions} name="specialInstructions" className="sm:col-span-2" />
+              <FormField label={t.f.bloodGroup} name="bloodGroup" />
+              <FormField label={t.f.allergies} name="allergies" />
+              <FormField label={t.f.familyPhysician} name="familyPhysician" />
+              <FormField label={t.f.familyPhysicianContact} name="familyPhysicianContact" />
+              <FormField label={t.f.joiningDate} name="joiningDate" type="date" />
             </FormSection>
 
             {/* INCOME CERTIFICATE */}
-            <FormSection title="7. Income Certificate Details" subtitle="Complete these fields if applicable, especially where a BPL card is not available.">
-              <FormField label="Certificate Number" name="incomeCertificateNumber" />
-              <FormField label="Issued Date" name="incomeCertificateDate" type="date" />
-              <FormField label="Issued By" name="incomeCertificateIssuedBy" />
+            <FormSection title={t.s7.title} subtitle={t.s7.subtitle}>
+              <FormField label={t.f.certNumber} name="incomeCertificateNumber" />
+              <FormField label={t.f.issuedDate} name="incomeCertificateDate" type="date" />
+              <FormField label={t.f.issuedBy} name="incomeCertificateIssuedBy" />
             </FormSection>
 
             {/* DOCUMENTS */}
-            <FormSection title="8. Supporting Documents" subtitle="Select the documents you have ready. The admission criteria lists these documents as supporting records for the application.">
-              <FileField label="Medical records and dementia diagnosis" name="medicalRecords" />
-              <FileField label="Referral letter" name="referralLetter" />
-              <FileField label="Aadhaar Card" name="aadhaarCard" />
-              <FileField label="Ration Card" name="rationCard" />
-              <FileField label="Age proof" name="ageProof" />
-              <FileField label="Income proof" name="incomeProof" />
-              <FileField label="BPL Card (if applicable)" name="bplCard" />
-              <FileField label="Ayushman Bharat Card (if available)" name="ayushmanCard" />
+            <FormSection title={t.s8.title} subtitle={t.s8.subtitle}>
+              <FileField label={t.docs.medicalRecords} name="medicalRecords" />
+              <FileField label={t.docs.referralLetter} name="referralLetter" />
+              <FileField label={t.docs.aadhaarCard} name="aadhaarCard" />
+              <FileField label={t.docs.rationCard} name="rationCard" />
+              <FileField label={t.docs.ageProof} name="ageProof" />
+              <FileField label={t.docs.incomeProof} name="incomeProof" />
+              <FileField label={t.docs.bplCard} name="bplCard" />
+              <FileField label={t.docs.ayushmanCard} name="ayushmanCard" />
             </FormSection>
 
             {/* DECLARATION */}
-            <FormSection title="9. Declaration & Confirmation" subtitle="Please confirm that the information supplied is true and that you agree to the admission process and terms applicable to the centre.">
+            <FormSection title={t.s9.title} subtitle={t.s9.subtitle}>
               <div className="sm:col-span-2 space-y-3">
                 <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-white p-4 text-sm leading-6 text-[#526574]">
-                  <input type="checkbox" name="applicantDeclaration" value="I confirm that the information provided is true and I agree to the admission process and terms." required className="mt-1 h-4 w-4 accent-[#ED6439]" />
-                  <span>I confirm that the information provided is true and complete to the best of my knowledge, and I agree to the admission process and terms applicable to the centre.</span>
+                  <input type="checkbox" name="applicantDeclaration" value="I confirm that the information provided is true and I agree to the admission process and terms." required className="mt-1 h-4 w-4 shrink-0 accent-[#ED6439]" />
+                  <span>{t.declarationApplicant}</span>
                 </label>
                 <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-[#E5DDD4] bg-white p-4 text-sm leading-6 text-[#526574]">
-                  <input type="checkbox" name="guarantorDeclaration" value="Guarantor agrees to the admission terms." className="mt-1 h-4 w-4 accent-[#ED6439]" />
-                  <span>I confirm that the guarantor information provided above is correct and that the guarantor agrees to the applicable admission terms.</span>
+                  <input type="checkbox" name="guarantorDeclaration" value="Guarantor agrees to the admission terms." className="mt-1 h-4 w-4 shrink-0 accent-[#ED6439]" />
+                  <span>{t.declarationGuarantor}</span>
                 </label>
               </div>
             </FormSection>
@@ -2351,16 +2670,16 @@ Application submitted through the Nightingales Smriti Gram website.
           <div className="mt-9 rounded-2xl bg-[#263746] p-5 sm:p-6">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="max-w-xl">
-                <p className="font-bold text-white">Ready to submit your application?</p>
+                <p className="font-bold text-white">{t.footerTitle}</p>
                 <p className="mt-1 text-sm leading-6 text-white/65">
-                  Please review all details before submitting. Your application will be prepared for Nightingales Medical Trust.
+                  {t.footerBody}
                 </p>
               </div>
               <button
                 type="submit"
                 className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#ED6439] px-7 py-4 text-sm font-extrabold text-white transition-all hover:-translate-y-0.5 hover:bg-[#D9532F] sm:w-auto"
               >
-                Submit Application
+                {t.submit}
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>
@@ -2403,6 +2722,257 @@ const documentItems = [
   "BPL Card, if applicable",
   "Income Certificate issued by thex Tahsildar/Revenue Officer",
 ];
+
+/* ============================================================
+   ADMISSION FORM — LANGUAGE DATA (English / Kannada)
+   NOTE: Submitted values (checkbox values, gender, marital
+   status) always stay in English so the email body is English.
+============================================================ */
+
+type FormLang = "en" | "kn";
+
+const reasonValues = [
+  "Family is a BPL family and has a BPL Card",
+  "Total family income is less than Rupees 5 Lac Per Annum",
+  "No caregiver is available at home for continuous care",
+  "Family members are elderly, sick or physically unfit to take care",
+  "The proposed resident lives alone",
+  "The proposed resident is neglected or at risk of neglect",
+  "Significant behavioural and psychological symptoms are difficult for the family to manage",
+  "The proposed resident requires 24 hour care, supervision and support because of Dementia",
+];
+
+const genderValues = ["Male", "Female", "Others"];
+
+const maritalValues = ["Married", "Unmarried", "Widow", "Widower", "Separated", "Divorced"];
+
+const formTranslations = {
+  en: {
+    brand: "Nightingales Smriti Gram",
+    formTitle: "Application for Admission",
+    formSubtitle: "Please complete the application below with the required details.",
+    closeForm: "Close application form",
+    beforeTitle: "Before you begin",
+    beforeBody:
+      "Please keep the patient’s medical, identity and income documents ready. Fields marked with * are required for submitting the application.",
+    select: "Select",
+    s1: {
+      title: "1. Applicant / Guardian / Nominated Representative",
+      subtitle: "The person submitting the application on behalf of the proposed resident.",
+    },
+    s2: {
+      title: "2. Reason(s) for Admission",
+      subtitle: "Select all reasons that apply to the proposed resident.",
+    },
+    s3: {
+      title: "3. Details of Guarantor",
+      subtitle: "Guarantor details required as part of the admission application.",
+    },
+    s4: {
+      title: "4. Details of Patient / Proposed Resident",
+      subtitle: "Personal, family and financial information of the person seeking admission.",
+    },
+    s5: {
+      title: "5. Patient's Family Members",
+      subtitle: "Add family members including the applicant. You may leave unused rows blank.",
+    },
+    s6: {
+      title: "6. Medical Details of Patient",
+      subtitle:
+        "Please provide the medical information requested in the application. Attach supporting reports where applicable.",
+    },
+    s7: {
+      title: "7. Income Certificate Details",
+      subtitle: "Complete these fields if applicable, especially where a BPL card is not available.",
+    },
+    s8: {
+      title: "8. Supporting Documents",
+      subtitle:
+        "Select the documents you have ready. The admission criteria lists these documents as supporting records for the application.",
+    },
+    s9: {
+      title: "9. Declaration & Confirmation",
+      subtitle:
+        "Please confirm that the information supplied is true and that you agree to the admission process and terms applicable to the centre.",
+    },
+    f: {
+      name: "Name",
+      fatherSpouse: "Father's / Spouse's Name",
+      occupation: "Occupation",
+      phone: "Phone",
+      mobile: "Mobile",
+      email: "Email",
+      pan: "PAN Number",
+      aadhar: "Aadhar Number",
+      relToResident: "Relationship to Proposed Resident",
+      relToApplicant: "Relationship to Applicant",
+      address: "Address",
+      bplNumber: "BPL Card Number",
+      annualIncome: "Total Annual Family Income",
+      otherBpl: "Names of Other Members in BPL Card",
+      nationality: "Nationality",
+      religion: "Religion",
+      monthlyPension: "Monthly Income / Pension (if any)",
+      monthlyFamilyIncome: "Monthly Income of the Family",
+      tempAddress: "Temporary Address",
+      permAddress: "Permanent Address",
+      ageDob: "Age / Date of Birth",
+      gender: "Gender",
+      maritalStatus: "Marital Status",
+      diagnosis: "Diagnosis",
+      healthProblems: "Health Problems, if any",
+      medicines: "Medicines Prescribed and to be Administered",
+      specialInstructions: "Special Instructions, if any",
+      bloodGroup: "Blood Group",
+      allergies: "Allergic To",
+      familyPhysician: "Name of Family Physician",
+      familyPhysicianContact: "Contact Details of Family Physician",
+      joiningDate: "Preferable Date of Joining",
+      certNumber: "Certificate Number",
+      issuedDate: "Issued Date",
+      issuedBy: "Issued By",
+    },
+    reasons: reasonValues,
+    familyHeaders: ["#", "Name", "Age", "M/F", "Relationship", "Occupation", "Address / Email / Phone"],
+    genderOptions: ["Male", "Female", "Others"],
+    maritalOptions: ["Married", "Unmarried", "Widow", "Widower", "Separated", "Divorced"],
+    docs: {
+      medicalRecords: "Medical records and dementia diagnosis",
+      referralLetter: "Referral letter",
+      aadhaarCard: "Aadhaar Card",
+      rationCard: "Ration Card",
+      ageProof: "Age proof",
+      incomeProof: "Income proof",
+      bplCard: "BPL Card (if applicable)",
+      ayushmanCard: "Ayushman Bharat Card (if available)",
+    },
+    declarationApplicant:
+      "I confirm that the information provided is true and complete to the best of my knowledge, and I agree to the admission process and terms applicable to the centre.",
+    declarationGuarantor:
+      "I confirm that the guarantor information provided above is correct and that the guarantor agrees to the applicable admission terms.",
+    footerTitle: "Ready to submit your application?",
+    footerBody:
+      "Please review all details before submitting. Your application will be prepared for Nightingales Medical Trust.",
+    submit: "Submit Application",
+  },
+  kn: {
+    brand: "ನೈಟಿಂಗೇಲ್ಸ್ ಸ್ಮೃತಿ ಗ್ರಾಮ",
+    formTitle: "ಪ್ರವೇಶಕ್ಕಾಗಿ ಅರ್ಜಿ",
+    formSubtitle: "ದಯವಿಟ್ಟು ಅಗತ್ಯ ವಿವರಗಳೊಂದಿಗೆ ಕೆಳಗಿನ ಅರ್ಜಿಯನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
+    closeForm: "ಅರ್ಜಿ ನಮೂನೆಯನ್ನು ಮುಚ್ಚಿ",
+    beforeTitle: "ಪ್ರಾರಂಭಿಸುವ ಮೊದಲು",
+    beforeBody:
+      "ದಯವಿಟ್ಟು ರೋಗಿಯ ವೈದ್ಯಕೀಯ, ಗುರುತು ಮತ್ತು ಆದಾಯ ದಾಖಲೆಗಳನ್ನು ಸಿದ್ಧವಾಗಿಟ್ಟುಕೊಳ್ಳಿ. * ಗುರುತಿರುವ ಕ್ಷೇತ್ರಗಳು ಅರ್ಜಿ ಸಲ್ಲಿಸಲು ಕಡ್ಡಾಯ.",
+    select: "ಆಯ್ಕೆಮಾಡಿ",
+    s1: {
+      title: "1. ಅರ್ಜಿದಾರ / ಪಾಲಕ / ನಾಮನಿರ್ದೇಶಿತ ಪ್ರತಿನಿಧಿ",
+      subtitle: "ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಯ ಪರವಾಗಿ ಅರ್ಜಿ ಸಲ್ಲಿಸುತ್ತಿರುವ ವ್ಯಕ್ತಿ.",
+    },
+    s2: {
+      title: "2. ಪ್ರವೇಶಕ್ಕೆ ಕಾರಣ(ಗಳು)",
+      subtitle: "ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಗೆ ಅನ್ವಯವಾಗುವ ಎಲ್ಲಾ ಕಾರಣಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    },
+    s3: {
+      title: "3. ಖಾತರಿದಾರರ ವಿವರಗಳು",
+      subtitle: "ಪ್ರವೇಶ ಅರ್ಜಿಯ ಭಾಗವಾಗಿ ಖಾತರಿದಾರರ ವಿವರಗಳು ಅಗತ್ಯ.",
+    },
+    s4: {
+      title: "4. ರೋಗಿ / ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಯ ವಿವರಗಳು",
+      subtitle: "ಪ್ರವೇಶ ಬಯಸುತ್ತಿರುವ ವ್ಯಕ್ತಿಯ ವೈಯಕ್ತಿಕ, ಕುಟುಂಬ ಮತ್ತು ಆರ್ಥಿಕ ಮಾಹಿತಿ.",
+    },
+    s5: {
+      title: "5. ರೋಗಿಯ ಕುಟುಂಬ ಸದಸ್ಯರು",
+      subtitle: "ಅರ್ಜಿದಾರರನ್ನು ಒಳಗೊಂಡಂತೆ ಕುಟುಂಬ ಸದಸ್ಯರನ್ನು ಸೇರಿಸಿ. ಬಳಸದ ಸಾಲುಗಳನ್ನು ಖಾಲಿ ಬಿಡಬಹುದು.",
+    },
+    s6: {
+      title: "6. ರೋಗಿಯ ವೈದ್ಯಕೀಯ ವಿವರಗಳು",
+      subtitle:
+        "ಅರ್ಜಿಯಲ್ಲಿ ಕೇಳಲಾದ ವೈದ್ಯಕೀಯ ಮಾಹಿತಿಯನ್ನು ನೀಡಿ. ಅನ್ವಯವಾದರೆ ಸಹಾಯಕ ವರದಿಗಳನ್ನು ಲಗತ್ತಿಸಿ.",
+    },
+    s7: {
+      title: "7. ಆದಾಯ ಪ್ರಮಾಣಪತ್ರದ ವಿವರಗಳು",
+      subtitle: "ಅನ್ವಯವಾದರೆ, ವಿಶೇಷವಾಗಿ BPL ಕಾರ್ಡ್ ಇಲ್ಲದಿದ್ದರೆ, ಈ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
+    },
+    s8: {
+      title: "8. ಸಹಾಯಕ ದಾಖಲೆಗಳು",
+      subtitle:
+        "ನಿಮ್ಮ ಬಳಿ ಸಿದ್ಧವಿರುವ ದಾಖಲೆಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ. ಪ್ರವೇಶ ಮಾನದಂಡದಲ್ಲಿ ಈ ದಾಖಲೆಗಳನ್ನು ಅರ್ಜಿಗೆ ಸಹಾಯಕ ದಾಖಲೆಗಳಾಗಿ ಪಟ್ಟಿ ಮಾಡಲಾಗಿದೆ.",
+    },
+    s9: {
+      title: "9. ಘೋಷಣೆ ಮತ್ತು ದೃಢೀಕರಣ",
+      subtitle:
+        "ನೀಡಿರುವ ಮಾಹಿತಿ ಸತ್ಯವಾಗಿದೆ ಮತ್ತು ಕೇಂದ್ರಕ್ಕೆ ಅನ್ವಯವಾಗುವ ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ ಹಾಗೂ ನಿಯಮಗಳಿಗೆ ನೀವು ಒಪ್ಪುತ್ತೀರಿ ಎಂದು ದೃಢೀಕರಿಸಿ.",
+    },
+    f: {
+      name: "ಹೆಸರು",
+      fatherSpouse: "ತಂದೆ / ಪತಿ / ಪತ್ನಿಯ ಹೆಸರು",
+      occupation: "ವೃತ್ತಿ",
+      phone: "ದೂರವಾಣಿ",
+      mobile: "ಮೊಬೈಲ್",
+      email: "ಇಮೇಲ್",
+      pan: "ಪ್ಯಾನ್ ಸಂಖ್ಯೆ",
+      aadhar: "ಆಧಾರ್ ಸಂಖ್ಯೆ",
+      relToResident: "ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಯೊಂದಿಗಿನ ಸಂಬಂಧ",
+      relToApplicant: "ಅರ್ಜಿದಾರರೊಂದಿಗಿನ ಸಂಬಂಧ",
+      address: "ವಿಳಾಸ",
+      bplNumber: "BPL ಕಾರ್ಡ್ ಸಂಖ್ಯೆ",
+      annualIncome: "ಕುಟುಂಬದ ಒಟ್ಟು ವಾರ್ಷಿಕ ಆದಾಯ",
+      otherBpl: "BPL ಕಾರ್ಡ್‌ನಲ್ಲಿರುವ ಇತರ ಸದಸ್ಯರ ಹೆಸರುಗಳು",
+      nationality: "ರಾಷ್ಟ್ರೀಯತೆ",
+      religion: "ಧರ್ಮ",
+      monthlyPension: "ಮಾಸಿಕ ಆದಾಯ / ಪಿಂಚಣಿ (ಇದ್ದರೆ)",
+      monthlyFamilyIncome: "ಕುಟುಂಬದ ಮಾಸಿಕ ಆದಾಯ",
+      tempAddress: "ತಾತ್ಕಾಲಿಕ ವಿಳಾಸ",
+      permAddress: "ಶಾಶ್ವತ ವಿಳಾಸ",
+      ageDob: "ವಯಸ್ಸು / ಜನ್ಮ ದಿನಾಂಕ",
+      gender: "ಲಿಂಗ",
+      maritalStatus: "ವೈವಾಹಿಕ ಸ್ಥಿತಿ",
+      diagnosis: "ರೋಗನಿರ್ಣಯ",
+      healthProblems: "ಆರೋಗ್ಯ ಸಮಸ್ಯೆಗಳು, ಇದ್ದರೆ",
+      medicines: "ಸೂಚಿಸಲಾದ ಮತ್ತು ನೀಡಬೇಕಾದ ಔಷಧಿಗಳು",
+      specialInstructions: "ವಿಶೇಷ ಸೂಚನೆಗಳು, ಇದ್ದರೆ",
+      bloodGroup: "ರಕ್ತದ ಗುಂಪು",
+      allergies: "ಅಲರ್ಜಿ ಇರುವ ವಸ್ತುಗಳು",
+      familyPhysician: "ಕುಟುಂಬ ವೈದ್ಯರ ಹೆಸರು",
+      familyPhysicianContact: "ಕುಟುಂಬ ವೈದ್ಯರ ಸಂಪರ್ಕ ವಿವರಗಳು",
+      joiningDate: "ಸೇರಲು ಇಚ್ಛಿಸುವ ದಿನಾಂಕ",
+      certNumber: "ಪ್ರಮಾಣಪತ್ರ ಸಂಖ್ಯೆ",
+      issuedDate: "ನೀಡಿದ ದಿನಾಂಕ",
+      issuedBy: "ನೀಡಿದವರು",
+    },
+    reasons: [
+      "ಕುಟುಂಬವು BPL ಕುಟುಂಬವಾಗಿದ್ದು BPL ಕಾರ್ಡ್ ಹೊಂದಿದೆ",
+      "ಕುಟುಂಬದ ಒಟ್ಟು ಆದಾಯ ವಾರ್ಷಿಕ ₹5 ಲಕ್ಷಕ್ಕಿಂತ ಕಡಿಮೆ",
+      "ನಿರಂತರ ಆರೈಕೆಗಾಗಿ ಮನೆಯಲ್ಲಿ ಆರೈಕೆದಾರರು ಲಭ್ಯವಿಲ್ಲ",
+      "ಕುಟುಂಬ ಸದಸ್ಯರು ವೃದ್ಧರು, ಅನಾರೋಗ್ಯದಲ್ಲಿರುವವರು ಅಥವಾ ಆರೈಕೆ ಮಾಡಲು ದೈಹಿಕವಾಗಿ ಅಸಮರ್ಥರು",
+      "ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿ ಒಂಟಿಯಾಗಿ ವಾಸಿಸುತ್ತಿದ್ದಾರೆ",
+      "ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಯನ್ನು ನಿರ್ಲಕ್ಷಿಸಲಾಗಿದೆ ಅಥವಾ ನಿರ್ಲಕ್ಷ್ಯದ ಅಪಾಯದಲ್ಲಿದ್ದಾರೆ",
+      "ಗಮನಾರ್ಹ ವರ್ತನೆ ಮತ್ತು ಮಾನಸಿಕ ಲಕ್ಷಣಗಳನ್ನು ಕುಟುಂಬಕ್ಕೆ ನಿಭಾಯಿಸಲು ಕಷ್ಟವಾಗಿದೆ",
+      "ಬುದ್ಧಿಮಾಂದ್ಯತೆ (ಡಿಮೆನ್ಷಿಯಾ) ಕಾರಣ ಪ್ರಸ್ತಾವಿತ ನಿವಾಸಿಗೆ 24 ಗಂಟೆಗಳ ಆರೈಕೆ, ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ಬೆಂಬಲ ಅಗತ್ಯವಿದೆ",
+    ],
+    familyHeaders: ["#", "ಹೆಸರು", "ವಯಸ್ಸು", "ಪು/ಮ", "ಸಂಬಂಧ", "ವೃತ್ತಿ", "ವಿಳಾಸ / ಇಮೇಲ್ / ಫೋನ್"],
+    genderOptions: ["ಪುರುಷ", "ಮಹಿಳೆ", "ಇತರೆ"],
+    maritalOptions: ["ವಿವಾಹಿತ", "ಅವಿವಾಹಿತ", "ವಿಧವೆ", "ವಿಧುರ", "ಬೇರ್ಪಟ್ಟವರು", "ವಿಚ್ಛೇದಿತ"],
+    docs: {
+      medicalRecords: "ವೈದ್ಯಕೀಯ ದಾಖಲೆಗಳು ಮತ್ತು ಬುದ್ಧಿಮಾಂದ್ಯತೆಯ ರೋಗನಿರ್ಣಯ",
+      referralLetter: "ಶಿಫಾರಸು ಪತ್ರ",
+      aadhaarCard: "ಆಧಾರ್ ಕಾರ್ಡ್",
+      rationCard: "ಪಡಿತರ ಚೀಟಿ",
+      ageProof: "ವಯಸ್ಸಿನ ಪುರಾವೆ",
+      incomeProof: "ಆದಾಯದ ಪುರಾವೆ",
+      bplCard: "BPL ಕಾರ್ಡ್ (ಅನ್ವಯವಾದರೆ)",
+      ayushmanCard: "ಆಯುಷ್ಮಾನ್ ಭಾರತ್ ಕಾರ್ಡ್ (ಇದ್ದರೆ)",
+    },
+    declarationApplicant:
+      "ನೀಡಿರುವ ಮಾಹಿತಿಯು ನನ್ನ ಜ್ಞಾನದ ಮಟ್ಟಿಗೆ ಸತ್ಯ ಮತ್ತು ಸಂಪೂರ್ಣವಾಗಿದೆ ಎಂದು ನಾನು ದೃಢೀಕರಿಸುತ್ತೇನೆ ಮತ್ತು ಕೇಂದ್ರಕ್ಕೆ ಅನ್ವಯವಾಗುವ ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ ಹಾಗೂ ನಿಯಮಗಳಿಗೆ ಒಪ್ಪುತ್ತೇನೆ.",
+    declarationGuarantor:
+      "ಮೇಲೆ ನೀಡಿರುವ ಖಾತರಿದಾರರ ಮಾಹಿತಿ ಸರಿಯಾಗಿದೆ ಮತ್ತು ಖಾತರಿದಾರರು ಅನ್ವಯವಾಗುವ ಪ್ರವೇಶ ನಿಯಮಗಳಿಗೆ ಒಪ್ಪುತ್ತಾರೆ ಎಂದು ನಾನು ದೃಢೀಕರಿಸುತ್ತೇನೆ.",
+    footerTitle: "ನಿಮ್ಮ ಅರ್ಜಿಯನ್ನು ಸಲ್ಲಿಸಲು ಸಿದ್ಧರಿದ್ದೀರಾ?",
+    footerBody:
+      "ಸಲ್ಲಿಸುವ ಮೊದಲು ದಯವಿಟ್ಟು ಎಲ್ಲಾ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ. ನಿಮ್ಮ ಅರ್ಜಿಯನ್ನು ನೈಟಿಂಗೇಲ್ಸ್ ಮೆಡಿಕಲ್ ಟ್ರಸ್ಟ್‌ಗಾಗಿ ಸಿದ್ಧಪಡಿಸಲಾಗುವುದು.",
+    submit: "ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
+  },
+};
 
 function SectionHeading({ eyebrow, title, compact = false }: { eyebrow: string; title: string; compact?: boolean }) {
   return (
@@ -2522,11 +3092,13 @@ function FormSelect({
   label,
   name,
   options,
+  placeholder = "Select",
   required = false,
 }: {
   label: string;
   name: string;
-  options: string[];
+  options: { value: string; label: string }[];
+  placeholder?: string;
   required?: boolean;
 }) {
   return (
@@ -2540,10 +3112,10 @@ function FormSelect({
         defaultValue=""
         className="w-full rounded-xl border border-[#D9D3CC] bg-white px-4 py-3 text-sm text-[#263746] outline-none transition focus:border-[#ED6439] focus:ring-2 focus:ring-[#ED6439]/10"
       >
-        <option value="">Select</option>
+        <option value="">{placeholder}</option>
         {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>
@@ -2642,5 +3214,3 @@ function ProcessCard({
     </article>
   );
 }
-
-

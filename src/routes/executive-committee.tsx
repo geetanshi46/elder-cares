@@ -312,11 +312,11 @@ function ExecutiveCommittee() {
             <Reveal delay={120}>
               <div className="mt-9 flex flex-col items-start gap-3 sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
 
-                <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
+                {/* <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
                   <span className="text-sm font-semibold text-white">
                     7 Members
                   </span>
-                </div>
+                </div> */}
 
                 <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
                   <span className="text-sm font-medium text-white/65">

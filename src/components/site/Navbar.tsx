@@ -37,7 +37,7 @@ const NAV_LINKS: NavItem[] = [
     { label: "Executive Committee", to: "/executive-committee" },
     { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
     { label: "Partners", to: "/about", hash: "partners" },
-    { label: "Finances", to: "/finances" },
+    { label: "Finances", to: "/financial-reports" },
     { label: "Annual Reports", to: "/annual-reports" },
   ],
 },
@@ -85,6 +85,11 @@ const NAV_LINKS: NavItem[] = [
       to: "/services",
       hash: "smriti-gram",
     },
+    {
+  label: "Why Choose Nightingales Medical Trust",
+  to: "/services",
+  hash: "why-choose-nmt",
+},
   ],
 },
 
@@ -180,7 +185,22 @@ const NAV_LINKS: NavItem[] = [
 },
 
   { label: "Road Ahead", to: "/the-road-ahead" },
-  { label: "Get Involved", to: "/get-involved" },
+  {
+  label: "Get Involved",
+  to: "/get-involved",
+  children: [
+    { label: "Why Partner with NMT?", to: "/get-involved#why-partner" },
+    { label: "Causes You Can Support", to: "/get-involved#causes" },
+    { label: "Adopt a Project", to: "/get-involved#partnership-options" },
+    { label: "Corporate Donations", to: "/get-involved#corporate-donations" },
+    { label: "Event Sponsorship", to: "/get-involved#event-sponsorship" },
+    { label: "Payroll Giving", to: "/get-involved#payroll-giving" },
+    { label: "Volunteering", to: "/get-involved#corporate-volunteering" },
+    { label: "Internship", to: "/get-involved#internship" },
+    { label: "Connect with CSR", to: "/get-involved#contact-csr" },
+    { label: "Donate", to: "/get-involved#donate" },
+  ],
+},
   {
     label: "Impact",
     to: "/impact"
@@ -765,19 +785,15 @@ export function Navbar() {
             )}
           </button>
 
-         {/* =====================================================
+    {/* =====================================================
     DONATE NOW
     ===================================================== */}
 
 <Link
-  to="/"
-  hash="donate"
-  onClick={(e) =>
-    handleHashLinkClick(e, {
-      to: "/",
-      hash: "donate",
-    })
-  }
+  to="/donate"
+  onClick={() => {
+    // Close mobile menu if needed
+  }}
   aria-label="Donate"
   className="
     hidden
@@ -1115,36 +1131,33 @@ export function Navbar() {
           )}
 
           {/* MOBILE DONATE BUTTON */}
-          <Link
-            to="/get-involved"
-            hash="donate"
-            onClick={(e) => {
-              handleHashLinkClick(e, { to: "/get-involved", hash: "donate" });
-              setMenuOpen(false);
-            }}
-            className="
-              mt-4
-              flex
-              items-center
-              justify-center
-              gap-2
-              rounded-xl
-              bg-[#ED6439]
-              px-4
-              py-3
-              text-[15px]
-              font-bold
-              text-white
-              shadow-sm
-              transition-all
-              duration-300
-              hover:bg-[#d55229]
-              hover:shadow-lg
-            "
-          >
-            <span>Donate</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          {/* MOBILE DONATE BUTTON */}
+<Link
+  to="/donate"
+  onClick={() => setMenuOpen(false)}
+  className="
+    mt-4
+    flex
+    items-center
+    justify-center
+    gap-2
+    rounded-xl
+    bg-[#ED6439]
+    px-4
+    py-3
+    text-[15px]
+    font-bold
+    text-white
+    shadow-sm
+    transition-all
+    duration-300
+    hover:bg-[#d55229]
+    hover:shadow-lg
+  "
+>
+  <span>Donate</span>
+  <ArrowRight className="h-4 w-4" />
+</Link>
         </nav>
       )}
     </header>

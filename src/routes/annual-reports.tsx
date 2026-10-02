@@ -8,32 +8,32 @@ export const Route = createFileRoute("/annual-reports")({
 
 const annualReports = [
   {
-    year: "2017-18",
-    pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf",
-  },
-  {
-    year: "2018-19",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf",
-  },
-  {
-    year: "2019-20",
-    pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf",
-  },
-  {
-    year: "2020-21",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf",
-  },
-  {
-    year: "2021-22",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf",
+    year: "2024-25",
+    pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
   },
   {
     year: "2022-23",
     pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf",
   },
   {
-    year: "2024-25",
-    pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
+    year: "2021-22",
+    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf",
+  },
+  {
+    year: "2020-21",
+    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf",
+  },
+  {
+    year: "2019-20",
+    pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf",
+  },
+  {
+    year: "2018-19",
+    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf",
+  },
+  {
+    year: "2017-18",
+    pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf",
   },
 ];
 

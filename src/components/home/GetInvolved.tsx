@@ -457,404 +457,295 @@ export function GetInvolved() {
         </div>
 
 
-        {/* =========================================================
-            DONATE + CONTACT AREA
-            ========================================================= */}
+       {/* =========================================================
+    DONATE + CONTACT AREA
+    ========================================================= */}
 
-        <div className="mt-10 grid grid-cols-1 gap-6">
+<div className="mt-10 grid grid-cols-1 gap-6">
 
-          {/* =====================================================
-              DONATION PANEL
-              ===================================================== */}
+  {/* =====================================================
+      DONATION PANEL
+      ===================================================== */}
 
-          <Reveal>
+  <Reveal>
 
-            <div
-              className="
-                group
-                relative
-                h-full
-                overflow-hidden
-                border
-                border-white/10
-                bg-[#E15925]
-                p-8
-                shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
-                transition-all
-                duration-500
-                hover:-translate-y-1
-                hover:border-[#ED6439]/35
-                hover:shadow-[0_38px_90px_-18px_rgba(23,35,43,0.62),0_15px_38px_rgba(237,100,57,0.28)]
-                sm:p-8
-lg:p-9
-              "
-            >
-
-              {/* =================================================
-                  PREMIUM ORANGE SIDE ACCENT
-                  ================================================= */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  bottom-8
-                  left-0
-                  top-8
-                  w-[4px]
-                  bg-[#ED6439]
-                  shadow-[0_0_20px_rgba(237,100,57,0.42)]
-                "
-              />
-
-              {/* Small bottom accent */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  bottom-0
-                  right-10
-                  h-[3px]
-                  w-28
-                  bg-[#ED6439]
-                  opacity-90
-                  shadow-[0_0_15px_rgba(237,100,57,0.30)]
-                "
-              />
-
-              {/* Background glows */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  -right-24
-                  -top-24
-                  h-72
-                  w-72
-                  rounded-full
-                  bg-[#ED6439]/20
-                  blur-3xl
-                  transition-transform
-                  duration-700
-                  group-hover:scale-110
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  -bottom-28
-                  -left-20
-                  h-64
-                  w-64
-                  rounded-full
-                  bg-[#E85A3F]/15
-                  blur-3xl
-                "
-              />
-
-              {/* Dot texture */}
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  opacity-[0.035]
-                  [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
-                  [background-size:24px_24px]
-                "
-              />
-
-              <div className="relative">
-
-  <span
-  id="donate"
-    className="
-      inline-flex
-      items-center
-      gap-2
-      text-sm
-      font-bold
-      uppercase
-      tracking-[0.18em]
-      text-white
-    "
-  >
-    <Sparkles className="h-4 w-4 text-white" />
-    Support our work
-  </span>
-
-  <h2
-    className="
-      mt-3
-      max-w-xl
-      font-display
-      text-3xl
-      font-extrabold
-      leading-tight
-      text-white
-      sm:text-[2.5rem]
-    "
-  >
-    Make A Meaningful{" "}
-    <span className="text-[#14212B]">
-      Difference.
-    </span>
-  </h2>
-
-  <p
-    className="
-      mt-3
-      max-w-xl
-      text-[15px]
-      leading-relaxed
-      text-white/70
-    "
-  >
-    Support ongoing and new initiatives of Nightingales Medical
-    Trust and help us create sustainable impact in the lives of older
-    persons, people living with dementia and vulnerable communities.
-  </p>
-
-
-  {/* Frequency selector */}
-<div
-  role="group"
-  aria-label="Donation frequency"
-  className="
-    mt-5
-    inline-flex
-    rounded-full
-    border
-    border-white/10
-    bg-white/5
-    p-1
-  "
->
-  {[
-    { label: "Monthly", value: true },
-    { label: "One time", value: false },
-  ].map((opt) => (
-    <button
-      key={opt.label}
-      type="button"
-      aria-pressed={monthly === opt.value}
-      onClick={() => setMonthly(opt.value)}
-      className={`
-        rounded-full
-        px-5
-        py-2
-        text-sm
-        font-semibold
+    <div
+      className="
+        group
+        relative
+        h-full
+        overflow-hidden
+        border
+        border-white/10
+        bg-[#E15925]
+        p-8
+        shadow-[0_30px_75px_-18px_rgba(23,35,43,0.55),0_10px_30px_rgba(237,100,57,0.18)]
         transition-all
-        duration-300
-        ${
-          monthly === opt.value
-            ? "bg-[#14212B] text-white shadow-[0_5px_18px_rgba(20,33,43,0.28)]"
-            : "text-white/55 hover:text-white"
-        }
-      `}
+        duration-500
+        hover:-translate-y-1
+        hover:border-[#ED6439]/35
+        hover:shadow-[0_38px_90px_-18px_rgba(23,35,43,0.62),0_15px_38px_rgba(237,100,57,0.28)]
+        sm:p-8
+        lg:p-9
+      "
     >
-      {opt.label}
-    </button>
-  ))}
-</div>
+
+      {/* =================================================
+          PREMIUM ORANGE SIDE ACCENT
+          ================================================= */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-8
+          left-0
+          top-8
+          w-[4px]
+          bg-[#ED6439]
+          shadow-[0_0_20px_rgba(237,100,57,0.42)]
+        "
+      />
+
+      {/* Small bottom accent */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-0
+          right-10
+          h-[3px]
+          w-28
+          bg-[#ED6439]
+          opacity-90
+          shadow-[0_0_15px_rgba(237,100,57,0.30)]
+        "
+      />
+
+      {/* Background glows */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-24
+          -top-24
+          h-72
+          w-72
+          rounded-full
+          bg-[#ED6439]/20
+          blur-3xl
+          transition-transform
+          duration-700
+          group-hover:scale-110
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-28
+          -left-20
+          h-64
+          w-64
+          rounded-full
+          bg-[#E85A3F]/15
+          blur-3xl
+        "
+      />
+
+      {/* Dot texture */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.035]
+          [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
+          [background-size:24px_24px]
+        "
+      />
+
+      {/* =================================================
+          CONTENT
+          ================================================= */}
+
+      <div className="relative">
+
+        {/* Eyebrow */}
+
+        <span
+          id="donate"
+          className="
+            inline-flex
+            items-center
+            gap-2
+            text-sm
+            font-bold
+            uppercase
+            tracking-[0.18em]
+            text-white
+          "
+        >
+          <Sparkles className="h-4 w-4 text-white" />
+          Support our work
+        </span>
+
+        {/* Heading */}
+
+        <h2
+          className="
+            mt-3
+            max-w-xl
+            font-display
+            text-3xl
+            font-extrabold
+            leading-tight
+            text-white
+            sm:text-[2.5rem]
+          "
+        >
+          Support Nightingales{" "}
+          <span className="text-[#14212B]">
+            Medical Trust.
+          </span>
+        </h2>
+
+        {/* Description */}
+
+        <p
+          className="
+            mt-3
+            max-w-xl
+            text-[15px]
+            leading-relaxed
+            text-white/70
+          "
+        >
+          Your contribution can help us create meaningful and
+          sustainable impact in the lives of older persons, people
+          living with dementia, and vulnerable communities.
+        </p>
+
+        {/* =================================================
+            DONATE BUTTON
+            ================================================= */}
+
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = "/donate";
+          }}
+          className="
+            mt-5
+            flex
+            w-full
+            items-center
+            justify-center
+            gap-2
+            bg-[#14212B]
+            px-6
+            py-3.5
+            text-[15px]
+            font-bold
+            text-white
+            shadow-[0_12px_30px_rgba(20,33,43,0.25)]
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:bg-white
+            hover:text-[#14212B]
+            hover:shadow-[0_18px_40px_rgba(20,33,43,0.25)]
+          "
+        >
+          <HeartHandshake
+            className="h-5 w-5"
+            strokeWidth={1.8}
+          />
+
+          Donate Now
+        </button>
+
+      </div>
+    </div>
+
+  </Reveal>
 
 
-  {/* Amount */}
-
-  <label
-    htmlFor="donation-amount"
-    className="
-      mt-4
-      block
-      text-sm
-      font-medium
-      text-white/85
-    "
-  >
-    Donation amount
-  </label>
+  {/* =====================================================
+      TRUST / LEGAL STRIP
+      ===================================================== */}
 
   <div
     className="
-      mt-2
+      mt-4
       flex
+      w-full
       items-center
-      gap-2
+      gap-4
       border
-      border-white/10
-      bg-white/[0.06]
-      px-4
+      border-[#ED6439]/25
+      bg-white/80
+      px-5
       py-3
-      transition-colors
-      focus-within:border-[#ED6439]/60
-      focus-within:bg-white/[0.09]
+      shadow-[0_10px_30px_rgba(237,100,57,0.12)]
+      backdrop-blur-sm
+      transition-all
+      duration-300
+      hover:border-[#ED6439]/40
+      hover:shadow-[0_14px_35px_rgba(237,100,57,0.16)]
+      sm:px-6
+      sm:py-4
     "
   >
-    <span className="font-display text-lg font-bold text-[#14212B]">
-      ₹
+
+    {/* Icon */}
+
+    <span
+      className="
+        grid
+        h-10
+        w-10
+        shrink-0
+        place-items-center
+        rounded-lg
+        bg-[#ED6439]/15
+        text-[#ED6439]
+        ring-1
+        ring-[#ED6439]/20
+      "
+    >
+      <ShieldCheck
+        className="h-5 w-5"
+        strokeWidth={1.8}
+      />
     </span>
 
-    <input
-      id="donation-amount"
-      inputMode="numeric"
-      value={amount}
-      onChange={(e) =>
-        setAmount(e.target.value.replace(/\D/g, ""))
-      }
-      placeholder="Enter amount"
+    {/* Text */}
+
+    <p
       className="
         min-w-0
-        flex-1
-        bg-transparent
-        text-base
-        text-white
-        outline-none
-        placeholder:text-white/35
+        text-[12.5px]
+        leading-[1.65]
+        text-muted-foreground
+        sm:text-[13px]
+        lg:text-[13.5px]
       "
-    />
+    >
+      Donations to Nightingales Medical Trust are exempt under
+      Section 80G of the Income Tax Act of India. The Trust is
+      eligible for CSR funding. NMT is approved to receive donations
+      from abroad under FCRA. The Trust is also registered as an NPO
+      with NSE / BSE.
+    </p>
+
   </div>
 
-
- {/* Donate button */}
-
-<button
-  type="button"
-  onClick={() => {
-    const subject = monthly
-      ? "Monthly Donation Enquiry"
-      : "One-Time Donation Enquiry";
-
-    const body = `Hello Nightingales Medical Trust,
-
-I would like to make a ${
-      monthly ? "monthly" : "one-time"
-    } donation${
-      amount
-        ? ` of ₹${Number(amount).toLocaleString("en-IN")}`
-        : ""
-    }.
-
-Please share the payment details/instructions.
-
-Thank you.`;
-
-    window.location.href = `mailto:rm@nightingaleseldercare.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-  }}
-  className="
-    mt-4
-    flex
-    w-full
-    items-center
-    justify-center
-    gap-2
-    bg-[#14212B]
-    px-6
-    py-3.5
-    text-[15px]
-    font-bold
-    text-white
-    shadow-[0_12px_30px_rgba(20,33,43,0.25)]
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:bg-white
-    hover:text-[#14212B]
-    hover:shadow-[0_18px_40px_rgba(20,33,43,0.25)]
-  "
->
-  <HeartHandshake
-  className="h-5 w-5 text-white group-hover:text-[#14212B]"
-  strokeWidth={1.8}
-/>
-
-  Donate
-  {amount
-    ? ` ₹${Number(amount).toLocaleString("en-IN")}`
-    : ""}
-  {monthly ? " monthly" : " now"}
-</button>
-
 </div>
-            </div>
-
-          </Reveal>
-
-
-{/* =====================================================
-    TRUST / LEGAL STRIP
-    ===================================================== */}
-<div
-  className="
-    mt-4
-    flex
-    w-full
-    items-center
-    gap-4
-    border
-    border-[#ED6439]/25
-    bg-white/80
-    px-5
-    py-3
-    shadow-[0_10px_30px_rgba(237,100,57,0.12)]
-    backdrop-blur-sm
-    transition-all
-    duration-300
-    hover:border-[#ED6439]/40
-    hover:shadow-[0_14px_35px_rgba(237,100,57,0.16)]
-    sm:px-6
-    sm:py-4
-  "
->
-  {/* Icon */}
-  <span
-    className="
-      grid
-      h-10
-      w-10
-      shrink-0
-      place-items-center
-      rounded-lg
-      bg-[#ED6439]/15
-      text-[#ED6439]
-      ring-1
-      ring-[#ED6439]/20
-    "
-  >
-    <ShieldCheck
-      className="h-5 w-5"
-      strokeWidth={1.8}
-    />
-  </span>
-
-  {/* Text */}
-  <p
-    className="
-      min-w-0
-      text-[12.5px]
-      leading-[1.65]
-      text-muted-foreground
-      sm:text-[13px]
-      lg:text-[13.5px]
-    "
-  >
-    Donations to Nightingales Medical Trust are exempt under Section
-    80G of the Income Tax Act of India. The Trust is eligible for CSR
-    funding. NMT is approved to receive donations from abroad under
-    FCRA. The Trust is also registered as an NPO with NSE / BSE.
-  </p>
-</div>
-          
-
-        </div>
-
 
       </div>
     </section>

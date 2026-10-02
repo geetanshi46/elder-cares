@@ -370,7 +370,7 @@ export function RoadAhead() {
 
                       {/* Hover arrow */}
 
-                      <span
+                      {/* <span
                         className="
                           mt-3
                           inline-flex
@@ -399,7 +399,7 @@ export function RoadAhead() {
                           "
                           strokeWidth={2.2}
                         />
-                      </span>
+                      </span> */}
 
                     </div>
 

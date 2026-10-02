@@ -29,7 +29,7 @@ highlight: "Currently, we run 3 Memory Clinics, 3 Day Care Centres, 3 Residentia
     icon: HeartHandshake,
     title: "CARE FOR MARGINALIZED ELDERS",
     hash: "marginalized",
-    body: "5 Day Care Centres & Hiriyarawadies, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
+    body: "5 Day Care Centres & Hiriyaravadis, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
   },
   {
     icon: ShieldCheck,

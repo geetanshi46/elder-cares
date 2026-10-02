@@ -86,25 +86,32 @@ const JOURNEY = [
       "NMT launched a Mobile Active Ageing Programme in 28 old age homes",
   },
 
-  {
-    year: "2021",
-    title:
-      "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka.",
-    body: "",
-  },
+ {
+  year: "2021",
+  title:
+    "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka — SK Home - A Home for Destitute Elderly Men.",
+  body: "",
+},
 
   {
     year: "2019",
-    title: "Strengthened training and advocacy initiatives.",
+    title: "Strengthened training and advocacy initiatives.  Rotary Pioneer Award (for pioneering work in the field of Age Care).",
     body: "",
   },
 
-  {
-    year: "2017–2018",
-    title:
-      "Expansion of Dementia Day Care services and establishment of additional elder-care initiatives.",
-    body: "",
-  },
+  
+{
+  year: "2017",
+  title: "Mobile Active Ageing",
+  body: "",
+},
+
+{
+  year: "2018",
+  title:
+    "Dementia Day Care Centres at KR Fort Road and RT Nagar. Tanya Mathias - Nightingales Trust Elder Care Centre. Dementia 2018 International Conference in association with ARDSI. Sandhya Suraksha (A home for Destitute Elderly Women).",
+  body: "",
+},
 
   {
     year: "2014",
@@ -114,19 +121,12 @@ const JOURNEY = [
       "NMT also expanded its work in dementia risk reduction and active ageing.",
   },
 
-  {
-    year: "2011",
-    title:
-      "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders.",
-    body: "",
-  },
-
-  {
-    year: "2011",
-    title:
-      "Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care by the Government of India.",
-    body: "",
-  },
+{
+  year: "2011",
+  title:
+    "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders. Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care by the Government of India.",
+  body: "",
+},
 
   {
     year: "2010",
@@ -155,6 +155,15 @@ const JOURNEY = [
       "Dementia Day Care services introduced to support persons with dementia and provide respite to family caregivers.",
     body: "",
   },
+
+
+{
+  year: "2005",
+  title:
+    "Paul Harris Fellowship from Rotary Foundation. Draft Bill to Government of Karnataka. Advocacy with the government on 'Elders Protection of Rights and Redressal of Grievances Act'.",
+  body: "",
+},
+
 
   {
     year: "2004",
@@ -502,84 +511,148 @@ function AboutPage() {
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
-        {/* ======================================================
-            HERO — full-bleed banner, image never crops, badge + heading only
-        ====================================================== */}
-        <section id="about-overview" className="relative w-full overflow-hidden scroll-mt-24">
-          <Reveal>
-            <div
-              className="
-                relative w-full
-                aspect-[4/5]
-                sm:aspect-[16/9]
-                md:aspect-[16/7]
-                lg:aspect-[21/9]
-                max-h-[560px]
-                min-h-[380px]
-                bg-[#14212B]
-              "
-            >
-              {/* Full-width banner image */}
-              <img
-                src={aboutHeroImage}
-                alt="Nightingales Medical Trust community"
-                width={1920}
-                height={1080}
-                className="
-                  absolute inset-0
-                  h-full w-full
-                  object-cover object-center
-                "
-              />
+       {/* ======================================================
+    HERO — full-bleed banner
+====================================================== */}
+<section
+  id="about-overview"
+  className="relative w-full overflow-hidden scroll-mt-24"
+>
+  <Reveal>
+    <div
+      className="
+        relative w-full
+        aspect-[4/5]
+        sm:aspect-[16/9]
+        md:aspect-[16/7]
+        lg:aspect-[21/9]
+        max-h-[560px]
+        min-h-[380px]
+        bg-[#14212B]
+      "
+    >
+      {/* Full-width banner image */}
+      <img
+        src={aboutHeroImage}
+        alt="Nightingales Medical Trust community"
+        width={1920}
+        height={1080}
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-center
+        "
+      />
 
-              {/* Overlay */}
-<div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/25 via-[#14212B]/5 to-transparent" />
+      {/* Light overlay */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-r
+          from-[#14212B]/25
+          via-[#14212B]/5
+          to-transparent
+        "
+      />
 
-              {/* Content */}
-              <div
-                className="
-                  relative z-10 mx-auto flex h-full w-full
-                  max-w-12xl flex-col justify-center
-                  px-5 py-6
-                  sm:px-8 sm:py-8
-                  md:px-10 md:py-10
-                  lg:px-14 lg:py-12
-                "
-              >
-                {/* Badge */}
-                {/* <span
-                  className="
-                    inline-flex w-fit items-center
-                    rounded-full bg-[#ED6439]
-                    px-3.5 py-2
-                    text-[10px] font-bold uppercase
-                    tracking-[0.14em] text-white
-                    sm:px-4 sm:text-[11px]
-                  "
-                >
-                  About NMT since 1998
-                </span> */}
+      {/* Bottom readability gradient */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-[190px]
+          bg-gradient-to-t
+          from-[#17232B]/55
+          via-[#17232B]/20
+          to-transparent
 
-                {/* Heading */}
-       <h1
+          sm:h-[220px]
+          md:h-[250px]
+          lg:h-[280px]
+        "
+      />
+
+      {/* ======================================================
+          HERO CONTENT — SAME LEFT ALIGNMENT AS HOME
+      ====================================================== */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          bottom-0
+          z-10
+          w-full
+          px-4
+          pb-9
+
+          sm:px-8
+          sm:pb-11
+
+          md:px-10
+          md:pb-12
+
+          lg:px-16
+          lg:pb-14
+        "
+      >
+        <div
+          className="
+            flex
+            max-w-5xl
+            items-start
+            gap-3
+
+            sm:gap-5
+          "
+        >
+          {/* Orange vertical line */}
+          <span
   className="
-    mt-4 w-full max-w-none
+    mt-1
+    h-[42px]
+    w-[3px]
+    shrink-0
+    rounded-full
+    bg-[#ED6439]
+
+    sm:h-[48px]
+    sm:w-1
+
+    md:h-[56px]
+
+    lg:h-[64px]
+  "
+/>
+
+          {/* Heading */}
+          <h1
+  className="
+    w-full
     whitespace-nowrap
-    font-display font-extrabold
-    capitalize leading-[1.08]
-    tracking-[-0.035em] text-white
+    font-display
     text-[1.7rem]
-    sm:mt-5 sm:text-[2.15rem]
+    font-extrabold
+    leading-[1.08]
+    tracking-[-0.035em]
+    text-white
+    drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)]
+
+    sm:text-[2.15rem]
+
     md:text-[2.7rem]
+
     lg:text-[3.1rem]
   "
 >
   Compassionate and innovative age care solutions
 </h1>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        </div>
+      </div>
+    </div>
+  </Reveal>
+</section>
 
        {/* ======================================================
     WHO WE ARE
@@ -1379,7 +1452,7 @@ function AboutPage() {
   className="bg-[#14212B] text-white scroll-mt-24"
 >
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-    <div className="max-w-3xl">
+    <div className="mb-9 sm:mb-11">
       <SectionMarker index="08" label="Transparency" />
 
       <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">

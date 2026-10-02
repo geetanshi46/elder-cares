@@ -47,8 +47,8 @@ export function Hero() {
     <section id="top" className="w-full bg-background">
 
      {/* =========================================================
-          HERO BANNER
-          ========================================================= */}
+    HERO BANNER
+    ========================================================= */}
 <div
   className="
     relative
@@ -96,32 +96,30 @@ export function Hero() {
         width={2076}
         height={758}
         className="
-  absolute
-  left-0
-  top-0
-  h-full
-  w-full
+          absolute
+          left-0
+          top-0
+          h-full
+          w-full
 
-  /* MOBILE — show the complete photo without cropping */
-  object-contain
-  object-center
+          /* MOBILE — show the complete photo without cropping */
+          object-contain
+          object-center
 
-  /* TABLET */
-  sm:object-contain
-  sm:object-center
+          /* TABLET */
+          sm:object-contain
+          sm:object-center
 
-  /* DESKTOP — keep original behaviour */
-  md:object-contain
-  md:object-center
+          /* DESKTOP — keep original behaviour */
+          md:object-contain
+          md:object-center
 
-  transition-transform
-  duration-700
-"
+          transition-transform
+          duration-700
+        "
       />
     </div>
   ))}
-
- 
 
   {/* =========================================================
       BOTTOM DARK GRADIENT
@@ -266,201 +264,202 @@ export function Hero() {
     ))}
   </div>
 
- {/* =========================================================
-    HERO HIGHLIGHTS
-    ========================================================= */}
-<div
-  className="
-    absolute
-    inset-x-0
-    top-4
-    z-20
-    flex
-    flex-col
-    gap-3
-    px-4
-
-    sm:top-7
-    sm:px-8
-
-    md:flex-row
-    md:items-start
-    md:justify-between
-    md:gap-4
-    md:px-10
-
-    lg:top-10
-    lg:px-16
-
-    xl:top-12
-    xl:px-20
-  "
->
   {/* =========================================================
-      LEFT — 25+ YEARS OF SERVICE
+      HERO HIGHLIGHTS
       ========================================================= */}
   <div
-  className="
-    flex
-    w-fit
-    self-end
-    items-center
-    gap-2.5
-    rounded-2xl
-    border
-    border-white/30
-    bg-white/90
-    px-3
-    py-2.5
-    shadow-[0_12px_30px_rgba(0,0,0,0.18)]
-    backdrop-blur-md
-
-    sm:gap-3
-    sm:px-5
-    sm:py-3.5
-
-    md:ml-auto
-  "
->
-    <span
-      className="
-        flex
-        h-8
-        w-8
-        shrink-0
-        items-center
-        justify-center
-        rounded-full
-        bg-[#ED6439]
-        text-[11px]
-        font-extrabold
-        text-white
-
-        sm:h-10
-        sm:w-10
-        sm:text-sm
-      "
-    >
-      25+
-    </span>
-
-    <div>
-      <p
-        className="
-          text-[9px]
-          font-bold
-          uppercase
-          tracking-[0.12em]
-          text-[#ED6439]
-
-          sm:text-[11px]
-          sm:tracking-[0.14em]
-        "
-      >
-        Years of
-      </p>
-
-      <p
-        className="
-          text-[13px]
-          font-extrabold
-          leading-tight
-          text-[#24333B]
-
-          sm:text-[15px]
-        "
-      >
-        Service
-      </p>
-    </div>
-  </div>
-
-  {/* =========================================================
-      RIGHT — 24 HOUR HELPLINE
-      ========================================================= */}
-  {/* <div
     className="
+      absolute
+      inset-x-0
+      top-4
+      z-20
       flex
-      w-fit
-      items-center
-      gap-2.5
-      self-end
-      rounded-2xl
-      border
-      border-white/30
-      bg-white/90
-      px-3
-      py-2.5
-      text-right
-      shadow-[0_12px_30px_rgba(0,0,0,0.18)]
-      backdrop-blur-md
+      flex-col
+      gap-3
+      px-4
 
-      sm:gap-3
-      sm:px-5
-      sm:py-3.5
+      sm:top-7
+      sm:px-8
 
-      md:self-auto
+      md:flex-row
+      md:items-start
+      md:justify-between
+      md:gap-4
+      md:px-10
+
+      lg:top-10
+      lg:px-16
+
+      xl:top-12
+      xl:px-20
     "
   >
-    <div>
-      <p
-        className="
-          text-[9px]
-          font-bold
-          uppercase
-          tracking-[0.12em]
-          text-[#ED6439]
 
-          sm:text-[11px]
-          sm:tracking-[0.14em]
-        "
-      >
-        24 Hour Helpline
-      </p>
-
-      <a
-  href="tel:08042426565"
-  className="
-    block
-    text-[13px]
-    font-extrabold
-    leading-tight
-    text-[#24333B]
-    underline-offset-2
-    transition-colors
-    hover:text-[#ED6439]
-
-    sm:text-[15px]
-  "
-  aria-label="Call 24 Hour Helpline at 080 42426565"
->
-  080 42426565
-</a>
-    </div>
-
-    <span
+    {/* =========================================================
+        LEFT — 25+ YEARS OF SERVICE
+        ========================================================= */}
+    <div
       className="
         flex
-        h-8
-        w-8
-        shrink-0
+        w-fit
+        self-end
         items-center
-        justify-center
-        rounded-full
-        bg-[#ED6439]
-        text-[11px]
-        font-extrabold
-        text-white
+        gap-2.5
+        rounded-2xl
+        border
+        border-white/30
+        bg-white/90
+        px-3
+        py-2.5
+        shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+        backdrop-blur-md
 
-        sm:h-10
-        sm:w-10
-        sm:text-sm
+        sm:gap-3
+        sm:px-5
+        sm:py-3.5
+
+        md:ml-auto
       "
     >
-      24
-    </span>
-  </div> */}
-</div>
+      <span
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#ED6439]
+          text-[11px]
+          font-extrabold
+          text-white
+
+          sm:h-10
+          sm:w-10
+          sm:text-sm
+        "
+      >
+        25+
+      </span>
+
+      <div>
+        <p
+          className="
+            text-[9px]
+            font-bold
+            uppercase
+            tracking-[0.12em]
+            text-[#ED6439]
+
+            sm:text-[11px]
+            sm:tracking-[0.14em]
+          "
+        >
+          Years of
+        </p>
+
+        <p
+          className="
+            text-[13px]
+            font-extrabold
+            leading-tight
+            text-[#24333B]
+
+            sm:text-[15px]
+          "
+        >
+          Service
+        </p>
+      </div>
+    </div>
+
+    {/* =========================================================
+        RIGHT — 24 HOUR HELPLINE
+        ========================================================= */}
+    {/* <div
+      className="
+        flex
+        w-fit
+        items-center
+        gap-2.5
+        self-end
+        rounded-2xl
+        border
+        border-white/30
+        bg-white/90
+        px-3
+        py-2.5
+        text-right
+        shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+        backdrop-blur-md
+
+        sm:gap-3
+        sm:px-5
+        sm:py-3.5
+
+        md:self-auto
+      "
+    >
+      <div>
+        <p
+          className="
+            text-[9px]
+            font-bold
+            uppercase
+            tracking-[0.12em]
+            text-[#ED6439]
+
+            sm:text-[11px]
+            sm:tracking-[0.14em]
+          "
+        >
+          24 Hour Helpline
+        </p>
+
+        <a
+          href="tel:08042426565"
+          className="
+            block
+            text-[13px]
+            font-extrabold
+            leading-tight
+            text-[#24333B]
+            underline-offset-2
+            transition-colors
+            hover:text-[#ED6439]
+
+            sm:text-[15px]
+          "
+          aria-label="Call 24 Hour Helpline at 080 42426565"
+        >
+          080 42426565
+        </a>
+      </div>
+
+      <span
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#ED6439]
+          text-[11px]
+          font-extrabold
+          text-white
+
+          sm:h-10
+          sm:w-10
+          sm:text-sm
+        "
+      >
+        24
+      </span>
+    </div> */}
+  </div>
 
   {/* =========================================================
       BANNER TEXT
@@ -484,6 +483,28 @@ export function Hero() {
       lg:pb-14
     "
   >
+
+    {/* =========================================================
+        SUBTLE READABILITY OVERLAY
+        ========================================================= */}
+    <div
+      className="
+        pointer-events-none
+        absolute
+        inset-x-0
+        bottom-0
+        -z-10
+        h-[190px]
+        bg-gradient-to-t
+        from-[#17232B]/55
+        via-[#17232B]/25
+        to-transparent
+
+        sm:h-[220px]
+        md:h-[250px]
+        lg:h-[290px]
+      "
+    />
 
     <div
       className="

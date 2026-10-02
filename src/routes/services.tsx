@@ -32,13 +32,14 @@ import careWithDignity from "../assets/our-services/Care with dignity.webp";
 import riskReductionImage from "../assets/our-services/risk-reduction.webp";
 import memoryclinicImage from "../assets/our-services/memory-clinic.webp";
 import daycareImage from "../assets/our-services/day-care.webp";
+import { X } from "lucide-react";
 
 import kasturinagarFacilityImage from "../assets/our-services/services (3).jpeg";
 import kasturinagarElderImage from "../assets/our-services/services (4).jpeg";
 import kolarFacilityImage from "../assets/our-services/services (1).jpeg";
-import kolarElderImage from "../assets/our-services/services (2).jpeg";
-import kothanurFacilityImage from "../assets/our-services/services (6).jpeg";
-import kothanurElderImage from "../assets/our-services/services (5).jpeg";
+import kolarElderImage from "../assets/our-services/services (2).png";
+import kothanurFacilityImage from "../assets/our-services/services (6).png";
+import kothanurElderImage from "../assets/our-services/services (5).png";
 
 import familyCaregiverTrainingImage from "../assets/our-services/family-caregiver-training.webp";
 
@@ -49,6 +50,7 @@ import smritiGramImage from "@/assets/our-services/smriti-gram.webp";
 import familyCaregiverTraining from "@/assets/our-services/SOCIALINTEGRATION.webp";
 
 import sandhyaSurakshaImage from "@/assets/our-services/Sandhya Suraksha.png";
+
 
 import sandhyaKiranaImage from "@/assets/our-services/sandhya-kirana-collage.webp";
 
@@ -78,7 +80,7 @@ import bedsideAssistantImage from "@/assets/our-services/bedside-assistant.webp"
 
 import dementiaCareImage from "@/assets/our-services/dementia-care.webp";
 
-import familyCaregiverImage from "@/assets/our-services/family-caregiver.webp";
+import familyCaregiverImage from "@/assets/our-services/family-caregiver.jpeg";
 
 import lifesavingSkillsImage from "@/assets/our-services/lifesaving-skills.webp";
 
@@ -130,6 +132,7 @@ function ImageShuffle({
   images: string[];
   alt: string;
 }) {
+  
   const [activeIdx, setActiveIdx] = useState(0);
 
   useEffect(() => {
@@ -190,6 +193,7 @@ function ServiceCard({
   delay = 0,
   cta = "READ MORE",
   whatsappUrl,
+  onCtaClick,
 }: {
   id?: string;
   icon: typeof HeartHandshake;
@@ -203,6 +207,7 @@ function ServiceCard({
   delay?: number;
   cta?: string;
   whatsappUrl?: string;
+  onCtaClick?: () => void;
 }) {
   const [expanded, setExpanded] = useState(false)
 
@@ -450,7 +455,13 @@ function ServiceCard({
               <div className="mt-auto pt-7">
                 <button
                   type="button"
-                  onClick={() => setExpanded((prev) => !prev)}
+                  onClick={() => {
+  if (onCtaClick) {
+    onCtaClick();
+  } else {
+    setExpanded((prev) => !prev);
+  }
+}}
                   className="
                     inline-flex
                     max-w-full
@@ -472,7 +483,7 @@ function ServiceCard({
                   "
                 >
                   <span>
-                    {expanded ? "READ LESS" : cta}
+                    {onCtaClick ? cta : expanded ? "READ LESS" : cta}
                   </span>
 
                   <ArrowUpRight
@@ -542,7 +553,7 @@ function ServiceCard({
           items-center
           gap-2
           text-[12px]
-          font-bold
+          font-boldff
           text-[#ED6439]
           transition-all
           duration-300
@@ -721,6 +732,23 @@ function PhotoPlaceholder({ label }: { label: string }) {
 function TrainingCarousel() {
   const carouselRef = useRef<HTMLDivElement | null>(null)
 
+  
+const [showBedsideAssistantModal, setShowBedsideAssistantModal] =
+  useState(false);
+
+
+const [showDementiaCareTrainingModal, setShowDementiaCareTrainingModal] =
+  useState(false);
+
+const [showFamilyCaregiverModal, setShowFamilyCaregiverModal] =
+  useState(false);
+
+const [showLifesavingSkillsModal, setShowLifesavingSkillsModal] =
+  useState(false);
+
+const [showStudentInternshipsModal, setShowStudentInternshipsModal] =
+  useState(false);
+
   const scrollCarousel = (direction: number) => {
     const container = carouselRef.current;
 
@@ -817,378 +845,757 @@ function TrainingCarousel() {
           ================================================== */}
 
       <div
-        ref={carouselRef}
-        className="
-          flex
-          w-full
-          min-w-0
-          snap-x
-          snap-mandatory
-          gap-4
-          overflow-x-auto
-          overscroll-x-contain
-          touch-pan-x
-          scroll-smooth
-          pb-4
-          [scrollbar-width:none]
-          [&::-webkit-scrollbar]:hidden
-        "
+  ref={carouselRef}
+  className="
+    flex
+    w-full
+    min-w-0
+    snap-x
+    snap-mandatory
+    gap-4
+    overflow-x-auto
+    overscroll-x-contain
+    touch-pan-x
+    scroll-smooth
+    pb-4
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
+  "
+>
+  {/* ==================================================
+      1. BEDSIDE ASSISTANT TRAINING
+      ================================================== */}
+
+  <div
+    className="
+      flex
+      min-w-0
+      shrink-0
+      basis-full
+      snap-start
+      sm:basis-[calc((100%-24px)/2)]
+      lg:basis-[calc((100%-48px)/3)]
+    "
+  >
+    <ServiceCard
+      id="caregiver-training"
+      icon={GraduationCap}
+      title="Bedside Assistant Training Course"
+      titleClassName="text-[#ED6439]"
+      image={bedsideAssistantImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowBedsideAssistantModal(true)}
+      preview={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            Creating Skilled and Compassionate Caregivers
+          </p>
+
+          <p>
+            NMT's Bedside Assistant Training Course prepares individuals to
+            provide safe and dignified care to older persons and people
+            requiring assistance with daily living.
+          </p>
+
+          <p className="font-semibold text-foreground">
+            The programme combines classroom learning with practical,
+            hands-on training.
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            The training covers areas such as:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Understanding ageing",
+              "Personal hygiene and personal care",
+              "Nutrition",
+              "Mobility and positioning",
+              "Physiotherapy and exercise",
+              "Medication and basic medical care",
+              "Fall prevention",
+              "Dementia care",
+              "Communication",
+              "First aid",
+              "Infection prevention",
+              "Safety and emergency response",
+              "Professional conduct and caregiver responsibilities",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="font-bold text-[#ED6439]">
+            Our larger goal
+          </p>
+
+          <p>
+            To build a skilled and respected elder-care workforce and make
+            caregiving a meaningful career.
+          </p>
+        </>
+      }
+    />
+  </div>
+
+{showBedsideAssistantModal && (
+  <div className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 p-4">
+    <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
+
+      <button
+        type="button"
+        onClick={() => setShowBedsideAssistantModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF4EA] text-[#ED6439] hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
       >
+        ✕
+      </button>
 
-        {/* ==================================================
-            1. BEDSIDE ASSISTANT TRAINING
-            ================================================== */}
+      <h2 className="pr-10 text-2xl font-bold text-[#263746]">
+        Bedside Assistant Training Course
+      </h2>
 
-        <div
-          className="
-            flex
-            min-w-0
-            shrink-0
-            basis-full
-            snap-start
-            sm:basis-[calc((100%-24px)/2)]
-            lg:basis-[calc((100%-48px)/3)]
-          "
-        >
-          <ServiceCard
-          id="caregiver-training"
-            icon={GraduationCap}
-            title="Bedside Assistant Training Course"
-            titleClassName="text-[#ED6439]"
-            image={bedsideAssistantImage}
-            cta="READ MORE"
-            preview={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  Creating Skilled and Compassionate Caregivers
-                </p>
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574]">
+        <p className="font-bold text-[#ED6439]">
+          The training covers areas such as:
+        </p>
 
-                <p>
-                  NMT's Bedside Assistant Training Course prepares
-                  individuals to provide safe and dignified care to older
-                  persons and people requiring assistance with daily living.
-                </p>
+        <ul className="space-y-2.5">
+          {[
+            "Understanding ageing",
+            "Personal hygiene and personal care",
+            "Nutrition",
+            "Mobility and positioning",
+            "Physiotherapy and exercise",
+            "Medication and basic medical care",
+            "Fall prevention",
+            "Dementia care",
+            "Communication",
+            "First aid",
+            "Infection prevention",
+            "Safety and emergency response",
+            "Professional conduct and caregiver responsibilities",
+          ].map((item) => (
+            <li key={item} className="flex items-start gap-2.5">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
 
-                <p className="font-semibold text-foreground">
-                  The programme combines classroom learning with practical,
-                  hands-on training.
-                </p>
-              </>
-            }
-            details={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  The training covers areas such as:
-                </p>
+        <p className="font-bold text-[#ED6439]">
+          Our larger goal
+        </p>
 
-                <ul className="space-y-2.5">
-                  {[
-                    "Understanding ageing",
-                    "Personal hygiene and personal care",
-                    "Nutrition",
-                    "Mobility and positioning",
-                    "Physiotherapy and exercise",
-                    "Medication and basic medical care",
-                    "Fall prevention",
-                    "Dementia care",
-                    "Communication",
-                    "First aid",
-                    "Infection prevention",
-                    "Safety and emergency response",
-                    "Professional conduct and caregiver responsibilities",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="font-bold text-[#ED6439]">
-                  Our larger goal
-                </p>
-
-                <p>
-                  To build a skilled and respected elder-care workforce and
-                  make caregiving a meaningful career.
-                </p>
-              </>
-            }
-          />
-        </div>
-
-
-        {/* ==================================================
-            2. DEMENTIA CARE TRAINING
-            ================================================== */}
-
-        <div
-          className="
-            flex
-            min-w-0
-            shrink-0
-            basis-full
-            snap-start
-            sm:basis-[calc((100%-24px)/2)]
-            lg:basis-[calc((100%-48px)/3)]
-          "
-        >
-          <ServiceCard
-            icon={Brain}
-            title="Dementia Care Training"
-            titleClassName="text-[#ED6439]"
-            image={dementiaCareImage}
-            cta="READ MORE"
-            preview={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  Building Dementia-Friendly Communities
-                </p>
-
-                <p>
-                  NMT conducts dementia-care training programmes for
-                  caregivers, healthcare professionals, students,
-                  organisations and community groups.
-                </p>
-
-                <p className="font-semibold text-foreground">
-                  Training focuses on practical knowledge, communication,
-                  person-centred care and caregiver well-being.
-                </p>
-              </>
-            }
-            details={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  Training focuses on:
-                </p>
-
-                <ul className="space-y-2.5">
-                  {[
-                    "Understanding dementia",
-                    "Communication",
-                    "Person-centred care",
-                    "Behavioural and psychological symptoms of dementia",
-                    "Activities and cognitive stimulation",
-                    "Personal care",
-                    "Nutrition",
-                    "Mobility and falls prevention",
-                    "Managing challenging situations",
-                    "Family support",
-                    "Caregiver well-being",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            }
-          />
-        </div>
-
-
-        {/* ==================================================
-            3. FAMILY CAREGIVER TRAINING
-            ================================================== */}
-
-        <div
-          className="
-            flex
-            min-w-0
-            shrink-0
-            basis-full
-            snap-start
-            sm:basis-[calc((100%-24px)/2)]
-            lg:basis-[calc((100%-48px)/3)]
-          "
-        >
-          <ServiceCard
-            icon={HeartHandshake}
-            title="Family Caregiver Training"
-            titleClassName="text-[#ED6439]"
-            image={familyCaregiverImage}
-            cta="READ MORE"
-            preview={
-              <>
-                <p>
-                  Family members are often the primary caregivers for people
-                  living with dementia.
-                </p>
-
-                <p>
-                  Dementia caregiving requires knowledge, patience, practical
-                  skills and understanding.
-                </p>
-
-                <p className="font-semibold text-foreground">
-                  NMT's family caregiver training helps families provide
-                  safer and more meaningful care.
-                </p>
-              </>
-            }
-            details={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  NMT's family caregiver training helps families:
-                </p>
-
-                <ul className="space-y-2.5">
-                  {[
-                    "Understand dementia",
-                    "Communicate more effectively",
-                    "Manage behavioural changes",
-                    "Provide safe personal care",
-                    "Prevent falls and accidents",
-                    "Support nutrition and mobility",
-                    "Create meaningful daily routines",
-                    "Manage caregiver stress",
-                    "Know when professional help is required",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p>
-                  Caring for the caregiver is also part of dementia care.
-                </p>
-              </>
-            }
-          />
-        </div>
-
-
-        {/* ==================================================
-            4. LIFESAVING SKILLS TRAINING
-            ================================================== */}
-
-        <div
-          className="
-            flex
-            min-w-0
-            shrink-0
-            basis-full
-            snap-start
-            sm:basis-[calc((100%-24px)/2)]
-            lg:basis-[calc((100%-48px)/3)]
-          "
-        >
-          <ServiceCard
-            icon={ShieldCheck}
-            title="Lifesaving Skills Training"
-            titleClassName="text-[#ED6439]"
-            image={lifesavingSkillsImage}
-            cta="READ MORE"
-            preview={
-              <>
-                <p>
-                  Older persons are particularly vulnerable to falls,
-                  cardiac emergencies and other sudden health events.
-                </p>
-
-                <p>
-                  NMT provides basic lifesaving and emergency-response
-                  training to caregivers, staff, students and others
-                  interested in lifesaving.
-                </p>
-              </>
-            }
-            details={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  Training includes:
-                </p>
-
-                <ul className="space-y-2.5">
-                  {[
-                    "Basic first aid",
-                    "Recognition of medical emergencies",
-                    "Cardiopulmonary resuscitation awareness",
-                    "Response to falls",
-                    "Choking emergencies",
-                    "Basic emergency preparedness",
-                    "When and how to seek professional medical help",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            }
-          />
-        </div>
-
-
-        {/* ==================================================
-            5. STUDENT INTERNSHIPS
-            ================================================== */}
-
-        <div
-          className="
-            flex
-            min-w-0
-            shrink-0
-            basis-full
-            snap-start
-            sm:basis-[calc((100%-24px)/2)]
-            lg:basis-[calc((100%-48px)/3)]
-          "
-        >
-          <ServiceCard
-            icon={HeartHandshake}
-            title="Student Internships"
-            titleClassName="text-[#ED6439]"
-            image={studentInternshipsImage}
-            cta="READ MORE"
-            preview={
-              <>
-                <p>
-                  NMT offers internship opportunities for students who want
-                  practical exposure to elder care, dementia care, social work,
-                  psychology, healthcare, community development, communications,
-                  technology and related fields.
-                </p>
-
-                <p className="font-bold text-[#ED6439]">
-                  We believe today's students can become tomorrow's leaders in age
-                  care.
-                </p>
-              </>
-            }
-            details={
-              <>
-                <p className="font-bold text-[#ED6439]">
-                  Interns gain experience through:
-                </p>
-
-                <ul className="space-y-2.5">
-                  {[
-                    "Field exposure",
-                    "Community programmes",
-                    "Dementia-care settings",
-                    "Research and documentation",
-                    "Awareness programmes",
-                    "Programme support",
-                    "Social-impact projects",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            }
-          />
-        </div>
-
+        <p>
+          To build a skilled and respected elder-care workforce and make
+          caregiving a meaningful career.
+        </p>
       </div>
+    </div>
+  </div>
+)}
+
+  {/* ==================================================
+      2. DEMENTIA CARE TRAINING
+      ================================================== */}
+
+  <div
+    className="
+      flex
+      min-w-0
+      shrink-0
+      basis-full
+      snap-start
+      sm:basis-[calc((100%-24px)/2)]
+      lg:basis-[calc((100%-48px)/3)]
+    "
+  >
+    <ServiceCard
+      icon={Brain}
+      title="Dementia Care Training"
+      titleClassName="text-[#ED6439]"
+      image={dementiaCareImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowDementiaCareTrainingModal(true)}
+      preview={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            Building Dementia-Friendly Communities
+          </p>
+
+          <p>
+            NMT conducts dementia-care training programmes for caregivers,
+            healthcare professionals, students, organisations and community
+            groups.
+          </p>
+
+          <p className="font-semibold text-foreground">
+            Training focuses on practical knowledge, communication,
+            person-centred care and caregiver well-being.
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            Training focuses on:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Understanding dementia",
+              "Communication",
+              "Person-centred care",
+              "Behavioural and psychological symptoms of dementia",
+              "Activities and cognitive stimulation",
+              "Personal care",
+              "Nutrition",
+              "Mobility and falls prevention",
+              "Managing challenging situations",
+              "Family support",
+              "Caregiver well-being",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      }
+    />
+  </div>
+
+{/* ==================================================
+    DEMENTIA CARE TRAINING MODAL
+    ================================================== */}
+{showDementiaCareTrainingModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 p-4"
+    onClick={() => setShowDementiaCareTrainingModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={() => setShowDementiaCareTrainingModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition-colors hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close modal"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-10">
+        <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Training Programme
+        </p>
+
+        <h2 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Dementia Care Training
+        </h2>
+
+        <span className="mt-4 block h-1 w-10 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-7 space-y-6 text-sm leading-7 text-[#526574]">
+        <div>
+          <p className="font-bold text-[#ED6439]">
+            Training focuses on:
+          </p>
+
+          <ul className="mt-4 space-y-3">
+            {[
+              "Understanding dementia",
+              "Communication",
+              "Person-centred care",
+              "Behavioural and psychological symptoms of dementia",
+              "Activities and cognitive stimulation",
+              "Personal care",
+              "Nutrition",
+              "Mobility and falls prevention",
+              "Managing challenging situations",
+              "Family support",
+              "Caregiver well-being",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowDementiaCareTrainingModal(false)}
+          className="rounded-xl bg-[#ED6439] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#D9542F]"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+  {/* ==================================================
+      3. FAMILY CAREGIVER TRAINING
+      ================================================== */}
+
+  <div
+    className="
+      flex
+      min-w-0
+      shrink-0
+      basis-full
+      snap-start
+      sm:basis-[calc((100%-24px)/2)]
+      lg:basis-[calc((100%-48px)/3)]
+    "
+  >
+    <ServiceCard
+      icon={HeartHandshake}
+      title="Family Caregiver Training"
+      titleClassName="text-[#ED6439]"
+      image={familyCaregiverImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowFamilyCaregiverModal(true)}
+      preview={
+        <>
+          <p>
+            Family members are often the primary caregivers for people
+            living with dementia.
+          </p>
+
+          <p>
+            Dementia caregiving requires knowledge, patience, practical
+            skills and understanding.
+          </p>
+
+          <p className="font-semibold text-foreground">
+            NMT's family caregiver training helps families provide safer
+            and more meaningful care.
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            NMT's family caregiver training helps families:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Understand dementia",
+              "Communicate more effectively",
+              "Manage behavioural changes",
+              "Provide safe personal care",
+              "Prevent falls and accidents",
+              "Support nutrition and mobility",
+              "Create meaningful daily routines",
+              "Manage caregiver stress",
+              "Know when professional help is required",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p>
+            Caring for the caregiver is also part of dementia care.
+          </p>
+        </>
+      }
+    />
+  </div>
+
+
+  {/* ==================================================
+    FAMILY CAREGIVER TRAINING MODAL
+    ================================================== */}
+{showFamilyCaregiverModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 p-4"
+    onClick={() => setShowFamilyCaregiverModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={() => setShowFamilyCaregiverModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition-colors hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close modal"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-10">
+        <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Training Programme
+        </p>
+
+        <h2 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Family Caregiver Training
+        </h2>
+
+        <span className="mt-4 block h-1 w-10 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-7 space-y-6 text-sm leading-7 text-[#526574]">
+        <div>
+          <p className="font-bold text-[#ED6439]">
+            NMT's family caregiver training helps families:
+          </p>
+
+          <ul className="mt-4 space-y-3">
+            {[
+              "Understand dementia",
+              "Communicate more effectively",
+              "Manage behavioural changes",
+              "Provide safe personal care",
+              "Prevent falls and accidents",
+              "Support nutrition and mobility",
+              "Create meaningful daily routines",
+              "Manage caregiver stress",
+              "Know when professional help is required",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p className="border-t border-[#263746]/10 pt-5 font-semibold text-[#263746]">
+          Caring for the caregiver is also part of dementia care.
+        </p>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowFamilyCaregiverModal(false)}
+          className="rounded-xl bg-[#ED6439] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#D9542F]"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+  {/* ==================================================
+      4. LIFESAVING SKILLS TRAINING
+      ================================================== */}
+
+  <div
+    className="
+      flex
+      min-w-0
+      shrink-0
+      basis-full
+      snap-start
+      sm:basis-[calc((100%-24px)/2)]
+      lg:basis-[calc((100%-48px)/3)]
+    "
+  >
+    <ServiceCard
+      icon={ShieldCheck}
+      title="Lifesaving Skills Training"
+      titleClassName="text-[#ED6439]"
+      image={lifesavingSkillsImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowLifesavingSkillsModal(true)}
+      preview={
+        <>
+          <p>
+            Older persons are particularly vulnerable to falls, cardiac
+            emergencies and other sudden health events.
+          </p>
+
+          <p>
+            NMT provides basic lifesaving and emergency-response training
+            to caregivers, staff, students and others interested in
+            lifesaving.
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            Training includes:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Basic first aid",
+              "Recognition of medical emergencies",
+              "Cardiopulmonary resuscitation awareness",
+              "Response to falls",
+              "Choking emergencies",
+              "Basic emergency preparedness",
+              "When and how to seek professional medical help",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      }
+    />
+  </div>
+
+  {/* ==================================================
+    LIFESAVING SKILLS TRAINING MODAL
+    ================================================== */}
+{showLifesavingSkillsModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 p-4"
+    onClick={() => setShowLifesavingSkillsModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={() => setShowLifesavingSkillsModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition-colors hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close modal"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-10">
+        <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Training Programme
+        </p>
+
+        <h2 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Lifesaving Skills Training
+        </h2>
+
+        <span className="mt-4 block h-1 w-10 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-7 text-sm leading-7 text-[#526574]">
+        <p className="font-bold text-[#ED6439]">
+          Training includes:
+        </p>
+
+        <ul className="mt-4 space-y-3">
+          {[
+            "Basic first aid",
+            "Recognition of medical emergencies",
+            "Cardiopulmonary resuscitation awareness",
+            "Response to falls",
+            "Choking emergencies",
+            "Basic emergency preparedness",
+            "When and how to seek professional medical help",
+          ].map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3"
+            >
+              <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowLifesavingSkillsModal(false)}
+          className="rounded-xl bg-[#ED6439] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#D9542F]"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+  {/* ==================================================
+      5. STUDENT INTERNSHIPS
+      ================================================== */}
+
+  <div
+    className="
+      flex
+      min-w-0
+      shrink-0
+      basis-full
+      snap-start
+      sm:basis-[calc((100%-24px)/2)]
+      lg:basis-[calc((100%-48px)/3)]
+    "
+  >
+    <ServiceCard
+      icon={HeartHandshake}
+      title="Student Internships"
+      titleClassName="text-[#ED6439]"
+      image={studentInternshipsImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowStudentInternshipsModal(true)}
+      preview={
+        <>
+          <p>
+            NMT offers internship opportunities for students who want
+            practical exposure to elder care, dementia care, social work,
+            psychology, healthcare, community development, communications,
+            technology and related fields.
+          </p>
+
+          <p className="font-bold text-[#ED6439]">
+            We believe today's students can become tomorrow's leaders in
+            age care.
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            Interns gain experience through:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Field exposure",
+              "Community programmes",
+              "Dementia-care settings",
+              "Research and documentation",
+              "Awareness programmes",
+              "Programme support",
+              "Social-impact projects",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5">
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      }
+    />
+  </div>
+
+
+  {/* ==================================================
+    STUDENT INTERNSHIPS MODAL
+    ================================================== */}
+{showStudentInternshipsModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 p-4"
+    onClick={() => setShowStudentInternshipsModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={() => setShowStudentInternshipsModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition-colors hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close modal"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-10">
+        <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#ED6439]">
+          Training Programme
+        </p>
+
+        <h2 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Student Internships
+        </h2>
+
+        <span className="mt-4 block h-1 w-10 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-7 space-y-6 text-sm leading-7 text-[#526574]">
+        <div>
+          <p className="font-bold text-[#ED6439]">
+            Interns gain experience through:
+          </p>
+
+          <ul className="mt-4 space-y-3">
+            {[
+              "Field exposure",
+              "Community programmes",
+              "Dementia-care settings",
+              "Research and documentation",
+              "Awareness programmes",
+              "Programme support",
+              "Social-impact projects",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowStudentInternshipsModal(false)}
+          className="rounded-xl bg-[#ED6439] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#D9542F]"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+</div>
     </div>
 
 
@@ -1210,11 +1617,35 @@ function TrainingCarousel() {
    ============================================================ */
 
 function ServicesPage() {
-    const [sandhyaExpanded, setSandhyaExpanded] = useState(false)
-    const [showEldersMore, setShowEldersMore] = useState(false);
-    
-  const [nationalHelplineExpanded, setNationalHelplineExpanded] =
-  useState(false)
+    const [showSandhyaKiranaModal, setShowSandhyaKiranaModal] =
+  useState(false);
+
+const [showEldersHelplineModal, setShowEldersHelplineModal] =
+  useState(false);
+
+const [showSandhyaSurakshaModal, setShowSandhyaSurakshaModal] =
+  useState(false);
+
+const [nationalHelplineExpanded, setNationalHelplineExpanded] =
+  useState(false);
+
+const [showMobileActiveAgeingModal, setShowMobileActiveAgeingModal] =
+  useState(false);
+
+const [showRRTCModal, setShowRRTCModal] =
+  useState(false);
+
+const [showVayoAlambanaModal, setShowVayoAlambanaModal] =
+  useState(false);
+
+const [showJobs60PlusModal, setShowJobs60PlusModal] = useState(false);
+
+const [showDigitalLiteracyModal, setShowDigitalLiteracyModal] =
+  useState(false);
+
+  const [showCybersecurityModal, setShowCybersecurityModal] =
+  useState(false);
+
   return (
   <SiteLayout>
     <div className="w-full min-w-0 overflow-x-clip">
@@ -1252,34 +1683,98 @@ function ServicesPage() {
       {/* Very light overlay only for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/25 via-[#14212B]/8 to-transparent" />
 
-      {/* Content */}
+      {/* Bottom readability gradient */}
       <div
         className="
-          relative z-10 mx-auto flex h-full w-full
-          max-w-12xl flex-col justify-center
-          px-5 py-6
-          sm:px-8 sm:py-8
-          md:px-10 md:py-10
-          lg:px-14 lg:py-12
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-[150px]
+          bg-gradient-to-t
+          from-[#17232B]/40
+          via-[#17232B]/15
+          to-transparent
+
+          sm:h-[180px]
+          md:h-[200px]
+          lg:h-[220px]
+        "
+      />
+
+      {/* ======================================================
+          HERO CONTENT
+      ====================================================== */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          bottom-0
+          z-10
+          w-full
+          px-5
+          pb-9
+
+          sm:px-8
+          sm:pb-11
+
+          md:px-10
+          md:pb-12
+
+          lg:px-14
+          lg:pb-14
         "
       >
-        {/* Heading */}
-        <h1
+        <div
           className="
-            mt-4 w-full max-w-none
-            whitespace-nowrap
-            font-display font-extrabold
-            leading-[1.08]
-            tracking-[-0.035em]
-            text-white
-            text-[2rem]
-            sm:text-[2.5rem]
-            md:text-[3rem]
-            lg:text-[3.4rem]
+            flex
+            w-full
+            items-start
+            gap-3
+
+            sm:gap-5
           "
         >
-          Our Services
-        </h1>
+          {/* Orange vertical accent line */}
+          <span
+            className="
+              mt-1
+              h-[42px]
+              w-[3px]
+              shrink-0
+              rounded-full
+              bg-[#ED6439]
+
+              sm:h-[48px]
+              sm:w-1
+
+              md:h-[54px]
+
+              lg:h-[60px]
+            "
+          />
+
+          {/* Heading */}
+          <h1
+            className="
+              w-full
+              whitespace-nowrap
+              font-display
+              font-extrabold
+              leading-[1.08]
+              tracking-[-0.035em]
+              text-white
+              drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)]
+
+              text-[2rem]
+              sm:text-[2.5rem]
+              md:text-[3rem]
+              lg:text-[3.4rem]
+            "
+          >
+            Our Services
+          </h1>
+        </div>
       </div>
     </div>
   </Reveal>
@@ -1967,138 +2462,511 @@ function ServicesPage() {
       </p>
     </div>
 
-    {/* ==================================================
-        RESIDENTIAL CARE CENTRES
-        ================================================== */}
-    <div className="mt-7 flex min-w-0 gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
+    {/* ============================================================
+    RESIDENTIAL CARE CENTRES
+    ============================================================ */}
 
-      {[
-        {
-          name: "Nightingales Centre for Ageing and Alzheimer's – Kasturinagar",
-          location: "Kasturinagar, Bengaluru",
-          images: [kasturinagarFacilityImage, kasturinagarElderImage],
-          usps: [
-            "Multi-disciplinary team of doctors, psychiatrists, psychologists & nurses",
-            "Conveniently located within city limits",
-            "Registered under the Mental Healthcare Act, 2017",
-          ],
-          body: "Our 97-bed facility, established in 2010, provides specialised dementia care in an elder-friendly environment. A multidisciplinary team comprising psychiatrists, doctors, psychologists, physiotherapists, nurses and specially trained caregivers provides round-the-clock care. The facility also has a step-down ward to manage chronic and minor medical conditions, helping minimise avoidable hospitalisation.",
-        },
-        {
-          name: "ETCM Nightingales Dementia Care Centre – Kolar",
-          location: "Bangarpet Road, Kolar",
-          images: [kolarFacilityImage, kolarElderImage],
-          usps: [
-            "Affordable residential care option",
-            "An hour from KR Puram, Bengaluru",
-            "Registered under the Mental Healthcare Act, 2017",
-          ],
-          body: "A 50-bed facility located within a missionary hospital campus, providing access to round-the-clock medical support. The centre offers specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care, a safe elder-friendly environment and telemedicine-supported clinical oversight from NMT's specialist team.",
-        },
-        {
-          name: "Nightingales Trust Tanya Mathias Centre – Kothanur",
-          location: "Kothanur, Bengaluru",
-          images: [kothanurFacilityImage, kothanurElderImage],
-          usps: [
-            "Exclusive for women",
-            "Peaceful, homely environment",
-            "Registered under the Mental Healthcare Act, 2017",
-          ],
-          body: "A 25-bed residential facility exclusively for women. The centre offers a peaceful, homely environment, two- and three-sharing rooms, specialised dementia care, care for elders with stroke and Parkinson's disease, palliative care and clinical oversight from NMT's specialist team through telemedicine.",
-        },
-      ].map((centre) => (
-  <article
-  key={centre.name}
-  className="
-  !flex
-  !w-full
-  !min-w-full
-  !max-w-full
-  !shrink-0
-  !grow-0
-  snap-start
-  flex-col
-  overflow-hidden
-  rounded-2xl
-  border
-  border-[#ED6439]/15
-  bg-white
-  shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+{(() => {
+  const residentialCentres = [
+    {
+      name: "Nightingales Centre for Ageing and Alzheimer's – Kasturinagar",
+      location: "Kasturinagar, Bengaluru",
+      images: [kasturinagarFacilityImage, kasturinagarElderImage],
 
-  sm:!w-[calc(50%-10px)]
-  sm:!min-w-[calc(50%-10px)]
-  sm:!max-w-[calc(50%-10px)]
+      usps: [
+        "Located at Kasturinagar, Bengaluru, 6 km from MG road",
+        "Specialised residential dementia care",
+        "24-hour supervision and support",
+        "Multidisciplinary clinical care",
+        "Person-centred care planning",
+        // "Step-Down Medical Ward",
+        "Non-pharmacological dementia care",
+        "Dementia-friendly infrastructure",
+        "Meaningful activities and social engagement",
+        "Mobility and functional support",
+        "Nutritious, age-appropriate meals",
+        "Family engagement and regular communication",
+        "Safe, secure and nurturing surroundings",
+        "Step-Down Medical Ward to minimise hospitalisation and cost of care",
+        "Registered under the Mental Healthcare Act, 2017",
+      ],
 
-  lg:!w-[calc(33.333%-13.333px)]
-  lg:!min-w-[calc(33.333%-13.333px)]
-  lg:!max-w-[calc(33.333%-13.333px)]
-"
-      >
+      body: [
+        `NCAA is a specialised residential dementia care facility established in 2010, offering comprehensive, round-the-clock care for older persons living with dementia. The centre provides a safe, secure and supportive environment where residents receive care based on their individual abilities, routines, preferences, medical needs and stage of dementia. A multidisciplinary team of psychiatrists, physicians, psychologists, physiotherapists, nurses, trained dementia caregivers, care coordinators and activity staff works together to provide coordinated care and regularly review each resident’s changing needs.`,
 
-          {/* ==================================================
-              RESPONSIVE CARD IMAGE WITH LOCATION BADGE & SHUFFLE
-              ================================================== */}
+        `At NCAA, residential care goes beyond supervision and assistance with daily activities. Our approach focuses on person-centred dementia care, supporting residents to maintain independence and dignity wherever possible. Daily life includes meaningful activities such as music and reminiscence, cognitive stimulation, exercise, physiotherapy, creative activities, gardening, social interaction and cultural celebrations. Residents also have access to safe outdoor spaces and a dementia-friendly environment designed to support mobility, orientation, comfort and engagement.`,
+
+        `The centre also provides a Step-Down Medical Ward for residents who require medical observation, nursing care or management of appropriate minor and chronic medical conditions but do not require the intensive facilities of an acute-care hospital. This allows suitable medical concerns to be managed within a familiar dementia-friendly setting and minimise cost of care, while residents can be referred to a hospital whenever specialised investigations or a higher level of medical care are required.`,
+
+        `Families remain an important part of the care journey. Their understanding of the resident's history, personality, preferences and routines helps the care team develop a more personalised approach.`,
+
+        `With specialised dementia care, 24-hour support, multidisciplinary clinical care, meaningful engagement and a supportive living environment, NCAA aims to provide not simply a place to stay, but a place where people living with dementia can continue to live with safety, dignity, connection and purpose.`,
+      ],
+    },
+
+    {
+      name: "ETCM – Nightingales Trust Dementia Care Centre",
+      location: "Bangarpet Road, Kolar",
+      images: [kolarFacilityImage, kolarElderImage],
+
+      usps: [
+        "Located within a hospital campus in Kolar, approximately 1 hour drive from KR Puram, Bengaluru",
+        "50-bed residential care facility",
+        "Affordable residential care option - general ward approximately 36% lower in cost than the general ward at Nightingales Centre for Ageing & Alzheimer's",
+        "24-hour access to hospital-based medical support",
+        "Dementia care and support for older persons with complex care needs",
+        "Care for elders recovering from stroke or living with Parkinson’s disease",
+        "Palliative and long-term supportive care",
+        "NMT specialist support through telemedicine",
+        "Registered under the Mental Healthcare Act, 2017",
+      ],
+
+      body: [
+        `Located within a missionary hospital campus, ETCM – Nightingales Trust Dementia Care Centre provides affordable, professionally supervised residential care for older persons who require assistance with daily living, medical support, rehabilitation, palliative care or ongoing supervision. The centre supports older persons living with dementia as well as those requiring post-hospitalisation care, post-stroke support, care for Parkinson's disease and assistance due to physical, cognitive or social vulnerabilities.`,
+
+        `At ETCM – Nightingales Trust Dementia Care Centre, residential care goes beyond accommodation and basic supervision. Care is planned around the individual needs, abilities, health conditions and level of independence of each resident. A multidisciplinary team comprising psychiatrists, medical social workers, nurses, trained caregivers and support staff provides assistance with personal care, medication, nutrition, mobility, activities of daily living and emotional wellbeing. Residents can also benefit from meaningful engagement and supportive routines designed to promote comfort, dignity and independence wherever possible. The centre's elder-friendly environment, with well-ventilated wards and natural light, provides a safe and comfortable setting for residents requiring different levels of care.`,
+
+        `Being located within a hospital campus provides ETCM with an important clinical advantage. Residents can receive timely medical assessment and support when required, while those needing specialised investigations or a higher level of medical care can be referred appropriately. Doctors from the hospital extend their support when required, while the experts at Nightingales Centre for Ageing and Alzheimer's provides additional dementia and elder-care expertise. Through telemedicine and digital communication, NMT specialists can remotely review residents, discuss emerging concerns and guide the ETCM care team, helping extend specialised clinical support even when specialists are not physically present at the centre.`,
+
+        `ETCM – Nightingales Trust Dementia Care Centre also aims to make professionally managed residential care more accessible and affordable for families. The centre's hospital-linked setting, care model and technology-enabled specialist supervision help provide care at a lower cost, with the general ward being approximately 36% lower in cost than the general ward at Nightingales Centre for Ageing & Alzheimer's (NCAA). By bringing together residential care, nursing support, hospital-based medical assistance, specialist dementia expertise and technology-enabled supervision, ETCM provides families with a supportive alternative when caring for an older person at home becomes increasingly difficult. The centre aims to provide not simply a place to stay, but a safe and compassionate environment where older persons can receive the care they need with dignity, comfort and continuity.`,
+      ],
+    },
+
+    {
+      name: "Nightingales Trust – Tanya Mathias Elder Care Centre",
+      location: "Kothanur, Bengaluru",
+      images: [kothanurFacilityImage, kothanurElderImage],
+
+      usps: [
+        "Residential care exclusively for older women",
+        "Located within Bengaluru city limits",
+        "Peaceful, green and homely environment",
+        "Dementia and age-related care",
+        "Post-hospitalisation and post-stroke care",
+        "Support for Parkinson’s disease",
+        "Palliative and supportive care",
+        "24-hour care and supervision",
+        "Three-bedded shared accommodation",
+        "Specialist support from Nightingales Centre for Ageing and Alzheimer's",
+        "Registered under the Mental Healthcare Act, 2017",
+      ],
+
+      body: [
+        `Nightingales Trust – Tanya Mathias Elder Care Centre is a residential care facility exclusively for older women who require care, assistance and support in their daily lives. Located within Bengaluru city limits, the centre provides a peaceful and homely environment where residents can receive compassionate care while continuing to live with dignity, comfort and a sense of belonging. Surrounded by greenery and away from the noise and pollution of busy city life, the centre offers a calm setting for older women who require residential care, medical supervision or assistance with everyday activities.`,
+
+        `At Tanya Mathias Elder Care Centre, care is designed around the individual resident, taking into consideration her life story, personality, preferences, routines, abilities and changing care needs.`,
+
+        `The centre supports older women living with dementia and other age-related conditions, as well as those requiring post-hospitalisation care, post-stroke management, support for Parkinson's disease, palliative care or assistance with activities of daily living.`,
+
+        `Residents receive support with personal care, mobility, nutrition, medication management and everyday activities according to their individual requirements, while being encouraged to maintain independence wherever possible.`,
+
+        `The centre is supported by doctors, nurses, trained caregivers and support staff. As part of the Nightingales Medical Trust network, the centre also benefits from the organisation's experience in dementia and elder care. Specialists and experienced professionals from NMT's main centre provide guidance and supervision through technology and telemedicine, enabling the care team to discuss changing needs, seek specialist advice and strengthen continuity of care.`,
+
+        `Families also remain an important part of the care journey, sharing their knowledge of the resident's history, preferences and routines to help create a more personalised care experience.`,
+
+        `The centre's green surroundings, natural environment and peaceful setting create a comfortable atmosphere where residents can rest, interact with others and participate in meaningful activities at their own pace.`,
+
+        `Three-bedded rooms encourage companionship and social interaction while providing professionally supervised care. Shared accommodation also helps make residential elder care more accessible and affordable.`,
+
+        `The cost of care is approximately 17% lower than the general ward at Nightingales Centre for Ageing & Alzheimer's (NCAA), allowing families to access professionally managed residential care while benefiting from the experience and specialist support of Nightingales Medical Trust.`,
+
+        `For families, finding the right care for an older woman can be challenging, particularly when she requires assistance throughout the day or can no longer live independently. Tanya Mathias Elder Care Centre provides a supportive alternative where older women can receive 24-hour assistance, professional supervision, medical support and compassionate care in a peaceful residential environment. Our aim is to create more than a place to stay, but a safe and caring home where older women can continue to experience dignity, comfort, companionship and a sense of belonging.`,
+      ],
+    },
+  ];
+
+  const [selectedCentre, setSelectedCentre] = useState<number | null>(null);
+
+  const selectedCentreData =
+    selectedCentre !== null
+      ? residentialCentres[selectedCentre]
+      : null;
+
+  return (
+    <section className="mt-10">
+
+      {/* ============================================================
+          SECTION HEADING
+          ============================================================ */}
+
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#E15925]">
+            Our Facilities
+          </p>
+
+          <h4 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Residential Care Centres
+          </h4>
+
+          <div className="mt-3 h-1 w-12 bg-[#ED6439]" />
+        </div>
+      </div>
+
+      {/* ============================================================
+          THREE CARDS — ALL VISIBLE
+          ============================================================ */}
+
+      <div className="mt-7 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        {residentialCentres.map((item, centreIndex) => (
+          <Reveal
+            key={item.name}
+            delay={centreIndex * 100}
+          >
+            <article
+              className="
+                group
+                flex
+                h-full
+                min-w-0
+                flex-col
+                overflow-hidden
+                rounded-2xl
+                border
+                border-[#ED6439]/15
+                bg-white
+                shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-[0_24px_55px_-20px_rgba(70,45,10,0.20)]
+              "
+            >
+
+              {/* ======================================================
+                  IMAGE
+                  ====================================================== */}
+
+              <div
+                className="
+                  relative
+                  h-[300px]
+                  w-full
+                  overflow-hidden
+                  bg-[#F6F1EC]
+                  sm:h-[340px]
+                  lg:h-[360px]
+                "
+              >
+                <ImageShuffle
+                  images={item.images}
+                  alt={item.name}
+                />
+
+                <div
+                  className="
+                    absolute
+                    bottom-3
+                    left-3
+                    z-20
+                    rounded-lg
+                    bg-[#E15925]/95
+                    px-3
+                    py-1.5
+                    text-[11px]
+                    font-bold
+                    text-white
+                    shadow-lg
+                    sm:px-4
+                    sm:py-2
+                    sm:text-xs
+                  "
+                >
+                  📍 {item.location}
+                </div>
+              </div>
+
+              {/* ======================================================
+                  CARD CONTENT
+                  ====================================================== */}
+
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+
+                <h5
+                  className="
+                    font-display
+                    text-xl
+                    font-extrabold
+                    leading-snug
+                    text-[#263746]
+                  "
+                >
+                  {item.name}
+                </h5>
+
+                {/* ==================================================
+                    HIGHLIGHT POINTS
+                    ================================================== */}
+
+                <ul className="mt-4 space-y-2 border-y border-[#263746]/10 py-4">
+                  {item.usps.map((usp) => (
+                    <li
+                      key={usp}
+                      className="
+                        flex
+                        items-start
+                        gap-2
+                        text-xs
+                        font-semibold
+                        leading-5
+                        text-[#E15925]
+                        sm:text-[13px]
+                      "
+                    >
+                      <span
+                        className="
+                          mt-[7px]
+                          h-1.5
+                          w-1.5
+                          shrink-0
+                          rounded-full
+                          bg-[#E15925]
+                        "
+                      />
+
+                      <span>{usp}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* ==================================================
+                    READ MORE
+                    ================================================== */}
+
+                <div className="mt-auto pt-5">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCentre(centreIndex)}
+                    className="
+                      inline-flex
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-[#E15925]
+                      px-5
+                      py-2.5
+                      text-xs
+                      font-bold
+                      text-[#E15925]
+                      transition-all
+                      duration-300
+                      hover:bg-[#E15925]
+                      hover:text-white
+                      sm:text-sm
+                    "
+                  >
+                    Read More ↓
+                  </button>
+                </div>
+
+              </div>
+            </article>
+          </Reveal>
+        ))}
+
+      </div>
+
+      {/* ============================================================
+          FULL CONTENT POPUP
+          ============================================================ */}
+
+      {selectedCentreData && (
+        <div
+          className="
+            fixed
+            inset-0
+            z-[200]
+            flex
+            items-center
+            justify-center
+            bg-[#17232B]/70
+            p-4
+            backdrop-blur-sm
+            sm:p-6
+          "
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedCentreData.name}
+          onClick={() => setSelectedCentre(null)}
+        >
           <div
             className="
               relative
+              flex
+              max-h-[90vh]
               w-full
-              h-64
-              sm:h-72
+              max-w-3xl
+              flex-col
               overflow-hidden
-              bg-[#F6F1EC]
+              rounded-2xl
+              bg-white
+              shadow-[0_30px_100px_rgba(0,0,0,0.30)]
+              sm:rounded-3xl
             "
+            onClick={(event) => event.stopPropagation()}
           >
-            <ImageShuffle images={centre.images} alt={centre.name} />
-            <div className="absolute bottom-3 left-3 z-10 rounded bg-[#E15925]/90 px-3 py-1.5 text-[11px] font-bold text-white shadow backdrop-blur-sm">
-              📍 {centre.location}
+
+            {/* ======================================================
+                POPUP HEADER
+                ====================================================== */}
+
+            <div
+              className="
+                shrink-0
+                border-b
+                border-[#263746]/10
+                bg-[#FFF7EF]
+                px-5
+                py-5
+                sm:px-7
+                sm:py-6
+              "
+            >
+              <div className="flex items-start justify-between gap-4">
+
+                <div className="min-w-0 pr-2">
+
+                  <p
+                    className="
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-[0.18em]
+                      text-[#E15925]
+                    "
+                  >
+                    Residential Care Centre
+                  </p>
+
+                  <h5
+                    className="
+                      mt-2
+                      font-display
+                      text-xl
+                      font-extrabold
+                      leading-snug
+                      text-[#263746]
+                      sm:text-2xl
+                    "
+                  >
+                    {selectedCentreData.name}
+                  </h5>
+
+                  <p className="mt-2 text-sm font-semibold text-[#526574]">
+                    📍 {selectedCentreData.location}
+                  </p>
+
+                </div>
+
+                {/* CLOSE BUTTON */}
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedCentre(null)}
+                  aria-label="Close"
+                  className="
+                    grid
+                    h-10
+                    w-10
+                    shrink-0
+                    place-items-center
+                    rounded-full
+                    border
+                    border-[#263746]/10
+                    bg-white
+                    text-[#263746]
+                    shadow-sm
+                    transition-all
+                    duration-300
+                    hover:bg-[#E15925]
+                    hover:text-white
+                  "
+                >
+                  <X className="h-5 w-5" strokeWidth={2.2} />
+                </button>
+
+              </div>
             </div>
-          </div>
 
-          {/* ==================================================
-              CARD CONTENT
-              ================================================== */}
-          <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+            {/* ======================================================
+                POPUP CONTENT
+                ====================================================== */}
 
-            <h5
+            <div
               className="
-                break-words
-                font-display
-                text-lg
-                font-extrabold
-                leading-snug
-                text-[#263746]
+                overflow-y-auto
+                px-5
+                py-6
+                sm:px-7
+                sm:py-7
               "
             >
-              {centre.name}
-            </h5>
+              <div className="space-y-5">
 
-            <ul className="mt-3 space-y-1.5 border-y border-[#263746]/10 py-3 text-xs font-semibold text-[#ED6439]">
-              {centre.usps.map((usp) => (
-                <li key={usp} className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                  <span>{usp}</span>
-                </li>
-              ))}
-            </ul>
+                {selectedCentreData.body.map((paragraph, index) => (
+                  <p
+                    key={`${selectedCentreData.name}-paragraph-${index}`}
+                    className="
+                      text-[13.5px]
+                      leading-7
+                      text-muted-foreground
+                      sm:text-sm
+                      sm:leading-7
+                    "
+                  >
+                    {paragraph}
+                  </p>
+                ))}
 
-            <p
+              </div>
+            </div>
+
+            {/* ======================================================
+                POPUP FOOTER
+                ====================================================== */}
+
+            <div
               className="
-                mt-4
-                break-words
-                text-[13.5px]
-                leading-[1.75]
-                text-muted-foreground
-                sm:text-[14px]
+                shrink-0
+                border-t
+                border-[#263746]/10
+                bg-white
+                px-5
+                py-4
+                sm:px-7
               "
             >
-              {centre.body}
-            </p>
+              <button
+                type="button"
+                onClick={() => setSelectedCentre(null)}
+                className="
+                  w-full
+                  rounded-full
+                  bg-[#E15925]
+                  px-5
+                  py-3
+                  text-sm
+                  font-bold
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-[#C94F20]
+                "
+              >
+                Close
+              </button>
+            </div>
 
           </div>
-        </article>
-      ))}
-
-    </div>
+        </div>
+      )}
+    </section>
+  );
+})()}
 
     {/* ==================================================
         RESIDENTIAL-CARE PHILOSOPHY
@@ -2510,7 +3378,7 @@ function ServicesPage() {
               </div>
 
               {/* CONTENT */}
-              <div className="flex flex-col justify-center lg:py-5">
+              <div  id="why-choose-nmt" className="flex flex-col justify-center lg:py-5">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ED6439] sm:text-sm">
                   Why Choose Nightingales Medical Trust?
                 </p>
@@ -2879,243 +3747,237 @@ function ServicesPage() {
         {/* ==================================================
             READ MORE
             ================================================== */}
-        <details className="group mt-6">
-
-          <summary
-            className="
-              flex
-              cursor-pointer
-              list-none
-              items-center
-              gap-2
-              border-0
-              bg-transparent
-              text-[12px]
-              font-bold
-              text-[#ED6439]
-              outline-none
-              focus:outline-none
-              focus-visible:outline-none
-              select-none
-              sm:text-[13px]
-            "
-          >
-            <span className="group-open:hidden">
-              READ MORE
-            </span>
-
-            <span className="hidden group-open:inline">
-              READ LESS
-            </span>
-
-            <ArrowUpRight
-              className="
-                h-4
-                w-4
-                transition-transform
-                duration-300
-                group-open:rotate-180
-              "
-            />
-          </summary>
-
-          {/* ==================================================
-              EXPANDED CONTENT
-              ONLY THIS SIDE GROWS
-              ================================================== */}
-          <div className="mt-6 border-t border-[#ED6439]/15 pt-6">
-
-            <h4
-              className="
-                font-display
-                text-lg
-                font-extrabold
-                text-[#263746]
-                sm:text-xl
-              "
-            >
-              WHO CAN BE ADMITTED?
-            </h4>
-
-            <p
-              className="
-                mt-4
-                text-[13.5px]
-                leading-[1.75]
-                text-muted-foreground
-                sm:text-[14.5px]
-              "
-            >
-              This facility is open for elderly women above 60 years who are
-              deserted by their families. Elderly women missing or
-              accidentally separated from families can also use the facility
-              as a transit or short stay home until contact is established
-              with family.
-            </p>
-
-            <p className="mt-5 font-semibold text-[#263746]">
-              All services provided here are free of cost.
-            </p>
-
-            <p
-              className="
-                mt-5
-                text-[13.5px]
-                leading-[1.75]
-                text-muted-foreground
-                sm:text-[14.5px]
-              "
-            >
-              NMT depends on socially conscious persons and organisations to
-              support the work done at Nightingales Sandhya Suraksha.
-            </p>
-
-            {/* VOLUNTEER */}
-          <div
-  id="volunteer"
-  className="
-    mt-6
-    border-t
-    border-[#ED6439]/15
-    pt-5
-    sm:mt-7
-    sm:pt-6
-    scroll-mt-24
-  "
+        <button
+  type="button"
+  onClick={() => setShowSandhyaSurakshaModal(true)}
+  className="mt-6 inline-flex items-center gap-2 border-0 bg-transparent text-[12px] font-bold text-[#ED6439] outline-none transition-all duration-300 hover:gap-3 sm:text-[13px]"
 >
-              <h4
-                className="
-                  font-display
-                  text-base
-                  font-extrabold
-                  text-[#263746]
-                  sm:text-lg
-                "
-              >
-                Volunteer Your Time ....
-              </h4>
-
-              <p
-                className="
-                  mt-3
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                There are many opportunities you as an individual or a
-                corporate team can touch the lives of the elders at this
-                centre.
-              </p>
-
-              <Link
-                to="/get-involved"
-                className="
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            {/* DONATE */}
-            <div
-              className="
-                mt-6
-                border-t
-                border-[#ED6439]/15
-                pt-5
-                sm:mt-7
-                sm:pt-6
-              "
-            >
-              <h4
-                className="
-                  font-display
-                  text-base
-                  font-extrabold
-                  text-[#263746]
-                  sm:text-lg
-                "
-              >
-                Donate Your Resources
-              </h4>
-
-              <p
-                className="
-                  mt-3
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                Your contributions can help feed the elderly and organise
-                medical camps for elders here.
-              </p>
-
-              {/* <Link
-                to="/get-involved"
-                className="
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight className="h-4 w-4" />
-              </Link> */}
-            </div>
-
-            {/* CONTACT */}
-            <Link
-              to="/contact"
-              className="
-                mt-6
-                inline-flex
-                max-w-full
-                items-center
-                justify-center
-                gap-2
-                bg-[#ED6439]
-                px-5
-                py-3
-                text-center
-                text-[12px]
-                font-bold
-                text-white
-                transition-all
-                hover:-translate-y-0.5
-                hover:bg-[#d95730]
-                sm:mt-7
-                sm:text-[13px]
-              "
-            >
-              CONTACT US
-              <ArrowUpRight className="h-4 w-4 shrink-0" />
-            </Link>
-
-          </div>
-        </details>
+  READ MORE
+  <ArrowUpRight className="h-4 w-4" />
+</button>
 
       </div>
     </div>
   </div>
 </Reveal>
+
+
+{/* ======================================================
+    SANDHYA SURAKSHA MODAL
+    ====================================================== */}
+
+{showSandhyaSurakshaModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowSandhyaSurakshaModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowSandhyaSurakshaModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Header */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Care for Marginalized Elders
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Sandhya Suraksha
+          </h3>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <div>
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              WHO CAN BE ADMITTED?
+            </h4>
+
+            <p className="mt-3">
+              This facility is open for elderly women above 60 years who are
+              deserted by their families. Elderly women missing or accidentally
+              separated from families can also use the facility as a transit or
+              short stay home until contact is established with family.
+            </p>
+          </div>
+
+          <p className="font-semibold text-[#263746]">
+            All services provided here are free of cost.
+          </p>
+
+          <p>
+            NMT depends on socially conscious persons and organisations to
+            support the work done at Nightingales Sandhya Suraksha.
+          </p>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Volunteer Your Time ....
+            </h4>
+
+            <p className="mt-3">
+              There are many opportunities you as an individual or a corporate
+              team can touch the lives of the elders at this centre.
+            </p>
+
+            <Link
+              to="/get-involved"
+              onClick={() => setShowSandhyaSurakshaModal(false)}
+              className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+            >
+              READ MORE
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Donate Your Resources
+            </h4>
+
+            <p className="mt-3">
+              Your contributions can help feed the elderly and organise
+              medical camps for elders here.
+            </p>
+          </div>
+
+          <Link
+            to="/contact"
+            onClick={() => setShowSandhyaSurakshaModal(false)}
+            className="inline-flex items-center gap-2 bg-[#ED6439] px-5 py-3 text-[12px] font-bold text-white transition hover:bg-[#d95730] sm:text-[13px]"
+          >
+            CONTACT US
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
+{/* ======================================================
+    SANDHYA KIRANA MODAL
+    ====================================================== */}
+
+{showSandhyaKiranaModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowSandhyaKiranaModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowSandhyaKiranaModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Header */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Care for Marginalized Elders
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Sandhya Kirana
+          </h3>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <p>
+            Nightingales Sandhya Kirana currently has more than 50 members and
+            on an average 40 elders attend the day care activities on a daily
+            basis.
+          </p>
+
+          <p className="font-semibold text-[#263746]">
+            All services provided here are free of cost.
+          </p>
+
+          <p>
+            NMT depends on socially conscious persons and organisations to
+            support the work done at Nightingales Sandhya Kirana.
+          </p>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Volunteer Your Time ....
+            </h4>
+
+            <p className="mt-3">
+              There are many opportunities you as an individual or a corporate
+              team can touch the lives of the elders at this centre.
+            </p>
+
+            <Link
+              to="/get-involved"
+              onClick={() => setShowSandhyaKiranaModal(false)}
+              className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+            >
+              READ MORE
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
+          </div>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Donate Your Resources
+            </h4>
+
+            <p className="mt-3">
+              Your contributions can help feed the elderly and organise
+              medical camps for elders here.
+            </p>
+
+            <Link
+              to="/donate"
+              onClick={() => setShowSandhyaKiranaModal(false)}
+              className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+            >
+              READ MORE
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
+          </div>
+
+          <Link
+            to="/contact"
+            onClick={() => setShowSandhyaKiranaModal(false)}
+            className="inline-flex items-center gap-2 bg-[#ED6439] px-5 py-3 text-[12px] font-bold text-white transition hover:bg-[#d95730] sm:text-[13px]"
+          >
+            CONTACT US
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
    {/* ======================================================
     SANDHYA KIRANA
@@ -3326,210 +4188,131 @@ function ServicesPage() {
             READ MORE / READ LESS
             ================================================== */}
 
-        <button
-          type="button"
-          onClick={() => setSandhyaExpanded((prev) => !prev)}
-          className="
-            mt-6
-            inline-flex
-            items-center
-            gap-2
-            border-0
-            bg-transparent
-            text-[12px]
-            font-bold
-            text-[#ED6439]
-            outline-none
-            transition-all
-            duration-300
-            hover:gap-3
-            focus:outline-none
-            focus-visible:outline-none
-            cursor-pointer
-            sm:text-[13px]
-          "
-        >
-          <span>
-            {sandhyaExpanded ? "READ LESS" : "READ MORE"}
-          </span>
-
-          <ArrowUpRight
-            className={`
-              h-4
-              w-4
-              shrink-0
-              transition-transform
-              duration-300
-              ${sandhyaExpanded ? "rotate-180" : ""}
-            `}
-            strokeWidth={2.2}
-          />
-        </button>
+       <button
+  type="button"
+  onClick={() => setShowSandhyaKiranaModal(true)}
+  className="mt-6 inline-flex items-center gap-2 border-0 bg-transparent text-[12px] font-bold text-[#ED6439] outline-none transition-all duration-300 hover:gap-3 focus:outline-none focus-visible:outline-none cursor-pointer sm:text-[13px]"
+>
+  READ MORE
+  <ArrowUpRight className="h-4 w-4 shrink-0" />
+</button>
 
 
         {/* ==================================================
             EXPANDED CONTENT
             ================================================== */}
+{/* ======================================================
+    SANDHYA KIRANA MODAL
+    ====================================================== */}
 
-        {sandhyaExpanded && (
-          <div
-            className="
-              mt-6
-              border-t
-              border-[#ED6439]/15
-              pt-6
-            "
-          >
+{showSandhyaKiranaModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowSandhyaKiranaModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowSandhyaKiranaModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
 
-            {/* ADDITIONAL INFORMATION */}
-            <div>
-              <p
-                className="
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                Nightingales Sandhya Kirana currently has more than 50
-                members and on an average 40 elders attend the day care
-                activities on a daily basis.
-              </p>
+      {/* Header */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Care for Marginalized Elders
+          </p>
 
-              <p
-                className="
-                  mt-5
-                  font-semibold
-                  text-[#263746]
-                "
-              >
-                All services provided here are free of cost.
-              </p>
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Sandhya Kirana
+          </h3>
+        </div>
+      </div>
 
-              <p
-                className="
-                  mt-5
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                NMT depends on socially conscious persons and organisations
-                to support the work done at Nightingales Sandhya Kirana.
-              </p>
-            </div>
+      {/* Modal Content */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
 
+          <p>
+            Nightingales Sandhya Kirana currently has more than 50 members and
+            on an average 40 elders attend the day care activities on a daily
+            basis.
+          </p>
 
-            {/* VOLUNTEER */}
-            <div
-              className="
-                mt-7
-                border-t
-                border-[#ED6439]/15
-                pt-6
-              "
+          <p className="font-semibold text-[#263746]">
+            All services provided here are free of cost.
+          </p>
+
+          <p>
+            NMT depends on socially conscious persons and organisations to
+            support the work done at Nightingales Sandhya Kirana.
+          </p>
+
+          {/* Volunteer */}
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Volunteer Your Time ....
+            </h4>
+
+            <p className="mt-3">
+              There are many opportunities you as an individual or a corporate
+              team can touch the lives of the elders at this centre.
+            </p>
+
+            <Link
+              to="/get-involved"
+              onClick={() => setShowSandhyaKiranaModal(false)}
+              className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
             >
-              <h4
-                className="
-                  font-display
-                  text-base
-                  font-extrabold
-                  text-[#263746]
-                  sm:text-lg
-                "
-              >
-                Volunteer Your Time ....
-              </h4>
-
-              <p
-                className="
-                  mt-3
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                There are many opportunities you as an individual or a
-                corporate team can touch the lives of the elders at this
-                centre.
-              </p>
-
-              <Link
-                to="/get-involved"
-                className="
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight className="h-4 w-4 shrink-0" />
-              </Link>
-            </div>
-
-
-            {/* DONATE */}
-            <div
-              className="
-                mt-7
-                border-t
-                border-[#ED6439]/15
-                pt-6
-              "
-            >
-              <h4
-                className="
-                  font-display
-                  text-base
-                  font-extrabold
-                  text-[#263746]
-                  sm:text-lg
-                "
-              >
-                Donate Your Resources
-              </h4>
-
-              <p
-                className="
-                  mt-3
-                  text-[13.5px]
-                  leading-[1.75]
-                  text-muted-foreground
-                  sm:text-[14.5px]
-                "
-              >
-                Your contributions can help feed the elderly and organise
-                medical camps for elders here.
-              </p>
-
-              <Link
-                to="/donate"
-                className="
-                  mt-4
-                  inline-flex
-                  items-center
-                  gap-2
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  sm:text-[13px]
-                "
-              >
-                READ MORE
-                <ArrowUpRight className="h-4 w-4 shrink-0" />
-              </Link>
-            </div>
-
+              READ MORE
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
           </div>
-        )}
 
+          {/* Donate */}
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <h4 className="font-display text-lg font-extrabold text-[#263746]">
+              Donate Your Resources
+            </h4>
+
+            <p className="mt-3">
+              Your contributions can help feed the elderly and organise
+              medical camps for elders here.
+            </p>
+
+            <Link
+              to="/donate"
+              onClick={() => setShowSandhyaKiranaModal(false)}
+              className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold text-[#ED6439] sm:text-[13px]"
+            >
+              READ MORE
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </Link>
+          </div>
+
+          {/* Contact */}
+          <Link
+            to="/contact"
+            onClick={() => setShowSandhyaKiranaModal(false)}
+            className="inline-flex items-center gap-2 bg-[#ED6439] px-5 py-3 text-[12px] font-bold text-white transition hover:bg-[#d95730] sm:text-[13px]"
+          >
+            CONTACT US
+            <ArrowUpRight className="h-4 w-4 shrink-0" />
+          </Link>
+
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
 {/* ==================================================
     CONTACT
@@ -4071,109 +4854,315 @@ function ServicesPage() {
 
 <div className="grid items-stretch gap-8 lg:grid-cols-2">
 
-  {/* ==================================================
-      ELDERS HELPLINE – 1090
-      ================================================== */}
+ {/* ==================================================
+    ELDERS HELPLINE – 1090
+    ================================================== */}
 
-  <Reveal className="min-w-0 h-full">
+<Reveal className="min-w-0 h-full">
+  <div
+    className="
+      flex
+      h-full
+      min-w-0
+      flex-col
+      overflow-hidden
+      border
+      border-[#ED6439]/15
+      bg-white
+      shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+    "
+  >
+
+    {/* IMAGE */}
+    <div
+      className="
+        relative
+        w-full
+        overflow-hidden
+        bg-[#f8f5ef]
+      "
+    >
+      <img
+        src={eldersHelplineImage}
+        alt="Elders Helpline 1090"
+        className="
+          block
+          h-[260px]
+          w-full
+          object-cover
+          object-center
+          sm:h-[300px]
+        "
+      />
+    </div>
+
+    {/* CONTENT */}
     <div
       className="
         flex
-        h-full
         min-w-0
+        flex-1
         flex-col
-        overflow-hidden
-        border
-        border-[#ED6439]/15
-        bg-white
-        shadow-[0_18px_50px_-20px_rgba(70,45,10,0.14)]
+        p-6
+        sm:p-8
+        md:p-9
       "
     >
 
-      {/* IMAGE */}
+      {/* ICON */}
       <div
         className="
-          relative
-          w-full
-          overflow-hidden
-          bg-[#f8f5ef]
+          mb-5
+          flex
+          h-12
+          w-12
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          bg-[#ED6439]
+          text-white
+          shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
         "
       >
-        <img
-          src={eldersHelplineImage}
-          alt="Elders Helpline 1090"
-          className="
-            block
-            h-[260px]
-            w-full
-            object-cover
-            object-center
-            sm:h-[300px]
-          "
-        />
+        <PhoneCall className="h-5 w-5" />
       </div>
 
-      {/* CONTENT */}
+      {/* TITLE */}
+      <h3
+        className="
+          font-display
+          text-xl
+          font-extrabold
+          text-[#ED6439]
+          sm:text-2xl
+        "
+      >
+        Elders Helpline – 1090
+      </h3>
+
+      <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
+
+      {/* VISIBLE CONTENT */}
       <div
         className="
-          flex
-          min-w-0
-          flex-1
-          flex-col
-          p-6
-          sm:p-8
-          md:p-9
+          mt-6
+          text-[14px]
+          leading-[1.8]
+          text-muted-foreground
+          sm:text-[15px]
         "
       >
 
-        {/* ICON */}
-        <div
+        <p>
+          It's a joint project of Bengaluru City Police and
+          Nightingales Medical Trust. Established in 2002, the Elders
+          Helpline provides assistance to older persons facing problems
+          including abuse, neglect, exploitation, harassment, family
+          disputes and other forms of vulnerability.
+        </p>
+
+        <p className="mt-4">
+          <strong className="font-bold text-[#263746]">
+            It's the first project in the country where an NGO and the law
+            enforcing authorities joined together to address elder abuse.
+          </strong>
+        </p>
+
+        <p className="mt-4">
+          <strong className="font-bold text-[#263746]">
+            Located at the premises of Bengaluru City Police
+          </strong>
+          , the Helpline acts as an important link between older persons,
+          their families, social workers, police and other support
+          systems.
+        </p>
+
+      </div>
+
+      {/* READ MORE */}
+      <div className="mt-4">
+        <button
+          type="button"
+          onClick={() => setShowEldersHelplineModal(true)}
           className="
-            mb-5
-            flex
-            h-12
-            w-12
-            shrink-0
+            inline-flex
+            items-center
+            gap-2
+            border-0
+            bg-transparent
+            p-0
+            font-bold
+            text-[#ED6439]
+            transition-all
+            duration-300
+            hover:gap-3
+            hover:text-[#d95730]
+          "
+        >
+          Read More
+          <ArrowUpRight className="h-4 w-4" />
+        </button>
+      </div>
+
+      {/* CONTACT BUTTON */}
+      <div className="mt-auto pt-6">
+        <a
+          href="https://wa.me/919035025438"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            inline-flex
+            max-w-full
+            w-fit
             items-center
             justify-center
-            rounded-full
+            gap-2
             bg-[#ED6439]
+            px-4
+            py-3
+            text-center
+            text-[12px]
+            font-bold
             text-white
-            shadow-[0_10px_25px_-10px_rgba(237,100,57,0.6)]
+            transition-all
+            hover:-translate-y-0.5
+            hover:bg-[#d95730]
+            sm:px-5
+            sm:text-[13px]
           "
         >
-          <PhoneCall className="h-5 w-5" />
+          CONTACT US
+          <ArrowUpRight className="h-4 w-4 shrink-0" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Reveal>
+
+
+{/* ==================================================
+    ELDERS HELPLINE – 1090 MODAL
+    ================================================== */}
+
+{showEldersHelplineModal && (
+  <div
+    className="
+      fixed
+      inset-0
+      z-[200]
+      flex
+      items-center
+      justify-center
+      bg-[#17232B]/70
+      p-4
+      backdrop-blur-sm
+    "
+    onClick={() => setShowEldersHelplineModal(false)}
+  >
+    <div
+      className="
+        relative
+        max-h-[90vh]
+        w-full
+        max-w-3xl
+        overflow-hidden
+        rounded-2xl
+        bg-[#FFFDF9]
+        shadow-2xl
+      "
+      onClick={(event) => event.stopPropagation()}
+    >
+
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setShowEldersHelplineModal(false)}
+        className="
+          absolute
+          right-4
+          top-4
+          z-10
+          grid
+          h-9
+          w-9
+          place-items-center
+          rounded-full
+          bg-white
+          text-[#263746]
+          shadow-md
+          transition
+          hover:bg-[#ED6439]
+          hover:text-white
+        "
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* MODAL HEADER */}
+      <div
+        className="
+          border-b
+          border-[#ED6439]/15
+          bg-[#FFF4EA]
+          px-6
+          py-6
+          sm:px-8
+        "
+      >
+        <div className="pr-10">
+
+          <p
+            className="
+              text-[11px]
+              font-bold
+              uppercase
+              tracking-[0.18em]
+              text-[#ED6439]
+            "
+          >
+            Support for Older Persons
+          </p>
+
+          <h3
+            className="
+              mt-2
+              font-display
+              text-2xl
+              font-extrabold
+              text-[#263746]
+              sm:text-3xl
+            "
+          >
+            Elders Helpline – 1090
+          </h3>
+
         </div>
+      </div>
 
-        {/* TITLE */}
-        <h3
-          className="
-            font-display
-            text-xl
-            font-extrabold
-            text-[#ED6439]
-            sm:text-2xl
-          "
-        >
-          Elders Helpline – 1090
-        </h3>
-
-        <div className="mt-3 h-1 w-11 bg-[#ED6439]" />
-
-        {/* CONTENT */}
+      {/* MODAL CONTENT */}
+      <div
+        className="
+          max-h-[calc(90vh-120px)]
+          overflow-y-auto
+          px-6
+          py-6
+          sm:px-8
+          sm:py-8
+        "
+      >
         <div
-          className={`
-            mt-6
-            overflow-hidden
+          className="
             text-[14px]
             leading-[1.8]
             text-muted-foreground
-            transition-all
-            duration-300
             sm:text-[15px]
-            ${showEldersMore ? "max-h-none" : "max-h-[420px]"}
-          `}
+          "
         >
+
+          {/* INTRODUCTION */}
           <p>
             It's a joint project of Bengaluru City Police and
             Nightingales Medical Trust. Established in 2002, the Elders
@@ -4182,14 +5171,14 @@ function ServicesPage() {
             disputes and other forms of vulnerability.
           </p>
 
-          <p className="mt-4">
+          <p className="mt-5">
             <strong className="font-bold text-[#263746]">
-              It's the first project in the country where an NGO and the law enforcing
-              authorities joined together to address elder abuse.
+              It's the first project in the country where an NGO and the law
+              enforcing authorities joined together to address elder abuse.
             </strong>
           </p>
 
-          <p className="mt-4">
+          <p className="mt-5">
             <strong className="font-bold text-[#263746]">
               Located at the premises of Bengaluru City Police
             </strong>
@@ -4198,7 +5187,193 @@ function ServicesPage() {
             systems.
           </p>
 
-          <p className="mt-5 font-semibold text-foreground">
+          {/* HELPLINE SERVICES */}
+          <div className="mt-7 border-t border-[#ED6439]/15 pt-6">
+
+            <p className="font-semibold text-[#263746]">
+              The Helpline can help with:
+            </p>
+
+            <ul className="mt-4 space-y-2.5">
+              {[
+                "Elder abuse and neglect",
+                "Family-related issues and conciliations",
+                "Harassment and intimidation",
+                "Financial exploitation",
+                "Safety concerns",
+                "Counselling and guidance",
+                "Referral to appropriate services",
+                "Police and institutional intervention where required",
+                "Tracing of missing / straying elders",
+                "Assess to government schemes and facilities",
+                "Information on elder related services",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5"
+                >
+                  <span
+                    className="
+                      mt-[8px]
+                      h-1.5
+                      w-1.5
+                      shrink-0
+                      rounded-full
+                      bg-[#ED6439]
+                    "
+                  />
+
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+          </div>
+
+          {/* LEGAL ADVICE */}
+          <p className="mt-6 font-bold text-[#263746] sm:text-[15px]">
+            Elders can avail free legal advice with prior appointments.
+          </p>
+
+          {/* FREE SERVICES */}
+          <p className="mt-4">
+            All the services rendered at the Elders Helpline are free of cost.
+          </p>
+
+          {/* DIAL 1090 */}
+          <div className="mt-6">
+
+            <div
+              className="
+                inline-flex
+                items-center
+                gap-3
+                border
+                border-[#ED6439]/30
+                bg-[#263746]
+                px-5
+                py-3
+                shadow-md
+              "
+            >
+              <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+
+              <span
+                className="
+                  font-display
+                  text-lg
+                  font-extrabold
+                  tracking-wide
+                  text-[#ED6439]
+                "
+              >
+                Dial 1090
+              </span>
+            </div>
+
+          </div>
+
+          {/* CONTACT */}
+          <div className="mt-7">
+
+            <a
+              href="https://wa.me/919035025438"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setShowEldersHelplineModal(false)}
+              className="
+                inline-flex
+                items-center
+                justify-center
+                gap-2
+                bg-[#ED6439]
+                px-5
+                py-3
+                text-[12px]
+                font-bold
+                text-white
+                transition-all
+                hover:-translate-y-0.5
+                hover:bg-[#d95730]
+                sm:text-[13px]
+              "
+            >
+              CONTACT US
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+)}
+{/* ======================================================
+    ELDERS HELPLINE 1090 MODAL
+    ====================================================== */}
+
+{showEldersHelplineModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowEldersHelplineModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setShowEldersHelplineModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* HEADER */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Support for Older Persons
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Elders Helpline – 1090
+          </h3>
+        </div>
+      </div>
+
+      {/* MODAL CONTENT */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <p>
+            It's a joint project of Bengaluru City Police and Nightingales
+            Medical Trust. Established in 2002, the Elders Helpline provides
+            assistance to older persons facing problems including abuse,
+            neglect, exploitation, harassment, family disputes and other forms
+            of vulnerability.
+          </p>
+
+          <p className="mt-5">
+            <strong className="font-bold text-[#263746]">
+              It's the first project in the country where an NGO and the law
+              enforcing authorities joined together to address elder abuse.
+            </strong>
+          </p>
+
+          <p className="mt-5">
+            <strong className="font-bold text-[#263746]">
+              Located at the premises of Bengaluru City Police
+            </strong>
+            , the Helpline acts as an important link between older persons,
+            their families, social workers, police and other support systems.
+          </p>
+
+          <p className="mt-6 font-semibold text-[#263746]">
             The Helpline can help with:
           </p>
 
@@ -4223,7 +5398,7 @@ function ServicesPage() {
             ))}
           </ul>
 
-          <p className="mt-5 font-bold text-foreground sm:text-[15px]">
+          <p className="mt-6 font-bold text-[#263746] sm:text-[15px]">
             Elders can avail free legal advice with prior appointments.
           </p>
 
@@ -4232,63 +5407,35 @@ function ServicesPage() {
           </p>
 
           {/* DIAL 1090 */}
-          <div className="mt-6 flex">
+          <div className="mt-6">
             <div className="inline-flex items-center gap-3 border border-[#ED6439]/30 bg-[#263746] px-5 py-3 shadow-md">
               <PhoneCall className="h-5 w-5 text-[#ED6439]" />
+
               <span className="font-display text-lg font-extrabold tracking-wide text-[#ED6439]">
                 Dial 1090
               </span>
             </div>
           </div>
-        </div>
 
-        {/* READ MORE / READ LESS */}
-        <div className="mt-4">
-          <button
-            type="button"
-            onClick={() => setShowEldersMore((previous) => !previous)}
-            className="font-bold text-[#ED6439] underline underline-offset-4 transition-colors hover:text-[#d95730]"
-          >
-            {showEldersMore ? "Read Less" : "Read More"}
-          </button>
-        </div>
+          {/* CONTACT */}
+          <div className="mt-7">
+            <a
+              href="https://wa.me/919035025438"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setShowEldersHelplineModal(false)}
+              className="inline-flex items-center justify-center gap-2 bg-[#ED6439] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#d95730] sm:text-[13px]"
+            >
+              CONTACT US
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </a>
+          </div>
 
-        {/* CONTACT BUTTON */}
-        <div className="mt-auto pt-6">
-         <a
-  href="https://wa.me/919035025438"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    inline-flex
-    max-w-full
-    w-fit
-    items-center
-    justify-center
-    gap-2
-    bg-[#ED6439]
-    px-4
-    py-3
-    text-center
-    text-[12px]
-    font-bold
-    text-white
-    transition-all
-    hover:-translate-y-0.5
-    hover:bg-[#d95730]
-    sm:px-5
-    sm:text-[13px]
-  "
->
-  CONTACT US
-  <ArrowUpRight className="h-4 w-4 shrink-0" />
-</a>
         </div>
-
       </div>
     </div>
-  </Reveal>
-
+  </div>
+)}
 
   {/* ==================================================
       NATIONAL HELPLINE – 14567
@@ -4647,116 +5794,13 @@ function ServicesPage() {
 
 
             {/* READ MORE / LESS */}
-            <details className="group/details mt-5">
-
-              <summary
-                className="
-                  flex
-                  cursor-pointer
-                  list-none
-                  items-center
-                  gap-2
-                  border-0
-                  bg-transparent
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  outline-none
-                  focus:outline-none
-                  focus-visible:outline-none
-                  select-none
-                  sm:text-[13px]
-                "
-              >
-                <span className="group-open/details:hidden">
-                  READ MORE
-                </span>
-
-                <span className="hidden group-open/details:inline">
-                  READ LESS
-                </span>
-
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    transition-transform
-                    duration-300
-                    group-open/details:rotate-180
-                  "
-                />
-              </summary>
-
-
-              {/* EXPANDED CONTENT */}
-              <div
-                className="
-                  mt-5
-                  border-t
-                  border-[#ED6439]/15
-                  pt-5
-                "
-              >
-
-                <p>
-                  Unlike in developed countries, where social security
-                  systems take care the retired elderly, the resources in
-                  India, both from the government and the private sectors
-                  are very limited to provide senior citizens basic
-                  benefits and economic security.
-                </p>
-
-                <p className="mt-4">
-                  In India,{" "}
-                  <strong className="font-semibold text-foreground">
-                    only 11% of the retired employees get pension from the
-                    government
-                  </strong>{" "}
-                  and the remaining 89% are forced to survive on their savings
-                  which often get exhausted within a few years of retirement.
-                </p>
-
-                <p className="mt-4">
-                  Thus, post-retirement, elders often end up depending on
-                  their children or other family members. This lack of
-                  economic independence further leads to distress within
-                  the family, stealing dignity and independence from the
-                  aged, leading to some form of elder abuse.
-                </p>
-
-                <p className="mt-4 font-bold text-[#ED6439]">
-                  Therefore, this programme supports older job seekers
-                  through:
-                </p>
-
-                <ul className="mt-4 space-y-2.5">
-                  {[
-                    "Job registration",
-                    "Career guidance",
-                    "Skill development",
-                    "Employer connections",
-                    "Job fairs",
-                    "Placement support",
-                    "Opportunities for flexible and part-time work",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-4">
-                  Our message is simple:
-                </p>
-
-                <p className="font-display text-lg font-extrabold text-[#ED6439]">
-                  Age is not a barrier to contribution.
-                </p>
-
-              </div>
-            </details>
-
+         <button
+  type="button"
+  onClick={() => setShowJobs60PlusModal(true)}
+  className="mt-4 inline-flex items-center justify-center rounded-full bg-[#ED6439] px-5 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#D94F2F]"
+>
+  READ MORE
+</button>
             {/* EXTERNAL LINK BUTTON */}
             <div className="mt-auto pt-6">
               <a
@@ -4773,7 +5817,117 @@ function ServicesPage() {
           </div>
         </article>
       </Reveal>
+{showJobs60PlusModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowJobs60PlusModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close Button */}
+      <button
+        type="button"
+        onClick={() => setShowJobs60PlusModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
 
+      {/* Heading */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          EMPOWERMENT & LIVELIHOOD
+        </span>
+
+        <h3 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Nightingales Jobs 60+
+        </h3>
+
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574]">
+        <p>
+          Nightingales Jobs 60+, connects experienced older persons with
+          employment and livelihood opportunities.
+        </p>
+
+        <p>
+          Launched in 2011, the programme challenges the traditional
+          perception that age is a barrier to employment and demonstrates
+          that experience, reliability, knowledge and commitment continue
+          to have enormous value.
+        </p>
+
+        <p>
+          Unlike in developed countries, where social security systems take
+          care the retired elderly, the resources in India, both from the
+          government and the private sectors are very limited to provide
+          senior citizens basic benifits and economic security. In India,
+          only 11% of the retired employees get pension from the government
+          and the remaining 89% are forced to survive on their savings which
+          often get exhausted within a few years of retirement. Thus,
+          post-retirement, elders often end up depending on their children
+          or other family members. This lack of economic independence further
+          leads to distress within the family, stealing dignity and
+          independence from the aged, leading to some form of elder abuse.
+        </p>
+
+        <div>
+          <p className="font-semibold text-[#263746]">
+            Therefore, this programme supports older job seekers through:
+          </p>
+
+          <ul className="mt-4 space-y-3">
+            {[
+              "Job registration",
+              "Career guidance",
+              "Skill development",
+              "Employer connections",
+              "Job fairs",
+              "Placement support",
+              "Opportunities for flexible and part-time work",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Message */}
+        <div className="rounded-xl bg-[#FFF0E8] p-5">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#ED6439]">
+            Our message is simple:
+          </p>
+
+          <p className="mt-2 text-base font-bold text-[#263746]">
+            Age is not a barrier to contribution.
+          </p>
+        </div>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowJobs60PlusModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
 
       {/* ==================================================
@@ -4912,85 +6066,107 @@ function ServicesPage() {
             </div>
 
 
-            {/* READ MORE / LESS */}
-            <details className="group/details mt-5">
-
-              <summary
-                className="
-                  flex
-                  cursor-pointer
-                  list-none
-                  items-center
-                  gap-2
-                  border-0
-                  bg-transparent
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  outline-none
-                  focus:outline-none
-                  focus-visible:outline-none
-                  select-none
-                  sm:text-[13px]
-                "
-              >
-                <span className="group-open/details:hidden">
-                  READ MORE
-                </span>
-
-                <span className="hidden group-open/details:inline">
-                  READ LESS
-                </span>
-
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    transition-transform
-                    duration-300
-                    group-open/details:rotate-180
-                  "
-                />
-              </summary>
-
-
-              {/* EXPANDED CONTENT */}
-              <div
-                className="
-                  mt-5
-                  border-t
-                  border-[#ED6439]/15
-                  pt-5
-                "
-              >
-
-                <p className="font-bold text-[#ED6439]">Training may include:</p>
-
-                <ul className="mt-4 space-y-2.5">
-                  {[
-                    "Smartphone use",
-                    "WhatsApp and video calls",
-                    "Digital payments",
-                    "Online services",
-                    "Accessing government services",
-                    "Email and internet use",
-                    "Online health resources",
-                    "Basic digital safety",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-              </div>
-            </details>
+            
+            {/* READ MORE */}
+<button
+  type="button"
+  onClick={() => setShowDigitalLiteracyModal(true)}
+  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-5 py-3 text-[12px] font-bold tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D94F2F] hover:shadow-[0_10px_25px_rgba(237,100,57,0.22)] sm:text-[13px]"
+>
+  READ MORE
+  <ArrowUpRight className="h-4 w-4" />
+</button>
 
           </div>
         </article>
       </Reveal>
 
+{showDigitalLiteracyModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowDigitalLiteracyModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close */}
+      <button
+        type="button"
+        onClick={() => setShowDigitalLiteracyModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          DIGITAL LITERACY
+        </span>
+
+        <h3 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Digital Literacy for Senior Citizens
+        </h3>
+
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-6 space-y-5 text-sm leading-7 text-[#526574]">
+        <p>
+          Technology can transform the lives of older persons but only when
+          they have the confidence and skills to use it safely.
+        </p>
+
+        <p>
+          NMT's digital-literacy initiatives help older adults use technology
+          for communication, information, healthcare, banking, services and
+          social connection.
+        </p>
+
+        <div>
+          <p className="font-bold text-[#ED6439]">
+            Training may include:
+          </p>
+
+          <ul className="mt-4 space-y-3">
+            {[
+              "Smartphone use",
+              "WhatsApp and video calls",
+              "Digital payments",
+              "Online services",
+              "Accessing government services",
+              "Email and internet use",
+              "Online health resources",
+              "Basic digital safety",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowDigitalLiteracyModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
 
       {/* ==================================================
@@ -5129,80 +6305,15 @@ function ServicesPage() {
             </div>
 
 
-            {/* READ MORE / LESS */}
-            <details className="group/details mt-5">
-
-              <summary
-                className="
-                  flex
-                  cursor-pointer
-                  list-none
-                  items-center
-                  gap-2
-                  border-0
-                  bg-transparent
-                  text-[12px]
-                  font-bold
-                  text-[#ED6439]
-                  outline-none
-                  focus:outline-none
-                  focus-visible:outline-none
-                  select-none
-                  sm:text-[13px]
-                "
-              >
-                <span className="group-open/details:hidden">
-                  READ MORE
-                </span>
-
-                <span className="hidden group-open/details:inline">
-                  READ LESS
-                </span>
-
-                <ArrowUpRight
-                  className="
-                    h-4
-                    w-4
-                    transition-transform
-                    duration-300
-                    group-open/details:rotate-180
-                  "
-                />
-              </summary>
-
-
-              {/* EXPANDED CONTENT */}
-              <div
-                className="
-                  mt-5
-                  border-t
-                  border-[#ED6439]/15
-                  pt-5
-                "
-              >
-
-                <p className="font-bold text-[#ED6439]">Topics include:</p>
-
-                <ul className="mt-4 space-y-2.5">
-                  {[
-                    "Identifying online scams",
-                    "Phishing and fraudulent messages",
-                    "Safe use of digital payments",
-                    "Protecting passwords and OTPs",
-                    "Avoiding impersonation scams",
-                    "Social-media safety",
-                    "Recognising suspicious links and calls",
-                    "What to do if fraud occurs",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-              </div>
-            </details>
+            {/* READ MORE */}
+<button
+  type="button"
+  onClick={() => setShowCybersecurityModal(true)}
+  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#ED6439] px-5 py-3 text-[12px] font-bold tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D94F2F] hover:shadow-[0_10px_25px_rgba(237,100,57,0.22)] sm:text-[13px]"
+>
+  READ MORE
+  <ArrowUpRight className="h-4 w-4" />
+</button>
 
           </div>
         </article>
@@ -5210,6 +6321,82 @@ function ServicesPage() {
 
     </div>
   </div>
+
+
+{showCybersecurityModal && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center bg-[#17232B]/70 px-4 py-6 backdrop-blur-sm"
+    onClick={() => setShowCybersecurityModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-[#FFFDF9] p-6 shadow-2xl sm:p-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close Button */}
+      <button
+        type="button"
+        onClick={() => setShowCybersecurityModal(false)}
+        className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FFF0E8] text-[#ED6439] transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* Heading */}
+      <div className="pr-12">
+        <span className="mb-3 inline-flex rounded-full bg-[#FFF0E8] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-[#ED6439]">
+          DIGITAL SAFETY
+        </span>
+
+        <h3 className="text-2xl font-bold leading-tight text-[#263746] sm:text-3xl">
+          Cybersecurity Awareness for Seniors
+        </h3>
+
+        <div className="mt-4 h-1 w-12 rounded-full bg-[#ED6439]" />
+      </div>
+
+      {/* Content */}
+      <div className="mt-6">
+        <p className="font-bold text-[#ED6439]">
+          Topics include:
+        </p>
+
+        <ul className="mt-4 space-y-3">
+          {[
+            "Identifying online scams",
+            "Phishing and fraudulent messages",
+            "Safe use of digital payments",
+            "Protecting passwords and OTPs",
+            "Avoiding impersonation scams",
+            "Social-media safety",
+            "Recognising suspicious links and calls",
+            "What to do if fraud occurs",
+          ].map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3 text-sm leading-6 text-[#526574]"
+            >
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#ED6439]" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Close */}
+      <div className="mt-8 flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowCybersecurityModal(false)}
+          className="rounded-full bg-[#263746] px-6 py-2.5 text-xs font-bold tracking-wide text-white transition hover:bg-[#17232B]"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
 
   {/* ======================================================
@@ -5338,43 +6525,138 @@ function ServicesPage() {
 
 
   {/* ======================================================
-      THREE SERVICE CARDS
-      ====================================================== */}
+    THREE SERVICE CARDS
+    ====================================================== */}
 
-  <div className="mt-8 min-w-0 sm:mt-10">
-    <CardGrid cols={3}>
+<div className="mt-8 min-w-0 sm:mt-10">
+  <CardGrid cols={3}>
 
-      {/* ==================================================
-          MOBILE ACTIVE AGEING
-          ================================================== */}
+    {/* ==================================================
+        MOBILE ACTIVE AGEING
+        ================================================== */}
 
-      <ServiceCard
-        icon={Activity}
-        title="Mobile Active Ageing"
-        titleClassName="text-[#ED6439]"
-        image={mobileActiveAgeingImage}
-        cta="READ MORE"
-        preview={
-          <>
-            <p>
-              Through the Mobile Active Ageing (MAA) programme, NMT
-              supports residents of old age homes through structured
-              activities designed to promote physical, cognitive,
-              emotional and social well-being.
+    <ServiceCard
+      icon={Activity}
+      title="Mobile Active Ageing"
+      titleClassName="text-[#ED6439]"
+      image={mobileActiveAgeingImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowMobileActiveAgeingModal(true)}
+      preview={
+        <>
+          <p>
+            Through the Mobile Active Ageing (MAA) programme, NMT
+            supports residents of old age homes through structured
+            activities designed to promote physical, cognitive,
+            emotional and social well-being.
+          </p>
+
+          <p>
+            <strong className="font-semibold text-foreground">
+              MAA currently reaches 28 old age homes.
+            </strong>
+          </p>
+        </>
+      }
+      details={
+        <>
+          <p className="font-bold text-[#ED6439]">
+            The programme includes:
+          </p>
+
+          <ul className="space-y-2.5">
+            {[
+              "Physical activity and exercise",
+              "Cognitive stimulation",
+              "Recreation",
+              "Music and creative activities",
+              "Social interaction",
+              "Health awareness",
+              "Meaningful engagement",
+              "Active-ageing practices for residents",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5"
+              >
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="font-bold text-[#ED6439]">
+            Our aim
+          </p>
+
+          <p>
+            To ensure that living in an old age home does not mean
+            giving up an active and meaningful life.
+          </p>
+        </>
+      }
+    />
+
+
+{/* ======================================================
+    MOBILE ACTIVE AGEING MODAL
+    ====================================================== */}
+
+{showMobileActiveAgeingModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowMobileActiveAgeingModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setShowMobileActiveAgeingModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* HEADER */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Elder Care Programme
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Mobile Active Ageing
+          </h3>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <p>
+            Through the Mobile Active Ageing (MAA) programme, NMT
+            supports residents of old age homes through structured
+            activities designed to promote physical, cognitive,
+            emotional and social well-being.
+          </p>
+
+          <p>
+            <strong className="font-semibold text-[#263746]">
+              MAA currently reaches 28 old age homes.
+            </strong>
+          </p>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
+            <p className="font-bold text-[#ED6439]">
+              The programme includes:
             </p>
 
-            <p>
-              <strong className="font-semibold text-foreground">
-                MAA currently reaches 28 old age homes.
-              </strong>
-            </p>
-          </>
-        }
-        details={
-          <>
-            <p className="font-bold text-[#ED6439]">The programme includes:</p>
-
-            <ul className="space-y-2.5">
+            <ul className="mt-4 space-y-2.5">
               {[
                 "Physical activity and exercise",
                 "Cognitive stimulation",
@@ -5385,56 +6667,150 @@ function ServicesPage() {
                 "Meaningful engagement",
                 "Active-ageing practices for residents",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5"
+                >
                   <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
+          </div>
 
+          <div className="border-t border-[#ED6439]/15 pt-5">
             <p className="font-bold text-[#ED6439]">
               Our aim
             </p>
 
-            <p>
+            <p className="mt-2">
               To ensure that living in an old age home does not mean
               giving up an active and meaningful life.
             </p>
-          </>
-        }
-      />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
 
-      {/* ==================================================
-          REGIONAL RESOURCE & TRAINING CENTRE
-          ================================================== */}
+    {/* ==================================================
+        REGIONAL RESOURCE & TRAINING CENTRE
+        ================================================== */}
 
-      <ServiceCard
-        icon={Building2}
-        title="Regional Resource & Training Centre"
-        titleClassName="text-[#ED6439]"
-        image={rrtcImage}
-        cta="READ MORE"
-        preview={
-          <>
-            <p>
-              NMT has been designated as a Regional Resource and
-              Training Centre (RRTC) by the{" "}
-              <strong className="font-semibold text-foreground">
-                Ministry of Social Justice & Empowerment for Karnataka, Kerala &
-                Lakshadweep
-              </strong>
-              .
-            </p>
+    <ServiceCard
+      icon={Building2}
+      title="Regional Resource & Training Centre"
+      titleClassName="text-[#ED6439]"
+      image={rrtcImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowRRTCModal(true)}
+      preview={
+        <>
+          <p>
+            NMT has been designated as a Regional Resource and
+            Training Centre (RRTC) by the{" "}
+            <strong className="font-semibold text-foreground">
+              Ministry of Social Justice & Empowerment for
+              Karnataka, Kerala & Lakshadweep
+            </strong>
+            .
+          </p>
 
+          <p className="font-bold text-[#ED6439]">
+            The Centre serves as a resource for:
+          </p>
+        </>
+      }
+      details={
+        <>
+          <ul className="space-y-2.5">
+            {[
+              "Training and capacity building",
+              "Development of training materials",
+              "Knowledge sharing",
+              "Technical support",
+              "Good practices in elder care",
+              "Awareness and advocacy",
+              "Strengthening service providers",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5"
+              >
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p>
+            The RRTC seeks to build a stronger and more professional
+            elder-care ecosystem by sharing knowledge and supporting
+            organisations working with older persons.
+          </p>
+        </>
+      }
+    />
+{/* ======================================================
+    RRTC MODAL
+    ====================================================== */}
+
+{showRRTCModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowRRTCModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setShowRRTCModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
+      {/* HEADER */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Training & Capacity Building
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-[#263746] sm:text-3xl">
+            Regional Resource & Training Centre
+          </h3>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="max-h-[calc(90vh-120px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <p>
+            NMT has been designated as a Regional Resource and
+            Training Centre (RRTC) by the{" "}
+            <strong className="font-semibold text-[#263746]">
+              Ministry of Social Justice & Empowerment for Karnataka,
+              Kerala & Lakshadweep
+            </strong>
+            .
+          </p>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
             <p className="font-bold text-[#ED6439]">
               The Centre serves as a resource for:
             </p>
-          </>
-        }
-        details={
-          <>
-            <ul className="space-y-2.5">
+
+            <ul className="mt-4 space-y-2.5">
               {[
                 "Training and capacity building",
                 "Development of training materials",
@@ -5444,86 +6820,237 @@ function ServicesPage() {
                 "Awareness and advocacy",
                 "Strengthening service providers",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5"
+                >
                   <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
+          </div>
 
+          <div className="border-t border-[#ED6439]/15 pt-5">
             <p>
               The RRTC seeks to build a stronger and more professional
               elder-care ecosystem by sharing knowledge and supporting
               organisations working with older persons.
             </p>
-          </>
-        }
-      />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+    {/* ==================================================
+        VAYO ALAMBANA TRUST
+        ================================================== */}
+
+    <ServiceCard
+      icon={Home}
+      title="Vayo Alambana – Old Age Home Capacity-Building Initiative"
+      titleClassName="text-[#ED6439]"
+      image={capacityBuildingImage}
+      cta="READ MORE"
+      onCtaClick={() => setShowVayoAlambanaModal(true)}
+      preview={
+        <>
+          <p>
+            NMT has undertaken a pilot capacity-building initiative
+            involving five selected old age homes.
+          </p>
+
+          <p className="font-bold text-[#ED6439]">
+            The programme takes a comprehensive approach to
+            strengthening institutions through:
+          </p>
+        </>
+      }
+      details={
+        <>
+          <ul className="space-y-3">
+            {[
+              {
+                title: "Infrastructure Assistance",
+                desc: "Improving the physical environment and essential facilities for residents.",
+              },
+              {
+                title: "Staff Training",
+                desc: "Building the knowledge and skills of caregivers and staff.",
+              },
+              {
+                title: "Active Ageing Programmes",
+                desc: "Introducing structured activities that enhance residents' physical, cognitive, emotional and social well-being.",
+              },
+              {
+                title: "Governance & Management",
+                desc: "Strengthening systems, policies, documentation, administration and management practices.",
+              },
+              {
+                title: "Free Accessible Medical Care",
+                desc: "Ensuring regular health screening, elder-friendly clinical support and free accessible medical care for residents.",
+              },
+            ].map((item) => (
+              <li
+                key={item.title}
+                className="flex items-start gap-2.5"
+              >
+                <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+
+                <div>
+                  <strong className="font-bold text-foreground">
+                    {item.title}:{" "}
+                  </strong>
+
+                  <span className="text-muted-foreground">
+                    {item.desc}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <p className="font-bold text-[#ED6439]">
+            The objective
+          </p>
+
+          <p>
+            To demonstrate that strengthening the institution can
+            transform the quality of life of the people it serves.
+          </p>
+
+          <p>
+            The learnings from the pilot will help NMT develop a
+            scalable model for capacity building of old age homes.
+          </p>
+        </>
+      }
+    />
+
+  </CardGrid>
+</div>
+</Section>
 
 
-      {/* ==================================================
-          VAYO ALAMBANA TRUST
-          ================================================== */}
+{/* ======================================================
+    VAYO ALAMBANA MODAL
+    ====================================================== */}
 
-      <ServiceCard
-        icon={Home}
-        title="Vayo Alambana – Old Age Home Capacity-Building Initiative"
-        titleClassName="text-[#ED6439]"
-        image={capacityBuildingImage}
-        cta="READ MORE"
-        preview={
-          <>
-            <p>
-              NMT has undertaken a pilot capacity-building initiative
-              involving five selected old age homes.
-            </p>
+{showVayoAlambanaModal && (
+  <div
+    className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/70 p-4 backdrop-blur-sm"
+    onClick={() => setShowVayoAlambanaModal(false)}
+  >
+    <div
+      className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-[#FFFDF9] shadow-2xl"
+      onClick={(event) => event.stopPropagation()}
+    >
+      {/* CLOSE BUTTON */}
+      <button
+        type="button"
+        onClick={() => setShowVayoAlambanaModal(false)}
+        className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full bg-white text-[#263746] shadow-md transition hover:bg-[#ED6439] hover:text-white"
+        aria-label="Close"
+      >
+        <X className="h-5 w-5" />
+      </button>
 
+      {/* HEADER */}
+      <div className="border-b border-[#ED6439]/15 bg-[#FFF4EA] px-6 py-6 sm:px-8">
+        <div className="pr-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#ED6439]">
+            Capacity Building Initiative
+          </p>
+
+          <h3 className="mt-2 font-display text-2xl font-extrabold leading-tight text-[#263746] sm:text-3xl">
+            Vayo Alambana – Old Age Home Capacity-Building Initiative
+          </h3>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div className="max-h-[calc(90vh-135px)] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+        <div className="space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+
+          <p>
+            NMT has undertaken a pilot capacity-building initiative
+            involving five selected old age homes.
+          </p>
+
+          <div className="border-t border-[#ED6439]/15 pt-5">
             <p className="font-bold text-[#ED6439]">
               The programme takes a comprehensive approach to
               strengthening institutions through:
             </p>
-          </>
-        }
-        details={
-          <>
-            <ul className="space-y-3">
+
+            <ul className="mt-4 space-y-4">
               {[
-                { title: "Infrastructure Assistance", desc: "Improving the physical environment and essential facilities for residents." },
-                { title: "Staff Training", desc: "Building the knowledge and skills of caregivers and staff." },
-                { title: "Active Ageing Programmes", desc: "Introducing structured activities that enhance residents' physical, cognitive, emotional and social well-being." },
-                { title: "Governance & Management", desc: "Strengthening systems, policies, documentation, administration and management practices." },
-                { title: "Free Accessible Medical Care", desc: "Ensuring regular health screening, elder-friendly clinical support and free accessible medical care for residents." },
+                {
+                  title: "Infrastructure Assistance",
+                  desc: "Improving the physical environment and essential facilities for residents.",
+                },
+                {
+                  title: "Staff Training",
+                  desc: "Building the knowledge and skills of caregivers and staff.",
+                },
+                {
+                  title: "Active Ageing Programmes",
+                  desc: "Introducing structured activities that enhance residents' physical, cognitive, emotional and social well-being.",
+                },
+                {
+                  title: "Governance & Management",
+                  desc: "Strengthening systems, policies, documentation, administration and management practices.",
+                },
+                {
+                  title: "Free Accessible Medical Care",
+                  desc: "Ensuring regular health screening, elder-friendly clinical support and free accessible medical care for residents.",
+                },
               ].map((item) => (
-                <li key={item.title} className="flex items-start gap-2.5">
-                  <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+                <li
+                  key={item.title}
+                  className="flex items-start gap-3"
+                >
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
+
                   <div>
-                    <strong className="font-bold text-foreground">{item.title}: </strong>
-                    <span className="text-muted-foreground">{item.desc}</span>
+                    <strong className="font-bold text-[#263746]">
+                      {item.title}:{" "}
+                    </strong>
+
+                    <span>
+                      {item.desc}
+                    </span>
                   </div>
                 </li>
               ))}
             </ul>
+          </div>
 
+          <div className="border-t border-[#ED6439]/15 pt-5">
             <p className="font-bold text-[#ED6439]">
               The objective
             </p>
 
-            <p>
+            <p className="mt-2">
               To demonstrate that strengthening the institution can
               transform the quality of life of the people it serves.
             </p>
 
-            <p>
+            <p className="mt-4">
               The learnings from the pilot will help NMT develop a
               scalable model for capacity building of old age homes.
             </p>
-          </>
-        }
-      />
+          </div>
 
-    </CardGrid>
+        </div>
+      </div>
+    </div>
   </div>
-</Section>
+)}
 
 {/* ======================================================
     TRAINING & CAPACITY BUILDING

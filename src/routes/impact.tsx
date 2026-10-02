@@ -29,6 +29,7 @@ import { Reveal } from "@/components/site/Reveal";
 import impactBanner from "@/assets/impact/impact-banner.webp";
 import impactMedia from "@/assets/impact/impact-media.webp";
 import impactStory from "@/assets/impact/impact-story.webp";
+import impactcampaign from "@/assets/impact/Campaigns.png";
 
 // ============================================================
 // PAGE META
@@ -399,9 +400,9 @@ useEffect(() => {
 
   return (
     <SiteLayout>
-     {/* ======================================================
+    {/* ======================================================
     HERO
-    ====================================================== */}
+====================================================== */}
 
 <section
   id="impact"
@@ -418,21 +419,114 @@ useEffect(() => {
       min-h-[380px]
     "
   >
+    {/* Hero Image */}
     <img
       src={impactBanner}
       alt="Our Impact"
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
 
-    {/* Very light overlay — image remains clearly visible */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/30 via-[#17232B]/10 to-transparent" />
+    {/* Light overlay */}
+    <div
+      className="
+        absolute inset-0
+        bg-gradient-to-r
+        from-[#17232B]/30
+        via-[#17232B]/10
+        to-transparent
+      "
+    />
 
-    {/* Hero Content */}
-    <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 sm:px-8 lg:px-10">
+    {/* Bottom readability gradient */}
+    <div
+      className="
+        pointer-events-none
+        absolute
+        inset-x-0
+        bottom-0
+        h-[150px]
+        bg-gradient-to-t
+        from-[#17232B]/45
+        via-[#17232B]/15
+        to-transparent
+
+        sm:h-[180px]
+        md:h-[200px]
+        lg:h-[220px]
+      "
+    />
+
+    {/* ======================================================
+        HERO CONTENT
+    ====================================================== */}
+    <div
+      className="
+        absolute
+        inset-x-0
+        bottom-0
+        z-10
+        w-full
+        px-5
+        pb-9
+
+        sm:px-8
+        sm:pb-11
+
+        md:px-10
+        md:pb-12
+
+        lg:px-14
+        lg:pb-14
+      "
+    >
       <Reveal>
-        <h1 className="font-display text-5xl font-black tracking-[-0.045em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.3)] sm:text-6xl lg:text-8xl">
-          Impact
-        </h1>
+        <div
+          className="
+            flex
+            w-full
+            items-start
+            gap-3
+
+            sm:gap-5
+          "
+        >
+          {/* Orange vertical accent line */}
+          <span
+            className="
+              mt-1
+              h-[48px]
+              w-[3px]
+              shrink-0
+              rounded-full
+              bg-[#ED6439]
+
+              sm:h-[56px]
+              sm:w-1
+
+              md:h-[64px]
+
+              lg:h-[72px]
+            "
+          />
+
+          {/* Heading */}
+          <h1
+            className="
+              font-display
+              text-5xl
+              font-black
+              leading-[1.08]
+              tracking-[-0.045em]
+              text-white
+              drop-shadow-[0_3px_18px_rgba(0,0,0,0.3)]
+
+              sm:text-6xl
+              lg:text-7xl
+            "
+          >
+            Impact
+          </h1>
+        </div>
       </Reveal>
     </div>
   </div>
@@ -722,7 +816,7 @@ useEffect(() => {
               <article className="h-full overflow-hidden rounded-[2rem] border border-[#ED6439]/15 bg-white shadow-[0_20px_55px_-28px_rgba(38,55,70,0.2)]">
                 <div className="h-64 overflow-hidden sm:h-80">
                   <img
-  src={impactMedia}
+  src={impactcampaign}
   alt="NMT training and awareness activities"
   className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
   loading="lazy"

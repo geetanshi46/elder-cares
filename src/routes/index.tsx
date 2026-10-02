@@ -19,6 +19,8 @@ import { Newsletter } from "@/components/home/Newsletter";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Recognitions } from "@/components/home/Recognitions";
 
+import { AccessibilityWidget } from "@/components/site/AccessibilityWidget";
+
 const title = "Nightingales Medical Trust — Dignified Elder & Dementia Care";
 const description =
   "Compassionate and innovative age care since 1998 — memory clinics, day care, home care, elder helplines and Smriti Gram, India's first dementia village.";
@@ -41,6 +43,9 @@ function Index() {
   return (
     <div className="min-h-dvh bg-background">
       <Navbar />
+
+      <AccessibilityWidget />
+
       <main id="main">
         <Hero />
         <QuickActions />
@@ -51,14 +56,15 @@ function Index() {
         <SmritiGram />
         <RoadAhead />
         <Recognitions />
-<GetInvolved />
-{/* <Testimonials /> */}
-{/* <Events /> */}
-<Partners />
+        <GetInvolved />
+        {/* <Testimonials /> */}
+        {/* <Events /> */}
+        <Partners />
         {/* <Blogs /> */}
         {/* <Newsletter /> */}
         {/* <FinalCta /> */}
       </main>
+
       <Footer />
       <ScrollToTop />
     </div>

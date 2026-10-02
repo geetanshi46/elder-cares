@@ -14,39 +14,39 @@ export const Route = createFileRoute("/financial-reports")({
 
 const balanceSheets = [
   {
-    year: "2019–20",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited-FinancialStatementsFY2019-20.pdf",
-  },
-  {
-    year: "2021–22",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited-BalanceSheetNMT2021-22.pdf",
-  },
-  {
-    year: "2022–23",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-consolidatedBalancesheetFY2022-23.pdf",
+    year: "2024–25",
+    pdf: "https://nightingaleseldercare.com/assets/files/Audited%20Financial%20Statements%20FY%202024-25%20(1).pdf",
   },
   {
     year: "2023–24",
     pdf: "https://nightingaleseldercare.com/assets/files/NMT%20Annual%20Accounts%202023-24.pdf",
   },
   {
-    year: "2024–25",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited%20Financial%20Statements%20FY%202024-25%20(1).pdf",
+    year: "2022–23",
+    pdf: "https://nightingaleseldercare.com/assets/files/NMT-consolidatedBalancesheetFY2022-23.pdf",
+  },
+  {
+    year: "2021–22",
+    pdf: "https://nightingaleseldercare.com/assets/files/Audited-BalanceSheetNMT2021-22.pdf",
+  },
+  {
+    year: "2019–20",
+    pdf: "https://nightingaleseldercare.com/assets/files/Audited-FinancialStatementsFY2019-20.pdf",
   },
 ];
 
 const fcraReports = [
   {
-    year: "2022–23",
-    pdf: "https://nightingaleseldercare.com/assets/files/FC4-2022-23.pdf",
+    year: "2024–25",
+    pdf: "https://nightingaleseldercare.com/assets/files/FCRA%20Annual_Report_FC_4_2024-25.pdf",
   },
   {
     year: "2023–24",
     pdf: "https://nightingaleseldercare.com/assets/files/FCRA-FC42023-24.pdf",
   },
   {
-    year: "2024–25",
-    pdf: "https://nightingaleseldercare.com/assets/files/FCRA%20Annual_Report_FC_4_2024-25.pdf",
+    year: "2022–23",
+    pdf: "https://nightingaleseldercare.com/assets/files/FC4-2022-23.pdf",
   },
 ];
 
@@ -69,18 +69,18 @@ const trustDocuments = [
     icon: ShieldCheck,
     pdf: "https://nightingaleseldercare.com/assets/files/FCRA-Renewal-Certificate1.pdf",
   },
-  {
-    title: "12A Certificate",
-    description: "12AB approval certificate",
-    icon: Landmark,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-12ABApprovalAAATN2786NE20214.pdf",
-  },
-  {
-    title: "80G Certificate",
-    description: "80G approval certificate",
-    icon: FileCheck2,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-80GApprovalAAATN2786NF20214.pdf",
-  },
+ {
+  title: "12A Certificate",
+  description: "12AB approval certificate",
+  icon: Landmark,
+  pdf: "src/assets/files/NMT-12AB-NEW.pdf",
+},
+{
+  title: "80G Certificate",
+  description: "80G approval certificate",
+  icon: FileCheck2,
+  pdf: "src/assets/files/NMT-80G-NEW.pdf",
+},
   {
     title: "CSR Registration",
     description: "CSR registration approval",

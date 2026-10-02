@@ -133,14 +133,55 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     />
 
     {/* Light Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/55 via-[#17232B]/20 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/30 via-[#17232B]/10 to-transparent" />
+
+    {/* Bottom Readability Gradient */}
+    <div
+      className="
+        pointer-events-none absolute inset-x-0 bottom-0
+        h-[150px]
+        bg-gradient-to-t from-[#17232B]/45 via-[#17232B]/15 to-transparent
+        sm:h-[180px]
+        md:h-[200px]
+        lg:h-[220px]
+      "
+    />
 
     {/* Hero Heading */}
-    <div className="absolute inset-0 z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 sm:px-8 lg:px-10">
+    <div
+      className="
+        absolute inset-x-0 bottom-0 z-10 w-full
+        px-5 pb-9
+        sm:px-8 sm:pb-11
+        md:px-10 md:pb-12
+        lg:px-14 lg:pb-14
+      "
+    >
       <Reveal>
-        <h1 className="font-display text-5xl font-black tracking-[-0.045em] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.3)] sm:text-6xl lg:text-8xl">
-          Contact Us
-        </h1>
+        <div className="flex w-full items-start gap-3 sm:gap-5">
+          {/* Orange Vertical Line */}
+          <span
+            className="
+              mt-1 h-[48px] w-[3px] shrink-0 rounded-full bg-[#ED6439]
+              sm:h-[56px] sm:w-1
+              md:h-[64px]
+              lg:h-[72px]
+            "
+          />
+
+          <h1
+            className="
+              font-display text-4xl font-extrabold
+              leading-[1.08] tracking-[-0.035em]
+              text-white
+              drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Contact Us
+          </h1>
+        </div>
       </Reveal>
     </div>
   </div>
@@ -283,43 +324,43 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {[
-    {
-      name: "Kasturinagar — NCAA residential dementia care & head office",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru",
-    },
-    {
-      name: "Kolar — ETCM Nightingales Trust Geriatric Unit",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar",
-    },
-    {
-      name: "Kothanur — Tanya Mathias Elder Care Centre",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+-+Tanya+Mathias+Elder+Care+Centre+For+Women,+Kothanur,+Bengaluru",
-    },
-    {
-      name: "Jayanagar — Day care for the elderly",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru",
-    },
-    {
-      name: "RT Nagar — Day care, Jobs 60+ & training",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+337+2nd+Cross,+1st+Block,+RT+Nagar,+Bengaluru,+Karnataka+560032",
-    },
-    {
-      name: "Shanthinagar — Sandhya Kirana day care",
-      href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+-+Shanthinagar",
-    },
-    {
-      name: "Anepalya — Sandhya Suraksha, home for destitute elderly women",
-      href: "https://www.google.com/maps/search/?api=1&query=Sandhya+Suraksha+-+A+Home+for+Helpless+Elderly+Women",
-    },
-    {
-      name: "Richmond Town — SK Home, home for destitute elderly men",
-      href: "#",
-    },
-    {
-      name: "Ali Asker Road — Elders Helpline 1090",
-      href: "https://www.google.com/maps/search/?api=1&query=Elders+Helpline,+Ali+Asker+Road,+Bengaluru",
-    },
-  ].map((centre, index) => (
+  {
+    name: "Nightingales Centre for Ageing & Alzheimer's & head office - Kasturinagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru",
+  },
+  {
+    name: "ETCM - Nightingales Trust Dementia Care Centre - Kolar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar",
+  },
+  {
+    name: "Nightingales Trust - Tanya Mathias Elder Care Centre - Kothanur ",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+-+Tanya+Mathias+Elder+Care+Centre+For+Women,+Kothanur,+Bengaluru",
+  },
+  {
+    name: "Nightingales Trust Day Care for Elderly & Dementia - Jayanagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru",
+  },
+  {
+    name: "Nightingales Trust Dementia Day Care Centre - RT Nagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+337+2nd+Cross,+1st+Block,+RT+Nagar,+Bengaluru,+Karnataka+560032",
+  },
+  {
+    name: "Sandhya Kirana Day care - Shanthinagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+-+Shanthinagar",
+  },
+  {
+    name: "Sandhya Suraksha, home for destitute elderly women - Anepalya",
+    href: "https://www.google.com/maps/search/?api=1&query=Sandhya+Suraksha+-+A+Home+for+Helpless+Elderly+Women",
+  },
+  {
+    name: "SK Home, home for destitute elderlys men - Richmond Town ",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+Shanthinagar",
+  },
+  {
+    name: "Elder Helpline 1090 - Ali Asker Road",
+    href: "https://www.google.com/maps/search/?api=1&query=Elders+Helpline,+Ali+Asker+Road,+Bengaluru",
+  },
+].map((centre, index) => (
     <Reveal key={centre.name} delay={(index % 3) * 90}>
       <article
         className="

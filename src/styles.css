@@ -320,3 +320,16 @@ html::-webkit-scrollbar-thumb:hover {
     scroll-margin-top: 7rem;
   }
 }
+
+html {
+  font-size: calc(100% * var(--accessibility-text-scale, 1));
+}
+
+.accessibility-high-contrast {
+  filter: contrast(1.15);
+}
+
+.accessibility-underline-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

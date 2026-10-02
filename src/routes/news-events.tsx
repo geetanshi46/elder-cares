@@ -24,6 +24,8 @@ import {
   type PressClipping,
 } from "@/data/pressArticles";
 import newsEventsBanner from "@/assets/new&events/news-events-banner.webp";
+import job60Poster from "@/assets/new&events/job-60-poster.jpeg";
+import musicalInstrumentsAppealImage from "@/assets/new&events/musical-instruments-appeal.webp";
 
 // Recent events cards with real visuals from print media & activities
 import clippingDeccanHerald2018 from "@/assets/new&events/deccan-herald-600x856.jpg.jpeg";
@@ -93,7 +95,7 @@ function NewsEventsPage() {
     <SiteLayout>
    {/* ======================================================
     NEWS & EVENTS HERO BANNER
-    ====================================================== */}
+====================================================== */}
 <section className="w-full bg-[#FBF6EC]">
   <div
     className="
@@ -106,26 +108,98 @@ function NewsEventsPage() {
       min-h-[380px]
     "
   >
+    {/* Hero Image */}
     <img
       src={newsEventsBanner}
       alt="News & Events"
       className="absolute inset-0 h-full w-full object-cover object-center"
     />
 
-    {/* VERY LIGHT OVERLAY */}
+    {/* Very light overlay */}
     <div className="pointer-events-none absolute inset-0 bg-white/15" />
 
-    {/* HERO HEADING */}
-    <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
-      <div className="rounded-2xl bg-white/35 px-6 py-3 backdrop-blur-[2px] sm:px-8 sm:py-4">
+    {/* Bottom readability gradient */}
+    <div
+      className="
+        pointer-events-none
+        absolute
+        inset-x-0
+        bottom-0
+        h-[150px]
+        bg-gradient-to-t
+        from-[#17232B]/40
+        via-[#17232B]/15
+        to-transparent
+
+        sm:h-[180px]
+        md:h-[200px]
+        lg:h-[220px]
+      "
+    />
+
+    {/* ======================================================
+        HERO CONTENT
+    ====================================================== */}
+    <div
+      className="
+        absolute
+        inset-x-0
+        bottom-0
+        z-10
+        w-full
+        px-5
+        pb-9
+
+        sm:px-8
+        sm:pb-11
+
+        md:px-10
+        md:pb-12
+
+        lg:px-14
+        lg:pb-14
+      "
+    >
+      <div
+        className="
+          flex
+          w-full
+          items-start
+          gap-3
+
+          sm:gap-5
+        "
+      >
+        {/* Orange vertical accent line */}
+        <span
+          className="
+            mt-1
+            h-[48px]
+            w-[3px]
+            shrink-0
+            rounded-full
+            bg-[#ED6439]
+
+            sm:h-[56px]
+            sm:w-1
+
+            md:h-[64px]
+
+            lg:h-[72px]
+          "
+        />
+
+        {/* Heading */}
         <h1
           className="
             font-display
             text-4xl
             font-extrabold
+            leading-[1.08]
             tracking-[-0.03em]
-            text-[#263746]
-            drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]
+            text-white
+            drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]
+
             sm:text-5xl
             lg:text-6xl
           "
@@ -136,193 +210,60 @@ function NewsEventsPage() {
     </div>
   </div>
 
-  {/* CLEAN GAP BEFORE NEXT SECTION */}
+ {/* CLEAN GAP BEFORE NEXT SECTION */}
   <div className="h-8 bg-[#FBF6EC] sm:h-10 lg:h-12" />
 </section>
 
-      {/* <Events /> */}
+      <Events />
 
     
  
-    {/* ============================================================
+{/* ============================================================
     APPEAL FOR MUSICAL INSTRUMENTS
     ============================================================ */}
 
-<section className="relative overflow-hidden bg-[#FFF4EA] py-16 sm:py-20 lg:py-24">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section className="relative overflow-hidden bg-[#FFF4EA] py-14 sm:py-18 lg:py-20">
+  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-    {/* SECTION HEADER */}
     <Reveal>
-      <div className="mb-10 text-center sm:mb-12">
-        <span className="inline-flex items-center rounded-full bg-[#ED6439] px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-white shadow-[0_8px_20px_rgba(237,100,57,0.2)]">
-          Appeal
-        </span>
+      <div className="grid items-start gap-6 sm:gap-8 md:grid-cols-2">
 
-        <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-[2.7rem]">
-          APPEAL FOR MUSICAL INSTRUMENTS
-        </h2>
+        {/* LEFT IMAGE + DOWNLOAD BUTTON */}
+        <div className="flex flex-col items-center">
+          <div className="w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#ED6439]/15 bg-white p-3 shadow-[0_18px_50px_-25px_rgba(70,45,10,0.25)] sm:p-4">
+            <img
+              src={musicalInstrumentsAppealImage}
+              alt="Appeal for musical instruments"
+              className="block h-auto w-full rounded-xl object-contain"
+            />
+          </div>
 
-        <div className="mx-auto mt-5 h-1 w-16 bg-[#ED6439]" />
+          {/* DOWNLOAD APPEAL PDF */}
+          <div className="mt-6 flex justify-center">
+            <a
+              href="/documents/appeal-for-musical-instruments.pdf"
+              download="Nightingales-Smriti-Gram-Appeal-for-Musical-Instruments.pdf"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ED6439] px-6 py-3 text-xs font-black text-white shadow-[0_8px_20px_rgba(237,100,57,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D95732] sm:px-7 sm:py-3.5 sm:text-sm"
+            >
+              <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
+              Download Appeal PDF
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* RIGHT IMAGE - EXISTING IMAGE */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-[420px] overflow-hidden rounded-2xl border border-[#ED6439]/15 bg-white p-3 shadow-[0_18px_50px_-25px_rgba(70,45,10,0.25)] sm:p-4">
+            <img
+              src={job60Poster}
+              alt="Nightingales appeal poster"
+              className="block h-auto w-full rounded-xl object-contain"
+            />
+          </div>
+        </div>
+
       </div>
-    </Reveal>
-
-    {/* ========================================================
-        SINGLE FULL-WIDTH APPEAL CARD
-        ======================================================== */}
-
-    <Reveal>
-      <article className="w-full overflow-hidden border border-[#ED6439]/15 bg-white shadow-[0_20px_60px_-25px_rgba(70,45,10,0.18)]">
-
-        {/* TOP ORANGE STRIP */}
-        <div className="flex items-center justify-between bg-[#ED6439] px-6 py-5 sm:px-8 lg:px-10">
-          <p className="text-sm font-extrabold text-white sm:text-base">
-            11th September 2026
-          </p>
-
-          <FileText className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-        </div>
-
-        {/* APPEAL CONTENT */}
-        <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
-
-          <h3 className="font-display text-xl font-extrabold leading-tight text-[#ED6439] sm:text-2xl lg:text-3xl">
-            *APPEAL FOR MUSICAL INSTRUMENTS*
-          </h3>
-
-          <p className="mt-5 font-semibold leading-relaxed text-[#263746]">
-            _Donations for Nightingales Smriti Gram – India’s First Integrated
-            Dementia Care Village, Doddaballapur_
-          </p>
-
-          <div className="mt-7 space-y-5 text-[14px] leading-[1.8] text-muted-foreground sm:text-[14.5px]">
-
-            <p>
-              Dear Sir / Madam,
-            </p>
-
-            <p>
-              Warm greetings to you.
-            </p>
-
-            <p>
-              Nightingales Medical Trust (NMT) is an NGO dedicated to improving
-              the lives of older persons through compassionate and innovative
-              age care services. We reach thousands of elders through a range
-              of need-based programmes every month
-              .
-            </p>
-
-            <p>
-              We are happy to share that Nightingales Smriti Gram – India’s
-              First Integrated Dementia Care Village, near Doddaballapur, is
-              nearing completion. Located just 36 km from Yelahanka, Smriti
-              Gram is being developed as a national model of compassionate,
-              person-centred and integrated dementia care.
-            </p>
-
-            <p>
-              The first phase, expected to become operational in September -
-              October 2026, will include a 100-bed residential dementia care
-              facility offering completely free care to economically
-              marginalized persons living with dementia, along with a Training
-              Academy and Research & Innovation Hub.
-            </p>
-
-            <p>
-              We firmly believe that financial circumstances should never
-              determine the quality of dementia care a person receives.
-            </p>
-
-            <p className="font-extrabold text-[#ED6439]">
-              *Help us bring music to Smriti Gram*
-            </p>
-
-            <p>
-              As part of our efforts to create a warm, stimulating and
-              therapeutic environment, we are setting up a Music Therapy Room
-              at Smriti Gram. Music can evoke memories, encourage
-              self-expression, reduce anxiety and bring joy and meaningful
-              engagement to people living with dementia.
-            </p>
-
-            <p>
-              We are therefore seeking musical instruments in good working
-              condition, such as:
-            </p>
-
-            <p className="font-bold text-[#263746]">
-              Keyboards • Harmoniums • Tablas • Dholaks • Maracas • Tambourines
-              • Flutes • Guitars • Violins • and other suitable instruments.
-            </p>
-
-            <p>
-              If you have instruments that are no longer in use, we would be
-              grateful if you would consider donating them to Smriti Gram.
-            </p>
-
-            <p>
-              We invite you to be part of this meaningful initiative and help
-              us create a place where every memory matters.
-            </p>
-
-            <p>
-              Thank you.
-            </p>
-
-            <div className="pt-3">
-              <p>
-                Warm regards,
-              </p>
-
-              <p className="mt-3 font-bold text-[#263746]">
-                Mr. S Premkumar Raja
-              </p>
-
-              <p>
-                Secretary and Co-founder
-              </p>
-            </div>
-
-          </div>
-
-          {/* ====================================================
-              DOWNLOAD CTA — SAME CARD
-              ==================================================== */}
-
-          <div className="mt-10 border-t border-[#ED6439]/15 pt-7 sm:mt-12 sm:pt-8">
-            <div className="flex flex-col gap-5 rounded-2xl bg-[#FFF4EA] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-
-              <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#ED6439] text-white">
-                  <FileText className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="font-black text-[#263746]">
-                    Appeal Document
-                  </p>
-
-                  <p className="mt-1 text-sm leading-6 text-[#6B7280]">
-                    Download the complete appeal letter as a PDF.
-                  </p>
-                </div>
-              </div>
-
-              <a
-                href="/documents/appeal-for-musical-instruments.pdf"
-                download="Nightingales-Smriti-Gram-Appeal-for-Musical-Instruments.pdf"
-                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-[#ED6439] px-7 py-4 text-sm font-black text-white shadow-[0_10px_25px_rgba(237,100,57,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D95732] sm:w-auto"
-              >
-                <FileText className="h-5 w-5" />
-                Download Appeal PDF
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-
-            </div>
-          </div>
-
-        </div>
-      </article>
     </Reveal>
 
   </div>
