@@ -280,39 +280,144 @@ function ContactCTA() {
     </p>
   </div>
 
-  <h3 className="text-3xl font-black text-white sm:text-4xl">
-    Have any queries?
-  </h3>
+ <h3 className="text-3xl font-black text-white sm:text-4xl">
+  Have any queries?
+</h3>
 
-  <form
-    className="mt-8 space-y-4"
-    onSubmit={(event) => event.preventDefault()}
+<form
+  className="mt-8 space-y-4"
+  onSubmit={(event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    const name = (
+      form.elements.namedItem("name") as HTMLInputElement
+    ).value.trim();
+
+    const email = (
+      form.elements.namedItem("email") as HTMLInputElement
+    ).value.trim();
+
+    const message = (
+      form.elements.namedItem("message") as HTMLTextAreaElement
+    ).value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in all the fields.");
+      return;
+    }
+
+    const subject = `Donation Enquiry from ${name}`;
+
+    const body = `Hello Nightingales Medical Trust,
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+Thank you.`;
+
+    window.location.href = `mailto:contact@nightingaleseldercare.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  }}
+>
+  <input
+    name="name"
+    type="text"
+    required
+    placeholder="Your Name"
+    className="
+      w-full
+      rounded-xl
+      border
+      border-white/10
+      bg-white
+      px-5
+      py-4
+      text-base
+      text-[#17232B]
+      outline-none
+      placeholder:text-[#526574]/75
+      focus:ring-2
+      focus:ring-[#ED6439]
+    "
+  />
+
+  <input
+    name="email"
+    type="email"
+    required
+    placeholder="Email"
+    className="
+      w-full
+      rounded-xl
+      border
+      border-white/10
+      bg-white
+      px-5
+      py-4
+      text-base
+      text-[#17232B]
+      outline-none
+      placeholder:text-[#526574]/75
+      focus:ring-2
+      focus:ring-[#ED6439]
+    "
+  />
+
+  <textarea
+    name="message"
+    required
+    placeholder="Message"
+    rows={5}
+    className="
+      w-full
+      resize-none
+      rounded-xl
+      border
+      border-white/10
+      bg-white
+      px-5
+      py-4
+      text-base
+      text-[#17232B]
+      outline-none
+      placeholder:text-[#526574]/75
+      focus:ring-2
+      focus:ring-[#ED6439]
+    "
+  />
+
+  <button
+    type="submit"
+    className="
+      inline-flex
+      items-center
+      justify-center
+      gap-2
+      rounded-xl
+      bg-[#ED6439]
+      px-7
+      py-4
+      text-sm
+      font-black
+      uppercase
+      text-white
+      transition-all
+      duration-300
+      hover:-translate-y-0.5
+      hover:bg-[#D9532B]
+      hover:shadow-lg
+    "
   >
-    <input
-      placeholder="Your Name"
-      className="w-full rounded-xl border border-white/10 bg-white px-5 py-4 text-base text-[#17232B] outline-none placeholder:text-[#526574]/75 focus:ring-2 focus:ring-[#ED6439]"
-    />
-
-    <input
-      type="email"
-      placeholder="Email"
-      className="w-full rounded-xl border border-white/10 bg-white px-5 py-4 text-base text-[#17232B] outline-none placeholder:text-[#526574]/75 focus:ring-2 focus:ring-[#ED6439]"
-    />
-
-    <textarea
-      placeholder="Message"
-      rows={5}
-      className="w-full resize-none rounded-xl border border-white/10 bg-white px-5 py-4 text-base text-[#17232B] outline-none placeholder:text-[#526574]/75 focus:ring-2 focus:ring-[#ED6439]"
-    />
-
-    <button
-      type="submit"
-      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#ED6439] px-7 py-4 text-sm font-black uppercase text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d55229] hover:shadow-lg"
-    >
-      Send Message
-      <ArrowRight className="h-4 w-4" />
-    </button>
-  </form>
+    Send Message
+    <ArrowRight className="h-4 w-4" />
+  </button>
+</form>
 </div>
         <div className="flex items-center"><div className="w-full"><div className="mb-5 h-1 w-14 rounded-full bg-[#D9533B]" /><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F15A00]">Senior Care</p><h3 className="mt-3 text-4xl leading-tight text-[#263746] sm:text-5xl">Donate towards the<br />cause of <strong>Senior Care</strong></h3><p className="mt-8 text-lg font-bold leading-8 text-[#263746] sm:text-xl">If you would like to help us in our work, please get in touch with:</p><div className="mt-7 space-y-1 text-lg font-bold leading-8 text-[#263746]"><p>Ms. Swati Bhandary</p><p>+91 9243737218</p><p>contact@nightingaleseldercare.com</p></div><div className="my-8 h-px w-full bg-[#F15A00]/45" /><div className="flex items-start gap-3 text-sm text-[#263746] sm:text-base"><Check className="mt-0.5 h-5 w-5 shrink-0 text-[#F15A00]" /><p>We dont share your personal info with anyone.</p></div></div></div>
       </div>

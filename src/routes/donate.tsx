@@ -79,6 +79,7 @@ type IdentityDetails = {
   associationYears: string;
   pincode: string;
   pan: string;
+  idProofNumber: string;
   city: string;
   registrationNo: string;
   state: string;
@@ -110,17 +111,18 @@ function Donation() {
     mobile: "",
   });
 
-  const [identity, setIdentity] = useState<IdentityDetails>({
-    associationYears: "",
-    pincode: "",
-    pan: "",
-    city: "",
-    registrationNo: "",
-    state: "",
-    website: "",
-    address: "",
-    comment: "",
-  });
+ const [identity, setIdentity] = useState<IdentityDetails>({
+  associationYears: "",
+  pincode: "",
+  pan: "",
+  idProofNumber: "",
+  city: "",
+  registrationNo: "",
+  state: "",
+  website: "",
+  address: "",
+  comment: "",
+});
 
   const updatePrimary = (
     field: keyof PrimaryDetails,
@@ -196,7 +198,8 @@ function Donation() {
   if (step === 2) {
     const required = [
       identity.pincode,
-      identity.pan,
+       identity.pan,
+  identity.idProofNumber,
       identity.city,
       identity.registrationNo,
       identity.state,
@@ -434,7 +437,7 @@ function Donation() {
   />
 </FormField>
 
-                    <FormField label="Designation" required>
+                    <FormField label="Designation">
                       <Input
                         placeholder="Enter Authorized Person Designation"
                         value={primary.designation}
@@ -527,7 +530,7 @@ function Donation() {
                       />
                     </FormField>
 
-                    <FormField label="ID Proof" required info>
+                <FormField label="ID Proof" required info>
   <Select
     value={identity.pan}
     onChange={(value) =>
@@ -539,6 +542,20 @@ function Donation() {
     <option value="PAN">PAN Card</option>
     <option value="Passport">Passport</option>
   </Select>
+</FormField>
+
+<FormField label="ID Proof Number" required info>
+  <Input
+    placeholder={
+      identity.pan
+        ? `Enter ${identity.pan} Number`
+        : "Enter ID Proof Number"
+    }
+    value={identity.idProofNumber}
+    onChange={(value) =>
+      updateIdentity("idProofNumber", value)
+    }
+  />
 </FormField>
 
                     <FormField label="City" required>

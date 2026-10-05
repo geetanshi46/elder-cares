@@ -1573,7 +1573,7 @@ function AboutPage() {
       />
     </div>
 
-    <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white">
+    <p id="financial-statements" className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white">
       FINANCIAL STATEMENTS
     </p>
 

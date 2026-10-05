@@ -58,8 +58,8 @@ const DOWNLOADS = [
     href: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
   },
   {
-    label: "80G & FCRA Certificates (PDF)",
-    href: "#download",
+    label: "Financial",
+    href: "/about#financial-statements",
   },
 ];
 

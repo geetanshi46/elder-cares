@@ -7,12 +7,19 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-
+import NMT12AB from "@/assets/files/NMT-12AB-NEW.pdf";
+import NMT80G from "@/assets/files/NMT-80G-NEW.pdf";
+import BalanceSheet2025 from "@/assets/files/Audited-FinancialStatementsFY2025-26.pdf";
+import FCRA2025 from "@/assets/files/FCRA-Annual-Report-2025-26.pdf";
 export const Route = createFileRoute("/financial-reports")({
   component: RouteComponent,
 });
 
 const balanceSheets = [
+  {
+    year: "2025–26",
+    pdf: BalanceSheet2025,
+  },
   {
     year: "2024–25",
     pdf: "https://nightingaleseldercare.com/assets/files/Audited%20Financial%20Statements%20FY%202024-25%20(1).pdf",
@@ -36,6 +43,11 @@ const balanceSheets = [
 ];
 
 const fcraReports = [
+  {
+    year: "2025–26",
+    pdf: FCRA2025,
+  },
+
   {
     year: "2024–25",
     pdf: "https://nightingaleseldercare.com/assets/files/FCRA%20Annual_Report_FC_4_2024-25.pdf",
@@ -69,17 +81,17 @@ const trustDocuments = [
     icon: ShieldCheck,
     pdf: "https://nightingaleseldercare.com/assets/files/FCRA-Renewal-Certificate1.pdf",
   },
- {
+{
   title: "12A Certificate",
   description: "12AB approval certificate",
   icon: Landmark,
-  pdf: "src/assets/files/NMT-12AB-NEW.pdf",
+  pdf: NMT12AB,
 },
 {
   title: "80G Certificate",
   description: "80G approval certificate",
   icon: FileCheck2,
-  pdf: "src/assets/files/NMT-80G-NEW.pdf",
+  pdf: NMT80G,
 },
   {
     title: "CSR Registration",

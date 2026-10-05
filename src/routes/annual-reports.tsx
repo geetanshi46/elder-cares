@@ -1,12 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, FileText } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-
+import AnnualReport2025 from "@/assets/files/Annual_Report_2025-2026.pdf";
 export const Route = createFileRoute("/annual-reports")({
   component: RouteComponent,
 });
 
 const annualReports = [
+    {
+    year: "2025-26",
+    pdf: AnnualReport2025,
+  },
   {
     year: "2024-25",
     pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",

@@ -340,7 +340,7 @@ export function Hero() {
           sm:text-sm
         "
       >
-        25+
+        28+
       </span>
 
       <div>
