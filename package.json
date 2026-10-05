@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "start": "srvx --prod -s ../../dist/client dist/server/server.js"
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
