@@ -29,6 +29,8 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SmritiGramRouteImport } from './routes/smriti-gram'
 import { Route as SpecificCauseRouteImport } from './routes/specific-cause'
 import { Route as TheRoadAheadRouteImport } from './routes/the-road-ahead'
+import { Route as ApiCreateOrderRouteImport } from './routes/api/create-order'
+import { Route as ApiVerifyPaymentRouteImport } from './routes/api/verify-payment'
 import { Route as NewsEventsSlugRouteImport } from './routes/news-events_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -131,6 +133,16 @@ const TheRoadAheadRoute = TheRoadAheadRouteImport.update({
   path: '/the-road-ahead',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCreateOrderRoute = ApiCreateOrderRouteImport.update({
+  id: '/api/create-order',
+  path: '/api/create-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVerifyPaymentRoute = ApiVerifyPaymentRouteImport.update({
+  id: '/api/verify-payment',
+  path: '/api/verify-payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsEventsSlugRoute = NewsEventsSlugRouteImport.update({
   id: '/news-events_/$slug',
   path: '/news-events/$slug',
@@ -158,6 +170,8 @@ export interface FileRoutesByFullPath {
   '/smriti-gram': typeof SmritiGramRoute
   '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -181,6 +195,8 @@ export interface FileRoutesByTo {
   '/smriti-gram': typeof SmritiGramRoute
   '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesById {
@@ -205,6 +221,8 @@ export interface FileRoutesById {
   '/smriti-gram': typeof SmritiGramRoute
   '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
   '/news-events_/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRouteTypes {
@@ -230,6 +248,8 @@ export interface FileRouteTypes {
     | '/smriti-gram'
     | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
     | '/news-events/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -253,6 +273,8 @@ export interface FileRouteTypes {
     | '/smriti-gram'
     | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
     | '/news-events/$slug'
   id:
     | '__root__'
@@ -276,6 +298,8 @@ export interface FileRouteTypes {
     | '/smriti-gram'
     | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
     | '/news-events_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -300,6 +324,8 @@ export interface RootRouteChildren {
   SmritiGramRoute: typeof SmritiGramRoute
   SpecificCauseRoute: typeof SpecificCauseRoute
   TheRoadAheadRoute: typeof TheRoadAheadRoute
+  ApiCreateOrderRoute: typeof ApiCreateOrderRoute
+  ApiVerifyPaymentRoute: typeof ApiVerifyPaymentRoute
   NewsEventsSlugRoute: typeof NewsEventsSlugRoute
 }
 
@@ -445,6 +471,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TheRoadAheadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/create-order': {
+      id: '/api/create-order'
+      path: '/api/create-order'
+      fullPath: '/api/create-order'
+      preLoaderRoute: typeof ApiCreateOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/verify-payment': {
+      id: '/api/verify-payment'
+      path: '/api/verify-payment'
+      fullPath: '/api/verify-payment'
+      preLoaderRoute: typeof ApiVerifyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news-events_/$slug': {
       id: '/news-events_/$slug'
       path: '/news-events/$slug'
@@ -476,6 +516,8 @@ const rootRouteChildren: RootRouteChildren = {
   SmritiGramRoute: SmritiGramRoute,
   SpecificCauseRoute: SpecificCauseRoute,
   TheRoadAheadRoute: TheRoadAheadRoute,
+  ApiCreateOrderRoute: ApiCreateOrderRoute,
+  ApiVerifyPaymentRoute: ApiVerifyPaymentRoute,
   NewsEventsSlugRoute: NewsEventsSlugRoute,
 }
 export const routeTree = rootRouteImport

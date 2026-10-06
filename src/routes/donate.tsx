@@ -197,14 +197,13 @@ function Donation() {
 
   if (step === 2) {
     const required = [
-      identity.pincode,
-       identity.pan,
+  identity.pincode,
+  identity.pan,
   identity.idProofNumber,
-      identity.city,
-      identity.registrationNo,
-      identity.state,
-      identity.address,
-    ];
+  identity.city,
+  identity.state,
+  identity.address,
+];
 
     if (required.some((value) => !value.trim())) {
       alert(
@@ -233,19 +232,205 @@ function Donation() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+const loadRazorpay = () => {
+  return new Promise<boolean>((resolve) => {
+    const razorpayWindow = window as typeof window & {
+      Razorpay?: any;
+    };
 
-  const handlePayment = () => {
-    if (!termsAccepted) {
-      alert(
-        "Please agree to the Terms and Conditions before proceeding.",
-      );
+    if (razorpayWindow.Razorpay) {
+      resolve(true);
       return;
     }
 
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+
+    document.body.appendChild(script);
+  });
+};
+const handlePayment = async () => {
+  if (!termsAccepted) {
     alert(
-      "Payment integration will be connected here once the payment gateway details are provided.",
+      "Please agree to the Terms and Conditions before proceeding.",
     );
-  };
+    return;
+  }
+
+  const amount = Number(primary.amount);
+
+  if (!amount || amount <= 0) {
+    alert("Please enter a valid donation amount.");
+    return;
+  }
+
+  try {
+    // Load Razorpay Checkout
+    const razorpayLoaded = await loadRazorpay();
+
+    if (!razorpayLoaded) {
+      alert("Unable to load Razorpay. Please try again.");
+      return;
+    }
+
+    // Create Razorpay order on our server
+    const orderResponse = await fetch("/api/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount,
+        category: selectedCategory,
+        donorName: primary.name,
+      }),
+    });
+
+    const orderData = await orderResponse.json();
+
+    if (!orderResponse.ok || !orderData.success) {
+      throw new Error(
+        orderData.error || "Unable to create payment order.",
+      );
+    }
+
+    const razorpayWindow = window as typeof window & {
+      Razorpay?: any;
+    };
+
+    if (!razorpayWindow.Razorpay) {
+      throw new Error("Razorpay checkout is not available.");
+    }
+
+    const options = {
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      name: "Nightingales Medical Trust",
+      description: `Donation - ${selectedCategory}`,
+      order_id: orderData.orderId,
+
+      prefill: {
+        name: primary.name,
+        email: primary.email,
+        contact: primary.mobile,
+      },
+
+      notes: {
+        category: selectedCategory,
+        donorType,
+      },
+
+      theme: {
+        color: "#ED6439",
+      },
+
+      handler: async (response: any) => {
+        try {
+          console.log("Razorpay payment response:", response);
+
+          // Verify payment on our server
+          const verificationResponse = await fetch(
+            "/api/verify-payment",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                razorpay_order_id:
+                  response.razorpay_order_id,
+                razorpay_payment_id:
+                  response.razorpay_payment_id,
+                razorpay_signature:
+                  response.razorpay_signature,
+
+                donation: {
+                  category: selectedCategory,
+                  amount: primary.amount,
+                  donorType,
+                  donorName: primary.name,
+                  authorizedPerson:
+                    primary.authorizedPerson,
+                  designation: primary.designation,
+                  email: primary.email,
+                  mobile: primary.mobile,
+                  nationality,
+
+                  association:
+                    identity.associationYears,
+                  pincode: identity.pincode,
+                  pan: identity.pan,
+                  idProofType: identity.idProofNumber
+                    ? "Aadhaar Card"
+                    : "",
+                  idProofNumber:
+                    identity.idProofNumber,
+                  city: identity.city,
+                  registrationNo:
+                    identity.registrationNo,
+                  state: identity.state,
+                  website: identity.website,
+                  address: identity.address,
+                  comment: identity.comment,
+                },
+              }),
+            },
+          );
+
+          const verificationData =
+            await verificationResponse.json();
+
+          if (
+            !verificationResponse.ok ||
+            !verificationData.success
+          ) {
+            throw new Error(
+              verificationData.error ||
+                "Payment verification failed.",
+            );
+          }
+
+          alert(
+            `Thank you for your donation! 🎉\n\nPayment ID: ${response.razorpay_payment_id}\n\nYour donation has been recorded successfully.`,
+          );
+        } catch (error) {
+          console.error(
+            "Payment verification error:",
+            error,
+          );
+
+          alert(
+            error instanceof Error
+              ? error.message
+              : "Payment was received, but verification failed. Please contact support.",
+          );
+        }
+      },
+
+      modal: {
+        ondismiss: () => {
+          console.log("Razorpay checkout closed.");
+        },
+      },
+    };
+
+    const razorpay =
+      new razorpayWindow.Razorpay(options);
+
+    razorpay.open();
+  } catch (error) {
+    console.error("Payment error:", error);
+
+    alert(
+      error instanceof Error
+        ? error.message
+        : "Something went wrong while starting the payment.",
+    );
+  }
+};
 
   return (
     <div className="min-h-dvh bg-[#FFF9F0]">
