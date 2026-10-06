@@ -6,7 +6,7 @@ import { useState, type ReactNode } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { ScrollToTop } from "@/components/site/ScrollToTop";
-
+import { CheckCircle2 } from "lucide-react";
 
 
 const categories = [
@@ -102,6 +102,9 @@ function Donation() {
   const [nationality, setNationality] = useState("indian");
   const [termsAccepted, setTermsAccepted] = useState(false);
 
+  const [showSuccess, setShowSuccess] = useState(false);
+const [paymentId, setPaymentId] = useState("");
+
   const [primary, setPrimary] = useState<PrimaryDetails>({
     amount: "",
     name: "",
@@ -179,13 +182,14 @@ function Donation() {
  const validateAndNext = () => {
   if (step === 1) {
     const required = [
-      primary.amount,
-      primary.name,
-      primary.designation,
-      primary.email,
-      primary.mobile,
-      donorType,
-    ];
+  primary.amount,
+  primary.name,
+  primary.authorizedPerson,
+  primary.designation,
+  primary.email,
+  primary.mobile,
+  donorType,
+];
 
     if (required.some((value) => !value.trim())) {
       alert(
@@ -393,9 +397,8 @@ const handlePayment = async () => {
             );
           }
 
-          alert(
-            `Thank you for your donation! 🎉\n\nPayment ID: ${response.razorpay_payment_id}\n\nYour donation has been recorded successfully.`,
-          );
+         setPaymentId(response.razorpay_payment_id);
+setShowSuccess(true);
         } catch (error) {
           console.error(
             "Payment verification error:",
@@ -433,10 +436,48 @@ const handlePayment = async () => {
 };
 
   return (
-    <div className="min-h-dvh bg-[#FFF9F0]">
-      <Navbar />
+  <div className="min-h-dvh bg-[#FFF9F0]">
+    <Navbar />
 
-      <main id="main">
+    {showSuccess && (
+      <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#17232B]/75 px-5 backdrop-blur-sm">
+        <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.25)] sm:p-10">
+
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#FFF1EB]">
+            <CheckCircle2 className="h-12 w-12 text-[#ED6439]" />
+          </div>
+
+          <h2 className="mt-6 text-3xl font-black text-[#17232B]">
+            Thank You for Your Donation!
+          </h2>
+
+          <p className="mt-3 text-base leading-7 text-[#526574]">
+            Your donation has been successfully received.
+            Thank you for supporting Nightingales Medical Trust.
+          </p>
+
+          <div className="mt-6 rounded-2xl bg-[#FFF9F0] p-4 text-left">
+            <p className="text-xs font-bold uppercase tracking-wide text-[#526574]">
+              Payment ID
+            </p>
+
+            <p className="mt-2 break-all text-sm font-bold text-[#17232B]">
+              {paymentId}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowSuccess(false)}
+            className="mt-7 w-full rounded-xl bg-[#ED6439] px-6 py-3.5 text-sm font-black text-white transition hover:bg-[#D9532B]"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    )}
+
+    <main id="main">
         <section className="border-b border-[#263746]/10 bg-white">
           <div className="mx-auto max-w-[1280px] px-5 py-10 sm:px-8 lg:px-10 lg:py-14">
             <div className="max-w-4xl">
@@ -604,7 +645,7 @@ const handlePayment = async () => {
 
                     <FormField label="Name" required>
                       <Input
-                        placeholder="Enter Organization/Agency/Trust/Name"
+                        placeholder="Enter Name"
                         value={primary.name}
                         onChange={(value) =>
                           updatePrimary("name", value)

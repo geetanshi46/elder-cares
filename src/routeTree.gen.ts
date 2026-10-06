@@ -31,6 +31,7 @@ import { Route as SpecificCauseRouteImport } from './routes/specific-cause'
 import { Route as TheRoadAheadRouteImport } from './routes/the-road-ahead'
 import { Route as ApiCreateOrderRouteImport } from './routes/api/create-order'
 import { Route as ApiVerifyPaymentRouteImport } from './routes/api/verify-payment'
+import { Route as ApiVerifySpecificCausePaymentRouteImport } from './routes/api/verify-specific-cause-payment'
 import { Route as NewsEventsSlugRouteImport } from './routes/news-events_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -143,6 +144,12 @@ const ApiVerifyPaymentRoute = ApiVerifyPaymentRouteImport.update({
   path: '/api/verify-payment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiVerifySpecificCausePaymentRoute =
+  ApiVerifySpecificCausePaymentRouteImport.update({
+    id: '/api/verify-specific-cause-payment',
+    path: '/api/verify-specific-cause-payment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NewsEventsSlugRoute = NewsEventsSlugRouteImport.update({
   id: '/news-events_/$slug',
   path: '/news-events/$slug',
@@ -172,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/the-road-ahead': typeof TheRoadAheadRoute
   '/api/create-order': typeof ApiCreateOrderRoute
   '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -197,6 +205,7 @@ export interface FileRoutesByTo {
   '/the-road-ahead': typeof TheRoadAheadRoute
   '/api/create-order': typeof ApiCreateOrderRoute
   '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesById {
@@ -223,6 +232,7 @@ export interface FileRoutesById {
   '/the-road-ahead': typeof TheRoadAheadRoute
   '/api/create-order': typeof ApiCreateOrderRoute
   '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events_/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRouteTypes {
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/the-road-ahead'
     | '/api/create-order'
     | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/the-road-ahead'
     | '/api/create-order'
     | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events/$slug'
   id:
     | '__root__'
@@ -300,6 +312,7 @@ export interface FileRouteTypes {
     | '/the-road-ahead'
     | '/api/create-order'
     | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -326,6 +339,7 @@ export interface RootRouteChildren {
   TheRoadAheadRoute: typeof TheRoadAheadRoute
   ApiCreateOrderRoute: typeof ApiCreateOrderRoute
   ApiVerifyPaymentRoute: typeof ApiVerifyPaymentRoute
+  ApiVerifySpecificCausePaymentRoute: typeof ApiVerifySpecificCausePaymentRoute
   NewsEventsSlugRoute: typeof NewsEventsSlugRoute
 }
 
@@ -485,6 +499,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiVerifyPaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/verify-specific-cause-payment': {
+      id: '/api/verify-specific-cause-payment'
+      path: '/api/verify-specific-cause-payment'
+      fullPath: '/api/verify-specific-cause-payment'
+      preLoaderRoute: typeof ApiVerifySpecificCausePaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news-events_/$slug': {
       id: '/news-events_/$slug'
       path: '/news-events/$slug'
@@ -518,6 +539,7 @@ const rootRouteChildren: RootRouteChildren = {
   TheRoadAheadRoute: TheRoadAheadRoute,
   ApiCreateOrderRoute: ApiCreateOrderRoute,
   ApiVerifyPaymentRoute: ApiVerifyPaymentRoute,
+  ApiVerifySpecificCausePaymentRoute: ApiVerifySpecificCausePaymentRoute,
   NewsEventsSlugRoute: NewsEventsSlugRoute,
 }
 export const routeTree = rootRouteImport
