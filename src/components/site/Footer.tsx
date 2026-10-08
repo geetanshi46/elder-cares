@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logoHorizontal from "@/assets/nmt-logo-horizontal.png";
-
+import AnnualReport2025 from "@/assets/files/Annual_Report_2025-2026.pdf";
 const COLUMNS = [
   {
     title: "Organisation",
@@ -55,13 +55,13 @@ const COLUMNS = [
 const DOWNLOADS = [
   {
     label: "Annual Report",
-    href: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
+    href: AnnualReport2025,
   },
   {
     label: "Financial",
     href: "/about#financial-statements",
   },
-];
+] as const;
 
 const SOCIALS = [
   {
