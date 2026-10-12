@@ -522,179 +522,277 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
             {/* FORM */}
 
-            <Reveal delay={120}>
+<Reveal delay={120}>
+  <form
+    onSubmit={handleSubmit}
+    className="
+      min-w-0
+      rounded-xl
+      border
+      border-[#263746]/10
+      bg-[#F8F8F8]
+      p-6
+      shadow-[0_10px_40px_rgba(38,55,70,0.06)]
+      sm:p-8
+    "
+  >
+    {/* Header */}
+    <div className="mb-6">
+      <h3 className="text-xl font-bold text-[#E15925]">
+        We're Here to Help
+      </h3>
 
-              <form
-                onSubmit={handleSubmit}
-                className="
-                  grid
-                  min-w-0
-                  gap-5
-                  border
-                  border-[#E15925]/15
-                  bg-white
-                  p-6
-                  shadow-[0_20px_60px_rgba(38,55,70,0.08)]
-                  sm:grid-cols-2
-                  sm:p-8
-                  lg:p-10
-                "
-              >
+      <p className="mt-1 text-sm text-[#263746]/65">
+        Every enquiry matters. Tell us how we can support you, and our team
+        will get in touch.
+      </p>
+    </div>
 
-                <Field
-                  label="Full name"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
+    <div className="mb-6 h-px bg-[#E15925]/15" />
 
-                <Field
-                  label="Phone"
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
+    {/* Fields */}
+    <div className="grid min-w-0 gap-4 sm:grid-cols-2">
 
-                <Field
-                  label="Email"
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
+      {/* Full Name */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="name"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Full name <span className="text-[#E15925]">*</span>
+        </label>
 
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder="Enter your full name"
+          required
+          className="
+            min-w-0
+            h-11
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                <div className="flex min-w-0 flex-col gap-2">
+      {/* Phone */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="phone"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Phone number <span className="text-[#E15925]">*</span>
+        </label>
 
-                  <label
-                    htmlFor="topic"
-                    className="text-sm font-bold text-[#263746]"
-                  >
-                    I am writing about
-                  </label>
+        <div className="flex min-w-0 h-11 rounded-full border border-[#263746]/15 bg-white overflow-hidden focus-within:border-[#F29000]">
+          <span className="flex items-center px-4 text-sm text-[#263746]/60">
+            +91
+          </span>
 
-                  <select
-                    id="topic"
-                    name="topic"
-                    value={formData.topic}
-                    onChange={handleInputChange}
-                    required
-                    className="
-                      min-w-0
-                      rounded-none
-                      border
-                      border-[#263746]/15
-                      bg-[#FFFCF7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#263746]
-                      outline-none
-                      transition-colors
-                      focus:border-[#F29000]
-                    "
-                  >
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder="Phone number"
+            required
+            className="
+              min-w-0
+              flex-1
+              border-0
+              bg-transparent
+              pr-4
+              text-sm
+              text-[#263746]
+              outline-none
+              placeholder:text-[#263746]/40
+            "
+          />
+        </div>
+      </div>
 
-                    {[
-                      "Dementia care",
-                      "Donation",
-                      "Volunteering",
-                      "Internship",
-                      "CSR partnership",
-                      "Other matters",
-                    ].map((option) => (
-                      <option key={option}>{option}</option>
-                    ))}
+      {/* Email */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="email"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Email address <span className="text-[#E15925]">*</span>
+        </label>
 
-                  </select>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder="you@example.com"
+          required
+          className="
+            min-w-0
+            h-11
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                </div>
+      {/* Topic */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="topic"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          How can we help you? <span className="text-[#E15925]">*</span>
+        </label>
 
+        <select
+          id="topic"
+          name="topic"
+          value={formData.topic}
+          onChange={handleInputChange}
+          required
+          className="
+            min-w-0
+            h-11
+            w-full
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            focus:border-[#F29000]
+          "
+        >
+          {[
+            "Dementia care",
+            "Donation",
+            "Volunteering",
+            "Internship",
+            "CSR partnership",
+            "Other matters",
+          ].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
 
-                <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
+      {/* Message */}
+      <div className="flex min-w-0 flex-col gap-1.5 sm:col-span-2">
+        <label
+          htmlFor="message"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Your message <span className="text-[#E15925]">*</span>
+        </label>
 
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-bold text-[#263746]"
-                  >
-                    Message
-                  </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          placeholder="Please tell us a little about your enquiry and how we can assist you."
+          required
+          rows={5}
+          className="
+            min-w-0
+            w-full
+            resize-none
+            rounded-xl
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            py-3.5
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={5}
-                    placeholder="Tell us how we can help…"
-                    className="
-                      min-w-0
-                      resize-y
-                      rounded-none
-                      border
-                      border-[#263746]/15
-                      bg-[#FFFCF7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#263746]
-                      outline-none
-                      transition-colors
-                      focus:border-[#F29000]
-                    "
-                  />
+    </div>
 
-                </div>
+    {/* Privacy text */}
+    <p className="mt-3 text-[11px] leading-relaxed text-[#263746]/55">
+      We will use your contact details to respond to your enquiry in
+      accordance with our privacy policy.
+    </p>
 
+    {/* Submit Button */}
+    <button
+      type="submit"
+      disabled={sending}
+      className="
+        mt-4
+        inline-flex
+        h-11
+        w-full
+        items-center
+        justify-center
+        gap-2
+        rounded-full
+        bg-[#111111]
+        px-6
+        text-sm
+        font-semibold
+        text-white
+        transition-all
+        duration-300
+        hover:bg-[#263746]
+        disabled:cursor-not-allowed
+        disabled:opacity-60
+      "
+    >
+      {sending
+        ? "Sending..."
+        : sent
+          ? "Thank you — we'll be in touch"
+          : "Submit Your Enquiry"}
 
-                <button
-                  type="submit"
-                  disabled={sending}
-                  className="
-                    inline-flex
-                    w-fit
-                    items-center
-                    justify-center
-                    gap-2
-                    bg-[#E15925]
-                    px-7
-                    py-3.5
-                    text-sm
-                    font-bold
-                    text-white
-                    shadow-[0_10px_25px_rgba(225,89,37,0.2)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:bg-[#C94B1E]
-                    hover:shadow-[0_15px_35px_rgba(225,89,37,0.3)]
-                    sm:col-span-2
-                  "
-                >
+      <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+    </button>
 
-                  <Send className="h-4 w-4" strokeWidth={1.9} />
-
-                  {sending
-                    ? "Sending..."
-                    : sent
-                      ? "Thank you — we'll be in touch"
-                      : "Send enquiry"}
-
-                  <ArrowUpRight className="h-4 w-4" />
-
-                </button>
-
-                {error && (
-                  <p className="text-sm font-medium text-red-600 sm:col-span-2">
-                    {error}
-                  </p>
-                )}
-
-              </form>
-
-            </Reveal>
+    {/* Error */}
+    {error && (
+      <p className="mt-3 text-sm font-medium text-red-600">
+        {error}
+      </p>
+    )}
+  </form>
+</Reveal>
 
           </div>
 
