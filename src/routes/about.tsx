@@ -1516,29 +1516,10 @@ function AboutPage() {
           className="flex items-start gap-3 text-sm leading-6 text-[#4C5C68]"
         >
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-          <span>{item}</span>
+          <span>{item}</span> 
         </li>
       ))}
     </ul>
-
-    <div className="mt-6 flex flex-wrap gap-2.5">
-      {annualReports.map((report) => (
-        <a
-          key={report.year}
-          href={report.pdf}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#ED6439] hover:text-white"
-        >
-          {report.year}
-
-          <ArrowUpRight
-            className="h-3.5 w-3.5 opacity-50"
-            strokeWidth={2.2}
-          />
-        </a>
-      ))}
-    </div>
 
     {/* FULL CONTENT — ALWAYS VISIBLE */}
     <div className="mt-6 border-t border-[#1B2A35]/10 pt-6">
@@ -1550,6 +1531,18 @@ function AboutPage() {
         prevention, livelihoods, training, awareness and advocacy.
       </p>
     </div>
+    
+{/* View All Annual Reports Button */}
+<div className="mt-6">
+  <Link
+    to="/annual-reports"
+    className="inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-5 py-3 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#1B2A35]"
+  >
+    View All Annual Reports
+    <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+  </Link>
+</div>
+
   </div>
 </Reveal>
 

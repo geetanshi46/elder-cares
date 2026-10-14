@@ -2,6 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, FileText } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import AnnualReport2025 from "@/assets/files/Annual_Report_2025-2026.pdf";
+import AnnualReport2024 from "@/assets/files/Annual_Report_2024_2025.pdf";
+import AnnualReport2023 from "@/assets/files/Annual-report2022-2023.pdf";
+import AnnualReport2021 from "@/assets/files/NMT-AnnualReport2021-22.pdf";
+import AnnualReport2020 from "@/assets/files/NMT-AnnualReport2020-21.pdf";
+import AnnualReport2019 from "@/assets/files/2019-20-NMTAnnualReport.pdf";
+import AnnualReport2018 from "@/assets/files/NMT-AnnualReport2018-19FINAL1.pdf";
+import AnnualReport2017 from "@/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf";
 export const Route = createFileRoute("/annual-reports")({
   component: RouteComponent,
 });
@@ -12,33 +19,33 @@ const annualReports = [
     pdf: AnnualReport2025,
   },
   {
-    year: "2024-25",
-    pdf: "https://nightingaleseldercare.com/assets/files/Annual_Report_2024_2025.pdf",
-  },
-  {
-    year: "2022-23",
-    pdf: "https://nightingaleseldercare.com/assets/files/Annual-report2022-2023.pdf",
-  },
-  {
-    year: "2021-22",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2021-22.pdf",
-  },
-  {
-    year: "2020-21",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2020-21.pdf",
-  },
-  {
-    year: "2019-20",
-    pdf: "https://nightingaleseldercare.com/assets/files/2019-20-NMTAnnualReport.pdf",
-  },
-  {
-    year: "2018-19",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-AnnualReport2018-19FINAL1.pdf",
-  },
-  {
-    year: "2017-18",
-    pdf: "https://nightingaleseldercare.com/assets/files/ANNUAL-REPORTOFNMT2017-18.pdf",
-  },
+  year: "2024-25",
+  pdf: AnnualReport2024,
+},
+{
+  year: "2022-23",
+  pdf: AnnualReport2023,
+},
+{
+  year: "2021-22",
+  pdf: AnnualReport2021,
+},
+{
+  year: "2020-21",
+  pdf: AnnualReport2020,
+},
+{
+  year: "2019-20",
+  pdf: AnnualReport2019,
+},
+{
+  year: "2018-19",
+  pdf: AnnualReport2018,
+},
+{
+  year: "2017-18",
+  pdf: AnnualReport2017,
+},
 ];
 
 function RouteComponent() {

@@ -184,8 +184,8 @@ const [paymentId, setPaymentId] = useState("");
     const required = [
   primary.amount,
   primary.name,
-  primary.authorizedPerson,
-  primary.designation,
+  // primary.authorizedPerson,
+  // primary.designation,
   primary.email,
   primary.mobile,
   donorType,

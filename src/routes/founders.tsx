@@ -25,10 +25,10 @@ const trustees = [
       "He moved to Bangalore in 1972 and started his practice as a first generation practitioner. He has now built up a fine practice and has, besides several prominent citizens of Bangalore, a large number of corporates, banks and financial institutions as clients of his firm, Amarnath Kamath & Associates.",
   },
   {
-    name: "Mrs. Indira Prem Menon",
+    name: "Mrs. Indra Prem Menon",
     role: "Trustee",
     image: "/images/founders/indira-menon.jpg",
-    bio: "Mrs. Indira Menon is a person full of energy, enthusiasm and dynamism. She aims at perfection in all she does and does not compromise on the high standards she sets for herself or others.",
+    bio: "Mrs. Indra Menon is a person full of energy, enthusiasm and dynamism. She aims at perfection in all she does and does not compromise on the high standards she sets for herself or others.",
     extra:
       "Mrs. Menon was earlier known to be the youngest President of The Bangalore Chamber of Industry and Commerce, Bangalore, Karnataka. She is currently the President and CEO of Lakshmanan Isola Private Limited, and is engaged in managing all aspects of the operations of the Company. Further, she is active on the Board of Directors of several companies in various fields like IT, Hospitality, Finance and Films, to name a few.",
     quote:
@@ -53,10 +53,10 @@ const trustees = [
       "Mr. Rao is closely associated with several non-profit organizations and is presently the Chairman of Public Affairs Foundation, Common Purpose (India Chapter), CherYsh-India and the Advisory Committees of the National Gallery of Modern Art, Bangalore and the Bangalore School of Music, besides being Director / Trustee of several others, such as CMCA, Bengaluru, The Teacher Foundation and the Public Affairs Centre.",
   },
   {
-    name: "Mr. Manoj Shah",
+    name: "Mr. Mike Shah",
     role: "Trustee",
     image: "/images/founders/manoj-shah.jpg",
-    bio: "Mr. Manoj Shah has been a highly visible Business Executive in the global Information Technology industry. He has been in the industry for 45 years and is the founder Managing Director of Digital India, an active nationwide network to provide high quality business development services to chief executives in Info tech industry around the globe.",
+    bio: "Mr. Mike Shah has been a highly visible Business Executive in the global Information Technology industry. He has been in the industry for 45 years and is the founder Managing Director of Digital India, an active nationwide network to provide high quality business development services to chief executives in Info tech industry around the globe.",
     extra:
       "Mr. Shah is currently the Chairman of Nightingale Empowerment Foundation, an NGO working for the well-being of Senior Citizens in Bangalore.",
   },
