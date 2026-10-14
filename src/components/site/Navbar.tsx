@@ -19,7 +19,7 @@ interface NavItem {
   label: string;
   to: string;
   hash?: string;
-  children?: { label: string; to: string; hash?: string }[];
+  children?: NavItem[];
 }
 
 const NAV_LINKS: NavItem[] = [
@@ -37,23 +37,121 @@ const NAV_LINKS: NavItem[] = [
     { label: "Executive Committee", to: "/executive-committee" },
     { label: "Recognitions & Awards", to: "/about", hash: "recognitions" },
     { label: "Partners", to: "/about", hash: "partners" },
-    { label: "Founders", to: "/founders" },
+    { label: "Finances", to: "/financial-reports" },
     { label: "Annual Reports", to: "/annual-reports" },
   ],
 },
-  {
-    label: "Our Services",
-    to: "/services",
-    children: [
-      { label: "Dementia and Medical Care", to: "/services", hash: "dementia-care" },
-      { label: "Care for Marginalized Elders", to: "/services", hash: "marginalized" },
-      { label: "Prevention of Elder Abuse", to: "/services", hash: "elder-protection" },
-      { label: "Empowerment and Livelihood", to: "/services", hash: "empowerment-livelihood" },
-      { label: "Supporting Old Age Homes", to: "/services", hash: "old-age-homes" },
-      { label: "Training and Capacity Building", to: "/services", hash: "capacity-building" },
-      { label: "Awareness and Advocacy", to: "/services", hash: "awareness" },
-    ],
-  },
+{
+  label: "Our Services",
+  to: "/services",
+  children: [
+    {
+  label: "Dementia and Medical Care",
+  to: "/services",
+  hash: "dementia-care",
+  children: [
+    {
+      label: "Online Dementia Risk Reduction Programme",
+      to: "/services",
+      hash: "online-risk-reduction",
+    },
+    {
+      label: "Memory Clinics",
+      to: "/services",
+      hash: "memory-clinics",
+    },
+    {
+      label: "Dementia Day Care",
+      to: "/services",
+      hash: "day-care",
+    },
+    {
+      label: "Specialised Residential Dementia Care",
+      to: "/services",
+      hash: "residential-care",
+    },
+    {
+      label: "Family Caregiver Training",
+      to: "/services",
+      hash: "caregiver-training",
+    },
+    {
+      label: "Dementia Family Support Groups",
+      to: "/services",
+      hash: "family-support-groups",
+    },
+    {
+      label: "Nightingales Smriti Gram",
+      to: "/services",
+      hash: "smriti-gram",
+    },
+    {
+  label: "Why Choose Nightingales Medical Trust",
+  to: "/services",
+  hash: "why-choose-nmt",
+},
+  ],
+},
+
+   {
+  label: "Care for Marginalized Elders",
+  to: "/services",
+  hash: "marginalized",
+  children: [
+    {
+      label: "Sandhya Suraksha",
+      to: "/services",
+      hash: "sandhya-suraksha",
+    },
+    {
+      label: "Sandhya Kirana",
+      to: "/services",
+      hash: "sandhya-kirana",
+    },
+    {
+      label: "Hiriyaravadi",
+      to: "/services",
+      hash: "hiriyaravadi",
+    },
+    {
+      label: "Free Geriatric Clinic",
+      to: "/services",
+      hash: "geriatric-clinic",
+    },
+  ],
+},
+
+    {
+      label: "Prevention of Elder Abuse",
+      to: "/services",
+      hash: "elder-protection",
+    },
+
+    {
+      label: "Empowerment and Livelihood",
+      to: "/services",
+      hash: "empowerment-livelihood",
+    },
+
+    {
+      label: "Supporting Old Age Homes",
+      to: "/services",
+      hash: "old-age-homes",
+    },
+
+    {
+      label: "Training and Capacity Building",
+      to: "/services",
+      hash: "capacity-building",
+    },
+
+    {
+      label: "Awareness and Advocacy",
+      to: "/services",
+      hash: "awareness",
+    },
+  ],
+},
  {
   label: "Smriti Gram",
   to: "/smriti-gram",
@@ -87,7 +185,22 @@ const NAV_LINKS: NavItem[] = [
 },
 
   { label: "Road Ahead", to: "/the-road-ahead" },
-  { label: "Get Involved", to: "/get-involved" },
+  {
+  label: "Get Involved",
+  to: "/get-involved",
+  children: [
+    { label: "Why Partner with NMT?", to: "/get-involved#why-partner" },
+    { label: "Causes You Can Support", to: "/get-involved#causes" },
+    { label: "Adopt a Project", to: "/get-involved#partnership-options" },
+    { label: "Corporate Donations", to: "/get-involved#corporate-donations" },
+    { label: "Event Sponsorship", to: "/get-involved#event-sponsorship" },
+    { label: "Payroll Giving", to: "/get-involved#payroll-giving" },
+    { label: "Volunteering", to: "/get-involved#corporate-volunteering" },
+    { label: "Internship", to: "/get-involved#internship" },
+    { label: "Connect with CSR", to: "/get-involved#contact-csr" },
+    { label: "Donate", to: "/get-involved#donate" },
+  ],
+},
   {
     label: "Impact",
     to: "/impact"
@@ -129,6 +242,95 @@ function normalizePath(path: string) {
     return path.slice(0, -1);
   }
   return path;
+}
+
+
+type HashLinkHandler = (
+  e: MouseEvent<HTMLAnchorElement>,
+  item: { to: string; hash?: string }
+) => void;
+
+function DesktopSubmenu({
+  items,
+  handleHashLinkClick,
+}: {
+  items: NavItem[];
+  handleHashLinkClick: HashLinkHandler;
+}) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      {items.map((item) => (
+        <div key={`${item.label}-${item.hash ?? item.to}`} className="group/sub relative">
+          <Link
+            to={item.to}
+            hash={item.hash}
+            onClick={(e) => handleHashLinkClick(e, item)}
+            className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-foreground/80 transition-colors hover:bg-primary-soft hover:text-primary-deep"
+          >
+            <span>{item.label}</span>
+            {item.children && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
+          </Link>
+
+          {item.children && (
+            <div className="invisible pointer-events-none absolute left-full top-0 z-50 ml-1 w-60 rounded-2xl border border-border/80 bg-card/95 p-2 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-200 group-hover/sub:pointer-events-auto group-hover/sub:visible group-hover/sub:opacity-100">
+              <DesktopSubmenu
+                items={item.children}
+                handleHashLinkClick={handleHashLinkClick}
+              />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MobileSubmenu({
+  items,
+  handleHashLinkClick,
+  closeMenu,
+  depth = 0,
+}: {
+  items: NavItem[];
+  handleHashLinkClick: HashLinkHandler;
+  closeMenu: () => void;
+  depth?: number;
+}) {
+  return (
+    <div
+      className={`${
+        depth === 0
+          ? "ml-3 border-l-2 border-[#ED6439]/30 pl-3"
+          : "ml-3 border-l border-border/50 pl-3"
+      } my-1 flex flex-col space-y-1`}
+    >
+      {items.map((item) => (
+        <div key={`${item.label}-${item.hash ?? item.to}`}>
+          <Link
+            to={item.to}
+            hash={item.hash}
+            onClick={(e) => {
+              handleHashLinkClick(e, item);
+              closeMenu();
+            }}
+            className="flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13.5px] text-muted-foreground transition-colors hover:bg-primary-soft hover:text-primary-deep"
+          >
+            <span>{item.label}</span>
+            {item.children && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
+          </Link>
+
+          {item.children && (
+            <MobileSubmenu
+              items={item.children}
+              handleHashLinkClick={handleHashLinkClick}
+              closeMenu={closeMenu}
+              depth={depth + 1}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export function Navbar() {
@@ -492,29 +694,10 @@ export function Navbar() {
                     group-hover:opacity-100
                   "
                 >
-                  <div className="flex flex-col gap-0.5">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.to}
-                        hash={child.hash}
-                        onClick={(e) => handleHashLinkClick(e, child)}
-                        className="
-                          rounded-xl
-                          px-3
-                          py-2
-                          text-xs
-                          font-medium
-                          text-foreground/80
-                          transition-colors
-                          hover:bg-primary-soft
-                          hover:text-primary-deep
-                        "
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <DesktopSubmenu
+                    items={link.children}
+                    handleHashLinkClick={handleHashLinkClick}
+                  />
                 </div>
               </div>
             ) : (
@@ -602,19 +785,15 @@ export function Navbar() {
             )}
           </button>
 
-         {/* =====================================================
+    {/* =====================================================
     DONATE NOW
     ===================================================== */}
 
 <Link
-  to="/"
-  hash="donate"
-  onClick={(e) =>
-    handleHashLinkClick(e, {
-      to: "/",
-      hash: "donate",
-    })
-  }
+  to="/donate"
+  onClick={() => {
+    // Close mobile menu if needed
+  }}
   aria-label="Donate"
   className="
     hidden
@@ -914,31 +1093,11 @@ export function Navbar() {
                   </button>
                 </div>
                 {openMobileAccordion === link.label && (
-                  <div className="ml-3 my-1 flex flex-col space-y-1 border-l-2 border-[#ED6439]/30 pl-3">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.to}
-                        hash={child.hash}
-                        onClick={(e) => {
-                          handleHashLinkClick(e, child);
-                          setMenuOpen(false);
-                        }}
-                        className="
-                          rounded-lg
-                          px-2.5
-                          py-1.5
-                          text-[13.5px]
-                          text-muted-foreground
-                          transition-colors
-                          hover:bg-primary-soft
-                          hover:text-primary-deep
-                        "
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <MobileSubmenu
+                    items={link.children}
+                    handleHashLinkClick={handleHashLinkClick}
+                    closeMenu={() => setMenuOpen(false)}
+                  />
                 )}
               </div>
             ) : (
@@ -972,36 +1131,33 @@ export function Navbar() {
           )}
 
           {/* MOBILE DONATE BUTTON */}
-          <Link
-            to="/get-involved"
-            hash="donate"
-            onClick={(e) => {
-              handleHashLinkClick(e, { to: "/get-involved", hash: "donate" });
-              setMenuOpen(false);
-            }}
-            className="
-              mt-4
-              flex
-              items-center
-              justify-center
-              gap-2
-              rounded-xl
-              bg-[#ED6439]
-              px-4
-              py-3
-              text-[15px]
-              font-bold
-              text-white
-              shadow-sm
-              transition-all
-              duration-300
-              hover:bg-[#d55229]
-              hover:shadow-lg
-            "
-          >
-            <span>Donate</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          {/* MOBILE DONATE BUTTON */}
+<Link
+  to="/donate"
+  onClick={() => setMenuOpen(false)}
+  className="
+    mt-4
+    flex
+    items-center
+    justify-center
+    gap-2
+    rounded-xl
+    bg-[#ED6439]
+    px-4
+    py-3
+    text-[15px]
+    font-bold
+    text-white
+    shadow-sm
+    transition-all
+    duration-300
+    hover:bg-[#d55229]
+    hover:shadow-lg
+  "
+>
+  <span>Donate</span>
+  <ArrowRight className="h-4 w-4" />
+</Link>
         </nav>
       )}
     </header>

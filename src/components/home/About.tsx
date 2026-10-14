@@ -64,27 +64,15 @@ export function About() {
           <Reveal delay={150} className="mt-5 max-w-[950px] sm:mt-9 lg:mt-11">
             <div className="space-y-3 border-l border-white/15 pl-4 text-[13px] font-medium leading-[1.6] text-white/95 drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] xs:text-[14px] sm:space-y-4 sm:pl-5 sm:text-[16px] sm:leading-[1.7] lg:text-[17px] lg:leading-[1.8]">
               <p>
-                India is ageing rapidly, but the systems and support
-                available to older persons are not keeping pace with their
-                growing needs. Millions of elders face loneliness, neglect,
-                financial insecurity, abuse, chronic health conditions, loss
-                of independence and limited opportunities to remain socially
-                and economically engaged.
+                India is ageing rapidly, but the systems and support available to older persons are not keeping pace with their growing needs. Millions of elders face loneliness, neglect, financial insecurity, abuse, chronic health conditions, loss of independence, and limited opportunities to remain socially and economically engaged.
               </p>
 
               <p>
-                Dementia is emerging as a major, and often invisible, public
-                health and social care challenge - affecting not only
-                individuals, but entire families. Many older persons,
-                particularly those from vulnerable communities, struggle to
-                access appropriate healthcare, safe living environments,
-                trained caregivers, meaningful activities and dignified
-                support.
+                Dementia is emerging as a major and often invisible public health and social care challenge—affecting not only individuals but entire families. Many older persons, particularly those from vulnerable communities, struggle to access appropriate healthcare, safe living environments, trained caregivers, meaningful activities, and dignified support.
               </p>
 
               <p>
-                These challanges are no longer individual or family problems. They are
-                national concers requiring immediate coordinated action.
+                These challenges are no longer individual or family problems. They are national concerns requiring immediate, coordinated action.
               </p>
             </div>
           </Reveal>

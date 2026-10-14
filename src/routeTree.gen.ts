@@ -13,16 +13,25 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AnnualReportsRouteImport } from './routes/annual-reports'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CorporateVolunteeringRouteImport } from './routes/corporate-volunteering'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ExecutiveCommitteeRouteImport } from './routes/executive-committee'
 import { Route as FinancialReportsRouteImport } from './routes/financial-reports'
 import { Route as FoundersRouteImport } from './routes/founders'
 import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as IndividualRouteImport } from './routes/individual'
+import { Route as InternshipProfessionRouteImport } from './routes/internship-profession'
+import { Route as InternshipProjectsRouteImport } from './routes/internship-projects'
 import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as NewsEventsRouteImport } from './routes/news-events'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SmritiGramRouteImport } from './routes/smriti-gram'
+import { Route as SpecificCauseRouteImport } from './routes/specific-cause'
 import { Route as TheRoadAheadRouteImport } from './routes/the-road-ahead'
+import { Route as ApiCreateOrderRouteImport } from './routes/api/create-order'
+import { Route as ApiVerifyPaymentRouteImport } from './routes/api/verify-payment'
+import { Route as ApiVerifySpecificCausePaymentRouteImport } from './routes/api/verify-specific-cause-payment'
 import { Route as NewsEventsSlugRouteImport } from './routes/news-events_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +52,16 @@ const AnnualReportsRoute = AnnualReportsRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateVolunteeringRoute = CorporateVolunteeringRouteImport.update({
+  id: '/corporate-volunteering',
+  path: '/corporate-volunteering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExecutiveCommitteeRoute = ExecutiveCommitteeRouteImport.update({
@@ -70,6 +89,21 @@ const ImpactRoute = ImpactRouteImport.update({
   path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndividualRoute = IndividualRouteImport.update({
+  id: '/individual',
+  path: '/individual',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternshipProfessionRoute = InternshipProfessionRouteImport.update({
+  id: '/internship-profession',
+  path: '/internship-profession',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternshipProjectsRoute = InternshipProjectsRouteImport.update({
+  id: '/internship-projects',
+  path: '/internship-projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeadershipRoute = LeadershipRouteImport.update({
   id: '/leadership',
   path: '/leadership',
@@ -90,11 +124,32 @@ const SmritiGramRoute = SmritiGramRouteImport.update({
   path: '/smriti-gram',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpecificCauseRoute = SpecificCauseRouteImport.update({
+  id: '/specific-cause',
+  path: '/specific-cause',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TheRoadAheadRoute = TheRoadAheadRouteImport.update({
   id: '/the-road-ahead',
   path: '/the-road-ahead',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCreateOrderRoute = ApiCreateOrderRouteImport.update({
+  id: '/api/create-order',
+  path: '/api/create-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVerifyPaymentRoute = ApiVerifyPaymentRouteImport.update({
+  id: '/api/verify-payment',
+  path: '/api/verify-payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiVerifySpecificCausePaymentRoute =
+  ApiVerifySpecificCausePaymentRouteImport.update({
+    id: '/api/verify-specific-cause-payment',
+    path: '/api/verify-specific-cause-payment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NewsEventsSlugRoute = NewsEventsSlugRouteImport.update({
   id: '/news-events_/$slug',
   path: '/news-events/$slug',
@@ -106,16 +161,25 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/annual-reports': typeof AnnualReportsRoute
   '/contact': typeof ContactRoute
+  '/corporate-volunteering': typeof CorporateVolunteeringRoute
+  '/donate': typeof DonateRoute
   '/executive-committee': typeof ExecutiveCommitteeRoute
   '/financial-reports': typeof FinancialReportsRoute
   '/founders': typeof FoundersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
+  '/individual': typeof IndividualRoute
+  '/internship-profession': typeof InternshipProfessionRoute
+  '/internship-projects': typeof InternshipProjectsRoute
   '/leadership': typeof LeadershipRoute
   '/news-events': typeof NewsEventsRoute
   '/services': typeof ServicesRoute
   '/smriti-gram': typeof SmritiGramRoute
+  '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesByTo {
@@ -123,16 +187,25 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/annual-reports': typeof AnnualReportsRoute
   '/contact': typeof ContactRoute
+  '/corporate-volunteering': typeof CorporateVolunteeringRoute
+  '/donate': typeof DonateRoute
   '/executive-committee': typeof ExecutiveCommitteeRoute
   '/financial-reports': typeof FinancialReportsRoute
   '/founders': typeof FoundersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
+  '/individual': typeof IndividualRoute
+  '/internship-profession': typeof InternshipProfessionRoute
+  '/internship-projects': typeof InternshipProjectsRoute
   '/leadership': typeof LeadershipRoute
   '/news-events': typeof NewsEventsRoute
   '/services': typeof ServicesRoute
   '/smriti-gram': typeof SmritiGramRoute
+  '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesById {
@@ -141,16 +214,25 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/annual-reports': typeof AnnualReportsRoute
   '/contact': typeof ContactRoute
+  '/corporate-volunteering': typeof CorporateVolunteeringRoute
+  '/donate': typeof DonateRoute
   '/executive-committee': typeof ExecutiveCommitteeRoute
   '/financial-reports': typeof FinancialReportsRoute
   '/founders': typeof FoundersRoute
   '/get-involved': typeof GetInvolvedRoute
   '/impact': typeof ImpactRoute
+  '/individual': typeof IndividualRoute
+  '/internship-profession': typeof InternshipProfessionRoute
+  '/internship-projects': typeof InternshipProjectsRoute
   '/leadership': typeof LeadershipRoute
   '/news-events': typeof NewsEventsRoute
   '/services': typeof ServicesRoute
   '/smriti-gram': typeof SmritiGramRoute
+  '/specific-cause': typeof SpecificCauseRoute
   '/the-road-ahead': typeof TheRoadAheadRoute
+  '/api/create-order': typeof ApiCreateOrderRoute
+  '/api/verify-payment': typeof ApiVerifyPaymentRoute
+  '/api/verify-specific-cause-payment': typeof ApiVerifySpecificCausePaymentRoute
   '/news-events_/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRouteTypes {
@@ -160,16 +242,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/annual-reports'
     | '/contact'
+    | '/corporate-volunteering'
+    | '/donate'
     | '/executive-committee'
     | '/financial-reports'
     | '/founders'
     | '/get-involved'
     | '/impact'
+    | '/individual'
+    | '/internship-profession'
+    | '/internship-projects'
     | '/leadership'
     | '/news-events'
     | '/services'
     | '/smriti-gram'
+    | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -177,16 +268,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/annual-reports'
     | '/contact'
+    | '/corporate-volunteering'
+    | '/donate'
     | '/executive-committee'
     | '/financial-reports'
     | '/founders'
     | '/get-involved'
     | '/impact'
+    | '/individual'
+    | '/internship-profession'
+    | '/internship-projects'
     | '/leadership'
     | '/news-events'
     | '/services'
     | '/smriti-gram'
+    | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events/$slug'
   id:
     | '__root__'
@@ -194,16 +294,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/annual-reports'
     | '/contact'
+    | '/corporate-volunteering'
+    | '/donate'
     | '/executive-committee'
     | '/financial-reports'
     | '/founders'
     | '/get-involved'
     | '/impact'
+    | '/individual'
+    | '/internship-profession'
+    | '/internship-projects'
     | '/leadership'
     | '/news-events'
     | '/services'
     | '/smriti-gram'
+    | '/specific-cause'
     | '/the-road-ahead'
+    | '/api/create-order'
+    | '/api/verify-payment'
+    | '/api/verify-specific-cause-payment'
     | '/news-events_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -212,16 +321,25 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AnnualReportsRoute: typeof AnnualReportsRoute
   ContactRoute: typeof ContactRoute
+  CorporateVolunteeringRoute: typeof CorporateVolunteeringRoute
+  DonateRoute: typeof DonateRoute
   ExecutiveCommitteeRoute: typeof ExecutiveCommitteeRoute
   FinancialReportsRoute: typeof FinancialReportsRoute
   FoundersRoute: typeof FoundersRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
   ImpactRoute: typeof ImpactRoute
+  IndividualRoute: typeof IndividualRoute
+  InternshipProfessionRoute: typeof InternshipProfessionRoute
+  InternshipProjectsRoute: typeof InternshipProjectsRoute
   LeadershipRoute: typeof LeadershipRoute
   NewsEventsRoute: typeof NewsEventsRoute
   ServicesRoute: typeof ServicesRoute
   SmritiGramRoute: typeof SmritiGramRoute
+  SpecificCauseRoute: typeof SpecificCauseRoute
   TheRoadAheadRoute: typeof TheRoadAheadRoute
+  ApiCreateOrderRoute: typeof ApiCreateOrderRoute
+  ApiVerifyPaymentRoute: typeof ApiVerifyPaymentRoute
+  ApiVerifySpecificCausePaymentRoute: typeof ApiVerifySpecificCausePaymentRoute
   NewsEventsSlugRoute: typeof NewsEventsSlugRoute
 }
 
@@ -253,6 +371,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate-volunteering': {
+      id: '/corporate-volunteering'
+      path: '/corporate-volunteering'
+      fullPath: '/corporate-volunteering'
+      preLoaderRoute: typeof CorporateVolunteeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/executive-committee': {
@@ -290,6 +422,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/individual': {
+      id: '/individual'
+      path: '/individual'
+      fullPath: '/individual'
+      preLoaderRoute: typeof IndividualRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/internship-profession': {
+      id: '/internship-profession'
+      path: '/internship-profession'
+      fullPath: '/internship-profession'
+      preLoaderRoute: typeof InternshipProfessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/internship-projects': {
+      id: '/internship-projects'
+      path: '/internship-projects'
+      fullPath: '/internship-projects'
+      preLoaderRoute: typeof InternshipProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leadership': {
       id: '/leadership'
       path: '/leadership'
@@ -318,11 +471,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SmritiGramRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/specific-cause': {
+      id: '/specific-cause'
+      path: '/specific-cause'
+      fullPath: '/specific-cause'
+      preLoaderRoute: typeof SpecificCauseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/the-road-ahead': {
       id: '/the-road-ahead'
       path: '/the-road-ahead'
       fullPath: '/the-road-ahead'
       preLoaderRoute: typeof TheRoadAheadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/create-order': {
+      id: '/api/create-order'
+      path: '/api/create-order'
+      fullPath: '/api/create-order'
+      preLoaderRoute: typeof ApiCreateOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/verify-payment': {
+      id: '/api/verify-payment'
+      path: '/api/verify-payment'
+      fullPath: '/api/verify-payment'
+      preLoaderRoute: typeof ApiVerifyPaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/verify-specific-cause-payment': {
+      id: '/api/verify-specific-cause-payment'
+      path: '/api/verify-specific-cause-payment'
+      fullPath: '/api/verify-specific-cause-payment'
+      preLoaderRoute: typeof ApiVerifySpecificCausePaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news-events_/$slug': {
@@ -340,16 +521,25 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AnnualReportsRoute: AnnualReportsRoute,
   ContactRoute: ContactRoute,
+  CorporateVolunteeringRoute: CorporateVolunteeringRoute,
+  DonateRoute: DonateRoute,
   ExecutiveCommitteeRoute: ExecutiveCommitteeRoute,
   FinancialReportsRoute: FinancialReportsRoute,
   FoundersRoute: FoundersRoute,
   GetInvolvedRoute: GetInvolvedRoute,
   ImpactRoute: ImpactRoute,
+  IndividualRoute: IndividualRoute,
+  InternshipProfessionRoute: InternshipProfessionRoute,
+  InternshipProjectsRoute: InternshipProjectsRoute,
   LeadershipRoute: LeadershipRoute,
   NewsEventsRoute: NewsEventsRoute,
   ServicesRoute: ServicesRoute,
   SmritiGramRoute: SmritiGramRoute,
+  SpecificCauseRoute: SpecificCauseRoute,
   TheRoadAheadRoute: TheRoadAheadRoute,
+  ApiCreateOrderRoute: ApiCreateOrderRoute,
+  ApiVerifyPaymentRoute: ApiVerifyPaymentRoute,
+  ApiVerifySpecificCausePaymentRoute: ApiVerifySpecificCausePaymentRoute,
   NewsEventsSlugRoute: NewsEventsSlugRoute,
 }
 export const routeTree = rootRouteImport

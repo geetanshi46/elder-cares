@@ -12,7 +12,7 @@ import SinghImage from "@/assets/executives/Singh.png";
 import UrmilaImage from "@/assets/executives/Urmila.jpg";
 import KhizraImage from "@/assets/executives/khizra.png";
 import EdwardImage from "@/assets/executives/Edward.jpg";
-import SatishImage from "@/assets/executives/satish.jpg";
+import SatishImage from "@/assets/executives/satish.webp";
 import accountsManagerImage from "@/assets/executives/accounts-manager.webp";
 import seniorPsychiatristImage from "@/assets/executives/senior-psychiatrist.png";
 
@@ -237,23 +237,23 @@ const committeeMembers = [
 
 
   {
-    name: "Vijetha Daas",
-    role: "Manager, Accounts and Finance",
-    image: seniorPsychiatristImage,
-    bio: (
-      <>
-        <strong>Manager, Accounts and Finance</strong> with over 30 years of experience in senior roles at international manufacturing, services and audit organizations. Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.
-      </>
-    ),
-  },
-
-  {
-    name: "Subramanian Narayan",
+    name: "Dr. Vijetha Daas",
     role: "Senior Consultant Psychiatrist",
     image: accountsManagerImage,
     bio: (
       <>
         <strong>Senior consultant psychiatrist</strong> graduated from Nimhans. Has vast experience in medical practices and holistic approach towards patient care. Was trainer of trainer (TOT) to medical doctors and paramedical staff in mental health and awareness in DMHP. Now into dementia care and residential practices. Good administrator, dedicated, assertive and with leadership qualities.
+      </>
+    ),
+  },
+
+  {
+    name: "Mr. Subramanian Narayan",
+    role: "Manager, Accounts and Finance",
+    image: seniorPsychiatristImage,
+    bio: (
+      <>
+        <strong>Manager, Accounts and Finance</strong> with over 30 years of experience in senior roles at international manufacturing, services and audit organizations. Areas primarily worked in include treasury, banking, budgeting, cost and management accounting and team development.
       </>
     ),
   },
@@ -312,11 +312,11 @@ function ExecutiveCommittee() {
             <Reveal delay={120}>
               <div className="mt-9 flex flex-col items-start gap-3 sm:mt-12 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
 
-                <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
+                {/* <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
                   <span className="text-sm font-semibold text-white">
                     7 Members
                   </span>
-                </div>
+                </div> */}
 
                 <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5">
                   <span className="text-sm font-medium text-white/65">

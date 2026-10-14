@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { createFileRoute } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -10,16 +11,25 @@ import {
   Send,
   ArrowUpRight,
 } from "lucide-react";
-
+import contactHeroImage from "../assets/contact/contact-hero.webp";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import type { ReactNode } from "react";
 
 const title =
   "Contact Nightingales Medical Trust — Centres, Helplines & Enquiries";
 
 const description =
   "Reach Nightingales Medical Trust: head office address, centre locations, helpline numbers, WhatsApp, email and an online enquiry form.";
+
+const WHATSAPP_NUMBER = "919035025438"; // +91 90350 25438, no + or spaces for wa.me
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+const EMAILJS_SERVICE_ID = "service_j9tymph";
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_mp0i3mc";
+const EMAILJS_AUTO_REPLY_TEMPLATE_ID = "template_hgaw8ho";
+const EMAILJS_PUBLIC_KEY = "T1bLrv0aySSP-mrpui5cf";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -37,26 +47,154 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    topic: "Dementia care",
+    message: "",
+  });
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setSending(true);
+  setSent(false);
+  setError("");
+
+  try {
+    const formBody = new URLSearchParams();
+
+    formBody.append("name", formData.name);
+    formBody.append("email", formData.email);
+    formBody.append("phone", formData.phone);
+    formBody.append("writingAbout", formData.topic);
+    formBody.append("message", formData.message);
+
+    await fetch(
+      "https://script.google.com/a/macros/nightingaleseldercare.com/s/AKfycbwY1-z5hG5_LOtCHwvBeFukuJnjl0nHvqJ7RJt0ToyizS-hR9CsEy-gqFKmtfTBzBxYMw/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: formBody,
+      }
+    );
+
+    setSent(true);
+
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      topic: "Dementia care",
+      message: "",
+    });
+  } catch (err) {
+    console.error("Form submission error:", err);
+    setError("Something went wrong. Please try again.");
+  } finally {
+    setSending(false);
+  }
+};
 
   return (
     <SiteLayout>
 
-      {/* ==================================================
-          HERO SECTION
-      ================================================== */}
+     {/* ==================================================
+    HERO SECTION
+================================================== */}
 
-      <PageHero
-        eyebrow="Contact us"
-        title="Contact Us"
-        intro="Whether you need dementia care, want to volunteer or simply have a question — someone here will answer."
-      />
+<section className="relative isolate w-full overflow-hidden bg-[#263746]">
+  <div
+    className="
+      relative w-full
+      aspect-[4/5]
+      sm:aspect-[16/9]
+      md:aspect-[16/7]
+      lg:aspect-[21/9]
+      max-h-[560px]
+      min-h-[380px]
+    "
+  >
+    {/* Hero Banner Image */}
+    <img
+      src={contactHeroImage}
+      alt="Contact Nightingales Medical Trust"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    />
+
+    {/* Light Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#17232B]/30 via-[#17232B]/10 to-transparent" />
+
+    {/* Bottom Readability Gradient */}
+    <div
+      className="
+        pointer-events-none absolute inset-x-0 bottom-0
+        h-[150px]
+        bg-gradient-to-t from-[#17232B]/45 via-[#17232B]/15 to-transparent
+        sm:h-[180px]
+        md:h-[200px]
+        lg:h-[220px]
+      "
+    />
+
+    {/* Hero Heading */}
+    <div
+      className="
+        absolute inset-x-0 bottom-0 z-10 w-full
+        px-5 pb-9
+        sm:px-8 sm:pb-11
+        md:px-10 md:pb-12
+        lg:px-14 lg:pb-14
+      "
+    >
+      <Reveal>
+        <div className="flex w-full items-start gap-3 sm:gap-5">
+          {/* Orange Vertical Line */}
+          <span
+            className="
+              mt-1 h-[48px] w-[3px] shrink-0 rounded-full bg-[#ED6439]
+              sm:h-[56px] sm:w-1
+              md:h-[64px]
+              lg:h-[72px]
+            "
+          />
+
+          <h1
+            className="
+              font-display text-4xl font-extrabold
+              leading-[1.08] tracking-[-0.035em]
+              text-white
+              drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]
+              sm:text-5xl
+              lg:text-6xl
+            "
+          >
+            Contact Us
+          </h1>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>
 
 
       {/* ==================================================
           CONTACT — REACH US
+          Divided info panel (not a card grid) so it reads
+          differently from the Centres grid below.
       ================================================== */}
 
-      <section className="w-full bg-[#E15925] py-16 sm:py-20 lg:py-24">
+      <section className="w-full bg-[#FFFCF7] py-16 sm:py-20 lg:py-24">
 
         <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12">
 
@@ -64,13 +202,13 @@ function ContactPage() {
 
             <div className="mb-10 max-w-4xl sm:mb-14">
 
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75 sm:text-sm">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E15925] sm:text-sm">
                 Reach us
               </p>
 
-              <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+              {/* <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
                 Head office, helplines and email.
-              </h2>
+              </h2> */}
 
               <div className="mt-5 h-1 w-16 bg-[#F29000]" />
 
@@ -79,60 +217,78 @@ function ContactPage() {
           </Reveal>
 
 
-          {/* CONTACT CARDS */}
+          {/* CONTACT INFO PANEL */}
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={90}>
 
-            <ContactInfoCard
-              icon={Building2}
-              title="Head Office"
-              body="Nightingales Medical Trust, 8P6, Kasturinagar, 3rd A Cross Rd, East of NGEF Layout, Banasawadi, Bengaluru, Karnataka 560043."
-            />
+            <div
+              className="
+                grid
+                grid-cols-1
+                divide-y
+                divide-[#263746]/10
+                border
+                border-[#263746]/10
+                bg-white
+                sm:grid-cols-2
+                sm:divide-x
+                sm:divide-y-0
+                lg:grid-cols-4
+              "
+            >
 
-            <ContactInfoCard
-              icon={PhoneCall}
-              title="Phone (24 hours)"
-              delay={90}
-              links={[
-                {
-                  text: "+91 80 4242 6565",
-                  href: "tel:+918042426565",
-                },
-                {
-                  text: "Elders Helpline 1090",
-                  href: "tel:1090",
-                },
-                {
-                  text: "National Helpline 14567",
-                  href: "tel:14567",
-                },
-              ]}
-            />
+              <ContactInfoCard
+                icon={Building2}
+                title="Head Office"
+                body="Nightingales Medical Trust, 8P6, Kasturinagar, 3rd A Cross Rd, East of NGEF Layout, Banasawadi, Bengaluru, Karnataka 560043."
+              />
 
-            <ContactInfoCard
-              icon={MessageCircle}
-              title="WhatsApp"
-              delay={180}
-              body="Message us on +91 80 4242 6565 for dementia care guidance, available every day."
-            />
+              <ContactInfoCard
+                icon={PhoneCall}
+                title="Phone (24 hours)"
+                links={[
+                  {
+                    text: "+91 80 4242 6565",
+                    href: "tel:+918042426565",
+                  },
+                  {
+                    text: "Elders Helpline 1090",
+                    href: "tel:1090",
+                  },
+                  {
+                    text: "National Helpline 14567",
+                    href: "tel:14567",
+                  },
+                ]}
+              />
 
-            <ContactInfoCard
-              icon={Mail}
-              title="Email"
-              delay={270}
-              links={[
-                {
-                  text: "contact@nightingaleseldercare.com",
-                  href: "mailto:contact@nightingaleseldercare.com",
-                },
-                {
-                  text: "secretary@nightingaleseldercare.com",
-                  href: "mailto:secretary@nightingaleseldercare.com",
-                },
-              ]}
-            />
+              <ContactInfoCard
+                icon={MessageCircle}
+                title="WhatsApp"
+                body="Message us on +91 90350 25438 for dementia care guidance, available every day."
+                href={WHATSAPP_LINK}
+                cta="Chat on WhatsApp"
+                highlight
+              />
 
-          </div>
+              <ContactInfoCard
+                icon={Mail}
+                title="Email"
+                links={[
+                  {
+                    text: "contact@nightingaleseldercare.com",
+                    href: "mailto:contact@nightingaleseldercare.com",
+                  },
+                  // {
+                  //   text: "secretary@nightingaleseldercare.com",
+                  //   href: "mailto:secretary@nightingaleseldercare.com",
+                  // },
+                ]}
+              />
+
+            </div>
+
+          </Reveal>
 
         </div>
 
@@ -159,79 +315,118 @@ function ContactPage() {
                 Care, protection and training centres across Bengaluru & Karnataka.
               </h2>
 
-              <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+              <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
             </div>
 
           </Reveal>
 
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {[
+  {
+    name: "Nightingales Centre for Ageing & Alzheimer's & head office - Kasturinagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Centre+for+Ageing+%26+Alzheimer's,+8P6,+3rd+A+Cross,+Kasturinagar,+Banaswadi,+Bengaluru",
+  },
+  {
+    name: "ETCM - Nightingales Trust Dementia Care Centre - Kolar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Dementia+Care+Centre+%40+ETCM+Hospital,+F+Ward,+ETCM+Hospital,+Bangarpet+Road,+Kolar",
+  },
+  {
+    name: "Nightingales Trust - Tanya Mathias Elder Care Centre - Kothanur ",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+-+Tanya+Mathias+Elder+Care+Centre+For+Women,+Kothanur,+Bengaluru",
+  },
+  {
+    name: "Nightingales Trust Day Care for Elderly & Dementia - Jayanagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Day+Care+for+Elderly+and+Dementia,+2nd+Floor,+No+190,+Rashtriya+Vidyalaya+Rd,+Jayanagar,+Bengaluru",
+  },
+  {
+    name: "Nightingales Trust Dementia Day Care Centre - RT Nagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Trust+Dementia+Day+Care+Centre,+337+2nd+Cross,+1st+Block,+RT+Nagar,+Bengaluru,+Karnataka+560032",
+  },
+  {
+    name: "Sandhya Kirana Day care - Shanthinagar",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+-+Shanthinagar",
+  },
+  {
+    name: "Sandhya Suraksha, home for destitute elderly women - Anepalya",
+    href: "https://www.google.com/maps/search/?api=1&query=Sandhya+Suraksha+-+A+Home+for+Helpless+Elderly+Women",
+  },
+  {
+    name: "SK Home, home for destitute elderlys men - Richmond Town ",
+    href: "https://www.google.com/maps/search/?api=1&query=Nightingales+Sandhya+Kirana+Shanthinagar",
+  },
+  {
+    name: "Elder Helpline 1090 - Ali Asker Road",
+    href: "https://www.google.com/maps/search/?api=1&query=Elders+Helpline,+Ali+Asker+Road,+Bengaluru",
+  },
+].map((centre, index) => (
+    <Reveal key={centre.name} delay={(index % 3) * 90}>
+      <article
+        className="
+          group
+          flex
+          h-full
+          items-start
+          gap-4
+          border
+          border-[#E15925]/15
+          bg-white
+          p-6
+          shadow-[0_12px_35px_rgba(38,55,70,0.06)]
+          transition-all
+          duration-300
+          hover:-translate-y-1
+          hover:border-[#17232B]/60
+          hover:shadow-[0_18px_45px_rgba(38,55,70,0.12)]
+        "
+      >
+        <span
+          className="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            bg-[#FFF1D6]
+            text-[#17232B]
+            transition-colors
+            duration-300
+            group-hover:bg-[#17232B]
+            group-hover:text-white
+          "
+        >
+          <MapPin className="h-5 w-5" strokeWidth={1.8} />
+        </span>
 
-            {[
-              "Kasturinagar — NCAA residential dementia care & head office",
-              "Kolar — ETCM Nightingales Trust Geriatric Unit",
-              "Kothanur — Tanya Mathias Elder Care Centre",
-              "Jayanagar — Day care for the elderly",
-              "RT Nagar — Day care, Jobs 60+ & training",
-              "Shanthinagar — Sandhya Kirana day care",
-              "Anepalya — Sandhya Suraksha, home for destitute elderly women",
-              "Richmond Town — SK Home, home for destitute elderly men",
-              "Ali Asker Road — Elders Helpline 1090",
-            ].map((centre, index) => (
-
-              <Reveal key={centre} delay={(index % 3) * 90}>
-
-                <article
-                  className="
-                    group
-                    flex
-                    h-full
-                    items-start
-                    gap-4
-                    border
-                    border-[#E15925]/15
-                    bg-white
-                    p-6
-                    shadow-[0_12px_35px_rgba(38,55,70,0.06)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-[#F29000]/60
-                    hover:shadow-[0_18px_45px_rgba(38,55,70,0.12)]
-                  "
-                >
-
-                  <span
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      shrink-0
-                      items-center
-                      justify-center
-                      bg-[#FFF1D6]
-                      text-[#F29000]
-                      transition-colors
-                      duration-300
-                      group-hover:bg-[#F29000]
-                      group-hover:text-white
-                    "
-                  >
-                    <MapPin className="h-5 w-5" strokeWidth={1.8} />
-                  </span>
-
-                  <span className="pt-1 text-sm font-semibold leading-6 text-[#263746]">
-                    {centre}
-                  </span>
-
-                </article>
-
-              </Reveal>
-
-            ))}
-
-          </div>
+        {centre.href !== "#" ? (
+          <a
+            href={centre.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              pt-1
+              text-sm
+              font-semibold
+              leading-6
+              text-[#263746]
+              transition-colors
+              hover:text-[#ED6439]
+              hover:underline
+            "
+          >
+            {centre.name}
+          </a>
+        ) : (
+          <span className="pt-1 text-sm font-semibold leading-6 text-[#263746]">
+            {centre.name}
+          </span>
+        )}
+      </article>
+    </Reveal>
+  ))}
+</div>
 
         </div>
 
@@ -258,7 +453,7 @@ function ContactPage() {
                 On the map
               </h2>
 
-              <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+              <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
             </div>
 
@@ -309,10 +504,12 @@ function ContactPage() {
                 </p>
 
                 <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
-                  Send an enquiry.
+                  Send An Enquiry.
                 </h2>
-
-                <div className="mt-5 h-1 w-16 bg-[#F29000]" />
+                <h5 className="mt-4 font-display text-3xl font-extrabold leading-tight text-[#263746] sm:text-4xl lg:text-5xl">
+                  Request to call back
+                </h5>
+                <div className="mt-5 h-1 w-16 bg-[#17232B]" />
 
                 <p className="mt-6 text-base leading-8 text-[#526574] sm:text-lg">
                   Tell us how Nightingales Medical Trust can help, and our team will get back to you.
@@ -325,148 +522,277 @@ function ContactPage() {
 
             {/* FORM */}
 
-            <Reveal delay={120}>
+<Reveal delay={120}>
+  <form
+    onSubmit={handleSubmit}
+    className="
+      min-w-0
+      rounded-xl
+      border
+      border-[#263746]/10
+      bg-[#F8F8F8]
+      p-6
+      shadow-[0_10px_40px_rgba(38,55,70,0.06)]
+      sm:p-8
+    "
+  >
+    {/* Header */}
+    <div className="mb-6">
+      <h3 className="text-xl font-bold text-[#E15925]">
+        We're Here to Help
+      </h3>
 
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="
-                  grid
-                  min-w-0
-                  gap-5
-                  border
-                  border-[#E15925]/15
-                  bg-white
-                  p-6
-                  shadow-[0_20px_60px_rgba(38,55,70,0.08)]
-                  sm:grid-cols-2
-                  sm:p-8
-                  lg:p-10
-                "
-              >
+      <p className="mt-1 text-sm text-[#263746]/65">
+        Every enquiry matters. Tell us how we can support you, and our team
+        will get in touch.
+      </p>
+    </div>
 
-                <Field label="Full name" id="name" />
+    <div className="mb-6 h-px bg-[#E15925]/15" />
 
-                <Field label="Phone" id="phone" type="tel" />
+    {/* Fields */}
+    <div className="grid min-w-0 gap-4 sm:grid-cols-2">
 
-                <Field label="Email" id="email" type="email" />
+      {/* Full Name */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="name"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Full name <span className="text-[#E15925]">*</span>
+        </label>
 
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder="Enter your full name"
+          required
+          className="
+            min-w-0
+            h-11
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                <div className="flex min-w-0 flex-col gap-2">
+      {/* Phone */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="phone"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Phone number <span className="text-[#E15925]">*</span>
+        </label>
 
-                  <label
-                    htmlFor="topic"
-                    className="text-sm font-bold text-[#263746]"
-                  >
-                    I am writing about
-                  </label>
+        <div className="flex min-w-0 h-11 rounded-full border border-[#263746]/15 bg-white overflow-hidden focus-within:border-[#F29000]">
+          <span className="flex items-center px-4 text-sm text-[#263746]/60">
+            +91
+          </span>
 
-                  <select
-                    id="topic"
-                    className="
-                      min-w-0
-                      rounded-none
-                      border
-                      border-[#263746]/15
-                      bg-[#FFFCF7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#263746]
-                      outline-none
-                      transition-colors
-                      focus:border-[#F29000]
-                    "
-                  >
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder="Phone number"
+            required
+            className="
+              min-w-0
+              flex-1
+              border-0
+              bg-transparent
+              pr-4
+              text-sm
+              text-[#263746]
+              outline-none
+              placeholder:text-[#263746]/40
+            "
+          />
+        </div>
+      </div>
 
-                    {[
-                      "Dementia care",
-                      "Donation",
-                      "Volunteering",
-                      "Internship",
-                      "CSR partnership",
-                      "Something else",
-                    ].map((option) => (
-                      <option key={option}>{option}</option>
-                    ))}
+      {/* Email */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="email"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Email address <span className="text-[#E15925]">*</span>
+        </label>
 
-                  </select>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder="you@example.com"
+          required
+          className="
+            min-w-0
+            h-11
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                </div>
+      {/* Topic */}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <label
+          htmlFor="topic"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          How can we help you? <span className="text-[#E15925]">*</span>
+        </label>
 
+        <select
+          id="topic"
+          name="topic"
+          value={formData.topic}
+          onChange={handleInputChange}
+          required
+          className="
+            min-w-0
+            h-11
+            w-full
+            rounded-full
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            focus:border-[#F29000]
+          "
+        >
+          {[
+            "Dementia care",
+            "Donation",
+            "Volunteering",
+            "Internship",
+            "CSR partnership",
+            "Other matters",
+          ].map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
 
-                <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
+      {/* Message */}
+      <div className="flex min-w-0 flex-col gap-1.5 sm:col-span-2">
+        <label
+          htmlFor="message"
+          className="text-xs font-semibold text-[#263746]"
+        >
+          Your message <span className="text-[#E15925]">*</span>
+        </label>
 
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-bold text-[#263746]"
-                  >
-                    Message
-                  </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          placeholder="Please tell us a little about your enquiry and how we can assist you."
+          required
+          rows={5}
+          className="
+            min-w-0
+            w-full
+            resize-none
+            rounded-xl
+            border
+            border-[#263746]/15
+            bg-white
+            px-4
+            py-3.5
+            text-sm
+            text-[#263746]
+            outline-none
+            transition-colors
+            placeholder:text-[#263746]/40
+            focus:border-[#F29000]
+          "
+        />
+      </div>
 
-                  <textarea
-                    id="message"
-                    rows={5}
-                    placeholder="Tell us how we can help…"
-                    className="
-                      min-w-0
-                      resize-y
-                      rounded-none
-                      border
-                      border-[#263746]/15
-                      bg-[#FFFCF7]
-                      px-4
-                      py-3.5
-                      text-sm
-                      text-[#263746]
-                      outline-none
-                      transition-colors
-                      focus:border-[#F29000]
-                    "
-                  />
+    </div>
 
-                </div>
+    {/* Privacy text */}
+    <p className="mt-3 text-[11px] leading-relaxed text-[#263746]/55">
+      We will use your contact details to respond to your enquiry in
+      accordance with our privacy policy.
+    </p>
 
+    {/* Submit Button */}
+    <button
+      type="submit"
+      disabled={sending}
+      className="
+        mt-4
+        inline-flex
+        h-11
+        w-full
+        items-center
+        justify-center
+        gap-2
+        rounded-full
+        bg-[#111111]
+        px-6
+        text-sm
+        font-semibold
+        text-white
+        transition-all
+        duration-300
+        hover:bg-[#263746]
+        disabled:cursor-not-allowed
+        disabled:opacity-60
+      "
+    >
+      {sending
+        ? "Sending..."
+        : sent
+          ? "Thank you — we'll be in touch"
+          : "Submit Your Enquiry"}
 
-                <button
-                  type="submit"
-                  className="
-                    inline-flex
-                    w-fit
-                    items-center
-                    justify-center
-                    gap-2
-                    bg-[#E15925]
-                    px-7
-                    py-3.5
-                    text-sm
-                    font-bold
-                    text-white
-                    shadow-[0_10px_25px_rgba(225,89,37,0.2)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:bg-[#C94B1E]
-                    hover:shadow-[0_15px_35px_rgba(225,89,37,0.3)]
-                    sm:col-span-2
-                  "
-                >
+      <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+    </button>
 
-                  <Send className="h-4 w-4" strokeWidth={1.9} />
-
-                  {sent
-                    ? "Thank you — we'll be in touch"
-                    : "Send enquiry"}
-
-                  <ArrowUpRight className="h-4 w-4" />
-
-                </button>
-
-              </form>
-
-            </Reveal>
+    {/* Error */}
+    {error && (
+      <p className="mt-3 text-sm font-medium text-red-600">
+        {error}
+      </p>
+    )}
+  </form>
+</Reveal>
 
           </div>
 
@@ -481,6 +807,10 @@ function ContactPage() {
 
 /* ==================================================
     CONTACT INFO CARD
+    Renders as a plain block, or — when `href` is passed
+    (WhatsApp) — as a fully clickable link that opens the
+    chat directly. `highlight` gives it the coral CTA
+    treatment instead of a plain white block.
 ================================================== */
 
 function ContactInfoCard({
@@ -488,120 +818,174 @@ function ContactInfoCard({
   title,
   body,
   links,
-  delay = 0,
+  href,
+  cta,
+  highlight = false,
 }: {
   icon: LucideIcon;
   title: string;
-  body?: string;
+  body?: ReactNode;
   links?: {
     text: string;
     href: string;
   }[];
-  delay?: number;
+  href?: string;
+  cta?: string;
+  highlight?: boolean;
 }) {
+
+  const Wrapper = href ? "a" : "div";
+
+  const wrapperProps = href
+    ? {
+        href,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "aria-label": `${title} — opens in a new tab`,
+      }
+    : {};
 
   return (
 
-    <Reveal delay={delay} className="min-w-0">
+    <Wrapper
+      {...wrapperProps}
+      className={`
+        group
+        relative
+        flex
+        h-full
+        min-w-0
+        flex-col
+        p-8
+        transition-colors
+        duration-300
+        ${highlight
+          ? "bg-[#E15925] text-white hover:bg-[#C94B1E]"
+          : "bg-white hover:bg-[#FFFCF7]"}
+        ${href ? "cursor-pointer" : ""}
+      `}
+    >
 
-      <article
-        className="
-          group
-          relative
-          flex
-          h-full
-          min-w-0
-          flex-col
-          overflow-hidden
-          border
-          border-white/40
-          bg-white
-          p-6
-          shadow-[0_15px_40px_rgba(38,30,20,0.12)]
-          transition-all
-          duration-300
-          hover:-translate-y-2
-          hover:shadow-[0_22px_55px_rgba(38,30,20,0.2)]
-          sm:p-7
-          lg:p-8
-        "
+      {/* ICON */}
+
+<span
+  className={`
+    flex
+    h-12
+    w-12
+    shrink-0
+    items-center
+    justify-center
+    rounded-xl
+    transition-all
+    duration-300
+    ${
+      highlight
+        ? "bg-white/15 text-white group-hover:bg-white/20"
+        : "bg-[#FFF1D6] text-[#F29000] group-hover:bg-[#F29000] group-hover:text-white"
+    }
+  `}
+>
+  <Icon className="h-6 w-6" strokeWidth={1.8} />
+</span>
+
+
+      {/* TITLE */}
+
+      <h3
+        className={`
+          mt-6
+          font-display
+          text-xl
+          font-extrabold
+          leading-snug
+          ${highlight ? "text-white" : "text-[#263746]"}
+        `}
       >
+        {title}
+        {href ? (
+          <ArrowUpRight
+            className={`
+              ml-1
+              inline-block
+              h-4
+              w-4
+              align-top
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+              group-hover:-translate-y-1
+              ${highlight ? "text-white" : "text-[#E15925]"}
+            `}
+          />
+        ) : null}
+      </h3>
 
-        {/* ICON */}
+
+      {/* BODY */}
+
+      {body ? (
+
+        <p
+          className={`
+            mt-4
+            text-sm
+            leading-7
+            ${highlight ? "text-white/90" : "text-[#526574]"}
+          `}
+        >
+          {body}
+        </p>
+
+      ) : null}
+
+
+      {/* LINKS */}
+
+      {links?.length ? (
+
+        <div className="mt-5 space-y-3 text-sm leading-6">
+
+          {links.map((link) => (
+  <a
+    key={link.href}
+    href={link.href}
+    onClick={(e) => e.stopPropagation()}
+    className="block min-w-0 break-words text-[#526574] transition-colors duration-300 hover:text-[#E15925]"
+  >
+    {link.text}
+  </a>
+))}
+
+         
+
+        </div>
+
+      ) : null}
+
+
+      {/* CTA */}
+
+      {cta ? (
 
         <span
           className="
-            flex
-            h-12
-            w-12
+            mt-6
+            inline-flex
             w-fit
             items-center
-            justify-center
-            bg-[#FFF1D6]
-            text-[#F29000]
-            transition-all
-            duration-300
-            group-hover:bg-[#F29000]
-            group-hover:text-white
+            gap-2
+            text-sm
+            font-bold
+            text-white
           "
         >
-
-          <Icon className="h-6 w-6" strokeWidth={1.6} />
-
+          {cta}
         </span>
 
+      ) : null}
 
-        {/* TITLE */}
-
-        <h3 className="mt-6 font-display text-xl font-extrabold leading-snug text-[#263746]">
-          {title}
-        </h3>
-
-
-        {/* BODY */}
-
-        {body ? (
-
-          <p className="mt-4 text-sm leading-7 text-[#526574]">
-            {body}
-          </p>
-
-        ) : null}
-
-
-        {/* LINKS */}
-
-        {links?.length ? (
-
-          <div className="mt-5 space-y-3 text-sm leading-6">
-
-            {links.map((link) => (
-
-              <a
-                key={link.href}
-                href={link.href}
-                className="
-                  block
-                  min-w-0
-                  break-words
-                  text-[#526574]
-                  transition-colors
-                  duration-300
-                  hover:text-[#E15925]
-                "
-              >
-                {link.text}
-              </a>
-
-            ))}
-
-          </div>
-
-        ) : null}
-
-      </article>
-
-    </Reveal>
+    </Wrapper>
 
   );
 }
@@ -615,10 +999,14 @@ function Field({
   label,
   id,
   type = "text",
+  value,
+  onChange,
 }: {
   label: string;
   id: string;
   type?: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 
   return (
@@ -634,7 +1022,11 @@ function Field({
 
       <input
         id={id}
+        name={id}
         type={type}
+        value={value}
+        onChange={onChange}
+        required
         className="
           min-w-0
           rounded-none

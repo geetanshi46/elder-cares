@@ -297,10 +297,14 @@ function ImpactStat({
   icon: Icon,
   number,
   text,
+
+  // context="Cumulative figure"
 }: {
   icon: typeof Users;
   number: string;
   text: string;
+  context?: string;
+  
 }) {
   return (
     <div
@@ -315,27 +319,29 @@ function ImpactStat({
         p-5
         transition-all
         duration-300
-        hover:border-[#F29000]/30
+        hover:border-[#14212B]/30
         hover:bg-white/[0.08]
       "
     >
-      <div
-        className="
-          grid
-          h-11
-          w-11
-          shrink-0
-          place-items-center
-          bg-[#F29000]
-          text-white
-          shadow-[0_8px_20px_rgba(242,144,0,0.25)]
-          transition-transform
-          duration-300
-          group-hover/stat:scale-110
-        "
-      >
-        <Icon className="h-5 w-5" strokeWidth={1.8} />
-      </div>
+<div
+  className="
+    grid
+    h-11
+    w-11
+    shrink-0
+    place-items-center
+    bg-[#14212B]
+    text-white
+    shadow-[0_8px_20px_rgba(20,33,43,0.25)]
+    transition-all
+    duration-300
+    group-hover/stat:scale-110
+    group-hover/stat:bg-white
+    group-hover/stat:text-[#14212B]
+  "
+>
+  <Icon className="h-5 w-5" strokeWidth={1.8} />
+</div>
 
       <div>
         <div
@@ -353,6 +359,9 @@ function ImpactStat({
         <p className="mt-2 text-[13px] leading-snug text-white/70">
           {text}
         </p>
+        {/* <p className="mt-1 text-[11px] leading-snug text-white/50">
+          {context}
+        </p> */}
       </div>
     </div>
   );

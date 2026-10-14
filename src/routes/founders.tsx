@@ -13,25 +13,22 @@ const trustees = [
   {
     name: "Mr. Pankaj C. Lakhani",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/pankaj-lakhani-152x160.png",
+    image: "/images/founders/pankaj-lakhani.jpg",
     bio: "Mr. Pankaj C. Lakhani is the Managing Director of the Bangalore Soft Drinks Private Limited and the Director of the Saurashtra Bottling Private Limited. He also functions as a Trustee on the boards of several Non-profits.",
   },
   {
     name: "Mr. Amarnath Kamath",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/amarnath-kamath-146x160.png",
+    image: "/images/founders/amarnath-kamath.jpg",
     bio: "Mr. Amarnath Kamath is a practicing Chartered Accountant and Management Consultant. He has been in the profession for over 44 years.",
     extra:
       "He moved to Bangalore in 1972 and started his practice as a first generation practitioner. He has now built up a fine practice and has, besides several prominent citizens of Bangalore, a large number of corporates, banks and financial institutions as clients of his firm, Amarnath Kamath & Associates.",
   },
   {
-    name: "Ms. Indra Prem Menon",
+    name: "Mrs. Indra Prem Menon",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/indira-menon-145x160.png",
-    bio: "Mrs. Indira Menon is a person full of energy, enthusiasm and dynamism. She aims at perfection in all she does and does not compromise on the high standards she sets for herself or others.",
+    image: "/images/founders/indira-menon.jpg",
+    bio: "Mrs. Indra Menon is a person full of energy, enthusiasm and dynamism. She aims at perfection in all she does and does not compromise on the high standards she sets for herself or others.",
     extra:
       "Mrs. Menon was earlier known to be the youngest President of The Bangalore Chamber of Industry and Commerce, Bangalore, Karnataka. She is currently the President and CEO of Lakshmanan Isola Private Limited, and is engaged in managing all aspects of the operations of the Company. Further, she is active on the Board of Directors of several companies in various fields like IT, Hospitality, Finance and Films, to name a few.",
     quote:
@@ -40,8 +37,7 @@ const trustees = [
   {
     name: "Mr. Basant Poddar",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/poddar-144x144.png",
+    image: "/images/founders/basant-poddar.jpg",
     bio: "Mr. Basant Poddar is the Managing Director of Mineral Enterprises Ltd (MEL). Mineral Enterprises Limited is a scientific mining company with 6 decades of experience focusing on Mining, Logistics, Infrastructure development and Renewable Energy.",
     extra:
       "He is also the Vice President of Federation of Indian Mineral Industries, an apex body [founded in 1966] and has keen interest in Community Development.",
@@ -49,8 +45,7 @@ const trustees = [
   {
     name: "Mr. Sudhakar Rao",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/rao-150x160.png",
+    image: "/images/founders/sudhakar-rao.jpg",
     bio: "Mr. Sudhakar Rao is an IAS Officer of the Karnataka Cadre (1973 batch) and retired as the Chief Secretary of Karnataka in September 2009. He has held several key positions in both the State and Central Governments.",
     extra:
       "Following an illustrious career in the Government, upon retirement Mr. Rao served as a Member of the Public Enterprises Selection Board, and thereafter has been/is an Independent Director on the Boards of several public limited companies.",
@@ -58,15 +53,15 @@ const trustees = [
       "Mr. Rao is closely associated with several non-profit organizations and is presently the Chairman of Public Affairs Foundation, Common Purpose (India Chapter), CherYsh-India and the Advisory Committees of the National Gallery of Modern Art, Bangalore and the Bangalore School of Music, besides being Director / Trustee of several others, such as CMCA, Bengaluru, The Teacher Foundation and the Public Affairs Centre.",
   },
   {
-    name: "Mr. Manoj Shah",
+    name: "Mr. Mike Shah",
     role: "Trustee",
-    image:
-      "https://www.nightingaleseldercare.com/assets/images/mike-shah-131x135.jpg",
-    bio: "Mr. Manoj Shah has been a highly visible Business Executive in the global Information Technology industry. He has been in the industry for 45 years and is the founder Managing Director of Digital India, an active nationwide network to provide high quality business development services to chief executives in Info tech industry around the globe.",
+    image: "/images/founders/manoj-shah.jpg",
+    bio: "Mr. Mike Shah has been a highly visible Business Executive in the global Information Technology industry. He has been in the industry for 45 years and is the founder Managing Director of Digital India, an active nationwide network to provide high quality business development services to chief executives in Info tech industry around the globe.",
     extra:
       "Mr. Shah is currently the Chairman of Nightingale Empowerment Foundation, an NGO working for the well-being of Senior Citizens in Bangalore.",
   },
 ];
+
 
 function FoundersPage() {
   return (
@@ -258,7 +253,7 @@ function FoundersPage() {
 
                   <div className="relative w-full overflow-hidden">
                     <img
-                      src="https://nightingaleseldercare.com/assets/images/dsc-7302-1046x698.jpeg"
+                      src="images/founders/Dr Radha S Murthy.png"
                       alt="Dr Radha S Murthy"
                       className="block aspect-[3/2] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                     />
@@ -312,8 +307,8 @@ function FoundersPage() {
                   <div className="relative w-full overflow-hidden">
 
                     <img
-                      src="https://nightingaleseldercare.com/assets/images/founder-mr-raja-1046x698.jpeg"
-                      alt="S Premkumar Raja"
+                      src="images/founders/Mr. S Premkumar Raja.png"
+                      alt=" Mr. S Premkumar Raja"
                       className="block aspect-[3/2] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                     />
 
@@ -333,13 +328,13 @@ function FoundersPage() {
                     </p>
 
                     <h3 className="mt-2 break-words font-display text-2xl font-bold text-[#E15925] sm:text-3xl">
-                     Mr  S Premkumar Raja
+                     Mr.  S Premkumar Raja
                     </h3>
 
                     <div className="my-5 h-px w-14 bg-[#ED6439]/40 sm:my-6" />
 
                     <p className="text-sm leading-7 text-[#526574] sm:text-base">
-                      With two Masters Degrees in Social Sciences and over 30
+                      With two Masters Degrees in Social Sciences and over 40
                       years of experience as a Community Welfare and
                       Healthcare Administrator, Mr Raja has planned and
                       successfully implemented several innovative social and

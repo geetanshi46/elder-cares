@@ -65,94 +65,144 @@ export const Route = createFileRoute("/about")({
 
 const JOURNEY = [
   {
-    year: "1998",
-    title: "Nightingales Medical Trust established",
-    body: "As a not-for-profit organisation dedicated to age care.",
-  },
-  {
-    year: "1999",
-    title: "Nightingales Elders Enrichment Centre established in Malleshwaram.",
+    year: "2024–2026",
+    title:
+      "NMT continued to expand its dementia care, active ageing, community support, training, technology, and advocacy initiatives while developing Nightingales Smriti Gram – Dementia Care, Learning & Research, a new integrated model of dementia care.",
     body: "",
   },
+
+  {
+    year: "2023",
+    title:
+      "NMT completed 25 years of service. It also received the IPS-KC Distinguished Service Award for exemplary service in the field of mental health.",
+    body: "",
+  },
+
+  {
+    year: "2022",
+    title:
+      "NMT established its first Hiriyaravadi to help marginalized elders in a city slum",
+    body:
+      "NMT launched a Mobile Active Ageing Programme in 28 old age homes",
+  },
+
+ {
+  year: "2021",
+  title:
+    "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka — SK Home - A Home for Destitute Elderly Men.",
+  body: "",
+},
+
+  {
+    year: "2019",
+    title: "Strengthened training and advocacy initiatives.  Rotary Pioneer Award (for pioneering work in the field of Age Care).",
+    body: "",
+  },
+
+  
+{
+  year: "2017",
+  title: "Mobile Active Ageing",
+  body: "",
+},
+
+{
+  year: "2018",
+  title:
+    "Dementia Day Care Centres at KR Fort Road and RT Nagar. Tanya Mathias - Nightingales Trust Elder Care Centre. Dementia 2018 International Conference in association with ARDSI. Sandhya Suraksha (A home for Destitute Elderly Women).",
+  body: "",
+},
+
+  {
+    year: "2014",
+    title:
+      "ETCM – Nightingales Trust Dementia Residential Care Centre established in Kolar using telemedicine solutions and bringing down costs by 30%.",
+    body:
+      "NMT also expanded its work in dementia risk reduction and active ageing.",
+  },
+
+{
+  year: "2011",
+  title:
+    "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders. Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care by the Government of India.",
+  body: "",
+},
+
+  {
+    year: "2010",
+    title:
+      "Nightingales Centre for Ageing and Alzheimer's established as a specialised residential dementia care facility.",
+    body: "",
+  },
+
+  {
+    year: "2009",
+    title:
+      "NMT's work received the Vayoshreshtha Samman, National Award.",
+    body: "",
+  },
+
+  {
+    year: "2008",
+    title:
+      "International collaboration with Alzheimer's Australia for technical support.",
+    body: "",
+  },
+
+  {
+    year: "2006",
+    title:
+      "Dementia Day Care services introduced to support persons with dementia and provide respite to family caregivers.",
+    body: "",
+  },
+
+
+{
+  year: "2005",
+  title:
+    "Paul Harris Fellowship from Rotary Foundation. Draft Bill to Government of Karnataka. Advocacy with the government on 'Elders Protection of Rights and Redressal of Grievances Act'.",
+  body: "",
+},
+
+
+  {
+    year: "2004",
+    title:
+      "Nightingales Sandhya Kirana established as a Day Care Centre for economically disadvantaged older persons.",
+    body: "",
+  },
+
+  {
+    year: "2003",
+    title:
+      "Received the Karnataka Rajyotsava Award for outstanding social service.",
+    body: "",
+  },
+
+  {
+    year: "2002",
+    title: "Elders Helpline launched",
+    body:
+      "Elders Helpline launched in association with Bengaluru City Police—the first of its kind in the country to help elders in distress and combat elder abuse.",
+  },
+
   {
     year: "2000",
     title: "Nightingales Lifesaving Services",
     body: "",
   },
+
   {
-    year: "2002",
-    title: "Elders Helpline launched",
-    body: "Elders Helpline launched in association with Bengaluru City Police - the first of its kind in the country to help elders in distress and combat elder abuse",
-  },
-  {
-    year: "2003",
-    title: "Received the Karnataka Rajyotsava Award for outstanding social service.",
+    year: "1999",
+    title:
+      "Nightingales Elders Enrichment Centre established in Malleshwaram.",
     body: "",
   },
+
   {
-    year: "2004",
-    title: "Nightingales Sandhya Kirana established as a Day Care Centre for economically disadvantaged older persons.",
-    body: "",
-  },
-  {
-    year: "2006",
-    title: "Dementia Day Care services introduced to support persons with dementia and provide respite to family caregivers.",
-    body: "",
-  },
-  {
-    year: "2008",
-    title: "International collaboration with Alzheimer's Australia for technical support. NMT's work received the Vayoshreshtha Samman, National Award.",
-    body: "",
-  },
-  {
-    year: "2010",
-    title: "Nightingales Centre for Ageing and Alzheimer's established as a specialised residential dementia-care facility.",
-    body: "",
-  },
-  {
-    year: "2011",
-    title: "Received an International Research Award for a promising intervention for people with dementia and their carers. NMT was also designated as a Regional Resource and Training Centre in Age Care, by the government of India.",
-    body: "",
-  },
-  {
-    year: "2011",
-    title: "Nightingales Jobs 60+ was established to promote employment opportunities for financially insecure elders",
-    body: "",
-  },
-  {
-    year: "2014",
-    title: "ETCM – Nightingales Trust Dementia Residential Care Centre established in Kolar using telemedicine solutions and bringing down cost by 30%",
-    body: "NMT also expanded its work in dementia risk reduction and active ageing.",
-  },
-  {
-    year: "2017–2018",
-    title: "Expansion of Dementia Day Care services and establishment of additional elder-care initiatives.",
-    body: "",
-  },
-  {
-    year: "2019",
-    title: "Strengthened training and advocacy initiatives",
-    body: "",
-  },
-  {
-    year: "2021",
-    title: "NMT was recognised to coordinate the National Helpline for Senior Citizens in Karnataka.",
-    body: "",
-  },
-  {
-    year: "2022",
-    title: "NMT established it's first Hiriyarawadi to help marginalized elders in a city slum",
-    body: "NMT launched Mobile Active Ageing program in 28 old age homes",
-  },
-  {
-    year: "2023",
-    title: "NMT completed 25 years of service. It also received the IPS-KC Distinguished Service Award for exemplary service in the field of mental health.",
-    body: "",
-  },
-  {
-    year: "2024–2026",
-    title: "NMT continued to expand its dementia-care, active ageing, community support, training, technology and advocacy initiatives while developing Nightingales Smriti Gram – Dementia Care, Learning & Research, a new integrated model of dementia care.",
-    body: "",
+    year: "1998",
+    title: "Nightingales Medical Trust established",
+    body: "As a not-for-profit organisation dedicated to elder care.",
   },
 ];
 
@@ -461,85 +511,148 @@ function AboutPage() {
   return (
     <SiteLayout>
       <main className="overflow-hidden bg-[#FBF6EC] text-[#1B2A35]">
-        {/* ======================================================
-            HERO — full-bleed banner, image never crops, badge + heading only
-        ====================================================== */}
-        <section id="about-overview" className="relative w-full overflow-hidden scroll-mt-24">
-          <Reveal>
-            <div
-              className="
-                relative w-full
-                aspect-[4/5]
-                sm:aspect-[16/9]
-                md:aspect-[16/7]
-                lg:aspect-[21/9]
-                max-h-[560px]
-                min-h-[380px]
-                bg-[#14212B]
-              "
-            >
-              {/* Full-width banner image */}
-              <img
-                src={aboutHeroImage}
-                alt="Nightingales Medical Trust community"
-                width={1920}
-                height={1080}
-                className="
-                  absolute inset-0
-                  h-full w-full
-                  object-cover object-center
-                "
-              />
+       {/* ======================================================
+    HERO — full-bleed banner
+====================================================== */}
+<section
+  id="about-overview"
+  className="relative w-full overflow-hidden scroll-mt-24"
+>
+  <Reveal>
+    <div
+      className="
+        relative w-full
+        aspect-[4/5]
+        sm:aspect-[16/9]
+        md:aspect-[16/7]
+        lg:aspect-[21/9]
+        max-h-[560px]
+        min-h-[380px]
+        bg-[#14212B]
+      "
+    >
+      {/* Full-width banner image */}
+      <img
+        src={aboutHeroImage}
+        alt="Nightingales Medical Trust community"
+        width={1920}
+        height={1080}
+        className="
+          absolute inset-0
+          h-full w-full
+          object-cover object-center
+        "
+      />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#14212B]/70 via-[#14212B]/25 to-transparent" />
+      {/* Light overlay */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-r
+          from-[#14212B]/25
+          via-[#14212B]/5
+          to-transparent
+        "
+      />
 
-              {/* Content */}
-              <div
-                className="
-                  relative z-10 mx-auto flex h-full w-full
-                  max-w-12xl flex-col justify-center
-                  px-5 py-6
-                  sm:px-8 sm:py-8
-                  md:px-10 md:py-10
-                  lg:px-14 lg:py-12
-                "
-              >
-                {/* Badge */}
-                {/* <span
-                  className="
-                    inline-flex w-fit items-center
-                    rounded-full bg-[#ED6439]
-                    px-3.5 py-2
-                    text-[10px] font-bold uppercase
-                    tracking-[0.14em] text-white
-                    sm:px-4 sm:text-[11px]
-                  "
-                >
-                  About NMT since 1998
-                </span> */}
+      {/* Bottom readability gradient */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-[190px]
+          bg-gradient-to-t
+          from-[#17232B]/55
+          via-[#17232B]/20
+          to-transparent
 
-                {/* Heading */}
-                <h1
-                  className="
-                    mt-4 w-full max-w-6xl
-                    font-display font-extrabold
-                    capitalize leading-[1.08]
-                    tracking-[-0.03em] text-white
-                    text-[1.9rem]
-                    sm:mt-5 sm:text-[2.4rem]
-                    md:text-[3rem]
-                    lg:text-[3.4rem]
-                  "
-                >
-                  Compassionate and innovative{" "}
-                  <span className="text-white">age care</span>{" "}
-                  solutions
-                </h1>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+          sm:h-[220px]
+          md:h-[250px]
+          lg:h-[280px]
+        "
+      />
+
+      {/* ======================================================
+          HERO CONTENT — SAME LEFT ALIGNMENT AS HOME
+      ====================================================== */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          bottom-0
+          z-10
+          w-full
+          px-4
+          pb-9
+
+          sm:px-8
+          sm:pb-11
+
+          md:px-10
+          md:pb-12
+
+          lg:px-16
+          lg:pb-14
+        "
+      >
+        <div
+          className="
+            flex
+            max-w-5xl
+            items-start
+            gap-3
+
+            sm:gap-5
+          "
+        >
+          {/* Orange vertical line */}
+          <span
+  className="
+    mt-1
+    h-[42px]
+    w-[3px]
+    shrink-0
+    rounded-full
+    bg-[#ED6439]
+
+    sm:h-[48px]
+    sm:w-1
+
+    md:h-[56px]
+
+    lg:h-[64px]
+  "
+/>
+
+          {/* Heading */}
+          <h1
+  className="
+    w-full
+    whitespace-nowrap
+    font-display
+    text-[1.7rem]
+    font-extrabold
+    leading-[1.08]
+    tracking-[-0.035em]
+    text-white
+    drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)]
+
+    sm:text-[2.15rem]
+
+    md:text-[2.7rem]
+
+    lg:text-[3.1rem]
+  "
+>
+  Compassionate and innovative age care solutions
+</h1>
+        </div>
+      </div>
+    </div>
+  </Reveal>
+</section>
 
        {/* ======================================================
     WHO WE ARE
@@ -547,7 +660,11 @@ function AboutPage() {
 <section id="who-we-are" className="bg-[#FBF6EC] scroll-mt-24">
   <div className="mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
     <Reveal>
-      <SectionMarker index="01" label="Who We Are" />
+      <SectionMarker
+  index="01"
+  label="Who We Are"
+  className="text-[#E15925]"
+/>
 
       {/* <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-4xl lg:text-[2.8rem]">
         Who We Are
@@ -627,7 +744,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="02" label="Why we exist" />
+     <SectionMarker
+  index="02"
+  label="Why we exist"
+  className="text-[#ED6439]"
+/>
 
       <h2 className="mt-5 max-w-5xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#ED6439] sm:text-4xl lg:text-[2.6rem]">
         Because Ageing Should Not Mean Losing Dignity, Independence or
@@ -711,7 +832,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="03" label="The Need for NMT" />
+      <SectionMarker
+  index="03"
+  label="The Need for NMT"
+  className="text-[#ED6439]"
+/>
 
       <div className="mt-5 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
 
@@ -900,7 +1025,11 @@ function AboutPage() {
         <section id="our-journey" className="bg-[#FBF6EC] scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
             <Reveal>
-              <SectionMarker index="04" label="Our journey" />
+              <SectionMarker
+  index="04"
+  label="Our journey"
+  className="text-[#ED6439]"
+/>
               <h3 className="mt-5 max-w-5xl font-display text-2xl font-bold leading-[1.12] tracking-[-0.025em] text-[#ED6439] sm:text-3xl lg:text-[2.2rem]">
   From a Garage to a Movement for Ageing with Dignity
 </h3>
@@ -1009,7 +1138,11 @@ function AboutPage() {
         <section id="vision" className="bg-white scroll-mt-24">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
-              <SectionMarker index="05" label="Vision, mission & values" />
+              <SectionMarker
+  index="05"
+  label="Vision, mission & values"
+  className="text-[#ED6439]"
+/>
             </Reveal>
 
             <div className="mt-9 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
@@ -1083,7 +1216,11 @@ function AboutPage() {
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
 
     <Reveal>
-      <SectionMarker index="06" label="People & governance" />
+      <SectionMarker
+  index="06"
+  label="People & governance"
+  className="text-[#ED6439]"
+/>
 
       <h2 className="mt-5 max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-[-0.03em] text-[#1B2A35] sm:text-4xl lg:text-[2.6rem]">
         Responsible governance. People who turn vision into action.
@@ -1157,9 +1294,9 @@ function AboutPage() {
               Meet our Board of Trustees
             </h4>
 
-            <p className="mt-3 text-sm leading-6 text-white/75">
-              [Board member profiles, photographs and designations ]
-            </p>
+            {/* <p className="mt-3 text-sm leading-6 text-white/75">
+              Board member profiles, photographs and designations 
+            </p> */}
 
             <p className="mt-5 text-sm leading-7 text-white/85 sm:text-base">
               The Board of Trustees provides strategic oversight and ensures
@@ -1247,7 +1384,7 @@ function AboutPage() {
 
               <div className="rounded-xl bg-[#FBF6EC] p-5">
                 <h4 className="font-display text-lg font-bold text-[#1B2A35] sm:text-xl">
-                  S Premkumar Raja
+                  Mr S Premkumar Raja
                 </h4>
 
                 <p className="mt-1 text-sm font-bold text-[#ED6439]">
@@ -1315,7 +1452,7 @@ function AboutPage() {
   className="bg-[#14212B] text-white scroll-mt-24"
 >
   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-    <div className="max-w-3xl">
+    <div className="mb-9 sm:mb-11">
       <SectionMarker index="08" label="Transparency" />
 
       <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
@@ -1379,29 +1516,10 @@ function AboutPage() {
           className="flex items-start gap-3 text-sm leading-6 text-[#4C5C68]"
         >
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ED6439]" />
-          <span>{item}</span>
+          <span>{item}</span> 
         </li>
       ))}
     </ul>
-
-    <div className="mt-6 flex flex-wrap gap-2.5">
-      {annualReports.map((report) => (
-        <a
-          key={report.year}
-          href={report.pdf}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full border border-[#1B2A35]/12 bg-[#FBF6EC] px-4 py-2.5 text-sm font-bold text-[#1B2A35] transition-colors duration-300 hover:bg-[#ED6439] hover:text-white"
-        >
-          {report.year}
-
-          <ArrowUpRight
-            className="h-3.5 w-3.5 opacity-50"
-            strokeWidth={2.2}
-          />
-        </a>
-      ))}
-    </div>
 
     {/* FULL CONTENT — ALWAYS VISIBLE */}
     <div className="mt-6 border-t border-[#1B2A35]/10 pt-6">
@@ -1413,6 +1531,18 @@ function AboutPage() {
         prevention, livelihoods, training, awareness and advocacy.
       </p>
     </div>
+    
+{/* View All Annual Reports Button */}
+<div className="mt-6">
+  <Link
+    to="/annual-reports"
+    className="inline-flex items-center gap-2 rounded-full bg-[#ED6439] px-5 py-3 text-sm font-bold text-white transition-colors duration-300 hover:bg-[#1B2A35]"
+  >
+    View All Annual Reports
+    <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+  </Link>
+</div>
+
   </div>
 </Reveal>
 
@@ -1436,7 +1566,7 @@ function AboutPage() {
       />
     </div>
 
-    <p className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white">
+    <p id="financial-statements" className="mt-6 text-xs font-bold uppercase tracking-[0.14em] text-white">
       FINANCIAL STATEMENTS
     </p>
 

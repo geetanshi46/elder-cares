@@ -172,30 +172,50 @@ function TheRoadAheadPage() {
     <SiteLayout>
       <main className="bg-white text-slate-800">
         {/* HERO */}
-        <section id="road-ahead" className="relative isolate w-full overflow-hidden">
-          <div className="relative min-h-[360px] w-full sm:min-h-[440px] lg:min-h-[520px]">
-            <img
-              src={roadAheadHero}
-              alt="The Road Ahead"
-              className="absolute inset-0 h-full w-full object-cover object-center"
-              loading="eager"
-            />
-            {/* Very light overlay — image stays clearly visible */}
-            <div className="absolute inset-0 bg-white/18" />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-transparent" />
+       <section id="road-ahead" className="relative isolate w-full overflow-hidden">
+  <div
+    className="
+      relative w-full
+      aspect-[4/5]
+      sm:aspect-[16/9]
+      md:aspect-[16/7]
+      lg:aspect-[21/9]
+      max-h-[560px]
+      min-h-[380px]
+    "
+  >
+    <img
+      src={roadAheadHero}
+      alt="The Road Ahead"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+      loading="eager"
+    />
 
-            <div className="relative z-10 mx-auto flex min-h-[360px] w-full max-w-7xl items-center px-6 sm:min-h-[440px] sm:px-10 lg:min-h-[520px] lg:px-16">
-              <Reveal>
-                <div className="flex items-center gap-4">
-                  <span className="h-1 w-14 bg-[#ed6439] sm:w-20" />
-                  <h1 className="text-4xl font-extrabold tracking-tight text-[#ed6439] sm:text-5xl lg:text-7xl">
-                    The Road Ahead
-                  </h1>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+    {/* Very light overlay — image stays clearly visible */}
+    <div className="absolute inset-0 bg-white/18" />
+    <div className="absolute inset-0 bg-gradient-to-r from-white/25 via-transparent to-transparent" />
+
+    <div
+      className="
+        relative z-10 mx-auto flex h-full w-full max-w-7xl
+        items-center
+        px-6
+        sm:px-10
+        lg:px-16
+      "
+    >
+      <Reveal>
+        <div className="flex items-center gap-4">
+          <span className="h-1 w-14 bg-[#ed6439] sm:w-20" />
+
+          <h1 className="text-4xl font-extrabold tracking-tight text-[#ed6439] sm:text-5xl lg:text-7xl">
+            The Road Ahead
+          </h1>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>
 
         {/* INTRO */}
         <section className="bg-white">
@@ -411,25 +431,25 @@ function TheRoadAheadPage() {
                 <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-white/85">
                   How You Can Partner With Us
                 </p>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {[
-                    "Support a Project",
-                    "Corporate Partnerships",
-                    "Volunteer",
-                    "Support Smriti Gram",
-                    "Research & Academic Collaboration",
-                    "Fund a Training Programme",
-                  ].map((item) => (
-                    <a
-                      key={item}
-                      href="/get-involved"
-                      className="group flex items-center justify-between border border-white/35 bg-white px-5 py-4 text-sm font-semibold text-[#252525] transition hover:bg-[#fff5f0]"
-                    >
-                      {item}
-                      <ArrowRight className="h-4 w-4 text-[#ed6439] transition group-hover:translate-x-1" />
-                    </a>
-                  ))}
-                </div>
+               <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  {[
+    { label: "Support a Project", href: "/get-involved#partnership-options" },
+    { label: "Corporate Partnerships", href: "/get-involved#corporate-donations" },
+    { label: "Volunteer", href: "/get-involved#corporate-volunteering" },
+    { label: "Support Smriti Gram", href: "/smriti-gram" },
+    { label: "Research & Academic Collaboration", href: "mailto:contact@nightingaleseldercare.com" },
+    { label: "Fund a Training Programme", href: "/services#training-programmes" },
+  ].map((item) => (
+    <a
+      key={item.label}
+      href={item.href}
+      className="group flex items-center justify-between border border-white/35 bg-white px-5 py-4 text-sm font-semibold text-[#252525] transition hover:bg-[#fff5f0]"
+    >
+      {item.label}
+      <ArrowRight className="h-4 w-4 text-[#ed6439] transition group-hover:translate-x-1" />
+    </a>
+  ))}
+</div>
 
                 <p className="mt-10 max-w-2xl text-xl font-bold leading-8 text-white">
                   The road ahead is ambitious. With your partnership, it can

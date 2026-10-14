@@ -16,16 +16,20 @@ import dementiaDayCareImage from "@/assets/dementia-day-care.webp";
 const SERVICES = [
   {
     icon: Brain,
-    title: "DEMENTIA AND MEDICAL CARE",
-    hash: "dementia-care",
-    body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
-    highlight: "Currently we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities and an online Dementia Risk Reduction Programme.",
+
+title: "DEMENTIA AND MEDICAL CARE",
+
+hash: "dementia-care",
+
+body: "Caring for a loved one living with dementia can be emotionally and physically demanding. Families often experience stress, sleep deprivation, and caregiver burnout. We provide a comprehensive continuum of care and support services for persons living with dementia and their families, ensuring dignity, safety, and understanding at every stage.",
+
+highlight: "Currently, we run 3 Memory Clinics, 3 Day Care Centres, 3 Residential Care Facilities, and an online Dementia Risk Reduction Programme.",
   },
   {
     icon: HeartHandshake,
     title: "CARE FOR MARGINALIZED ELDERS",
     hash: "marginalized",
-    body: "5 Day Care Centres & Hiriyarawadies, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
+    body: "5 Day Care Centres & Hiriyaravadis, 2 Homes for Homeless Elders providing safe shelter and dignified living, and a free Geriatric Clinic ensuring access to essential care services for underserved elders.",
   },
   {
     icon: ShieldCheck,

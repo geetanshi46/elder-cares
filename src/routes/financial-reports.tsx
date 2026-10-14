@@ -7,6 +7,31 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import NMT12AB from "@/assets/files/NMT-12AB-NEW.pdf";
+import NMT80G from "@/assets/files/NMT-80G-NEW.pdf";
+import BalanceSheet2025 from "@/assets/files/Audited-FinancialStatementsFY2025-26.pdf";
+import FCRA2025 from "@/assets/files/FCRA-Annual-Report-2025-26.pdf";
+import FinancialReport2024 from "@/assets/files/Audited Financial Statements FY 2024-25 (1).pdf";
+import FinancialReport2023 from "@/assets/files/NMT Annual Accounts 2023-24.pdf";
+import FinancialReport2022 from "@/assets/files/NMT-consolidatedBalancesheetFY2022-23.pdf";
+import FinancialReport2021 from "@/assets/files/Audited-BalanceSheetNMT2021-22.pdf";
+import FinancialReport2019 from "@/assets/files/Audited-FinancialStatementsFY2019-20.pdf";
+
+
+
+import FCRAReport2024 from "@/assets/files/FCRA Annual_Report_FC_4_2024-25.pdf";
+import FCRAReport2023 from "@/assets/files/FCRA-FC42023-24.pdf";
+import FCRAReport2022 from "@/assets/files/FC4-2022-23.pdf";
+
+
+import TrustDeed from "@/assets/files/NMT-originalTrustdeedandrectificationdeeddated25theFeb2020.pdf";
+import TrustPANCard from "@/assets/files/Trust_Pan_Card.pdf";
+import FCRACertificate from "@/assets/files/FCRA-Renewal-Certificate1 .pdf";
+
+import CSRRegistration from "@/assets/files/NMT_Approval-LetterforformCSR11.pdf";
+import BSERegistration from "@/assets/files/BSE_Renewal.pdf";
+import NSERegistration from "@/assets/files/SSE_LTC_20032026_102216.pdf";
+
 
 export const Route = createFileRoute("/financial-reports")({
   component: RouteComponent,
@@ -14,91 +39,102 @@ export const Route = createFileRoute("/financial-reports")({
 
 const balanceSheets = [
   {
-    year: "2019–20",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited-FinancialStatementsFY2019-20.pdf",
+    year: "2025–26",
+    pdf: BalanceSheet2025,
   },
   {
-    year: "2021–22",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited-BalanceSheetNMT2021-22.pdf",
-  },
-  {
-    year: "2022–23",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-consolidatedBalancesheetFY2022-23.pdf",
-  },
-  {
-    year: "2023–24",
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT%20Annual%20Accounts%202023-24.pdf",
-  },
-  {
-    year: "2024–25",
-    pdf: "https://nightingaleseldercare.com/assets/files/Audited%20Financial%20Statements%20FY%202024-25%20(1).pdf",
-  },
+  year: "2024–25",
+  pdf: FinancialReport2024,
+},
+{
+  year: "2023–24",
+  pdf: FinancialReport2023,
+},
+{
+  year: "2022–23",
+  pdf: FinancialReport2022,
+},
+{
+  year: "2021–22",
+  pdf: FinancialReport2021,
+},
+{
+  year: "2019–20",
+  pdf: FinancialReport2019,
+},
 ];
 
 const fcraReports = [
   {
-    year: "2022–23",
-    pdf: "https://nightingaleseldercare.com/assets/files/FC4-2022-23.pdf",
+    year: "2025–26",
+    pdf: FCRA2025,
   },
-  {
-    year: "2023–24",
-    pdf: "https://nightingaleseldercare.com/assets/files/FCRA-FC42023-24.pdf",
-  },
-  {
-    year: "2024–25",
-    pdf: "https://nightingaleseldercare.com/assets/files/FCRA%20Annual_Report_FC_4_2024-25.pdf",
-  },
+
+{
+  year: "2024–25",
+  pdf: FCRAReport2024,
+},
+{
+  year: "2023–24",
+  pdf: FCRAReport2023,
+},
+{
+  year: "2022–23",
+  pdf: FCRAReport2022,
+},
 ];
 
 const trustDocuments = [
-  {
-    title: "Trust Deed",
-    description: "Original trust deed and rectification deed",
-    icon: FileText,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-originalTrustdeedandrectificationdeeddated25theFeb2020.pdf",
-  },
-  {
-    title: "PAN Card",
-    description: "Nightingales Medical Trust PAN document",
-    icon: FileCheck2,
-    pdf: "https://nightingaleseldercare.com/assets/files/Trust_Pan_Card.pdf",
-  },
-  {
-    title: "FCRA Certificate",
-    description: "FCRA renewal certificate",
-    icon: ShieldCheck,
-    pdf: "https://nightingaleseldercare.com/assets/files/FCRA-Renewal-Certificate1.pdf",
-  },
-  {
-    title: "12A Certificate",
-    description: "12AB approval certificate",
-    icon: Landmark,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-12ABApprovalAAATN2786NE20214.pdf",
-  },
-  {
-    title: "80G Certificate",
-    description: "80G approval certificate",
-    icon: FileCheck2,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT-80GApprovalAAATN2786NF20214.pdf",
-  },
-  {
-    title: "CSR Registration",
-    description: "CSR registration approval",
-    icon: FileText,
-    pdf: "https://nightingaleseldercare.com/assets/files/NMT_Approval-LetterforformCSR11.PDF",
-  },
-  {
-    title: "BSE Social Stock Exchange Registration",
-    description: "BSE Social Stock Exchange registration",
-    icon: Landmark,
-    pdf: "https://nightingaleseldercare.com/assets/files/BSE_Renewal.pdf",
-  },
-  {
-    title: "NSE Social Stock Exchange Registration",
-    description: "NSE Social Stock Exchange registration",
-    icon: Landmark,
-    pdf: "https://nightingaleseldercare.com/assets/files/SSE_LTC_20032026_102216.pdf",
-  },
+ {
+  title: "Trust Deed",
+  description: "Original trust deed and rectification deed",
+  icon: FileText,
+  pdf: TrustDeed,
+},
+{
+  title: "PAN Card",
+  description: "Nightingales Medical Trust PAN document",
+  icon: FileCheck2,
+  pdf: TrustPANCard,
+},
+{
+  title: "FCRA Certificate",
+  description: "FCRA renewal certificate",
+  icon: ShieldCheck,
+  pdf: FCRACertificate,
+},
+{
+  title: "12A Certificate",
+  description: "12AB approval certificate",
+  icon: Landmark,
+  pdf: NMT12AB,
+},
+{
+  title: "80G Certificate",
+  description: "80G approval certificate",
+  icon: FileCheck2,
+  pdf: NMT80G,
+},
+
+{
+  title: "CSR Registration",
+  description: "CSR registration approval",
+  icon: FileText,
+  pdf: CSRRegistration,
+},
+{
+  title: "BSE Social Stock Exchange Registration",
+  description: "BSE Social Stock Exchange registration",
+  icon: Landmark,
+  pdf: BSERegistration,
+},
+{
+  title: "NSE Social Stock Exchange Registration",
+  description: "NSE Social Stock Exchange registration",
+  icon: Landmark,
+  pdf: NSERegistration,
+},
+
 ];
 
 function RouteComponent() {
