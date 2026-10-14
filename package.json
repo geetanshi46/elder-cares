@@ -13,6 +13,7 @@
     "format": "prettier --write .",
     "start": "node .output/server/index.mjs"
   },
+
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.2.2",
